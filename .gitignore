@@ -16,3 +16,14 @@ _site/
 # counterproductive to check this file into the repository.
 # Details at https://github.com/github/pages-gem/issues/768
 Gemfile.lock
+**/phpmailer/
+**/package-lock.json
+**/flsStartTemplate/
+**/node_modules/
+.gitignore
+# dist/
+**/Source/
+**/version.json
+**/*.zip
+**/undefined
+**/*.rar
