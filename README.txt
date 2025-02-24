@@ -1,1 +1,0 @@
-# emirates fashion week

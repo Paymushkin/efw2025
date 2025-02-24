@@ -27,3 +27,6 @@ Gemfile.lock
 **/*.zip
 **/undefined
 **/*.rar
+
+# /build
+.cache
