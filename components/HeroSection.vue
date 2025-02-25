@@ -94,7 +94,7 @@ const updateScript = () => {
   
   // Устанавливаем разные параметры в зависимости от ширины экрана
   const params = isMobile.value 
-    ? 'UTM=smi&header&footer&adv&tag&count=9&nobutton&size=100'
+    ? 'UTM=smi&header&footer&adv&tag&count=6&nobutton&size=100'
     : 'UTM=smi&header&footer&adv&tag&count=15&nobutton&size=150';
     
   script.setAttribute(

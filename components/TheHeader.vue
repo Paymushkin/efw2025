@@ -42,12 +42,12 @@
             <NuxtLink target="_blank" 
               to="https://docs.google.com/forms/d/11I7bcoDEzErBszt2UfZqf04LAjljlpkBhdRTD6CrC7g/edit">
               <BaseButton variant="primary">
-                <span>Buy a ticket</span>
+                <span>Visit</span>
                 <span>></span>
               </BaseButton>
             </NuxtLink>
             <BaseButton variant="secondary">
-              <span>For sponsors</span>
+              <span>Participate</span>
               <span>></span>
             </BaseButton>
             <a
@@ -115,7 +115,7 @@ const isMenuOpen = ref(false);
 
 const navLinks = [
   { name: 'HOW IT WAS', href: '#how-it-was', id: 'how-it-was' },
-  { name: 'PROGRAM', href: '#program', id: 'program' },
+  { name: 'SCHEDULE', href: '#program', id: 'program' },
   { name: 'DESIGNERS', href: '#designers', id: 'designer' },
   { name: 'FACES', href: '#faces', id: 'faces' },
   { name: 'CONTACTS', href: '#contacts', id: 'contacts' },

@@ -1,20 +1,20 @@
 <template>
   <div id="program" class="container mx-auto">
     <div class="flex flex-col md:flex-row justify-between md:items-center gap-8 md:mb-[113px] mb-8 max-w-[1200px]">
-      <h2 class="text-xl md:text-3xl xl:text-4xl">Program</h2>
+      <h2 class="text-xl md:text-3xl xl:text-4xl">Schedule</h2>
       <NuxtLink 
         target="_blank"
         class="hover:opacity-80 transition-opacity duration-300"
         to="https://docs.google.com/forms/d/11I7bcoDEzErBszt2UfZqf04LAjljlpkBhdRTD6CrC7g/edit?fbclid=PAZXh0bgNhZW0CMTEAAabTXlVnA-8uMswE4mM1iOQkULaorR2fFi9eZsVZlgEe1jMJH0Kb7OcDJJk_aem_LIewtA-gbtt6seDB3ZE4pw">
         <BaseButton variant="primary">
-          <span>Buy a ticket</span>
+          <span>Visit</span>
           <span>></span>
         </BaseButton>
       </NuxtLink>
     </div>
 
-    <div class="overflow-x-auto hide-scrollbar -mr-4 md:mr-0">
-      <div class="flex gap-8 mb-8 md:mb-10 whitespace-nowrap pb-4 md:pb-0 pr-4 md:pr-0">
+    <div class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0">
+      <div class="flex gap-8 mb-8 md:mb-10 whitespace-nowrap pb-4 md:pb-0 pr-4 md:pr-0 pl-4 md:pl-0">
         <button
           v-for="(tab, index) in tabs"
           :key="index"
@@ -35,7 +35,7 @@
       </div>
     </div>
 
-    <div class="flex flex-col gap-6">
+    <div class="flex flex-col md:gap-6 gap-2">
       <div
         v-for="(event, index) in currentProgram.events"
         :key="index"
@@ -55,7 +55,7 @@
         </template>
 
         <template v-else-if="event.type === 'bigSponsorStation'">
-            <div class="container mx-auto md:my-10 my-5">
+            <div class="mx-auto md:my-10 my-5">
               <div class="flex flex-col gap-11">
                 <div class="flex md:flex-row flex-col justify-between md:items-center items-start md:gap-6 gap-4">
                   <h3 class="2xl:text-4xl xl:text-3xl text-xl text-center md:text-left">{{ event.title }}</h3>
@@ -65,8 +65,8 @@
                   </div>
                 </div>
 
-                <div class="overflow-x-auto hide-scrollbar -mr-4 md:mr-0">
-                  <div class="flex md:grid md:grid-cols-3 gap-6 pb-4 md:pb-0 pr-4 md:pr-0">
+                <div class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0">
+                  <div class="flex md:grid md:grid-cols-3 gap-6 px-4 md:px-0">
                     <div 
                       v-for="(image, idx) in event.images" 
                       :key="idx" 
@@ -85,12 +85,15 @@
         </template>
 
         <template v-else>
-          <div class="grid md:grid-cols-3 grid-cols-2 items-center md:items-start gap-5 border border-black 2xl:px-7 md:px-5 px-4 py-3 2xl:py-[60px] md:py-10">
+          <div class="flex md:grid-cols-3 items-center md:items-start md:gap-5 gap-[60px] border border-black 2xl:px-7 md:px-5 px-4 py-3 2xl:py-[60px] md:py-10">
             <h4 class="text-sm 2xl:text-2xl md:text-xl">{{ event.time }}</h4>
             <div class="hidden md:block grow"></div>
             <div class="flex flex-col md:gap-4 gap-2">
               <p class="text-sm 2xl:text-2xl md:text-xl">{{ event.description }}</p>
               <p class="text-sm 2xl:text-xl md:text-base text-black-16">{{ event.details }}</p>
+              <NuxtLink v-if="event.buttonText" :to="event.buttonLink" target="_blank" class="hover:opacity-80 transition-opacity duration-300">
+                <BaseButton variant="primary">{{ event.buttonText }}</BaseButton>
+              </NuxtLink>
             </div>
           </div>
         </template>
@@ -156,7 +159,17 @@ const tabs = [
     },
     { ...eventTypes.bigSponsorStation },
   ] },
-  { title: 'BeautyAwards', date: '11/04/2025', events: [] },
+  { title: 'BeautyAwards', date: '11/04/2025', events: [
+    {
+      type: 'event',
+      time: '10:00 – 20:00',
+      description: 'Выставка целый день',
+      details: 'тематика',
+      buttonText: 'Presentation >',
+      buttonLink: 'https://storage.yandexcloud.net/videos-meyou/efw2025/Deluxe%20Beauty%20Awards%202025%20ENG.pdf'
+    },
+    
+  ] },
   { title: 'AfterDay', date: '11/04/2025', events: [] },
 ];
 

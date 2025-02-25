@@ -55,7 +55,7 @@
 import LogoWhiteIcon from './icons/LogoWhiteIcon.vue';
 const menuLinks = [
   { name: 'HOW IT WAS', path: '/how-it-was' },
-  { name: 'PROGRAM', path: '/program' },
+  { name: 'SCHEDULE', path: '/program' },
   { name: 'DESIGNERS', path: '/designers' },
   { name: 'FACES', path: '/faces' },
   { name: 'FOR SPONSORS', path: '/sponsors' },

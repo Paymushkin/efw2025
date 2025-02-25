@@ -1,8 +1,8 @@
 <template>
   <div id="how-it-was" class="container mx-auto">
     <h2 class="text-xl md:text-3xl xl:text-4xl mb-4 xl:mb-8 md:mb-6">How it was</h2>
-    <div class="overflow-x-auto hide-scrollbar -mr-4 md:mr-0">
-      <div class="flex gap-8 mb-6 md:mb-8 xl:mb-10 whitespace-nowrap pb-4 md:pb-0 pr-4 md:pr-0">
+    <div class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0">
+      <div class="flex gap-8 mb-6 md:mb-8 xl:mb-10 whitespace-nowrap pb-4 md:pb-0 pr-4 md:pr-0 pl-4 md:pl-0">
         <button
           v-for="(tab, index) in tabs"
           :key="index"
@@ -22,14 +22,16 @@
         </button>
       </div>
     </div>
-    <div class="flex md:grid md:grid-cols-3 gap-4 overflow-x-auto hide-scrollbar -mr-4 md:mr-0">
-          <div
-            v-for="(image, index) in currentImages"
-            :key="index"
-            class="overflow-hidden rounded-lg shadow-lg flex-shrink-0 w-[280px] md:w-auto"
-          >
-            <img :src="image" alt="" class="w-full h-auto" />
-          </div>
+    <div class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0">
+      <div class="flex md:grid md:grid-cols-3 gap-4 px-4 md:px-0">
+        <div
+          v-for="(image, index) in currentImages"
+          :key="index"
+          class="overflow-hidden rounded-lg shadow-lg flex-shrink-0 w-[280px] md:w-auto"
+        >
+          <img :src="image" alt="" class="w-full h-auto" />
+        </div>
+      </div>
     </div>
   </div>
 </template>

@@ -17,5 +17,11 @@ export default defineNuxtConfig({
   },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
+    baseURL: '/dubaifw/',
+    buildAssetsDir: 'assets/'
   },
+  ssr: false,
+  nitro: {
+    preset: 'github-pages'
+  }
 });
