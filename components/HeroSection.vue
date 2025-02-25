@@ -20,8 +20,8 @@
       class="absolute top-0 left-0 w-full h-full bg-black opacity-35 z-10"
     ></div>
     <div class="container flex flex-col grow mx-auto px-4 py-10 relative z-20">
-      <h1 class="hidden md:block xl:text-5xl text-4xl font-light max-w-3xl mb-10 text-white">
-        Emirates Fashion Week: Beauty meets business
+      <h1 class="hidden md:block xl:text-5xl text-4xl font-light mb-10 text-white">
+        Emirates Fashion Week 2025: <br><span class="xl:text-[60px] text-3xl">Beauty meets business</span>
       </h1>
       <div id="reportage" class="grow mb-10"></div>
     </div>
@@ -33,10 +33,10 @@
           <LogoIcon class="md:ml-auto h-8" />
         </div>
         <div class="bg-black text-white p-8 md:text-right">
-          <span class="text-xl text-white">#JOINDUBAI</span>
+          <span class="text-xl text-white">{{ hashtag }}</span>
         </div>
       </div>
-    <Marquee content="text text text text text text text" />
+    <Marquee :content="marqueeText2" />
     </div>
   </section>
 </template>
@@ -45,6 +45,8 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 import LogoIcon from '~/components/icons/LogoIcon.vue';
 import Marquee from '~/components/MarqueeSection.vue';
+import { marqueeText2, hashtag } from '~/constants/texts';
+
 
 const isMobile = ref(window?.innerWidth < 768);
 const MOBILE_BREAKPOINT = 768;

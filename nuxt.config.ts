@@ -17,11 +17,16 @@ export default defineNuxtConfig({
   },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
-    baseURL: '/dubaifw/',
+    baseURL: '/',
     buildAssetsDir: 'assets/'
   },
   ssr: false,
   nitro: {
-    preset: 'github-pages'
+    preset: 'github-pages',
+    routeRules: {
+      '/': { static: true },
+      '/dubaifw/**': { static: true }
+    },
+    static: true
   }
 });

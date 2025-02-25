@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto mb-[105px]">
-    <h2 class="text-xl md:text-3xl xl:text-4xl mb-8 xl:mb-[75px]">We in Media</h2>
+    <h2 class="text-xl md:text-3xl xl:text-4xl mb-8 xl:mb-[75px]">Partners & Media</h2>
     <div class="grid lg:grid-flow-col grid-cols-2 md:grid-cols-3 xl:grid-cols-9 gap-3 justify-items-center md:justify-items-start">
       <div class="flex justify-center items-center w-full"
         v-for="(sponsor, index) in sponsors" 

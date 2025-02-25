@@ -32,7 +32,7 @@
           <LogoIcon class="md:ml-auto h-8" />
         </div>
         <div class="bg-black text-white p-8 md:text-right">
-          <span class="text-xl text-white">#JOINDUBAI</span>
+          <span class="text-xl text-white">{{ hashtag }}</span>
         </div>
       </div>
     </div>
@@ -42,7 +42,7 @@
 
 <script setup>
 import LogoIcon from '~/components/icons/LogoIcon.vue';
-
+import { hashtag } from '~/constants/texts';
 
 const videoRef = ref(null);
 

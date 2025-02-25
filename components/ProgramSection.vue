@@ -43,10 +43,10 @@
         <template v-if="event.type === 'sponsorStation'">
           <div class="grid md:grid-cols-3 grid-cols-1 md:border-t items-center border-[#EFF5F6]">
             <h3 class="2xl:text-4xl md:text-2xl text-xl md:pl-10 md:pr-5 md:pt-[60px] md:pb-10 pt-5 pb-8">Stations for sponsors</h3>
-            <div class="grow max-w-[600px]">
+            <div class="grow max-w-[600px] px-5">
               <img src="~assets/image/all-station.png" alt="stations">
             </div>
-            <div class="flex flex-col items-start md:gap-10 gap-5 md:pl-10 md:pr-5 md:pt-[60px] md:pb-10 pt-3 pb-5">
+            <div class="flex flex-col items-start md:gap-10 gap-5 md:pr-5 md:pt-[60px] md:pb-10 pt-3 pb-5">
               <p class="2xl:text-base text-sm">AI-powered business stations designed for seamless networking, lead generation, and interactive presentations.<br>
               Engage with prospects through dynamic screens and real-time media integration, ensuring impactful connections at every moment.</p>
               <BaseButton variant="primary">More information ></BaseButton>
@@ -59,7 +59,7 @@
               <div class="flex flex-col gap-11">
                 <div class="flex md:flex-row flex-col justify-between md:items-center items-start md:gap-6 gap-4">
                   <h3 class="2xl:text-4xl xl:text-3xl text-xl text-center md:text-left">{{ event.title }}</h3>
-                  <div class="flex flex-col items-start md:gap-9 gap-5 max-w-[415px]">
+                  <div class="flex flex-col items-start md:gap-9 gap-5 w-[430px] max-w-full">
                     <p class="text-lg">{{ event.description }}</p>
                     <BaseButton variant="primary">{{ event.buttonText }}</BaseButton>
                   </div>
@@ -85,12 +85,12 @@
         </template>
 
         <template v-else>
-          <div class="flex md:grid-cols-3 items-center md:items-start md:gap-5 gap-[60px] border border-black 2xl:px-7 md:px-5 px-4 py-3 2xl:py-[60px] md:py-10">
+          <div class="flex md:grid md:grid-cols-3 items-center md:items-start md:gap-5 gap-[60px] border border-black 2xl:px-7 md:px-5 px-4 py-3 2xl:py-[60px] md:py-10">
             <h4 class="text-sm 2xl:text-2xl md:text-xl">{{ event.time }}</h4>
             <div class="hidden md:block grow"></div>
             <div class="flex flex-col md:gap-4 gap-2">
               <p class="text-sm 2xl:text-2xl md:text-xl">{{ event.description }}</p>
-              <p class="text-sm 2xl:text-xl md:text-base text-black-16">{{ event.details }}</p>
+              <p class="text-sm 2xl:text-xl md:text-base text-black-16 whitespace-pre-line">{{ event.details }}</p>
               <NuxtLink v-if="event.buttonText" :to="event.buttonLink" target="_blank" class="hover:opacity-80 transition-opacity duration-300">
                 <BaseButton variant="primary">{{ event.buttonText }}</BaseButton>
               </NuxtLink>
@@ -105,75 +105,10 @@
 <script setup>
 import { ref, computed } from 'vue';
 import BaseButton from '~/components/ui/BaseButton.vue';
-import Station1 from '~/assets/image/stations/station-1.png';
-import Station2 from '~/assets/image/stations/station-2.png';
-import Station3 from '~/assets/image/stations/station-3.png';
-
-// Объект с типами событий
-const eventTypes = {
-  sponsorStation: {
-    type: 'sponsorStation',
-  },
-  bigSponsorStation: {
-    type: 'bigSponsorStation',
-    title: 'Stations for sponsors',
-    description: 'AI-powered business stations designed for seamless networking, lead generation, and interactive presentations. Engage with prospects through dynamic screens and real-time media integration, ensuring impactful connections at every moment.',
-    images: [
-      { src: Station1, caption: 'Station 1', subcaption: 'Описание и цена' },
-      { src: Station2, caption: 'Station 1', subcaption: 'Описание и цена' },
-      { src: Station3, caption: 'Station 1', subcaption: 'Описание и цена' }
-    ],
-    buttonText: 'More information >'
-  }
-};
-
-const tabs = [
-  {
-    title: 'Prelaunch',
-    date: '11/04/2025',
-    events: [
-      {
-        type: 'event',
-        time: '10:00 – 20:00',
-        description: 'Выставка целый день',
-        details: 'тематика',
-      },
-      { type: 'event', time: '10:10 – 11:40', description: 'Designer', details: 'Country' },
-      { ...eventTypes.sponsorStation },
-      {
-        type: 'event',
-        time: '10:00 – 20:00',
-        description: 'Выставка целый день',
-        details: 'тематика',
-      },
-    ],
-  },
-  { title: 'KidsDay', date: '11/04/2025', events: [] },
-  { title: 'WomenDay', date: '11/04/2025', events: [] },
-  { title: 'BeautyDay', date: '11/04/2025', events: [
-    {
-      type: 'event',
-      time: '10:00 – 20:00',
-      description: 'Выставка целый день',
-      details: 'тематика',
-    },
-    { ...eventTypes.bigSponsorStation },
-  ] },
-  { title: 'BeautyAwards', date: '11/04/2025', events: [
-    {
-      type: 'event',
-      time: '10:00 – 20:00',
-      description: 'Выставка целый день',
-      details: 'тематика',
-      buttonText: 'Presentation >',
-      buttonLink: 'https://storage.yandexcloud.net/videos-meyou/efw2025/Deluxe%20Beauty%20Awards%202025%20ENG.pdf'
-    },
-    
-  ] },
-  { title: 'AfterDay', date: '11/04/2025', events: [] },
-];
+import { EVENT_TYPES, PROGRAM_TABS } from '~/constants/program';
 
 const currentTab = ref(0);
+const tabs = PROGRAM_TABS;
 
 const selectTab = (index) => {
   currentTab.value = index;

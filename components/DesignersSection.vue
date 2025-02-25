@@ -38,8 +38,10 @@
       class="relative"
     >
       <swiper-slide v-for="(designer, index) in designers" :key="index">
-        <div class="relative">
-          <img :src="designer.image" alt="" class="w-full h-auto rounded-lg" />
+        <div class="relative h-full">
+          <div class="aspect-[3/4] mb-4">
+            <img :src="designer.image" alt="" class="w-full h-full object-cover rounded-lg" />
+          </div>
           <div class="mt-4">
             <h3 class="lg:text-xl 2xl:text-2xl text-lg">{{ designer.name }}</h3>
             <p class="text-gray-500 text-sm md:text-base">{{ designer.category }}</p>
@@ -59,42 +61,9 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { designers } from '@/constants/images';
 
 const modules = [Autoplay, Pagination, Navigation];
-
-// Импортируем изображения
-import image1 from '@/assets/image/item-1.png';
-import image2 from '@/assets/image/item-2.png';
-import image3 from '@/assets/image/item-3.png';
-
-// Массив дизайнеров с их данными
-const designers = ref([
-  {
-    name: 'John Doe',
-    category: 'Evening Wear',
-    image: image1
-  },
-  {
-    name: 'Jane Smith',
-    category: 'Casual Wear',
-    image: image2
-  },
-  {
-    name: 'Alex Johnson',
-    category: 'Haute Couture',
-    image: image3
-  },
-  {
-    name: 'Maria Garcia',
-    category: 'Street Style',
-    image: image1
-  },
-  {
-    name: 'David Lee',
-    category: 'Minimalist',
-    image: image2
-  }
-]);
 </script>
 
 <style scoped>

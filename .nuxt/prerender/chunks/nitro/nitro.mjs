@@ -688,8 +688,8 @@ function _expandFromEnv(value) {
 
 const _inlineRuntimeConfig = {
   "app": {
-    "baseURL": "/dubaifw/",
-    "buildId": "a56e54c7-9e2b-439f-a960-ac6be2d052d8",
+    "baseURL": "/",
+    "buildId": "29757cb2-8b3f-4026-ae4c-35a74e5f9c46",
     "buildAssetsDir": "assets/",
     "cdnURL": ""
   },
@@ -698,6 +698,12 @@ const _inlineRuntimeConfig = {
     "routeRules": {
       "/__nuxt_error": {
         "cache": false
+      },
+      "/": {
+        "static": true
+      },
+      "/dubaifw/**": {
+        "static": true
       },
       "/assets/builds/meta/**": {
         "headers": {

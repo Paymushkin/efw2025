@@ -1,7 +1,7 @@
 <template>
   <header class="w-full">
     <!-- Announcement bar -->
-    <Marquee class="hidden md:block" content="announcement announcement announcement announcement announcement" />
+    <Marquee class="hidden md:block" :content="marqueeText1" />
 
     <!-- Navigation -->
     <nav class="bg-white">
@@ -21,7 +21,7 @@
               <LogoIcon class="h-5 2xl:h-8 w-[165px] 2xl:w-[254px]" />
             </NuxtLink>
 
-            <span class="text-black 2xl:text-xl lg:text-base sm:text-sm">#JOINDUBAI</span>
+            <span class="text-black 2xl:text-xl lg:text-base sm:text-sm">{{ hashtag }}</span>
           </div>
 
           <!-- Desktop Navigation Links -->
@@ -51,7 +51,7 @@
               <span>></span>
             </BaseButton>
             <a
-              href="https://www.instagram.com/emirates_fashionweek"
+              :href="instagram"
               target="_blank"
               class="text-black/80 hover:text-black transition-colors"
             >
@@ -110,6 +110,8 @@ import MenuIcon from '@/components/icons/MenuIcon';
 import XIcon from '@/components/icons/XIcon.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
 import Marquee from '@/components/MarqueeSection.vue';
+import { marqueeText1 } from '~/constants/texts';
+import { hashtag, instagram } from '~/constants/texts';
 
 const isMenuOpen = ref(false);
 

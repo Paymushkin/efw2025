@@ -8,7 +8,7 @@
           class="text-left"
         >
           <h2 class="text-3xl xl:text-5xl 2xl:text-6xl font-light mb-2">
-            {{ displayNumbers[index].displayNumber }}
+            {{ displayNumbers[index].displayNumber }}+
           </h2>
           <p class="text-white text-base xl:text-xl 2xl:text-2xl">{{ stat.label }}</p>
         </div>
@@ -23,9 +23,9 @@ import { useNumberAnimation } from '~/composables/useNumberAnimation';
 
 const sectionRef = ref(null);
 const statistics = [
-  { startNumber: '1000', endNumber: '5000', label: 'Models' },
-  { startNumber: '0', endNumber: '5000', label: 'Models' },
-  { startNumber: '2000', endNumber: '5000', label: 'Models' },
+  { startNumber: '1', endNumber: '20', label: 'Models' },
+  { startNumber: '100', endNumber: '1000', label: 'Attendees' },
+  { startNumber: '1000', endNumber: '2000', label: 'Photos' },
 ];
 
 // Создаем массив анимированных чисел

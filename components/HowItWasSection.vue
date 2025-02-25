@@ -16,7 +16,7 @@
           <span class="text-xl xl:text-4xl md:text-3xl transition-colors duration-300">{{
             tab.year
           }}</span>
-          <span class="transition-colors duration-300">
+          <span class="xl:max-w-[120px] md:max-w-[100px] max-w-[80px] xl:text-base text-sm text-left truncate transition-colors duration-300">
             {{ tab.season }}
           </span>
         </button>
@@ -27,9 +27,9 @@
         <div
           v-for="(image, index) in currentImages"
           :key="index"
-          class="overflow-hidden rounded-lg shadow-lg flex-shrink-0 w-[280px] md:w-auto"
+          class="overflow-hidden rounded-lg shadow-lg flex-shrink-0 w-[280px] md:w-auto max-h-[680px]"
         >
-          <img :src="image" alt="" class="w-full h-auto" />
+          <img :src="image" alt="" class="w-full h-full object-cover" />
         </div>
       </div>
     </div>
@@ -38,18 +38,9 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-// Импортируем изображения
-import image1 from '@/assets/image/item-1.png';
-import image2 from '@/assets/image/item-2.png';
-import image3 from '@/assets/image/item-3.png';
+import { tabs } from '@/constants/images';
 
-const tabs = [
-  { year: '2020', season: 'Spring', images: [image1, image2, image3] },
-  { year: '2021', season: 'Summer', images: [image3, image2, image1] },
-  { year: '2022', season: 'Autumn', images: [image2, image1, image3] },
-  { year: '2023', season: 'Winter', images: [image2, image3, image1] },
-  { year: '2024', season: 'Spring', images: [image1, image2, image3] },
-];
+
 
 const currentTab = ref(0);
 
