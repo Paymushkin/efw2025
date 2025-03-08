@@ -40,22 +40,14 @@
           <!-- Desktop Actions -->
           <div class="hidden xl:flex items-center 2xl:gap-5 gap-3">
             <div class="relative">
-              <button 
-                @click="isLinksMenuOpen = !isLinksMenuOpen"
-                class="hover:opacity-80 transition-opacity duration-300"
-              >
-                <BaseButton variant="primary">
+                <BaseButton variant="secondary"  @click="toggleParticipateMenu" class="w-full justify-between">
                   <span>Participate</span>
                   <span>></span>
                 </BaseButton>
-              </button>
 
-              <!-- Выпадающее меню -->
-              <div 
-                v-if="isLinksMenuOpen" 
-                class="absolute top-full mt-2 right-0 bg-white shadow-lg rounded-lg py-2 min-w-[150px] z-50"
-              >
-                <NuxtLink  :to="designerRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+              <!-- Выпадающий список -->
+              <div v-if="isParticipateOpen" class="absolute top-full mt-2 right-0 bg-white shadow-lg rounded-lg py-2 min-w-[150px] z-50">
+                <NuxtLink :to="designerRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
                   Designer
                 </NuxtLink>
 
@@ -92,6 +84,7 @@
                 </NuxtLink>
               </div>
             </div>
+            
             <NuxtLink target="_blank" 
               :to="visitorsRegistration">
               <BaseButton variant="primary">
@@ -151,20 +144,14 @@
                 </BaseButton>
               </NuxtLink>
             </NuxtLink>
-            <NuxtLink target="_blank" 
-              :to="designerRegistration">
-              <BaseButton variant="secondary" class="w-full justify-between">
-                <span>Designer</span>
-                <span>></span>
-              </BaseButton>
-            </NuxtLink>
 
-            <BaseButton id="participate-button" variant="secondary" class="w-full justify-between">
-              <span>Participate</span>
-              <span>></span>
+            <div class="relative">
+              <BaseButton @click="toggleParticipateMenu" id="participate-button" variant="secondary" class="w-full justify-between">
+                <span>Participate</span>
+                <span>></span>
             </BaseButton>
 
-              <div class="absolute top-full mt-2 right-0 bg-white shadow-lg rounded-lg py-2 min-w-[150px] z-50">
+              <div v-if="isParticipateOpen" class="absolute top-full mt-2 right-0 bg-white max-h-[270px] overflow-y-auto shadow-lg rounded-lg py-2 min-w-[150px] z-50">
                 <NuxtLink  :to="designerRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
                   Designer
                 </NuxtLink>
@@ -201,6 +188,7 @@
                   Partners
                 </NuxtLink>
               </div>
+            </div>
           </div>
         </div>
       </div>
@@ -222,6 +210,7 @@ import { hashtag, instagram, youtube, designerRegistration, visitorsRegistration
 
 const isMenuOpen = ref(false);
 const isLinksMenuOpen = ref(false);
+const isParticipateOpen = ref(false);
 const navLinks = [
   { name: 'CALENDAR', href: '#program', id: 'program' },
   { name: 'DESIGNERS', href: '#designers', id: 'designer' },
@@ -275,6 +264,32 @@ onMounted(() => {
       isLinksMenuOpen.value = false;
     }
   });
+});
+
+const toggleParticipateMenu = () => {
+  isParticipateOpen.value = !isParticipateOpen.value;
+};
+
+// Закрываем при клике вне
+const closeOnClickOutside = (event) => {
+  if (!event.target.closest('.relative') && !event.target.closest('#participate-button')) {
+    isParticipateOpen.value = false;
+  }
+};
+
+// Закрываем при скролле
+const closeOnScroll = () => {
+  isParticipateOpen.value = false;
+};
+
+onMounted(() => {
+  document.addEventListener('click', closeOnClickOutside);
+  window.addEventListener('scroll', closeOnScroll);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('click', closeOnClickOutside);
+  window.removeEventListener('scroll', closeOnScroll);
 });
 </script>
 
