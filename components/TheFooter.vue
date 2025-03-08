@@ -20,20 +20,47 @@
         <!-- Contacts Column -->
         <div>
           <h3 class="hidden md:block text-lg font-medium mb-6">Contacts</h3>
+
           <div class="flex flex-col space-y-3">
+
+            <address class="not-italic uppercase">
+              <p class="text-sm hover:text-gray-300 transition-colors font-normal">{{ address }}</p>
+            </address>
+
+            <NuxtLink
+              :to="`tel:${phone[0]}`"
+              class="text-sm hover:text-gray-300 transition-colors"
+            >
+              {{ phone[1] }}
+            </NuxtLink>
             <NuxtLink
               :to="`mailto:${email}`"
-              class="text-sm hover:text-gray-300 transition-colors"
+              class="text-sm hover:text-gray-300 transition-colors uppercase"
             >
               {{ email }}
             </NuxtLink>
+            <div class="flex items-center gap-2">
             <NuxtLink
               :to="instagram"
               target="_blank"
-              class="text-sm hover:text-gray-300 transition-colors"
-            >
-              INSTAGRAM
+              class="flex items-center gap-2 text-sm hover:opacity-80 transition-opacity">
+              <InstagramWhiteIcon />
             </NuxtLink>
+
+            <NuxtLink
+              :to="youtube"
+              target="_blank"
+              class="flex items-center gap-2 text-sm hover:opacity-80 transition-opacity">
+              <YoutubeWhiteIcon />
+            </NuxtLink>
+
+          </div>
+            <span 
+              class="text-sm hover:text-gray-300 transition-colors cursor-pointer"
+              @click="showContactForm = true"
+            >
+              Text Us
+            </span>
           </div>
         </div>
 
@@ -43,12 +70,21 @@
         </div>
       </div>
     </div>
+
+    <ContactForm 
+      :is-open="showContactForm"
+      @close="showContactForm = false"
+    />
   </footer>
 </template>
 
 <script setup>
 import LogoWhiteIcon from './icons/LogoWhiteIcon.vue';
-import { email, instagram, hashtag } from '~/constants/texts';
+import InstagramWhiteIcon from './icons/InstagramWhiteIcon.vue';
+import YoutubeWhiteIcon from './icons/YoutubeWhiteIcon.vue';
+import { email, instagram, hashtag, phone, address, youtube } from '~/constants/texts';
+import { ref } from 'vue';
+import ContactForm from './ContactForm.vue';
 
 const menuLinks = [
   { name: 'HOW IT WAS', href: '#how-it-was', id: 'how-it-was' },
@@ -67,4 +103,6 @@ const scrollToSection = (href) => {
     });
   }
 };
+
+const showContactForm = ref(false);
 </script>

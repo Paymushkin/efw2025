@@ -77,6 +77,16 @@ declare module 'nuxt/schema' {
       cdnURL: string,
    },
 
+   SMTP_HOST: string,
+
+   SMTP_PORT: string,
+
+   SMTP_USER: string,
+
+   SMTP_PASS: string,
+
+   TO_EMAIL: string,
+
    nitro: {
       envPrefix: string,
    },

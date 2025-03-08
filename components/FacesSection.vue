@@ -32,7 +32,7 @@
           <LogoIcon class="md:ml-auto h-8" />
         </div>
         <div class="bg-black text-white p-8 md:text-right">
-          <span class="text-xl text-white">{{ hashtag }}</span>
+          <NuxtLink :to="hashtag[1]" class="text-xl text-white">{{ hashtag[0] }}</NuxtLink>
         </div>
       </div>
     </div>

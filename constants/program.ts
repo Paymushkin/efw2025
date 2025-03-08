@@ -39,87 +39,93 @@ export const PROGRAM_TABS = [
       },
     ],
   },
-  { title: 'KidsDay', date: '13/04/2025', events: [
+  // { title: 'KidsDay', date: '13/04/2025', events: [
+  //   {
+  //     type: 'event',
+  //     time: '17:00',
+  //     description: 'Marsi 2021 - Russia',
+  //   //   details: 'Kids Day',
+  //   },
+  //   {
+  //     type: 'event',
+  //     time: '18:00',
+  //     description: 'Beth & Mishka 2023 Russia'
+  //   },
+  //   {
+  //     type: 'event',
+  //     time: '19:30',
+  //     description: 'Beyader 2019 UAE',
+  //   },
+  //   { ...EVENT_TYPES.sponsorStation },
+  //   {
+  //     type: 'event',
+  //     time: '20:00',
+  //     description: 'Danatella Belarus 2024',
+  //   },
+  //   {
+  //     type: 'event',
+  //     time: '20:30',
+  //     description: 'DL-Dress 2019',
+  //   },
+  //   {
+  //     type: 'event',
+  //     time: '21:00',
+  //     description: 'JAP Poland 2021',
+  //   },
+  //   {
+  //     type: 'event',
+  //     time: '21:30',
+  //     description: 'Carbonado Collection 2020 Uzbekistan',
+  //   },
+  // ] },
+  { title: 'Fashion Show', date: '14/04/2025', events: [
     {
       type: 'event',
-      time: '17:00',
-      description: 'Marsi 2021 - Russia',
-    //   details: 'Kids Day',
+      time: '14/04/2025',
+      description: 'Alisia Fiori',
     },
     {
       type: 'event',
-      time: '18:00',
-      description: 'Beth & Mishka 2023 Russia'
+      time: '14/04/2025',
+      description: 'Alexandra Fashion House',
     },
     {
       type: 'event',
-      time: '19:30',
-      description: 'Beyader 2019 UAE',
+      time: '14/04/2025',
+      description: 'Orchidea Nera by Lamoo',
+    },
+    {
+      type: 'event',
+      time: '14/04/2025',
+      description: 'Marina Undrits',
     },
     { ...EVENT_TYPES.sponsorStation },
     {
       type: 'event',
-      time: '20:00',
-      description: 'Danatella Belarus 2024',
+      time: '14/04/2025',
+      description: 'Kibovskaya',
     },
     {
       type: 'event',
-      time: '20:30',
-      description: 'DL-Dress 2019',
+      time: '14/04/2025',
+      description: 'Boulas',
     },
     {
       type: 'event',
-      time: '21:00',
-      description: 'JAP Poland 2021',
+      time: '14/04/2025',
+      description: 'Marina Vilisova',
     },
     {
       type: 'event',
-      time: '21:30',
-      description: 'Carbonado Collection 2020 Uzbekistan',
-    },
-  ] },
-  { title: 'WomenDay', date: '14/04/2025', events: [
-    {
-      type: 'event',
-      time: '17:00',
-      description: 'Dilrabo 2020 Uzbekistan',
+      time: '14/04/2025',
+      description: "Aisa",
     },
     {
       type: 'event',
-      time: '17:30',
-      description: 'Baravia Fashion UAE 2021',
+      time: '14/04/2025',
+      description: "G'NFAYTH",
     },
-    {
-      type: 'event',
-      time: '18:00',
-      description: 'Said Omari - Syria Paris 2020',
-    },
-    {
-      type: 'event',
-      time: '18:30',
-      description: 'Michael Lombard 2019 USA',
-    },
-    { ...EVENT_TYPES.sponsorStation },
-    {
-      type: 'event',
-      time: '19:00',
-      description: 'Baravia 2020',
-    },
-    {
-      type: 'event',
-      time: '19:30',
-      description: 'D-Design 2021 Morocco',
-    },
-    {
-      type: 'event',
-      time: '20:00',
-      description: 'Aaronic Atelier 2022 UAE',
-    },
-    {
-      type: 'event',
-      time: '20:30',
-      description: 'Savalme 2022 - Russia',
-    },
+    
     
   ] },
   { title: 'Beauty Expo', date: '15/04/2025', events: [

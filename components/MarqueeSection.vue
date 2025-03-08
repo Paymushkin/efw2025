@@ -1,11 +1,14 @@
 <template>
   <div class="bg-black w-full overflow-hidden">
-    <div class="whitespace-nowrap animate-marquee flex items-center">
+    <div :class="[
+      'whitespace-nowrap  flex justify-center',
+      !isStatic && 'animate-marquee'
+    ]">
       <!-- Если передан массив изображений -->
       <template v-if="Array.isArray(content)">
-        <div v-for="(image, index) in content" :key="index" class="inline-block py-4">
+        <div v-for="(item, index) in content" :key="index" class="inline-block py-4">
           <img 
-            :src="image" 
+            :src="item" 
             alt="Marquee Image" 
             class="md:max-h-11 max-h-8 w-auto object-contain mx-20"
           />
@@ -13,7 +16,10 @@
       </template>
       <!-- Если передан текст -->
       <template v-else>
-        <span class="inline-block text-white py-2 px-4">
+        <span 
+          class="inline-block text-white  px-4"
+          :class="isStatic ? 'text-base py-2' : 'md:text-lg text-base py-4'"
+          >
           {{ content }}
         </span>
       </template>
@@ -23,12 +29,16 @@
 
 <script setup>
 // Изменяем props для поддержки как строки, так и массива
-const props = defineProps({
+defineProps({
   content: {
-    type: [String, Array],
+    type: [String, Array], // Разрешаем оба типа: String и Array
     required: true
+  },
+  isStatic: {
+    type: Boolean,
+    default: false
   }
-});
+})
 </script>
 
 <style scoped>
@@ -42,6 +52,6 @@ const props = defineProps({
 }
 
 .animate-marquee {
-  animation: marquee 20s linear infinite;
+  animation: marquee 40s linear infinite;
 }
 </style> 

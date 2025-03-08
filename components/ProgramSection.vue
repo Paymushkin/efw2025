@@ -41,61 +41,26 @@
         :key="index"
       >
         <template v-if="event.type === 'sponsorStation'">
-          <div class="grid md:grid-cols-3 grid-cols-1 md:border-t items-center border-[#EFF5F6]">
-            <h3 class="2xl:text-4xl md:text-2xl text-xl md:pl-10 md:pr-5 md:pt-[60px] md:pb-10 pt-5 pb-8">Stations for sponsors</h3>
-            <div class="grow max-w-[600px] px-5">
-              <img src="~assets/image/all-station.png" alt="stations">
-            </div>
-            <div class="flex flex-col items-start md:gap-10 gap-5 md:pr-5 md:pt-[60px] md:pb-10 pt-3 pb-5">
-              <p class="2xl:text-base text-sm">AI-powered business stations designed for seamless networking, lead generation, and interactive presentations.<br>
-              Engage with prospects through dynamic screens and real-time media integration, ensuring impactful connections at every moment.</p>
-              <BaseButton variant="primary">More information ></BaseButton>
-            </div>
-          </div>
+          <SponsorStation />
         </template>
 
         <template v-else-if="event.type === 'bigSponsorStation'">
-            <div class="mx-auto md:my-10 my-5">
-              <div class="flex flex-col gap-11">
-                <div class="flex md:flex-row flex-col justify-between md:items-center items-start md:gap-6 gap-4">
-                  <h3 class="2xl:text-4xl xl:text-3xl text-xl text-center md:text-left">{{ event.title }}</h3>
-                  <div class="flex flex-col items-start md:gap-9 gap-5 w-[430px] max-w-full">
-                    <p class="text-lg">{{ event.description }}</p>
-                    <BaseButton variant="primary">{{ event.buttonText }}</BaseButton>
-                  </div>
-                </div>
-
-                <div class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0">
-                  <div class="flex md:grid md:grid-cols-3 gap-6 px-4 md:px-0">
-                    <div 
-                      v-for="(image, idx) in event.images" 
-                      :key="idx" 
-                      class="flex flex-col gap-4 flex-shrink-0 w-[280px] md:w-auto"
-                    >
-                      <img :src="image.src" :alt="image.caption" class="w-full">
-                      <div class="flex flex-col">
-                        <span class="xl:text-xl text-lg">{{ image.caption }}</span>
-                        <span class="text-gray-500">{{ image.subcaption }}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <BigSponsorStation 
+            :title="event.title"
+            :description="event.description"
+            :button-text="event.buttonText"
+            :images="event.images"
+          />
         </template>
 
         <template v-else>
-          <div class="flex md:grid md:grid-cols-3 items-center md:items-start md:gap-5 gap-[60px] border border-black 2xl:px-7 md:px-5 px-4 py-3 2xl:py-[60px] md:py-10">
-            <h4 class="text-sm 2xl:text-2xl md:text-xl">{{ event.time }}</h4>
-            <div class="hidden md:block grow"></div>
-            <div class="flex flex-col md:gap-4 gap-2">
-              <p class="text-sm 2xl:text-2xl md:text-xl">{{ event.description }}</p>
-              <p class="text-sm 2xl:text-xl md:text-base text-black-16 whitespace-pre-line">{{ event.details }}</p>
-              <NuxtLink v-if="event.buttonText" :to="event.buttonLink" target="_blank" class="hover:opacity-80 transition-opacity duration-300">
-                <BaseButton variant="primary">{{ event.buttonText }}</BaseButton>
-              </NuxtLink>
-            </div>
-          </div>
+          <ProgramEvent
+            :time="event.time"
+            :description="event.description"
+            :details="event.details"
+            :button-text="event.buttonText"
+            :button-link="event.buttonLink"
+          />
         </template>
       </div>
     </div>
@@ -105,6 +70,9 @@
 <script setup>
 import { ref, computed } from 'vue';
 import BaseButton from '~/components/ui/BaseButton.vue';
+import SponsorStation from '~/components/program/SponsorStation.vue';
+import BigSponsorStation from '~/components/program/BigSponsorStation.vue';
+import ProgramEvent from '~/components/program/ProgramEvent.vue';
 import { EVENT_TYPES, PROGRAM_TABS } from '~/constants/program';
 
 const currentTab = ref(0);

@@ -1,7 +1,7 @@
 <template>
   <div id="designers" class="container mx-auto">
     <div class="flex justify-between items-center mb-8 xl:mb-[75px]">
-      <h2 class="text-xl md:text-3xl xl:text-4xl">Featured Designers</h2>
+      <h2 class="text-xl md:text-3xl xl:text-4xl">Designers</h2>
       <!-- Навигация перемещена сюда -->
       <div class="flex relative items-center gap-4 xl:translate-y-20 translate-y-3">
         <div class="swiper-button-prev !static md:!w-10 md:!h-10 !w-6 !h-6 !text-black after:!text-xl"></div>

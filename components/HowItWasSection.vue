@@ -1,6 +1,7 @@
 <template>
   <div id="how-it-was" class="container mx-auto">
-    <h2 class="text-xl md:text-3xl xl:text-4xl mb-4 xl:mb-8 md:mb-6">How it was</h2>
+    <h2 class="text-xl md:text-3xl xl:text-4xl">How it was</h2>
+    <p class="text-sm md:text-base xl:text-xl mb-4 xl:mb-8 md:mb-6">collections</p>
     <div class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0">
       <div class="flex gap-8 mb-6 md:mb-8 xl:mb-10 whitespace-nowrap pb-4 md:pb-0 pr-4 md:pr-0 pl-4 md:pl-0">
         <button

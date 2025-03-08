@@ -244,10 +244,12 @@ const _cnvuuX = eventHandler((event) => {
   return readAsset(id);
 });
 
+const _lazy_6d3cPm = () => import('../routes/api/send-email.post.mjs');
 const _lazy_mMQHqT = () => import('../_/renderer.mjs');
 
 const handlers = [
   { route: '', handler: _cnvuuX, lazy: false, middleware: true, method: undefined },
+  { route: '/api/send-email', handler: _lazy_6d3cPm, lazy: true, middleware: false, method: "post" },
   { route: '/**', handler: _lazy_mMQHqT, lazy: true, middleware: false, method: undefined }
 ];
 
@@ -689,7 +691,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "29757cb2-8b3f-4026-ae4c-35a74e5f9c46",
+    "buildId": "d2cec023-b1ff-4a9c-9f1c-68acc0b771a3",
     "buildAssetsDir": "assets/",
     "cdnURL": ""
   },
@@ -722,7 +724,12 @@ const _inlineRuntimeConfig = {
       }
     }
   },
-  "public": {}
+  "public": {},
+  "SMTP_HOST": "smtp.gmail.com",
+  "SMTP_PORT": "587",
+  "SMTP_USER": "your-email@gmail.com",
+  "SMTP_PASS": "your-app-password",
+  "TO_EMAIL": "destination@example.com"
 };
 const envOptions = {
   prefix: "NITRO_",

@@ -20,9 +20,12 @@
       class="absolute top-0 left-0 w-full h-full bg-black opacity-35 z-10"
     ></div>
     <div class="container flex flex-col grow mx-auto px-4 py-10 relative z-20">
-      <h1 class="hidden md:block xl:text-5xl text-4xl font-light mb-10 text-white">
-        Emirates Fashion Week 2025: <br><span class="xl:text-[60px] text-3xl">Beauty meets business</span>
+      <h1 class="hidden md:block xl:text-5xl text-4xl font-bold text-white uppercase">
+        Emirates Fashion Week
+        <sup class="text-4xl align-top">®</sup> 
       </h1>
+        <span class="xl:text-[60px] text-3xl text-white font-bold">FW 2025/2026</span>
+        <span class="text-white mb-10 text-xl font-bold">13-15 April 2025</span>
       <div id="reportage" class="grow mb-10"></div>
     </div>
 
@@ -33,7 +36,7 @@
           <LogoIcon class="md:ml-auto h-8" />
         </div>
         <div class="bg-black text-white p-8 md:text-right">
-          <span class="text-xl text-white">{{ hashtag }}</span>
+          <NuxtLink :to="hashtag[1]" class="text-xl text-white">{{ hashtag[0] }}</NuxtLink>
         </div>
       </div>
     <Marquee :content="marqueeText2" />
@@ -91,17 +94,17 @@ const updateScript = () => {
   }
 
   const script = document.createElement('script');
-  script.src = 'https://meyou.ru/public/meyou_init.js';
+  script.src = 'https://meyou.id/public/meyou_init.js';
   script.id = 'meyou_init';
   
   // Устанавливаем разные параметры в зависимости от ширины экрана
   const params = isMobile.value 
-    ? 'UTM=smi&header&footer&adv&tag&count=6&nobutton&size=100'
-    : 'UTM=smi&header&footer&adv&tag&count=15&nobutton&size=150';
+    ? 'UTM=smi&header&footer&adv&tag&count=6&nobutton&size=100&noclick'
+    : 'UTM=smi&header&footer&adv&tag&count=14&nobutton&size=150&noclick';
     
   script.setAttribute(
     'data-event',
-    `https://meyou.ru/testrep22/live?${params}`
+    `https://meyou.id/efw2025/live?${params}`
   );
   
   reportageBlock.appendChild(script);

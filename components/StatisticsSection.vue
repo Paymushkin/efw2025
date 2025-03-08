@@ -8,9 +8,11 @@
           class="text-left"
         >
           <h2 class="text-3xl xl:text-5xl 2xl:text-6xl font-light mb-2">
-            {{ displayNumbers[index].displayNumber }}+
+            {{ displayNumbers[index].displayNumber }}
+            <span v-if="index !== 0">+</span> 
           </h2>
           <p class="text-white text-base xl:text-xl 2xl:text-2xl">{{ stat.label }}</p>
+          <p class="text-white text-sm xl:text-lg 2xl:text-xl">{{ stat.text }}</p>
         </div>
       </div>
     </div>
@@ -23,9 +25,9 @@ import { useNumberAnimation } from '~/composables/useNumberAnimation';
 
 const sectionRef = ref(null);
 const statistics = [
-  { startNumber: '1', endNumber: '20', label: 'Models' },
-  { startNumber: '100', endNumber: '1000', label: 'Attendees' },
-  { startNumber: '1000', endNumber: '2000', label: 'Photos' },
+  { startNumber: '1', endNumber: '12', label: 'SEASONS', text: 'organized' },
+  { startNumber: '100', endNumber: '300', label: 'DESIGNERS', text: 'participated' },
+  { startNumber: '100', endNumber: '1000', label: 'MODELS', text: 'professionally trained' },
 ];
 
 // Создаем массив анимированных чисел

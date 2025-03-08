@@ -1,7 +1,7 @@
 <template>
   <header class="w-full">
     <!-- Announcement bar -->
-    <Marquee class="hidden md:block" :content="marqueeText1" />
+    <Marquee class="hidden md:block" :content="marqueeText1" :is-static="true" />
 
     <!-- Navigation -->
     <nav class="bg-white">
@@ -21,7 +21,7 @@
               <LogoIcon class="h-5 2xl:h-8 w-[165px] 2xl:w-[254px]" />
             </NuxtLink>
 
-            <span class="text-black 2xl:text-xl lg:text-base sm:text-sm">{{ hashtag }}</span>
+            <NuxtLink :to="hashtag[1]" class="text-black 2xl:text-xl lg:text-base sm:text-sm">{{ hashtag[0] }}</NuxtLink>
           </div>
 
           <!-- Desktop Navigation Links -->
@@ -38,25 +38,82 @@
           </div>
 
           <!-- Desktop Actions -->
-          <div class="hidden xl:flex items-center 2xl:gap-10 gap-6">
+          <div class="hidden xl:flex items-center 2xl:gap-5 gap-3">
+            <div class="relative">
+              <button 
+                @click="isLinksMenuOpen = !isLinksMenuOpen"
+                class="hover:opacity-80 transition-opacity duration-300"
+              >
+                <BaseButton variant="primary">
+                  <span>Participate</span>
+                  <span>></span>
+                </BaseButton>
+              </button>
+
+              <!-- Выпадающее меню -->
+              <div 
+                v-if="isLinksMenuOpen" 
+                class="absolute top-full mt-2 right-0 bg-white shadow-lg rounded-lg py-2 min-w-[150px] z-50"
+              >
+                <NuxtLink  :to="designerRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+                  Designer
+                </NuxtLink>
+
+                <NuxtLink :to="modelRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+                  Model
+                </NuxtLink>
+
+                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+                  Buyer
+                </NuxtLink>
+
+                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+                  Stylist
+                </NuxtLink>
+
+                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors"> 
+                  Photo / Video
+                </NuxtLink>
+
+                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+                  Media
+                </NuxtLink>
+
+                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors"> 
+                  Influencer 
+                </NuxtLink>
+
+                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors"> 
+                  Other
+                </NuxtLink>
+
+                <NuxtLink to="/station" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+                  Partners
+                </NuxtLink>
+              </div>
+            </div>
             <NuxtLink target="_blank" 
-              to="https://docs.google.com/forms/d/11I7bcoDEzErBszt2UfZqf04LAjljlpkBhdRTD6CrC7g/edit">
+              :to="visitorsRegistration">
               <BaseButton variant="primary">
                 <span>Visit</span>
                 <span>></span>
               </BaseButton>
             </NuxtLink>
-            <BaseButton variant="secondary">
-              <span>Participate</span>
-              <span>></span>
-            </BaseButton>
-            <a
-              :href="instagram"
+
+            <NuxtLink 
+              :to="instagram"
               target="_blank"
               class="text-black/80 hover:text-black transition-colors"
             >
               <InstagramIcon />
-            </a>
+            </NuxtLink>
+            <NuxtLink 
+              :to="youtube"
+              target="_blank"
+              class="text-black/80 hover:text-black transition-colors"
+            >
+            <YoutubeIcon />
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -86,15 +143,64 @@
           <div class="flex flex-col gap-4">
             <NuxtLink target="_blank" 
               to="https://docs.google.com/forms/d/11I7bcoDEzErBszt2UfZqf04LAjljlpkBhdRTD6CrC7g/edit">
-              <BaseButton variant="primary" class="w-full">
-                <span>Buy a ticket</span>
+              <NuxtLink target="_blank" 
+                :to="visitorsRegistration">
+                <BaseButton variant="primary" class="w-full justify-between">
+                  <span>Visit</span>
+                  <span>></span>
+                </BaseButton>
+              </NuxtLink>
+            </NuxtLink>
+            <NuxtLink target="_blank" 
+              :to="designerRegistration">
+              <BaseButton variant="secondary" class="w-full justify-between">
+                <span>Designer</span>
                 <span>></span>
               </BaseButton>
             </NuxtLink>
-            <BaseButton variant="secondary" class="w-full">
-              <span>For sponsors</span>
+
+            <BaseButton id="participate-button" variant="secondary" class="w-full justify-between">
+              <span>Participate</span>
               <span>></span>
             </BaseButton>
+
+              <div class="absolute top-full mt-2 right-0 bg-white shadow-lg rounded-lg py-2 min-w-[150px] z-50">
+                <NuxtLink  :to="designerRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+                  Designer
+                </NuxtLink>
+
+                <NuxtLink :to="modelRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+                  Model
+                </NuxtLink>
+
+                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+                  Buyer
+                </NuxtLink>
+
+                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+                  Stylist
+                </NuxtLink>
+
+                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors"> 
+                  Photo / Video
+                </NuxtLink>
+
+                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+                  Media
+                </NuxtLink>
+
+                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors"> 
+                  Influencer 
+                </NuxtLink>
+
+                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors"> 
+                  Other
+                </NuxtLink>
+
+                <NuxtLink to="/station" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+                  Partners
+                </NuxtLink>
+              </div>
           </div>
         </div>
       </div>
@@ -103,24 +209,25 @@
 </template>
 
 <script setup>
-import { ref, watch, onUnmounted } from 'vue';
+import { ref, watch, onUnmounted, onMounted } from 'vue';
 import LogoIcon from '@/components/icons/LogoIcon.vue';
 import InstagramIcon from '@/components/icons/InstagramIcon.vue';
+import YoutubeIcon from '@/components/icons/YoutubeIcon';
 import MenuIcon from '@/components/icons/MenuIcon';
 import XIcon from '@/components/icons/XIcon.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
 import Marquee from '@/components/MarqueeSection.vue';
 import { marqueeText1 } from '~/constants/texts';
-import { hashtag, instagram } from '~/constants/texts';
+import { hashtag, instagram, youtube, designerRegistration, visitorsRegistration, modelRegistration } from '~/constants/texts';
 
 const isMenuOpen = ref(false);
-
+const isLinksMenuOpen = ref(false);
 const navLinks = [
-  { name: 'HOW IT WAS', href: '#how-it-was', id: 'how-it-was' },
-  { name: 'SCHEDULE', href: '#program', id: 'program' },
+  { name: 'CALENDAR', href: '#program', id: 'program' },
   { name: 'DESIGNERS', href: '#designers', id: 'designer' },
   { name: 'FACES', href: '#faces', id: 'faces' },
-  { name: 'CONTACTS', href: '#contacts', id: 'contacts' },
+  { name: 'HOW IT WAS', href: '#how-it-was', id: 'how-it-was' },
+  { name: 'CONTACTS', href: '#contacts', id: 'contacts' }
 ];
 
 const scrollToSection = (href) => {
@@ -156,9 +263,19 @@ onUnmounted(() => {
 
 // Обработчик клика по пункту меню
 const handleMobileNavClick = (href) => {
-  isMenuOpen.value = false; // Это автоматически включит скролл обратно
+  isLinksMenuOpen.value = false; // Это автоматически включит скролл обратно
   scrollToSection(href);
 };
+
+// Закрываем меню при клике вне его
+onMounted(() => {
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!target.closest('.relative')) {
+      isLinksMenuOpen.value = false;
+    }
+  });
+});
 </script>
 
 <style>
