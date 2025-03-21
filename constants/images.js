@@ -1,78 +1,65 @@
-import image1 from '~/assets/image/events/Aaronic-Atelier-2022/item-1.jpg'
-import image2 from '~/assets/image/events/Aaronic-Atelier-2022/item-2.jpg'
-import image3 from '~/assets/image/events/Aaronic-Atelier-2022/item-3.jpg'
+import image1 from '~/assets/image/events/2019fw/1.png'
+import image2 from '~/assets/image/events/2019fw/2.png'
+import image3 from '~/assets/image/events/2019fw/3.png'
 
-import image4 from '~/assets/image/events/Baravia-2020/item-1.jpg'
-import image5 from '~/assets/image/events/Baravia-2020/item-2.jpg'
-import image6 from '~/assets/image/events/Baravia-2020/item-3.jpg'
+import image4 from '~/assets/image/events/2019ss/1.png'
+import image5 from '~/assets/image/events/2019ss/2.png'
+import image6 from '~/assets/image/events/2019ss/3.png'
 
-import image7 from '~/assets/image/events/Baravia-Fashion-2021/item-1.jpeg'
-import image8 from '~/assets/image/events/Baravia-Fashion-2021/item-2.jpeg'
-import image9 from '~/assets/image/events/Baravia-Fashion-2021/item-3.jpeg'
+import image7 from '~/assets/image/events/2020fw/1.png'
+import image8 from '~/assets/image/events/2020fw/2.png'
+import image9 from '~/assets/image/events/2020fw/3.png'
 
-import image10 from '~/assets/image/events/Beth&Mishka-2023/item-1.jpg'
-import image11 from '~/assets/image/events/Beth&Mishka-2023/item-2.jpg'
+import image10 from '~/assets/image/events/2020ss/1.png'
+import image11 from '~/assets/image/events/2020ss/2.png'
+import image12 from '~/assets/image/events/2020ss/3.png'
 
-import image12 from '~/assets/image/events/Beyader-2019/item-1.jpeg'
-import image13 from '~/assets/image/events/Beyader-2019/item-2.jpeg'
-import image14 from '~/assets/image/events/Beyader-2019/item-3.jpeg'
+import image13 from '~/assets/image/events/2021fw/1.png'
+import image14 from '~/assets/image/events/2021fw/2.png'
+import image15 from '~/assets/image/events/2021fw/3.png'
 
-import image15 from '~/assets/image/events/Carbonado-Collection-2020/item-1.jpg'
-import image16 from '~/assets/image/events/Carbonado-Collection-2020/item-2.jpg'
-import image17 from '~/assets/image/events/Carbonado-Collection-2020/item-3.jpg'
+import image16 from '~/assets/image/events/2021ss/1.png'
+import image17 from '~/assets/image/events/2021ss/2.png'
+import image18 from '~/assets/image/events/2021ss/3.png'
 
-import image18 from '~/assets/image/events/D-Design-2021/item-1.jpeg'
-import image19 from '~/assets/image/events/D-Design-2021/item-2.jpeg'
-import image20 from '~/assets/image/events/D-Design-2021/item-3.jpeg'
+import image19 from '~/assets/image/events/2022fw/1.png'
+import image20 from '~/assets/image/events/2022fw/2.png'
+import image21 from '~/assets/image/events/2022fw/3.png'
 
-import image21 from '~/assets/image/events/Danatella-Belarus-2024/item-1.png'
-import image22 from '~/assets/image/events/Danatella-Belarus-2024/item-2.jpg'
-import image23 from '~/assets/image/events/Danatella-Belarus-2024/item-3.png'
+import image22 from '~/assets/image/events/2022ss/1.png'
+import image23 from '~/assets/image/events/2022ss/2.png'
+import image24 from '~/assets/image/events/2022ss/3.png'
 
-import image24 from '~/assets/image/events/Dilrabo-2020/item-1.jpeg'
-import image25 from '~/assets/image/events/Dilrabo-2020/item-2.jpeg'
-import image26 from '~/assets/image/events/Dilrabo-2020/item-3.jpeg'
+import image25 from '~/assets/image/events/2023fw/1.png'
+import image26 from '~/assets/image/events/2023fw/2.png'
+import image27 from '~/assets/image/events/2023fw/3.png'
 
-import image27 from '~/assets/image/events/DL-Dress-2019/item-1.jpg'
-import image28 from '~/assets/image/events/DL-Dress-2019/item-2.jpg'
-import image29 from '~/assets/image/events/DL-Dress-2019/item-3.jpg'
+import image28 from '~/assets/image/events/2023ss/1.png'
+import image29 from '~/assets/image/events/2023ss/2.png'
+import image30 from '~/assets/image/events/2023ss/3.png'
 
-import image30 from '~/assets/image/events/JAP-2021/item-1.jpg'
-import image31 from '~/assets/image/events/JAP-2021/item-2.jpg'
-import image32 from '~/assets/image/events/JAP-2021/item-3.jpg'
+import image31 from '~/assets/image/events/2024fw/1.png'
+import image32 from '~/assets/image/events/2024fw/2.png'
+import image33 from '~/assets/image/events/2024fw/3.png'
 
-import image33 from '~/assets/image/events/Marsi-2021/item-1.jpg'
-import image34 from '~/assets/image/events/Marsi-2021/item-2.jpg'
-import image35 from '~/assets/image/events/Marsi-2021/item-3.jpg'
+import image34 from '~/assets/image/events/2024ss/1.png'
+import image35 from '~/assets/image/events/2024ss/2.png'
+import image36 from '~/assets/image/events/2024ss/3.png'
 
-import image36 from '~/assets/image/events/Michael-Lombard-2019/item-1.jpg'
-import image37 from '~/assets/image/events/Michael-Lombard-2019/item-2.jpg'
-import image38 from '~/assets/image/events/Michael-Lombard-2019/item-3.jpg'
-
-import image39 from '~/assets/image/events/Said-Omari-2020/item-1.jpg'
-import image40 from '~/assets/image/events/Said-Omari-2020/item-2.jpg'
-import image41 from '~/assets/image/events/Said-Omari-2020/item-3.jpg'
-
-import image42 from '~/assets/image/events/Savalme-2022/item-1.jpg'
-import image43 from '~/assets/image/events/Savalme-2022/item-2.jpg'
-import image44 from '~/assets/image/events/Savalme-2022/item-3.jpg'
 
 export const tabs = [
-  { year: '2019', season: 'Beyader', images: [image12, image13, image14] },
-  { year: '2019', season: 'DL Dress', images: [image27, image28, image29] },
-  { year: '2019', season: 'Michael Lombard', images: [image36, image37, image38] },
-  { year: '2020', season: 'Baravia', images: [image4, image5, image6] },
-  { year: '2020', season: 'Carbonado Collection', images: [image15, image16, image17] },
-  { year: '2020', season: 'Dilrabo', images: [image24, image25, image26] },
-  { year: '2020', season: 'Said Omari', images: [image39, image40, image41] },
-  { year: '2021', season: 'Baravia Fashion', images: [image7, image8, image9] },
-  { year: '2021', season: 'D-Design', images: [image18, image19, image20] },
-  { year: '2021', season: 'JAP', images: [image30, image31, image32] },
-  { year: '2021', season: 'Marsi', images: [image33, image34, image35] },
-  { year: '2022', season: 'Aaronic Atelier', images: [image1, image2, image3] },
-  { year: '2022', season: 'Savalme', images: [image42, image43, image44] },
-  { year: '2023', season: 'Beth & Mishka', images: [image10, image11] },
-  { year: '2024', season: 'Danatella Belarus', images: [image21, image22, image23] },
+  { year: '2019', season: 'Fall/Winter', images: [image1, image2, image3], designers: ['Beyader', 'DL-Dress', 'Beyader'] },
+  { year: '2019', season: 'Spring/Summer', images: [image4, image5, image6], designers: ['DL-Dress', 'Michael Lombard ', 'Michael Lombard '] },
+  { year: '2020', season: 'Fall/Winter', images: [image7, image8, image9], designers: ['Baravia', 'Baravia', 'Carbonado Collection'] },
+  { year: '2020', season: 'Spring/Summer', images: [image10, image11, image12], designers: ['Dilrabo', 'Said Omari', 'Said Omari'] },
+  { year: '2021', season: 'Fall/Winter', images: [image13, image14, image15], designers: ['Baravia Fashion', 'Baravia Fashion', 'D-Design'] },
+  { year: '2021', season: 'Spring/Summer', images: [image16, image17, image18], designers: ['JAP Poland', 'Marsi', 'Marsi'] },
+  { year: '2022', season: 'Fall/Winter', images: [image19, image20, image21], designers: ['Aaronic Atelier', 'Aaronic Atelier', 'Art Fashion'] },
+  { year: '2022', season: 'Spring/Summer', images: [image22, image23, image24], designers: ['Savalme', 'Savalme', 'Walid Atallah'] },
+  { year: '2023', season: 'Fall/Winter', images: [image25, image26, image27], designers: ['Beth & Mishka', 'Beth & Mishka', 'JAP Poland'] },
+  { year: '2023', season: 'Spring/Summer', images: [image28, image29, image30], designers: ['La Donna Di Ferro', 'Fair Blvd', 'La Reine'] },
+  { year: '2024', season: 'Fall/Winter', images: [image31, image32, image33], designers: ['Danatella', 'Alisia Fiori', 'BERGE'] },
+  { year: '2024', season: 'Spring/Summer', images: [image34, image35, image36], designers: ['CHOLPONA', 'Icona', 'Suhaila'] },
 ];
 
 // Импортируем изображения

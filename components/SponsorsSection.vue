@@ -1,31 +1,42 @@
 <template>
   <div class="container mx-auto mb-[105px]">
     <h2 class="text-xl md:text-3xl xl:text-4xl mb-8 xl:mb-[75px]">Partners & Media</h2>
-    <div class="grid lg:grid-flow-col grid-cols-2 md:grid-cols-3 xl:grid-cols-9 gap-3 justify-items-center md:justify-items-start">
-      <div class="flex justify-center items-center w-full"
+    <div class="grid grid-cols-4 md:grid-cols-8 xl:grid-cols-9 gap-4 justify-items-center md:justify-items-start">
+      <div 
         v-for="(sponsor, index) in sponsors" 
-        :key="index" 
+        :key="index"
+        :class="[
+          'flex justify-center items-center',
+          index === 0 ? 'col-span-2 md:col-span-2 xl:col-span-2' : ''
+        ]"
       >
         <img  
           :src="sponsor" 
           alt="Sponsor Logo" 
-        class="w-[150px] max-w-full md:max-w-auto h-auto object-center" 
-      />
+          class="object-center" 
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import image1 from '@/assets/image/sponsors/sd.png'
-import image2 from '@/assets/image/sponsors/gwa.png'
-import image3 from '@/assets/image/sponsors/lofficiel.png'
-import image4 from '@/assets/image/sponsors/megapolis.png'
-import image5 from '@/assets/image/sponsors/porterium.png'
-import image6 from '@/assets/image/sponsors/tycoon.png'
-import image7 from '@/assets/image/sponsors/arabic_journal.png'
-import image8 from '@/assets/image/sponsors/dubai_fashion.png'
-import image9 from '@/assets/image/sponsors/d_fashion.png'
+import image1 from '@/assets/image/sponsors/card-1.png'
+import image2 from '@/assets/image/sponsors/card-2.png'
+import image3 from '@/assets/image/sponsors/card-3.png'
+import image4 from '@/assets/image/sponsors/card-4.png'
+import image5 from '@/assets/image/sponsors/card-5.png'
+import image6 from '@/assets/image/sponsors/card-6.png'
+import image7 from '@/assets/image/sponsors/card-7.png'
+import image8 from '@/assets/image/sponsors/card-8.png'
+import image9 from '@/assets/image/sponsors/card-9.png'
+import image10 from '@/assets/image/sponsors/card-10.png'
+import image11 from '@/assets/image/sponsors/card-11.png'
+import image12 from '@/assets/image/sponsors/card-12.png'
+import image13 from '@/assets/image/sponsors/card-13.png'
+import image14 from '@/assets/image/sponsors/card-14.png'
+import image15 from '@/assets/image/sponsors/card-15.png'
+
 
 const sponsors = [
   image1,
@@ -36,7 +47,13 @@ const sponsors = [
   image6,
   image7,
   image8,
-  image9
+  image9,
+  image10,
+  image11,
+  image12,
+  image13,
+  image14,
+  image15
 ];
 </script>
 

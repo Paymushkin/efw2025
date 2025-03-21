@@ -1,35 +1,4 @@
 const client_manifest = {
-  "_BHfM-awC.js": {
-    "resourceType": "script",
-    "module": true,
-    "prefetch": true,
-    "preload": true,
-    "file": "BHfM-awC.js",
-    "name": "nuxt-link",
-    "imports": [
-      "node_modules/nuxt/dist/app/entry.js"
-    ]
-  },
-  "_BQ2pkRAx.js": {
-    "resourceType": "script",
-    "module": true,
-    "prefetch": true,
-    "preload": true,
-    "file": "BQ2pkRAx.js",
-    "name": "BaseButton",
-    "imports": [
-      "node_modules/nuxt/dist/app/entry.js"
-    ],
-    "css": [
-      "BaseButton.BxvAVIfT.css"
-    ]
-  },
-  "BaseButton.BxvAVIfT.css": {
-    "file": "BaseButton.BxvAVIfT.css",
-    "resourceType": "style",
-    "prefetch": true,
-    "preload": true
-  },
   "_BaseButton.BxvAVIfT.css": {
     "resourceType": "style",
     "prefetch": true,
@@ -37,27 +6,38 @@ const client_manifest = {
     "file": "BaseButton.BxvAVIfT.css",
     "src": "_BaseButton.BxvAVIfT.css"
   },
-  "_Be0W2dMw.js": {
+  "_Bh2vIoaQ.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "Be0W2dMw.js",
+    "file": "Bh2vIoaQ.js",
     "name": "vue.-sixQ7xP",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js"
     ]
   },
-  "_DFX6ojkW.js": {
+  "_DGgDoeRo.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "DFX6ojkW.js",
+    "file": "DGgDoeRo.js",
+    "name": "nuxt-link",
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.js"
+    ]
+  },
+  "_Dxi32kLE.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "Dxi32kLE.js",
     "name": "sponsor-logo",
     "imports": [
-      "_BHfM-awC.js",
-      "_BQ2pkRAx.js",
+      "_DGgDoeRo.js",
+      "_FxRLngmG.js",
       "node_modules/nuxt/dist/app/entry.js"
     ],
     "assets": [
@@ -91,16 +71,25 @@ const client_manifest = {
     "prefetch": true,
     "mimeType": "image/png"
   },
-  "_MTYPJxIi.js": {
+  "_FxRLngmG.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "MTYPJxIi.js",
-    "name": "LogoIcon",
+    "file": "FxRLngmG.js",
+    "name": "BaseButton",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js"
+    ],
+    "css": [
+      "BaseButton.BxvAVIfT.css"
     ]
+  },
+  "BaseButton.BxvAVIfT.css": {
+    "file": "BaseButton.BxvAVIfT.css",
+    "resourceType": "style",
+    "prefetch": true,
+    "preload": true
   },
   "assets/fonts/Inter-variable.woff2": {
     "resourceType": "font",
@@ -241,313 +230,257 @@ const client_manifest = {
     "file": "9.C4ZcFjFp.jpg",
     "src": "assets/image/designers/9.jpg"
   },
-  "assets/image/events/Aaronic-Atelier-2022/item-1.jpg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-1.DqymXndX.jpg",
-    "src": "assets/image/events/Aaronic-Atelier-2022/item-1.jpg"
-  },
-  "assets/image/events/Aaronic-Atelier-2022/item-2.jpg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-2.JApBSGey.jpg",
-    "src": "assets/image/events/Aaronic-Atelier-2022/item-2.jpg"
-  },
-  "assets/image/events/Aaronic-Atelier-2022/item-3.jpg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-3.CokIZMTl.jpg",
-    "src": "assets/image/events/Aaronic-Atelier-2022/item-3.jpg"
-  },
-  "assets/image/events/Baravia-2020/item-1.jpg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-1.C-rSkt3h.jpg",
-    "src": "assets/image/events/Baravia-2020/item-1.jpg"
-  },
-  "assets/image/events/Baravia-2020/item-2.jpg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-2.vTpgk60h.jpg",
-    "src": "assets/image/events/Baravia-2020/item-2.jpg"
-  },
-  "assets/image/events/Baravia-2020/item-3.jpg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-3._DDnzPrm.jpg",
-    "src": "assets/image/events/Baravia-2020/item-3.jpg"
-  },
-  "assets/image/events/Baravia-Fashion-2021/item-1.jpeg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-1.BsQgCQfH.jpeg",
-    "src": "assets/image/events/Baravia-Fashion-2021/item-1.jpeg"
-  },
-  "assets/image/events/Baravia-Fashion-2021/item-2.jpeg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-2.CXoiZ4QA.jpeg",
-    "src": "assets/image/events/Baravia-Fashion-2021/item-2.jpeg"
-  },
-  "assets/image/events/Baravia-Fashion-2021/item-3.jpeg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-3.CGarrDvW.jpeg",
-    "src": "assets/image/events/Baravia-Fashion-2021/item-3.jpeg"
-  },
-  "assets/image/events/Beth&Mishka-2023/item-1.jpg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-1.CqT2w9yQ.jpg",
-    "src": "assets/image/events/Beth&Mishka-2023/item-1.jpg"
-  },
-  "assets/image/events/Beth&Mishka-2023/item-2.jpg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-2.l3OuPR6s.jpg",
-    "src": "assets/image/events/Beth&Mishka-2023/item-2.jpg"
-  },
-  "assets/image/events/Beyader-2019/item-1.jpeg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-1.BGZ19KY-.jpeg",
-    "src": "assets/image/events/Beyader-2019/item-1.jpeg"
-  },
-  "assets/image/events/Beyader-2019/item-2.jpeg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-2.BrqWkNam.jpeg",
-    "src": "assets/image/events/Beyader-2019/item-2.jpeg"
-  },
-  "assets/image/events/Beyader-2019/item-3.jpeg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-3.C5J6Ngok.jpeg",
-    "src": "assets/image/events/Beyader-2019/item-3.jpeg"
-  },
-  "assets/image/events/Carbonado-Collection-2020/item-1.jpg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-1.C-L9roNR.jpg",
-    "src": "assets/image/events/Carbonado-Collection-2020/item-1.jpg"
-  },
-  "assets/image/events/Carbonado-Collection-2020/item-2.jpg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-2.CgTxI2ne.jpg",
-    "src": "assets/image/events/Carbonado-Collection-2020/item-2.jpg"
-  },
-  "assets/image/events/Carbonado-Collection-2020/item-3.jpg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-3.CGVm8NHO.jpg",
-    "src": "assets/image/events/Carbonado-Collection-2020/item-3.jpg"
-  },
-  "assets/image/events/D-Design-2021/item-1.jpeg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-1.BJ4Y9esB.jpeg",
-    "src": "assets/image/events/D-Design-2021/item-1.jpeg"
-  },
-  "assets/image/events/D-Design-2021/item-2.jpeg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-2.SRpaNc0y.jpeg",
-    "src": "assets/image/events/D-Design-2021/item-2.jpeg"
-  },
-  "assets/image/events/D-Design-2021/item-3.jpeg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-3.mqDIruYG.jpeg",
-    "src": "assets/image/events/D-Design-2021/item-3.jpeg"
-  },
-  "assets/image/events/DL-Dress-2019/item-1.jpg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-1.4Ozd2RXJ.jpg",
-    "src": "assets/image/events/DL-Dress-2019/item-1.jpg"
-  },
-  "assets/image/events/DL-Dress-2019/item-2.jpg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-2.Og-Cvu1k.jpg",
-    "src": "assets/image/events/DL-Dress-2019/item-2.jpg"
-  },
-  "assets/image/events/DL-Dress-2019/item-3.jpg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-3.H_KiiV0_.jpg",
-    "src": "assets/image/events/DL-Dress-2019/item-3.jpg"
-  },
-  "assets/image/events/Danatella-Belarus-2024/item-1.png": {
+  "assets/image/events/2019fw/1.png": {
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png",
-    "file": "item-1.CQKYiv2f.png",
-    "src": "assets/image/events/Danatella-Belarus-2024/item-1.png"
+    "file": "1.BlxBFC7u.png",
+    "src": "assets/image/events/2019fw/1.png"
   },
-  "assets/image/events/Danatella-Belarus-2024/item-2.jpg": {
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-2.CgggOmnF.jpg",
-    "src": "assets/image/events/Danatella-Belarus-2024/item-2.jpg"
-  },
-  "assets/image/events/Danatella-Belarus-2024/item-3.png": {
+  "assets/image/events/2019fw/2.png": {
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png",
-    "file": "item-3.CFUHPN3b.png",
-    "src": "assets/image/events/Danatella-Belarus-2024/item-3.png"
+    "file": "2.C5X_4ha9.png",
+    "src": "assets/image/events/2019fw/2.png"
   },
-  "assets/image/events/Dilrabo-2020/item-1.jpeg": {
+  "assets/image/events/2019fw/3.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-1.BVdMHSyA.jpeg",
-    "src": "assets/image/events/Dilrabo-2020/item-1.jpeg"
+    "mimeType": "image/png",
+    "file": "3.BfmpoEEx.png",
+    "src": "assets/image/events/2019fw/3.png"
   },
-  "assets/image/events/Dilrabo-2020/item-2.jpeg": {
+  "assets/image/events/2019ss/1.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-2.DG0dtUlB.jpeg",
-    "src": "assets/image/events/Dilrabo-2020/item-2.jpeg"
+    "mimeType": "image/png",
+    "file": "1.Bz174UMk.png",
+    "src": "assets/image/events/2019ss/1.png"
   },
-  "assets/image/events/Dilrabo-2020/item-3.jpeg": {
+  "assets/image/events/2019ss/2.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-3.DP81lttV.jpeg",
-    "src": "assets/image/events/Dilrabo-2020/item-3.jpeg"
+    "mimeType": "image/png",
+    "file": "2.CVv0cgs-.png",
+    "src": "assets/image/events/2019ss/2.png"
   },
-  "assets/image/events/JAP-2021/item-1.jpg": {
+  "assets/image/events/2019ss/3.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-1.C9yuQAas.jpg",
-    "src": "assets/image/events/JAP-2021/item-1.jpg"
+    "mimeType": "image/png",
+    "file": "3.BFKCB3y4.png",
+    "src": "assets/image/events/2019ss/3.png"
   },
-  "assets/image/events/JAP-2021/item-2.jpg": {
+  "assets/image/events/2020fw/1.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-2.Dgy-mKS1.jpg",
-    "src": "assets/image/events/JAP-2021/item-2.jpg"
+    "mimeType": "image/png",
+    "file": "1.BHuIZbaf.png",
+    "src": "assets/image/events/2020fw/1.png"
   },
-  "assets/image/events/JAP-2021/item-3.jpg": {
+  "assets/image/events/2020fw/2.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-3.D4Wo27gZ.jpg",
-    "src": "assets/image/events/JAP-2021/item-3.jpg"
+    "mimeType": "image/png",
+    "file": "2.THm-RK6M.png",
+    "src": "assets/image/events/2020fw/2.png"
   },
-  "assets/image/events/Marsi-2021/item-1.jpg": {
+  "assets/image/events/2020fw/3.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-1.hWtUV3mO.jpg",
-    "src": "assets/image/events/Marsi-2021/item-1.jpg"
+    "mimeType": "image/png",
+    "file": "3.BacW-Kmm.png",
+    "src": "assets/image/events/2020fw/3.png"
   },
-  "assets/image/events/Marsi-2021/item-2.jpg": {
+  "assets/image/events/2020ss/1.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-2.CkcbLhqM.jpg",
-    "src": "assets/image/events/Marsi-2021/item-2.jpg"
+    "mimeType": "image/png",
+    "file": "1.DgBVI-uy.png",
+    "src": "assets/image/events/2020ss/1.png"
   },
-  "assets/image/events/Marsi-2021/item-3.jpg": {
+  "assets/image/events/2020ss/2.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-3.Bofl9q5w.jpg",
-    "src": "assets/image/events/Marsi-2021/item-3.jpg"
+    "mimeType": "image/png",
+    "file": "2.BzzmUn3B.png",
+    "src": "assets/image/events/2020ss/2.png"
   },
-  "assets/image/events/Michael-Lombard-2019/item-1.jpg": {
+  "assets/image/events/2020ss/3.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-1.qyomvoml.jpg",
-    "src": "assets/image/events/Michael-Lombard-2019/item-1.jpg"
+    "mimeType": "image/png",
+    "file": "3.IdhI8BZ5.png",
+    "src": "assets/image/events/2020ss/3.png"
   },
-  "assets/image/events/Michael-Lombard-2019/item-2.jpg": {
+  "assets/image/events/2021fw/1.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-2.DgHuD4Wn.jpg",
-    "src": "assets/image/events/Michael-Lombard-2019/item-2.jpg"
+    "mimeType": "image/png",
+    "file": "1.BlQ2nRHF.png",
+    "src": "assets/image/events/2021fw/1.png"
   },
-  "assets/image/events/Michael-Lombard-2019/item-3.jpg": {
+  "assets/image/events/2021fw/2.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-3.CfHDnX6Q.jpg",
-    "src": "assets/image/events/Michael-Lombard-2019/item-3.jpg"
+    "mimeType": "image/png",
+    "file": "2.C1d5ZzEJ.png",
+    "src": "assets/image/events/2021fw/2.png"
   },
-  "assets/image/events/Said-Omari-2020/item-1.jpg": {
+  "assets/image/events/2021fw/3.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-1.KHOYzFna.jpg",
-    "src": "assets/image/events/Said-Omari-2020/item-1.jpg"
+    "mimeType": "image/png",
+    "file": "3.8Tv9mEcJ.png",
+    "src": "assets/image/events/2021fw/3.png"
   },
-  "assets/image/events/Said-Omari-2020/item-2.jpg": {
+  "assets/image/events/2021ss/1.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-2.D1grKwDW.jpg",
-    "src": "assets/image/events/Said-Omari-2020/item-2.jpg"
+    "mimeType": "image/png",
+    "file": "1.C3g6o9bl.png",
+    "src": "assets/image/events/2021ss/1.png"
   },
-  "assets/image/events/Said-Omari-2020/item-3.jpg": {
+  "assets/image/events/2021ss/2.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-3.BqejX6e-.jpg",
-    "src": "assets/image/events/Said-Omari-2020/item-3.jpg"
+    "mimeType": "image/png",
+    "file": "2.l8cAJ5hH.png",
+    "src": "assets/image/events/2021ss/2.png"
   },
-  "assets/image/events/Savalme-2022/item-1.jpg": {
+  "assets/image/events/2021ss/3.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-1.FEPyPHbh.jpg",
-    "src": "assets/image/events/Savalme-2022/item-1.jpg"
+    "mimeType": "image/png",
+    "file": "3.CEH4y8U9.png",
+    "src": "assets/image/events/2021ss/3.png"
   },
-  "assets/image/events/Savalme-2022/item-2.jpg": {
+  "assets/image/events/2022fw/1.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-2.DI4Eq3FZ.jpg",
-    "src": "assets/image/events/Savalme-2022/item-2.jpg"
+    "mimeType": "image/png",
+    "file": "1.DHmapLAJ.png",
+    "src": "assets/image/events/2022fw/1.png"
   },
-  "assets/image/events/Savalme-2022/item-3.jpg": {
+  "assets/image/events/2022fw/2.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "item-3.BFFQci5-.jpg",
-    "src": "assets/image/events/Savalme-2022/item-3.jpg"
+    "mimeType": "image/png",
+    "file": "2.bDQ9T-Bo.png",
+    "src": "assets/image/events/2022fw/2.png"
+  },
+  "assets/image/events/2022fw/3.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "3.CAmjSzX5.png",
+    "src": "assets/image/events/2022fw/3.png"
+  },
+  "assets/image/events/2022ss/1.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "1.nSW1jp9V.png",
+    "src": "assets/image/events/2022ss/1.png"
+  },
+  "assets/image/events/2022ss/2.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "2.5VvgBDP5.png",
+    "src": "assets/image/events/2022ss/2.png"
+  },
+  "assets/image/events/2022ss/3.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "3.BIwYCGSt.png",
+    "src": "assets/image/events/2022ss/3.png"
+  },
+  "assets/image/events/2023fw/1.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "1.C8qd6vgG.png",
+    "src": "assets/image/events/2023fw/1.png"
+  },
+  "assets/image/events/2023fw/2.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "2.Abc1nGdX.png",
+    "src": "assets/image/events/2023fw/2.png"
+  },
+  "assets/image/events/2023fw/3.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "3.BZhYNGnF.png",
+    "src": "assets/image/events/2023fw/3.png"
+  },
+  "assets/image/events/2023ss/1.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "1.1ppd74mj.png",
+    "src": "assets/image/events/2023ss/1.png"
+  },
+  "assets/image/events/2023ss/2.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "2.B1pwK7mg.png",
+    "src": "assets/image/events/2023ss/2.png"
+  },
+  "assets/image/events/2023ss/3.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "3.CdeG9eQU.png",
+    "src": "assets/image/events/2023ss/3.png"
+  },
+  "assets/image/events/2024fw/1.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "1.DKcT7aJk.png",
+    "src": "assets/image/events/2024fw/1.png"
+  },
+  "assets/image/events/2024fw/2.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "2.Dpub7wDB.png",
+    "src": "assets/image/events/2024fw/2.png"
+  },
+  "assets/image/events/2024fw/3.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "3.BBKBnhvB.png",
+    "src": "assets/image/events/2024fw/3.png"
+  },
+  "assets/image/events/2024ss/1.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "1.BB_hJGl_.png",
+    "src": "assets/image/events/2024ss/1.png"
+  },
+  "assets/image/events/2024ss/2.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "2.BQ-sFBgz.png",
+    "src": "assets/image/events/2024ss/2.png"
+  },
+  "assets/image/events/2024ss/3.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "3.uF-ekc2W.png",
+    "src": "assets/image/events/2024ss/3.png"
   },
   "assets/image/sponsor-logo.png": {
     "resourceType": "image",
@@ -556,54 +489,75 @@ const client_manifest = {
     "file": "sponsor-logo.C_yYwsER.png",
     "src": "assets/image/sponsor-logo.png"
   },
-  "assets/image/sponsors/arabic_journal.png": {
+  "assets/image/sponsors/card-10.png": {
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png",
-    "file": "arabic_journal.D2tS_E45.png",
-    "src": "assets/image/sponsors/arabic_journal.png"
+    "file": "card-10.BA-KjlGC.png",
+    "src": "assets/image/sponsors/card-10.png"
   },
-  "assets/image/sponsors/d_fashion.png": {
+  "assets/image/sponsors/card-11.png": {
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png",
-    "file": "d_fashion.C1Df8lCq.png",
-    "src": "assets/image/sponsors/d_fashion.png"
+    "file": "card-11.DULZ3MdR.png",
+    "src": "assets/image/sponsors/card-11.png"
   },
-  "assets/image/sponsors/dubai_fashion.png": {
+  "assets/image/sponsors/card-12.png": {
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png",
-    "file": "dubai_fashion.CpJy2hnN.png",
-    "src": "assets/image/sponsors/dubai_fashion.png"
+    "file": "card-12.DURuOWm9.png",
+    "src": "assets/image/sponsors/card-12.png"
   },
-  "assets/image/sponsors/gwa.png": {
+  "assets/image/sponsors/card-14.png": {
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png",
-    "file": "gwa.DiD6VcSI.png",
-    "src": "assets/image/sponsors/gwa.png"
+    "file": "card-14.HwVevApC.png",
+    "src": "assets/image/sponsors/card-14.png"
   },
-  "assets/image/sponsors/porterium.png": {
+  "assets/image/sponsors/card-15.png": {
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png",
-    "file": "porterium.D0JRG_g2.png",
-    "src": "assets/image/sponsors/porterium.png"
+    "file": "card-15.JcaYltm6.png",
+    "src": "assets/image/sponsors/card-15.png"
   },
-  "assets/image/sponsors/sd.png": {
+  "assets/image/sponsors/card-3.png": {
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png",
-    "file": "sd.C4WDANPM.png",
-    "src": "assets/image/sponsors/sd.png"
+    "file": "card-3.D-lwuC6u.png",
+    "src": "assets/image/sponsors/card-3.png"
   },
-  "assets/image/sponsors/tycoon.png": {
+  "assets/image/sponsors/card-4.png": {
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png",
-    "file": "tycoon.BNud8QkL.png",
-    "src": "assets/image/sponsors/tycoon.png"
+    "file": "card-4.CkzopU9c.png",
+    "src": "assets/image/sponsors/card-4.png"
+  },
+  "assets/image/sponsors/card-5.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "card-5.CFvucQAy.png",
+    "src": "assets/image/sponsors/card-5.png"
+  },
+  "assets/image/sponsors/card-6.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "card-6.B-xF2gX6.png",
+    "src": "assets/image/sponsors/card-6.png"
+  },
+  "assets/image/sponsors/card-8.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "card-8.BxO-BXjE.png",
+    "src": "assets/image/sponsors/card-8.png"
   },
   "assets/image/stations/station-1.png": {
     "resourceType": "image",
@@ -631,15 +585,14 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "BbpuG8BS.js",
+    "file": "BIlvskdG.js",
     "name": "default",
     "src": "layouts/default.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_BHfM-awC.js",
+      "_DGgDoeRo.js",
       "node_modules/nuxt/dist/app/entry.js",
-      "_MTYPJxIi.js",
-      "_BQ2pkRAx.js"
+      "_FxRLngmG.js"
     ]
   },
   "node_modules/nuxt/dist/app/components/error-404.vue": {
@@ -647,14 +600,14 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "J3mSK7Or.js",
+    "file": "DyQZG6ME.js",
     "name": "error-404",
     "src": "node_modules/nuxt/dist/app/components/error-404.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_BHfM-awC.js",
+      "_DGgDoeRo.js",
       "node_modules/nuxt/dist/app/entry.js",
-      "_Be0W2dMw.js"
+      "_Bh2vIoaQ.js"
     ],
     "css": [
       "error-404.C3V-3Mc4.css"
@@ -671,13 +624,13 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "DKtC5BVc.js",
+    "file": "C0UZzl__.js",
     "name": "error-500",
     "src": "node_modules/nuxt/dist/app/components/error-500.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_Be0W2dMw.js"
+      "_Bh2vIoaQ.js"
     ],
     "css": [
       "error-500.dGVH929u.css"
@@ -694,7 +647,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "D9iM2Uwk.js",
+    "file": "wjfyKzRo.js",
     "name": "entry",
     "src": "node_modules/nuxt/dist/app/entry.js",
     "isEntry": true,
@@ -704,14 +657,14 @@ const client_manifest = {
       "node_modules/nuxt/dist/app/components/error-500.vue"
     ],
     "css": [
-      "entry.DJqZnwzD.css"
+      "entry.D_4TFBMa.css"
     ],
     "assets": [
       "Inter-variable.CkI0DTMQ.woff2"
     ]
   },
-  "entry.DJqZnwzD.css": {
-    "file": "entry.DJqZnwzD.css",
+  "entry.D_4TFBMa.css": {
+    "file": "entry.D_4TFBMa.css",
     "resourceType": "style",
     "prefetch": true,
     "preload": true
@@ -726,65 +679,56 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "Cx0Ku3c7.js",
+    "file": "CRtnN6Qg.js",
     "name": "index",
     "src": "pages/index.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_BHfM-awC.js",
-      "_MTYPJxIi.js",
-      "_BQ2pkRAx.js",
+      "_DGgDoeRo.js",
       "node_modules/nuxt/dist/app/entry.js",
-      "_DFX6ojkW.js"
+      "_FxRLngmG.js",
+      "_Dxi32kLE.js"
     ],
     "css": [
-      "index.DnrpmcCI.css"
+      "index.DOplFnvb.css"
     ],
     "assets": [
-      "item-1.DqymXndX.jpg",
-      "item-2.JApBSGey.jpg",
-      "item-3.CokIZMTl.jpg",
-      "item-1.C-rSkt3h.jpg",
-      "item-2.vTpgk60h.jpg",
-      "item-3._DDnzPrm.jpg",
-      "item-1.BsQgCQfH.jpeg",
-      "item-2.CXoiZ4QA.jpeg",
-      "item-3.CGarrDvW.jpeg",
-      "item-1.CqT2w9yQ.jpg",
-      "item-2.l3OuPR6s.jpg",
-      "item-1.BGZ19KY-.jpeg",
-      "item-2.BrqWkNam.jpeg",
-      "item-3.C5J6Ngok.jpeg",
-      "item-1.C-L9roNR.jpg",
-      "item-2.CgTxI2ne.jpg",
-      "item-3.CGVm8NHO.jpg",
-      "item-1.BJ4Y9esB.jpeg",
-      "item-2.SRpaNc0y.jpeg",
-      "item-3.mqDIruYG.jpeg",
-      "item-1.CQKYiv2f.png",
-      "item-2.CgggOmnF.jpg",
-      "item-3.CFUHPN3b.png",
-      "item-1.BVdMHSyA.jpeg",
-      "item-2.DG0dtUlB.jpeg",
-      "item-3.DP81lttV.jpeg",
-      "item-1.4Ozd2RXJ.jpg",
-      "item-2.Og-Cvu1k.jpg",
-      "item-3.H_KiiV0_.jpg",
-      "item-1.C9yuQAas.jpg",
-      "item-2.Dgy-mKS1.jpg",
-      "item-3.D4Wo27gZ.jpg",
-      "item-1.hWtUV3mO.jpg",
-      "item-2.CkcbLhqM.jpg",
-      "item-3.Bofl9q5w.jpg",
-      "item-1.qyomvoml.jpg",
-      "item-2.DgHuD4Wn.jpg",
-      "item-3.CfHDnX6Q.jpg",
-      "item-1.KHOYzFna.jpg",
-      "item-2.D1grKwDW.jpg",
-      "item-3.BqejX6e-.jpg",
-      "item-1.FEPyPHbh.jpg",
-      "item-2.DI4Eq3FZ.jpg",
-      "item-3.BFFQci5-.jpg",
+      "1.BlxBFC7u.png",
+      "2.C5X_4ha9.png",
+      "3.BfmpoEEx.png",
+      "1.Bz174UMk.png",
+      "2.CVv0cgs-.png",
+      "3.BFKCB3y4.png",
+      "1.BHuIZbaf.png",
+      "2.THm-RK6M.png",
+      "3.BacW-Kmm.png",
+      "1.DgBVI-uy.png",
+      "2.BzzmUn3B.png",
+      "3.IdhI8BZ5.png",
+      "1.BlQ2nRHF.png",
+      "2.C1d5ZzEJ.png",
+      "3.8Tv9mEcJ.png",
+      "1.C3g6o9bl.png",
+      "2.l8cAJ5hH.png",
+      "3.CEH4y8U9.png",
+      "1.DHmapLAJ.png",
+      "2.bDQ9T-Bo.png",
+      "3.CAmjSzX5.png",
+      "1.nSW1jp9V.png",
+      "2.5VvgBDP5.png",
+      "3.BIwYCGSt.png",
+      "1.C8qd6vgG.png",
+      "2.Abc1nGdX.png",
+      "3.BZhYNGnF.png",
+      "1.1ppd74mj.png",
+      "2.B1pwK7mg.png",
+      "3.CdeG9eQU.png",
+      "1.DKcT7aJk.png",
+      "2.Dpub7wDB.png",
+      "3.BBKBnhvB.png",
+      "1.BB_hJGl_.png",
+      "2.BQ-sFBgz.png",
+      "3.uF-ekc2W.png",
       "1.BvMEQkr6.jpg",
       "2.CIu65TMf.jpeg",
       "3.BToRtsSG.jpg",
@@ -804,284 +748,239 @@ const client_manifest = {
       "17.DsrtTLaH.jpeg",
       "18.Dgot3fUg.jpg",
       "all-station.Dr2CgXNO.png",
-      "sd.C4WDANPM.png",
-      "gwa.DiD6VcSI.png",
-      "porterium.D0JRG_g2.png",
-      "tycoon.BNud8QkL.png",
-      "arabic_journal.D2tS_E45.png",
-      "dubai_fashion.CpJy2hnN.png",
-      "d_fashion.C1Df8lCq.png"
+      "card-3.D-lwuC6u.png",
+      "card-4.CkzopU9c.png",
+      "card-5.CFvucQAy.png",
+      "card-6.B-xF2gX6.png",
+      "card-8.BxO-BXjE.png",
+      "card-10.BA-KjlGC.png",
+      "card-11.DULZ3MdR.png",
+      "card-12.DURuOWm9.png",
+      "card-14.HwVevApC.png",
+      "card-15.JcaYltm6.png"
     ]
   },
-  "index.DnrpmcCI.css": {
-    "file": "index.DnrpmcCI.css",
+  "index.DOplFnvb.css": {
+    "file": "index.DOplFnvb.css",
     "resourceType": "style",
     "prefetch": true,
     "preload": true
   },
-  "item-1.DqymXndX.jpg": {
-    "file": "item-1.DqymXndX.jpg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-2.JApBSGey.jpg": {
-    "file": "item-2.JApBSGey.jpg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-3.CokIZMTl.jpg": {
-    "file": "item-3.CokIZMTl.jpg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-1.C-rSkt3h.jpg": {
-    "file": "item-1.C-rSkt3h.jpg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-2.vTpgk60h.jpg": {
-    "file": "item-2.vTpgk60h.jpg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-3._DDnzPrm.jpg": {
-    "file": "item-3._DDnzPrm.jpg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-1.BsQgCQfH.jpeg": {
-    "file": "item-1.BsQgCQfH.jpeg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-2.CXoiZ4QA.jpeg": {
-    "file": "item-2.CXoiZ4QA.jpeg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-3.CGarrDvW.jpeg": {
-    "file": "item-3.CGarrDvW.jpeg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-1.CqT2w9yQ.jpg": {
-    "file": "item-1.CqT2w9yQ.jpg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-2.l3OuPR6s.jpg": {
-    "file": "item-2.l3OuPR6s.jpg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-1.BGZ19KY-.jpeg": {
-    "file": "item-1.BGZ19KY-.jpeg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-2.BrqWkNam.jpeg": {
-    "file": "item-2.BrqWkNam.jpeg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-3.C5J6Ngok.jpeg": {
-    "file": "item-3.C5J6Ngok.jpeg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-1.C-L9roNR.jpg": {
-    "file": "item-1.C-L9roNR.jpg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-2.CgTxI2ne.jpg": {
-    "file": "item-2.CgTxI2ne.jpg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-3.CGVm8NHO.jpg": {
-    "file": "item-3.CGVm8NHO.jpg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-1.BJ4Y9esB.jpeg": {
-    "file": "item-1.BJ4Y9esB.jpeg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-2.SRpaNc0y.jpeg": {
-    "file": "item-2.SRpaNc0y.jpeg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-3.mqDIruYG.jpeg": {
-    "file": "item-3.mqDIruYG.jpeg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-1.CQKYiv2f.png": {
-    "file": "item-1.CQKYiv2f.png",
+  "1.BlxBFC7u.png": {
+    "file": "1.BlxBFC7u.png",
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png"
   },
-  "item-2.CgggOmnF.jpg": {
-    "file": "item-2.CgggOmnF.jpg",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/jpeg"
-  },
-  "item-3.CFUHPN3b.png": {
-    "file": "item-3.CFUHPN3b.png",
+  "2.C5X_4ha9.png": {
+    "file": "2.C5X_4ha9.png",
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png"
   },
-  "item-1.BVdMHSyA.jpeg": {
-    "file": "item-1.BVdMHSyA.jpeg",
+  "3.BfmpoEEx.png": {
+    "file": "3.BfmpoEEx.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-2.DG0dtUlB.jpeg": {
-    "file": "item-2.DG0dtUlB.jpeg",
+  "1.Bz174UMk.png": {
+    "file": "1.Bz174UMk.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-3.DP81lttV.jpeg": {
-    "file": "item-3.DP81lttV.jpeg",
+  "2.CVv0cgs-.png": {
+    "file": "2.CVv0cgs-.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-1.4Ozd2RXJ.jpg": {
-    "file": "item-1.4Ozd2RXJ.jpg",
+  "3.BFKCB3y4.png": {
+    "file": "3.BFKCB3y4.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-2.Og-Cvu1k.jpg": {
-    "file": "item-2.Og-Cvu1k.jpg",
+  "1.BHuIZbaf.png": {
+    "file": "1.BHuIZbaf.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-3.H_KiiV0_.jpg": {
-    "file": "item-3.H_KiiV0_.jpg",
+  "2.THm-RK6M.png": {
+    "file": "2.THm-RK6M.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-1.C9yuQAas.jpg": {
-    "file": "item-1.C9yuQAas.jpg",
+  "3.BacW-Kmm.png": {
+    "file": "3.BacW-Kmm.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-2.Dgy-mKS1.jpg": {
-    "file": "item-2.Dgy-mKS1.jpg",
+  "1.DgBVI-uy.png": {
+    "file": "1.DgBVI-uy.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-3.D4Wo27gZ.jpg": {
-    "file": "item-3.D4Wo27gZ.jpg",
+  "2.BzzmUn3B.png": {
+    "file": "2.BzzmUn3B.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-1.hWtUV3mO.jpg": {
-    "file": "item-1.hWtUV3mO.jpg",
+  "3.IdhI8BZ5.png": {
+    "file": "3.IdhI8BZ5.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-2.CkcbLhqM.jpg": {
-    "file": "item-2.CkcbLhqM.jpg",
+  "1.BlQ2nRHF.png": {
+    "file": "1.BlQ2nRHF.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-3.Bofl9q5w.jpg": {
-    "file": "item-3.Bofl9q5w.jpg",
+  "2.C1d5ZzEJ.png": {
+    "file": "2.C1d5ZzEJ.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-1.qyomvoml.jpg": {
-    "file": "item-1.qyomvoml.jpg",
+  "3.8Tv9mEcJ.png": {
+    "file": "3.8Tv9mEcJ.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-2.DgHuD4Wn.jpg": {
-    "file": "item-2.DgHuD4Wn.jpg",
+  "1.C3g6o9bl.png": {
+    "file": "1.C3g6o9bl.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-3.CfHDnX6Q.jpg": {
-    "file": "item-3.CfHDnX6Q.jpg",
+  "2.l8cAJ5hH.png": {
+    "file": "2.l8cAJ5hH.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-1.KHOYzFna.jpg": {
-    "file": "item-1.KHOYzFna.jpg",
+  "3.CEH4y8U9.png": {
+    "file": "3.CEH4y8U9.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-2.D1grKwDW.jpg": {
-    "file": "item-2.D1grKwDW.jpg",
+  "1.DHmapLAJ.png": {
+    "file": "1.DHmapLAJ.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-3.BqejX6e-.jpg": {
-    "file": "item-3.BqejX6e-.jpg",
+  "2.bDQ9T-Bo.png": {
+    "file": "2.bDQ9T-Bo.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-1.FEPyPHbh.jpg": {
-    "file": "item-1.FEPyPHbh.jpg",
+  "3.CAmjSzX5.png": {
+    "file": "3.CAmjSzX5.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-2.DI4Eq3FZ.jpg": {
-    "file": "item-2.DI4Eq3FZ.jpg",
+  "1.nSW1jp9V.png": {
+    "file": "1.nSW1jp9V.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "item-3.BFFQci5-.jpg": {
-    "file": "item-3.BFFQci5-.jpg",
+  "2.5VvgBDP5.png": {
+    "file": "2.5VvgBDP5.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
+  },
+  "3.BIwYCGSt.png": {
+    "file": "3.BIwYCGSt.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "1.C8qd6vgG.png": {
+    "file": "1.C8qd6vgG.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "2.Abc1nGdX.png": {
+    "file": "2.Abc1nGdX.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "3.BZhYNGnF.png": {
+    "file": "3.BZhYNGnF.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "1.1ppd74mj.png": {
+    "file": "1.1ppd74mj.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "2.B1pwK7mg.png": {
+    "file": "2.B1pwK7mg.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "3.CdeG9eQU.png": {
+    "file": "3.CdeG9eQU.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "1.DKcT7aJk.png": {
+    "file": "1.DKcT7aJk.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "2.Dpub7wDB.png": {
+    "file": "2.Dpub7wDB.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "3.BBKBnhvB.png": {
+    "file": "3.BBKBnhvB.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "1.BB_hJGl_.png": {
+    "file": "1.BB_hJGl_.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "2.BQ-sFBgz.png": {
+    "file": "2.BQ-sFBgz.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "3.uF-ekc2W.png": {
+    "file": "3.uF-ekc2W.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
   },
   "1.BvMEQkr6.jpg": {
     "file": "1.BvMEQkr6.jpg",
@@ -1197,44 +1096,62 @@ const client_manifest = {
     "prefetch": true,
     "mimeType": "image/png"
   },
-  "sd.C4WDANPM.png": {
-    "file": "sd.C4WDANPM.png",
+  "card-3.D-lwuC6u.png": {
+    "file": "card-3.D-lwuC6u.png",
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png"
   },
-  "gwa.DiD6VcSI.png": {
-    "file": "gwa.DiD6VcSI.png",
+  "card-4.CkzopU9c.png": {
+    "file": "card-4.CkzopU9c.png",
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png"
   },
-  "porterium.D0JRG_g2.png": {
-    "file": "porterium.D0JRG_g2.png",
+  "card-5.CFvucQAy.png": {
+    "file": "card-5.CFvucQAy.png",
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png"
   },
-  "tycoon.BNud8QkL.png": {
-    "file": "tycoon.BNud8QkL.png",
+  "card-6.B-xF2gX6.png": {
+    "file": "card-6.B-xF2gX6.png",
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png"
   },
-  "arabic_journal.D2tS_E45.png": {
-    "file": "arabic_journal.D2tS_E45.png",
+  "card-8.BxO-BXjE.png": {
+    "file": "card-8.BxO-BXjE.png",
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png"
   },
-  "dubai_fashion.CpJy2hnN.png": {
-    "file": "dubai_fashion.CpJy2hnN.png",
+  "card-10.BA-KjlGC.png": {
+    "file": "card-10.BA-KjlGC.png",
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png"
   },
-  "d_fashion.C1Df8lCq.png": {
-    "file": "d_fashion.C1Df8lCq.png",
+  "card-11.DULZ3MdR.png": {
+    "file": "card-11.DULZ3MdR.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "card-12.DURuOWm9.png": {
+    "file": "card-12.DURuOWm9.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "card-14.HwVevApC.png": {
+    "file": "card-14.HwVevApC.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "card-15.JcaYltm6.png": {
+    "file": "card-15.JcaYltm6.png",
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png"
@@ -1244,15 +1161,15 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "DNf6c54q.js",
+    "file": "B-l4yShc.js",
     "name": "station",
     "src": "pages/station.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_BQ2pkRAx.js",
-      "_DFX6ojkW.js",
-      "_BHfM-awC.js"
+      "_FxRLngmG.js",
+      "_Dxi32kLE.js",
+      "_DGgDoeRo.js"
     ],
     "css": [
       "station.C6XpIQV4.css"

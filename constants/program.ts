@@ -143,12 +143,12 @@ export const PROGRAM_TABS = [
       description: 'BeautyAwards',
       details: `
         • International Deluxe Beauty Awards (IDBA) - competition where beauty service providers 
-          will compete against each other in 30 categories.
+          will compete against each other in 30 categories.<br>
         • On the day of the gala dinner, a large exhibition for service providers 
-          in the beauty industry will take place.
+          in the beauty industry will take place.<br>
         • Only the best of the best will be invited to the award ceremony to receive 
-          their prizes from influential figures in show business and the beauty industry.
-        • The event is held in partnership with Emirates Fashion Week.
+          their prizes from influential figures in show business and the beauty industry.<br>
+        • The event is held in partnership with Emirates Fashion Week.<br><br>
 
         The award ceremony will take place at the luxurious and fashionable venue of Dubai on 15.04.2025.
       `,

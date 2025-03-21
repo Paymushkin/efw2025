@@ -2,8 +2,15 @@
   <div id="how-it-was" class="container mx-auto">
     <h2 class="text-xl md:text-3xl xl:text-4xl">How it was</h2>
     <p class="text-sm md:text-base xl:text-xl mb-4 xl:mb-8 md:mb-6">collections</p>
-    <div class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0">
-      <div class="flex gap-8 mb-6 md:mb-8 xl:mb-10 whitespace-nowrap pb-4 md:pb-0 pr-4 md:pr-0 pl-4 md:pl-0">
+    <div 
+      class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0 xl:mb-5 md:mb-4 mb-3 cursor-grab active:cursor-grabbing" 
+      ref="tabsContainer"
+      @mousedown="startDrag"
+      @mousemove="onDrag"
+      @mouseup="stopDrag"
+      @mouseleave="stopDrag"
+    >
+      <div class="flex gap-8 xl:mb-5 md:mb-4 mb-3 whitespace-nowrap pb-4 md:pb-0 pr-4 md:pr-0 pl-4 md:pl-0">
         <button
           v-for="(tab, index) in tabs"
           :key="index"
@@ -11,7 +18,7 @@
           class="flex flex-col items-start md:gap-2 gap-1 hover:text-black flex-shrink-0"
           :class="{
             'text-black': currentTab === index,
-            'text-black-16': currentTab !== index,
+            'text-black-20': currentTab !== index,
           }"
         >
           <span class="text-xl xl:text-4xl md:text-3xl transition-colors duration-300">{{
@@ -28,9 +35,12 @@
         <div
           v-for="(image, index) in currentImages"
           :key="index"
-          class="overflow-hidden rounded-lg shadow-lg flex-shrink-0 w-[280px] md:w-auto max-h-[680px]"
+          class="overflow-hidden rounded-lg flex-shrink-0 w-[280px] md:w-auto "
         >
-          <img :src="image" alt="" class="w-full h-full object-cover" />
+          <div class="flex flex-col gap-5">
+            <img :src="image" alt="" class="w-full h-full object-cover" />
+            <span class="text-black">{{ tabs[currentTab].designers[index] }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -41,9 +51,31 @@
 import { ref, computed } from 'vue';
 import { tabs } from '@/constants/images';
 
-
-
 const currentTab = ref(0);
+const tabsContainer = ref(null);
+let isDragging = false;
+let startX = 0;
+let scrollLeft = 0;
+
+const startDrag = (e) => {
+  isDragging = true;
+  const slider = tabsContainer.value;
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+};
+
+const onDrag = (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const slider = tabsContainer.value;
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX);
+  slider.scrollLeft = scrollLeft - walk;
+};
+
+const stopDrag = () => {
+  isDragging = false;
+};
 
 const selectTab = (index) => {
   currentTab.value = index;
@@ -64,5 +96,35 @@ button {
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari и Opera */
+}
+
+/* Кастомный скроллбар */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Для Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+}
+
+.custom-scrollbar {
+  -webkit-user-select: none;
+  user-select: none;
 }
 </style>

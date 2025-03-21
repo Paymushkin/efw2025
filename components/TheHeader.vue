@@ -18,7 +18,7 @@
             </button>
             
             <NuxtLink to="/" class="flex-shrink-0">
-              <LogoIcon class="h-5 2xl:h-8 w-[165px] 2xl:w-[254px]" />
+              <LogoBlack class="h-5 2xl:h-8 w-[165px] 2xl:w-[254px]" />
             </NuxtLink>
 
             <NuxtLink :to="hashtag[1]" class="text-black 2xl:text-xl lg:text-base sm:text-sm">{{ hashtag[0] }}</NuxtLink>
@@ -198,7 +198,7 @@
 
 <script setup>
 import { ref, watch, onUnmounted, onMounted } from 'vue';
-import LogoIcon from '@/components/icons/LogoIcon.vue';
+import LogoBlack from '@/components/icons/LogoBlack.vue';
 import InstagramIcon from '@/components/icons/InstagramIcon.vue';
 import YoutubeIcon from '@/components/icons/YoutubeIcon';
 import MenuIcon from '@/components/icons/MenuIcon';

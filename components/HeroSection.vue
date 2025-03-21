@@ -32,11 +32,9 @@
     <!-- Новый блок -->
     <div class="relative z-20">
       <div class="flex flex-col w-[645px] max-w-full">
-        <div class="bg-white py-8 p-8 md:text-right">
-          <LogoIcon class="md:ml-auto h-8" />
-        </div>
-        <div class="bg-black text-white p-8 md:text-right">
-          <NuxtLink :to="hashtag[1]" class="text-xl text-white">{{ hashtag[0] }}</NuxtLink>
+        <div class="py-4 px-6 bg-black bg-opacity-30 md:text-right mix-blend-multiply">
+          <LogoIcon class="md:ml-auto h-8 mb-2" />
+          <NuxtLink :to="hashtag[1]" class="text-white">{{ hashtag[0] }}</NuxtLink>
         </div>
       </div>
     <Marquee :content="marqueeText2" />

@@ -1,6 +1,6 @@
 <template>
   <div id="program" class="container mx-auto">
-    <div class="flex flex-col md:flex-row justify-between md:items-center gap-8 md:mb-[113px] mb-8 max-w-[1200px]">
+    <div class="flex justify-between md:items-center gap-8 md:mb-[113px] mb-8 max-w-[1200px]">
       <h2 class="text-xl md:text-3xl xl:text-4xl">Schedule</h2>
       <NuxtLink 
         target="_blank"
@@ -14,7 +14,7 @@
     </div>
 
     <div class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0">
-      <div class="flex gap-8 mb-8 md:mb-10 whitespace-nowrap pb-4 md:pb-0 pr-4 md:pr-0 pl-4 md:pl-0">
+      <div class="flex md:gap-10 gap-8 mb-4 md:mb-10 whitespace-nowrap pb-4 md:pb-0 pr-4 md:pr-0 pl-4 md:pl-0">
         <button
           v-for="(tab, index) in tabs"
           :key="index"
@@ -22,10 +22,10 @@
           class="flex flex-col items-start gap-2 hover:text-black flex-shrink-0"
           :class="{
             'text-black': currentTab === index,
-            'text-black-16': currentTab !== index,
+            'text-black-20': currentTab !== index,
           }"
         >
-          <span class="text-2xl 2xl:text-4xl md:text-3xl transition-colors duration-300">{{
+          <span class="text-xl 2xl:text-4xl md:text-3xl transition-colors duration-300">{{
             tab.title
           }}</span>
           <span class="transition-colors duration-300">
@@ -35,7 +35,7 @@
       </div>
     </div>
 
-    <div class="flex flex-col md:gap-6 gap-2">
+    <div class="flex flex-col md:gap-6 gap-5">
       <div
         v-for="(event, index) in currentProgram.events"
         :key="index"

@@ -1,12 +1,12 @@
 <template>
   <div class="mx-auto md:my-10 my-5">
     <div class="flex flex-col gap-11">
-      <div class="flex md:flex-row flex-col justify-between md:items-center items-start md:gap-6 gap-4">
-        <h3 v-if="!isStationPage" class="2xl:text-4xl xl:text-3xl text-xl text-center md:text-left">{{ title }}</h3>
+      <div class="flex md:flex-row flex-col justify-between items-start gap-[120px]">
+        <h3 v-if="!isStationPage" class="shrink-0 w-[500px] 2xl:text-4xl xl:text-3xl text-xl text-center md:text-left">{{ title }}</h3>
         <h3 v-if="isStationPage" class="2xl:text-4xl xl:text-3xl text-xl text-left" v-html="title2"></h3>
         <div 
-          class="flex flex-col items-start md:gap-9 gap-5 max-w-full"
-          :class="{ 'w-[430px]': !isStationPage, 'xl:w-1/3 md:w-2/3 xl:px-[20px]': isStationPage }"
+          class="flex flex-col items-start gap-3 max-w-full"
+          :class="{ 'w-auto': !isStationPage, 'xl:w-1/3 md:w-2/3 xl:px-[20px]': isStationPage }"
         >
           <p class="text-lg">{{ description }}</p>
           <NuxtLink :to="`/station${link}`" class="hover:opacity-80 transition-opacity duration-300">
