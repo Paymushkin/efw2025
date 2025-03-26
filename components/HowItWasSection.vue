@@ -38,7 +38,12 @@
           class="overflow-hidden rounded-lg flex-shrink-0 w-[280px] md:w-auto "
         >
           <div class="flex flex-col gap-5">
-            <img :src="image" alt="" class="w-full h-full object-cover" />
+            <img 
+              :src="image" 
+              alt="" 
+              loading="lazy"
+              class="w-full h-full object-cover" 
+            />
             <span class="text-black">{{ tabs[currentTab].designers[index] }}</span>
           </div>
         </div>

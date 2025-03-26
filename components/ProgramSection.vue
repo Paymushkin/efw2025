@@ -1,7 +1,7 @@
 <template>
   <div id="program" class="container mx-auto">
     <div class="flex justify-between md:items-center gap-8 md:mb-[113px] mb-8 max-w-[1200px]">
-      <h2 class="text-xl md:text-3xl xl:text-4xl">Schedule</h2>
+      <h2 class="text-xl md:text-3xl xl:text-4xl">Calendar</h2>
       <NuxtLink 
         target="_blank"
         class="hover:opacity-80 transition-opacity duration-300"
@@ -41,7 +41,13 @@
         :key="index"
       >
         <template v-if="event.type === 'sponsorStation'">
-          <SponsorStation />
+          <SponsorStation 
+            :video-url="event.videoUrl" 
+            :title="event.title"
+            :description="event.description"
+            :button-text="event.buttonText"
+            :button-link="event.buttonLink"
+          />
         </template>
 
         <template v-else-if="event.type === 'bigSponsorStation'">

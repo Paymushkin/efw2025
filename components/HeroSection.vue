@@ -34,7 +34,11 @@
       <div class="flex flex-col w-[645px] max-w-full">
         <div class="py-4 px-6 bg-black bg-opacity-30 md:text-right mix-blend-multiply">
           <LogoIcon class="md:ml-auto h-8 mb-2" />
-          <NuxtLink :to="hashtag[1]" class="text-white">{{ hashtag[0] }}</NuxtLink>
+          <a 
+            href="#" 
+            class="text-white"
+            @click.prevent="handleHashtagClick"
+          >{{ hashtag[0] }}</a>
         </div>
       </div>
     <Marquee :content="marqueeText2" />
@@ -48,6 +52,22 @@ import LogoIcon from '~/components/icons/LogoIcon.vue';
 import Marquee from '~/components/MarqueeSection.vue';
 import { marqueeText2, hashtag } from '~/constants/texts';
 
+// Обработчик клика по хэштегу
+const handleHashtagClick = () => {
+  // Проверяем наличие слайдера на странице
+  const sliderElement = document.querySelector('.image-carousel-container');
+  
+  if (sliderElement) {
+    // Если слайдер найден, прокручиваем к нему
+    sliderElement.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  } else {
+    // Если слайдера нет, переходим по внешней ссылке
+    window.open(hashtag[1], '_blank');
+  }
+};
 
 const isMobile = ref(window?.innerWidth < 768);
 const MOBILE_BREAKPOINT = 768;

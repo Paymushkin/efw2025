@@ -1,7 +1,7 @@
 <template>
   <footer id="contacts" class="bg-black text-white py-16">
     <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row gap-10 md:gap-[230px] justify-end">
+      <div class="flex flex-col md:flex-row gap-10 md:gap-[130px] justify-end">
         <!-- Menu Column -->
         <div>
           <h3 class="hidden md:block text-lg font-medium mb-6">Menu</h3>
@@ -17,6 +17,58 @@
             </a>
           </nav>
         </div>
+
+        <div>
+          <h3 class="hidden md:block text-lg font-medium mb-6">Features</h3>
+
+          <div class="flex flex-col space-y-3">
+
+            <NuxtLink
+              to="/features#visitors"
+              class="text-sm hover:text-gray-300 transition-colors"
+            >
+              FOR VISITORS
+            </NuxtLink>
+            <NuxtLink
+              to="/features#designers"
+              target="_blank"
+              class="text-sm hover:text-gray-300 transition-colors"
+            >
+              FOR PROFESSIONALS
+            </NuxtLink>
+            <NuxtLink
+              to="/features#designers"
+              class="text-sm hover:text-gray-300 transition-colors"
+            >
+              FOR DESIGNERS
+            </NuxtLink>
+            <NuxtLink
+              to="/features#influencers"
+              class="text-sm hover:text-gray-300 transition-colors"
+            >
+              FOR INFLUENCERS
+            </NuxtLink>
+            <NuxtLink
+              to="/features#media"
+              class="text-sm hover:text-gray-300 transition-colors"
+            >
+              FOR MEDIA
+            </NuxtLink>
+            <NuxtLink
+              to="/features#business"
+              class="text-sm hover:text-gray-300 transition-colors"
+            >
+              FOR BUSINESSES
+            </NuxtLink>
+            <NuxtLink
+              to="/features#corporations"
+              class="text-sm hover:text-gray-300 transition-colors"
+            >
+              FOR CORPORATIONS
+            </NuxtLink>
+          </div>
+        </div>
+
         <!-- Contacts Column -->
         <div>
           <h3 class="hidden md:block text-lg font-medium mb-6">Contacts</h3>
@@ -59,14 +111,20 @@
               class="text-sm hover:text-gray-300 transition-colors cursor-pointer"
               @click="showContactForm = true"
             >
-              Text Us
+              ASK
             </span>
           </div>
         </div>
 
         <div class="flex md:hidden flex-col items-start gap-4">
           <LogoWhiteIcon />
-          <p class="text-sm">{{ hashtag }}</p>
+          <NuxtLink
+            :to="hashtag[1]"
+            target="_blank"
+            class="text-sm hover:text-gray-300 transition-colors"
+          >
+            {{ hashtag[0] }}
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -84,17 +142,31 @@ import InstagramWhiteIcon from './icons/InstagramWhiteIcon.vue';
 import YoutubeWhiteIcon from './icons/YoutubeWhiteIcon.vue';
 import { email, instagram, hashtag, phone, address, youtube } from '~/constants/texts';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import ContactForm from './ContactForm.vue';
+
+const router = useRouter();
 
 const menuLinks = [
   { name: 'HOW IT WAS', href: '#how-it-was', id: 'how-it-was' },
   { name: 'SCHEDULE', href: '#program', id: 'program' },
   { name: 'DESIGNERS', href: '#designers', id: 'designers' },
   { name: 'FACES', href: '#faces', id: 'faces' },
-  { name: 'CONTACTS', href: '#contacts', id: 'contacts' },
+  { name: 'FEATURES', href: '/features', id: 'features' },
+  { name: 'STATIONS', href: '/station', id: 'station' },
+  { name: 'AWARDS', href: 'https://deluxebeauty.world/', id: 'awards' },
+  // { name: 'TEAM', href: '/team', id: 'team' },
+  // { name: 'GALLERY', href: '/gallery', id: 'gallery' },
 ];
 
 const scrollToSection = (href) => {
+  // Если ссылка начинается с "/", это ссылка на другую страницу
+  if (href.startsWith('/')) {
+    router.push(href);
+    return;
+  }
+  
+  // Иначе это якорь на текущей странице
   const element = document.querySelector(href);
   if (element) {
     element.scrollIntoView({ 

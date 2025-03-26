@@ -7,7 +7,19 @@
     <DesignersSection class="md:mb-[76px] mb-[56px]" />
     <SponsorsSection class="md:mb-[76px] mb-[56px]" />
     <StatisticsSection class="md:mb-[76px] mb-[56px]" />
-    <FacesSection />
+    <div class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
+      <EventFeatures :data="featuresData.featuresDataPromo" />
+    </div>
+    <FacesSection class="md:mb-[76px] mb-[56px]" />
+    <div class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
+      <ImageCarousel 
+        title="We invest in and support the economy of Dubai | UAE" 
+        :slidesPerView="6" 
+        :autoplay="true"
+        :autoplaySpeed="5000"
+        :gap="20"
+      />
+    </div>
   </div>
 </template>
 
@@ -19,6 +31,9 @@ import DesignersSection from '~/components/DesignersSection.vue'
 import SponsorsSection from '~/components/SponsorsSection.vue';
 import StatisticsSection from '@/components/StatisticsSection.vue';
 import MarqueeSection from '~/components/MarqueeSection.vue';
+import ImageCarousel from '~/components/ImageCarousel.vue';
+import EventFeatures from '~/components/EventFeatures.vue';
+import { FEATURES_DATA } from '~/constants/featuresData';
 
 import sponsor1 from '@/assets/image/sponsor-logo.png'
 import sponsor2 from '@/assets/image/sponsor-logo.png'
@@ -26,4 +41,5 @@ import sponsor3 from '@/assets/image/sponsor-logo.png'
 import sponsor4 from '@/assets/image/sponsor-logo.png'
 
 const sponsors = [sponsor1, sponsor2, sponsor3, sponsor4]
+const featuresData = FEATURES_DATA;
 </script>

@@ -40,7 +40,12 @@
       <swiper-slide v-for="(designer, index) in designers" :key="index">
         <div class="relative h-full">
           <div class="aspect-[3/4] mb-4">
-            <img :src="designer.image" alt="" class="w-full h-full object-cover rounded-lg" />
+            <img 
+              :src="designer.image" 
+              alt="" 
+              loading="lazy"
+              class="w-full h-full object-cover rounded-lg" 
+            />
           </div>
           <div class="mt-4">
             <h3 class="lg:text-xl 2xl:text-2xl text-lg">{{ designer.name }}</h3>

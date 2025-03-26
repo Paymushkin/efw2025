@@ -21,7 +21,11 @@
               <LogoBlack class="h-5 2xl:h-8 w-[165px] 2xl:w-[254px]" />
             </NuxtLink>
 
-            <NuxtLink :to="hashtag[1]" class="text-black 2xl:text-xl lg:text-base sm:text-sm">{{ hashtag[0] }}</NuxtLink>
+            <a 
+              href="#" 
+              class="hidden md:block text-black 2xl:text-xl lg:text-base sm:text-sm"
+              @click.prevent="handleHashtagClick"
+            >{{ hashtag[0] }}</a>
           </div>
 
           <!-- Desktop Navigation Links -->
@@ -151,40 +155,40 @@
                 <span>></span>
             </BaseButton>
 
-              <div v-if="isParticipateOpen" class="absolute top-full mt-2 right-0 bg-white max-h-[270px] overflow-y-auto shadow-lg rounded-lg py-2 min-w-[150px] z-50">
-                <NuxtLink  :to="designerRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+              <div v-if="isParticipateOpen" class="absolute top-full mt-2 right-0 bg-white overflow-y-auto shadow-lg rounded-lg py-2 min-w-[150px] z-50">
+                <NuxtLink  :to="designerRegistration" target="_blank" class="block px-4 py-1 hover:bg-gray-100 transition-colors">
                   Designer
                 </NuxtLink>
 
-                <NuxtLink :to="modelRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+                <NuxtLink :to="modelRegistration" target="_blank" class="block px-4 py-1 hover:bg-gray-100 transition-colors">
                   Model
                 </NuxtLink>
 
-                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-1 hover:bg-gray-100 transition-colors">
                   Buyer
                 </NuxtLink>
 
-                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-1 hover:bg-gray-100 transition-colors">
                   Stylist
                 </NuxtLink>
 
-                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors"> 
+                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-1 hover:bg-gray-100 transition-colors"> 
                   Photo / Video
                 </NuxtLink>
 
-                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-1 hover:bg-gray-100 transition-colors">
                   Media
                 </NuxtLink>
 
-                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors"> 
+                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-1 hover:bg-gray-100 transition-colors"> 
                   Influencer 
                 </NuxtLink>
 
-                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors"> 
+                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-1 hover:bg-gray-100 transition-colors"> 
                   Other
                 </NuxtLink>
 
-                <NuxtLink to="/station" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
+                <NuxtLink to="/station" target="_blank" class="block px-4 py-1 hover:bg-gray-100 transition-colors">
                   Partners
                 </NuxtLink>
               </div>
@@ -198,6 +202,7 @@
 
 <script setup>
 import { ref, watch, onUnmounted, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 import LogoBlack from '@/components/icons/LogoBlack.vue';
 import InstagramIcon from '@/components/icons/InstagramIcon.vue';
 import YoutubeIcon from '@/components/icons/YoutubeIcon';
@@ -208,18 +213,26 @@ import Marquee from '@/components/MarqueeSection.vue';
 import { marqueeText1 } from '~/constants/texts';
 import { hashtag, instagram, youtube, designerRegistration, visitorsRegistration, modelRegistration } from '~/constants/texts';
 
+const router = useRouter();
 const isMenuOpen = ref(false);
 const isLinksMenuOpen = ref(false);
 const isParticipateOpen = ref(false);
 const navLinks = [
   { name: 'CALENDAR', href: '#program', id: 'program' },
+  { name: 'FEATURES', href: '/features', id: 'features' },
   { name: 'DESIGNERS', href: '#designers', id: 'designer' },
   { name: 'FACES', href: '#faces', id: 'faces' },
   { name: 'HOW IT WAS', href: '#how-it-was', id: 'how-it-was' },
-  { name: 'CONTACTS', href: '#contacts', id: 'contacts' }
 ];
 
 const scrollToSection = (href) => {
+  // Если ссылка начинается с "/", это ссылка на другую страницу
+  if (href.startsWith('/')) {
+    router.push(href);
+    return;
+  }
+  
+  // Иначе это якорь на текущей странице
   const element = document.querySelector(href);
   if (element) {
     element.scrollIntoView({ 
@@ -252,7 +265,15 @@ onUnmounted(() => {
 
 // Обработчик клика по пункту меню
 const handleMobileNavClick = (href) => {
-  isLinksMenuOpen.value = false; // Это автоматически включит скролл обратно
+  isMenuOpen.value = false; // Закрываем мобильное меню
+  
+  // Если ссылка начинается с "/", это ссылка на другую страницу
+  if (href.startsWith('/')) {
+    router.push(href);
+    return;
+  }
+  
+  // Иначе это якорь на текущей странице
   scrollToSection(href);
 };
 
@@ -291,6 +312,23 @@ onUnmounted(() => {
   document.removeEventListener('click', closeOnClickOutside);
   window.removeEventListener('scroll', closeOnScroll);
 });
+
+// Обработчик клика по хэштегу
+const handleHashtagClick = () => {
+  // Проверяем наличие слайдера на странице
+  const sliderElement = document.querySelector('.image-carousel-container');
+  
+  if (sliderElement) {
+    // Если слайдер найден, прокручиваем к нему
+    sliderElement.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  } else {
+    // Если слайдера нет, переходим по внешней ссылке
+    window.open(hashtag[1], '_blank');
+  }
+};
 </script>
 
 <style>

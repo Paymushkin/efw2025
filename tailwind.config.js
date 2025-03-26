@@ -40,6 +40,7 @@ module.exports = {
         black: '#000000',
         white: '#FFFFFF',
         'black-20': 'rgba(0, 0, 0, 0.2)',
+        'black-70': 'rgba(0, 0, 0, 0.7)',
       },
     },
     container: {
