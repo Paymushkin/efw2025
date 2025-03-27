@@ -1,5 +1,5 @@
 // Изображения для первого блока
-import image1 from '~/assets/image/features/1-1.png';
+import image1 from '~/assets/image/features/1-1.jpeg';
 import image2 from '~/assets/image/features/1-2.png';
 import image3 from '~/assets/image/features/1-3.png';
 import image4 from '~/assets/image/features/1-4.png';

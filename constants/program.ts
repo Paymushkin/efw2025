@@ -61,16 +61,16 @@ export const PROGRAM_TABS = [
     events: [
       {
         type: 'event',
-        time: '1st Week of April',
-        description: 'Press Conference',
+        time: '4 April',
+        description: 'Press Conference “Introduction of EFW”',
         details: 'Evening Pre-Launch Press Conference Event with The IntroduceMe Talk Show for Media and Influencers',
       },
       PRELAUNCH_SPONSOR,
       {
         type: 'event',
-        time: '2nd Week of April',
-        description: 'Pre-Launch Event',
-        details: 'Evening Pre-Launch event with The IntroduceMe Talk Show for Media, Influencers, Sponsors, Designers and Faces of EFW',
+        time: '11 April',
+        description: 'Portfolio Party (Porto-party) as an “IntroduceMe EFW” talk show',
+        details: 'A portfolio party will be held as an “IntroduceMe talk, EFW” talk show, where each guest is introduced live on stage by the host using a large screen. Designers, stylists, models, and other creatives present their work, connect via a matchmaking service, and get real-time exposure. With music, drinks, and media, it’s a vibrant networking space to showcase portfolios, gain feedback, and spark collaborations during fashion week.',
       },
     ],
   },
@@ -116,51 +116,115 @@ export const PROGRAM_TABS = [
   { title: 'Fashion Show', date: '13 & 14 April 2025', events: [
     {
       type: 'event',
-      time: '14/04/2025',
-      description: 'Alisia Fiori',
+      time: '13-14 April',
+      description: 'Top Tato /Saudi Arabia/',
     },
     {
       type: 'event',
-      time: '14/04/2025',
-      description: 'Alexandra Fashion House',
+      time: '13-14 April',
+      description: 'G’Nfaythi /Philippines/',
     },
     {
       type: 'event',
-      time: '14/04/2025',
-      description: 'Orchidea Nera by Lamoo',
+      time: '13-14 April',
+      description: 'Alisia Fiori /Russia/',
     },
     {
       type: 'event',
-      time: '14/04/2025',
-      description: 'Marina Undrits',
+      time: '13-14 April',
+      description: 'Said Omari /Paris – UAE/',
     },
     FASHION_SHOW_SPONSOR,
     {
       type: 'event',
-      time: '14/04/2025',
-      description: 'Kibovskaya',
+      time: '13-14 April',
+      description: 'Sundus Collection /Oman/',
     },
     {
       type: 'event',
-      time: '14/04/2025',
-      description: 'Boulas',
+      time: '13-14 April',
+      description: 'Alexandra Fashion House /Russia/',
     },
     {
       type: 'event',
-      time: '14/04/2025',
-      description: 'Marina Vilisova',
+      time: '13-14 April',
+      description: 'Icona Stile /Armenia/',
     },
     {
       type: 'event',
-      time: '14/04/2025',
-      description: "Aisa",
+      time: '13-14 April',
+      description: "Ludmila Kannunik /Russia/",
     },
     {
       type: 'event',
-      time: '14/04/2025',
-      description: "G'NFAYTH",
+      time: '13-14 April',
+      description: "Orchidea Nera by Lamoo /Saudi Arabia/",
     },
-    
+    {
+      type: 'event',
+      time: '13-14 April',
+      description: "Lilia /Algeria/",
+    },
+    {
+      type: 'event',
+      time: '13-14 April',
+      description: "Kibovskaya /Russia/",
+    },
+    {
+      type: 'event',
+      time: '13-14 April',
+      description: "Zain /Iraq/",
+    },
+    {
+      type: 'event',
+      time: '13-14 April',
+      description: "Marina Vilisova /Russia/",
+    },
+    {
+      type: 'event',
+      time: '13-14 April',
+      description: "Marina Undrits /Russia/",
+    },
+    {
+      type: 'event',
+      time: '13-14 April',
+      description: "By Osmanova /Azerbaijan/",
+    },
+    {
+      type: 'event',
+      time: '13-14 April',
+      description: "Etho Fresh /Russia/",
+    },
+    {
+      type: 'event',
+      time: '13-14 April',
+      description: "Zaggaro /Germany/",
+    },
+    {
+      type: 'event',
+      time: '13-14 April',
+      description: "Sylweriusz Stanislawski",
+    },
+    {
+      type: 'event',
+      time: '13-14 April',
+      description: "Malikabegim /Uzbekistan/",
+    },
+    {
+      type: 'event',
+      time: '13-14 April',
+      description: "Femini /Russia/",
+    },
+    {
+      type: 'event',
+      time: '13-14 April',
+      description: "Chinara /Kazakhstan/",
+    },
+    {
+      type: 'event',
+      time: '13-14 April',
+      description: "Boulas /Russia/",
+    },
     
   ] },
   { title: 'Beauty Expo', date: '15 April 2025', events: [
@@ -174,7 +238,7 @@ export const PROGRAM_TABS = [
   { title: 'Beauty Awards', date: '15 April 2025 Night Gala', events: [
     {
       type: 'event',
-      time: '10:00 – 20:00',
+      time: '15 April 18:00',
       description: 'Beauty Awards',
       details: `
         • International Deluxe Beauty Awards (IDBA) - competition where beauty service providers 
@@ -189,6 +253,18 @@ export const PROGRAM_TABS = [
       `,
       buttonText: 'Presentation >',
       buttonLink: 'https://deluxebeauty.world/'
+    },
+    {
+      type: 'event',
+      time: '15 April 21:00',
+      description: 'After party. Portfolio party as an IntroduceMe EFW talk show',
+      details: `
+        The portfolio party at EFW will take the form of an IntroduceMe Talk Show, 
+        where each guest is spotlighted live on stage by the host with the support of a large screen. 
+        Designers, stylists, models, and other fashion creatives will present their portfolios, 
+        connect through a dedicated matchmaking service, and gain instant visibility. 
+        It’s a dynamic space to exchange ideas, receive feedback, and ignite new collaborations
+      `,
     },
     // { ...EVENT_TYPES.bigSponsorStation },
   ] },
