@@ -1,6 +1,6 @@
 <template>
   <section 
-    class="mb-12 flex flex-col" 
+    class="md:mb-[100px] mb-12 flex flex-col" 
     v-if="data"
   >
     <!-- Заголовок с настраиваемым цветом фона -->

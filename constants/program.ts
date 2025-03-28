@@ -11,16 +11,16 @@ const PRELAUNCH_SPONSOR = {
   `Emirates Fashion Week will unveil its Showcase Station at the pre-launch press conferences.
   Here, 80 beauty companies will present their latest services before and after the runway shows, as well as during the entire Beauty Showroom Day—an exclusive third-day event catering to an affluent audience passionate about fashion and beauty.`,
   buttonText: 'Learn More >',
-  buttonLink: '/station'
+  buttonLink: '/offer'
 };
 
 const FASHION_SHOW_SPONSOR = {
   type: 'sponsorStation',
   videoUrl: 'https://storage.yandexcloud.net/videos-meyou/efw2025/fd.mp4',
   title: 'The Dedicated designer popup corner',
-  description: `Secure your Designer’s Popup to showcase your collection in an exclusive, premium environment—connecting directly with buyers, media, and trendsetters. Meanwhile, discover the excitement of the Catwalk Show, where live runway presentations unveil new collections and styles. Whether you’re presenting or exploring, our event offers a unique platform for visibility, collaboration, and inspiration.`,
+  description: `Secure your Designer's Popup to showcase your collection in an exclusive, premium environment—connecting directly with buyers, media, and trendsetters. Meanwhile, discover the excitement of the Catwalk Show, where live runway presentations unveil new collections and styles. Whether you're presenting or exploring, our event offers a unique platform for visibility, collaboration, and inspiration.`,
   buttonText: 'Reserve Station >',
-  buttonLink: '/station'
+  buttonLink: '/offer'
 };
 
 const BEAUTY_EXPO_SPONSOR = {
@@ -29,18 +29,20 @@ const BEAUTY_EXPO_SPONSOR = {
   title: 'Explore 80 Stations with Beauty Service Providers',
   description: `Showcase your offerings, connect with potential clients, and discover new collaboration opportunities in a dynamic expo setting featuring 80 dedicated stations. Present your services, meet key representatives, and grow your business through impactful networking and real-time engagement.`,
   buttonText: 'Reserve Station >',
-  buttonLink: '/station'
+  buttonLink: '/offer'
+};
+
+const BEAUTY_AWARDS_SPONSOR = {
+  type: 'sponsorStation',
+  videoUrl: 'https://storage.yandexcloud.net/videos-meyou/efw2025/Professional_Mode_the_camera_dolly_zoom_out%20(online-video-cutter.com).mp4',
+  title: `The award ceremony will take place at the luxurious<br> and fashionable venue of Dubai on 15.04.2025.`,
+  description: ``,
+  buttonText: '',
+  buttonLink: ''
 };
 
 export const EVENT_TYPES = {
-  sponsorStation: {
-    type: 'sponsorStation',
-    videoUrl: 'https://storage.yandexcloud.net/videos-meyou/efw2025/promo.mp4',
-    title: 'Stations for sponsors',
-    description: 'AI-powered business stations designed for seamless networking, lead generation, and interactive presentations. Engage with prospects through dynamic screens and real-time media integration, ensuring impactful connections at every moment.',
-    buttonText: 'More information >',
-    buttonLink: '/station'
-  },
+
   bigSponsorStation: {
     type: 'bigSponsorStation',
     title: 'Stations for sponsors',
@@ -62,15 +64,15 @@ export const PROGRAM_TABS = [
       {
         type: 'event',
         time: '4 April',
-        description: 'Press Conference “Introduction of EFW”',
+        description: 'Press Conference "Introduction of EFW"',
         details: 'Evening Pre-Launch Press Conference Event with The IntroduceMe Talk Show for Media and Influencers',
       },
       PRELAUNCH_SPONSOR,
       {
         type: 'event',
         time: '11 April',
-        description: 'Portfolio Party (Porto-party) as an “IntroduceMe EFW” talk show',
-        details: 'A portfolio party will be held as an “IntroduceMe talk, EFW” talk show, where each guest is introduced live on stage by the host using a large screen. Designers, stylists, models, and other creatives present their work, connect via a matchmaking service, and get real-time exposure. With music, drinks, and media, it’s a vibrant networking space to showcase portfolios, gain feedback, and spark collaborations during fashion week.',
+        description: 'Portfolio Party (Porto-party) as an "IntroduceMe EFW" talk show',
+        details: `A portfolio party will be held as an "IntroduceMe talk, EFW" talk show, where each guest is introduced live on stage by the host using a large screen. Designers, stylists, models, and other creatives present their work, connect via a matchmaking service, and get real-time exposure. With music, drinks, and media, it's a vibrant networking space to showcase portfolios, gain feedback, and spark collaborations during fashion week.`,
       },
     ],
   },
@@ -122,7 +124,7 @@ export const PROGRAM_TABS = [
     {
       type: 'event',
       time: '13-14 April',
-      description: 'G’Nfaythi /Philippines/',
+      description: "G'Nfaythi /Philippines/",
     },
     {
       type: 'event',
@@ -153,79 +155,78 @@ export const PROGRAM_TABS = [
     {
       type: 'event',
       time: '13-14 April',
-      description: "Ludmila Kannunik /Russia/",
+      description: 'Ludmila Kannunik /Russia/',
     },
     {
       type: 'event',
       time: '13-14 April',
-      description: "Orchidea Nera by Lamoo /Saudi Arabia/",
+      description: 'Orchidea Nera by Lamoo /Saudi Arabia/',
     },
     {
       type: 'event',
       time: '13-14 April',
-      description: "Lilia /Algeria/",
+      description: 'Lilia /Algeria/',
     },
     {
       type: 'event',
       time: '13-14 April',
-      description: "Kibovskaya /Russia/",
+      description: 'Kibovskaya /Russia/',
     },
     {
       type: 'event',
       time: '13-14 April',
-      description: "Zain /Iraq/",
+      description: 'Zain /Iraq/',
     },
     {
       type: 'event',
       time: '13-14 April',
-      description: "Marina Vilisova /Russia/",
+      description: 'Marina Vilisova /Russia/',
     },
     {
       type: 'event',
       time: '13-14 April',
-      description: "Marina Undrits /Russia/",
+      description: 'Marina Undrits /Russia/',
     },
     {
       type: 'event',
       time: '13-14 April',
-      description: "By Osmanova /Azerbaijan/",
+      description: 'By Osmanova /Azerbaijan/',
     },
     {
       type: 'event',
       time: '13-14 April',
-      description: "Etho Fresh /Russia/",
+      description: 'Etho Fresh /Russia/',
     },
     {
       type: 'event',
       time: '13-14 April',
-      description: "Zaggaro /Germany/",
+      description: 'Zaggaro /Germany/',
     },
     {
       type: 'event',
       time: '13-14 April',
-      description: "Sylweriusz Stanislawski",
+      description: 'Sylweriusz Stanislawski',
     },
     {
       type: 'event',
       time: '13-14 April',
-      description: "Malikabegim /Uzbekistan/",
+      description: 'Malikabegim /Uzbekistan/',
     },
     {
       type: 'event',
       time: '13-14 April',
-      description: "Femini /Russia/",
+      description: 'Femini /Russia/',
     },
     {
       type: 'event',
       time: '13-14 April',
-      description: "Chinara /Kazakhstan/",
+      description: 'Chinara /Kazakhstan/',
     },
     {
       type: 'event',
       time: '13-14 April',
-      description: "Boulas /Russia/",
+      description: 'Boulas /Russia/',
     },
-    
   ] },
   { title: 'Beauty Expo', date: '15 April 2025', events: [
     {
@@ -236,6 +237,7 @@ export const PROGRAM_TABS = [
     BEAUTY_EXPO_SPONSOR,
   ] },
   { title: 'Beauty Awards', date: '15 April 2025 Night Gala', events: [
+    BEAUTY_AWARDS_SPONSOR,
     {
       type: 'event',
       time: '15 April 18:00',
@@ -248,8 +250,6 @@ export const PROGRAM_TABS = [
         • Only the best of the best will be invited to the award ceremony to receive 
           their prizes from influential figures in show business and the beauty industry.<br>
         • The event is held in partnership with Emirates Fashion Week.<br><br>
-
-        The award ceremony will take place at the luxurious and fashionable venue of Dubai on 15.04.2025.
       `,
       buttonText: 'Presentation >',
       buttonLink: 'https://deluxebeauty.world/'
@@ -263,13 +263,12 @@ export const PROGRAM_TABS = [
         where each guest is spotlighted live on stage by the host with the support of a large screen. 
         Designers, stylists, models, and other fashion creatives will present their portfolios, 
         connect through a dedicated matchmaking service, and gain instant visibility. 
-        It’s a dynamic space to exchange ideas, receive feedback, and ignite new collaborations
+        It's a dynamic space to exchange ideas, receive feedback, and ignite new collaborations.
       `,
     },
-    // { ...EVENT_TYPES.bigSponsorStation },
   ] },
   { title: 'B2B only day', date: '16 April 2025', events: [
-        {
+    {
       type: 'event',
       time: "Program for Fashion Brands' Entry into the UAE Market",
       description: 'Key stages of the program:',
@@ -307,11 +306,11 @@ export const PROGRAM_TABS = [
           • advising on the most suitable residency options<br><br>
 
           Program benefits:<br>
-            Unique opportunities to enter one of the world's most dynamic markets. <br>
+            Unique opportunities to enter one of the world's most dynamic markets.<br>
             Full support at every stage, from planning to execution<br>
             Building valuable business connections and sharing experiences with key industry players<br><br>
 
-            We offer a personalized approach tailored to each brand's specific needs, ensuring maximum efficiency and success in leveraging the uae's market potential for growth and expansion
+            We offer a personalized approach tailored to each brand's specific needs, ensuring maximum efficiency and success in leveraging the uae's market potential for growth and expansion.
       `,
     },
   ] },

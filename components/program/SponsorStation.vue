@@ -7,7 +7,7 @@
         loop
         muted
         playsinline
-        class="w-full rounded-lg video-player"
+        class="w-full aspect-[4/3] object-cover rounded-lg video-player"
       >
         <source 
           :src="videoUrl" 
@@ -17,13 +17,11 @@
       </video>
     </div>
     <div class="grow flex flex-col items-start gap-3 py-4">
-      <h3 class="md:text-2xl text-xl">
-        {{ title }}
-      </h3>
-      <p class="2xl:text-base text-sm whitespace-pre-line">
+      <h3 class="md:text-2xl text-xl" v-html="title"></h3>
+      <p v-if="description" class="2xl:text-base text-sm whitespace-pre-line">
         {{ description }}
       </p>
-      <NuxtLink :to="buttonLink" class="hover:opacity-80 transition-opacity duration-300">
+      <NuxtLink v-if="buttonLink" :to="buttonLink" class="hover:opacity-80 transition-opacity duration-300">
         <BaseButton variant="primary">{{ buttonText }}</BaseButton>
       </NuxtLink>
     </div>
@@ -60,13 +58,13 @@ defineProps({
 <style scoped>
 .video-container {
   overflow: hidden;
+  border-radius: 8px;
+  background-color: #000;
 }
 
 .video-player {
   width: 100%;
-  object-fit: contain;
-  background-color: #000;
-  border-radius: 8px;
+  height: 100%;
   display: block;
 }
 

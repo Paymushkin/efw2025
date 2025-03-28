@@ -1,4 +1,5 @@
 import { FEATURES_IMAGES } from './featuresImages';
+import { designerRegistration, visitorsRegistration, modelRegistration } from '~/constants/texts';
 
 // Данные для всех блоков Features
 export const FEATURES_DATA = {
@@ -66,6 +67,7 @@ export const FEATURES_DATA = {
     subtitle: "FOR VISITORS AND BUYERS",
     subtitleBgColor: "#6D8987",
     buttonText: "Visit",
+    buttonLink: visitorsRegistration,
     days: [
       {
         title: "Pre-Launch",
@@ -102,8 +104,8 @@ export const FEATURES_DATA = {
         description: "Watch live runway presentations, explore new collections and discover designers that match your style."
       },
       {
-        type: "image",
-        image: FEATURES_IMAGES.block1.image2,
+        type: "video",
+        video: 'https://storage.yandexcloud.net/videos-meyou/efw2025/paparazzi12-vmake.mp4',
         title: "Share Your Instant Paparazzi Shooting",
         subtitle: "Receive high-quality branded event photos",
         description: "Get professionally shot event photos instantly. Share branded, high-quality pictures across social media."
@@ -131,7 +133,8 @@ export const FEATURES_DATA = {
     title: "Features access",
     subtitle: "FOR STYLISTS, MODELS, PHOTO & OTHER PROFESSIONALS",
     subtitleBgColor: "#A43D6B",
-    buttonText: "Contact form",
+    buttonText: "Participate - professionals",
+    buttonLink: visitorsRegistration,
     days: [
       {
         title: "Pre-Launch",
@@ -191,6 +194,7 @@ export const FEATURES_DATA = {
     subtitle: "FOR DESIGNERS",
     subtitleBgColor: "#7887A3",
     buttonText: "Particirate - designers",
+    buttonLink: visitorsRegistration,
     days: [
       {
         title: "Pre-Launch",
@@ -269,8 +273,8 @@ export const FEATURES_DATA = {
         description: "Gain instant recognition as your photos and interviews appear on the venue's media wall, ensuring visibility among key attendees and media representatives."
       },
       {
-        type: "image",
-        image: FEATURES_IMAGES.block3.image15,
+        type: "video",
+        video: 'https://storage.yandexcloud.net/videos-meyou/efw2025/Professional_Mode_the_camera_dolly_zoom_out%20(online-video-cutter.com).mp4',
         title: "Inquire Nominee",
         subtitle: "Apply for awards and industry recognition",
         description: "Submit your application for exclusive designer awards, gaining credibility and a chance to be recognized among top industry professionals."
@@ -291,7 +295,8 @@ export const FEATURES_DATA = {
     title: "Features access",
     subtitle: "FOR INFLUENCERS",
     subtitleBgColor: "#C1A576",
-    buttonText: "Contact form",
+    buttonText: "Participate - influencers",
+    buttonLink: visitorsRegistration,
     days: [
       {
         title: "Pre-Launch",
@@ -378,7 +383,8 @@ export const FEATURES_DATA = {
     title: "Features access",
     subtitle: "FOR MEDIA",
     subtitleBgColor: "#945647",
-    buttonText: "Particirate - googledocs",
+    buttonText: "Participate - Media",
+    buttonLink: visitorsRegistration,
     days: [
       {
         title: "Pre-Launch",
@@ -444,7 +450,8 @@ export const FEATURES_DATA = {
     title: "Features access",
     subtitle: "FOR SMALL & MEDIUM BUSINESSES",
     subtitleBgColor: "#55725C",
-    buttonText: "Particirate - googledocs",
+    buttonText: "Participate - Business",
+    buttonLink: visitorsRegistration,
     days: [
       {
         title: "Pre-Launch",
@@ -525,6 +532,7 @@ export const FEATURES_DATA = {
     subtitle: "FOR CORPORATIONS & BRAND AWARENESS",
     subtitleBgColor: "#9478A1",
     buttonText: "Show Sponsors & Partner Options",
+    buttonLink: "/station",
     days: [
       {
         title: "Pre-Launch",

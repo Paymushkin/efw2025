@@ -44,7 +44,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 md:gap-4 gap-7 mb-8 items-center">
         <div>
-          <ul class="text-sm md:text-base">
+          <ul class="text-sm space-y-2">
             <li>• One of 100 Showcase stations at the Beauty Arena day</li>
             <li>• 50’’ Display for presentations</li>
             <li>• Table and 2 bar chairs </li>
@@ -56,7 +56,7 @@
         </div>
   <div>
           <h3 class="md:text-2xl md:mb-5 mb-2">Good for:</h3>
-          <ul class="text-sm md:text-base">
+          <ul class="text-sm space-y-2">
             <li>• Medical & Aesthetic Clinics – General clinics, plastic surgery, dentistry.   </li>
             <li>• Health & Wellness – Nutritionists, dietitians, medical & wellness tourism.</li>
             <li>• Beauty & Cosmetics – Cosmetic brands, makeup artists, brow & lash services, nail care.</li>
@@ -69,7 +69,7 @@
         </div>
         <div class="flex flex-col md:gap-4 gap-2">
           <h3 class="md:text-2xl">Prices</h3>
-          <ul class="text-black-20 text-sm md:text-base">
+          <ul class="text-sm">
             <li>• 3300 aed / $900 / 1 day</li>
             <li>• 5000 aed / $1360 /2 days</li>
             <li>• 7000 aed / $1900 /3 days</li>
@@ -115,7 +115,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 items-center">
         <div>
-          <ul class="text-sm md:text-base">
+          <ul class="text-sm space-y-2">
             <li>• 1.5 m RAIL for collection</li>
             <li>• SHOWCASE STATION:  (50’’ Display station + 2 bar chairs & table</li>
             <li>• + 50 Lead chats per day   </li>
@@ -126,14 +126,14 @@
         </div>
         <div>
           <h3 class="md:text-2xl md:mb-5 mb-2">Good for:</h3>
-          <ul class="text-sm md:text-base">
+          <ul class="text-sm space-y-2">
             <li>• Designers </li>
             <li>• Accessories Brands</li>
           </ul>
         </div>
         <div class="flex flex-col md:gap-4 gap-2">
           <h3 class="md:text-2xl">Prices</h3>
-          <ul class="text-black-20 text-sm md:text-base">
+          <ul class="text-sm">
             <li>• 11,000 aed / $3000 / 3 days</li>
           </ul>
           <!-- <NuxtLink target="_blank" 
@@ -180,7 +180,7 @@
             </div>
           </div>
         </div>
-        <ul class="mt-4 space-y-2 text-sm md:text-base">
+        <ul class="mt-4 space-y-2 text-sm">
           <li>• Open from 16:00</li>
           <li>• Runway shows from 18:00 to 21:00</li>
           <li>• 24 designer corners are available throughout the show hall</li>
@@ -205,7 +205,7 @@
             </div>
           </div>
         </div>
-        <ul class="mt-4 text-sm md:text-base">
+        <ul class="mt-4 text-sm">
           <li>• Open from 16:00</li>
           <li>• Runway shows from 18:00 to 21:00</li>
           <li>• 24 designer corners are available throughout the show hall</li>
@@ -222,15 +222,25 @@
         </p>
         <div class="relative -mx-4 md:mx-0">
           <div class="flex md:grid md:grid-cols-2 gap-6 overflow-x-auto pb-4 md:pb-0 px-4 md:px-0 snap-x snap-mandatory">
-            <div class="aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
-              <img :src="Image7" alt="Third day setup" class="w-full h-full object-contain">
+            <div class="relative aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
+              <video 
+                class="w-full h-full object-cover"
+                controls
+                muted
+                autoplay
+                loop
+                playsinline
+              >
+                <source src="https://storage.yandexcloud.net/videos-meyou/efw2025/beauty%20day%20zoom%20out-wm.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
             </div>
             <div class="aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
               <img :src="Image8" alt="Third day plan" class="w-full h-full object-contain">
             </div>
           </div>
         </div>
-        <ul class="mt-4 text-sm md:text-base">
+        <ul class="mt-4 text-sm">
           <li>• Open from 12:00</li>
           <li>• Close 18:00</li>
           <li>• 24 corners and 64 stations present Dubai's newest beauty services and designers</li>
