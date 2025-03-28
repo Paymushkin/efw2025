@@ -1,78 +1,24 @@
 const client_manifest = {
-  "_8dmWSmqm.js": {
+  "_-vMBUrbf.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "8dmWSmqm.js",
-    "name": "MarqueeSection",
-    "imports": [
-      "node_modules/nuxt/dist/app/entry.js"
-    ],
-    "css": [
-      "MarqueeSection.BxvAVIfT.css"
-    ]
-  },
-  "MarqueeSection.BxvAVIfT.css": {
-    "file": "MarqueeSection.BxvAVIfT.css",
-    "resourceType": "style",
-    "prefetch": true,
-    "preload": true
-  },
-  "_B48SCoAS.js": {
-    "resourceType": "script",
-    "module": true,
-    "prefetch": true,
-    "preload": true,
-    "file": "B48SCoAS.js",
-    "name": "nuxt-link",
-    "imports": [
-      "node_modules/nuxt/dist/app/entry.js"
-    ]
-  },
-  "_BvU37I1W.js": {
-    "resourceType": "script",
-    "module": true,
-    "prefetch": true,
-    "preload": true,
-    "file": "BvU37I1W.js",
-    "name": "ContactForm",
-    "imports": [
-      "node_modules/nuxt/dist/app/entry.js"
-    ]
-  },
-  "_CD3kHzMC.js": {
-    "resourceType": "script",
-    "module": true,
-    "prefetch": true,
-    "preload": true,
-    "file": "CD3kHzMC.js",
-    "name": "vue.-sixQ7xP",
-    "imports": [
-      "node_modules/nuxt/dist/app/entry.js"
-    ]
-  },
-  "_CSE6auY0.js": {
-    "resourceType": "script",
-    "module": true,
-    "prefetch": true,
-    "preload": true,
-    "file": "CSE6auY0.js",
+    "file": "-vMBUrbf.js",
     "name": "featuresData",
     "imports": [
-      "_B48SCoAS.js",
-      "_hnFow2Np.js",
-      "_BvU37I1W.js",
+      "_C7Jz4LMS.js",
+      "_DZsQyL2D.js",
+      "_mornCf7G.js",
       "node_modules/nuxt/dist/app/entry.js"
     ],
     "css": [
       "featuresData.COk1nwOz.css"
     ],
     "assets": [
-      "1-1.SNWxA6tE.png",
-      "1-2.nYp9B7jy.png",
-      "1-3.DX5HEYV7.png",
-      "1-4.DC7aHqWs.png",
+      "1-1.DW3e0wAI.jpeg",
+      "1-2.1h271bg8.png",
+      "1-4.UGGJIbAF.png",
       "2-1.Ds0KEg5P.png",
       "2-2.DpdyCXMq.png",
       "2-3.B---slMd.png",
@@ -81,11 +27,9 @@ const client_manifest = {
       "3-3.pLy8ctA2.png",
       "3-4.B4jrnLSu.png",
       "3-5.BHRT3oXR.png",
-      "3-6.DNcmxQsA.png",
-      "3-7.WJmFGa0o.png",
       "3-8.8vqJtUj3.png",
       "3-9.xIMk57Jy.png",
-      "4-1.hnMQ4Xov.png",
+      "4-1.D6rtJcdI.png",
       "4-2.DrhhAUV_.png",
       "4-3.644eQ_iy.png",
       "4-4.DSDddDhc.png",
@@ -96,11 +40,10 @@ const client_manifest = {
       "6-1.DacXpWSA.png",
       "6-2.Cw1pDUvH.png",
       "6-3.BJVAbUf_.png",
-      "7-1.B0QYfK5p.png",
+      "7-1.BKOTR_3R.png",
       "7-2.B0iWmYDy.png",
       "7-3.DhpRzhVf.png",
-      "7-4.Cc1dHihI.png",
-      "7-6.Di4RPt2j.png"
+      "7-4.Cc1dHihI.png"
     ]
   },
   "featuresData.COk1nwOz.css": {
@@ -109,26 +52,20 @@ const client_manifest = {
     "prefetch": true,
     "preload": true
   },
-  "1-1.SNWxA6tE.png": {
-    "file": "1-1.SNWxA6tE.png",
+  "1-1.DW3e0wAI.jpeg": {
+    "file": "1-1.DW3e0wAI.jpeg",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/jpeg"
+  },
+  "1-2.1h271bg8.png": {
+    "file": "1-2.1h271bg8.png",
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png"
   },
-  "1-2.nYp9B7jy.png": {
-    "file": "1-2.nYp9B7jy.png",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/png"
-  },
-  "1-3.DX5HEYV7.png": {
-    "file": "1-3.DX5HEYV7.png",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/png"
-  },
-  "1-4.DC7aHqWs.png": {
-    "file": "1-4.DC7aHqWs.png",
+  "1-4.UGGJIbAF.png": {
+    "file": "1-4.UGGJIbAF.png",
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png"
@@ -181,18 +118,6 @@ const client_manifest = {
     "prefetch": true,
     "mimeType": "image/png"
   },
-  "3-6.DNcmxQsA.png": {
-    "file": "3-6.DNcmxQsA.png",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/png"
-  },
-  "3-7.WJmFGa0o.png": {
-    "file": "3-7.WJmFGa0o.png",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/png"
-  },
   "3-8.8vqJtUj3.png": {
     "file": "3-8.8vqJtUj3.png",
     "resourceType": "image",
@@ -205,8 +130,8 @@ const client_manifest = {
     "prefetch": true,
     "mimeType": "image/png"
   },
-  "4-1.hnMQ4Xov.png": {
-    "file": "4-1.hnMQ4Xov.png",
+  "4-1.D6rtJcdI.png": {
+    "file": "4-1.D6rtJcdI.png",
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png"
@@ -271,8 +196,8 @@ const client_manifest = {
     "prefetch": true,
     "mimeType": "image/png"
   },
-  "7-1.B0QYfK5p.png": {
-    "file": "7-1.B0QYfK5p.png",
+  "7-1.BKOTR_3R.png": {
+    "file": "7-1.BKOTR_3R.png",
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png"
@@ -295,22 +220,88 @@ const client_manifest = {
     "prefetch": true,
     "mimeType": "image/png"
   },
-  "7-6.Di4RPt2j.png": {
-    "file": "7-6.Di4RPt2j.png",
-    "resourceType": "image",
-    "prefetch": true,
-    "mimeType": "image/png"
-  },
-  "_D1q8aAn5.js": {
+  "_9fsi0UwP.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "D1q8aAn5.js",
+    "file": "9fsi0UwP.js",
+    "name": "AppSeo",
+    "imports": [
+      "_BS8Henzn.js",
+      "node_modules/nuxt/dist/app/entry.js"
+    ]
+  },
+  "_BS8Henzn.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "BS8Henzn.js",
+    "name": "vue.-sixQ7xP",
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.js"
+    ]
+  },
+  "_C7Jz4LMS.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "C7Jz4LMS.js",
+    "name": "nuxt-link",
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.js"
+    ]
+  },
+  "_CJawBnmc.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "CJawBnmc.js",
+    "name": "MarqueeSection",
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.js"
+    ],
+    "css": [
+      "MarqueeSection.BxvAVIfT.css"
+    ]
+  },
+  "MarqueeSection.BxvAVIfT.css": {
+    "file": "MarqueeSection.BxvAVIfT.css",
+    "resourceType": "style",
+    "prefetch": true,
+    "preload": true
+  },
+  "_DZsQyL2D.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "DZsQyL2D.js",
+    "name": "BaseButton",
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.js"
+    ]
+  },
+  "_MarqueeSection.BxvAVIfT.css": {
+    "resourceType": "style",
+    "prefetch": true,
+    "preload": true,
+    "file": "MarqueeSection.BxvAVIfT.css",
+    "src": "_MarqueeSection.BxvAVIfT.css"
+  },
+  "_e4EcRQF5.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "e4EcRQF5.js",
     "name": "sponsor-logo",
     "imports": [
-      "_B48SCoAS.js",
-      "_hnFow2Np.js",
+      "_C7Jz4LMS.js",
+      "_DZsQyL2D.js",
       "node_modules/nuxt/dist/app/entry.js"
     ],
     "assets": [
@@ -344,13 +335,6 @@ const client_manifest = {
     "prefetch": true,
     "mimeType": "image/png"
   },
-  "_MarqueeSection.BxvAVIfT.css": {
-    "resourceType": "style",
-    "prefetch": true,
-    "preload": true,
-    "file": "MarqueeSection.BxvAVIfT.css",
-    "src": "_MarqueeSection.BxvAVIfT.css"
-  },
   "_featuresData.COk1nwOz.css": {
     "resourceType": "style",
     "prefetch": true,
@@ -358,13 +342,13 @@ const client_manifest = {
     "file": "featuresData.COk1nwOz.css",
     "src": "_featuresData.COk1nwOz.css"
   },
-  "_hnFow2Np.js": {
+  "_mornCf7G.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "hnFow2Np.js",
-    "name": "BaseButton",
+    "file": "mornCf7G.js",
+    "name": "ContactForm",
     "imports": [
       "node_modules/nuxt/dist/app/entry.js"
     ]
@@ -380,7 +364,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "ZRCHYDRA.js",
+    "file": "jtlMHG-T.js",
     "name": "item-13",
     "src": "assets/image/cards/item-13.png",
     "isDynamicEntry": true,
@@ -402,7 +386,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "DnE23gP_.js",
+    "file": "Bls4uISu.js",
     "name": "item-14",
     "src": "assets/image/cards/item-14.png",
     "isDynamicEntry": true,
@@ -424,7 +408,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "jZZgDDpM.js",
+    "file": "D5QDELwG.js",
     "name": "item-15",
     "src": "assets/image/cards/item-15.png",
     "isDynamicEntry": true,
@@ -446,7 +430,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "Cv7ZQcub.js",
+    "file": "BJE03DAc.js",
     "name": "item-16",
     "src": "assets/image/cards/item-16.png",
     "isDynamicEntry": true,
@@ -468,7 +452,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "DusWg6tz.js",
+    "file": "4pzuCRUi.js",
     "name": "item-17",
     "src": "assets/image/cards/item-17.png",
     "isDynamicEntry": true,
@@ -490,7 +474,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "f23IKUuO.js",
+    "file": "BtrrHRiw.js",
     "name": "item-18",
     "src": "assets/image/cards/item-18.png",
     "isDynamicEntry": true,
@@ -512,7 +496,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "PdK2rlum.js",
+    "file": "CYOE1ueV.js",
     "name": "item-19",
     "src": "assets/image/cards/item-19.png",
     "isDynamicEntry": true,
@@ -534,7 +518,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "oucfHVav.js",
+    "file": "Drvd99UH.js",
     "name": "item-20",
     "src": "assets/image/cards/item-20.png",
     "isDynamicEntry": true,
@@ -556,7 +540,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "-Ei3fqVk.js",
+    "file": "DnrLyKQO.js",
     "name": "item-21",
     "src": "assets/image/cards/item-21.png",
     "isDynamicEntry": true,
@@ -578,7 +562,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "D30SiNCC.js",
+    "file": "BZkjRqpJ.js",
     "name": "item-22",
     "src": "assets/image/cards/item-22.png",
     "isDynamicEntry": true,
@@ -600,7 +584,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "DiVA86tq.js",
+    "file": "D2rm_37-.js",
     "name": "item-23",
     "src": "assets/image/cards/item-23.png",
     "isDynamicEntry": true,
@@ -617,131 +601,376 @@ const client_manifest = {
     "prefetch": true,
     "mimeType": "image/png"
   },
-  "assets/image/designers/1.jpg": {
+  "assets/image/designers/1.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "1.BvMEQkr6.jpg",
-    "src": "assets/image/designers/1.jpg"
+    "mimeType": "image/png",
+    "file": "1.DDdbNsIp.png",
+    "src": "assets/image/designers/1.png"
   },
-  "assets/image/designers/10.jpeg": {
+  "assets/image/designers/10.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "10.3UwBalmc.jpeg",
-    "src": "assets/image/designers/10.jpeg"
+    "mimeType": "image/png",
+    "file": "10.DeXJZBXS.png",
+    "src": "assets/image/designers/10.png"
   },
-  "assets/image/designers/11.jpg": {
+  "assets/image/designers/11.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "11.DAHOny2s.jpg",
-    "src": "assets/image/designers/11.jpg"
+    "mimeType": "image/png",
+    "file": "11.CmHoo2s6.png",
+    "src": "assets/image/designers/11.png"
   },
-  "assets/image/designers/12.jpeg": {
+  "assets/image/designers/12.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "12.kKDKeF65.jpeg",
-    "src": "assets/image/designers/12.jpeg"
+    "mimeType": "image/png",
+    "file": "12.Z5RgVgUk.png",
+    "src": "assets/image/designers/12.png"
   },
-  "assets/image/designers/13.jpg": {
+  "assets/image/designers/13.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "13.BlncvrMv.jpg",
-    "src": "assets/image/designers/13.jpg"
+    "mimeType": "image/png",
+    "file": "13.cH97RUui.png",
+    "src": "assets/image/designers/13.png"
   },
-  "assets/image/designers/14.jpg": {
+  "assets/image/designers/14.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "14.QYxPuh9v.jpg",
-    "src": "assets/image/designers/14.jpg"
+    "mimeType": "image/png",
+    "file": "14.KTilgt0r.png",
+    "src": "assets/image/designers/14.png"
   },
-  "assets/image/designers/15.jpg": {
+  "assets/image/designers/15.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "15.BeMuYX7J.jpg",
-    "src": "assets/image/designers/15.jpg"
+    "mimeType": "image/png",
+    "file": "15.CAZUHOmI.png",
+    "src": "assets/image/designers/15.png"
   },
-  "assets/image/designers/16.jpg": {
+  "assets/image/designers/16.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "16.-t34g1dP.jpg",
-    "src": "assets/image/designers/16.jpg"
+    "mimeType": "image/png",
+    "file": "16.iJ9mnnlH.png",
+    "src": "assets/image/designers/16.png"
   },
-  "assets/image/designers/17.jpeg": {
+  "assets/image/designers/17.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "17.DsrtTLaH.jpeg",
-    "src": "assets/image/designers/17.jpeg"
+    "mimeType": "image/png",
+    "file": "17.DDyPB3tz.png",
+    "src": "assets/image/designers/17.png"
   },
-  "assets/image/designers/18.jpg": {
+  "assets/image/designers/18.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "18.Dgot3fUg.jpg",
-    "src": "assets/image/designers/18.jpg"
+    "mimeType": "image/png",
+    "file": "18.DD9aJY4U.png",
+    "src": "assets/image/designers/18.png"
   },
-  "assets/image/designers/2.jpeg": {
+  "assets/image/designers/19.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "2.CIu65TMf.jpeg",
-    "src": "assets/image/designers/2.jpeg"
+    "mimeType": "image/png",
+    "file": "19.BRMCIPr7.png",
+    "src": "assets/image/designers/19.png"
   },
-  "assets/image/designers/3.jpg": {
+  "assets/image/designers/2.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "3.BToRtsSG.jpg",
-    "src": "assets/image/designers/3.jpg"
+    "mimeType": "image/png",
+    "file": "2.34g8QYJa.png",
+    "src": "assets/image/designers/2.png"
   },
-  "assets/image/designers/4.jpeg": {
+  "assets/image/designers/20.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "4.roOnaDLI.jpeg",
-    "src": "assets/image/designers/4.jpeg"
+    "mimeType": "image/png",
+    "file": "20.Cbt_TycW.png",
+    "src": "assets/image/designers/20.png"
   },
-  "assets/image/designers/5.jpg": {
+  "assets/image/designers/21.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "5.DYetCM6-.jpg",
-    "src": "assets/image/designers/5.jpg"
+    "mimeType": "image/png",
+    "file": "21.B7TTTTwH.png",
+    "src": "assets/image/designers/21.png"
   },
-  "assets/image/designers/6.jpeg": {
+  "assets/image/designers/22.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "6.B0riXEwa.jpeg",
-    "src": "assets/image/designers/6.jpeg"
+    "mimeType": "image/png",
+    "file": "22.UZwZOc0K.png",
+    "src": "assets/image/designers/22.png"
   },
-  "assets/image/designers/7.jpeg": {
+  "assets/image/designers/23.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "7.BwZTBPgc.jpeg",
-    "src": "assets/image/designers/7.jpeg"
+    "mimeType": "image/png",
+    "file": "23.BuaWJst1.png",
+    "src": "assets/image/designers/23.png"
   },
-  "assets/image/designers/8.jpg": {
+  "assets/image/designers/24.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "8.D1JR9Qkq.jpg",
-    "src": "assets/image/designers/8.jpg"
+    "mimeType": "image/png",
+    "file": "24.CM1KEqGb.png",
+    "src": "assets/image/designers/24.png"
   },
-  "assets/image/designers/9.jpg": {
+  "assets/image/designers/25.png": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg",
-    "file": "9.C4ZcFjFp.jpg",
-    "src": "assets/image/designers/9.jpg"
+    "mimeType": "image/png",
+    "file": "25.2AyVt3fE.png",
+    "src": "assets/image/designers/25.png"
+  },
+  "assets/image/designers/26.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "26.Bo550QvH.png",
+    "src": "assets/image/designers/26.png"
+  },
+  "assets/image/designers/27.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "27.bMCHgnqV.png",
+    "src": "assets/image/designers/27.png"
+  },
+  "assets/image/designers/28.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "28.MZBPMEyJ.png",
+    "src": "assets/image/designers/28.png"
+  },
+  "assets/image/designers/29.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "29.CH6ZRqg9.png",
+    "src": "assets/image/designers/29.png"
+  },
+  "assets/image/designers/3.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "3.BWllbGbT.png",
+    "src": "assets/image/designers/3.png"
+  },
+  "assets/image/designers/30.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "30.DidoAwNL.png",
+    "src": "assets/image/designers/30.png"
+  },
+  "assets/image/designers/31.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "31.DoTkBTe3.png",
+    "src": "assets/image/designers/31.png"
+  },
+  "assets/image/designers/32.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "32.B-etCguW.png",
+    "src": "assets/image/designers/32.png"
+  },
+  "assets/image/designers/33.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "33.CzbPpqcH.png",
+    "src": "assets/image/designers/33.png"
+  },
+  "assets/image/designers/34.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "34.CvYWWPub.png",
+    "src": "assets/image/designers/34.png"
+  },
+  "assets/image/designers/35.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "35.D4WdF4Ix.png",
+    "src": "assets/image/designers/35.png"
+  },
+  "assets/image/designers/36.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "36._ISv_7MK.png",
+    "src": "assets/image/designers/36.png"
+  },
+  "assets/image/designers/37.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "37.C4bjeAAw.png",
+    "src": "assets/image/designers/37.png"
+  },
+  "assets/image/designers/38.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "38.B4a6y4dE.png",
+    "src": "assets/image/designers/38.png"
+  },
+  "assets/image/designers/39.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "39.BrO_Uau_.png",
+    "src": "assets/image/designers/39.png"
+  },
+  "assets/image/designers/4.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "4.BtZATezt.png",
+    "src": "assets/image/designers/4.png"
+  },
+  "assets/image/designers/40.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "40.Tu4PeBOu.png",
+    "src": "assets/image/designers/40.png"
+  },
+  "assets/image/designers/41.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "41.BIEtKM4e.png",
+    "src": "assets/image/designers/41.png"
+  },
+  "assets/image/designers/42.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "42.BkPIf6ry.png",
+    "src": "assets/image/designers/42.png"
+  },
+  "assets/image/designers/43.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "43.CJtlJqJ2.png",
+    "src": "assets/image/designers/43.png"
+  },
+  "assets/image/designers/44.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "44.Bvv_tcAR.png",
+    "src": "assets/image/designers/44.png"
+  },
+  "assets/image/designers/45.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "45.CErmJ-yU.png",
+    "src": "assets/image/designers/45.png"
+  },
+  "assets/image/designers/46.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "46.Blt5ptsP.png",
+    "src": "assets/image/designers/46.png"
+  },
+  "assets/image/designers/47.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "47.zmKNC60m.png",
+    "src": "assets/image/designers/47.png"
+  },
+  "assets/image/designers/48.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "48.B8iy4Z2l.png",
+    "src": "assets/image/designers/48.png"
+  },
+  "assets/image/designers/49.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "49.DO-w8jCI.png",
+    "src": "assets/image/designers/49.png"
+  },
+  "assets/image/designers/5.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "5.DoK5FiC0.png",
+    "src": "assets/image/designers/5.png"
+  },
+  "assets/image/designers/50.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "50.DhZncWJI.png",
+    "src": "assets/image/designers/50.png"
+  },
+  "assets/image/designers/51.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "51.B_8FPNEL.png",
+    "src": "assets/image/designers/51.png"
+  },
+  "assets/image/designers/52.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "52.BmhYfepc.png",
+    "src": "assets/image/designers/52.png"
+  },
+  "assets/image/designers/53.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "53.Dc80oDnb.png",
+    "src": "assets/image/designers/53.png"
+  },
+  "assets/image/designers/6.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "6.CZWbvAhX.png",
+    "src": "assets/image/designers/6.png"
+  },
+  "assets/image/designers/7.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "7.8rbmvre9.png",
+    "src": "assets/image/designers/7.png"
+  },
+  "assets/image/designers/8.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "8.NktvJ8If.png",
+    "src": "assets/image/designers/8.png"
+  },
+  "assets/image/designers/9.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "9.CxkszY4N.png",
+    "src": "assets/image/designers/9.png"
   },
   "assets/image/events/2019fw/1.png": {
     "resourceType": "image",
@@ -995,18 +1224,18 @@ const client_manifest = {
     "file": "3.uF-ekc2W.png",
     "src": "assets/image/events/2024ss/3.png"
   },
-  "assets/image/features/1-1.png": {
+  "assets/image/features/1-1.jpeg": {
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/png",
-    "file": "1-1.SNWxA6tE.png",
-    "src": "assets/image/features/1-1.png"
+    "mimeType": "image/jpeg",
+    "file": "1-1.DW3e0wAI.jpeg",
+    "src": "assets/image/features/1-1.jpeg"
   },
   "assets/image/features/1-2.png": {
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png",
-    "file": "1-2.nYp9B7jy.png",
+    "file": "1-2.1h271bg8.png",
     "src": "assets/image/features/1-2.png"
   },
   "assets/image/features/1-3.png": {
@@ -1020,7 +1249,7 @@ const client_manifest = {
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png",
-    "file": "1-4.DC7aHqWs.png",
+    "file": "1-4.UGGJIbAF.png",
     "src": "assets/image/features/1-4.png"
   },
   "assets/image/features/2-1.png": {
@@ -1111,7 +1340,7 @@ const client_manifest = {
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png",
-    "file": "4-1.hnMQ4Xov.png",
+    "file": "4-1.D6rtJcdI.png",
     "src": "assets/image/features/4-1.png"
   },
   "assets/image/features/4-2.png": {
@@ -1230,7 +1459,7 @@ const client_manifest = {
     "resourceType": "image",
     "prefetch": true,
     "mimeType": "image/png",
-    "file": "7-1.B0QYfK5p.png",
+    "file": "7-1.BKOTR_3R.png",
     "src": "assets/image/features/7-1.png"
   },
   "assets/image/features/7-2.png": {
@@ -1274,6 +1503,62 @@ const client_manifest = {
     "mimeType": "image/png",
     "file": "3-9.xIMk57Jy.png",
     "src": "assets/image/features/3-9.png"
+  },
+  "assets/image/offer/corner-1.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "corner-1.CSZL9RmS.png",
+    "src": "assets/image/offer/corner-1.png"
+  },
+  "assets/image/offer/corner-3.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "corner-3.C6dk4c_h.png",
+    "src": "assets/image/offer/corner-3.png"
+  },
+  "assets/image/offer/schema-1.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "schema-1.rzSuIMZH.png",
+    "src": "assets/image/offer/schema-1.png"
+  },
+  "assets/image/offer/schema-2.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "schema-2.20ffBPGO.png",
+    "src": "assets/image/offer/schema-2.png"
+  },
+  "assets/image/offer/schema-3.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "schema-1.rzSuIMZH.png",
+    "src": "assets/image/offer/schema-1.png"
+  },
+  "assets/image/offer/schema-4.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "schema-2.20ffBPGO.png",
+    "src": "assets/image/offer/schema-2.png"
+  },
+  "assets/image/offer/schema-5.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "schema-5.Ct3u0TjT.png",
+    "src": "assets/image/offer/schema-5.png"
+  },
+  "assets/image/offer/stand-1.png": {
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png",
+    "file": "stand-1.pOV7E_4M.png",
+    "src": "assets/image/offer/stand-1.png"
   },
   "assets/image/sponsor-logo.png": {
     "resourceType": "image",
@@ -1378,16 +1663,16 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "CjBQ6Fa8.js",
+    "file": "B08wP-rs.js",
     "name": "default",
     "src": "layouts/default.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_B48SCoAS.js",
+      "_C7Jz4LMS.js",
       "node_modules/nuxt/dist/app/entry.js",
-      "_hnFow2Np.js",
-      "_8dmWSmqm.js",
-      "_BvU37I1W.js"
+      "_DZsQyL2D.js",
+      "_CJawBnmc.js",
+      "_mornCf7G.js"
     ]
   },
   "node_modules/nuxt/dist/app/components/error-404.vue": {
@@ -1395,14 +1680,14 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "CT0piaec.js",
+    "file": "Dhn60Ne5.js",
     "name": "error-404",
     "src": "node_modules/nuxt/dist/app/components/error-404.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_B48SCoAS.js",
+      "_C7Jz4LMS.js",
       "node_modules/nuxt/dist/app/entry.js",
-      "_CD3kHzMC.js"
+      "_BS8Henzn.js"
     ],
     "css": [
       "error-404.C3V-3Mc4.css"
@@ -1419,13 +1704,13 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "25S5DTLG.js",
+    "file": "CPIvje-8.js",
     "name": "error-500",
     "src": "node_modules/nuxt/dist/app/components/error-500.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_CD3kHzMC.js"
+      "_BS8Henzn.js"
     ],
     "css": [
       "error-500.dGVH929u.css"
@@ -1442,7 +1727,7 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "BUTWS2If.js",
+    "file": "LLcRaQyh.js",
     "name": "entry",
     "src": "node_modules/nuxt/dist/app/entry.js",
     "isEntry": true,
@@ -1452,14 +1737,14 @@ const client_manifest = {
       "node_modules/nuxt/dist/app/components/error-500.vue"
     ],
     "css": [
-      "entry.DVaAcEbQ.css"
+      "entry.1qyv44OS.css"
     ],
     "assets": [
       "Inter-variable.CkI0DTMQ.woff2"
     ]
   },
-  "entry.DVaAcEbQ.css": {
-    "file": "entry.DVaAcEbQ.css",
+  "entry.1qyv44OS.css": {
+    "file": "entry.1qyv44OS.css",
     "resourceType": "style",
     "prefetch": true,
     "preload": true
@@ -1474,16 +1759,18 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "DBiqHlFN.js",
+    "file": "gGeZ1KCJ.js",
     "name": "features",
     "src": "pages/features.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_CSE6auY0.js",
+      "_-vMBUrbf.js",
+      "_9fsi0UwP.js",
       "node_modules/nuxt/dist/app/entry.js",
-      "_B48SCoAS.js",
-      "_hnFow2Np.js",
-      "_BvU37I1W.js"
+      "_C7Jz4LMS.js",
+      "_DZsQyL2D.js",
+      "_mornCf7G.js",
+      "_BS8Henzn.js"
     ],
     "css": [
       "features.C6XpIQV4.css"
@@ -1500,18 +1787,20 @@ const client_manifest = {
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "DUCG8ZtC.js",
+    "file": "DyS8IzcB.js",
     "name": "index",
     "src": "pages/index.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_B48SCoAS.js",
+      "_C7Jz4LMS.js",
       "node_modules/nuxt/dist/app/entry.js",
-      "_8dmWSmqm.js",
-      "_hnFow2Np.js",
-      "_D1q8aAn5.js",
-      "_CSE6auY0.js",
-      "_BvU37I1W.js"
+      "_CJawBnmc.js",
+      "_DZsQyL2D.js",
+      "_e4EcRQF5.js",
+      "_-vMBUrbf.js",
+      "_9fsi0UwP.js",
+      "_mornCf7G.js",
+      "_BS8Henzn.js"
     ],
     "dynamicImports": [
       "assets/image/cards/item-13.png",
@@ -1527,7 +1816,7 @@ const client_manifest = {
       "assets/image/cards/item-23.png"
     ],
     "css": [
-      "index.D1JLpg-8.css"
+      "index.BFNbJXOL.css"
     ],
     "assets": [
       "1.BlxBFC7u.png",
@@ -1566,24 +1855,59 @@ const client_manifest = {
       "1.BB_hJGl_.png",
       "2.BQ-sFBgz.png",
       "3.uF-ekc2W.png",
-      "1.BvMEQkr6.jpg",
-      "2.CIu65TMf.jpeg",
-      "3.BToRtsSG.jpg",
-      "4.roOnaDLI.jpeg",
-      "5.DYetCM6-.jpg",
-      "6.B0riXEwa.jpeg",
-      "7.BwZTBPgc.jpeg",
-      "8.D1JR9Qkq.jpg",
-      "9.C4ZcFjFp.jpg",
-      "10.3UwBalmc.jpeg",
-      "11.DAHOny2s.jpg",
-      "12.kKDKeF65.jpeg",
-      "13.BlncvrMv.jpg",
-      "14.QYxPuh9v.jpg",
-      "15.BeMuYX7J.jpg",
-      "16.-t34g1dP.jpg",
-      "17.DsrtTLaH.jpeg",
-      "18.Dgot3fUg.jpg",
+      "1.DDdbNsIp.png",
+      "2.34g8QYJa.png",
+      "3.BWllbGbT.png",
+      "4.BtZATezt.png",
+      "5.DoK5FiC0.png",
+      "6.CZWbvAhX.png",
+      "7.8rbmvre9.png",
+      "8.NktvJ8If.png",
+      "9.CxkszY4N.png",
+      "10.DeXJZBXS.png",
+      "11.CmHoo2s6.png",
+      "12.Z5RgVgUk.png",
+      "13.cH97RUui.png",
+      "14.KTilgt0r.png",
+      "15.CAZUHOmI.png",
+      "16.iJ9mnnlH.png",
+      "17.DDyPB3tz.png",
+      "18.DD9aJY4U.png",
+      "19.BRMCIPr7.png",
+      "20.Cbt_TycW.png",
+      "21.B7TTTTwH.png",
+      "22.UZwZOc0K.png",
+      "23.BuaWJst1.png",
+      "24.CM1KEqGb.png",
+      "25.2AyVt3fE.png",
+      "26.Bo550QvH.png",
+      "27.bMCHgnqV.png",
+      "28.MZBPMEyJ.png",
+      "29.CH6ZRqg9.png",
+      "30.DidoAwNL.png",
+      "31.DoTkBTe3.png",
+      "32.B-etCguW.png",
+      "33.CzbPpqcH.png",
+      "34.CvYWWPub.png",
+      "35.D4WdF4Ix.png",
+      "36._ISv_7MK.png",
+      "37.C4bjeAAw.png",
+      "38.B4a6y4dE.png",
+      "39.BrO_Uau_.png",
+      "40.Tu4PeBOu.png",
+      "41.BIEtKM4e.png",
+      "42.BkPIf6ry.png",
+      "43.CJtlJqJ2.png",
+      "44.Bvv_tcAR.png",
+      "45.CErmJ-yU.png",
+      "46.Blt5ptsP.png",
+      "47.zmKNC60m.png",
+      "48.B8iy4Z2l.png",
+      "49.DO-w8jCI.png",
+      "50.DhZncWJI.png",
+      "51.B_8FPNEL.png",
+      "52.BmhYfepc.png",
+      "53.Dc80oDnb.png",
       "card-3.D-lwuC6u.png",
       "card-4.CkzopU9c.png",
       "card-5.CFvucQAy.png",
@@ -1596,8 +1920,8 @@ const client_manifest = {
       "card-15.JcaYltm6.png"
     ]
   },
-  "index.D1JLpg-8.css": {
-    "file": "index.D1JLpg-8.css",
+  "index.BFNbJXOL.css": {
+    "file": "index.BFNbJXOL.css",
     "resourceType": "style",
     "prefetch": true,
     "preload": true
@@ -1818,113 +2142,323 @@ const client_manifest = {
     "prefetch": true,
     "mimeType": "image/png"
   },
-  "1.BvMEQkr6.jpg": {
-    "file": "1.BvMEQkr6.jpg",
+  "1.DDdbNsIp.png": {
+    "file": "1.DDdbNsIp.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "2.CIu65TMf.jpeg": {
-    "file": "2.CIu65TMf.jpeg",
+  "2.34g8QYJa.png": {
+    "file": "2.34g8QYJa.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "3.BToRtsSG.jpg": {
-    "file": "3.BToRtsSG.jpg",
+  "3.BWllbGbT.png": {
+    "file": "3.BWllbGbT.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "4.roOnaDLI.jpeg": {
-    "file": "4.roOnaDLI.jpeg",
+  "4.BtZATezt.png": {
+    "file": "4.BtZATezt.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "5.DYetCM6-.jpg": {
-    "file": "5.DYetCM6-.jpg",
+  "5.DoK5FiC0.png": {
+    "file": "5.DoK5FiC0.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "6.B0riXEwa.jpeg": {
-    "file": "6.B0riXEwa.jpeg",
+  "6.CZWbvAhX.png": {
+    "file": "6.CZWbvAhX.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "7.BwZTBPgc.jpeg": {
-    "file": "7.BwZTBPgc.jpeg",
+  "7.8rbmvre9.png": {
+    "file": "7.8rbmvre9.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "8.D1JR9Qkq.jpg": {
-    "file": "8.D1JR9Qkq.jpg",
+  "8.NktvJ8If.png": {
+    "file": "8.NktvJ8If.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "9.C4ZcFjFp.jpg": {
-    "file": "9.C4ZcFjFp.jpg",
+  "9.CxkszY4N.png": {
+    "file": "9.CxkszY4N.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "10.3UwBalmc.jpeg": {
-    "file": "10.3UwBalmc.jpeg",
+  "10.DeXJZBXS.png": {
+    "file": "10.DeXJZBXS.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "11.DAHOny2s.jpg": {
-    "file": "11.DAHOny2s.jpg",
+  "11.CmHoo2s6.png": {
+    "file": "11.CmHoo2s6.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "12.kKDKeF65.jpeg": {
-    "file": "12.kKDKeF65.jpeg",
+  "12.Z5RgVgUk.png": {
+    "file": "12.Z5RgVgUk.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "13.BlncvrMv.jpg": {
-    "file": "13.BlncvrMv.jpg",
+  "13.cH97RUui.png": {
+    "file": "13.cH97RUui.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "14.QYxPuh9v.jpg": {
-    "file": "14.QYxPuh9v.jpg",
+  "14.KTilgt0r.png": {
+    "file": "14.KTilgt0r.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "15.BeMuYX7J.jpg": {
-    "file": "15.BeMuYX7J.jpg",
+  "15.CAZUHOmI.png": {
+    "file": "15.CAZUHOmI.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "16.-t34g1dP.jpg": {
-    "file": "16.-t34g1dP.jpg",
+  "16.iJ9mnnlH.png": {
+    "file": "16.iJ9mnnlH.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "17.DsrtTLaH.jpeg": {
-    "file": "17.DsrtTLaH.jpeg",
+  "17.DDyPB3tz.png": {
+    "file": "17.DDyPB3tz.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
   },
-  "18.Dgot3fUg.jpg": {
-    "file": "18.Dgot3fUg.jpg",
+  "18.DD9aJY4U.png": {
+    "file": "18.DD9aJY4U.png",
     "resourceType": "image",
     "prefetch": true,
-    "mimeType": "image/jpeg"
+    "mimeType": "image/png"
+  },
+  "19.BRMCIPr7.png": {
+    "file": "19.BRMCIPr7.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "20.Cbt_TycW.png": {
+    "file": "20.Cbt_TycW.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "21.B7TTTTwH.png": {
+    "file": "21.B7TTTTwH.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "22.UZwZOc0K.png": {
+    "file": "22.UZwZOc0K.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "23.BuaWJst1.png": {
+    "file": "23.BuaWJst1.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "24.CM1KEqGb.png": {
+    "file": "24.CM1KEqGb.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "25.2AyVt3fE.png": {
+    "file": "25.2AyVt3fE.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "26.Bo550QvH.png": {
+    "file": "26.Bo550QvH.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "27.bMCHgnqV.png": {
+    "file": "27.bMCHgnqV.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "28.MZBPMEyJ.png": {
+    "file": "28.MZBPMEyJ.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "29.CH6ZRqg9.png": {
+    "file": "29.CH6ZRqg9.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "30.DidoAwNL.png": {
+    "file": "30.DidoAwNL.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "31.DoTkBTe3.png": {
+    "file": "31.DoTkBTe3.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "32.B-etCguW.png": {
+    "file": "32.B-etCguW.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "33.CzbPpqcH.png": {
+    "file": "33.CzbPpqcH.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "34.CvYWWPub.png": {
+    "file": "34.CvYWWPub.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "35.D4WdF4Ix.png": {
+    "file": "35.D4WdF4Ix.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "36._ISv_7MK.png": {
+    "file": "36._ISv_7MK.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "37.C4bjeAAw.png": {
+    "file": "37.C4bjeAAw.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "38.B4a6y4dE.png": {
+    "file": "38.B4a6y4dE.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "39.BrO_Uau_.png": {
+    "file": "39.BrO_Uau_.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "40.Tu4PeBOu.png": {
+    "file": "40.Tu4PeBOu.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "41.BIEtKM4e.png": {
+    "file": "41.BIEtKM4e.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "42.BkPIf6ry.png": {
+    "file": "42.BkPIf6ry.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "43.CJtlJqJ2.png": {
+    "file": "43.CJtlJqJ2.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "44.Bvv_tcAR.png": {
+    "file": "44.Bvv_tcAR.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "45.CErmJ-yU.png": {
+    "file": "45.CErmJ-yU.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "46.Blt5ptsP.png": {
+    "file": "46.Blt5ptsP.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "47.zmKNC60m.png": {
+    "file": "47.zmKNC60m.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "48.B8iy4Z2l.png": {
+    "file": "48.B8iy4Z2l.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "49.DO-w8jCI.png": {
+    "file": "49.DO-w8jCI.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "50.DhZncWJI.png": {
+    "file": "50.DhZncWJI.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "51.B_8FPNEL.png": {
+    "file": "51.B_8FPNEL.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "52.BmhYfepc.png": {
+    "file": "52.BmhYfepc.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "53.Dc80oDnb.png": {
+    "file": "53.Dc80oDnb.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
   },
   "card-3.D-lwuC6u.png": {
     "file": "card-3.D-lwuC6u.png",
@@ -1986,21 +2520,84 @@ const client_manifest = {
     "prefetch": true,
     "mimeType": "image/png"
   },
+  "pages/offer.vue": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "q8eyR6Kw.js",
+    "name": "offer",
+    "src": "pages/offer.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_9fsi0UwP.js",
+      "node_modules/nuxt/dist/app/entry.js",
+      "_BS8Henzn.js"
+    ],
+    "css": [
+      "offer.D3RDROH4.css"
+    ],
+    "assets": [
+      "stand-1.pOV7E_4M.png",
+      "corner-1.CSZL9RmS.png",
+      "schema-1.rzSuIMZH.png",
+      "schema-2.20ffBPGO.png",
+      "schema-5.Ct3u0TjT.png"
+    ]
+  },
+  "offer.D3RDROH4.css": {
+    "file": "offer.D3RDROH4.css",
+    "resourceType": "style",
+    "prefetch": true,
+    "preload": true
+  },
+  "stand-1.pOV7E_4M.png": {
+    "file": "stand-1.pOV7E_4M.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "corner-1.CSZL9RmS.png": {
+    "file": "corner-1.CSZL9RmS.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "schema-1.rzSuIMZH.png": {
+    "file": "schema-1.rzSuIMZH.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "schema-2.20ffBPGO.png": {
+    "file": "schema-2.20ffBPGO.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
+  "schema-5.Ct3u0TjT.png": {
+    "file": "schema-5.Ct3u0TjT.png",
+    "resourceType": "image",
+    "prefetch": true,
+    "mimeType": "image/png"
+  },
   "pages/station.vue": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
-    "file": "C2nWfm-g.js",
+    "file": "D6vQ7iDQ.js",
     "name": "station",
     "src": "pages/station.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.js",
-      "_8dmWSmqm.js",
-      "_D1q8aAn5.js",
-      "_B48SCoAS.js",
-      "_hnFow2Np.js"
+      "_CJawBnmc.js",
+      "_e4EcRQF5.js",
+      "_9fsi0UwP.js",
+      "_C7Jz4LMS.js",
+      "_DZsQyL2D.js",
+      "_BS8Henzn.js"
     ],
     "css": [
       "features.C6XpIQV4.css"

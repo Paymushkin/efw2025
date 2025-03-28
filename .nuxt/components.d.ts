@@ -3,6 +3,7 @@ import type { DefineComponent, SlotsType } from 'vue'
 type IslandComponent<T extends DefineComponent> = T & DefineComponent<{}, {refresh: () => Promise<void>}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, SlotsType<{ fallback: { error: unknown } }>>
 interface _GlobalComponents {
       'App': typeof import("../components/App.vue")['default']
+    'AppSeo': typeof import("../components/AppSeo.vue")['default']
     'ContactForm': typeof import("../components/ContactForm.vue")['default']
     'DesignersSection': typeof import("../components/DesignersSection.vue")['default']
     'EventFeatures': typeof import("../components/EventFeatures.vue")['default']
@@ -54,6 +55,7 @@ interface _GlobalComponents {
     'NuxtIsland': typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
     'NuxtRouteAnnouncer': IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
       'LazyApp': typeof import("../components/App.vue")['default']
+    'LazyAppSeo': typeof import("../components/AppSeo.vue")['default']
     'LazyContactForm': typeof import("../components/ContactForm.vue")['default']
     'LazyDesignersSection': typeof import("../components/DesignersSection.vue")['default']
     'LazyEventFeatures': typeof import("../components/EventFeatures.vue")['default']
@@ -111,6 +113,7 @@ declare module 'vue' {
 }
 
 export const App: typeof import("../components/App.vue")['default']
+export const AppSeo: typeof import("../components/AppSeo.vue")['default']
 export const ContactForm: typeof import("../components/ContactForm.vue")['default']
 export const DesignersSection: typeof import("../components/DesignersSection.vue")['default']
 export const EventFeatures: typeof import("../components/EventFeatures.vue")['default']
@@ -162,6 +165,7 @@ export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
 export const NuxtRouteAnnouncer: IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
 export const LazyApp: typeof import("../components/App.vue")['default']
+export const LazyAppSeo: typeof import("../components/AppSeo.vue")['default']
 export const LazyContactForm: typeof import("../components/ContactForm.vue")['default']
 export const LazyDesignersSection: typeof import("../components/DesignersSection.vue")['default']
 export const LazyEventFeatures: typeof import("../components/EventFeatures.vue")['default']

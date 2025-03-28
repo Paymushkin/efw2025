@@ -1,5 +1,10 @@
 <template>
   <div class="pt-10">
+    <AppSeo
+      title="Business Stations - Emirates Fashion Week Dubai 2025"
+      description="Explore our AI-powered business stations at Emirates Fashion Week Dubai 2025. Transform your networking and lead generation with interactive, digital-first experiences."
+      keywords="Business Stations Dubai, Fashion Week Networking, AI Business Solutions, Fashion Industry Technology, Business Opportunities Dubai, Digital Fashion Events"
+    />
     <div class="container">
         <BigSponsorStation 
             :title="event.title"
@@ -51,6 +56,7 @@ import BigSponsorStation from '~/components/program/BigSponsorStation.vue';
 import { EVENT_TYPES } from '~/constants/program';
 import StationSection from '~/components/StationSection.vue';
 import { marqueeText2} from '~/constants/texts';
+import AppSeo from '@/components/AppSeo.vue';
 
 const event = {
   ...EVENT_TYPES.bigSponsorStation,

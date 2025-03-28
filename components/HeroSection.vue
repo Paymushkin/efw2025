@@ -147,6 +147,7 @@ onUnmounted(() => {
   // Удаляем слушатель при размонтировании компонента
   window.removeEventListener('resize', updateSize);
 });
+
 </script>
 
 <style scoped>

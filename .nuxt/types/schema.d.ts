@@ -77,22 +77,14 @@ declare module 'nuxt/schema' {
       cdnURL: string,
    },
 
-   SMTP_HOST: string,
-
-   SMTP_PORT: string,
-
-   SMTP_USER: string,
-
-   SMTP_PASS: string,
-
-   TO_EMAIL: string,
+   RESEND_API_KEY: string,
 
    nitro: {
       envPrefix: string,
    },
   }
   interface PublicRuntimeConfig {
-
+   apiBase: string,
   }
 }
 declare module 'vue' {

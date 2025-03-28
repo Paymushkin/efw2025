@@ -8,7 +8,7 @@
       <div class="container mx-auto px-4">
         <div class="flex items-center justify-between py-4">
           <!-- Left side: Logo and Hashtag -->
-          <div class="flex items-center 2xl:gap-12 gap-6">
+          <div class="flex items-center 2xl:gap-12 md:gap-6 gap-3">
             <button 
               class="md:hidden text-black"
               @click="isMenuOpen = !isMenuOpen"
@@ -18,12 +18,12 @@
             </button>
             
             <NuxtLink to="/" class="flex-shrink-0">
-              <LogoBlack class="h-5 2xl:h-8 w-[165px] 2xl:w-[254px]" />
+              <LogoBlack class="h-4 md:h-5 2xl:h-8 w-[165px] 2xl:w-[254px]" />
             </NuxtLink>
 
             <a 
               href="#" 
-              class="hidden md:block text-black 2xl:text-xl lg:text-base sm:text-sm"
+              class="text-black 2xl:text-xl lg:text-base sm:text-sm"
               @click.prevent="handleHashtagClick"
             >{{ hashtag[0] }}</a>
           </div>
@@ -218,11 +218,11 @@ const isMenuOpen = ref(false);
 const isLinksMenuOpen = ref(false);
 const isParticipateOpen = ref(false);
 const navLinks = [
-  { name: 'CALENDAR', href: '#program', id: 'program' },
+  { name: 'CALENDAR', href: '/#program', id: 'program' },
   { name: 'FEATURES', href: '/features', id: 'features' },
-  { name: 'DESIGNERS', href: '#designers', id: 'designer' },
-  { name: 'FACES', href: '#faces', id: 'faces' },
-  { name: 'HOW IT WAS', href: '#how-it-was', id: 'how-it-was' },
+  { name: 'DESIGNERS', href: '/#designers', id: 'designer' },
+  { name: 'FACES', href: '/#faces', id: 'faces' },
+  { name: 'HOW IT WAS', href: '/#how-it-was', id: 'how-it-was' },
 ];
 
 const scrollToSection = (href) => {

@@ -691,7 +691,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "821ad211-1111-4e98-82e8-1a335a5140d2",
+    "buildId": "715801e3-3d0c-4374-8f64-26df4e55db26",
     "buildAssetsDir": "assets/",
     "cdnURL": ""
   },
@@ -724,12 +724,10 @@ const _inlineRuntimeConfig = {
       }
     }
   },
-  "public": {},
-  "SMTP_HOST": "smtp.gmail.com",
-  "SMTP_PORT": "587",
-  "SMTP_USER": "your-email@gmail.com",
-  "SMTP_PASS": "your-app-password",
-  "TO_EMAIL": "destination@example.com"
+  "public": {
+    "apiBase": "https://api.emiratesfashionweeks.com/api"
+  },
+  "RESEND_API_KEY": "re_h8Bfrwax_MSW64fwPw5Ypsx9Fs4FZotsG"
 };
 const envOptions = {
   prefix: "NITRO_",

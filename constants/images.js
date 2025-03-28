@@ -63,121 +63,273 @@ export const tabs = [
 ];
 
 // Импортируем изображения
-import designer1 from '@/assets/image/designers/1.jpg';
-import designer2 from '@/assets/image/designers/2.jpeg';
-import designer3 from '@/assets/image/designers/3.jpg';
-import designer4 from '@/assets/image/designers/4.jpeg';
-import designer5 from '@/assets/image/designers/5.jpg';
-import designer6 from '@/assets/image/designers/6.jpeg';
-import designer7 from '@/assets/image/designers/7.jpeg';
-import designer8 from '@/assets/image/designers/8.jpg';
-import designer9 from '@/assets/image/designers/9.jpg';
-import designer10 from '@/assets/image/designers/10.jpeg';
-import designer11 from '@/assets/image/designers/11.jpg';
-import designer12 from '@/assets/image/designers/12.jpeg';
-import designer13 from '@/assets/image/designers/13.jpg';
-import designer14 from '@/assets/image/designers/14.jpg';
-import designer15 from '@/assets/image/designers/15.jpg';
-import designer16 from '@/assets/image/designers/16.jpg';
-import designer17 from '@/assets/image/designers/17.jpeg';
-import designer18 from '@/assets/image/designers/18.jpg';
+import designer1 from '@/assets/image/designers/1.png';
+import designer2 from '@/assets/image/designers/2.png';
+import designer3 from '@/assets/image/designers/3.png';
+import designer4 from '@/assets/image/designers/4.png';
+import designer5 from '@/assets/image/designers/5.png';
+import designer6 from '@/assets/image/designers/6.png';
+import designer7 from '@/assets/image/designers/7.png';
+import designer8 from '@/assets/image/designers/8.png';
+import designer9 from '@/assets/image/designers/9.png';
+import designer10 from '@/assets/image/designers/10.png';
+import designer11 from '@/assets/image/designers/11.png';
+import designer12 from '@/assets/image/designers/12.png';
+import designer13 from '@/assets/image/designers/13.png';
+import designer14 from '@/assets/image/designers/14.png';
+import designer15 from '@/assets/image/designers/15.png';
+import designer16 from '@/assets/image/designers/16.png';
+import designer17 from '@/assets/image/designers/17.png';
+import designer18 from '@/assets/image/designers/18.png';
+import designer19 from '@/assets/image/designers/19.png';
+import designer20 from '@/assets/image/designers/20.png';
+import designer21 from '@/assets/image/designers/21.png';
+import designer22 from '@/assets/image/designers/22.png';
+import designer23 from '@/assets/image/designers/23.png';
+import designer24 from '@/assets/image/designers/24.png'; 
+import designer25 from '@/assets/image/designers/25.png';
+import designer26 from '@/assets/image/designers/26.png';
+import designer27 from '@/assets/image/designers/27.png';
+import designer28 from '@/assets/image/designers/28.png';
+import designer29 from '@/assets/image/designers/29.png';
+import designer30 from '@/assets/image/designers/30.png';
+import designer31 from '@/assets/image/designers/31.png';
+import designer32 from '@/assets/image/designers/32.png';
+import designer33 from '@/assets/image/designers/33.png';
+import designer34 from '@/assets/image/designers/34.png';
+import designer35 from '@/assets/image/designers/35.png';
+import designer36 from '@/assets/image/designers/36.png';
+import designer37 from '@/assets/image/designers/37.png';
+import designer38 from '@/assets/image/designers/38.png';
+import designer39 from '@/assets/image/designers/39.png';
+import designer40 from '@/assets/image/designers/40.png';
+import designer41 from '@/assets/image/designers/41.png';
+import designer42 from '@/assets/image/designers/42.png'; 
+import designer43 from '@/assets/image/designers/43.png';
+import designer44 from '@/assets/image/designers/44.png';
+import designer45 from '@/assets/image/designers/45.png';
+import designer46 from '@/assets/image/designers/46.png';
+import designer47 from '@/assets/image/designers/47.png';
+import designer48 from '@/assets/image/designers/48.png';
+import designer49 from '@/assets/image/designers/49.png';
+import designer50 from '@/assets/image/designers/50.png';
+import designer51 from '@/assets/image/designers/51.png';
+import designer52 from '@/assets/image/designers/52.png';
+import designer53 from '@/assets/image/designers/53.png';
 
 
 // Массив дизайнеров с их данными
 export const designers = [
   {
-    name: 'Alisia Fiori',
-    // category: 'Evening Wear',
+    name: 'A.Sain',
     image: designer1
   },
   {
-    name: 'Antonella Bravi',
-    // category: 'Casual Wear',
+    name: 'Aisha',
     image: designer2
   },
   {
-    name: 'BERGE',
-    // category: 'Haute Couture',
+    name: 'Alaa Doresu',
     image: designer3
   },
   {
-    name: 'Busakura',
-    // category: 'Street Style',
+    name: 'Albina Sallum',
     image: designer4
   },
   {
-    name: 'CHOLPONA',
-    // category: 'Minimalist',
+    name: 'Alexandra Egorova',
     image: designer5
   },
   {
-    name: 'Collibra',
-    // category: 'Minimalist',
+    name: 'Anait Arutyunova',
     image: designer6
   },
   {
-    name: 'Etno Collection',
-    // category: 'Minimalist',
+    name: 'Anna Kameneva',
     image: designer7
   },
   {
-    name: 'Fair Blvd',
-    // category: 'Minimalist',
+    name: 'Antonella Bravi',
     image: designer8
   },
   {
-    name: 'GEE BATIK',
-    // category: 'Minimalist',
+    name: 'Armine Avetisyan',
     image: designer9
   },
   {
-    name: 'Icona',
-    // category: 'Minimalist',
+    name: 'Ayten Osmanova',
     image: designer10
   },
   {
-    name: 'Irirna Marsi',
-    // category: 'Minimalist',
+    name: 'Chinara Yelmuratovna',
     image: designer11
   },
   {
-    name: 'La Donna Di Ferro',
-    // category: 'Minimalist',
+    name: 'CholponA',
     image: designer12
   },
   {
-    name: 'La Reine',
-    // category: 'Minimalist',
+    name: 'Diani',
     image: designer13
   },
   {
-    name: 'Olga Leffers',
-    // category: 'Minimalist',
+    name: 'Elena  Solgalova',
     image: designer14
   },
   {
-    name: 'Rebeka Popovic',
-    // category: 'Minimalist',
+    name: 'Elena Lebedeva',
     image: designer15
   },
   {
-    name: 'Renata Kirillova',
-    // category: 'Minimalist',
+    name: 'Elizabeth La Reine',
     image: designer16
   },
   {
-    name: 'Suhaila',
-    // category: 'Minimalist',
+    name: 'Gee ',
     image: designer17
   },
   {
-    name: 'Walid-Atallah',
-    // category: 'Minimalist',
+    name: 'Gulnora Mukhedinova',
     image: designer18
   },
-  
-  
-  
-  
-  
+  {
+    name: 'Hosna',
+    image: designer19
+  },
+  {
+    name: 'Imanova',
+    image: designer20
+  },
+  {
+    name: 'Irina Marsi',
+    image: designer21
+  },
+  {
+    name: 'Irina Sharova',
+    image: designer22
+  },
+  {
+    name: 'Ketrin Boulas',
+    image: designer23
+  },
+  {
+    name: 'Kristina Kibovskaya',
+    image: designer24
+  },
+  {
+    name: 'Larmoire',
+    image: designer25
+  },
+  {
+    name: 'Lilia Algeria',
+    image: designer26
+  },
+  {
+    name: 'Ludmila Kanunnik',
+    image: designer27
+  },
+  {
+    name: 'Marina Vilisova',
+    image: designer28
+  },
+  {
+    name: 'Martine Berge',
+    image: designer29
+  },
+  {
+    name: 'Maryamz',
+    image: designer30
+  },
+  {
+    name: 'Michael Lombard',
+    image: designer31
+  },
+  {
+    name: 'Natalia Safina',
+    image: designer32
+  },
+  {
+    name: 'Natalia Smirnova',
+    image: designer33
+  },
+  {
+    name: 'Nolur',
+    image: designer34
+  },
+  {
+    name: 'Olga Kondrasheva',
+    image: designer35
+  },
+  {
+    name: 'Olga Leffers',
+    image: designer36
+  },
+  {
+    name: 'Olga Shuneva',
+    image: designer37
+  },
+  {
+    name: 'Petr Levenpol',
+    image: designer38
+  },
+  {
+    name: 'Rebeka Popovic',
+    image: designer39
+  },
+  {
+    name: 'Renata Kirillova',
+    image: designer40
+  },
+  {
+    name: 'Roula',
+    image: designer41
+  },
+  {
+    name: 'Said Omari',
+    image: designer42
+  },
+  {
+    name: 'Sameh Djebbi',
+    image: designer43
+  },
+  {
+    name: 'Sanse',
+    image: designer44
+  },
+  {
+    name: 'Sohaila Hafez',
+    image: designer45
+  },
+  {
+    name: 'Sultan Gadimbayli  ',
+    image: designer46
+  },
+  {
+    name: 'Sviecik Zwegrodzka',
+    image: designer47
+  },
+  {
+    name: 'Sylweriusz Stanislawski',
+    image: designer48
+  },
+  {
+    name: 'Tanya Tuzova',
+    image: designer49
+  },
+  {
+    name: 'Vera Shasherina',
+    image: designer50
+  },
+  {
+    name: 'Yana Shine',
+    image: designer51
+  },
+  {
+    name: 'Yulia Kotenko',
+    image: designer52
+  },
+  {
+    name: 'Zain Al Abideen Falih',
+    image: designer53
+  },
 ];

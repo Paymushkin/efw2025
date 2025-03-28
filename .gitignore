@@ -31,3 +31,4 @@ Gemfile.lock
 # /build
 .cache
 .env
+.vercel

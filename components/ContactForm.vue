@@ -60,6 +60,7 @@
 
 <script setup>
 import { ref, reactive } from 'vue';
+import { useRuntimeConfig } from 'nuxt/app';
 
 const props = defineProps({
   isOpen: Boolean
@@ -75,6 +76,9 @@ const form = reactive({
 
 const emailError = ref('');
 const isSubmitting = ref(false);
+const showSuccess = ref(false);
+const showError = ref(false);
+const config = useRuntimeConfig();
 
 const validateEmail = (email) => {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -87,6 +91,8 @@ const close = () => {
   form.email = '';
   form.message = '';
   emailError.value = '';
+  showSuccess.value = false;
+  showError.value = false;
 };
 
 const handleSubmit = async () => {
@@ -100,22 +106,43 @@ const handleSubmit = async () => {
   isSubmitting.value = true;
 
   try {
-    // Здесь нужно добавить ваш API endpoint для отправки email
-    const response = await fetch('/api/send-email', {
+    const apiUrl = `${config.public.apiBase}/send-email`;
+    console.log('Sending request to:', apiUrl);
+    
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(form)
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        message: form.message
+      })
     });
 
-    if (!response.ok) throw new Error('Failed to send message');
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Server response:', errorText);
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
-    alert('Message sent successfully!');
-    close();
+    const data = await response.json();
+    console.log('Success:', data);
+    showSuccess.value = true;
+    form.name = '';
+    form.email = '';
+    form.message = '';
+    setTimeout(() => {
+      showSuccess.value = false;
+      emit('close');
+    }, 3000);
   } catch (error) {
     console.error('Error sending message:', error);
-    alert('Failed to send message. Please try again.');
+    showError.value = true;
+    setTimeout(() => {
+      showError.value = false;
+    }, 3000);
   } finally {
     isSubmitting.value = false;
   }

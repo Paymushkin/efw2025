@@ -2,19 +2,20 @@
   <section 
     class="mb-12 flex flex-col" 
     v-if="data"
-    :id="data.id || ''"
   >
     <!-- Заголовок с настраиваемым цветом фона -->
     <div v-if="data.title" class="mb-8 md:10 lg:mb-12">
       <div class="md:flex md:items-center">
         <h2 class="text-2xl md:text-3xl lg:text-4xl">{{ data.title || '' }}</h2>
-        <span 
+        <a
           v-if="data.subtitle" 
+          :id="data.id || ''"
           class="text-white mt-2 md:mt-0 md:ml-2 px-2 py-1 md:px-4 md:py-1 text-xl md:text-2xl lg:text-3xl block md:inline-block" 
           :style="{ backgroundColor: data.subtitleBgColor || '#6c757d' }"
+          :href="data.id ? `#${data.id}` : '' "
         >
           {{ data.subtitle }}
-        </span>
+        </a>
       </div>
     </div>
 
@@ -75,11 +76,23 @@
       >
         <div class="h-[300px] md:h-[360px] lg:h-[460px] overflow-hidden">
           <img 
+            v-if="card.type !== 'video'"
             :src="card.image" 
             :alt="card.title"
             loading="lazy"
             class="w-full h-full object-cover"
           />
+          <video
+            v-else-if="card.type === 'video'"
+            :src="card.video"
+            :poster="card.poster"
+            class="w-full h-full object-cover"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          ></video>
         </div>
         <div class="p-5 md:p-7 lg:p-10">
           <h4 class="text-lg md:text-xl lg:text-2xl font-medium mb-2 md:mb-3 lg:mb-4">{{ card.title }}</h4>
@@ -99,11 +112,20 @@
         >
           <div class="h-[260px] overflow-hidden">
             <img 
+              v-if="card.type !== 'video'"
               :src="card.image" 
               :alt="card.title"
               loading="lazy"
               class="w-full h-full object-cover"
             />
+            <video
+              v-else-if="card.type === 'video'"
+              :src="card.video"
+              :poster="card.poster"
+              class="w-full h-full object-cover"
+              controls
+              preload="metadata"
+            ></video>
           </div>
           <div class="p-5">
             <h4 class="text-xl font-medium mb-2">{{ card.title }}</h4>

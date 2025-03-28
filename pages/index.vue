@@ -1,5 +1,10 @@
 <template>
   <div>
+    <AppSeo
+      title="Emirates Fashion Week Dubai 2025 - Fashion & Beauty Event"
+      description="Join Emirates Fashion Week Dubai 2025, the premier fashion and beauty event in UAE. Experience runway shows, designer collections, beauty services, and business networking opportunities."
+      keywords="Emirates Fashion Week, Dubai Fashion Event, Fashion Shows Dubai, Beauty Exhibition UAE, Fashion Business Dubai, Designer Collections, Beauty Services Dubai"
+    />
     <HeroSection class="mb-[56px] md:mb-[76px]" />
     <HowItWasSection class="mb-[56px] md:mb-[76px]" />
     <ProgramSection class="md:mb-[56px] mb-[36px]" />
@@ -34,6 +39,7 @@ import MarqueeSection from '~/components/MarqueeSection.vue';
 import ImageCarousel from '~/components/ImageCarousel.vue';
 import EventFeatures from '~/components/EventFeatures.vue';
 import { FEATURES_DATA } from '~/constants/featuresData';
+import AppSeo from '@/components/AppSeo.vue';
 
 import sponsor1 from '@/assets/image/sponsor-logo.png'
 import sponsor2 from '@/assets/image/sponsor-logo.png'

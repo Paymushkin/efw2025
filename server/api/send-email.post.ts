@@ -1,29 +1,71 @@
-import { Resend } from 'resend';
+import { defineEventHandler, readBody } from 'h3';
+
+interface EmailBody {
+  name: string;
+  email: string;
+  message: string;
+}
 
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event);
-  
-  const resend = new Resend(process.env.RESEND_API_KEY);
+  // Настройка CORS
+  event.node.res.setHeader('Access-Control-Allow-Origin', '*');
+  event.node.res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  event.node.res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // Обработка OPTIONS запроса для CORS
+  if (event.node.req.method === 'OPTIONS') {
+    event.node.res.statusCode = 200;
+    return;
+  }
 
   try {
-    await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'paymushkinandrew@gmail.com', // Изменили на верифицированный email
-      subject: 'New Contact Form Message',
-      html: `
-        <h2>New message from contact form</h2>
-        <p><strong>Name:</strong> ${body.name}</p>
-        <p><strong>Email:</strong> ${body.email}</p>
-        <p><strong>Message:</strong> ${body.message}</p>
-      `
+    const body = await readBody<EmailBody>(event);
+    const { name, email, message } = body;
+
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`
+      },
+      body: JSON.stringify({
+        from: 'Emirates Fashion Weeks <onboarding@resend.dev>',
+        to: ['paymushkinandrew@gmail.com'],
+        subject: 'Новая заявка с сайта Emirates Fashion Weeks',
+        text: `
+          Имя: ${name}
+          Email: ${email}
+          
+          Сообщение:
+          ${message}
+        `,
+        html: `
+          <h2>Новая заявка с сайта Emirates Fashion Weeks</h2>
+          <p><strong>Имя:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Сообщение:</strong></p>
+          <p>${message}</p>
+        `
+      })
     });
 
-    return { success: true };
-  } catch (error) {
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || 'Failed to send email');
+    }
+
+    return {
+      success: true,
+      message: 'Email sent successfully'
+    };
+  } catch (error: any) {
     console.error('Error sending email:', error);
-    throw createError({
-      statusCode: 500,
-      message: error instanceof Error ? error.message : 'Failed to send email'
-    });
+    event.node.res.statusCode = 500;
+    return {
+      success: false,
+      message: 'Failed to send email',
+      error: error?.message || 'Unknown error'
+    };
   }
 }); 
