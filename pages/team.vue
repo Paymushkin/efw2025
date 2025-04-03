@@ -23,7 +23,7 @@
 
 <script setup>
 import TeamMemberCard from '~/components/TeamMemberCard.vue'
-import Image from '~/assets/image/features/4-2.png'
+import Image from '~/assets/image/features/4-2.webp'
 
 const teamMembers = [
   {

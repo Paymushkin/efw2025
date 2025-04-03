@@ -30,7 +30,7 @@
               autoplay
               loop
               playsinline
-              poster="@/assets/image/offer/stand-1.png"
+              poster="@/assets/image/offer/stand-1.webp"
             >
               <source src="https://storage.yandexcloud.net/videos-meyou/efw2025/promo.mp4" type="video/mp4">
               Your browser does not support the video tag.
@@ -74,13 +74,11 @@
             <li>• 5000 aed / $1360 /2 days</li>
             <li>• 7000 aed / $1900 /3 days</li>
           </ul>
-          <!-- <NuxtLink target="_blank" 
-            :to="visitorsRegistration">
-            <BaseButton variant="primary">
-              <span>WhatsApp</span>
-              <span>></span>
-            </BaseButton>
-          </NuxtLink> -->
+          <WhatsAppButton 
+            v-if="showWhatsApp"
+            :phone-number="whatsappNumber"
+            text="Contact us about Showcase station"
+          />
       </div>
       </div>
 
@@ -136,13 +134,11 @@
           <ul class="text-sm">
             <li>• 11,000 aed / $3000 / 3 days</li>
           </ul>
-          <!-- <NuxtLink target="_blank" 
-            :to="visitorsRegistration">
-            <BaseButton variant="primary">
-              <span>WhatsApp</span>
-              <span>></span>
-            </BaseButton>
-          </NuxtLink> -->
+          <WhatsAppButton 
+            v-if="showWhatsApp"
+            :phone-number="whatsappNumber"
+            text="Contact us about Corner"
+          />
       </div>
       </div>
 
@@ -247,21 +243,39 @@
         </ul>
       </div>
     </section>
+
+    <!-- Important Notice -->
+    <div class="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-r-lg mb-16">
+      <div class="flex items-start">
+        <svg class="w-6 h-6 text-amber-400 mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <div>
+          <p class="font-medium text-amber-800 mb-2">Laptops are not provided.</p>
+          <p class="text-amber-700">Each exhibitor must bring their own laptop and connect it to the display via HDMI to showcase their company's video or presentation.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 import BaseButton from '@/components/ui/BaseButton.vue'
-import Image1 from '@/assets/image/offer/stand-1.png'
-import Image2 from '@/assets/image/offer/corner-1.png'
-import Image3 from '@/assets/image/offer/corner-3.png'
-import Image4 from '@/assets/image/offer/schema-1.png'
-import Image5 from '@/assets/image/offer/schema-2.png'
-import Image6 from '@/assets/image/offer/schema-3.png'
-import Image7 from '@/assets/image/offer/schema-4.png'
-import Image8 from '@/assets/image/offer/schema-5.png'
+import WhatsAppButton from '@/components/ui/WhatsAppButton.vue'
+import Image1 from '@/assets/image/offer/stand-1.webp'
+import Image2 from '@/assets/image/offer/corner-1.webp'
+import Image3 from '@/assets/image/offer/corner-3.webp'
+import Image4 from '@/assets/image/offer/schema-1.webp'
+import Image5 from '@/assets/image/offer/schema-2.webp'
+import Image6 from '@/assets/image/offer/schema-3.webp'
+import Image7 from '@/assets/image/offer/schema-4.webp'
+import Image8 from '@/assets/image/offer/schema-5.webp'
 
-const visitorsRegistration = 'https://wa.me/+971585556065'
+const route = useRoute()
+const showWhatsApp = computed(() => route.query.whatsapp === 'true')
+const whatsappNumber = '971529833054'
 
 // Заменяем useHead на компонент AppSeo
 </script>

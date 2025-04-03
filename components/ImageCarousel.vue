@@ -162,7 +162,7 @@ onMounted(async () => {
 
     // Загрузка изображений, если они не переданы
     if (props.images.length === 0) {
-      const imageContext = import.meta.glob('@/assets/image/cards/*.png', { eager: false });
+      const imageContext = import.meta.glob('@/assets/image/cards/*.webp', { eager: false });
       const entries = Object.entries(imageContext);
       
       for (const [path, importFn] of entries) {

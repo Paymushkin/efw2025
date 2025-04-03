@@ -63,14 +63,14 @@ const event = {
   link: '/stations'
 };
 
-import sponsor1 from '@/assets/image/sponsor-logo.png'
-import sponsor2 from '@/assets/image/sponsor-logo.png'
-import sponsor3 from '@/assets/image/sponsor-logo.png'
-import sponsor4 from '@/assets/image/sponsor-logo.png'
+import sponsor1 from '@/assets/image/sponsor-logo.webp'
+import sponsor2 from '@/assets/image/sponsor-logo.webp'
+import sponsor3 from '@/assets/image/sponsor-logo.webp'
+import sponsor4 from '@/assets/image/sponsor-logo.webp'
 
-import station1 from '@/assets/image/stations/station-1.png'
-import station2 from '@/assets/image/stations/station-2.png'
-import station3 from '@/assets/image/stations/station-3.png'
+import station1 from '@/assets/image/stations/station-1.webp'
+import station2 from '@/assets/image/stations/station-2.webp'
+import station3 from '@/assets/image/stations/station-3.webp'
 
 const sponsors = [sponsor1, sponsor2, sponsor3, sponsor4]
 

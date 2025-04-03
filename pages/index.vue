@@ -43,10 +43,10 @@ import { FEATURES_DATA } from '~/constants/featuresData';
 import AppSeo from '@/components/AppSeo.vue';
 import FaqSection from '~/components/FaqSection.vue';
 
-import sponsor1 from '@/assets/image/sponsor-logo.png'
-import sponsor2 from '@/assets/image/sponsor-logo.png'
-import sponsor3 from '@/assets/image/sponsor-logo.png'
-import sponsor4 from '@/assets/image/sponsor-logo.png'
+import sponsor1 from '@/assets/image/sponsor-logo.webp'
+import sponsor2 from '@/assets/image/sponsor-logo.webp'
+import sponsor3 from '@/assets/image/sponsor-logo.webp'
+import sponsor4 from '@/assets/image/sponsor-logo.webp'
 
 const sponsors = [sponsor1, sponsor2, sponsor3, sponsor4]
 const featuresData = FEATURES_DATA;

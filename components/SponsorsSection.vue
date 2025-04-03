@@ -21,21 +21,21 @@
 </template>
 
 <script setup>
-import image1 from '@/assets/image/sponsors/card-1.png'
-import image2 from '@/assets/image/sponsors/card-2.png'
-import image3 from '@/assets/image/sponsors/card-3.png'
-import image4 from '@/assets/image/sponsors/card-4.png'
-import image5 from '@/assets/image/sponsors/card-5.png'
-import image6 from '@/assets/image/sponsors/card-6.png'
-import image7 from '@/assets/image/sponsors/card-7.png'
-import image8 from '@/assets/image/sponsors/card-8.png'
-import image9 from '@/assets/image/sponsors/card-9.png'
-import image10 from '@/assets/image/sponsors/card-10.png'
-import image11 from '@/assets/image/sponsors/card-11.png'
-import image12 from '@/assets/image/sponsors/card-12.png'
-import image13 from '@/assets/image/sponsors/card-13.png'
-import image14 from '@/assets/image/sponsors/card-14.png'
-import image15 from '@/assets/image/sponsors/card-15.png'
+import image1 from '@/assets/image/sponsors/card-1.webp'
+import image2 from '@/assets/image/sponsors/card-2.webp'
+import image3 from '@/assets/image/sponsors/card-3.webp'
+import image4 from '@/assets/image/sponsors/card-4.webp'
+import image5 from '@/assets/image/sponsors/card-5.webp'
+import image6 from '@/assets/image/sponsors/card-6.webp'
+import image7 from '@/assets/image/sponsors/card-7.webp'
+import image8 from '@/assets/image/sponsors/card-8.webp'
+import image9 from '@/assets/image/sponsors/card-9.webp'
+import image10 from '@/assets/image/sponsors/card-10.webp'
+import image11 from '@/assets/image/sponsors/card-11.webp'
+import image12 from '@/assets/image/sponsors/card-12.webp'
+import image13 from '@/assets/image/sponsors/card-13.webp'
+import image14 from '@/assets/image/sponsors/card-14.webp'
+import image15 from '@/assets/image/sponsors/card-15.webp'
 
 
 const sponsors = [
