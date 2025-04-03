@@ -20,64 +20,64 @@
       </div>
     </div>
 
-    <swiper
-      :slides-per-view="slidesPerView"
-      :space-between="gap"
-      :autoplay="autoplay ? { delay: autoplaySpeed, disableOnInteraction: false } : false"
-      :pagination="{ 
-        clickable: true,
-        el: '.swiper-pagination'
-      }"
-      :breakpoints="{
-        0: {
-          slidesPerView: 1,
-          spaceBetween: 0
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 15
-        },
-        1024: {
-          slidesPerView: 4,
-          spaceBetween: 15
-        },
-        1280: {
-          slidesPerView: 5,
-          spaceBetween: 20
-        },
-        1440: {
-          slidesPerView: 5,
-          spaceBetween: 20
-        },
-        1920: {
-          slidesPerView: 6,
-          spaceBetween: gap
-        }
-      }"
-      :modules="modules"
-      @swiper="onSwiper"
-      class="mySwiper"
-    >
-      <swiper-slide v-for="(image, index) in props.images.length ? props.images : loadedImages" :key="index">
-        <div class="carousel-slide">
-          <div class="image-container bg-white shadow-md rounded-lg p-2">
-            <img 
-              :src="image.src" 
-              :alt="image.alt || `Slide ${index + 1}`" 
-              loading="lazy"
-              class="w-full h-auto object-contain rounded-lg hover:scale-[1.03] transition-transform duration-300"
-            />
+    <div class="relative">
+      <swiper
+        :modules="modules"
+        :slides-per-view="slidesPerView"
+        :space-between="gap"
+        :pagination="{ 
+          clickable: true,
+          el: '.swiper-pagination'
+        }"
+        :breakpoints="{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 0
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 15
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 15
+          },
+          1280: {
+            slidesPerView: 4,
+            spaceBetween: 20
+          }
+        }"
+        :autoplay="autoplay ? { delay: autoplaySpeed, disableOnInteraction: false } : false"
+        @swiper="onSwiper"
+        class="mySwiper"
+      >
+        <swiper-slide v-for="(image, index) in displayImages" :key="index">
+          <div class="carousel-slide">
+            <div class="image-container">
+              <a 
+                :href="getImageUrl(image)"
+                data-fancybox="gallery"
+                :data-caption="getImageAlt(image, index)"
+                class="gallery-item"
+              >
+                <img 
+                  :src="getImageUrl(image)"
+                  :alt="getImageAlt(image, index)"
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+              </a>
+            </div>
           </div>
-        </div>
-      </swiper-slide>
-      
+        </swiper-slide>
+      </swiper>
       <div class="swiper-pagination mt-6"></div>
-    </swiper>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -90,24 +90,102 @@ const onSwiper = (swiper) => {
   swiperRef.value = swiper;
 };
 
+// Функции для обработки URL и alt текста изображений
+const getImageUrl = (image) => {
+  if (typeof image === 'string') return image;
+  if (image && image.src) return image.src;
+  return '';
+};
+
+const getImageAlt = (image, index) => {
+  if (typeof image === 'string') return `Slide ${index + 1}`;
+  if (image && image.alt) return image.alt;
+  return `Slide ${index + 1}`;
+};
+
+// Функция для загрузки скриптов
+const loadScript = (src) => {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+};
+
+// Функция для загрузки стилей
+const loadStyle = (href) => {
+  return new Promise((resolve, reject) => {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    link.onload = resolve;
+    link.onerror = reject;
+    document.head.appendChild(link);
+  });
+};
+
 onMounted(async () => {
-  if (props.images.length === 0) {
-    // Если изображения не переданы, загружаем их динамически
-    const imageContext = import.meta.glob('@/assets/image/cards/*.png', { eager: false });
-    const entries = Object.entries(imageContext);
-    
-    for (const [path, importFn] of entries) {
-      try {
-        const module = await importFn();
-        const fileName = path.split('/').pop().split('.')[0];
-        loadedImages.value.push({
-          src: module.default,
-          alt: fileName
-        });
-      } catch (error) {
-        console.error(`Ошибка при загрузке изображения ${path}:`, error);
+  try {
+    // Загружаем jQuery и Fancybox
+    await loadScript('https://code.jquery.com/jquery-3.7.1.min.js');
+    await loadStyle('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css');
+    await loadScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js');
+
+    // Инициализируем Fancybox после загрузки всех скриптов
+    window.jQuery('[data-fancybox="gallery"]').fancybox({
+      buttons: [
+        "zoom",
+        "slideShow",
+        "fullScreen",
+        "close"
+      ],
+      animationEffect: "fade",
+      transitionEffect: "fade",
+      preventCaptionOverlap: true,
+      loop: true,
+      infobar: true,
+      touch: {
+        vertical: true
+      },
+      mobile: {
+        clickContent: function(current, event) {
+          return current.type === "image" ? "toggleControls" : false;
+        },
+        clickSlide: function(current, event) {
+          return current.type === "image" ? "toggleControls" : "close";
+        },
+      },
+      wheel: false
+    });
+
+    // Загрузка изображений, если они не переданы
+    if (props.images.length === 0) {
+      const imageContext = import.meta.glob('@/assets/image/cards/*.png', { eager: false });
+      const entries = Object.entries(imageContext);
+      
+      for (const [path, importFn] of entries) {
+        try {
+          const module = await importFn();
+          const fileName = path.split('/').pop().split('.')[0];
+          loadedImages.value.push({
+            src: module.default,
+            alt: fileName
+          });
+        } catch (error) {
+          console.error(`Ошибка при загрузке изображения ${path}:`, error);
+        }
       }
     }
+  } catch (error) {
+    console.error('Ошибка при инициализации Fancybox:', error);
+  }
+});
+
+onUnmounted(() => {
+  if (window.jQuery && window.jQuery.fancybox) {
+    window.jQuery.fancybox.destroy();
   }
 });
 
@@ -139,6 +217,11 @@ const props = defineProps({
     default: 16 // Расстояние между слайдами в пикселях
   }
 });
+
+// Вычисляемое свойство для отображения изображений
+const displayImages = computed(() => {
+  return props.images.length > 0 ? props.images : loadedImages.value;
+});
 </script>
 
 <style scoped>
@@ -163,29 +246,36 @@ const props = defineProps({
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  height: 600px;
 }
 
 .image-container {
-  height: 100%;
+  position: relative;
   width: 100%;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  background: white;
   border-radius: 8px;
   overflow: hidden;
 }
 
-.image-container img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
+.image-container a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: zoom-in;
 }
 
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
 
+.image-container img:hover {
+  transform: scale(1.02);
+}
 
 /* Стили для пагинации Swiper */
 :deep(.swiper-pagination) {
@@ -203,5 +293,31 @@ const props = defineProps({
 
 :deep(.swiper-pagination-bullet-active) {
   background: #000;
+}
+
+/* Стили для интеграции с Fancybox */
+.gallery-item {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: zoom-in;
+  text-decoration: none;
+}
+
+.carousel-slide img {
+  transition: transform 0.3s ease;
+}
+
+.carousel-slide:hover img {
+  transform: scale(1.02);
+}
+
+/* Обновляем стили для Fancybox */
+:deep(.fancybox-button) {
+  background: rgba(30, 30, 30, 0.6);
+}
+
+:deep(.fancybox-button:hover) {
+  background: rgba(0, 0, 0, 0.8);
 }
 </style> 

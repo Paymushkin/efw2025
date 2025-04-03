@@ -59,20 +59,37 @@ export const EVENT_TYPES = {
 export const PROGRAM_TABS = [
   {
     title: 'Pre-Launch',
-    date: '4 April & 11 April 2025',
+    date: '4, 8 April & 11 April 2025',
     events: [
       {
         type: 'event',
-        time: '4 April',
-        description: 'Press Conference "Introduction of EFW"',
-        details: 'Evening Pre-Launch Press Conference Event with The IntroduceMe Talk Show for Media and Influencers',
+        time: 'April 4, 8:00 PM',
+        place: 'MOB Restaurant, Kempinski near Mall of the Emirates',
+        description: 'Pre-Launch Event 1/3: “IntroduceMe Talk Show & Casting Kickoff”',
+        details: `This talk show includes open auditions for EFW TV hosts. Additional calls for photographers, models, stylists, and volunteers, plus a preview of the Face of EFW campaign and Paparazzi instant-photo tech. First look at EFW’s upcoming features.
+        <br><br>
+        Open to on-camera talent, fashion professionals, and media interested in joining EFW’s teams.`,
       },
+      {
+        type: 'event',
+        time: 'April 8, 8:00 PM',
+        place: 'Belcanto at Dubai Opera',
+        description: 'Pre-Launch Event 2/3: “Tech Tuesday VIP + EFW Collab. Business meets Beauty”',
+        details: `In partnership with the Dubai Tech Tuesday VIP community, this IntroduceMe Talk Show highlights the new Beauty Showroom set for Day 3 of Fashion Week, with selected Faces of EFW interviewing VIPs and live coverage via Paparazzi instant photos and 
+        <a class="programm-link" href="https://realitime.media/" target="_blank">Realitime.Media</a> screens.
+        <br><br>
+        Perfect for designers, media, beauty service providers & tech CEOs and influencers eager to discover EFW innovations, network with top-tier industry peers, and preview the upcoming Beauty Showroom.`,
+      },
+
       PRELAUNCH_SPONSOR,
       {
         type: 'event',
-        time: '11 April',
-        description: 'Portfolio Party (Porto-party) as an "IntroduceMe EFW" talk show',
-        details: `A portfolio party will be held as an "IntroduceMe talk, EFW" talk show, where each guest is introduced live on stage by the host using a large screen. Designers, stylists, models, and other creatives present their work, connect via a matchmaking service, and get real-time exposure. With music, drinks, and media, it's a vibrant networking space to showcase portfolios, gain feedback, and spark collaborations during fashion week.`,
+        time: 'April 11, 8:00 PM',
+        place: 'Suvorov Lounge',
+        description: 'Pre-Launch Event 3/3: “Porto-Party & Portfolio Showcase”',
+        details: `A gathering for stylists, designers, and fashion professionals to share portfolios, with interviews by EFW’s chosen hosts and coverage through Paparazzi instant photos and <a class="programm-link" href="https://realitime.media/" target="_blank">Realitime.Media</a>.
+        <br><br>
+        Recommended for industry insiders, media, designers, buyers and influencers looking to present work and connect before Fashion Week.`,
       },
     ],
   },

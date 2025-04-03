@@ -87,11 +87,15 @@
             :src="card.video"
             :poster="card.poster"
             class="w-full h-full object-cover"
+            :class="{ 'loaded': isVideoLoaded[index] }"
             autoplay
             muted
             loop
             playsinline
-            preload="metadata"
+            preload="auto"
+            @loadeddata="handleVideoLoad($event, index)"
+            @error="handleVideoError"
+            ref="videoRef"
           ></video>
         </div>
         <div class="p-5 md:p-7 lg:p-10">
@@ -142,7 +146,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
 import ContactForm from './ContactForm.vue';
 
@@ -162,6 +166,50 @@ const props = defineProps({
       buttonText: '',
       buttonLink: ''
     })
+  }
+});
+
+const videoRefs = ref([]);
+const isVideoLoaded = ref({});
+
+const handleVideoLoad = (event, index) => {
+  const video = event.target;
+  isVideoLoaded.value[index] = true;
+  video.play().catch(error => {
+    console.log('Autoplay failed:', error);
+    document.addEventListener('click', () => {
+      video.play().catch(console.error);
+    }, { once: true });
+  });
+};
+
+const handleVideoError = (event) => {
+  console.error('Video loading error:', event);
+  const video = event.target;
+  // Пробуем перезагрузить видео
+  video.load();
+};
+
+onMounted(() => {
+  // Предзагрузка видео
+  if (videoRefs.value) {
+    videoRefs.value.forEach(video => {
+      if (video) {
+        video.load();
+      }
+    });
+  }
+});
+
+onUnmounted(() => {
+  // Очистка при размонтировании
+  if (videoRefs.value) {
+    videoRefs.value.forEach(video => {
+      if (video) {
+        video.pause();
+        video.src = '';
+      }
+    });
   }
 });
 </script>
@@ -185,5 +233,14 @@ const props = defineProps({
   .card-item {
     scroll-snap-align: start;
   }
+}
+
+/* Обновляем стили для плавной загрузки видео */
+video {
+  opacity: 1; /* Меняем начальную прозрачность на 1 */
+}
+
+video.loaded {
+  opacity: 1;
 }
 </style> 

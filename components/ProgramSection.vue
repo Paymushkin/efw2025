@@ -62,6 +62,7 @@
         <template v-else>
           <ProgramEvent
             :time="event.time"
+            :place="event.place"
             :description="event.description"
             :details="event.details"
             :button-text="event.buttonText"
@@ -105,3 +106,4 @@ button {
   display: none; /* Chrome, Safari и Opera */
 }
 </style>
+

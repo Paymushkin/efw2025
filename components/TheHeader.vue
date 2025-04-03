@@ -10,7 +10,7 @@
           <!-- Left side: Logo and Hashtag -->
           <div class="flex items-center 2xl:gap-12 md:gap-6 gap-3">
             <button 
-              class="md:hidden text-black"
+              class="lg:hidden text-black"
               @click="isMenuOpen = !isMenuOpen"
             >
               <MenuIcon v-if="!isMenuOpen" class="w-8 h-8" />
@@ -42,7 +42,7 @@
           </div>
 
           <!-- Desktop Actions -->
-          <div class="hidden xl:flex items-center 2xl:gap-5 gap-3">
+          <div class="hidden lg:flex items-center 2xl:gap-5 gap-3">
             <div class="relative">
                 <BaseButton variant="secondary"  @click="toggleParticipateMenu" class="w-full justify-between">
                   <span>Participate</span>
@@ -100,14 +100,14 @@
             <NuxtLink 
               :to="instagram"
               target="_blank"
-              class="text-black/80 hover:text-black transition-colors"
+              class="text-black/80 hover:text-black transition-colors hidden xl:block"
             >
               <InstagramIcon />
             </NuxtLink>
             <NuxtLink 
               :to="youtube"
               target="_blank"
-              class="text-black/80 hover:text-black transition-colors"
+              class="text-black/80 hover:text-black transition-colors hidden xl:block"
             >
             <YoutubeIcon />
             </NuxtLink>
@@ -119,22 +119,22 @@
     <!-- Mobile Menu -->
     <div 
       v-if="isMenuOpen"
-      class="fixed left-0 top-[62px] w-full h-full bg-white z-50 md:hidden"
+      class="fixed left-0 top-[62px] md:top-[100px] w-full h-[calc(100vh-62px)] md:h-[calc(100vh-100px)] bg-white z-50 lg:hidden overflow-y-auto"
     >
       <div class="container mx-auto px-4 py-8">
         <div class="flex flex-col items-start gap-11">
           <div class="flex flex-col gap-4">
-          <!-- Navigation Links -->
-          <a
-            v-for="link in navLinks"
-            :key="link.id"
-            :href="link.href"
-            class="text-lg font-light text-black"
-            @click="handleMobileNavClick(link.href)"
-          >
-            {{ link.name }}
-          </a>
-        </div>
+            <!-- Navigation Links -->
+            <a
+              v-for="link in navLinks"
+              :key="link.id"
+              :href="link.href"
+              class="text-lg font-light text-black"
+              @click="handleMobileNavClick(link.href)"
+            >
+              {{ link.name }}
+            </a>
+          </div>
 
           <!-- Actions -->
           <div class="flex flex-col gap-4">
@@ -153,7 +153,7 @@
               <BaseButton @click="toggleParticipateMenu" id="participate-button" variant="secondary" class="w-full justify-between">
                 <span>Participate</span>
                 <span>></span>
-            </BaseButton>
+              </BaseButton>
 
               <div v-if="isParticipateOpen" class="absolute top-full mt-2 right-0 bg-white overflow-y-auto shadow-lg rounded-lg py-2 min-w-[150px] z-50">
                 <NuxtLink  :to="designerRegistration" target="_blank" class="block px-4 py-1 hover:bg-gray-100 transition-colors">
@@ -223,6 +223,7 @@ const navLinks = [
   { name: 'DESIGNERS', href: '/#designers', id: 'designer' },
   { name: 'FACES', href: '/#faces', id: 'faces' },
   { name: 'HOW IT WAS', href: '/#how-it-was', id: 'how-it-was' },
+  { name: 'WIDGET', href: '/widget', id: 'widget' },
 ];
 
 const scrollToSection = (href) => {

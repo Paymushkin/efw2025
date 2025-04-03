@@ -32,3 +32,6 @@ Gemfile.lock
 .cache
 .env
 .vercel
+
+# Local Netlify folder
+.netlify

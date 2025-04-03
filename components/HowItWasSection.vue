@@ -35,14 +35,12 @@
         <div
           v-for="(image, index) in currentImages"
           :key="index"
-          class="overflow-hidden rounded-lg flex-shrink-0 w-[280px] md:w-auto "
+          class="overflow-hidden rounded-lg flex-shrink-0 w-[280px] md:w-auto"
         >
           <div class="flex flex-col gap-5">
             <img 
-              :src="image" 
-              alt="" 
-              loading="lazy"
-              class="w-full h-full object-cover" 
+              v-bind="getOptimizedImageAttributes(image, tabs[currentTab].designers[index])"
+              class="w-full h-full object-cover"
             />
             <span class="text-black">{{ tabs[currentTab].designers[index] }}</span>
           </div>
@@ -53,14 +51,26 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, nextTick } from 'vue';
 import { tabs } from '@/constants/images';
+import { getOptimizedImageAttributes, preloadImages } from '@/utils/imageOptimization';
 
 const currentTab = ref(0);
 const tabsContainer = ref(null);
 let isDragging = false;
 let startX = 0;
 let scrollLeft = 0;
+
+// Загружаем только текущие изображения
+const currentImages = computed(() => {
+  return tabs[currentTab.value].images;
+});
+
+// Предзагрузка следующего набора изображений
+const preloadNextImages = () => {
+  const nextTabIndex = (currentTab.value + 1) % tabs.length;
+  preloadImages(tabs[nextTabIndex].images);
+};
 
 const startDrag = (e) => {
   isDragging = true;
@@ -84,9 +94,16 @@ const stopDrag = () => {
 
 const selectTab = (index) => {
   currentTab.value = index;
+  // Предзагружаем следующий набор изображений после смены таба
+  nextTick(() => {
+    preloadNextImages();
+  });
 };
 
-const currentImages = computed(() => tabs[currentTab.value].images);
+onMounted(() => {
+  // Предзагружаем изображения для следующего таба
+  preloadNextImages();
+});
 </script>
 
 <style scoped>

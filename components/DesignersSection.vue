@@ -1,5 +1,5 @@
 <template>
-  <div id="designers" class="container mx-auto">
+  <div id="designers" class="container mx-auto pb-16">
     <div class="flex justify-between items-center mb-8 xl:mb-[75px]">
       <h2 class="text-xl md:text-3xl xl:text-4xl">Designers</h2>
       <!-- Навигация перемещена сюда -->
@@ -10,77 +10,152 @@
     </div>
     
     <swiper
-      :modules="modules"
+      :modules="[Navigation, Pagination]"
       :slides-per-view="1"
-      :space-between="20"
+      :space-between="30"
+      :navigation="true"
+      :pagination="{
+        clickable: true,
+        dynamicBullets: true,
+        dynamicMainBullets: 7
+      }"
       :breakpoints="{
+        768: {
+          slidesPerView: 2,
+        },
         1024: {
           slidesPerView: 3,
-          spaceBetween: 30
         },
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 15
-        },
-        576: {
-          slidesPerView: 2,
-          spaceBetween: 20
-        }
       }"
-      :pagination="{ 
-        clickable: true,
-        el: '.swiper-pagination'
-      }"
-      :navigation="{
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-      }"
-      class="relative"
+      @swiper="swiperInstance = $event"
+      @slideChange="onSlideChange"
+      class="relative pb-12"
     >
       <swiper-slide v-for="(designer, index) in designers" :key="index">
-        <div class="relative h-full">
-          <div class="aspect-[3/4] mb-4">
-            <img 
-              :src="designer.image" 
-              alt="" 
-              loading="lazy"
-              class="w-full h-full object-cover rounded-lg" 
-            />
-          </div>
-          <div class="mt-4">
-            <h3 class="lg:text-xl 2xl:text-2xl text-lg">{{ designer.name }}</h3>
-            <p class="text-gray-500 text-sm md:text-base">{{ designer.category }}</p>
+        <div class="designer-card">
+          <img 
+            v-bind="getOptimizedImageAttributes(designer.image, designer.name)"
+            class="w-full h-full object-cover"
+          />
+          <div class="designer-info">
+            <h3>{{ designer.name }}</h3>
+            <p>{{ designer.category }}</p>
           </div>
         </div>
       </swiper-slide>
 
-      <div class="swiper-pagination !bottom-[-30px]"></div>
+      <div class="swiper-pagination"></div>
     </swiper>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
+import { getOptimizedImageAttributes, preloadImage } from '@/utils/imageOptimization';
 import 'swiper/css';
-import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import { designers } from '@/constants/images';
 
-const modules = [Autoplay, Pagination, Navigation];
+const swiperInstance = ref(null);
+
+// Предзагрузка следующего слайда
+const preloadNextSlide = (currentIndex) => {
+  const nextIndex = (currentIndex + 1) % designers.length;
+  preloadImage(designers[nextIndex].image);
+};
+
+const onSlideChange = () => {
+  if (swiperInstance.value) {
+    const currentIndex = swiperInstance.value.swiper.activeIndex;
+    preloadNextSlide(currentIndex);
+  }
+};
+
+onMounted(() => {
+  // Предзагружаем следующий слайд при монтировании
+  preloadNextSlide(0);
+});
 </script>
 
 <style scoped>
+:deep(.swiper) {
+  padding-bottom: 40px !important;
+  position: relative;
+}
+
+:deep(.swiper-pagination) {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Скрываем пагинацию на мобильных устройствах */
+@media (max-width: 767px) {
+  :deep(.swiper-pagination) {
+    display: none !important;
+  }
+  
+  :deep(.swiper) {
+    padding-bottom: 0 !important;
+  }
+}
+
+:deep(.swiper-pagination-bullets.swiper-pagination-horizontal) {
+  bottom: 0;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 :deep(.swiper-pagination-bullet) {
   width: 8px;
   height: 8px;
-  background: #000;
+  display: inline-block;
+  border-radius: 100%;
+  background-color: #D1D5DB;
   opacity: 0.2;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform-origin: center;
 }
 
 :deep(.swiper-pagination-bullet-active) {
   opacity: 1;
+  background-color: #000;
 }
 
+:deep(.swiper-pagination-bullet-active-main) {
+  transform: scale(1);
+  opacity: 1;
+  background-color: #000;
+}
+
+:deep(.swiper-pagination-bullet-active-prev),
+:deep(.swiper-pagination-bullet-active-next) {
+  transform: scale(0.66);
+  opacity: 0.4;
+}
+
+:deep(.swiper-pagination-bullet-active-prev-prev),
+:deep(.swiper-pagination-bullet-active-next-next) {
+  transform: scale(0.33);
+  opacity: 0.2;
+}
+
+/* Стили для навигации */
+:deep(.swiper-button-prev),
+:deep(.swiper-button-next) {
+  top: 50%;
+  transform: translateY(-50%);
+}
 </style>

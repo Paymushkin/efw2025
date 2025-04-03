@@ -11,7 +11,15 @@
         </button>
       </div>
 
-      <form @submit.prevent="handleSubmit" class="space-y-4">
+      <div v-if="showSuccess" class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+        <p>Your message has been sent successfully!</p>
+      </div>
+
+      <div v-if="showError" class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+        <p>An error occurred while sending your message. Please try again later.</p>
+      </div>
+
+      <form v-if="!showSuccess" @submit.prevent="handleSubmit" class="space-y-4">
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
           <input 
@@ -86,6 +94,12 @@ const validateEmail = (email) => {
 };
 
 const close = () => {
+  if (showSuccess.value) {
+    emit('close');
+    showSuccess.value = false;
+    return;
+  }
+  
   emit('close');
   form.name = '';
   form.email = '';
@@ -106,10 +120,9 @@ const handleSubmit = async () => {
   isSubmitting.value = true;
 
   try {
-    const apiUrl = `${config.public.apiBase}/send-email`;
-    console.log('Sending request to:', apiUrl);
-    
-    const response = await fetch(apiUrl, {
+    // Используем Formspree для отправки формы
+    // Зарегистрируйтесь на formspree.io и замените "YOUR_FORM_ID" на ID вашей формы
+    const response = await fetch('https://formspree.io/f/mwplnlgo', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -122,13 +135,9 @@ const handleSubmit = async () => {
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Server response:', errorText);
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const data = await response.json();
-    console.log('Success:', data);
     showSuccess.value = true;
     form.name = '';
     form.email = '';

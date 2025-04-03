@@ -11,12 +11,16 @@
     "predeploy": "npm run build",
     "deploy": "npm run build && gh-pages -d .output/public",
     "lint": "eslint --ext .js,.vue .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "netlify-dev": "netlify dev"
   },
   "dependencies": {
+    "@fancyapps/fancybox": "^3.5.7",
+    "@headlessui/vue": "^1.7.23",
     "@nuxt/image": "^1.10.0",
     "@sendgrid/mail": "^8.1.4",
     "gsap": "^3.12.7",
+    "jquery": "^3.7.1",
     "nodemailer": "^6.9.9",
     "nuxt": "^3.15.4",
     "resend": "^4.1.2",
@@ -33,6 +37,7 @@
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
     "gh-pages": "^6.3.0",
+    "netlify-cli": "^17.23.0",
     "postcss-import": "^16.1.0",
     "prettier": "^3.5.1"
   },

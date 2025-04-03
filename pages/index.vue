@@ -25,6 +25,7 @@
         :gap="20"
       />
     </div>
+    <FaqSection class="mb-[56px] md:mb-[76px]" />
   </div>
 </template>
 
@@ -40,6 +41,7 @@ import ImageCarousel from '~/components/ImageCarousel.vue';
 import EventFeatures from '~/components/EventFeatures.vue';
 import { FEATURES_DATA } from '~/constants/featuresData';
 import AppSeo from '@/components/AppSeo.vue';
+import FaqSection from '~/components/FaqSection.vue';
 
 import sponsor1 from '@/assets/image/sponsor-logo.png'
 import sponsor2 from '@/assets/image/sponsor-logo.png'
