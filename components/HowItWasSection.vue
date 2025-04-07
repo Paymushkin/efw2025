@@ -41,6 +41,7 @@
             <img 
               v-bind="getOptimizedImageAttributes(image, tabs[currentTab].designers[index])"
               class="w-full h-full object-cover"
+              :loading="index === 0 ? 'eager' : 'lazy'"
             />
             <span class="text-black">{{ tabs[currentTab].designers[index] }}</span>
           </div>

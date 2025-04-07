@@ -1,14 +1,14 @@
 <template>
   <section class="relative flex flex-col min-h-screen overflow-hidden">
     <video
+      ref="videoRef"
       autoplay
       loop
       muted
       playsinline
       webkit-playsinline
-      preload="auto"
+      preload="metadata"
       class="absolute top-0 left-0 w-full h-full object-cover z-0 mix-blend-multiply"
-      ref="videoRef"
     >
       <source
         src="https://storage.yandexcloud.net/videos-meyou/bg-video.mp4"
@@ -26,7 +26,7 @@
       </h1>
         <span class="xl:text-[60px] text-3xl text-white font-bold">FW 2025/2026</span>
         <span class="text-white mb-10 text-xl font-bold">13-15 April 2025</span>
-      <div id="reportage" class="grow mb-10"></div>
+      <div id="reportage" class="grow mb-10 py-2"></div>
     </div>
 
     <!-- Новый блок -->
@@ -51,6 +51,10 @@ import { onMounted, onUnmounted, ref } from 'vue';
 import LogoIcon from '~/components/icons/LogoIcon.vue';
 import Marquee from '~/components/MarqueeSection.vue';
 import { marqueeText2, hashtag } from '~/constants/texts';
+import { useVideoVisibility } from '@/composables/useVideoVisibility';
+
+const videoRef = ref(null);
+const { isVisible } = useVideoVisibility(videoRef);
 
 // Обработчик клика по хэштегу
 const handleHashtagClick = () => {
@@ -127,8 +131,6 @@ const updateScript = () => {
   
   reportageBlock.appendChild(script);
 };
-
-const videoRef = ref(null);
 
 onMounted(() => {
   // Добавляем слушатель изменения размера окна

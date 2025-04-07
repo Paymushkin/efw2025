@@ -72,13 +72,14 @@ export const PROGRAM_TABS = [
       },
       {
         type: 'event',
-        time: 'April 8, 8:00 PM',
+        time: 'April 8, 6:00 PM',
         place: 'Belcanto at Dubai Opera',
         description: 'Pre-Launch Event 2/3: “Tech Tuesday VIP + EFW Collab. Business meets Beauty”',
-        details: `In partnership with the Dubai Tech Tuesday VIP community, this IntroduceMe Talk Show highlights the new Beauty Showroom set for Day 3 of Fashion Week, with selected Faces of EFW interviewing VIPs and live coverage via Paparazzi instant photos and 
-        <a class="programm-link" href="https://realitime.media/" target="_blank">Realitime.Media</a> screens.
+        details: `In partnership with the Dubai Tech Tuesday VIP community, this IntroduceMe Talk Show highlights the new Beauty Showroom set for Day 3 of Fashion Week, with selected Faces of EFW interviewing VIPs and live coverage via Paparazzi instant photos and Realitime.Media screens.
         <br><br>
         Perfect for designers, media, beauty service providers & tech CEOs and influencers eager to discover EFW innovations, network with top-tier industry peers, and preview the upcoming Beauty Showroom.`,
+        buttonText: 'Dubai Tech Tuesday >',
+        buttonLink: 'https://lu.ma/DubaiTechTues40'
       },
 
       PRELAUNCH_SPONSOR,

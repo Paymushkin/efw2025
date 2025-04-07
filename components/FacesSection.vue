@@ -5,13 +5,13 @@
     </div>
     <div class="relative flex flex-col min-h-screen overflow-hidden">
       <video
+      ref="videoRef"
       autoplay
       loop
       muted
       playsinline
       webkit-playsinline
-      preload="auto"
-      ref="videoRef"
+      preload="metadata"
       class="absolute top-0 left-0 w-full h-full object-cover z-0 mix-blend-multiply"
     >
       <source
@@ -39,10 +39,13 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import LogoIcon from '~/components/icons/LogoIcon.vue';
 import { hashtag } from '~/constants/texts';
+import { useVideoVisibility } from '@/composables/useVideoVisibility';
 
 const videoRef = ref(null);
+const { isVisible } = useVideoVisibility(videoRef);
 
 onMounted(() => {
   // Принудительный запуск видео для iOS

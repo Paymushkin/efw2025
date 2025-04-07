@@ -159,7 +159,7 @@ const menuLinks = [
   { name: 'WIDGET GUIDE', href: '/widget', id: 'widget-guide' },
   { name: 'FAQ', href: '/faq', id: 'faq' },
   // { name: 'TEAM', href: '/team', id: 'team' },
-  // { name: 'GALLERY', href: '/gallery', id: 'gallery' },
+  { name: 'GALLERY', href: '/gallery', id: 'gallery' },
 ];
 
 const scrollToSection = (href) => {

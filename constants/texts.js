@@ -11,3 +11,4 @@ export const hashtag = ['#JOINDUBAI', 'https://www.instagram.com/explore/search/
 export const designerRegistration = 'http://bit.ly/RegistrationFormEFW'
 export const visitorsRegistration = 'http://docs.google.com/forms/d/11I7bcoDEzErBszt2UfZqf04LAjljlpkBhdRTD6CrC7g/edit'
 export const modelRegistration = 'https://docs.google.com/forms/d/19EdVhLdpPeGn0tnNurzDBWl0rsWJaP79n9TrYMEtINw/edit' 
+export const phototVideoRegistration = 'https://docs.google.com/forms/d/19EdVhLdpPeGn0tnNurzDBWl0rsWJaP79n9TrYMEtINw/viewform?edit_requested=true'

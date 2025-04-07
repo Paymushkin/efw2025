@@ -2,21 +2,15 @@
   <div class="image-carousel-container">
     <div class="carousel-header flex justify-between items-center mb-6">
       <h2 class="text-2xl md:text-3xl lg:text-4xl">{{ title }}</h2>
-      <div class="navigation-buttons flex items-center gap-3">
-        <button 
+      <div class="flex relative items-center gap-4">
+        <div 
           @click="swiperRef?.slidePrev()"
-          class="carousel-btn p-2 border border-black hover:bg-black hover:text-white transition-colors"
-          aria-label="Предыдущий слайд"
-        >
-          &lt;
-        </button>
-        <button 
+          class="swiper-button-prev !static md:!w-10 md:!h-10 !w-6 !h-6 !text-black after:!text-xl cursor-pointer"
+        ></div>
+        <div 
           @click="swiperRef?.slideNext()"
-          class="carousel-btn p-2 border border-black hover:bg-black hover:text-white transition-colors"
-          aria-label="Следующий слайд"
-        >
-          &gt;
-        </button>
+          class="swiper-button-next !static md:!w-10 md:!h-10 !w-6 !h-6 !text-black after:!text-xl cursor-pointer"
+        ></div>
       </div>
     </div>
 
@@ -28,6 +22,11 @@
         :pagination="{ 
           clickable: true,
           el: '.swiper-pagination'
+        }"
+        :navigation="{
+          prevEl: '.swiper-button-prev',
+          nextEl: '.swiper-button-next',
+          enabled: false
         }"
         :breakpoints="{
           0: {
@@ -64,7 +63,7 @@
                   :src="getImageUrl(image)"
                   :alt="getImageAlt(image, index)"
                   class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
+                  :loading="index === 0 ? 'eager' : 'lazy'"
                 />
               </a>
             </div>
@@ -225,21 +224,49 @@ const displayImages = computed(() => {
 </script>
 
 <style scoped>
-.carousel-btn {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-}
-
+/* Удаляем старые стили для кнопок */
 :deep(.swiper) {
   padding-bottom: 10px;
 }
 
 :deep(.swiper-wrapper) {
   align-items: center;
+}
+
+/* Стили для стрелок навигации */
+:deep(.swiper-button-prev),
+:deep(.swiper-button-next) {
+  position: static;
+  margin: 0;
+  width: 40px;
+  height: 40px;
+  color: black;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+:deep(.swiper-button-prev:hover),
+:deep(.swiper-button-next:hover) {
+  opacity: 0.7;
+}
+
+:deep(.swiper-button-prev::after),
+:deep(.swiper-button-next::after) {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  :deep(.swiper-button-prev),
+  :deep(.swiper-button-next) {
+    width: 24px;
+    height: 24px;
+  }
+  
+  :deep(.swiper-button-prev::after),
+  :deep(.swiper-button-next::after) {
+    font-size: 16px;
+  }
 }
 
 .carousel-slide {

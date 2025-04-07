@@ -79,23 +79,21 @@
             v-if="card.type !== 'video'"
             :src="card.image" 
             :alt="card.title"
-            loading="lazy"
+            :loading="index === 0 ? 'eager' : 'lazy'"
             class="w-full h-full object-cover"
           />
           <video
             v-else-if="card.type === 'video'"
+            :ref="(el) => setVideoRef(el, index)"
             :src="card.video"
             :poster="card.poster"
             class="w-full h-full object-cover"
-            :class="{ 'loaded': isVideoLoaded[index] }"
-            autoplay
             muted
             loop
             playsinline
-            preload="auto"
+            preload="metadata"
             @loadeddata="handleVideoLoad($event, index)"
             @error="handleVideoError"
-            ref="videoRef"
           ></video>
         </div>
         <div class="p-5 md:p-7 lg:p-10">
@@ -124,11 +122,16 @@
             />
             <video
               v-else-if="card.type === 'video'"
+              :ref="(el) => setVideoRef(el, `mobile-${index}`)"
               :src="card.video"
               :poster="card.poster"
               class="w-full h-full object-cover"
-              controls
+              muted
+              loop
+              playsinline
               preload="metadata"
+              @loadeddata="handleVideoLoad($event, `mobile-${index}`)"
+              @error="handleVideoError"
             ></video>
           </div>
           <div class="p-5">
@@ -149,8 +152,10 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
 import ContactForm from './ContactForm.vue';
+import { useVideoVisibility } from '@/composables/useVideoVisibility';
 
 const showContactForm = ref(false);
+const { setVideoRef, cleanup, isVisible } = useVideoVisibility();
 
 const props = defineProps({
   data: {
@@ -169,48 +174,18 @@ const props = defineProps({
   }
 });
 
-const videoRefs = ref([]);
-const isVideoLoaded = ref({});
-
 const handleVideoLoad = (event, index) => {
-  const video = event.target;
-  isVideoLoaded.value[index] = true;
-  video.play().catch(error => {
-    console.log('Autoplay failed:', error);
-    document.addEventListener('click', () => {
-      video.play().catch(console.error);
-    }, { once: true });
-  });
+  // Видео уже будет отслеживаться благодаря ref
+  console.log(`Video ${index} loaded`);
 };
 
 const handleVideoError = (event) => {
   console.error('Video loading error:', event);
-  const video = event.target;
-  // Пробуем перезагрузить видео
-  video.load();
+  event.target.load();
 };
 
-onMounted(() => {
-  // Предзагрузка видео
-  if (videoRefs.value) {
-    videoRefs.value.forEach(video => {
-      if (video) {
-        video.load();
-      }
-    });
-  }
-});
-
 onUnmounted(() => {
-  // Очистка при размонтировании
-  if (videoRefs.value) {
-    videoRefs.value.forEach(video => {
-      if (video) {
-        video.pause();
-        video.src = '';
-      }
-    });
-  }
+  cleanup();
 });
 </script>
 
@@ -235,12 +210,9 @@ onUnmounted(() => {
   }
 }
 
-/* Обновляем стили для плавной загрузки видео */
+/* Стили для видео */
 video {
-  opacity: 1; /* Меняем начальную прозрачность на 1 */
-}
-
-video.loaded {
   opacity: 1;
+  transition: opacity 0.3s ease;
 }
 </style> 

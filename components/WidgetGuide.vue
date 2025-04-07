@@ -29,7 +29,7 @@
           This method allows you to embed the widget using JavaScript. The widget will automatically adapt to the container size.
         </p>
         <div class="bg-gray-50 p-4 rounded-lg mb-4 relative">
-          <pre class="text-sm overflow-x-auto pr-16"><code class="block whitespace-pre-wrap break-all">&lt;script src="https://meyou.ru/public/meyou_init.js" id="meyou_init" defer="" data-event="https://meyou.ru/efw2025/live?UTM=smi&header&footer&adv&tag"&gt;&lt;/script&gt;</code></pre>
+          <pre class="text-sm overflow-x-auto pr-16"><code class="block whitespace-pre-wrap break-all">&lt;script src="https://meyou.id/public/meyou_init.js" id="meyou_init" defer="" data-event="https://meyou.id/efw2025/live?UTM=smi&header&footer&adv&tag"&gt;&lt;/script&gt;</code></pre>
           <button 
             @click="copyCode('script')"
             class="absolute top-4 right-4 p-2 text-gray-500 hover:text-gray-700 transition-colors bg-white rounded-md shadow-sm"
@@ -60,7 +60,7 @@
           This method allows you to embed the widget directly using an HTML iframe tag. You can control the widget dimensions.
         </p>
         <div class="bg-gray-50 p-4 rounded-lg mb-4 relative">
-          <pre class="text-sm overflow-x-auto pr-16"><code class="block whitespace-pre-wrap break-all">&lt;iframe width="100%" height="100%" allowtransparency="" allowfullscreen="" src="https://meyou.ru/efw2025/live?UTM=smi&header&footer&adv&tag" frameborder="0"&gt;&lt;/iframe&gt;</code></pre>
+          <pre class="text-sm overflow-x-auto pr-16"><code class="block whitespace-pre-wrap break-all">&lt;iframe width="100%" height="100%" allowtransparency="" allowfullscreen="" src="https://meyou.id/efw2025/live?UTM=smi&header&footer&adv&tag" frameborder="0"&gt;&lt;/iframe&gt;</code></pre>
           <button 
             @click="copyCode('iframe')"
             class="absolute top-4 right-4 p-2 text-gray-500 hover:text-gray-700 transition-colors bg-white rounded-md shadow-sm"
@@ -93,11 +93,12 @@
         <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
           <div class="aspect-video bg-gray-100">
             <video 
+              ref="video1Ref"
               class="w-full h-full object-cover"
-              autoplay 
               loop 
               muted 
               playsinline
+              preload="metadata"
               src="https://storage.yandexcloud.net/videos-meyou/efw2025/example-1.mp4"
             ></video>
           </div>
@@ -107,11 +108,12 @@
         <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
           <div class="aspect-video bg-gray-100">
             <video 
+              ref="video2Ref"
               class="w-full h-full object-cover"
-              autoplay 
               loop 
               muted 
               playsinline
+              preload="metadata"
               src="https://storage.yandexcloud.net/videos-meyou/efw2025/example-2.mp4"
             ></video>
           </div>
@@ -121,11 +123,12 @@
         <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
           <div class="aspect-video bg-gray-100">
             <video 
+              ref="video3Ref"
               class="w-full h-full object-cover"
-              autoplay 
               loop 
               muted 
               playsinline
+              preload="metadata"
               src="https://storage.yandexcloud.net/videos-meyou/efw2025/example-4.mp4"
             ></video>
           </div>
@@ -162,9 +165,18 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useVideoVisibility } from '@/composables/useVideoVisibility';
 
-const SCRIPT_CODE = '&lt;script src="https://meyou.ru/public/meyou_init.js" id="meyou_init" defer="" data-event="https://meyou.ru/efw2025/live?UTM=smi&header&footer&adv&tag"&gt;&lt;/script&gt;';
-const IFRAME_CODE = '&lt;iframe width="100%" height="100%" allowtransparency="" allowfullscreen="" src="https://meyou.ru/efw2025/live?UTM=smi&header&footer&adv&tag" frameborder="0"&gt;&lt;/iframe&gt;';
+const video1Ref = ref(null);
+const video2Ref = ref(null);
+const video3Ref = ref(null);
+
+useVideoVisibility(video1Ref);
+useVideoVisibility(video2Ref);
+useVideoVisibility(video3Ref);
+
+const SCRIPT_CODE = '&lt;script src="https://meyou.id/public/meyou_init.js" id="meyou_init" defer="" data-event="https://meyou.id/efw2025/live?UTM=smi&header&footer&adv&tag"&gt;&lt;/script&gt;';
+const IFRAME_CODE = '&lt;iframe width="100%" height="100%" allowtransparency="" allowfullscreen="" src="https://meyou.id/efw2025/live?UTM=smi&header&footer&adv&tag" frameborder="0"&gt;&lt;/iframe&gt;';
 
 const copyStatus = ref({
   script: false,

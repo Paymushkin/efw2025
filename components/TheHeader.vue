@@ -16,16 +16,18 @@
               <MenuIcon v-if="!isMenuOpen" class="w-8 h-8" />
               <XIcon v-else class="w-8 h-8" />
             </button>
+            <div class="flex flex-col md:flex-row md:gap-6 gap-1 md:items-center">
+              <NuxtLink to="/" class="flex-shrink-0">
+                <LogoBlack class="h-4 md:h-5 2xl:h-8 w-[165px] 2xl:w-[254px]" />
+              </NuxtLink>
             
-            <NuxtLink to="/" class="flex-shrink-0">
-              <LogoBlack class="h-4 md:h-5 2xl:h-8 w-[165px] 2xl:w-[254px]" />
-            </NuxtLink>
-
-            <a 
-              href="#" 
-              class="text-black 2xl:text-xl lg:text-base sm:text-sm"
-              @click.prevent="handleHashtagClick"
-            >{{ hashtag[0] }}</a>
+              <NuxtLink 
+                href="#" 
+                class="text-black 2xl:text-xl xl:text-base text-sm  md:pl-0 pl-4"
+                @click.prevent="handleHashtagClick"
+              >{{ hashtag[0] }}
+              </NuxtLink>
+            </div>  
           </div>
 
           <!-- Desktop Navigation Links -->
@@ -42,9 +44,9 @@
           </div>
 
           <!-- Desktop Actions -->
-          <div class="hidden lg:flex items-center 2xl:gap-5 gap-3">
+          <div class="flex items-center 2xl:gap-5 gap-3">
             <div class="relative">
-                <BaseButton variant="secondary"  @click="toggleParticipateMenu" class="w-full justify-between">
+                <BaseButton variant="secondary"  @click="toggleParticipateMenu" class="hidden lg:flex w-full justify-between">
                   <span>Participate</span>
                   <span>></span>
                 </BaseButton>
@@ -67,7 +69,7 @@
                   Stylist
                 </NuxtLink>
 
-                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors"> 
+                <NuxtLink :to="phototVideoRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors"> 
                   Photo / Video
                 </NuxtLink>
 
@@ -172,7 +174,7 @@
                   Stylist
                 </NuxtLink>
 
-                <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-1 hover:bg-gray-100 transition-colors"> 
+                <NuxtLink :to="phototVideoRegistration" target="_blank" class="block px-4 py-1 hover:bg-gray-100 transition-colors"> 
                   Photo / Video
                 </NuxtLink>
 
@@ -211,7 +213,7 @@ import XIcon from '@/components/icons/XIcon.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
 import Marquee from '@/components/MarqueeSection.vue';
 import { marqueeText1 } from '~/constants/texts';
-import { hashtag, instagram, youtube, designerRegistration, visitorsRegistration, modelRegistration } from '~/constants/texts';
+import { hashtag, instagram, youtube, designerRegistration, visitorsRegistration, modelRegistration, phototVideoRegistration } from '~/constants/texts';
 
 const router = useRouter();
 const isMenuOpen = ref(false);
@@ -223,7 +225,7 @@ const navLinks = [
   { name: 'DESIGNERS', href: '/#designers', id: 'designer' },
   { name: 'FACES', href: '/#faces', id: 'faces' },
   { name: 'HOW IT WAS', href: '/#how-it-was', id: 'how-it-was' },
-  { name: 'WIDGET', href: '/widget', id: 'widget' },
+  // { name: 'WIDGET', href: '/widget', id: 'widget' },
 ];
 
 const scrollToSection = (href) => {

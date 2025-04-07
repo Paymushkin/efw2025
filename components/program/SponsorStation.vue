@@ -2,6 +2,7 @@
   <div class="flex flex-col-reverse md:flex-row justify-between md:border-t items-center border-[#EFF5F6] xl:gap-[120px] md:gap-[60px] gap-[30px]">
     <div class="xl:w-[500px] md:w-[350px] w-full shrink-0 video-container">
       <video 
+        ref="videoRef"
         preload="metadata"
         autoplay
         loop
@@ -29,7 +30,12 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import BaseButton from '~/components/ui/BaseButton.vue';
+import { useVideoVisibility } from '@/composables/useVideoVisibility';
+
+const videoRef = ref(null);
+const { isVisible } = useVideoVisibility(videoRef);
 
 defineProps({
   videoUrl: {
