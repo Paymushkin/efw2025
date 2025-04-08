@@ -1,7 +1,7 @@
 <template>
   <footer id="contacts" class="bg-black text-white py-16">
     <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row gap-10 md:gap-[130px] justify-end">
+      <div class="flex flex-col sm:flex-row gap-10 md:gap-[130px] justify-end">
         <!-- Menu Column -->
         <div>
           <h3 class="hidden md:block text-lg font-medium mb-6">Menu</h3>
@@ -116,7 +116,7 @@
           </div>
         </div>
 
-        <div class="flex md:hidden flex-col items-start gap-4">
+        <div class="flex sm:hidden flex-col items-start gap-4">
           <LogoWhiteIcon />
           <NuxtLink
             :to="hashtag[1]"

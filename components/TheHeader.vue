@@ -18,12 +18,12 @@
             </button>
             <div class="flex flex-col md:flex-row md:gap-6 gap-1 md:items-center">
               <NuxtLink to="/" class="flex-shrink-0">
-                <LogoBlack class="h-4 md:h-5 2xl:h-8 w-[165px] 2xl:w-[254px]" />
+                <LogoBlack class="h-5 2xl:h-8 w-[165px] 2xl:w-[254px]" />
               </NuxtLink>
             
               <NuxtLink 
                 href="#" 
-                class="text-black 2xl:text-xl xl:text-base text-sm  md:pl-0 pl-4"
+                class="text-black 2xl:text-xl xl:text-base text-[10px] md:uppercase lowercase"
                 @click.prevent="handleHashtagClick"
               >{{ hashtag[0] }}
               </NuxtLink>
@@ -92,7 +92,8 @@
             </div>
             
             <NuxtLink target="_blank" 
-              :to="visitorsRegistration">
+              :to="visitorsRegistration"
+              v-if="!isWelcomePage">
               <BaseButton variant="primary">
                 <span>Visit</span>
                 <span>></span>
@@ -143,7 +144,8 @@
             <NuxtLink target="_blank" 
               to="https://docs.google.com/forms/d/11I7bcoDEzErBszt2UfZqf04LAjljlpkBhdRTD6CrC7g/edit">
               <NuxtLink target="_blank" 
-                :to="visitorsRegistration">
+                :to="visitorsRegistration"
+                v-if="!isWelcomePage">
                 <BaseButton variant="primary" class="w-full justify-between">
                   <span>Visit</span>
                   <span>></span>
@@ -203,8 +205,8 @@
 </template>
 
 <script setup>
-import { ref, watch, onUnmounted, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
+import { ref, watch, onUnmounted, onMounted, computed } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 import LogoBlack from '@/components/icons/LogoBlack.vue';
 import InstagramIcon from '@/components/icons/InstagramIcon.vue';
 import YoutubeIcon from '@/components/icons/YoutubeIcon';
@@ -216,6 +218,7 @@ import { marqueeText1 } from '~/constants/texts';
 import { hashtag, instagram, youtube, designerRegistration, visitorsRegistration, modelRegistration, phototVideoRegistration } from '~/constants/texts';
 
 const router = useRouter();
+const route = useRoute();
 const isMenuOpen = ref(false);
 const isLinksMenuOpen = ref(false);
 const isParticipateOpen = ref(false);
@@ -332,6 +335,13 @@ const handleHashtagClick = () => {
     window.open(hashtag[1], '_blank');
   }
 };
+
+// Check if the current page is '/welcome'
+const isWelcomePage = computed(() => {
+  // Проверяем текущий путь
+  const currentPath = window.location.pathname;
+  return currentPath.includes('welcome');
+});
 </script>
 
 <style>
