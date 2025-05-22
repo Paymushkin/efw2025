@@ -13,8 +13,9 @@
       <EventFeatures :data="featuresData.featuresData5" />
       <EventFeatures :data="featuresData.featuresData6" />
       <EventFeatures :data="featuresData.featuresData7" />
-      <div id="reportage" class="grow mb-10"></div>
+      <!-- <div id="reportage" class="grow mb-10"></div> -->
     </div>
+    <GalleryIframe />
   </div>
 </template>
 
@@ -23,6 +24,7 @@ import { onMounted, onUnmounted, ref } from 'vue';
 import EventFeatures from '~/components/EventFeatures.vue';
 import { FEATURES_DATA } from '~/constants/featuresData';
 import AppSeo from '@/components/AppSeo.vue';
+import GalleryIframe from '@/components/GalleryIframe.vue';
 
 // Используем данные из констант
 const featuresData = FEATURES_DATA;
@@ -106,6 +108,10 @@ onUnmounted(() => {
   // Удаляем слушатель при размонтировании компонента
   window.removeEventListener('resize', updateSize);
 });
+
+const navigateToGallery = () => {
+  window.location.href = '/gallery';
+};
 
 </script>
 

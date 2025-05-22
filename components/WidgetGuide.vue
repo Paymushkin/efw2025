@@ -98,7 +98,10 @@
               loop 
               muted 
               playsinline
-              preload="metadata"
+              autoplay
+              webkit-playsinline
+              x5-playsinline
+              preload="auto"
               src="https://storage.yandexcloud.net/videos-meyou/efw2025/example-1.mp4"
             ></video>
           </div>
@@ -113,7 +116,10 @@
               loop 
               muted 
               playsinline
-              preload="metadata"
+              autoplay
+              webkit-playsinline
+              x5-playsinline
+              preload="auto"
               src="https://storage.yandexcloud.net/videos-meyou/efw2025/example-2.mp4"
             ></video>
           </div>
@@ -128,7 +134,10 @@
               loop 
               muted 
               playsinline
-              preload="metadata"
+              autoplay
+              webkit-playsinline
+              x5-playsinline
+              preload="auto"
               src="https://storage.yandexcloud.net/videos-meyou/efw2025/example-4.mp4"
             ></video>
           </div>
@@ -164,7 +173,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useVideoVisibility } from '@/composables/useVideoVisibility';
 
 const video1Ref = ref(null);
@@ -174,6 +183,18 @@ const video3Ref = ref(null);
 useVideoVisibility(video1Ref);
 useVideoVisibility(video2Ref);
 useVideoVisibility(video3Ref);
+
+onMounted(() => {
+  // Force play videos on mount for Safari
+  [video1Ref.value, video2Ref.value, video3Ref.value].forEach(video => {
+    if (video) {
+      video.play().catch(() => {
+        // Handle autoplay failure
+        console.log('Autoplay failed, user interaction required');
+      });
+    }
+  });
+});
 
 const SCRIPT_CODE = '&lt;script src="https://meyou.id/public/meyou_init.js" id="meyou_init" defer="" data-event="https://meyou.id/efw2025/live?UTM=smi&header&footer&adv&tag"&gt;&lt;/script&gt;';
 const IFRAME_CODE = '&lt;iframe width="100%" height="100%" allowtransparency="" allowfullscreen="" src="https://meyou.id/efw2025/live?UTM=smi&header&footer&adv&tag" frameborder="0"&gt;&lt;/iframe&gt;';

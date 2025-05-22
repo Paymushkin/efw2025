@@ -30,24 +30,31 @@
 </template>
 
 <script setup>
+definePageMeta({
+  layout: 'default'
+});
+
+// Components
 import HeroSection from '@/components/HeroSection.vue';
 import HowItWasSection from '~/components/HowItWasSection.vue';
 import ProgramSection from '~/components/ProgramSection.vue';
-import DesignersSection from '~/components/DesignersSection.vue'
+import DesignersSection from '~/components/DesignersSection.vue';
 import SponsorsSection from '~/components/SponsorsSection.vue';
 import StatisticsSection from '@/components/StatisticsSection.vue';
 import MarqueeSection from '~/components/MarqueeSection.vue';
 import ImageCarousel from '~/components/ImageCarousel.vue';
 import EventFeatures from '~/components/EventFeatures.vue';
-import { FEATURES_DATA } from '~/constants/featuresData';
 import AppSeo from '@/components/AppSeo.vue';
 import FaqSection from '~/components/FaqSection.vue';
+import FacesSection from '~/components/FacesSection.vue';
 
-import sponsor1 from '@/assets/image/sponsor-logo.webp'
-import sponsor2 from '@/assets/image/sponsor-logo.webp'
-import sponsor3 from '@/assets/image/sponsor-logo.webp'
-import sponsor4 from '@/assets/image/sponsor-logo.webp'
+// Constants and Assets
+import { FEATURES_DATA } from '~/constants/featuresData';
+import sponsor1 from '@/assets/image/sponsor-logo.webp';
+import sponsor2 from '@/assets/image/sponsor-logo.webp';
+import sponsor3 from '@/assets/image/sponsor-logo.webp';
+import sponsor4 from '@/assets/image/sponsor-logo.webp';
 
-const sponsors = [sponsor1, sponsor2, sponsor3, sponsor4]
+const sponsors = [sponsor1, sponsor2, sponsor3, sponsor4];
 const featuresData = FEATURES_DATA;
 </script>

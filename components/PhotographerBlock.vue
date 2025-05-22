@@ -21,16 +21,30 @@
     <!-- Desktop version -->
     <div class="hidden md:grid grid-cols-3 gap-6">
       <div 
-        v-for="(photo, index) in photographer.photos" 
+        v-for="(item, index) in photographer.photos || photographer.videos" 
         :key="index"
-        class="aspect-[3/4] overflow-hidden rounded-lg"
+        :class="[
+          'overflow-hidden rounded-lg',
+          photographer.videos ? 'aspect-[16/9]' : 'aspect-[3/4]'
+        ]"
       >
         <img 
-          :src="photo" 
+          v-if="!photographer.videos"
+          :src="item" 
           :alt="`Photo ${index + 1} by ${photographer.name}`"
-          class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"
           :loading="index === 0 ? 'eager' : 'lazy'"
         />
+        <video
+          v-else
+          :src="item"
+          :title="`Video ${index + 1} by ${photographer.name}`"
+          class="w-full h-full object-cover"
+          playsinline
+          autoplay
+          loop
+          muted
+        ></video>
       </div>
     </div>
 
@@ -38,16 +52,30 @@
     <div class="md:hidden -mx-5 px-5">
       <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory hide-scrollbar">
         <div 
-          v-for="(photo, index) in photographer.photos" 
+          v-for="(item, index) in photographer.photos || photographer.videos" 
           :key="index"
-          class="flex-shrink-0 w-[85vw] max-w-[300px] aspect-[3/4] overflow-hidden rounded-lg snap-center"
+          :class="[
+            'flex-shrink-0 w-[85vw] max-w-[300px] overflow-hidden rounded-lg snap-center',
+            photographer.videos ? 'aspect-[16/9]' : 'aspect-[3/4]'
+          ]"
         >
           <img 
-            :src="photo" 
+            v-if="!photographer.videos"
+            :src="item" 
             :alt="`Photo ${index + 1} by ${photographer.name}`"
             class="w-full h-full object-cover"
             loading="lazy"
           />
+          <video
+            v-else
+            :src="item"
+            :title="`Video ${index + 1} by ${photographer.name}`"
+            class="w-full h-full object-cover"
+            playsinline
+            autoplay
+            loop
+            muted
+          ></video>
         </div>
         <!-- Spacer element for right margin -->
         <div class="flex-shrink-0 w-5"></div>
@@ -65,6 +93,10 @@ defineProps({
     required: true
   }
 });
+
+const isVideo = (url) => {
+  return url.endsWith('.mp4') || url.endsWith('.webm') || url.endsWith('.ogg');
+};
 </script>
 
 <style scoped>

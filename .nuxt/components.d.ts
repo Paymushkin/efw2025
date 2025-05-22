@@ -2,13 +2,13 @@
 import type { DefineComponent, SlotsType } from 'vue'
 type IslandComponent<T extends DefineComponent> = T & DefineComponent<{}, {refresh: () => Promise<void>}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, SlotsType<{ fallback: { error: unknown } }>>
 interface _GlobalComponents {
-      'App': typeof import("../components/App.vue")['default']
-    'AppSeo': typeof import("../components/AppSeo.vue")['default']
+      'AppSeo': typeof import("../components/AppSeo.vue")['default']
     'ContactForm': typeof import("../components/ContactForm.vue")['default']
     'DesignersSection': typeof import("../components/DesignersSection.vue")['default']
     'EventFeatures': typeof import("../components/EventFeatures.vue")['default']
     'FacesSection': typeof import("../components/FacesSection.vue")['default']
     'FaqSection': typeof import("../components/FaqSection.vue")['default']
+    'GalleryIframe': typeof import("../components/GalleryIframe.vue")['default']
     'HeroSection': typeof import("../components/HeroSection.vue")['default']
     'HowItWasSection': typeof import("../components/HowItWasSection.vue")['default']
     'ImageCarousel': typeof import("../components/ImageCarousel.vue")['default']
@@ -59,13 +59,13 @@ interface _GlobalComponents {
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'NuxtIsland': typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
     'NuxtRouteAnnouncer': IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
-      'LazyApp': typeof import("../components/App.vue")['default']
-    'LazyAppSeo': typeof import("../components/AppSeo.vue")['default']
+      'LazyAppSeo': typeof import("../components/AppSeo.vue")['default']
     'LazyContactForm': typeof import("../components/ContactForm.vue")['default']
     'LazyDesignersSection': typeof import("../components/DesignersSection.vue")['default']
     'LazyEventFeatures': typeof import("../components/EventFeatures.vue")['default']
     'LazyFacesSection': typeof import("../components/FacesSection.vue")['default']
     'LazyFaqSection': typeof import("../components/FaqSection.vue")['default']
+    'LazyGalleryIframe': typeof import("../components/GalleryIframe.vue")['default']
     'LazyHeroSection': typeof import("../components/HeroSection.vue")['default']
     'LazyHowItWasSection': typeof import("../components/HowItWasSection.vue")['default']
     'LazyImageCarousel': typeof import("../components/ImageCarousel.vue")['default']
@@ -122,13 +122,13 @@ declare module 'vue' {
   export interface GlobalComponents extends _GlobalComponents { }
 }
 
-export const App: typeof import("../components/App.vue")['default']
 export const AppSeo: typeof import("../components/AppSeo.vue")['default']
 export const ContactForm: typeof import("../components/ContactForm.vue")['default']
 export const DesignersSection: typeof import("../components/DesignersSection.vue")['default']
 export const EventFeatures: typeof import("../components/EventFeatures.vue")['default']
 export const FacesSection: typeof import("../components/FacesSection.vue")['default']
 export const FaqSection: typeof import("../components/FaqSection.vue")['default']
+export const GalleryIframe: typeof import("../components/GalleryIframe.vue")['default']
 export const HeroSection: typeof import("../components/HeroSection.vue")['default']
 export const HowItWasSection: typeof import("../components/HowItWasSection.vue")['default']
 export const ImageCarousel: typeof import("../components/ImageCarousel.vue")['default']
@@ -179,13 +179,13 @@ export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
 export const NuxtRouteAnnouncer: IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
-export const LazyApp: typeof import("../components/App.vue")['default']
 export const LazyAppSeo: typeof import("../components/AppSeo.vue")['default']
 export const LazyContactForm: typeof import("../components/ContactForm.vue")['default']
 export const LazyDesignersSection: typeof import("../components/DesignersSection.vue")['default']
 export const LazyEventFeatures: typeof import("../components/EventFeatures.vue")['default']
 export const LazyFacesSection: typeof import("../components/FacesSection.vue")['default']
 export const LazyFaqSection: typeof import("../components/FaqSection.vue")['default']
+export const LazyGalleryIframe: typeof import("../components/GalleryIframe.vue")['default']
 export const LazyHeroSection: typeof import("../components/HeroSection.vue")['default']
 export const LazyHowItWasSection: typeof import("../components/HowItWasSection.vue")['default']
 export const LazyImageCarousel: typeof import("../components/ImageCarousel.vue")['default']

@@ -35,7 +35,8 @@ export default defineNuxtConfig({
     routeRules: {
       '/': { static: true },
       '/dubaifw/**': { static: true }
-    }
+    },
+    static: true
   },
   runtimeConfig: {
     RESEND_API_KEY: process.env.RESEND_API_KEY,

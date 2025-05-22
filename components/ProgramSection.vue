@@ -82,7 +82,7 @@ import BigSponsorStation from '~/components/program/BigSponsorStation.vue';
 import ProgramEvent from '~/components/program/ProgramEvent.vue';
 import { EVENT_TYPES, PROGRAM_TABS } from '~/constants/program';
 
-const currentTab = ref(0);
+const currentTab = ref(1);
 const tabs = PROGRAM_TABS;
 
 const selectTab = (index) => {

@@ -46,20 +46,24 @@ import image34 from '~/assets/image/events/2024ss/1.webp'
 import image35 from '~/assets/image/events/2024ss/2.webp'
 import image36 from '~/assets/image/events/2024ss/3.webp'
 
+import image37 from '~/assets//image/photos/photo-7-1.webp'
+import image38 from '~/assets//image/photos/photo-8-1.webp'
+import image39 from '~/assets//image/photos/photo-12-1.webp'
 
 export const tabs = [
-  { year: '2019', season: 'Fall/Winter', images: [image1, image2, image3], designers: ['Beyader', 'DL-Dress', 'Beyader'] },
-  { year: '2019', season: 'Spring/Summer', images: [image4, image5, image6], designers: ['DL-Dress', 'Michael Lombard ', 'Michael Lombard '] },
-  { year: '2020', season: 'Fall/Winter', images: [image7, image8, image9], designers: ['Baravia', 'Baravia', 'Carbonado Collection'] },
-  { year: '2020', season: 'Spring/Summer', images: [image10, image11, image12], designers: ['Dilrabo', 'Said Omari', 'Said Omari'] },
-  { year: '2021', season: 'Fall/Winter', images: [image13, image14, image15], designers: ['Baravia Fashion', 'Baravia Fashion', 'D-Design'] },
-  { year: '2021', season: 'Spring/Summer', images: [image16, image17, image18], designers: ['JAP Poland', 'Marsi', 'Marsi'] },
-  { year: '2022', season: 'Fall/Winter', images: [image19, image20, image21], designers: ['Aaronic Atelier', 'Aaronic Atelier', 'Art Fashion'] },
-  { year: '2022', season: 'Spring/Summer', images: [image22, image23, image24], designers: ['Savalme', 'Savalme', 'Walid Atallah'] },
-  { year: '2023', season: 'Fall/Winter', images: [image25, image26, image27], designers: ['Beth & Mishka', 'Beth & Mishka', 'JAP Poland'] },
-  { year: '2023', season: 'Spring/Summer', images: [image28, image29, image30], designers: ['La Donna Di Ferro', 'Fair Blvd', 'La Reine'] },
-  { year: '2024', season: 'Fall/Winter', images: [image31, image32, image33], designers: ['Danatella', 'Alisia Fiori', 'BERGE'] },
+  { year: '2025', season: 'Fall/Winter', images: [image37, image38, image39], designers: ['OSMOSIS', 'NERMIN', 'AISHA'] },
   { year: '2024', season: 'Spring/Summer', images: [image34, image35, image36], designers: ['CHOLPONA', 'Icona', 'Suhaila'] },
+  { year: '2024', season: 'Fall/Winter', images: [image31, image32, image33], designers: ['Danatella', 'Alisia Fiori', 'BERGE'] },
+  { year: '2023', season: 'Spring/Summer', images: [image28, image29, image30], designers: ['La Donna Di Ferro', 'Fair Blvd', 'La Reine'] },
+  { year: '2023', season: 'Fall/Winter', images: [image25, image26, image27], designers: ['Beth & Mishka', 'Beth & Mishka', 'JAP Poland'] },
+  { year: '2022', season: 'Spring/Summer', images: [image22, image23, image24], designers: ['Savalme', 'Savalme', 'Walid Atallah'] },
+  { year: '2022', season: 'Fall/Winter', images: [image19, image20, image21], designers: ['Aaronic Atelier', 'Aaronic Atelier', 'Art Fashion'] },
+  { year: '2021', season: 'Spring/Summer', images: [image16, image17, image18], designers: ['JAP Poland', 'Marsi', 'Marsi'] },
+  { year: '2021', season: 'Fall/Winter', images: [image13, image14, image15], designers: ['Baravia Fashion', 'Baravia Fashion', 'D-Design'] },
+  { year: '2020', season: 'Spring/Summer', images: [image10, image11, image12], designers: ['Dilrabo', 'Said Omari', 'Said Omari'] },
+  { year: '2020', season: 'Fall/Winter', images: [image7, image8, image9], designers: ['Baravia', 'Baravia', 'Carbonado Collection'] },
+  { year: '2019', season: 'Spring/Summer', images: [image4, image5, image6], designers: ['DL-Dress', 'Michael Lombard ', 'Michael Lombard '] },
+  { year: '2019', season: 'Fall/Winter', images: [image1, image2, image3], designers: ['Beyader', 'DL-Dress', 'Beyader'] },
 ];
 
 // Импортируем изображения
