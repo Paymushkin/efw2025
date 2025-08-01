@@ -29,7 +29,7 @@
     "vue-router": "latest"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^6.13.1",
+    "@nuxtjs/tailwindcss": "^6.10.0",
     "@tailwindcss/postcss7-compat": "^2.2.17",
     "@types/nodemailer": "^6.4.17",
     "@vercel/node": "^5.1.14",
