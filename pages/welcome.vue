@@ -325,7 +325,7 @@
 </template>
 
 <script setup>
-import { definePageMeta, useRoute } from '#imports';
+import { definePageMeta, useRoute, computed } from '#imports';
 import BaseButton from '@/components/ui/BaseButton.vue';
 import Image1 from '@/assets/image/welcome/1.webp';
 

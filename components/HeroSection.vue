@@ -24,12 +24,11 @@
         Emirates Fashion Week
         <sup class="text-4xl align-top">®</sup> 
       </h1>
-        <span class="xl:text-[60px] text-3xl text-white font-bold">FW 2025/2026</span>
-        <span class="text-white mb-10 text-xl font-bold">13-15 April 2025</span>
-      <div id="reportage" class="grow mb-10 py-2"></div>
+      <span class="xl:text-[60px] text-3xl text-white font-bold">FW 2025/2026</span>
+      <span class="text-white mb-10 text-xl font-bold">7-9 November 2025</span>
+      <GalleryIframe :show-fog="false" />
     </div>
 
-    <!-- Новый блок -->
     <div class="relative z-20">
       <div class="flex flex-col w-[645px] max-w-full">
         <div class="py-4 px-6 bg-black bg-opacity-30 md:text-right mix-blend-multiply">
@@ -41,103 +40,54 @@
           >{{ hashtag[0] }}</a>
         </div>
       </div>
-    <Marquee :content="marqueeText2" />
+      <Marquee :content="marqueeText2" />
     </div>
   </section>
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import LogoIcon from '~/components/icons/LogoIcon.vue';
 import Marquee from '~/components/MarqueeSection.vue';
 import { marqueeText2, hashtag } from '~/constants/texts';
 import { useVideoVisibility } from '@/composables/useVideoVisibility';
+import GalleryIframe from '@/components/GalleryIframe.vue';
 
 const videoRef = ref(null);
 const { isVisible } = useVideoVisibility(videoRef);
+const isMobile = ref(window?.innerWidth < 768);
+const MOBILE_BREAKPOINT = 768;
+let previousWidth = window?.innerWidth;
 
-// Обработчик клика по хэштегу
 const handleHashtagClick = () => {
-  // Проверяем наличие слайдера на странице
   const sliderElement = document.querySelector('.image-carousel-container');
-  
   if (sliderElement) {
-    // Если слайдер найден, прокручиваем к нему
     sliderElement.scrollIntoView({ 
       behavior: 'smooth',
       block: 'start'
     });
   } else {
-    // Если слайдера нет, переходим по внешней ссылке
     window.open(hashtag[1], '_blank');
   }
 };
 
-const isMobile = ref(window?.innerWidth < 768);
-const MOBILE_BREAKPOINT = 768;
-
-// Добавляем переменную для отслеживания предыдущей ширины
-let previousWidth = window?.innerWidth;
-
-// Функция для проверки пересечения брейкпоинта
-const hasBreakpointChanged = (currentWidth, previousWidth) => {
+const hasBreakpointChanged = (currentWidth, prevWidth) => {
   return (
-    (currentWidth < MOBILE_BREAKPOINT && previousWidth >= MOBILE_BREAKPOINT) ||
-    (currentWidth >= MOBILE_BREAKPOINT && previousWidth < MOBILE_BREAKPOINT)
+    (currentWidth < MOBILE_BREAKPOINT && prevWidth >= MOBILE_BREAKPOINT) ||
+    (currentWidth >= MOBILE_BREAKPOINT && prevWidth < MOBILE_BREAKPOINT)
   );
 };
 
-// Функция для обновления размера
 const updateSize = () => {
   const currentWidth = window.innerWidth;
-  
-  // Проверяем, пересекли ли мы брейкпоинт
   if (hasBreakpointChanged(currentWidth, previousWidth)) {
     isMobile.value = currentWidth < MOBILE_BREAKPOINT;
-    updateScript();
   }
-  
-  // Обновляем предыдущую ширину
   previousWidth = currentWidth;
 };
 
-// Функция для обновления скрипта
-const updateScript = () => {
-  const reportageBlock = document.getElementById('reportage');
-  if (!reportageBlock) return;
-
-  // Очищаем содержимое блока
-  reportageBlock.innerHTML = '';
-
-  // Удаляем старый скрипт, если он есть
-  const existingScript = document.getElementById('meyou_init');
-  if (existingScript) {
-    existingScript.remove();
-  }
-
-  const script = document.createElement('script');
-  script.src = 'https://meyou.id/public/meyou_init.js';
-  script.id = 'meyou_init';
-  
-  // Устанавливаем разные параметры в зависимости от ширины экрана
-  const params = isMobile.value 
-    ? 'UTM=smi&header&footer&tag&count=6&nobutton&size=100&noclick'
-    : 'UTM=smi&header&footer&tag&count=14&nobutton&size=150&noclick';
-    
-  script.setAttribute(
-    'data-event',
-    `https://meyou.id/efw2025/live?${params}`
-  );
-  
-  reportageBlock.appendChild(script);
-};
-
 onMounted(() => {
-  // Добавляем слушатель изменения размера окна
   window.addEventListener('resize', updateSize);
-  // Инициализируем скрипт
-  updateScript();
-  // Принудительный запуск видео для iOS
   if (videoRef.value) {
     videoRef.value.play().catch(error => {
       console.log('Autoplay failed:', error);
@@ -146,14 +96,11 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  // Удаляем слушатель при размонтировании компонента
   window.removeEventListener('resize', updateSize);
 });
-
 </script>
 
 <style scoped>
-/* Убедитесь, что видео не перекрывает текст */
 h1 {
   position: relative;
   z-index: 20;

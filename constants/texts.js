@@ -1,4 +1,4 @@
-export const marqueeText1 = 'EMIRATES FASHION WEEK /  DUBAI 13-15 APRIL 2025 / SKYLIGHT GALLERY / MEDIA CITY'
+export const marqueeText1 = 'EMIRATES FASHION WEEK / DUBAI 7-9 NOVEMBER 2025'
 export const marqueeText2 = 'This event is organized as the final qualification showcase for the Diamond Models school'
 
 export const address = 'Dubai, Shams Media City 104, '
@@ -10,5 +10,5 @@ export const hashtag = ['#JOINDUBAI', 'https://www.instagram.com/explore/search/
 
 export const designerRegistration = 'http://bit.ly/RegistrationFormEFW'
 export const visitorsRegistration = 'http://docs.google.com/forms/d/11I7bcoDEzErBszt2UfZqf04LAjljlpkBhdRTD6CrC7g/edit'
-export const modelRegistration = 'https://docs.google.com/forms/d/19EdVhLdpPeGn0tnNurzDBWl0rsWJaP79n9TrYMEtINw/edit' 
+export const modelRegistration = 'https://docs.google.com/forms/d/e/1FAIpQLScl8N_MBFj4uNUkgaxPdq78uD4oT2rV9ome3qxwGEaBk3bLyA/viewform?pli=1' 
 export const phototVideoRegistration = 'https://docs.google.com/forms/d/19EdVhLdpPeGn0tnNurzDBWl0rsWJaP79n9TrYMEtINw/viewform?edit_requested=true'

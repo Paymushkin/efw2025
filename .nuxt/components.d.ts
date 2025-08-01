@@ -12,17 +12,18 @@ type HydrationStrategies = {
 }
 type LazyComponent<T> = (T & DefineComponent<HydrationStrategies, {}, {}, {}, {}, {}, {}, { hydrated: () => void }>)
 interface _GlobalComponents {
-      'App': typeof import("../components/App.vue")['default']
-    'AppSeo': typeof import("../components/AppSeo.vue")['default']
+      'AppSeo': typeof import("../components/AppSeo.vue")['default']
     'ContactForm': typeof import("../components/ContactForm.vue")['default']
     'DesignersSection': typeof import("../components/DesignersSection.vue")['default']
     'EventFeatures': typeof import("../components/EventFeatures.vue")['default']
     'FacesSection': typeof import("../components/FacesSection.vue")['default']
     'FaqSection': typeof import("../components/FaqSection.vue")['default']
+    'GalleryIframe': typeof import("../components/GalleryIframe.vue")['default']
     'HeroSection': typeof import("../components/HeroSection.vue")['default']
     'HowItWasSection': typeof import("../components/HowItWasSection.vue")['default']
     'ImageCarousel': typeof import("../components/ImageCarousel.vue")['default']
     'MarqueeSection': typeof import("../components/MarqueeSection.vue")['default']
+    'NewProgramSection': typeof import("../components/NewProgramSection.vue")['default']
     'PhotographerBlock': typeof import("../components/PhotographerBlock.vue")['default']
     'ProgramSection': typeof import("../components/ProgramSection.vue")['default']
     'SponsorsSection': typeof import("../components/SponsorsSection.vue")['default']
@@ -134,17 +135,18 @@ declare module 'vue' {
   export interface GlobalComponents extends _GlobalComponents { }
 }
 
-export const App: typeof import("../components/App.vue")['default']
 export const AppSeo: typeof import("../components/AppSeo.vue")['default']
 export const ContactForm: typeof import("../components/ContactForm.vue")['default']
 export const DesignersSection: typeof import("../components/DesignersSection.vue")['default']
 export const EventFeatures: typeof import("../components/EventFeatures.vue")['default']
 export const FacesSection: typeof import("../components/FacesSection.vue")['default']
 export const FaqSection: typeof import("../components/FaqSection.vue")['default']
+export const GalleryIframe: typeof import("../components/GalleryIframe.vue")['default']
 export const HeroSection: typeof import("../components/HeroSection.vue")['default']
 export const HowItWasSection: typeof import("../components/HowItWasSection.vue")['default']
 export const ImageCarousel: typeof import("../components/ImageCarousel.vue")['default']
 export const MarqueeSection: typeof import("../components/MarqueeSection.vue")['default']
+export const NewProgramSection: typeof import("../components/NewProgramSection.vue")['default']
 export const PhotographerBlock: typeof import("../components/PhotographerBlock.vue")['default']
 export const ProgramSection: typeof import("../components/ProgramSection.vue")['default']
 export const SponsorsSection: typeof import("../components/SponsorsSection.vue")['default']

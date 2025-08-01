@@ -38,11 +38,13 @@
           class="overflow-hidden rounded-lg flex-shrink-0 w-[280px] md:w-auto"
         >
           <div class="flex flex-col gap-5">
-            <img 
-              v-bind="getOptimizedImageAttributes(image, tabs[currentTab].designers[index])"
-              class="w-full h-full object-cover"
-              :loading="index === 0 ? 'eager' : 'lazy'"
-            />
+            <NuxtLink to="/gallery">
+              <img 
+                v-bind="getOptimizedImageAttributes(image, tabs[currentTab].designers[index])"
+                class="w-full h-full object-cover"
+                :loading="index === 0 ? 'eager' : 'lazy'"
+              />
+            </NuxtLink>
             <span class="text-black">{{ tabs[currentTab].designers[index] }}</span>
           </div>
         </div>

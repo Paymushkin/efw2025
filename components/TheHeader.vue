@@ -2,7 +2,6 @@
   <header class="w-full">
     <!-- Announcement bar -->
     <Marquee class="hidden md:block" :content="marqueeText1" :is-static="true" />
-
     <!-- Navigation -->
     <nav class="bg-white">
       <div class="container mx-auto px-4">
@@ -45,13 +44,21 @@
 
           <!-- Desktop Actions -->
           <div class="flex items-center 2xl:gap-5 gap-3">
+            <!-- <NuxtLink target="_blank" 
+              to="/gallery"
+              v-if="!isGalleryPage">
+              <BaseButton variant="primary">
+                <span>Gallery</span>
+                <span>></span>
+              </BaseButton>
+            </NuxtLink> -->
+
             <div class="relative">
-                <BaseButton variant="secondary"  @click="toggleParticipateMenu" class="hidden lg:flex w-full justify-between">
+                <BaseButton variant="secondary"  @click="toggleParticipateMenu" class="flex w-full justify-between">
                   <span>Participate</span>
                   <span>></span>
                 </BaseButton>
 
-              <!-- Выпадающий список -->
               <div v-if="isParticipateOpen" class="absolute top-full mt-2 right-0 bg-white shadow-lg rounded-lg py-2 min-w-[150px] z-50">
                 <NuxtLink :to="designerRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors">
                   Designer
@@ -90,10 +97,11 @@
                 </NuxtLink>
               </div>
             </div>
-            
             <NuxtLink target="_blank" 
               :to="visitorsRegistration"
-              v-if="!isWelcomePage">
+              v-if="!isWelcomePage"
+              class="hidden lg:flex"
+              >
               <BaseButton variant="primary">
                 <span>Visit</span>
                 <span>></span>
@@ -197,6 +205,7 @@
                 </NuxtLink>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -226,7 +235,7 @@ const navLinks = [
   { name: 'CALENDAR', href: '/#program', id: 'program' },
   { name: 'FEATURES', href: '/features', id: 'features' },
   { name: 'DESIGNERS', href: '/#designers', id: 'designer' },
-  { name: 'FACES', href: '/#faces', id: 'faces' },
+  { name: 'GALLERY', href: '/gallery', id: 'gallery' },
   { name: 'HOW IT WAS', href: '/#how-it-was', id: 'how-it-was' },
   // { name: 'WIDGET', href: '/widget', id: 'widget' },
 ];
@@ -341,6 +350,12 @@ const isWelcomePage = computed(() => {
   // Проверяем текущий путь
   const currentPath = window.location.pathname;
   return currentPath.includes('welcome');
+});
+
+// Check if the current page is '/gallery'
+const isGalleryPage = computed(() => {
+  const currentPath = window.location.pathname;
+  return currentPath.includes('gallery');
 });
 </script>
 
