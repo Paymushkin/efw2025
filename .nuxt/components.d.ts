@@ -71,17 +71,18 @@ interface _GlobalComponents {
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'NuxtIsland': typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
     'NuxtRouteAnnouncer': typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']
-      'LazyApp': LazyComponent<typeof import("../components/App.vue")['default']>
-    'LazyAppSeo': LazyComponent<typeof import("../components/AppSeo.vue")['default']>
+      'LazyAppSeo': LazyComponent<typeof import("../components/AppSeo.vue")['default']>
     'LazyContactForm': LazyComponent<typeof import("../components/ContactForm.vue")['default']>
     'LazyDesignersSection': LazyComponent<typeof import("../components/DesignersSection.vue")['default']>
     'LazyEventFeatures': LazyComponent<typeof import("../components/EventFeatures.vue")['default']>
     'LazyFacesSection': LazyComponent<typeof import("../components/FacesSection.vue")['default']>
     'LazyFaqSection': LazyComponent<typeof import("../components/FaqSection.vue")['default']>
+    'LazyGalleryIframe': LazyComponent<typeof import("../components/GalleryIframe.vue")['default']>
     'LazyHeroSection': LazyComponent<typeof import("../components/HeroSection.vue")['default']>
     'LazyHowItWasSection': LazyComponent<typeof import("../components/HowItWasSection.vue")['default']>
     'LazyImageCarousel': LazyComponent<typeof import("../components/ImageCarousel.vue")['default']>
     'LazyMarqueeSection': LazyComponent<typeof import("../components/MarqueeSection.vue")['default']>
+    'LazyNewProgramSection': LazyComponent<typeof import("../components/NewProgramSection.vue")['default']>
     'LazyPhotographerBlock': LazyComponent<typeof import("../components/PhotographerBlock.vue")['default']>
     'LazyProgramSection': LazyComponent<typeof import("../components/ProgramSection.vue")['default']>
     'LazySponsorsSection': LazyComponent<typeof import("../components/SponsorsSection.vue")['default']>
@@ -194,17 +195,18 @@ export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
 export const NuxtRouteAnnouncer: typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']
-export const LazyApp: LazyComponent<typeof import("../components/App.vue")['default']>
 export const LazyAppSeo: LazyComponent<typeof import("../components/AppSeo.vue")['default']>
 export const LazyContactForm: LazyComponent<typeof import("../components/ContactForm.vue")['default']>
 export const LazyDesignersSection: LazyComponent<typeof import("../components/DesignersSection.vue")['default']>
 export const LazyEventFeatures: LazyComponent<typeof import("../components/EventFeatures.vue")['default']>
 export const LazyFacesSection: LazyComponent<typeof import("../components/FacesSection.vue")['default']>
 export const LazyFaqSection: LazyComponent<typeof import("../components/FaqSection.vue")['default']>
+export const LazyGalleryIframe: LazyComponent<typeof import("../components/GalleryIframe.vue")['default']>
 export const LazyHeroSection: LazyComponent<typeof import("../components/HeroSection.vue")['default']>
 export const LazyHowItWasSection: LazyComponent<typeof import("../components/HowItWasSection.vue")['default']>
 export const LazyImageCarousel: LazyComponent<typeof import("../components/ImageCarousel.vue")['default']>
 export const LazyMarqueeSection: LazyComponent<typeof import("../components/MarqueeSection.vue")['default']>
+export const LazyNewProgramSection: LazyComponent<typeof import("../components/NewProgramSection.vue")['default']>
 export const LazyPhotographerBlock: LazyComponent<typeof import("../components/PhotographerBlock.vue")['default']>
 export const LazyProgramSection: LazyComponent<typeof import("../components/ProgramSection.vue")['default']>
 export const LazySponsorsSection: LazyComponent<typeof import("../components/SponsorsSection.vue")['default']>

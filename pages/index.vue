@@ -6,10 +6,10 @@
       keywords="Emirates Fashion Week, Dubai Fashion Event, Fashion Shows Dubai, Beauty Exhibition UAE, Fashion Business Dubai, Designer Collections, Beauty Services Dubai"
     />
     <HeroSection class="mb-[56px] md:mb-[76px]" />
-    <HowItWasSection class="mb-[56px] md:mb-[76px]" />
     <NewProgramSection class="md:mb-[120px] mb-[76px]" />
     <ProgramSection class="md:mb-[56px] mb-[36px]" />
     <MarqueeSection :content="sponsors" class="mb-[56px] md:mb-[76px]" />
+    <HowItWasSection class="mb-[56px] md:mb-[76px]" />
     <DesignersSection class="md:mb-[76px] mb-[56px]" />
     <SponsorsSection class="md:mb-[76px] mb-[56px]" />
     <StatisticsSection class="md:mb-[76px] mb-[56px]" />

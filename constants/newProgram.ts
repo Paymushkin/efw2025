@@ -56,6 +56,17 @@ export const NEW_EVENT_TYPES = {
 } as const;
 
 export const NEW_PROGRAM_TABS = [
+  // {
+  //   title: 'Magazine pre-Launch',
+  //   date: '4 August 2025',
+  //   events: [
+  //     {
+  //       type: 'event',
+  //       time: '4 August',
+  //       place: 'Dubai Mall',
+  //      },
+  //   ],
+  // },
   {
     title: 'Pre-Launch',
     date: '4 November 2025',

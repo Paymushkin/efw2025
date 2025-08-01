@@ -232,6 +232,7 @@ const isMenuOpen = ref(false);
 const isLinksMenuOpen = ref(false);
 const isParticipateOpen = ref(false);
 const navLinks = [
+  // { name: 'MAGAZINE', href: '/magazine', id: 'magazine' },
   { name: 'CALENDAR', href: '/#program', id: 'program' },
   { name: 'FEATURES', href: '/features', id: 'features' },
   { name: 'DESIGNERS', href: '/#designers', id: 'designer' },

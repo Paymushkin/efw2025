@@ -1,7 +1,7 @@
 <template>
   <div id="program" class="container mx-auto">
     <div class="flex justify-between md:items-center gap-8 md:mb-[50px] mb-4 max-w-[1200px]">
-      <h2 class="text-xl md:text-3xl xl:text-4xl">Spring Summer 2025</h2>
+      <h2 class="text-xl md:text-3xl xl:text-4xl">13th Fall Winter 2025</h2>
       <!-- <NuxtLink 
         target="_blank"
         class="hover:opacity-80 transition-opacity duration-300"
@@ -20,6 +20,9 @@
       @mousemove="onDrag"
       @mouseup="stopDrag"
       @mouseleave="stopDrag"
+      @touchstart="startDragTouch"
+      @touchmove="onDragTouch"
+      @touchend="stopDrag"
     >
       <div class="flex md:gap-10 gap-8 mb-4 md:mb-10 whitespace-nowrap pb-4 md:pb-0 pr-4 md:pr-0 pl-4 md:pl-0">
         <button
@@ -103,11 +106,27 @@ const startDrag = (e) => {
   scrollLeft = slider.scrollLeft;
 };
 
+const startDragTouch = (e) => {
+  isDragging = true;
+  const slider = tabsContainer.value;
+  startX = e.touches[0].pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+};
+
 const onDrag = (e) => {
   if (!isDragging) return;
   e.preventDefault();
   const slider = tabsContainer.value;
   const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX);
+  slider.scrollLeft = scrollLeft - walk;
+};
+
+const onDragTouch = (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const slider = tabsContainer.value;
+  const x = e.touches[0].pageX - slider.offsetLeft;
   const walk = (x - startX);
   slider.scrollLeft = scrollLeft - walk;
 };
