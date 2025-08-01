@@ -1,8 +1,8 @@
 <template>
   <div id="program" class="container mx-auto">
-    <div class="flex justify-between md:items-center gap-8 md:mb-[113px] mb-8 max-w-[1200px]">
-      <h2 class="text-xl md:text-3xl xl:text-4xl">Calendar</h2>
-      <NuxtLink 
+    <div class="flex justify-between md:items-center gap-8 md:mb-[50px] mb-4 max-w-[1200px]">
+      <h2 class="text-xl md:text-3xl xl:text-4xl">Spring Summer 2025</h2>
+      <!-- <NuxtLink 
         target="_blank"
         class="hover:opacity-80 transition-opacity duration-300"
         to="https://docs.google.com/forms/d/11I7bcoDEzErBszt2UfZqf04LAjljlpkBhdRTD6CrC7g/edit?fbclid=PAZXh0bgNhZW0CMTEAAabTXlVnA-8uMswE4mM1iOQkULaorR2fFi9eZsVZlgEe1jMJH0Kb7OcDJJk_aem_LIewtA-gbtt6seDB3ZE4pw">
@@ -10,10 +10,17 @@
           <span>Visit</span>
           <span>></span>
         </BaseButton>
-      </NuxtLink>
+      </NuxtLink> -->
     </div>
 
-    <div class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0">
+    <div 
+      class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0 cursor-grab active:cursor-grabbing" 
+      ref="tabsContainer"
+      @mousedown="startDrag"
+      @mousemove="onDrag"
+      @mouseup="stopDrag"
+      @mouseleave="stopDrag"
+    >
       <div class="flex md:gap-10 gap-8 mb-4 md:mb-10 whitespace-nowrap pb-4 md:pb-0 pr-4 md:pr-0 pl-4 md:pl-0">
         <button
           v-for="(tab, index) in tabs"
@@ -84,6 +91,30 @@ import { EVENT_TYPES, PROGRAM_TABS } from '~/constants/program';
 
 const currentTab = ref(1);
 const tabs = PROGRAM_TABS;
+const tabsContainer = ref(null);
+let isDragging = false;
+let startX = 0;
+let scrollLeft = 0;
+
+const startDrag = (e) => {
+  isDragging = true;
+  const slider = tabsContainer.value;
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+};
+
+const onDrag = (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const slider = tabsContainer.value;
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX);
+  slider.scrollLeft = scrollLeft - walk;
+};
+
+const stopDrag = () => {
+  isDragging = false;
+};
 
 const selectTab = (index) => {
   currentTab.value = index;
@@ -104,6 +135,36 @@ button {
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari и Opera */
+}
+
+/* Кастомный скроллбар */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Для Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+}
+
+.custom-scrollbar {
+  -webkit-user-select: none;
+  user-select: none;
 }
 </style>
 

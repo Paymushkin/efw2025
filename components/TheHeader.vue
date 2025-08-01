@@ -2,7 +2,6 @@
   <header class="w-full">
     <!-- Announcement bar -->
     <Marquee class="hidden md:block" :content="marqueeText1" :is-static="true" />
-
     <!-- Navigation -->
     <nav class="bg-white">
       <div class="container mx-auto px-4">
@@ -55,7 +54,7 @@
             </NuxtLink> -->
 
             <div class="relative">
-                <BaseButton variant="secondary"  @click="toggleParticipateMenu" class="hidden lg:flex w-full justify-between">
+                <BaseButton variant="secondary"  @click="toggleParticipateMenu" class="flex w-full justify-between">
                   <span>Participate</span>
                   <span>></span>
                 </BaseButton>
@@ -98,10 +97,11 @@
                 </NuxtLink>
               </div>
             </div>
-            
             <NuxtLink target="_blank" 
               :to="visitorsRegistration"
-              v-if="!isWelcomePage">
+              v-if="!isWelcomePage"
+              class="hidden lg:flex"
+              >
               <BaseButton variant="primary">
                 <span>Visit</span>
                 <span>></span>
@@ -161,7 +161,7 @@
               </NuxtLink>
             </NuxtLink>
 
-            <!-- <div class="relative">
+            <div class="relative">
               <BaseButton @click="toggleParticipateMenu" id="participate-button" variant="secondary" class="w-full justify-between">
                 <span>Participate</span>
                 <span>></span>
@@ -204,7 +204,7 @@
                   Partners
                 </NuxtLink>
               </div>
-            </div> -->
+            </div>
 
           </div>
         </div>

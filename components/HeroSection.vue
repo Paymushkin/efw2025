@@ -25,7 +25,7 @@
         <sup class="text-4xl align-top">®</sup> 
       </h1>
       <span class="xl:text-[60px] text-3xl text-white font-bold">FW 2025/2026</span>
-      <span class="text-white mb-10 text-xl font-bold">13-15 April 2025</span>
+      <span class="text-white mb-10 text-xl font-bold">7-9 November 2025</span>
       <GalleryIframe :show-fog="false" />
     </div>
 

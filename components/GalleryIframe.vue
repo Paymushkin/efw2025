@@ -21,10 +21,14 @@ const props = defineProps({
 const isMobile = ref(false);
 
 const checkMobile = () => {
-  isMobile.value = window.innerWidth < 768;
+  if (process.client) {
+    isMobile.value = window.innerWidth < 768;
+  }
 };
 
 const updateScript = () => {
+  if (!process.client) return;
+  
   const reportageBlock = document.getElementById('reportage');
   if (!reportageBlock) return;
 
@@ -34,15 +38,15 @@ const updateScript = () => {
 
   setTimeout(() => {
     const script = document.createElement('script');
-    script.src = 'https://meyou.id/public/meyou_init.js';
+    script.src = 'https://meyou.id/public/meyou_init.js?v=1.0.0';
     script.id = 'meyou_init';
     script.setAttribute('data-meyou', '1'); // для поиска и удаления
     // Передаём стартовую высоту, чтобы iframe не был 0px
-    script.setAttribute('data-height', isMobile.value ? '350px' : '500px');
+    // script.setAttribute('data-height', isMobile.value ? '350px' : '500px');
 
     const params = isMobile.value 
-      ? 'UTM=smi&header&footer&tag&count=6&nobutton&size=100&noclick&pages'
-      : 'UTM=smi&header&footer&tag&count=14&nobutton&size=150&noclick&pages';
+      ? 'UTM=smi&header&footer&tag&count=8&nobutton&size=100&noclick&pages'
+      : 'UTM=smi&header&footer&tag&count=24&nobutton&size=150&noclick&pages';
 
     script.setAttribute(
       'data-event',
@@ -66,15 +70,19 @@ watch(isMobile, () => {
 });
 
 onMounted(() => {
-  checkMobile();
-  window.addEventListener('resize', checkMobile);
-  window.addEventListener('message', handleMeyouMessage);
-  setTimeout(updateScript, 100);
+  if (process.client) {
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    window.addEventListener('message', handleMeyouMessage);
+    setTimeout(updateScript, 100);
+  }
 });
 
 onUnmounted(() => {
-  window.removeEventListener('resize', checkMobile);
-  window.removeEventListener('message', handleMeyouMessage);
+  if (process.client) {
+    window.removeEventListener('resize', checkMobile);
+    window.removeEventListener('message', handleMeyouMessage);
+  }
 });
 
 function handleMeyouMessage(event) {
@@ -84,7 +92,9 @@ function handleMeyouMessage(event) {
 }
 
 const navigateToGallery = () => {
-  window.location.href = '/gallery';
+  if (process.client) {
+    window.location.href = '/gallery';
+  }
 };
 </script>
 
