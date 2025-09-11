@@ -12,7 +12,7 @@
       </div>
 
       <div v-if="showSuccess" class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
-        <p>You have been added to the waitlist successfully!</p>
+        <p>{{ successMessage }}</p>
       </div>
 
       <div v-if="showError" class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
@@ -172,6 +172,7 @@ const isSubmitting = ref(false);
 const showSuccess = ref(false);
 const showError = ref(false);
 const recaptchaVerified = ref(false);
+const successMessage = ref('');
 
 // Check if we're in production
 const isProduction = computed(() => {
@@ -220,6 +221,43 @@ const maskedCompanyName = computed(() => {
 const validateEmail = (email) => {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(email);
+};
+
+// Функция для маскировки названия компании для сообщения об успехе
+const maskCompanyNameForSuccess = (name) => {
+  if (!name || name.length <= 2) return name;
+  
+  const words = name.split(' ');
+  
+  if (words.length === 1) {
+    // Если только одно слово - показываем первые 2 и последние 3
+    const word = words[0];
+    if (word.length < 5) {
+      return word.substring(0, 2) + '*'.repeat(word.length - 2);
+    } else {
+      return word.substring(0, 2) + '*'.repeat(word.length - 5) + word.substring(word.length - 3);
+    }
+  } else {
+    // Если несколько слов
+    const maskedWords = words.map((word, index) => {
+      if (index === 0) {
+        // Первое слово - только первые 2 буквы
+        return word.substring(0, 2) + '*'.repeat(word.length - 2);
+      } else if (index === words.length - 1) {
+        // Последнее слово - показываем только если ровно 3 буквы
+        if (word.length === 3) {
+          return word;
+        } else {
+          return '*'.repeat(word.length);
+        }
+      } else {
+        // Средние слова - полностью скрыты
+        return '*'.repeat(word.length);
+      }
+    });
+    
+    return maskedWords.join(' ');
+  }
 };
 
 // reCAPTCHA functions
@@ -398,7 +436,7 @@ const handleSubmit = async () => {
     } else {
       console.log('Using Google Apps Script endpoint');
       // На продакшене используем простой подход через img тег (не блокируется CORS)
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz2BIaFAqI7D93wH2nCaZyYhPOwb75-kiqk5RF0EJNURx3leLW8G8hzXBxASzt1gT2hLA/exec';
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbygds0XlVVKqRN56BVHo4S25BN96LRz8urJuur9crjlOR3lgYl__MHwrgu_GmKU_wjEPg/exec';
       
       const urlParams = new URLSearchParams();
       urlParams.append('action', 'submit');
@@ -441,8 +479,19 @@ const handleSubmit = async () => {
     }
     // На продакшене с no-cors мы не можем проверить статус, но если запрос прошел, считаем успешным
 
+    // Формируем сообщение об успехе с маскированным названием компании
+    const maskedName = maskCompanyNameForSuccess(form.companyName);
+    successMessage.value = `${maskedName} has been successfully added to the waitlist!`;
+    
     showSuccess.value = true;
-    emit('success');
+    
+    // Передаем информацию о добавленной компании
+    const newCompanyData = {
+      companyName: form.companyName,
+      industry: industryValue,
+      timestamp: new Date().toISOString()
+    };
+    emit('success', newCompanyData);
     form.companyName = '';
     form.industry = '';
     form.customIndustry = '';

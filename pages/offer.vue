@@ -334,7 +334,7 @@
     </section>
 
     <!-- Important Notice -->
-    <div class="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-r-lg mb-16">
+    <!-- <div class="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-r-lg mb-16">
       <div class="flex items-start">
         <svg class="w-6 h-6 text-amber-400 mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -344,7 +344,7 @@
           <p class="text-amber-700">Each exhibitor must bring their own laptop and connect it to the display via HDMI to showcase their company's video or presentation.</p>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- FAQ Section -->
     <FaqSection class="mb-[56px] md:mb-[76px]" />
@@ -371,9 +371,6 @@
            </ul>
            
            <div class="flex flex-col items-end gap-3">
-             <p class="text-sm text-gray-600">
-               {{ applicationsCount }} applications submitted
-             </p>
              <BaseButton
                variant="primary"
                @click="showWaitlistForm = true">
@@ -383,6 +380,11 @@
            </div>
          </div>
        </div>
+       
+       <!-- Companies List -->
+       <div class="mt-12">
+         <CompaniesList ref="companiesListRef" />
+       </div>
      </div>
    </div>
 
@@ -390,7 +392,7 @@
     <WaitlistForm 
       :is-open="showWaitlistForm" 
       @close="showWaitlistForm = false"
-      @success="fetchApplicationsCount"
+      @success="handleWaitlistSuccess"
     />
    </div>
  </template>
@@ -402,6 +404,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 import WhatsAppButton from '@/components/ui/WhatsAppButton.vue'
 import FaqSection from '@/components/FaqSection.vue'
 import WaitlistForm from '@/components/WaitlistForm.vue'
+import CompaniesList from '@/components/CompaniesList.vue'
 import Image1 from '@/assets/image/offer/stand-1.webp'
 import Image2 from '@/assets/image/offer/corner-1.webp'
 import Image3 from '@/assets/image/offer/corner-3.webp'
@@ -417,49 +420,16 @@ const showWhatsApp = computed(() => !!route.query.wp)
 const whatsappNumber = computed(() => route.query.wp || '971529833054')
 const showTrial = computed(() => 'tr' in route.query)
 const showWaitlistForm = ref(false)
-const applicationsCount = ref(0)
+const companiesListRef = ref(null)
 
-// Получаем количество заявок
-const fetchApplicationsCount = async () => {
-  try {
-    // Определяем, работаем ли мы локально или на продакшене
-    const isLocal = window.location.hostname.includes('localhost') || 
-                   window.location.hostname.includes('127.0.0.1') ||
-                   window.location.hostname.includes('0.0.0.0');
-    
-    if (isLocal) {
-      const response = await $fetch('/api/waitlist-count')
-      if (response.success) {
-        applicationsCount.value = response.count
-      }
-    } else {
-      // На продакшене используем JSONP подход
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz2BIaFAqI7D93wH2nCaZyYhPOwb75-kiqk5RF0EJNURx3leLW8G8hzXBxASzt1gT2hLA/exec';
-      
-      // Создаем callback функцию
-      const callbackName = 'callback_' + Date.now();
-      window[callbackName] = (data) => {
-        if (data && data.success) {
-          applicationsCount.value = data.count;
-        }
-        delete window[callbackName];
-        document.head.removeChild(script);
-      };
-      
-      // Создаем script тег для JSONP
-      const script = document.createElement('script');
-      script.src = `${GOOGLE_SCRIPT_URL}?action=getCount&callback=${callbackName}`;
-      document.head.appendChild(script);
-    }
-  } catch (error) {
-    console.error('Error fetching applications count:', error)
+
+// Функция для обработки успешной отправки формы
+const handleWaitlistSuccess = async (newCompanyData) => {
+  // Обновляем список компаний с подсветкой новой компании
+  if (companiesListRef.value) {
+    companiesListRef.value.refresh(newCompanyData)
   }
 }
-
-// Загружаем количество заявок при монтировании компонента
-onMounted(() => {
-  fetchApplicationsCount()
-})
 
 // Заменяем useHead на компонент AppSeo
 </script>

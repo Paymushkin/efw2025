@@ -3,14 +3,14 @@ import type { Serialize, Simplify } from "nitropack/types";
 declare module "nitropack/types" {
   type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T
   interface InternalApi {
+    '/api/companies-list': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/companies-list.get').default>>>>
+    }
     '/api/send-email': {
       'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/send-email.post').default>>>>
     }
     '/api/waitlist-count-local': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/waitlist-count-local.get').default>>>>
-    }
-    '/api/waitlist-count': {
-      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/waitlist-count.get').default>>>>
     }
     '/api/waitlist-local': {
       'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/waitlist-local.post').default>>>>

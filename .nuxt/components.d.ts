@@ -13,6 +13,7 @@ type HydrationStrategies = {
 type LazyComponent<T> = (T & DefineComponent<HydrationStrategies, {}, {}, {}, {}, {}, {}, { hydrated: () => void }>)
 interface _GlobalComponents {
       'AppSeo': typeof import("../components/AppSeo.vue")['default']
+    'CompaniesList': typeof import("../components/CompaniesList.vue")['default']
     'ContactForm': typeof import("../components/ContactForm.vue")['default']
     'DesignersSection': typeof import("../components/DesignersSection.vue")['default']
     'EventFeatures': typeof import("../components/EventFeatures.vue")['default']
@@ -73,6 +74,7 @@ interface _GlobalComponents {
     'NuxtIsland': typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
     'NuxtRouteAnnouncer': typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']
       'LazyAppSeo': LazyComponent<typeof import("../components/AppSeo.vue")['default']>
+    'LazyCompaniesList': LazyComponent<typeof import("../components/CompaniesList.vue")['default']>
     'LazyContactForm': LazyComponent<typeof import("../components/ContactForm.vue")['default']>
     'LazyDesignersSection': LazyComponent<typeof import("../components/DesignersSection.vue")['default']>
     'LazyEventFeatures': LazyComponent<typeof import("../components/EventFeatures.vue")['default']>
@@ -139,6 +141,7 @@ declare module 'vue' {
 }
 
 export const AppSeo: typeof import("../components/AppSeo.vue")['default']
+export const CompaniesList: typeof import("../components/CompaniesList.vue")['default']
 export const ContactForm: typeof import("../components/ContactForm.vue")['default']
 export const DesignersSection: typeof import("../components/DesignersSection.vue")['default']
 export const EventFeatures: typeof import("../components/EventFeatures.vue")['default']
@@ -199,6 +202,7 @@ export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
 export const NuxtRouteAnnouncer: typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']
 export const LazyAppSeo: LazyComponent<typeof import("../components/AppSeo.vue")['default']>
+export const LazyCompaniesList: LazyComponent<typeof import("../components/CompaniesList.vue")['default']>
 export const LazyContactForm: LazyComponent<typeof import("../components/ContactForm.vue")['default']>
 export const LazyDesignersSection: LazyComponent<typeof import("../components/DesignersSection.vue")['default']>
 export const LazyEventFeatures: LazyComponent<typeof import("../components/EventFeatures.vue")['default']>

@@ -1,0 +1,383 @@
+<template>
+  <div class="companies-list">
+    <div v-if="loading" class="text-center py-8">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-black"></div>
+      <p class="mt-2 text-gray-600">Загрузка списка компаний...</p>
+    </div>
+    
+    <div v-else-if="error" class="text-center py-8">
+      <p class="text-red-600">Ошибка загрузки: {{ error }}</p>
+    </div>
+    
+    <div v-else-if="companies.length === 0" class="text-center py-8">
+      <p class="text-gray-600">Пока нет зарегистрированных компаний</p>
+    </div>
+    
+    <div v-else class="space-y-3">
+      <h3 class="text-lg font-semibold mb-4">Applications submitted ({{ companies.length }})</h3>
+      <div class="max-h-80 overflow-y-auto space-y-3 pr-2">
+        <div 
+          v-for="(company, index) in companies" 
+          :key="index"
+          :class="[
+            'flex items-center justify-between p-3 rounded-lg border transition-all duration-300',
+            isNewCompany(company) 
+              ? 'bg-green-50 border-green-200 shadow-md' 
+              : 'bg-gray-50 border-gray-200'
+          ]"
+        >
+          <div class="flex-1">
+            <div class="flex items-center gap-2">
+              <div class="font-medium text-gray-900">
+                {{ maskCompanyName(company.companyName) }}
+              </div>
+              <span 
+                v-if="isNewCompany(company)" 
+                class="px-2 py-1 text-xs font-semibold text-green-700 bg-green-100 rounded-full"
+              >
+                NEW
+              </span>
+            </div>
+            <div v-if="company.industry" class="text-sm text-gray-600">
+              {{ company.industry }}
+            </div>
+          </div>
+          <div class="text-xs text-gray-500">
+            {{ formatDate(company.timestamp) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const companies = ref([])
+const loading = ref(true)
+const error = ref('')
+const newlyAddedCompany = ref(null)
+const autoRefreshInterval = ref(null)
+
+// Функция для маскировки названия компании
+const maskCompanyName = (name) => {
+  if (!name || name.length <= 2) return name
+  
+  const words = name.split(' ')
+  
+  if (words.length === 1) {
+    // Если только одно слово - показываем первые 2 и последние 3
+    const word = words[0]
+    if (word.length < 5) {
+      return word.substring(0, 2) + '*'.repeat(word.length - 2)
+    } else {
+      return word.substring(0, 2) + '*'.repeat(word.length - 5) + word.substring(word.length - 3)
+    }
+  } else {
+    // Если несколько слов
+    const maskedWords = words.map((word, index) => {
+      if (index === 0) {
+        // Первое слово - только первые 2 буквы
+        return word.substring(0, 2) + '*'.repeat(word.length - 2)
+      } else if (index === words.length - 1) {
+        // Последнее слово - показываем только если ровно 3 буквы
+        if (word.length === 3) {
+          return word
+        } else {
+          return '*'.repeat(word.length)
+        }
+      } else {
+        // Средние слова - полностью скрыты
+        return '*'.repeat(word.length)
+      }
+    })
+    
+    return maskedWords.join(' ')
+  }
+}
+
+// Функция для форматирования даты
+const formatDate = (timestamp) => {
+  if (!timestamp) return ''
+  
+  try {
+    const date = new Date(timestamp)
+    return date.toLocaleDateString('ru-RU', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    })
+  } catch (e) {
+    return timestamp
+  }
+}
+
+// Функция для определения новой компании
+const isNewCompany = (company) => {
+  if (!newlyAddedCompany.value) return false
+  const companyId = company.companyName + '_' + company.timestamp
+  return companyId === newlyAddedCompany.value
+}
+
+// Функция для загрузки списка компаний
+const fetchCompanies = async () => {
+  try {
+    loading.value = true
+    error.value = ''
+    
+    // Определяем, работаем ли мы локально или на продакшене
+    const isLocal = window.location.hostname.includes('localhost') || 
+                   window.location.hostname.includes('127.0.0.1') ||
+                   window.location.hostname.includes('0.0.0.0')
+    
+    if (isLocal) {
+      // Локально используем API
+      const response = await $fetch('/api/companies-list')
+      if (response.success) {
+        // Сортируем компании по дате (новые сверху)
+        const sortedCompanies = response.companies.sort((a, b) => {
+          return new Date(b.timestamp) - new Date(a.timestamp)
+        })
+        
+        // Если есть подсвеченная компания, сохраняем её позицию
+        if (newlyAddedCompany.value) {
+          // Находим подсвеченную компанию в текущем списке
+          const highlightedIndex = companies.value.findIndex(company => {
+            const companyId = company.companyName + '_' + company.timestamp
+            return companyId === newlyAddedCompany.value
+          })
+          
+          if (highlightedIndex !== -1) {
+            // Удаляем подсвеченную компанию из текущего списка
+            const highlightedCompany = companies.value.splice(highlightedIndex, 1)[0]
+            // Добавляем её в начало обновленного списка
+            sortedCompanies.unshift(highlightedCompany)
+          }
+        }
+        
+        companies.value = sortedCompanies
+      } else {
+        error.value = response.error || 'Ошибка загрузки данных'
+      }
+    } else {
+      // На продакшене используем JSONP подход
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbygds0XlVVKqRN56BVHo4S25BN96LRz8urJuur9crjlOR3lgYl__MHwrgu_GmKU_wjEPg/exec'
+      
+      // Создаем callback функцию
+      const callbackName = 'callback_companies_' + Date.now()
+      window[callbackName] = (data) => {
+        if (data && data.success) {
+          // Сортируем компании по дате (новые сверху)
+          const sortedCompanies = data.companies.sort((a, b) => {
+            return new Date(b.timestamp) - new Date(a.timestamp)
+          })
+          
+          // Если есть подсвеченная компания, сохраняем её позицию
+          if (newlyAddedCompany.value) {
+            // Находим подсвеченную компанию в текущем списке
+            const highlightedIndex = companies.value.findIndex(company => {
+              const companyId = company.companyName + '_' + company.timestamp
+              return companyId === newlyAddedCompany.value
+            })
+            
+            if (highlightedIndex !== -1) {
+              // Удаляем подсвеченную компанию из текущего списка
+              const highlightedCompany = companies.value.splice(highlightedIndex, 1)[0]
+              // Добавляем её в начало обновленного списка
+              sortedCompanies.unshift(highlightedCompany)
+            }
+          }
+          
+          companies.value = sortedCompanies
+        } else {
+          error.value = data.error || 'Ошибка загрузки данных'
+        }
+        loading.value = false
+        delete window[callbackName]
+        document.head.removeChild(script)
+      }
+      
+      // Создаем script тег для JSONP
+      const script = document.createElement('script')
+      script.src = `${GOOGLE_SCRIPT_URL}?action=getCompanies&callback=${callbackName}`
+      document.head.appendChild(script)
+    }
+  } catch (err) {
+    console.error('Error fetching companies:', err)
+    error.value = 'Ошибка загрузки данных'
+  } finally {
+    if (window.location.hostname.includes('localhost') || 
+        window.location.hostname.includes('127.0.0.1') ||
+        window.location.hostname.includes('0.0.0.0')) {
+      loading.value = false
+    }
+  }
+}
+
+// Функция для автоматического обновления (без подсветки и лоадера)
+const autoRefresh = async () => {
+  try {
+    // Определяем, работаем ли мы локально или на продакшене
+    const isLocal = window.location.hostname.includes('localhost') || 
+                   window.location.hostname.includes('127.0.0.1') ||
+                   window.location.hostname.includes('0.0.0.0')
+    
+    if (isLocal) {
+      // Локально используем API
+      const response = await $fetch('/api/companies-list')
+      if (response.success) {
+        // Сортируем компании по дате (новые сверху)
+        const sortedCompanies = response.companies.sort((a, b) => {
+          return new Date(b.timestamp) - new Date(a.timestamp)
+        })
+        
+        // Если есть подсвеченная компания, сохраняем её позицию
+        if (newlyAddedCompany.value) {
+          // Находим подсвеченную компанию в текущем списке
+          const highlightedIndex = companies.value.findIndex(company => {
+            const companyId = company.companyName + '_' + company.timestamp
+            return companyId === newlyAddedCompany.value
+          })
+          
+          if (highlightedIndex !== -1) {
+            // Удаляем подсвеченную компанию из текущего списка
+            const highlightedCompany = companies.value.splice(highlightedIndex, 1)[0]
+            // Добавляем её в начало обновленного списка
+            sortedCompanies.unshift(highlightedCompany)
+          }
+        }
+        
+        companies.value = sortedCompanies
+      }
+    } else {
+      // На продакшене используем JSONP подход
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbygds0XlVVKqRN56BVHo4S25BN96LRz8urJuur9crjlOR3lgYl__MHwrgu_GmKU_wjEPg/exec'
+      
+      // Создаем callback функцию
+      const callbackName = 'callback_companies_auto_' + Date.now()
+      window[callbackName] = (data) => {
+        if (data && data.success) {
+          // Сортируем компании по дате (новые сверху)
+          const sortedCompanies = data.companies.sort((a, b) => {
+            return new Date(b.timestamp) - new Date(a.timestamp)
+          })
+          
+          // Если есть подсвеченная компания, сохраняем её позицию
+          if (newlyAddedCompany.value) {
+            // Находим подсвеченную компанию в текущем списке
+            const highlightedIndex = companies.value.findIndex(company => {
+              const companyId = company.companyName + '_' + company.timestamp
+              return companyId === newlyAddedCompany.value
+            })
+            
+            if (highlightedIndex !== -1) {
+              // Удаляем подсвеченную компанию из текущего списка
+              const highlightedCompany = companies.value.splice(highlightedIndex, 1)[0]
+              // Добавляем её в начало обновленного списка
+              sortedCompanies.unshift(highlightedCompany)
+            }
+          }
+          
+          companies.value = sortedCompanies
+        }
+        delete window[callbackName]
+        document.head.removeChild(script)
+      }
+      
+      // Создаем script тег для JSONP
+      const script = document.createElement('script')
+      script.src = `${GOOGLE_SCRIPT_URL}?action=getCompanies&callback=${callbackName}`
+      document.head.appendChild(script)
+    }
+  } catch (error) {
+    console.error('Error during auto refresh:', error)
+    // Не показываем ошибку пользователю при автоматическом обновлении
+  }
+}
+
+// Функция для обновления списка с подсветкой новой компании
+const refresh = async (newCompanyData = null) => {
+  // Если передана информация о новой компании, добавляем её сразу в начало списка
+  if (newCompanyData) {
+    const companyId = newCompanyData.companyName + '_' + newCompanyData.timestamp
+    newlyAddedCompany.value = companyId
+    
+    // Добавляем новую компанию в начало списка
+    companies.value.unshift(newCompanyData)
+    
+    // Подсветка остается до перезагрузки страницы
+  }
+  
+  // Затем обновляем весь список из Google Sheets
+  await fetchCompanies()
+}
+
+// Экспортируем функцию для обновления списка
+defineExpose({
+  refresh
+})
+
+onMounted(() => {
+  fetchCompanies()
+  
+  // Запускаем автоматическое обновление каждую минуту
+  autoRefreshInterval.value = setInterval(() => {
+    autoRefresh()
+  }, 60000) // 60 секунд = 1 минута
+})
+
+onUnmounted(() => {
+  // Очищаем интервал при размонтировании компонента
+  if (autoRefreshInterval.value) {
+    clearInterval(autoRefreshInterval.value)
+  }
+})
+</script>
+
+<style scoped>
+.companies-list {
+  max-width: 100%;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Кастомный скроллбар */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Для Firefox */
+.overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f1f1f1;
+}
+</style>
+ 
