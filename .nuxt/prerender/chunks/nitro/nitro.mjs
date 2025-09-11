@@ -641,7 +641,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "ea91e5ed-ba7c-437d-ae8c-2970c8cfb76f",
+    "buildId": "a8ab5ced-8a01-4bd2-944a-6e498c774d99",
     "buildAssetsDir": "assets/",
     "cdnURL": ""
   },
@@ -1068,11 +1068,19 @@ const _4zfs95 = eventHandler((event) => {
 const _SxA8c9 = defineEventHandler(() => {});
 
 const _lazy_q_OPyY = () => import('../routes/api/send-email.post.mjs');
+const _lazy_pGIUfG = () => import('../routes/api/waitlist-count-local.get.mjs');
+const _lazy_ke3atG = () => import('../routes/api/waitlist-count.get.mjs');
+const _lazy_GWQ7oj = () => import('../routes/api/waitlist-local.post.mjs');
+const _lazy_McTnOU = () => import('../routes/api/waitlist.post.mjs');
 const _lazy_G5pgvr = () => import('../_/renderer.mjs');
 
 const handlers = [
   { route: '', handler: _4zfs95, lazy: false, middleware: true, method: undefined },
   { route: '/api/send-email', handler: _lazy_q_OPyY, lazy: true, middleware: false, method: "post" },
+  { route: '/api/waitlist-count-local', handler: _lazy_pGIUfG, lazy: true, middleware: false, method: "get" },
+  { route: '/api/waitlist-count', handler: _lazy_ke3atG, lazy: true, middleware: false, method: "get" },
+  { route: '/api/waitlist-local', handler: _lazy_GWQ7oj, lazy: true, middleware: false, method: "post" },
+  { route: '/api/waitlist', handler: _lazy_McTnOU, lazy: true, middleware: false, method: "post" },
   { route: '/__nuxt_island/**', handler: _SxA8c9, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_G5pgvr, lazy: true, middleware: false, method: undefined }
 ];

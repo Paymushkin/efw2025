@@ -32,6 +32,7 @@ interface _GlobalComponents {
     'TeamMemberCard': typeof import("../components/TeamMemberCard.vue")['default']
     'TheFooter': typeof import("../components/TheFooter.vue")['default']
     'TheHeader': typeof import("../components/TheHeader.vue")['default']
+    'WaitlistForm': typeof import("../components/WaitlistForm.vue")['default']
     'WidgetGuide': typeof import("../components/WidgetGuide.vue")['default']
     'IconsInstagramIcon': typeof import("../components/icons/InstagramIcon.vue")['default']
     'IconsInstagramWhiteIcon': typeof import("../components/icons/InstagramWhiteIcon.vue")['default']
@@ -91,6 +92,7 @@ interface _GlobalComponents {
     'LazyTeamMemberCard': LazyComponent<typeof import("../components/TeamMemberCard.vue")['default']>
     'LazyTheFooter': LazyComponent<typeof import("../components/TheFooter.vue")['default']>
     'LazyTheHeader': LazyComponent<typeof import("../components/TheHeader.vue")['default']>
+    'LazyWaitlistForm': LazyComponent<typeof import("../components/WaitlistForm.vue")['default']>
     'LazyWidgetGuide': LazyComponent<typeof import("../components/WidgetGuide.vue")['default']>
     'LazyIconsInstagramIcon': LazyComponent<typeof import("../components/icons/InstagramIcon.vue")['default']>
     'LazyIconsInstagramWhiteIcon': LazyComponent<typeof import("../components/icons/InstagramWhiteIcon.vue")['default']>
@@ -156,6 +158,7 @@ export const StatisticsSection: typeof import("../components/StatisticsSection.v
 export const TeamMemberCard: typeof import("../components/TeamMemberCard.vue")['default']
 export const TheFooter: typeof import("../components/TheFooter.vue")['default']
 export const TheHeader: typeof import("../components/TheHeader.vue")['default']
+export const WaitlistForm: typeof import("../components/WaitlistForm.vue")['default']
 export const WidgetGuide: typeof import("../components/WidgetGuide.vue")['default']
 export const IconsInstagramIcon: typeof import("../components/icons/InstagramIcon.vue")['default']
 export const IconsInstagramWhiteIcon: typeof import("../components/icons/InstagramWhiteIcon.vue")['default']
@@ -215,6 +218,7 @@ export const LazyStatisticsSection: LazyComponent<typeof import("../components/S
 export const LazyTeamMemberCard: LazyComponent<typeof import("../components/TeamMemberCard.vue")['default']>
 export const LazyTheFooter: LazyComponent<typeof import("../components/TheFooter.vue")['default']>
 export const LazyTheHeader: LazyComponent<typeof import("../components/TheHeader.vue")['default']>
+export const LazyWaitlistForm: LazyComponent<typeof import("../components/WaitlistForm.vue")['default']>
 export const LazyWidgetGuide: LazyComponent<typeof import("../components/WidgetGuide.vue")['default']>
 export const LazyIconsInstagramIcon: LazyComponent<typeof import("../components/icons/InstagramIcon.vue")['default']>
 export const LazyIconsInstagramWhiteIcon: LazyComponent<typeof import("../components/icons/InstagramWhiteIcon.vue")['default']>

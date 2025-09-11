@@ -79,14 +79,14 @@ export const NEW_PROGRAM_TABS = [
     ],
   },
   { 
-    title: 'Fashion Show', 
+    title: 'Pop - Up Market', 
     date: '7 November', 
     events: [
       {
         type: 'event',
         time: '7 November',
-        description: `Prêt-à-porter women's & men's collections  SS 26`,
-        details: 'Pop-Up Market ',
+        description: `Pop-Up Market`,
+        details: 'Market The POP-UP Market will showcase fashion, beauty, fragrance, and lifestyle brands, creating a vibrant space for style and creativity and sale',
       },
     ] 
   },
