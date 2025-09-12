@@ -7,26 +7,50 @@
       keywords="Emirates Fashion Week, Dubai Fashion, Beauty Services, Designer Pop-up, Fashion Show 2025, Dubai Events, Beauty Business"
     />
     <!-- Hot Offers Section -->
-     <div class="flex flex-col md:flex-row justify-between md:items-center gap-5 mb-[50px] xl:mb-[100px]">
-      <h1 class="text-xl md:text-4xl">Hot Offers</h1>
-      <p class="text-sm md:text-base max-w-[427px] xl:mr-[178px]">
-        Emirates Fashion Week: Beauty meets business
-        <br>
-        Dates: 10–11 November 2025
-        <br><br>
-        2 DAYS
-        <br>
-        BEAUTY DAY  10 NOVEMBER 2025 MONDAY
-        <br>
-        WELLNESS DAY  11 NOVEMBER 2025 TUESDAY  
-        <br>
-        <br><br>
-        For the first time ever, Fashion Week features showcase spots for beauty service companies and designer pop-up corners
-      </p>
-     </div>
+     <section class="flex flex-col justify-between gap-5 mb-[50px] md:mb-[80px] xl:mb-[100px]">
+      <h1 class="text-xl md:text-4xl xl:mb-10">Hot Offers</h1>
+      <div class="grid grid-cols-1 xl:grid-cols-3 lg:gap-10 md:gap-12 gap-7">
+        <div>
+          <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">EFW Pop-up Market</h3>
+          <p class="text-sm md:text-base xl:text-lg">
+            Two days featuring <b>60 Showcase Spots</b> for beauty service companies and <b>40 Designer Pop-Up Corners</b> with exclusive promotional offers
+            <br><br>
+            <b>BEAUTY DAY</b> | 10 November 2025 | Monday
+            <br>
+            <b>WELLNESS DAY</b> | 11 November 2025 | Tuesday
+          </p>
+        </div>
+        <div>
+          <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">Beauty Day</h3>
+          <ul class="text-sm md:text-base xl:text-lg space-y-2 mb-4">
+            <li>• Beauty & cosmetics brands</li>
+            <li>• MUAs, nails, brows & lashes</li>
+            <li>• Skincare & dermatology</li>
+            <li>• Fragrance & perfumes</li>
+            <li>• Health & wellness</li>
+            <li>• Fitness & events</li>
+          </ul>
+
+        </div>
+        <div class="flex flex-col md:gap-4 gap-2">
+          <h3 class="md:text-2xl font-bold">Wellness Day</h3>
+          <ul class="text-sm md:text-base xl:text-lg space-y-2">
+            <ul class="text-sm md:text-base xl:text-lg space-y-2 mb-4">
+            <li>• Medical & aesthetic clinics</li>
+            <li>• Health & wellness tourism, nutrition</li>
+            <li>• Oral care & dental aesthetics</li>
+            <li>• Spas, massage, gyms & barbers</li>
+            <li>• Salon, clinic & tools/equipment suppliers</li>
+            <li>• Beauty tech: CRM, booking, payments</li>
+          </ul>
+          </ul>
+
+      </div>
+      </div>
+     </section>
 
     <!-- Showcase spot Section -->
-    <section class="mb-16">
+    <section class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
       <h2 class="text-xl md:text-4xl xl:mb-[75px] md:mb-[50px] mb-7">Showcase spot</h2>
       
       <div class="relative -mx-4 md:mx-0 mb-8">
@@ -50,35 +74,41 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 md:gap-4 gap-7 mb-8">
+      <div class="grid grid-cols-1 xl:grid-cols-3 lg:gap-10 md:gap-12 gap-7 mb-8">
         <div>
           <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">Good for:</h3>
-          <ul class="text-sm space-y-2">
+          <ul class="text-sm md:text-base xl:text-lg space-y-2">
             <li>• Medical & Aesthetic Clinics – General clinics, plastic surgery, dentistry.   </li>
             <li>• Health & Wellness – Nutritionists, dietitians, medical & wellness tourism.</li>
+            <br><br>
             <li>• Beauty & Cosmetics – Cosmetic brands, makeup artists, brow & lash services, nail care.</li>
             <li>• Personal Care & Wellness – Cosmetology, massage, salons, spas, barbershops.</li>
+            <br><br></br>
             <li>• Fitness & Events – Gyms, wellness studios, wedding makeup & beauty services.</li>
             <li>• Education & Training – Schools and courses for makeup, cosmetology, and nail services.</li>
+            <br><br>
             <li>• Beauty Tech & Software – CRM, online booking, payment solutions for salons.</li>
             <li>• Salon & Clinic Equipment – Furniture and professional tools for beauty salons & medical clinics.</li>
           </ul>
         </div>
         <div>
           <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">What’s Included:</h3>
-          <ul class="text-sm space-y-2 mb-4">
+          <ul class="text-sm md:text-base xl:text-lg space-y-2 mb-4">
             <li>• One of the 80 Showcase Spots:
               <ul class="pl-4 space-y-2 mt-2">
                 <li>- 8, 9 November (runway days) 20 Spots in the corridors</li>
                 <li>- 10, 11 November (market days)  20 Spots in the corridors + 60 Spots in the main hall </li>
               </ul>
             </li>
+            <br><br>
             <li class="font-bold">• 50 lead chats per day from EFW visitors (Our Matchmaking technology)</li>
             <li>• <b>50”</b>  Display for presentations with a table and 2 bar chairs </li>
+            <br><br>
             <li>• VIP invitations to all EFW runway shows on 8–11 November 2025</li>
             <li>• Operates during fashion show days </li>
           </ul>
-          <div class="flex items-start text-sm">
+          <br><br>
+          <div class="flex items-start text-sm md:text-base xl:text-lg">
               <svg class="w-6 h-6 text-amber-400 mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
@@ -88,8 +118,13 @@
             </div>
         </div>
         <div class="flex flex-col md:gap-4 gap-2">
-          <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">Prices</h3>
-          <ul class="text-sm space-y-2">
+          <h3 class="md:text-2xl font-bold">Total</h3>
+          <ul class="text-sm md:text-base xl:text-lg space-y-2">
+            <li>• 60 Spots</li>
+          </ul>
+          <br><br>
+          <h3 class="md:text-2xl font-bold">Prices</h3>
+          <ul class="text-sm md:text-base xl:text-lg space-y-2">
             <li> Early Birds / any day</li>
             <li>•<span class="line-through opacity-50"> 3,600 AED / 1,000$ </span> </li>
             <li>• 3,000 AED / 800$ / per day</li>
@@ -99,13 +134,25 @@
             :phone-number="whatsappNumber"
             text="Contact us about Showcase spot"
           />
+          <div v-if="showTrial">
+            <a 
+              href="#join-waitlist"
+              class="mt-3 inline-flex items-center gap-2 px-6 py-2.5 text-sm rounded-3xl transition-colors border border-black hover:bg-gray-100 w-fit"
+            >
+              <span>2h Free Trial Spot Waitlist</span>
+              <span>></span>
+            </a>
+            <p v-if="companiesCount > 0" class="text-xs text-gray-600">
+              {{ companiesCount }} companies in waitlist
+            </p>
+          </div>
       </div>
       </div>
 
     </section>
 
     <!-- Corner Section -->
-    <section class="mb-16">
+    <section class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
       <h2 class="text-xl md:text-4xl md:mb-[75px] mb-7">Popup Corners</h2>
       
       <div class="relative -mx-4 md:mx-0 mb-8">
@@ -134,14 +181,14 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <div>
           <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">Good for:</h3>
-          <ul class="text-sm space-y-2">
+          <ul class="text-sm md:text-base xl:text-lg space-y-2">
             <li>• Designers </li>
             <li>• Accessories Brands</li>
           </ul>
         </div>
         <div>
           <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">What’s Included:</h3>
-          <ul class="text-sm space-y-2">
+          <ul class="text-sm md:text-base xl:text-lg space-y-2">
             <li>• One of 40 Designers Pop-up Corners:
               <ul class="pl-4 space-y-2 mt-2">
                 <li>- 8, 9 November (runway days) 20 Pop-ups in the corridors</li>
@@ -153,69 +200,37 @@
           </ul>
         </div>
         <div class="flex flex-col md:gap-4 gap-2">
-          <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">Prices</h3>
-          <ul class="text-sm">
-            <li>• 11,000 aed / $3000 / 3 days</li>
+          <h3 class="md:text-2xl font-bold">Prices</h3>
+          <ul class="text-sm md:text-base xl:text-lg space-y-2">
+            <li> Early Birds / any day</li>
+            <li>•<span class="line-through opacity-50"> 2,200 AED / 600$ </span> </li>
+            <li>• 1,800 AED / 500$ / per day</li>
           </ul>
           <WhatsAppButton 
             v-if="showWhatsApp"
             :phone-number="whatsappNumber"
             text="Contact us about Corner"
           />
+          <div v-if="showTrial">
+            <a 
+              href="#join-waitlist"
+              class="mt-3 inline-flex items-center gap-2 px-6 py-2.5 text-sm rounded-3xl transition-colors border border-black hover:bg-gray-100 w-fit"
+            >
+              <span>2h Free Trial Spot Waitlist</span>
+              <span>></span>
+            </a>
+            <p v-if="companiesCount > 0" class="text-xs text-gray-600">
+              {{ companiesCount }} companies in waitlist
+            </p>
+          </div>
       </div>
       </div>
 
     </section>
 
-    <!-- Trial Section -->
-    <section v-if="showTrial" class="mb-16">
-      <h2 class="text-xl md:text-4xl md:mb-[75px] mb-7">Trial</h2>
-      
-      <div class="relative -mx-4 md:mx-0 mb-8">
-        <div class="flex md:grid md:grid-cols-2 gap-6 overflow-x-auto pb-4 md:pb-0 px-4 md:px-0 snap-x snap-mandatory">
-          <div class="aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
-            <img :src="Image1" alt="Trial showcase" class="w-full h-full object-contain">
-          </div>
-          <div class="aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
-            <img :src="Image2" alt="Trial setup" class="w-full h-full object-contain">
-          </div>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        <div>
-          <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">Good for:</h3>
-          <ul class="text-sm space-y-2">
-            <li>• New businesses testing the market</li>
-            <li>• Startups looking for exposure</li>
-            <li>• Companies wanting to try before committing</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">What's Included:</h3>
-          <ul class="text-sm space-y-2">
-            <li>• 1 day trial access</li>
-            <li>• Basic showcase spot</li>
-            <li>• 25 lead chats from EFW visitors</li>
-            <li>• Access to networking events</li>
-          </ul>
-        </div>
-        <div class="flex flex-col md:gap-4 gap-2">
-          <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">Prices</h3>
-          <ul class="text-sm">
-            <li>• 1,500 AED / $400 / per day</li>
-          </ul>
-          <WhatsAppButton 
-            v-if="showWhatsApp"
-            :phone-number="whatsappNumber"
-            text="Contact us about Trial"
-          />
-        </div>
-      </div>
-    </section>
 
     <!-- Working Time Section -->
-    <section class="mb-16">
+    <section class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
       <h2 class="text-xl md:text-4xl mb-[75px]">WORKING TIME</h2>
 
       <!-- First Day -->
@@ -290,7 +305,7 @@
       </div> -->
 
       <!-- Third Day -->
-      <div class="mb-[50px] md:mb-[80px]">
+      <div>
         <h3 class="text-xl md:text-4xl mb-4 text-medium">3<sup>rd</sup> Day
           <br>
           10 November 2025 | <span class="opacity-50"> MONDAY <br>THE POP-UP MARKET</span></h3>
@@ -347,43 +362,81 @@
     </div> -->
 
     <!-- FAQ Section -->
-    <FaqSection class="mb-[56px] md:mb-[76px]" />
+    <FaqSection />
+
+      <section id="slides" class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
+        <h2 class="text-xl md:text-4xl mb-[75px]">Our Presentation</h2>
+        <div class="w-full aspect-video">
+          <iframe 
+            src="https://www.canva.com/design/DAGykrRNjho/8F9GjzAc1t8ZtytdQMS86w/view?embed"
+            width="100%" 
+            height="100%" 
+            frameborder="0" 
+            allowfullscreen
+            class="rounded-lg shadow-lg w-full h-full"
+          ></iframe>
+        </div>
+      </section>
+
+      <section id="map" class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
+        <h2 class="text-xl md:text-4xl mb-[75px]">Location</h2>
+        <div class="w-full">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1185.1534268127045!2d55.15329961837267!3d25.095293069615156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b44056573e7%3A0xc77c77051f31ecc!2sArjaan%20by%20Rotana%20Dubai!5e1!3m2!1sru!2sae!4v1757573179410!5m2!1sru!2sae" 
+            width="100%" 
+            height="600" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            class="rounded-lg shadow-lg"
+          ></iframe>
+        </div>
+      </section>
+
+      <PhotoGallery />
 
      <div v-if="showTrial">
        <h2 class="text-xl md:text-4xl mb-[75px]">TRIAL SHOWCASE SPOTS</h2>
        
        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-         <div class="bg-gray-100 rounded-2xl overflow-hidden">
-           <img :src="Image9" alt="Trial showcase spots" class="w-full h-auto object-cover">
+         <div class="bg-gray-100 rounded-2xl overflow-hidden aspect-[4/3]">
+           <img :src="Image9" alt="Trial showcase spots" class="w-full h-full object-cover">
          </div>
          
-         <div class="flex flex-col justify-center">
-           <p class="text-sm mb-6">
-             A limited number of 10–20 Showcase Spots (2-hour sessions) will be allocated to waitlist applicants.
-             Each selected participant will also receive 20 lead chats with EFW Market visitors.
-             These trial spots are not free handouts — they are subsidized by Dubai Culture and Emirates Fashion Week as a goodwill initiative to support SMEs in Dubai's beauty and design industries.
-           </p>
-           
-           <ul class="text-sm space-y-2 mb-6">
-             <li>• Any waitlist participant may purchase their spot at any time during Fashion Week, which will override the free allocation for others.</li>
-             <li>• You can always secure a guaranteed full-day or multi-day spot — just as 60+ companies already have, at the standard rates shown above.</li>
-             <li>• From the full waitlist, up to 80 participants will be selected for 2-hour trial slots, provided these spots remain unpurchased.</li>
-           </ul>
-           
-           <div class="flex flex-col items-end gap-3">
-             <BaseButton
-               variant="primary"
-               @click="showWaitlistForm = true">
-               <span>JOIN WAITLIST</span>
-               <span>></span>
-             </BaseButton>
-           </div>
+         <div class="bg-gray-100 rounded-2xl overflow-hidden aspect-[4/3]">
+           <img :src="Image10" alt="Trial showcase spots" class="w-full h-full object-cover">
+         </div>
+       </div>
+       
+       <div class="mb-8">
+         <p class="text-sm mb-6">
+           A limited number of 10–20 Showcase Spots (2-hour sessions) will be allocated to waitlist applicants.
+           Each selected participant will also receive 20 lead chats with EFW Market visitors.
+           These trial spots are not free handouts — they are subsidized by Dubai Culture and Emirates Fashion Week as a goodwill initiative to support SMEs in Dubai's beauty and design industries.
+         </p>
+         
+         <ul class="text-sm space-y-2 mb-6">
+           <li>• Any waitlist participant may purchase their spot at any time during Fashion Week, which will override the free allocation for others.</li>
+           <li>• You can always secure a guaranteed full-day or multi-day spot — just as 60+ companies already have, at the standard rates shown above.</li>
+           <li>• From the full waitlist, up to 80 participants will be selected for 2-hour trial slots, provided these spots remain unpurchased.</li>
+         </ul>
+         
+         <div class="flex flex-col items-end gap-3">
+           <BaseButton
+             id="join-waitlist"
+             variant="primary"
+             @click="showWaitlistForm = true">
+             <!-- <span>2h Free Trial Spot Waitlist</span> -->
+             <span>Join Waitlist</span>
+             <span>></span>
+           </BaseButton>
          </div>
        </div>
        
        <!-- Companies List -->
        <div class="mt-12">
-         <CompaniesList ref="companiesListRef" />
+         <CompaniesList ref="companiesListRef" @companies-count-updated="updateCompaniesCount" />
        </div>
      </div>
    </div>
@@ -394,17 +447,22 @@
       @close="showWaitlistForm = false"
       @success="handleWaitlistSuccess"
     />
+    
+    <!-- Bottom anchor for scrolling -->
+    <div id="bottom"></div>
    </div>
  </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { useCompaniesCount } from '~/composables/useCompaniesCount'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import WhatsAppButton from '@/components/ui/WhatsAppButton.vue'
 import FaqSection from '@/components/FaqSection.vue'
 import WaitlistForm from '@/components/WaitlistForm.vue'
 import CompaniesList from '@/components/CompaniesList.vue'
+import PhotoGallery from '@/components/PhotoGallery.vue'
 import Image1 from '@/assets/image/offer/stand-1.webp'
 import Image2 from '@/assets/image/offer/corner-1.webp'
 import Image3 from '@/assets/image/offer/corner-3.webp'
@@ -414,13 +472,29 @@ import Image6 from '@/assets/image/offer/schema-3.webp'
 import Image7 from '@/assets/image/offer/schema-4.webp'
 import Image8 from '@/assets/image/offer/schema-5.webp'
 import Image9 from '@/assets/image/offer/trial.webp'
+import Image10 from '@/assets/image/stations/station-2.webp'
 
 const route = useRoute()
 const showWhatsApp = computed(() => !!route.query.wp)
 const whatsappNumber = computed(() => route.query.wp || '971529833054')
 const showTrial = computed(() => 'tr' in route.query)
+const showWaitlist = computed(() => 'waitlist' in route.query)
 const showWaitlistForm = ref(false)
 const companiesListRef = ref(null)
+const { companiesCount, updateCompaniesCount: updateGlobalCount } = useCompaniesCount()
+
+
+// Функция для обновления счетчика компаний
+const updateCompaniesCount = (count) => {
+  updateGlobalCount(count)
+  
+  // Обновляем счетчик в программе
+  const trialCountElement = document.getElementById('trial-waitlist-count')
+  if (trialCountElement) {
+    trialCountElement.textContent = `${count} companies in waitlist`
+  }
+  
+}
 
 
 // Функция для обработки успешной отправки формы
@@ -429,7 +503,44 @@ const handleWaitlistSuccess = async (newCompanyData) => {
   if (companiesListRef.value) {
     companiesListRef.value.refresh(newCompanyData)
   }
+  // Увеличиваем счетчик
+  companiesCount.value += 1
 }
+
+// Функция для скролла до конца страницы
+const scrollToBottom = () => {
+  // Множественные попытки скролла с увеличивающейся задержкой
+  const scrollAttempts = [500, 1000, 2000, 3000]
+  
+  scrollAttempts.forEach((delay, index) => {
+    setTimeout(() => {
+      console.log(`Scroll attempt ${index + 1} after ${delay}ms`)
+      
+      // Простой и надежный способ
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+      })
+      
+      // Дополнительная попытка через 100ms
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: 'smooth'
+        })
+      }, 100)
+    }, delay)
+  })
+}
+
+// Автоматический скролл при наличии параметра waitlist
+onMounted(() => {
+  if (showWaitlist.value) {
+    // Сразу начинаем скролл
+    scrollToBottom()
+  }
+})
+
 
 // Заменяем useHead на компонент AppSeo
 </script>

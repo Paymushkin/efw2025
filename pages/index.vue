@@ -7,7 +7,7 @@
     />
     <HeroSection class="mb-[56px] md:mb-[76px]" />
     <NewProgramSection class="md:mb-[120px] mb-[76px]" />
-    <ProgramSection class="md:mb-[56px] mb-[36px]" />
+    <!-- <ProgramSection class="md:mb-[56px] mb-[36px]" /> -->
     <MarqueeSection :content="sponsors" class="mb-[56px] md:mb-[76px]" />
     <HowItWasSection class="mb-[56px] md:mb-[76px]" />
     <DesignersSection class="md:mb-[76px] mb-[56px]" />

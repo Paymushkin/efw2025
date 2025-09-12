@@ -22,30 +22,31 @@
       </div>
     </div>
     
-    <swiper
-      :modules="[Navigation, Pagination]"
-      :slides-per-view="1.2"
-      :space-between="16"
-      :navigation="false"
-      :pagination="{
-        clickable: true,
-        dynamicBullets: true,
-        dynamicMainBullets: 7
-      }"
-      :breakpoints="{
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 30,
-        },
-        1024: {
-          slidesPerView: 3,
-          spaceBetween: 30,
-        },
-      }"
-      @swiper="onSwiper"
-      @slideChange="onSlideChange"
-      class="relative pb-12 overflow-visible"
-    >
+    <div class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0">
+      <swiper
+        :modules="[Navigation, Pagination]"
+        :slides-per-view="1.2"
+        :space-between="16"
+        :navigation="false"
+        :pagination="{
+          clickable: true,
+          dynamicBullets: true,
+          dynamicMainBullets: 7
+        }"
+        :breakpoints="{
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        }"
+        @swiper="onSwiper"
+        @slideChange="onSlideChange"
+        class="relative pb-12 px-4 md:px-0"
+      >
       <swiper-slide v-for="(designer, index) in designers" :key="index">
         <div class="designer-card h-auto">
           <img 
@@ -60,8 +61,9 @@
         </div>
       </swiper-slide>
 
-      <div class="swiper-pagination"></div>
-    </swiper>
+        <div class="swiper-pagination"></div>
+      </swiper>
+    </div>
   </div>
 </template>
 
@@ -69,7 +71,7 @@
 :deep(.swiper) {
   padding-bottom: 40px !important;
   position: relative;
-  overflow: visible !important;
+  overflow: hidden !important;
 }
 
 :deep(.swiper-wrapper) {
@@ -99,9 +101,7 @@
   }
   
   :deep(.swiper) {
-    margin: 0 -20px;
-    padding: 0 20px !important;
-    overflow: visible !important;
+    padding: 0 !important;
   }
   
   :deep(.swiper-slide) {
@@ -163,6 +163,16 @@ button:hover {
 
 button:active {
   opacity: 0.5;
+}
+
+/* Скрытие скроллбара */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE и Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari и Opera */
 }
 </style>
 

@@ -4,7 +4,7 @@
     <Marquee class="hidden md:block" :content="marqueeText1" :is-static="true" />
     <!-- Navigation -->
     <nav class="bg-white">
-      <div class="container mx-auto px-4">
+      <div class="container mx-auto md:px-4 px-2">
         <div class="flex items-center justify-between py-4">
           <!-- Left side: Logo and Hashtag -->
           <div class="flex items-center 2xl:gap-12 md:gap-6 gap-3">
@@ -15,14 +15,14 @@
               <MenuIcon v-if="!isMenuOpen" class="w-8 h-8" />
               <XIcon v-else class="w-8 h-8" />
             </button>
-            <div class="flex flex-col md:flex-row md:gap-6 gap-1 md:items-center">
+            <div class="flex flex-col gap-1">
               <NuxtLink to="/" class="flex-shrink-0">
                 <LogoBlack class="h-5 2xl:h-8 w-[165px] 2xl:w-[254px]" />
               </NuxtLink>
             
               <NuxtLink 
                 href="#" 
-                class="text-black 2xl:text-xl xl:text-base text-[10px] md:uppercase lowercase"
+                class="text-black text-[8px] md:text-[10px] xl:text-xs 2xl:text-sm md:uppercase lowercase"
                 @click.prevent="handleHashtagClick"
               >{{ hashtag[0] }}
               </NuxtLink>
@@ -233,7 +233,7 @@ const isLinksMenuOpen = ref(false);
 const isParticipateOpen = ref(false);
 const navLinks = [
   // { name: 'MAGAZINE', href: '/magazine', id: 'magazine' },
-  { name: 'CALENDAR', href: '/#program', id: 'program' },
+  // { name: 'CALENDAR', href: '/#program', id: 'program' },
   { name: 'FEATURES', href: '/features', id: 'features' },
   { name: 'DESIGNERS', href: '/#designers', id: 'designer' },
   { name: 'GALLERY', href: '/gallery', id: 'gallery' },

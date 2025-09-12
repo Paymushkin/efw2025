@@ -19,13 +19,12 @@
     <div
       class="absolute top-0 left-0 w-full h-full bg-black opacity-35 z-10"
     ></div>
-    <div class="container flex flex-col grow mx-auto px-4 py-10 relative z-20">
+    <div class="container flex flex-col grow mx-auto md:px-4 px-2 py-10 relative z-20">
       <h1 class="hidden md:block xl:text-5xl text-4xl font-bold text-white uppercase">
-        14th EMIRATES FASHION WEEK
-        <sup class="text-4xl align-top">®</sup> 
+        14th EMIRATES&nbsp;FASHION&nbsp;WEEK&nbsp;<sup class="text-4xl align-top">®</sup> 
       </h1>
       <span class="xl:text-[60px] text-3xl text-white font-bold">SS 2025/2026</span>
-      <span class="text-white mb-10 text-xl font-bold">7-11 November 2025</span>
+      <span class="text-white mb-10 text-xl font-bold">8-11 November 2025</span>
       <GalleryIframe :show-fog="false" />
     </div>
 

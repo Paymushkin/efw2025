@@ -35,9 +35,7 @@
             'text-black-20': currentTab !== index,
           }"
         >
-          <span class="text-xl 2xl:text-4xl md:text-3xl transition-colors duration-300">{{
-            tab.title
-          }}</span>
+          <span v-html="tab.title" class="text-xl 2xl:text-4xl md:text-3xl transition-colors duration-300"></span>
           <span class="transition-colors duration-300">
             {{ tab.date }}
           </span>
@@ -47,7 +45,7 @@
 
     <div class="flex flex-col md:gap-6 gap-5">
       <div
-        v-for="(event, index) in currentProgram.events"
+        v-for="(event, index) in updatedProgram?.events || []"
         :key="index"
       >
         <template v-if="event.type === 'sponsorStation'">
@@ -85,12 +83,13 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import BaseButton from '~/components/ui/BaseButton.vue';
 import SponsorStation from '~/components/program/SponsorStation.vue';
 import BigSponsorStation from '~/components/program/BigSponsorStation.vue';
 import ProgramEvent from '~/components/program/ProgramEvent.vue';
 import { NEW_EVENT_TYPES, NEW_PROGRAM_TABS } from '~/constants/newProgram';
+import { useCompaniesCount } from '~/composables/useCompaniesCount';
 
 const currentTab = ref(1);
 const tabs = NEW_PROGRAM_TABS;
@@ -98,6 +97,54 @@ const tabsContainer = ref(null);
 let isDragging = false;
 let startX = 0;
 let scrollLeft = 0;
+
+// Получаем глобальный счетчик компаний
+const { companiesCount, updateCompaniesCount } = useCompaniesCount();
+
+// Функция для загрузки списка компаний
+const fetchCompanies = async () => {
+  try {
+    console.log('Fetching companies...')
+    const response = await $fetch('/api/companies-list')
+    console.log('Companies response:', response)
+    if (response.success) {
+      console.log('Updating companies count to:', response.companies.length)
+      updateCompaniesCount(response.companies.length)
+    }
+  } catch (error) {
+    console.error('Error fetching companies:', error)
+  }
+}
+
+// Загружаем данные при монтировании компонента
+onMounted(() => {
+  fetchCompanies()
+})
+
+// Computed свойство для обновленного контента программы с реальным счетчиком
+const updatedProgram = computed(() => {
+  const program = NEW_PROGRAM_TABS[currentTab.value];
+  if (!program) return null;
+  
+  console.log('Current companies count:', companiesCount.value);
+  
+  // Обновляем events с реальным счетчиком
+  const updatedEvents = program.events.map(event => {
+    if (event.details && event.details.includes('trial-waitlist-count')) {
+      console.log('Found trial-waitlist-count in event details');
+      // Заменяем статический счетчик на динамический
+      const updatedDetails = event.details.replace(
+        /<span id="trial-waitlist-count" style="background-color: rgba\(255,255,255,0\.2\); padding: 2px 6px; border-radius: 12px; font-weight: bold;">0<\/span>/,
+        `<span id="trial-waitlist-count" style="background-color: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">${companiesCount.value}</span>`
+      );
+      console.log('Updated details:', updatedDetails);
+      return { ...event, details: updatedDetails };
+    }
+    return event;
+  });
+  
+  return { ...program, events: updatedEvents };
+});
 
 const startDrag = (e) => {
   isDragging = true;
@@ -139,7 +186,6 @@ const selectTab = (index) => {
   currentTab.value = index;
 };
 
-const currentProgram = computed(() => tabs[currentTab.value]);
 </script>
 
 <style scoped>

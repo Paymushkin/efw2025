@@ -15,7 +15,7 @@
     
     <div v-else class="space-y-3">
       <h3 class="text-lg font-semibold mb-4">Applications submitted ({{ companies.length }})</h3>
-      <div class="max-h-80 overflow-y-auto space-y-3 pr-2">
+      <div class="space-y-3 pr-2">
         <div 
           v-for="(company, index) in companies" 
           :key="index"
@@ -26,24 +26,23 @@
               : 'bg-gray-50 border-gray-200'
           ]"
         >
-          <div class="flex-1">
-            <div class="flex items-center gap-2">
-              <div class="font-medium text-gray-900">
-                {{ maskCompanyName(company.companyName) }}
+          <div class="flex items-center gap-3 flex-1">
+            <div class="flex-shrink-0 w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center text-xs font-medium text-gray-600">
+              {{ index + 1 }}
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2">
+                <div class="font-medium text-gray-900">
+                  {{ maskCompanyName(company.companyName) }}{{ company.industry ? ' | ' + company.industry : '' }}
+                </div>
+                <span 
+                  v-if="isNewCompany(company)" 
+                  class="px-2 py-1 text-xs font-semibold text-green-700 bg-green-100 rounded-full"
+                >
+                  NEW
+                </span>
               </div>
-              <span 
-                v-if="isNewCompany(company)" 
-                class="px-2 py-1 text-xs font-semibold text-green-700 bg-green-100 rounded-full"
-              >
-                NEW
-              </span>
             </div>
-            <div v-if="company.industry" class="text-sm text-gray-600">
-              {{ company.industry }}
-            </div>
-          </div>
-          <div class="text-xs text-gray-500">
-            {{ formatDate(company.timestamp) }}
           </div>
         </div>
       </div>
@@ -52,7 +51,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 
 const companies = ref([])
 const loading = ref(true)
@@ -315,10 +314,19 @@ const refresh = async (newCompanyData = null) => {
   await fetchCompanies()
 }
 
-// Экспортируем функцию для обновления списка
+// Экспортируем функции для внешнего использования
 defineExpose({
-  refresh
+  refresh,
+  fetchCompanies
 })
+
+// Эмитим событие при изменении количества компаний
+const emit = defineEmits(['companies-count-updated'])
+
+// Следим за изменением количества компаний
+watch(companies, (newCompanies) => {
+  emit('companies-count-updated', newCompanies.length)
+}, { immediate: true })
 
 onMounted(() => {
   fetchCompanies()
