@@ -13,8 +13,32 @@
       </NuxtLink>
     </div>
 
+    <!-- Mobile Select -->
+    <div class="md:hidden mb-4 relative">
+      <select 
+        v-model="currentTab" 
+        @change="selectTab(currentTab)"
+        class="w-full p-3 pr-12 text-lg border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-black appearance-none"
+      >
+        <option 
+          v-for="(tab, index) in tabs" 
+          :key="index" 
+          :value="index"
+        >
+          {{ tab.title.replace(/<[^>]*>/g, '') }} - {{ tab.date }}
+        </option>
+      </select>
+      <!-- Custom dropdown icon -->
+      <div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Desktop Tabs -->
     <div 
-      class="overflow-x-auto hide-scrollbar cursor-grab active:cursor-grabbing w-full" 
+      class="hidden md:block overflow-x-auto hide-scrollbar cursor-grab active:cursor-grabbing w-full" 
       ref="tabsContainer"
       @mousedown="startDrag"
       @mousemove="onDrag"
