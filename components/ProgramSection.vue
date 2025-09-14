@@ -13,8 +13,28 @@
       </NuxtLink> -->
     </div>
 
+    <!-- Mobile Tabs -->
+    <div class="md:hidden mb-4 sticky top-0 z-10 bg-white">
+      <div class="flex w-full border-b border-gray-200">
+        <button
+          v-for="(tab, index) in tabs"
+          :key="index"
+          @click="selectTab(index)"
+          class="flex flex-col items-center justify-center flex-1 px-2 py-3 border-r border-gray-300 last:border-r-0 transition-colors duration-300"
+          :class="{
+            'bg-black text-white': currentTab === index,
+            'bg-white text-black hover:bg-gray-50': currentTab !== index,
+          }"
+        >
+          <span class="text-sm font-medium">{{ tab.mobileDate?.split(' ')[0] || '1' }}</span>
+          <span class="text-xs opacity-75">{{ tab.mobileDate?.split(' ')[1] || 'Apr' }}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Desktop Tabs -->
     <div 
-      class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0 cursor-grab active:cursor-grabbing" 
+      class="hidden md:block overflow-x-auto hide-scrollbar cursor-grab active:cursor-grabbing" 
       ref="tabsContainer"
       @mousedown="startDrag"
       @mousemove="onDrag"
@@ -138,6 +158,7 @@ const stopDrag = () => {
 const selectTab = (index) => {
   currentTab.value = index;
 };
+
 
 const currentProgram = computed(() => tabs[currentTab.value]);
 </script>

@@ -70,6 +70,7 @@ export const NEW_PROGRAM_TABS = [
   {
     title: 'Pre-Launch',
     date: '4 November 2025',
+    mobileDate: '4 Nov',
     events: [
       {
         type: 'event',
@@ -84,7 +85,8 @@ export const NEW_PROGRAM_TABS = [
   },
   { 
     title: 'Casting Summit', 
-    date: '5-6 November 2025', 
+    date: '5-6 November 2025',
+    mobileDate: '5-6 Nov',
     events: [
       {
         type: 'event',
@@ -110,7 +112,8 @@ export const NEW_PROGRAM_TABS = [
   },
   { 
     title: `Fashion Shows 1<sup>st</sup> & 2<sup>nd</sup> Days`, 
-    date: '8-9 November 2025', 
+    date: '8-9 November 2025',
+    mobileDate: '8 Nov',
     events: [
       {
         type: 'event',
@@ -179,7 +182,8 @@ export const NEW_PROGRAM_TABS = [
   },
     { 
     title: `Pop-Up Market 3<sup>rd</sup> & 4<sup>th</sup> Days`, 
-    date: '10-11 November', 
+    date: '10-11 November',
+    mobileDate: '10-11 Nov',
     events: [
       {
         type: 'event',
@@ -250,7 +254,8 @@ export const NEW_PROGRAM_TABS = [
   },
   { 
     title: 'Beauty Awards', 
-    date: '10 November 2025', 
+    date: '10 November 2025',
+    mobileDate: '10 Nov',
     events: [
       {
         type: 'event',
@@ -266,6 +271,7 @@ export const NEW_PROGRAM_TABS = [
   {
     title: 'VIP Brand Presentation',
     date: '11 November 2025',
+    mobileDate: '11 Nov',
     events: [
       {
         type: 'event',

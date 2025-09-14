@@ -60,6 +60,7 @@ export const PROGRAM_TABS = [
   {
     title: 'Pre-Launch',
     date: '4, 8 April & 11 April 2025',
+    mobileDate: '4 Apr',
     events: [
       {
         type: 'event',
@@ -133,7 +134,7 @@ export const PROGRAM_TABS = [
   //     description: 'Carbonado Collection 2020 Uzbekistan',
   //   },
   // ] },
-  { title: 'Fashion Show', date: '13 & 14 April 2025', events: [
+  { title: 'Fashion Show', date: '13 & 14 April 2025', mobileDate: '13 Apr', events: [
     {
       type: 'event',
       time: '13 April | 6 PM',
@@ -332,7 +333,7 @@ export const PROGRAM_TABS = [
     },
     
   ] },
-  { title: 'Beauty Expo', date: '15 April 2025', events: [
+  { title: 'Beauty Expo', date: '15 April 2025', mobileDate: '15 Apr', events: [
     {
       type: 'event',
       time: '10:00 – 20:00',
@@ -340,7 +341,7 @@ export const PROGRAM_TABS = [
     },
     BEAUTY_EXPO_SPONSOR,
   ] },
-  { title: 'Beauty Awards', date: '15 April 2025 Night Gala', events: [
+  { title: 'Beauty Awards', date: '15 April 2025 Night Gala', mobileDate: '15 Apr', events: [
     BEAUTY_AWARDS_SPONSOR,
     {
       type: 'event',

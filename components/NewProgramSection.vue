@@ -13,26 +13,22 @@
       </NuxtLink>
     </div>
 
-    <!-- Mobile Select -->
-    <div class="md:hidden mb-4 relative">
-      <select 
-        v-model="currentTab" 
-        @change="selectTab(currentTab)"
-        class="w-full p-3 pr-12 text-lg border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-black appearance-none"
-      >
-        <option 
-          v-for="(tab, index) in tabs" 
-          :key="index" 
-          :value="index"
+    <!-- Mobile Tabs -->
+    <div class="md:hidden mb-4 sticky top-0 z-10 bg-white">
+      <div class="flex w-full border-b border-gray-200">
+        <button
+          v-for="(tab, index) in tabs"
+          :key="index"
+          @click="selectTab(index)"
+          class="flex flex-col items-center justify-center flex-1 px-2 py-3 border-r border-gray-300 last:border-r-0 transition-colors duration-300"
+          :class="{
+            'bg-black text-white': currentTab === index,
+            'bg-white text-black hover:bg-gray-50': currentTab !== index,
+          }"
         >
-          {{ tab.title.replace(/<[^>]*>/g, '') }} - {{ tab.date }}
-        </option>
-      </select>
-      <!-- Custom dropdown icon -->
-      <div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-        </svg>
+          <span class="text-sm font-medium">{{ tab.mobileDate?.split(' ')[0] || '1' }}</span>
+          <span class="text-xs opacity-75">{{ tab.mobileDate?.split(' ')[1] || 'Nov' }}</span>
+        </button>
       </div>
     </div>
 
@@ -209,6 +205,7 @@ const stopDrag = () => {
 const selectTab = (index) => {
   currentTab.value = index;
 };
+
 
 </script>
 

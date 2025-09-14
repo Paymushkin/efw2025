@@ -1,6 +1,6 @@
-import { defineEventHandler, readBody, createError } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/h3/dist/index.mjs';
-import { readFile, writeFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import { defineEventHandler, readBody, createError } from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/h3/dist/index.mjs';
+import { readFile, writeFile } from 'fs/promises';
+import { join } from 'path';
 
 const waitlistLocal_post = defineEventHandler(async (event) => {
   try {

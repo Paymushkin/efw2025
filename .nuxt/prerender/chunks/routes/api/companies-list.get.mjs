@@ -1,4 +1,4 @@
-import { defineEventHandler } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/h3/dist/index.mjs';
+import { defineEventHandler } from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/h3/dist/index.mjs';
 
 const companiesList_get = defineEventHandler(async (event) => {
   try {

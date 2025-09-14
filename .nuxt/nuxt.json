@@ -1,9 +1,9 @@
 {
-  "_hash": "AjvH9tXRhYDUFZ3FADZ-jV1_LkjgCji2fXicYENKQwM",
+  "_hash": "fMpfcARNTW",
   "project": {
-    "rootDir": "/Users/paymei/Documents/Development/github/dubaifw"
+    "rootDir": "/Users/paymei/Documents/github/dubaifw"
   },
   "versions": {
-    "nuxt": "3.18.0"
+    "nuxt": "3.15.4"
   }
 }
