@@ -1,8 +1,8 @@
-import { defineEventHandler } from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/h3/dist/index.mjs';
+import { defineEventHandler } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/h3/dist/index.mjs';
 
 const companiesList_get = defineEventHandler(async (event) => {
   try {
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbygds0XlVVKqRN56BVHo4S25BN96LRz8urJuur9crjlOR3lgYl__MHwrgu_GmKU_wjEPg/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxbWqpE_TR7HJoClggVpGBYdUGcssKxWOpbFAa7nZGQp69jrE0hUxLiiCx5nY8T_x70jg/exec";
     const response = await fetch(`${GOOGLE_SCRIPT_URL}?action=getCompanies`, {
       method: "GET",
       headers: { "Content-Type": "application/json" }
@@ -11,10 +11,10 @@ const companiesList_get = defineEventHandler(async (event) => {
       throw new Error(`Google Sheets API error: ${response.statusText}`);
     }
     const result = await response.json();
-    return { success: true, companies: result.companies };
+    return { success: true, companies: result.companies || [] };
   } catch (error) {
     console.error("Error fetching companies list:", error);
-    return { success: false, error: error.message, companies: [] };
+    return { success: true, companies: [], error: error.message };
   }
 });
 

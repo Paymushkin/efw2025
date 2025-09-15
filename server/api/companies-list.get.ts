@@ -1,6 +1,7 @@
 export default defineEventHandler(async (event) => {
   try {
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbygds0XlVVKqRN56BVHo4S25BN96LRz8urJuur9crjlOR3lgYl__MHwrgu_GmKU_wjEPg/exec';
+    // Используем оригинальный URL для локальных API
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxbWqpE_TR7HJoClggVpGBYdUGcssKxWOpbFAa7nZGQp69jrE0hUxLiiCx5nY8T_x70jg/exec';
     
     const response = await fetch(`${GOOGLE_SCRIPT_URL}?action=getCompanies`, {
       method: 'GET',
@@ -12,9 +13,10 @@ export default defineEventHandler(async (event) => {
     }
     
     const result = await response.json();
-    return { success: true, companies: result.companies };
+    return { success: true, companies: result.companies || [] };
   } catch (error) {
     console.error('Error fetching companies list:', error);
-    return { success: false, error: error.message, companies: [] };
+    // Возвращаем пустой список вместо ошибки
+    return { success: true, companies: [], error: error.message };
   }
 });

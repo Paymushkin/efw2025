@@ -1,6 +1,6 @@
 <template>
   <section class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
-    <h2 class="text-xl md:text-4xl mb-[75px]">Photo Gallery</h2>
+    <h2 class="text-xl md:text-4xl mb-[75px]">PHOTO GALLERY</h2>
     
     <!-- Mobile Slider -->
     <div class="md:hidden">

@@ -113,7 +113,7 @@ export const NEW_PROGRAM_TABS = [
   { 
     title: `Fashion Shows 1<sup>st</sup> & 2<sup>nd</sup> Days`, 
     date: '8-9 November 2025',
-    mobileDate: '8 Nov',
+    mobileDate: '8-9 Nov',
     events: [
       {
         type: 'event',
@@ -136,13 +136,12 @@ export const NEW_PROGRAM_TABS = [
             <li>• Herbelin - Poland</li>
             <li>• Devu - Poland</li>
             <li>• K*********d /Germany/</li>
-            <li>• O******a /Saudi Arabia/</li>
-            <li>• D******a /Belarus/</li>
-            <li>• N****n /UAE/</li>
-            <li>• A***a /Azerbaijan/</li>
-            <li>• T**s /Romania/</li>
+            <li>• O******a /Saudi Arabia/ *PENDING MUTUAL APPROVAL</li>
+            <li>• D******a /Belarus/ *PENDING MUTUAL APPROVAL</li>
+            <li>• N****n /UAE/ *PENDING MUTUAL APPROVAL</li>
+            <li>• A***a /Azerbaijan/ *PENDING MUTUAL APPROVAL</li>
+            <li>• T**S /ROMANIA/ *PENDING MUTUAL APPROVAL</li>
           </ul>
-          <em class="text-gray-500">*Pending Mutual Approval</em>
         `,
         buttonText: 'REQUEST INVITE >',
         buttonLink: 'https://docs.google.com/forms/d/e/1FAIpQLSf9UiUI9FshAS-G9Ikkdj5Pq9DV3zkwtqdNdoNXeLxe2LQeEQ/viewform'
@@ -164,16 +163,15 @@ export const NEW_PROGRAM_TABS = [
              <li>• Polina Tropillo - Russia</li>
              <li>• Olga Bogdanova - Russia</li>
              <li>• Elena Romanova - Russia</li>
-             <li>• B********a /Azerbaijan/ </li>
-             <li>• Z**n /Iraq/ </li>
-             <li>• S****s /Oman/ </li>
-             <li>• I****e /Armenia/ </li>
-             <li>• G'******h /Philippines/ </li>
-             <li>• M********m /Uzbekistan/ </li>
-             <li>• Z*****o /Romania/ </li>
-             <li>• T***o /Saudi Arabia/</em></li>
+             <li>• B********a /Azerbaijan/ *PENDING MUTUAL APPROVAL</li>
+             <li>• Z**n /Iraq/ *PENDING MUTUAL APPROVAL</li>
+             <li>• S****s /Oman/ *PENDING MUTUAL APPROVAL</li>
+             <li>• I****e /Armenia/ *PENDING MUTUAL APPROVAL</li>
+             <li>• G'******h /Philippines/ *PENDING MUTUAL APPROVAL</li>
+             <li>• M********m /Uzbekistan/ *PENDING MUTUAL APPROVAL</li>
+             <li>• Z*****o /Romania/ *PENDING MUTUAL APPROVAL</li>
+             <li>• T***o /Saudi Arabia/ *PENDING MUTUAL APPROVAL</li>
            </ul>
-           <em class="text-gray-500">*Pending Mutual Approval</em>
          `,
          buttonText: 'REQUEST INVITE >',
          buttonLink: 'https://docs.google.com/forms/d/e/1FAIpQLSf9UiUI9FshAS-G9Ikkdj5Pq9DV3zkwtqdNdoNXeLxe2LQeEQ/viewform'
@@ -209,6 +207,14 @@ export const NEW_PROGRAM_TABS = [
                 <span>2h Free Trial Spot</span>
                 <span id="trial-waitlist-count" style="background-color: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">0</span>
               </a>
+              </div>
+              <strong>TRY YOUR BRAND AT EFW</strong>
+              <strong>2h Showcase Spot — Free via Waitlist</strong>
+              <ul>
+                <li>– 20 lead chats with real visitors</li>
+                <li>– Limited 10–20 showcase spots, up to 80 SMEs selected</li>
+                <li>– Subsidized by Dubai Culture & Emirates Fashion Week to support beauty & design businesses</li>
+              </ul>
             </div>
          `,
       },
@@ -238,7 +244,6 @@ export const NEW_PROGRAM_TABS = [
                 <span>2h Free Trial Spot</span>
                 <span id="trial-waitlist-count" style="background-color: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">0</span>
               </a>
-              <i class="text-gray-500 text-sm">try your brand at EFW</i>
             </div>
             <strong>TRY YOUR BRAND AT EFW</strong>
             <strong>2h Showcase Spot — Free via Waitlist</strong>

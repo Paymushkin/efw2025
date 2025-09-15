@@ -97,6 +97,35 @@ function doGet(e) {
       return ContentService.createTextOutput(JSON.stringify({success: true, count: count})).setMimeType(ContentService.MimeType.JSON);
     }
     
+    // Получаем список компаний
+    if (e.parameter && e.parameter.action === 'getCompanies') {
+      Logger.log('Processing getCompanies action');
+      
+      const sheet = SpreadsheetApp.openById('1jGEJIU-0Cwx151O0JczBkoaUCE48j5saab-R5eKzLfM').getActiveSheet();
+      const data = sheet.getDataRange().getValues();
+      
+      // Пропускаем заголовок (первую строку)
+      const companies = data.slice(1).map(row => ({
+        timestamp: row[0] ? row[0].toString() : '',
+        companyName: row[1] || '',
+        industry: row[2] || '',
+        name: row[3] || '',
+        email: row[4] || '',
+        phone: row[5] || '',
+        message: row[6] || '',
+        agreement1: row[7] || '',
+        agreement2: row[8] || '',
+        ipAddress: row[9] || '',
+        userAgent: row[10] || '',
+        status: row[11] || ''
+      }));
+      
+      Logger.log('Found companies:', companies.length);
+      Logger.log('First company:', companies[0]);
+      
+      return ContentService.createTextOutput(JSON.stringify({success: true, companies: companies})).setMimeType(ContentService.MimeType.JSON);
+    }
+    
     // Обрабатываем отправку данных (action=submit)
     if (e.parameter && e.parameter.action === 'submit') {
       Logger.log('Processing submit action');
@@ -250,4 +279,20 @@ function testDirectAdd() {
     Logger.log('Error in testDirectAdd: ' + error.toString());
     Logger.log('Error stack: ' + error.stack);
   }
+}
+
+// Функция для тестирования получения компаний
+function testGetCompanies() {
+  Logger.log('Testing getCompanies...');
+  
+  const e = {
+    parameter: {
+      action: 'getCompanies'
+    }
+  };
+  
+  const result = doGet(e);
+  Logger.log('GetCompanies result:', result.getContent());
+  
+  Logger.log('testGetCompanies finished.');
 }

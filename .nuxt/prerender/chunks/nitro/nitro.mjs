@@ -1,272 +1,30 @@
-import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { getRequestHeader, splitCookiesString, setResponseStatus, setResponseHeader, send, getRequestHeaders, eventHandler, appendResponseHeader, removeResponseHeader, createError, getResponseHeader, defineEventHandler, handleCacheHeaders, createEvent, fetchWithEvent, isEvent, setHeaders, sendRedirect, proxyRequest, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatus, setResponseHeaders } from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/h3/dist/index.mjs';
-import destr from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/destr/dist/index.mjs';
-import { createHooks } from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/hookable/dist/index.mjs';
-import { createFetch as createFetch$1, Headers as Headers$1 } from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/ofetch/dist/node.mjs';
-import { createCall, createFetch } from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/unenv/runtime/fetch/index.mjs';
-import { withQuery, joinURL, decodePath, withLeadingSlash, withoutTrailingSlash, parseURL, withoutBase, getQuery } from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/ufo/dist/index.mjs';
-import { klona } from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/klona/dist/index.mjs';
-import defu, { defuFn } from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/defu/dist/defu.mjs';
-import { snakeCase } from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/scule/dist/index.mjs';
-import { createStorage, defineDriver, prefixStorage } from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/unstorage/drivers/fs.mjs';
-import fsDriver from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/unstorage/drivers/fs-lite.mjs';
-import lruCache from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/unstorage/drivers/lru-cache.mjs';
-import { toRouteMatcher, createRouter } from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/radix3/dist/index.mjs';
-import { getContext } from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/unctx/dist/index.mjs';
+import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatus } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/h3/dist/index.mjs';
+import destr from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/destr/dist/index.mjs';
+import { createHooks } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/hookable/dist/index.mjs';
+import { createFetch, Headers as Headers$1 } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/ofetch/dist/node.mjs';
+import { fetchNodeRequestHandler, callNodeRequestHandler } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/node-mock-http/dist/index.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery, decodePath, withLeadingSlash, withoutTrailingSlash } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/ufo/dist/index.mjs';
+import { prefixStorage } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/nitropack/node_modules/unstorage/dist/index.mjs';
+import { createStorage, defineDriver } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/nuxt/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/nuxt/node_modules/unstorage/drivers/fs.mjs';
+import fsDriver from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/nuxt/node_modules/unstorage/drivers/fs-lite.mjs';
+import lruCache from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/nuxt/node_modules/unstorage/drivers/lru-cache.mjs';
+import { digest } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/ohash/dist/index.mjs';
+import { klona } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/klona/dist/index.mjs';
+import defu, { defuFn } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/defu/dist/defu.mjs';
+import { snakeCase } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/scule/dist/index.mjs';
+import { getContext } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/unctx/dist/index.mjs';
+import { toRouteMatcher, createRouter } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/radix3/dist/index.mjs';
 import { promises } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { dirname, resolve } from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/pathe/dist/index.mjs';
-import { hash } from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/ohash/dist/index.mjs';
+import { dirname, resolve } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/pathe/dist/index.mjs';
 
-function hasReqHeader(event, name, includes) {
-  const value = getRequestHeader(event, name);
-  return value && typeof value === "string" && value.toLowerCase().includes(includes);
-}
-function isJsonRequest(event) {
-  if (hasReqHeader(event, "accept", "text/html")) {
-    return false;
-  }
-  return hasReqHeader(event, "accept", "application/json") || hasReqHeader(event, "user-agent", "curl/") || hasReqHeader(event, "user-agent", "httpie/") || hasReqHeader(event, "sec-fetch-mode", "cors") || event.path.startsWith("/api/") || event.path.endsWith(".json");
-}
-function normalizeError(error, isDev) {
-  const cwd = typeof process.cwd === "function" ? process.cwd() : "/";
-  const stack = (error.stack || "").split("\n").splice(1).filter((line) => line.includes("at ")).map((line) => {
-    const text = line.replace(cwd + "/", "./").replace("webpack:/", "").replace("file://", "").trim();
-    return {
-      text,
-      internal: line.includes("node_modules") && !line.includes(".cache") || line.includes("internal") || line.includes("new Promise")
-    };
-  });
-  const statusCode = error.statusCode || 500;
-  const statusMessage = error.statusMessage ?? (statusCode === 404 ? "Not Found" : "");
-  const message = error.unhandled ? "internal server error" : error.message || error.toString();
-  return {
-    stack,
-    statusCode,
-    statusMessage,
-    message
-  };
-}
-function _captureError(error, type) {
-  console.error(`[nitro] [${type}]`, error);
-  useNitroApp().captureError(error, { tags: [type] });
-}
-function trapUnhandledNodeErrors() {
-  process.on(
-    "unhandledRejection",
-    (error) => _captureError(error, "unhandledRejection")
-  );
-  process.on(
-    "uncaughtException",
-    (error) => _captureError(error, "uncaughtException")
-  );
-}
-function joinHeaders(value) {
-  return Array.isArray(value) ? value.join(", ") : String(value);
-}
-function normalizeFetchResponse(response) {
-  if (!response.headers.has("set-cookie")) {
-    return response;
-  }
-  return new Response(response.body, {
-    status: response.status,
-    statusText: response.statusText,
-    headers: normalizeCookieHeaders(response.headers)
-  });
-}
-function normalizeCookieHeader(header = "") {
-  return splitCookiesString(joinHeaders(header));
-}
-function normalizeCookieHeaders(headers) {
-  const outgoingHeaders = new Headers();
-  for (const [name, header] of headers) {
-    if (name === "set-cookie") {
-      for (const cookie of normalizeCookieHeader(header)) {
-        outgoingHeaders.append("set-cookie", cookie);
-      }
-    } else {
-      outgoingHeaders.set(name, joinHeaders(header));
-    }
-  }
-  return outgoingHeaders;
-}
+const serverAssets = [{"baseName":"server","dir":"/Users/paymei/Documents/Development/github/dubaifw/server/assets"}];
 
-const errorHandler = (async function errorhandler(error, event) {
-  const { stack, statusCode, statusMessage, message } = normalizeError(error);
-  const errorObject = {
-    url: event.path,
-    statusCode,
-    statusMessage,
-    message,
-    stack: "",
-    // TODO: check and validate error.data for serialisation into query
-    data: error.data
-  };
-  if (error.unhandled || error.fatal) {
-    const tags = [
-      "[nuxt]",
-      "[request error]",
-      error.unhandled && "[unhandled]",
-      error.fatal && "[fatal]",
-      Number(errorObject.statusCode) !== 200 && `[${errorObject.statusCode}]`
-    ].filter(Boolean).join(" ");
-    console.error(tags, (error.message || error.toString() || "internal server error") + "\n" + stack.map((l) => "  " + l.text).join("  \n"));
-  }
-  if (event.handled) {
-    return;
-  }
-  setResponseStatus(event, errorObject.statusCode !== 200 && errorObject.statusCode || 500, errorObject.statusMessage);
-  if (isJsonRequest(event)) {
-    setResponseHeader(event, "Content-Type", "application/json");
-    return send(event, JSON.stringify(errorObject));
-  }
-  const reqHeaders = getRequestHeaders(event);
-  const isRenderingError = event.path.startsWith("/__nuxt_error") || !!reqHeaders["x-nuxt-error"];
-  const res = isRenderingError ? null : await useNitroApp().localFetch(
-    withQuery(joinURL(useRuntimeConfig(event).app.baseURL, "/__nuxt_error"), errorObject),
-    {
-      headers: { ...reqHeaders, "x-nuxt-error": "true" },
-      redirect: "manual"
-    }
-  ).catch(() => null);
-  if (!res) {
-    const { template } = await import('../_/error-500.mjs');
-    if (event.handled) {
-      return;
-    }
-    setResponseHeader(event, "Content-Type", "text/html;charset=UTF-8");
-    return send(event, template(errorObject));
-  }
-  const html = await res.text();
-  if (event.handled) {
-    return;
-  }
-  for (const [header, value] of res.headers.entries()) {
-    setResponseHeader(event, header, value);
-  }
-  setResponseStatus(event, res.status && res.status !== 200 ? res.status : void 0, res.statusText);
-  return send(event, html);
-});
-
-const plugins = [
-  
-];
-
-const assets$1 = {};
-
-function readAsset (id) {
-  const serverDir = dirname(fileURLToPath(globalThis._importMeta_.url));
-  return promises.readFile(resolve(serverDir, assets$1[id].path))
-}
-
-const publicAssetBases = {"/assets/builds/meta/":{"maxAge":31536000},"/assets/builds/":{"maxAge":1},"/assets/":{"maxAge":31536000}};
-
-function isPublicAssetURL(id = '') {
-  if (assets$1[id]) {
-    return true
-  }
-  for (const base in publicAssetBases) {
-    if (id.startsWith(base)) { return true }
-  }
-  return false
-}
-
-function getAsset (id) {
-  return assets$1[id]
-}
-
-const METHODS = /* @__PURE__ */ new Set(["HEAD", "GET"]);
-const EncodingMap = { gzip: ".gz", br: ".br" };
-const _cnvuuX = eventHandler((event) => {
-  if (event.method && !METHODS.has(event.method)) {
-    return;
-  }
-  let id = decodePath(
-    withLeadingSlash(withoutTrailingSlash(parseURL(event.path).pathname))
-  );
-  let asset;
-  const encodingHeader = String(
-    getRequestHeader(event, "accept-encoding") || ""
-  );
-  const encodings = [
-    ...encodingHeader.split(",").map((e) => EncodingMap[e.trim()]).filter(Boolean).sort(),
-    ""
-  ];
-  if (encodings.length > 1) {
-    appendResponseHeader(event, "Vary", "Accept-Encoding");
-  }
-  for (const encoding of encodings) {
-    for (const _id of [id + encoding, joinURL(id, "index.html" + encoding)]) {
-      const _asset = getAsset(_id);
-      if (_asset) {
-        asset = _asset;
-        id = _id;
-        break;
-      }
-    }
-  }
-  if (!asset) {
-    if (isPublicAssetURL(id)) {
-      removeResponseHeader(event, "Cache-Control");
-      throw createError({
-        statusMessage: "Cannot find static asset " + id,
-        statusCode: 404
-      });
-    }
-    return;
-  }
-  const ifNotMatch = getRequestHeader(event, "if-none-match") === asset.etag;
-  if (ifNotMatch) {
-    setResponseStatus(event, 304, "Not Modified");
-    return "";
-  }
-  const ifModifiedSinceH = getRequestHeader(event, "if-modified-since");
-  const mtimeDate = new Date(asset.mtime);
-  if (ifModifiedSinceH && asset.mtime && new Date(ifModifiedSinceH) >= mtimeDate) {
-    setResponseStatus(event, 304, "Not Modified");
-    return "";
-  }
-  if (asset.type && !getResponseHeader(event, "Content-Type")) {
-    setResponseHeader(event, "Content-Type", asset.type);
-  }
-  if (asset.etag && !getResponseHeader(event, "ETag")) {
-    setResponseHeader(event, "ETag", asset.etag);
-  }
-  if (asset.mtime && !getResponseHeader(event, "Last-Modified")) {
-    setResponseHeader(event, "Last-Modified", mtimeDate.toUTCString());
-  }
-  if (asset.encoding && !getResponseHeader(event, "Content-Encoding")) {
-    setResponseHeader(event, "Content-Encoding", asset.encoding);
-  }
-  if (asset.size > 0 && !getResponseHeader(event, "Content-Length")) {
-    setResponseHeader(event, "Content-Length", asset.size);
-  }
-  return readAsset(id);
-});
-
-const _lazy_NtfwlS = () => import('../routes/api/companies-list.get.mjs');
-const _lazy_6d3cPm = () => import('../routes/api/send-email.post.mjs');
-const _lazy_ZG9a9E = () => import('../routes/api/waitlist-count-local.get.mjs');
-const _lazy_hbThp4 = () => import('../routes/api/waitlist-local.post.mjs');
-const _lazy_q1vupA = () => import('../routes/api/waitlist.post.mjs');
-const _lazy_mMQHqT = () => import('../_/renderer.mjs');
-
-const handlers = [
-  { route: '', handler: _cnvuuX, lazy: false, middleware: true, method: undefined },
-  { route: '/api/companies-list', handler: _lazy_NtfwlS, lazy: true, middleware: false, method: "get" },
-  { route: '/api/send-email', handler: _lazy_6d3cPm, lazy: true, middleware: false, method: "post" },
-  { route: '/api/waitlist-count-local', handler: _lazy_ZG9a9E, lazy: true, middleware: false, method: "get" },
-  { route: '/api/waitlist-local', handler: _lazy_hbThp4, lazy: true, middleware: false, method: "post" },
-  { route: '/api/waitlist', handler: _lazy_q1vupA, lazy: true, middleware: false, method: "post" },
-  { route: '/**', handler: _lazy_mMQHqT, lazy: true, middleware: false, method: undefined }
-];
-
-const serverAssets = [{"baseName":"server","dir":"/Users/paymei/Documents/github/dubaifw/server/assets"}];
-
-const assets = createStorage();
+const assets$1 = createStorage();
 
 for (const asset of serverAssets) {
-  assets.mount(asset.baseName, unstorage_47drivers_47fs({ base: asset.dir, ignore: (asset?.ignore || []) }));
+  assets$1.mount(asset.baseName, unstorage_47drivers_47fs({ base: asset.dir, ignore: (asset?.ignore || []) }));
 }
 
 // @ts-check
@@ -275,12 +33,12 @@ for (const asset of serverAssets) {
 /**
  * @param {string} item
  */
-const normalizeFsKey = item => item.replaceAll(':', '_');
+const normalizeFsKey = item => decodeURIComponent(item.replaceAll(':', '_'));
 
 /**
  * @param {{ base: string }} opts
  */
-const _47Users_47paymei_47Documents_47github_47dubaifw_47node_modules_47nuxt_47dist_47core_47runtime_47nitro_47cache_45driver_46js = defineDriver((opts) => {
+const _47Users_47paymei_47Documents_47Development_47github_47dubaifw_47node_modules_47nuxt_47dist_47core_47runtime_47nitro_47utils_47cache_45driver_46js = defineDriver((opts) => {
   const fs = fsDriver({ base: opts.base });
   const lru = lruCache({ max: 1000 });
 
@@ -303,17 +61,200 @@ const _47Users_47paymei_47Documents_47github_47dubaifw_47node_modules_47nuxt_47d
 
 const storage = createStorage({});
 
-storage.mount('/assets', assets);
+storage.mount('/assets', assets$1);
 
-storage.mount('internal:nuxt:prerender', _47Users_47paymei_47Documents_47github_47dubaifw_47node_modules_47nuxt_47dist_47core_47runtime_47nitro_47cache_45driver_46js({"driver":"/Users/paymei/Documents/github/dubaifw/node_modules/nuxt/dist/core/runtime/nitro/cache-driver.js","base":"/Users/paymei/Documents/github/dubaifw/.nuxt/cache/nitro/prerender"}));
-storage.mount('data', fsDriver({"driver":"fsLite","base":"/Users/paymei/Documents/github/dubaifw/.data/kv"}));
-storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/paymei/Documents/github/dubaifw","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/paymei/Documents/github/dubaifw/server","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/paymei/Documents/github/dubaifw/.nuxt","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/paymei/Documents/github/dubaifw/.nuxt/cache","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('internal:nuxt:prerender', _47Users_47paymei_47Documents_47Development_47github_47dubaifw_47node_modules_47nuxt_47dist_47core_47runtime_47nitro_47utils_47cache_45driver_46js({"driver":"/Users/paymei/Documents/Development/github/dubaifw/node_modules/nuxt/dist/core/runtime/nitro/utils/cache-driver.js","base":"/Users/paymei/Documents/Development/github/dubaifw/.nuxt/cache/nitro/prerender"}));
+storage.mount('data', fsDriver({"driver":"fsLite","base":"./.data/kv"}));
+storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/paymei/Documents/Development/github/dubaifw","watchOptions":{"ignored":[null]}}));
+storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/paymei/Documents/Development/github/dubaifw/server","watchOptions":{"ignored":[null]}}));
+storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/paymei/Documents/Development/github/dubaifw/.nuxt"}));
+storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/paymei/Documents/Development/github/dubaifw/.nuxt/cache"}));
 
 function useStorage(base = "") {
   return base ? prefixStorage(storage, base) : storage;
+}
+
+const Hasher = /* @__PURE__ */ (() => {
+  class Hasher2 {
+    buff = "";
+    #context = /* @__PURE__ */ new Map();
+    write(str) {
+      this.buff += str;
+    }
+    dispatch(value) {
+      const type = value === null ? "null" : typeof value;
+      return this[type](value);
+    }
+    object(object) {
+      if (object && typeof object.toJSON === "function") {
+        return this.object(object.toJSON());
+      }
+      const objString = Object.prototype.toString.call(object);
+      let objType = "";
+      const objectLength = objString.length;
+      objType = objectLength < 10 ? "unknown:[" + objString + "]" : objString.slice(8, objectLength - 1);
+      objType = objType.toLowerCase();
+      let objectNumber = null;
+      if ((objectNumber = this.#context.get(object)) === void 0) {
+        this.#context.set(object, this.#context.size);
+      } else {
+        return this.dispatch("[CIRCULAR:" + objectNumber + "]");
+      }
+      if (typeof Buffer !== "undefined" && Buffer.isBuffer && Buffer.isBuffer(object)) {
+        this.write("buffer:");
+        return this.write(object.toString("utf8"));
+      }
+      if (objType !== "object" && objType !== "function" && objType !== "asyncfunction") {
+        if (this[objType]) {
+          this[objType](object);
+        } else {
+          this.unknown(object, objType);
+        }
+      } else {
+        const keys = Object.keys(object).sort();
+        const extraKeys = [];
+        this.write("object:" + (keys.length + extraKeys.length) + ":");
+        const dispatchForKey = (key) => {
+          this.dispatch(key);
+          this.write(":");
+          this.dispatch(object[key]);
+          this.write(",");
+        };
+        for (const key of keys) {
+          dispatchForKey(key);
+        }
+        for (const key of extraKeys) {
+          dispatchForKey(key);
+        }
+      }
+    }
+    array(arr, unordered) {
+      unordered = unordered === void 0 ? false : unordered;
+      this.write("array:" + arr.length + ":");
+      if (!unordered || arr.length <= 1) {
+        for (const entry of arr) {
+          this.dispatch(entry);
+        }
+        return;
+      }
+      const contextAdditions = /* @__PURE__ */ new Map();
+      const entries = arr.map((entry) => {
+        const hasher = new Hasher2();
+        hasher.dispatch(entry);
+        for (const [key, value] of hasher.#context) {
+          contextAdditions.set(key, value);
+        }
+        return hasher.toString();
+      });
+      this.#context = contextAdditions;
+      entries.sort();
+      return this.array(entries, false);
+    }
+    date(date) {
+      return this.write("date:" + date.toJSON());
+    }
+    symbol(sym) {
+      return this.write("symbol:" + sym.toString());
+    }
+    unknown(value, type) {
+      this.write(type);
+      if (!value) {
+        return;
+      }
+      this.write(":");
+      if (value && typeof value.entries === "function") {
+        return this.array(
+          [...value.entries()],
+          true
+          /* ordered */
+        );
+      }
+    }
+    error(err) {
+      return this.write("error:" + err.toString());
+    }
+    boolean(bool) {
+      return this.write("bool:" + bool);
+    }
+    string(string) {
+      this.write("string:" + string.length + ":");
+      this.write(string);
+    }
+    function(fn) {
+      this.write("fn:");
+      if (isNativeFunction(fn)) {
+        this.dispatch("[native]");
+      } else {
+        this.dispatch(fn.toString());
+      }
+    }
+    number(number) {
+      return this.write("number:" + number);
+    }
+    null() {
+      return this.write("Null");
+    }
+    undefined() {
+      return this.write("Undefined");
+    }
+    regexp(regex) {
+      return this.write("regex:" + regex.toString());
+    }
+    arraybuffer(arr) {
+      this.write("arraybuffer:");
+      return this.dispatch(new Uint8Array(arr));
+    }
+    url(url) {
+      return this.write("url:" + url.toString());
+    }
+    map(map) {
+      this.write("map:");
+      const arr = [...map];
+      return this.array(arr, false);
+    }
+    set(set) {
+      this.write("set:");
+      const arr = [...set];
+      return this.array(arr, false);
+    }
+    bigint(number) {
+      return this.write("bigint:" + number.toString());
+    }
+  }
+  for (const type of [
+    "uint8array",
+    "uint8clampedarray",
+    "unt8array",
+    "uint16array",
+    "unt16array",
+    "uint32array",
+    "unt32array",
+    "float32array",
+    "float64array"
+  ]) {
+    Hasher2.prototype[type] = function(arr) {
+      this.write(type + ":");
+      return this.array([...arr], false);
+    };
+  }
+  function isNativeFunction(f) {
+    if (typeof f !== "function") {
+      return false;
+    }
+    return Function.prototype.toString.call(f).slice(
+      -15
+      /* "[native code] }".length */
+    ) === "[native code] }";
+  }
+  return Hasher2;
+})();
+function serialize(object) {
+  const hasher = new Hasher();
+  hasher.dispatch(object);
+  return hasher.buff;
+}
+function hash(value) {
+  return digest(typeof value === "string" ? value : serialize(value)).replace(/[-_]/g, "").slice(0, 10);
 }
 
 function defaultCacheOptions() {
@@ -334,13 +275,13 @@ function defineCachedFunction(fn, opts = {}) {
   async function get(key, resolver, shouldInvalidateCache, event) {
     const cacheKey = [opts.base, group, name, key + ".json"].filter(Boolean).join(":").replace(/:\/$/, ":index");
     let entry = await useStorage().getItem(cacheKey).catch((error) => {
-      console.error(`[nitro] [cache] Cache read error.`, error);
+      console.error(`[cache] Cache read error.`, error);
       useNitroApp().captureError(error, { event, tags: ["cache"] });
     }) || {};
     if (typeof entry !== "object") {
       entry = {};
       const error = new Error("Malformed data read from cache.");
-      console.error("[nitro] [cache]", error);
+      console.error("[cache]", error);
       useNitroApp().captureError(error, { event, tags: ["cache"] });
     }
     const ttl = (opts.maxAge ?? 0) * 1e3;
@@ -377,7 +318,7 @@ function defineCachedFunction(fn, opts = {}) {
             setOpts = { ttl: opts.maxAge };
           }
           const promise = useStorage().setItem(cacheKey, entry, setOpts).catch((error) => {
-            console.error(`[nitro] [cache] Cache write error.`, error);
+            console.error(`[cache] Cache write error.`, error);
             useNitroApp().captureError(error, { event, tags: ["cache"] });
           });
           if (event?.waitUntil) {
@@ -394,7 +335,7 @@ function defineCachedFunction(fn, opts = {}) {
     }
     if (opts.swr && validate(entry) !== false) {
       _resolvePromise.catch((error) => {
-        console.error(`[nitro] [cache] SWR handler error.`, error);
+        console.error(`[cache] SWR handler error.`, error);
         useNitroApp().captureError(error, { event, tags: ["cache"] });
       });
       return entry;
@@ -425,7 +366,7 @@ function cachedFunction(fn, opts = {}) {
   return defineCachedFunction(fn, opts);
 }
 function getKey(...args) {
-  return args.length > 0 ? hash(args, {}) : "";
+  return args.length > 0 ? hash(args) : "";
 }
 function escapeKey(key) {
   return String(key).replace(/\W/g, "");
@@ -557,6 +498,7 @@ function defineCachedEventHandler(handler, opts = defaultCacheOptions()) {
       event.$fetch = (url, fetchOptions) => fetchWithEvent(event, url, fetchOptions, {
         fetch: globalThis.$fetch
       });
+      event.waitUntil = incomingEvent.waitUntil;
       event.context = incomingEvent.context;
       event.context.cache = {
         options: _opts
@@ -689,7 +631,7 @@ function applyEnv(obj, opts, parentKey = "") {
   }
   return obj;
 }
-const envExpandRx = /{{(.*?)}}/g;
+const envExpandRx = /\{\{([^{}]*)\}\}/g;
 function _expandFromEnv(value) {
   return value.replace(envExpandRx, (match, key) => {
     return process.env[key] || match;
@@ -699,7 +641,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "88e023ab-8af1-4439-8b92-8c6790c3daad",
+    "buildId": "056eda24-fd2d-4d33-82c6-e00ceecd9046",
     "buildAssetsDir": "assets/",
     "cdnURL": ""
   },
@@ -714,6 +656,12 @@ const _inlineRuntimeConfig = {
       },
       "/dubaifw/**": {
         "static": true
+      },
+      "/offer/tr": {
+        "redirect": {
+          "to": "/offer?tr",
+          "statusCode": 307
+        }
       },
       "/assets/builds/meta/**": {
         "headers": {
@@ -735,7 +683,7 @@ const _inlineRuntimeConfig = {
   "public": {
     "apiBase": "https://api.emiratesfashionweeks.com/api"
   },
-  "RESEND_API_KEY": "re_h8Bfrwax_MSW64fwPw5Ypsx9Fs4FZotsG"
+  "RESEND_API_KEY": ""
 };
 const envOptions = {
   prefix: "NITRO_",
@@ -844,6 +792,307 @@ function getRouteRulesForPath(path) {
   return defu({}, ..._routeRulesMatcher.matchAll(path).reverse());
 }
 
+function _captureError(error, type) {
+  console.error(`[${type}]`, error);
+  useNitroApp().captureError(error, { tags: [type] });
+}
+function trapUnhandledNodeErrors() {
+  process.on(
+    "unhandledRejection",
+    (error) => _captureError(error, "unhandledRejection")
+  );
+  process.on(
+    "uncaughtException",
+    (error) => _captureError(error, "uncaughtException")
+  );
+}
+function joinHeaders(value) {
+  return Array.isArray(value) ? value.join(", ") : String(value);
+}
+function normalizeFetchResponse(response) {
+  if (!response.headers.has("set-cookie")) {
+    return response;
+  }
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: normalizeCookieHeaders(response.headers)
+  });
+}
+function normalizeCookieHeader(header = "") {
+  return splitCookiesString(joinHeaders(header));
+}
+function normalizeCookieHeaders(headers) {
+  const outgoingHeaders = new Headers();
+  for (const [name, header] of headers) {
+    if (name === "set-cookie") {
+      for (const cookie of normalizeCookieHeader(header)) {
+        outgoingHeaders.append("set-cookie", cookie);
+      }
+    } else {
+      outgoingHeaders.set(name, joinHeaders(header));
+    }
+  }
+  return outgoingHeaders;
+}
+
+function isJsonRequest(event) {
+  if (hasReqHeader(event, "accept", "text/html")) {
+    return false;
+  }
+  return hasReqHeader(event, "accept", "application/json") || hasReqHeader(event, "user-agent", "curl/") || hasReqHeader(event, "user-agent", "httpie/") || hasReqHeader(event, "sec-fetch-mode", "cors") || event.path.startsWith("/api/") || event.path.endsWith(".json");
+}
+function hasReqHeader(event, name, includes) {
+  const value = getRequestHeader(event, name);
+  return value && typeof value === "string" && value.toLowerCase().includes(includes);
+}
+
+const errorHandler$0 = (async function errorhandler(error, event, { defaultHandler }) {
+  if (event.handled || isJsonRequest(event)) {
+    return;
+  }
+  const defaultRes = await defaultHandler(error, event, { json: true });
+  const statusCode = error.statusCode || 500;
+  if (statusCode === 404 && defaultRes.status === 302) {
+    setResponseHeaders(event, defaultRes.headers);
+    setResponseStatus(event, defaultRes.status, defaultRes.statusText);
+    return send(event, JSON.stringify(defaultRes.body, null, 2));
+  }
+  const errorObject = defaultRes.body;
+  const url = new URL(errorObject.url);
+  errorObject.url = withoutBase(url.pathname, useRuntimeConfig(event).app.baseURL) + url.search + url.hash;
+  errorObject.message ||= "Server Error";
+  errorObject.data ||= error.data;
+  errorObject.statusMessage ||= error.statusMessage;
+  delete defaultRes.headers["content-type"];
+  delete defaultRes.headers["content-security-policy"];
+  setResponseHeaders(event, defaultRes.headers);
+  const reqHeaders = getRequestHeaders(event);
+  const isRenderingError = event.path.startsWith("/__nuxt_error") || !!reqHeaders["x-nuxt-error"];
+  const res = isRenderingError ? null : await useNitroApp().localFetch(
+    withQuery(joinURL(useRuntimeConfig(event).app.baseURL, "/__nuxt_error"), errorObject),
+    {
+      headers: { ...reqHeaders, "x-nuxt-error": "true" },
+      redirect: "manual"
+    }
+  ).catch(() => null);
+  if (event.handled) {
+    return;
+  }
+  if (!res) {
+    const { template } = await import('../_/error-500.mjs');
+    setResponseHeader(event, "Content-Type", "text/html;charset=UTF-8");
+    return send(event, template(errorObject));
+  }
+  const html = await res.text();
+  for (const [header, value] of res.headers.entries()) {
+    if (header === "set-cookie") {
+      appendResponseHeader(event, header, value);
+      continue;
+    }
+    setResponseHeader(event, header, value);
+  }
+  setResponseStatus(event, res.status && res.status !== 200 ? res.status : defaultRes.status, res.statusText || defaultRes.statusText);
+  return send(event, html);
+});
+
+function defineNitroErrorHandler(handler) {
+  return handler;
+}
+
+const errorHandler$1 = defineNitroErrorHandler(
+  function defaultNitroErrorHandler(error, event) {
+    const res = defaultHandler(error, event);
+    setResponseHeaders(event, res.headers);
+    setResponseStatus(event, res.status, res.statusText);
+    return send(event, JSON.stringify(res.body, null, 2));
+  }
+);
+function defaultHandler(error, event, opts) {
+  const isSensitive = error.unhandled || error.fatal;
+  const statusCode = error.statusCode || 500;
+  const statusMessage = error.statusMessage || "Server Error";
+  const url = getRequestURL(event, { xForwardedHost: true, xForwardedProto: true });
+  if (statusCode === 404) {
+    const baseURL = "/";
+    if (/^\/[^/]/.test(baseURL) && !url.pathname.startsWith(baseURL)) {
+      const redirectTo = `${baseURL}${url.pathname.slice(1)}${url.search}`;
+      return {
+        status: 302,
+        statusText: "Found",
+        headers: { location: redirectTo },
+        body: `Redirecting...`
+      };
+    }
+  }
+  if (isSensitive && !opts?.silent) {
+    const tags = [error.unhandled && "[unhandled]", error.fatal && "[fatal]"].filter(Boolean).join(" ");
+    console.error(`[request error] ${tags} [${event.method}] ${url}
+`, error);
+  }
+  const headers = {
+    "content-type": "application/json",
+    // Prevent browser from guessing the MIME types of resources.
+    "x-content-type-options": "nosniff",
+    // Prevent error page from being embedded in an iframe
+    "x-frame-options": "DENY",
+    // Prevent browsers from sending the Referer header
+    "referrer-policy": "no-referrer",
+    // Disable the execution of any js
+    "content-security-policy": "script-src 'none'; frame-ancestors 'none';"
+  };
+  setResponseStatus(event, statusCode, statusMessage);
+  if (statusCode === 404 || !getResponseHeader(event, "cache-control")) {
+    headers["cache-control"] = "no-cache";
+  }
+  const body = {
+    error: true,
+    url: url.href,
+    statusCode,
+    statusMessage,
+    message: isSensitive ? "Server Error" : error.message,
+    data: isSensitive ? void 0 : error.data
+  };
+  return {
+    status: statusCode,
+    statusText: statusMessage,
+    headers,
+    body
+  };
+}
+
+const errorHandlers = [errorHandler$0, errorHandler$1];
+
+async function errorHandler(error, event) {
+  for (const handler of errorHandlers) {
+    try {
+      await handler(error, event, { defaultHandler });
+      if (event.handled) {
+        return; // Response handled
+      }
+    } catch(error) {
+      // Handler itself thrown, log and continue
+      console.error(error);
+    }
+  }
+  // H3 will handle fallback
+}
+
+const plugins = [
+  
+];
+
+const assets = {};
+
+function readAsset (id) {
+  const serverDir = dirname(fileURLToPath(globalThis._importMeta_.url));
+  return promises.readFile(resolve(serverDir, assets[id].path))
+}
+
+const publicAssetBases = {"/assets/builds/meta/":{"maxAge":31536000},"/assets/builds/":{"maxAge":1},"/assets/":{"maxAge":31536000}};
+
+function isPublicAssetURL(id = '') {
+  if (assets[id]) {
+    return true
+  }
+  for (const base in publicAssetBases) {
+    if (id.startsWith(base)) { return true }
+  }
+  return false
+}
+
+function getAsset (id) {
+  return assets[id]
+}
+
+const METHODS = /* @__PURE__ */ new Set(["HEAD", "GET"]);
+const EncodingMap = { gzip: ".gz", br: ".br" };
+const _4zfs95 = eventHandler((event) => {
+  if (event.method && !METHODS.has(event.method)) {
+    return;
+  }
+  let id = decodePath(
+    withLeadingSlash(withoutTrailingSlash(parseURL(event.path).pathname))
+  );
+  let asset;
+  const encodingHeader = String(
+    getRequestHeader(event, "accept-encoding") || ""
+  );
+  const encodings = [
+    ...encodingHeader.split(",").map((e) => EncodingMap[e.trim()]).filter(Boolean).sort(),
+    ""
+  ];
+  if (encodings.length > 1) {
+    appendResponseHeader(event, "Vary", "Accept-Encoding");
+  }
+  for (const encoding of encodings) {
+    for (const _id of [id + encoding, joinURL(id, "index.html" + encoding)]) {
+      const _asset = getAsset(_id);
+      if (_asset) {
+        asset = _asset;
+        id = _id;
+        break;
+      }
+    }
+  }
+  if (!asset) {
+    if (isPublicAssetURL(id)) {
+      removeResponseHeader(event, "Cache-Control");
+      throw createError({ statusCode: 404 });
+    }
+    return;
+  }
+  const ifNotMatch = getRequestHeader(event, "if-none-match") === asset.etag;
+  if (ifNotMatch) {
+    setResponseStatus(event, 304, "Not Modified");
+    return "";
+  }
+  const ifModifiedSinceH = getRequestHeader(event, "if-modified-since");
+  const mtimeDate = new Date(asset.mtime);
+  if (ifModifiedSinceH && asset.mtime && new Date(ifModifiedSinceH) >= mtimeDate) {
+    setResponseStatus(event, 304, "Not Modified");
+    return "";
+  }
+  if (asset.type && !getResponseHeader(event, "Content-Type")) {
+    setResponseHeader(event, "Content-Type", asset.type);
+  }
+  if (asset.etag && !getResponseHeader(event, "ETag")) {
+    setResponseHeader(event, "ETag", asset.etag);
+  }
+  if (asset.mtime && !getResponseHeader(event, "Last-Modified")) {
+    setResponseHeader(event, "Last-Modified", mtimeDate.toUTCString());
+  }
+  if (asset.encoding && !getResponseHeader(event, "Content-Encoding")) {
+    setResponseHeader(event, "Content-Encoding", asset.encoding);
+  }
+  if (asset.size > 0 && !getResponseHeader(event, "Content-Length")) {
+    setResponseHeader(event, "Content-Length", asset.size);
+  }
+  return readAsset(id);
+});
+
+const _SxA8c9 = defineEventHandler(() => {});
+
+const _lazy_9p9Lv9 = () => import('../routes/api/companies-list.get.mjs');
+const _lazy_GGeB5s = () => import('../routes/api/faq.get.mjs');
+const _lazy_q_OPyY = () => import('../routes/api/send-email.post.mjs');
+const _lazy_pGIUfG = () => import('../routes/api/waitlist-count-local.get.mjs');
+const _lazy_GWQ7oj = () => import('../routes/api/waitlist-local.post.mjs');
+const _lazy_McTnOU = () => import('../routes/api/waitlist.post.mjs');
+const _lazy_G5pgvr = () => import('../_/renderer.mjs');
+
+const handlers = [
+  { route: '', handler: _4zfs95, lazy: false, middleware: true, method: undefined },
+  { route: '/api/companies-list', handler: _lazy_9p9Lv9, lazy: true, middleware: false, method: "get" },
+  { route: '/api/faq', handler: _lazy_GGeB5s, lazy: true, middleware: false, method: "get" },
+  { route: '/api/send-email', handler: _lazy_q_OPyY, lazy: true, middleware: false, method: "post" },
+  { route: '/api/waitlist-count-local', handler: _lazy_pGIUfG, lazy: true, middleware: false, method: "get" },
+  { route: '/api/waitlist-local', handler: _lazy_GWQ7oj, lazy: true, middleware: false, method: "post" },
+  { route: '/api/waitlist', handler: _lazy_McTnOU, lazy: true, middleware: false, method: "post" },
+  { route: '/__nuxt_island/**', handler: _SxA8c9, lazy: false, middleware: false, method: undefined },
+  { route: '/**', handler: _lazy_G5pgvr, lazy: true, middleware: false, method: undefined }
+];
+
 function createNitroApp() {
   const config = useRuntimeConfig();
   const hooks = createHooks();
@@ -868,6 +1117,35 @@ function createNitroApp() {
       return errorHandler(error, event);
     },
     onRequest: async (event) => {
+      event.context.nitro = event.context.nitro || { errors: [] };
+      const fetchContext = event.node.req?.__unenv__;
+      if (fetchContext?._platform) {
+        event.context = {
+          _platform: fetchContext?._platform,
+          // #3335
+          ...fetchContext._platform,
+          ...event.context
+        };
+      }
+      if (!event.context.waitUntil && fetchContext?.waitUntil) {
+        event.context.waitUntil = fetchContext.waitUntil;
+      }
+      event.fetch = (req, init) => fetchWithEvent(event, req, init, { fetch: localFetch });
+      event.$fetch = (req, init) => fetchWithEvent(event, req, init, {
+        fetch: $fetch
+      });
+      event.waitUntil = (promise) => {
+        if (!event.context.nitro._waitUntilPromises) {
+          event.context.nitro._waitUntilPromises = [];
+        }
+        event.context.nitro._waitUntilPromises.push(promise);
+        if (event.context.waitUntil) {
+          event.context.waitUntil(promise);
+        }
+      };
+      event.captureError = (error, context) => {
+        captureError(error, { event, ...context });
+      };
       await nitroApp$1.hooks.callHook("request", event).catch((error) => {
         captureError(error, { event, tags: ["request"] });
       });
@@ -886,43 +1164,25 @@ function createNitroApp() {
   const router = createRouter$1({
     preemptive: true
   });
-  const localCall = createCall(toNodeListener(h3App));
-  const _localFetch = createFetch(localCall, globalThis.fetch);
-  const localFetch = (input, init) => _localFetch(input, init).then(
-    (response) => normalizeFetchResponse(response)
-  );
-  const $fetch = createFetch$1({
+  const nodeHandler = toNodeListener(h3App);
+  const localCall = (aRequest) => callNodeRequestHandler(nodeHandler, aRequest);
+  const localFetch = (input, init) => {
+    if (!input.toString().startsWith("/")) {
+      return globalThis.fetch(input, init);
+    }
+    return fetchNodeRequestHandler(
+      nodeHandler,
+      input,
+      init
+    ).then((response) => normalizeFetchResponse(response));
+  };
+  const $fetch = createFetch({
     fetch: localFetch,
     Headers: Headers$1,
     defaults: { baseURL: config.app.baseURL }
   });
   globalThis.$fetch = $fetch;
   h3App.use(createRouteRulesHandler({ localFetch }));
-  h3App.use(
-    eventHandler((event) => {
-      event.context.nitro = event.context.nitro || { errors: [] };
-      const envContext = event.node.req?.__unenv__;
-      if (envContext) {
-        Object.assign(event.context, envContext);
-      }
-      event.fetch = (req, init) => fetchWithEvent(event, req, init, { fetch: localFetch });
-      event.$fetch = (req, init) => fetchWithEvent(event, req, init, {
-        fetch: $fetch
-      });
-      event.waitUntil = (promise) => {
-        if (!event.context.nitro._waitUntilPromises) {
-          event.context.nitro._waitUntilPromises = [];
-        }
-        event.context.nitro._waitUntilPromises.push(promise);
-        if (envContext?.waitUntil) {
-          envContext.waitUntil(promise);
-        }
-      };
-      event.captureError = (error, context) => {
-        captureError(error, { event, ...context });
-      };
-    })
-  );
   for (const h of handlers) {
     let handler = h.lazy ? lazyEventHandler(h.handler) : h.handler;
     if (h.middleware || !h.route) {

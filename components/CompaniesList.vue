@@ -2,7 +2,6 @@
   <div class="companies-list">
     <div v-if="loading" class="text-center py-8">
       <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-black"></div>
-      <p class="mt-2 text-gray-600">Загрузка списка компаний...</p>
     </div>
     
     <div v-else-if="error" class="text-center py-8">
@@ -14,7 +13,7 @@
     </div>
     
     <div v-else class="space-y-3">
-      <h3 class="text-lg font-semibold mb-4">Applications submitted ({{ companies.length }})</h3>
+      <h3 class="text-lg font-semibold mb-4">WAITLIST APPLICATIONS SUBMITTED ({{ companies.length }})</h3>
       <div class="space-y-3 pr-2">
         <div 
           v-for="(company, index) in companies" 
@@ -40,6 +39,9 @@
                   class="px-2 py-1 text-xs font-semibold text-green-700 bg-green-100 rounded-full"
                 >
                   NEW
+                </span>
+                <span class="px-2 py-1 text-xs font-semibold text-orange-700 bg-orange-100 rounded-full">
+                  WAITLIST
                 </span>
               </div>
             </div>
@@ -121,6 +123,17 @@ const isNewCompany = (company) => {
   return companyId === newlyAddedCompany.value
 }
 
+// Функция для фильтрации waitlist компаний
+const filterWaitlistCompanies = (companiesList) => {
+  return companiesList.filter(company => {
+    // Показываем компании без статуса или со статусом waitlist
+    return !company.status || 
+           company.status === 'waitlist' || 
+           company.status === 'Waitlist' ||
+           company.status === ''
+  })
+}
+
 // Функция для загрузки списка компаний
 const fetchCompanies = async () => {
   try {
@@ -134,43 +147,14 @@ const fetchCompanies = async () => {
     
     if (isLocal) {
       // Локально используем API
-      const response = await $fetch('/api/companies-list')
-      if (response.success) {
-        // Сортируем компании по дате (новые сверху)
-        const sortedCompanies = response.companies.sort((a, b) => {
-          return new Date(b.timestamp) - new Date(a.timestamp)
-        })
-        
-        // Если есть подсвеченная компания, сохраняем её позицию
-        if (newlyAddedCompany.value) {
-          // Находим подсвеченную компанию в текущем списке
-          const highlightedIndex = companies.value.findIndex(company => {
-            const companyId = company.companyName + '_' + company.timestamp
-            return companyId === newlyAddedCompany.value
-          })
+      try {
+        const response = await $fetch('/api/companies-list')
+        if (response.success) {
+          // Фильтруем только waitlist компании
+          const waitlistCompanies = filterWaitlistCompanies(response.companies)
           
-          if (highlightedIndex !== -1) {
-            // Удаляем подсвеченную компанию из текущего списка
-            const highlightedCompany = companies.value.splice(highlightedIndex, 1)[0]
-            // Добавляем её в начало обновленного списка
-            sortedCompanies.unshift(highlightedCompany)
-          }
-        }
-        
-        companies.value = sortedCompanies
-      } else {
-        error.value = response.error || 'Ошибка загрузки данных'
-      }
-    } else {
-      // На продакшене используем JSONP подход
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbygds0XlVVKqRN56BVHo4S25BN96LRz8urJuur9crjlOR3lgYl__MHwrgu_GmKU_wjEPg/exec'
-      
-      // Создаем callback функцию
-      const callbackName = 'callback_companies_' + Date.now()
-      window[callbackName] = (data) => {
-        if (data && data.success) {
           // Сортируем компании по дате (новые сверху)
-          const sortedCompanies = data.companies.sort((a, b) => {
+          const sortedCompanies = waitlistCompanies.sort((a, b) => {
             return new Date(b.timestamp) - new Date(a.timestamp)
           })
           
@@ -191,6 +175,52 @@ const fetchCompanies = async () => {
           }
           
           companies.value = sortedCompanies
+          emit('companies-count-updated', companies.value.length)
+        } else {
+          error.value = response.error || 'Ошибка загрузки данных'
+        }
+      } catch (apiError) {
+        console.error('API Error:', apiError)
+        // Если API не работает, показываем пустой список
+        companies.value = []
+        emit('companies-count-updated', 0)
+        error.value = 'Сервис временно недоступен'
+      }
+      loading.value = false
+    } else {
+      // На продакшене используем JSONP подход
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxbWqpE_TR7HJoClggVpGBYdUGcssKxWOpbFAa7nZGQp69jrE0hUxLiiCx5nY8T_x70jg/exec'
+      
+      // Создаем callback функцию
+      const callbackName = 'callback_companies_' + Date.now()
+      window[callbackName] = (data) => {
+        if (data && data.success) {
+          // Фильтруем только waitlist компании
+          const waitlistCompanies = filterWaitlistCompanies(data.companies)
+          
+          // Сортируем компании по дате (новые сверху)
+          const sortedCompanies = waitlistCompanies.sort((a, b) => {
+            return new Date(b.timestamp) - new Date(a.timestamp)
+          })
+          
+          // Если есть подсвеченная компания, сохраняем её позицию
+          if (newlyAddedCompany.value) {
+            // Находим подсвеченную компанию в текущем списке
+            const highlightedIndex = companies.value.findIndex(company => {
+              const companyId = company.companyName + '_' + company.timestamp
+              return companyId === newlyAddedCompany.value
+            })
+            
+            if (highlightedIndex !== -1) {
+              // Удаляем подсвеченную компанию из текущего списка
+              const highlightedCompany = companies.value.splice(highlightedIndex, 1)[0]
+              // Добавляем её в начало обновленного списка
+              sortedCompanies.unshift(highlightedCompany)
+            }
+          }
+          
+          companies.value = sortedCompanies
+          emit('companies-count-updated', companies.value.length)
         } else {
           error.value = data.error || 'Ошибка загрузки данных'
         }
@@ -207,29 +237,25 @@ const fetchCompanies = async () => {
   } catch (err) {
     console.error('Error fetching companies:', err)
     error.value = 'Ошибка загрузки данных'
-  } finally {
-    if (window.location.hostname.includes('localhost') || 
-        window.location.hostname.includes('127.0.0.1') ||
-        window.location.hostname.includes('0.0.0.0')) {
-      loading.value = false
-    }
+    loading.value = false
   }
 }
 
 // Функция для автоматического обновления (без подсветки и лоадера)
 const autoRefresh = async () => {
   try {
-    // Определяем, работаем ли мы локально или на продакшене
-    const isLocal = window.location.hostname.includes('localhost') || 
-                   window.location.hostname.includes('127.0.0.1') ||
-                   window.location.hostname.includes('0.0.0.0')
+    // Используем только JSONP подход (работает везде)
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxbWqpE_TR7HJoClggVpGBYdUGcssKxWOpbFAa7nZGQp69jrE0hUxLiiCx5nY8T_x70jg/exec'
     
-    if (isLocal) {
-      // Локально используем API
-      const response = await $fetch('/api/companies-list')
-      if (response.success) {
+    // Создаем callback функцию
+    const callbackName = 'callback_companies_auto_' + Date.now()
+    window[callbackName] = (data) => {
+      if (data && data.success) {
+        // Фильтруем только waitlist компании
+        const waitlistCompanies = filterWaitlistCompanies(data.companies)
+        
         // Сортируем компании по дате (новые сверху)
-        const sortedCompanies = response.companies.sort((a, b) => {
+        const sortedCompanies = waitlistCompanies.sort((a, b) => {
           return new Date(b.timestamp) - new Date(a.timestamp)
         })
         
@@ -250,47 +276,16 @@ const autoRefresh = async () => {
         }
         
         companies.value = sortedCompanies
+        emit('companies-count-updated', companies.value.length)
       }
-    } else {
-      // На продакшене используем JSONP подход
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbygds0XlVVKqRN56BVHo4S25BN96LRz8urJuur9crjlOR3lgYl__MHwrgu_GmKU_wjEPg/exec'
-      
-      // Создаем callback функцию
-      const callbackName = 'callback_companies_auto_' + Date.now()
-      window[callbackName] = (data) => {
-        if (data && data.success) {
-          // Сортируем компании по дате (новые сверху)
-          const sortedCompanies = data.companies.sort((a, b) => {
-            return new Date(b.timestamp) - new Date(a.timestamp)
-          })
-          
-          // Если есть подсвеченная компания, сохраняем её позицию
-          if (newlyAddedCompany.value) {
-            // Находим подсвеченную компанию в текущем списке
-            const highlightedIndex = companies.value.findIndex(company => {
-              const companyId = company.companyName + '_' + company.timestamp
-              return companyId === newlyAddedCompany.value
-            })
-            
-            if (highlightedIndex !== -1) {
-              // Удаляем подсвеченную компанию из текущего списка
-              const highlightedCompany = companies.value.splice(highlightedIndex, 1)[0]
-              // Добавляем её в начало обновленного списка
-              sortedCompanies.unshift(highlightedCompany)
-            }
-          }
-          
-          companies.value = sortedCompanies
-        }
-        delete window[callbackName]
-        document.head.removeChild(script)
-      }
-      
-      // Создаем script тег для JSONP
-      const script = document.createElement('script')
-      script.src = `${GOOGLE_SCRIPT_URL}?action=getCompanies&callback=${callbackName}`
-      document.head.appendChild(script)
+      delete window[callbackName]
+      document.head.removeChild(script)
     }
+    
+    // Создаем script тег для JSONP
+    const script = document.createElement('script')
+    script.src = `${GOOGLE_SCRIPT_URL}?action=getCompanies&callback=${callbackName}`
+    document.head.appendChild(script)
   } catch (error) {
     console.error('Error during auto refresh:', error)
     // Не показываем ошибку пользователю при автоматическом обновлении
@@ -388,4 +383,3 @@ onUnmounted(() => {
   scrollbar-color: #c1c1c1 #f1f1f1;
 }
 </style>
- 

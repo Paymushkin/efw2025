@@ -1,6 +1,6 @@
-import { defineEventHandler } from 'file:///Users/paymei/Documents/github/dubaifw/node_modules/h3/dist/index.mjs';
-import { readFile } from 'fs/promises';
-import { join } from 'path';
+import { defineEventHandler } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/h3/dist/index.mjs';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 
 const waitlistCountLocal_get = defineEventHandler(async (event) => {
   try {

@@ -111,7 +111,7 @@ import ProgramEvent from '~/components/program/ProgramEvent.vue';
 import { NEW_EVENT_TYPES, NEW_PROGRAM_TABS } from '~/constants/newProgram';
 import { useCompaniesCount } from '~/composables/useCompaniesCount';
 
-const currentTab = ref(1);
+const currentTab = ref(2);
 const tabs = NEW_PROGRAM_TABS;
 const tabsContainer = ref(null);
 let isDragging = false;
@@ -125,11 +125,43 @@ const { companiesCount, updateCompaniesCount } = useCompaniesCount();
 const fetchCompanies = async () => {
   try {
     console.log('Fetching companies...')
-    const response = await $fetch('/api/companies-list')
-    console.log('Companies response:', response)
-    if (response.success) {
-      console.log('Updating companies count to:', response.companies.length)
-      updateCompaniesCount(response.companies.length)
+    // Определяем, работаем ли мы локально или на продакшене
+    const isLocal = window.location.hostname.includes('localhost') || 
+                   window.location.hostname.includes('127.0.0.1') ||
+                   window.location.hostname.includes('0.0.0.0')
+    
+    if (isLocal) {
+      // Локально используем API
+      try {
+        const response = await $fetch('/api/companies-list')
+        console.log('Companies response:', response)
+        if (response.success) {
+          console.log('Updating companies count to:', response.companies.length)
+          updateCompaniesCount(response.companies.length)
+        }
+      } catch (apiError) {
+        console.error('API Error:', apiError)
+        // Если API не работает, устанавливаем 0
+        updateCompaniesCount(0)
+      }
+    } else {
+      // На продакшене используем JSONP подход
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxbWqpE_TR7HJoClggVpGBYdUGcssKxWOpbFAa7nZGQp69jrE0hUxLiiCx5nY8T_x70jg/exec'
+      const callbackName = 'callback_program_count_' + Date.now()
+      
+      window[callbackName] = (data) => {
+        if (data && data.success) {
+          console.log('Companies response:', data)
+          console.log('Updating companies count to:', data.companies.length)
+          updateCompaniesCount(data.companies.length)
+        }
+        delete window[callbackName]
+        document.head.removeChild(script)
+      }
+      
+      const script = document.createElement('script')
+      script.src = `${GOOGLE_SCRIPT_URL}?action=getCompanies&callback=${callbackName}`
+      document.head.appendChild(script)
     }
   } catch (error) {
     console.error('Error fetching companies:', error)

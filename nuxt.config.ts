@@ -34,7 +34,8 @@ export default defineNuxtConfig({
     preset: 'github-pages',
     routeRules: {
       '/': { static: true },
-      '/dubaifw/**': { static: true }
+      '/dubaifw/**': { static: true },
+      '/offer/tr': { redirect: '/offer?tr' }
     },
     static: true
   },

@@ -8,7 +8,7 @@
     />
     <!-- Hot Offers Section -->
      <section class="flex flex-col justify-between gap-5 mb-[50px] md:mb-[80px] xl:mb-[100px]">
-      <h1 class="text-xl md:text-4xl xl:mb-10">Hot Offers</h1>
+      <h1 class="text-xl md:text-4xl xl:mb-10">HOT OFFERS</h1>
       <div class="grid grid-cols-1 xl:grid-cols-3 lg:gap-10 md:gap-12 gap-7">
         <div>
           <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">EFW Pop-up Market</h3>
@@ -51,7 +51,7 @@
 
     <!-- Showcase spot Section -->
     <section class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
-      <h2 class="text-xl md:text-4xl xl:mb-[75px] md:mb-[50px] mb-7">Showcase spot</h2>
+      <h2 class="text-xl md:text-4xl xl:mb-[75px] md:mb-[50px] mb-7">SHOWCASE SPOT</h2>
       
       <div class="relative -mx-4 md:mx-0 mb-8">
         <div class="flex md:grid md:grid-cols-2 gap-6 overflow-x-auto pb-4 md:pb-0 px-4 md:px-0 snap-x snap-mandatory">
@@ -153,7 +153,7 @@
 
     <!-- Corner Section -->
     <section class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
-      <h2 class="text-xl md:text-4xl md:mb-[75px] mb-7">Popup Corners</h2>
+      <h2 class="text-xl md:text-4xl md:mb-[75px] mb-7">POP-UP DESIGNER CORNER</h2>
       
       <div class="relative -mx-4 md:mx-0 mb-8">
         <div class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto pb-4 md:pb-0 px-4 md:px-0 snap-x snap-mandatory">
@@ -361,11 +361,8 @@
       </div>
     </div> -->
 
-    <!-- FAQ Section -->
-    <FaqSection />
-
       <section id="slides" class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
-        <h2 class="text-xl md:text-4xl mb-[75px]">Our Presentation</h2>
+        <h2 class="text-xl md:text-4xl mb-[75px]">PRESENTATION</h2>
         <div class="w-full aspect-video">
           <iframe 
             src="https://www.canva.com/design/DAGykrRNjho/8F9GjzAc1t8ZtytdQMS86w/view?embed"
@@ -379,7 +376,7 @@
       </section>
 
       <section id="map" class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
-        <h2 class="text-xl md:text-4xl mb-[75px]">Location</h2>
+        <h2 class="text-xl md:text-4xl mb-[75px]">LOCATION</h2>
         <div class="w-full">
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1185.1534268127045!2d55.15329961837267!3d25.095293069615156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b44056573e7%3A0xc77c77051f31ecc!2sArjaan%20by%20Rotana%20Dubai!5e1!3m2!1sru!2sae!4v1757573179410!5m2!1sru!2sae" 
@@ -396,57 +393,82 @@
 
       <PhotoGallery />
 
-     <div v-if="showTrial">
+      <FaqSection />
+
+     <div v-if="showTrial" class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
        <h2 class="text-xl md:text-4xl mb-[75px]">TRIAL SHOWCASE SPOTS</h2>
        
-       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-         <div class="bg-gray-100 rounded-2xl overflow-hidden aspect-[4/3]">
-           <img :src="Image9" alt="Trial showcase spots" class="w-full h-full object-cover">
+       <div class="space-y-6 mb-8">
+         <!-- Первое фото и текст на одной строке -->
+         <div class="flex flex-col md:flex-row gap-6">
+           <div class="rounded-2xl overflow-hidden md:w-1/2">
+             <img :src="Image9" alt="Trial showcase spots" class="w-full object-contain">
+           </div>
+           <div class="md:w-1/2">
+             <p class="text-sm mb-6">
+               Trial Showcase Spots — How it Works
+             </p>
+             
+             <ul class="text-sm space-y-2 mb-6">
+              <li>• Each day offers 20 Showcase Spots, divided into 4 sessions of 2 hours each — that's 80 trial slots per day.</li>
+              <li>• Each selected participant also receives 10 lead chats with EFW Market visitors.</li>
+              <li>• Allocation is not automatic. From the waitlist, participants are chosen at the organizers' discretion, to ensure a balanced mix of services for our audience.</li>
+              <li>• These trial spots are subsidized by Dubai Departments and Emirates Fashion Week as a goodwill initiative to support SMEs in Dubai's beauty and design industries.</li>
+              <li>• Important: if all 60 full-day paid spots are taken, the 20 trial spots may also be sold, which reduces the chances for waitlist applicants.</li>
+              <li>• You can always skip the waitlist and secure a guaranteed full-day spot (3,000 AED) — just as 60+ companies already have</li>
+             </ul>
+           </div>
          </div>
          
-         <div class="bg-gray-100 rounded-2xl overflow-hidden aspect-[4/3]">
-           <img :src="Image10" alt="Trial showcase spots" class="w-full h-full object-cover">
+         <!-- Второе и третье фото в ряд -->
+         <div class="flex flex-col md:flex-row gap-6">
+           <div class="rounded-2xl overflow-hidden">
+             <img :src="Image10" alt="Trial showcase spots" class="object-contain">
+           </div>
+
+           <div class="rounded-2xl overflow-hidden">
+             <img :src="Image11" alt="Trial showcase spots" class="object-contain">
+           </div>
          </div>
        </div>
        
-       <div class="mb-8">
-         <p class="text-sm mb-6">
-           A limited number of 10–20 Showcase Spots (2-hour sessions) will be allocated to waitlist applicants.
-           Each selected participant will also receive 20 lead chats with EFW Market visitors.
-           These trial spots are not free handouts — they are subsidized by Dubai Culture and Emirates Fashion Week as a goodwill initiative to support SMEs in Dubai's beauty and design industries.
-         </p>
-         
-         <ul class="text-sm space-y-2 mb-6">
-           <li>• Any waitlist participant may purchase their spot at any time during Fashion Week, which will override the free allocation for others.</li>
-           <li>• You can always secure a guaranteed full-day or multi-day spot — just as 60+ companies already have, at the standard rates shown above.</li>
-           <li>• From the full waitlist, up to 80 participants will be selected for 2-hour trial slots, provided these spots remain unpurchased.</li>
-         </ul>
-         
-         <div class="flex flex-col items-end gap-3">
-           <BaseButton
-             id="join-waitlist"
-             variant="primary"
-             @click="showWaitlistForm = true">
-             <!-- <span>2h Free Trial Spot Waitlist</span> -->
-             <span>Join Waitlist</span>
-             <span>></span>
-           </BaseButton>
-         </div>
+       <p class="text-sm text-gray-600 mt-2 text-center">
+         competition with other waitlist companies; trial slots reduced if full-day spots are purchased
+       </p>
+       
+       <div class="flex flex-col items-end gap-3 mb-8 mt-6">
+         <BaseButton
+           id="join-waitlist"
+           variant="primary"
+           @click="showWaitlistForm = true">
+           <!-- <span>2h Free Trial Spot Waitlist</span> -->
+           <span>Join Waitlist</span>
+           <span>></span>
+         </BaseButton>
        </div>
        
        <!-- Companies List -->
        <div class="mt-12">
          <CompaniesList ref="companiesListRef" @companies-count-updated="updateCompaniesCount" />
        </div>
+
+       <!-- Approved Companies List -->
+       <div v-if="showApproved" class="mt-12">
+         <ApprovedCompaniesList ref="approvedCompaniesListRef" @companies-count-updated="updateApprovedCount" />
+       </div>
      </div>
+
+     
    </div>
 
    <!-- Waitlist Form Modal -->
-    <WaitlistForm 
+    <WaitlistForm
       :is-open="showWaitlistForm" 
       @close="showWaitlistForm = false"
       @success="handleWaitlistSuccess"
     />
+
+    <GalleryIframe :show-fog="false" />
     
     <!-- Bottom anchor for scrolling -->
     <div id="bottom"></div>
@@ -462,7 +484,9 @@ import WhatsAppButton from '@/components/ui/WhatsAppButton.vue'
 import FaqSection from '@/components/FaqSection.vue'
 import WaitlistForm from '@/components/WaitlistForm.vue'
 import CompaniesList from '@/components/CompaniesList.vue'
+import ApprovedCompaniesList from '@/components/ApprovedCompaniesList.vue'
 import PhotoGallery from '@/components/PhotoGallery.vue'
+import GalleryIframe from '@/components/GalleryIframe.vue'
 import Image1 from '@/assets/image/offer/stand-1.webp'
 import Image2 from '@/assets/image/offer/corner-1.webp'
 import Image3 from '@/assets/image/offer/corner-3.webp'
@@ -473,15 +497,19 @@ import Image7 from '@/assets/image/offer/schema-4.webp'
 import Image8 from '@/assets/image/offer/schema-5.webp'
 import Image9 from '@/assets/image/offer/trial.webp'
 import Image10 from '@/assets/image/stations/station-2.webp'
+import Image11 from '@/assets/image/offer/trial_compare.webp'
 
 const route = useRoute()
 const showWhatsApp = computed(() => !!route.query.wp)
 const whatsappNumber = computed(() => route.query.wp || '971529833054')
 const showTrial = computed(() => 'tr' in route.query)
 const showWaitlist = computed(() => 'waitlist' in route.query)
+const showApproved = computed(() => 'approved' in route.query)
 const showWaitlistForm = ref(false)
 const companiesListRef = ref(null)
+const approvedCompaniesListRef = ref(null)
 const { companiesCount, updateCompaniesCount: updateGlobalCount } = useCompaniesCount()
+const approvedCount = ref(0)
 
 
 // Функция для обновления счетчика компаний
@@ -494,6 +522,11 @@ const updateCompaniesCount = (count) => {
     trialCountElement.textContent = `${count} companies in waitlist`
   }
   
+}
+
+// Функция для обновления счетчика одобренных компаний
+const updateApprovedCount = (count) => {
+  approvedCount.value = count
 }
 
 
