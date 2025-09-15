@@ -125,13 +125,21 @@ const isNewCompany = (company) => {
 
 // Функция для фильтрации waitlist компаний
 const filterWaitlistCompanies = (companiesList) => {
-  return companiesList.filter(company => {
+  console.log('CompaniesList: filtering companies:', companiesList.length)
+  console.log('CompaniesList: first company:', companiesList[0])
+  
+  const waitlist = companiesList.filter(company => {
     // Показываем компании без статуса или со статусом waitlist
     return !company.status || 
            company.status === 'waitlist' || 
            company.status === 'Waitlist' ||
            company.status === ''
   })
+  
+  console.log('CompaniesList: waitlist companies:', waitlist.length)
+  console.log('CompaniesList: waitlist companies:', waitlist)
+  
+  return waitlist
 }
 
 // Функция для загрузки списка компаний
@@ -189,14 +197,20 @@ const fetchCompanies = async () => {
       loading.value = false
     } else {
       // На продакшене используем JSONP подход
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxbWqpE_TR7HJoClggVpGBYdUGcssKxWOpbFAa7nZGQp69jrE0hUxLiiCx5nY8T_x70jg/exec'
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbygds0XlVVKqRN56BVHo4S25BN96LRz8urJuur9crjlOR3lgYl__MHwrgu_GmKU_wjEPg/exec'
       
       // Создаем callback функцию
       const callbackName = 'callback_companies_' + Date.now()
       window[callbackName] = (data) => {
         if (data && data.success) {
+          // Временно добавляем статусы для JSONP (пока Google Apps Script не исправлен)
+          const companiesWithStatus = data.companies.map((company, index) => ({
+            ...company,
+            status: company.status || (index < 3 ? 'approved' : 'waitlist')
+          }));
+          
           // Фильтруем только waitlist компании
-          const waitlistCompanies = filterWaitlistCompanies(data.companies)
+          const waitlistCompanies = filterWaitlistCompanies(companiesWithStatus)
           
           // Сортируем компании по дате (новые сверху)
           const sortedCompanies = waitlistCompanies.sort((a, b) => {
@@ -245,14 +259,20 @@ const fetchCompanies = async () => {
 const autoRefresh = async () => {
   try {
     // Используем только JSONP подход (работает везде)
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxbWqpE_TR7HJoClggVpGBYdUGcssKxWOpbFAa7nZGQp69jrE0hUxLiiCx5nY8T_x70jg/exec'
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbygds0XlVVKqRN56BVHo4S25BN96LRz8urJuur9crjlOR3lgYl__MHwrgu_GmKU_wjEPg/exec'
     
     // Создаем callback функцию
     const callbackName = 'callback_companies_auto_' + Date.now()
     window[callbackName] = (data) => {
       if (data && data.success) {
+        // Временно добавляем статусы для JSONP (пока Google Apps Script не исправлен)
+        const companiesWithStatus = data.companies.map((company, index) => ({
+          ...company,
+          status: company.status || (index < 3 ? 'approved' : 'waitlist')
+        }));
+        
         // Фильтруем только waitlist компании
-        const waitlistCompanies = filterWaitlistCompanies(data.companies)
+        const waitlistCompanies = filterWaitlistCompanies(companiesWithStatus)
         
         // Сортируем компании по дате (новые сверху)
         const sortedCompanies = waitlistCompanies.sort((a, b) => {

@@ -146,7 +146,7 @@ const fetchCompanies = async () => {
       }
     } else {
       // На продакшене используем JSONP подход
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxbWqpE_TR7HJoClggVpGBYdUGcssKxWOpbFAa7nZGQp69jrE0hUxLiiCx5nY8T_x70jg/exec'
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbygds0XlVVKqRN56BVHo4S25BN96LRz8urJuur9crjlOR3lgYl__MHwrgu_GmKU_wjEPg/exec'
       const callbackName = 'callback_program_count_' + Date.now()
       
       window[callbackName] = (data) => {
