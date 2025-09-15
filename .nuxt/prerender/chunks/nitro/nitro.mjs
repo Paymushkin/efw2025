@@ -641,7 +641,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "4f7ceff8-9085-4141-b579-1e55b3e34408",
+    "buildId": "7dccd65c-b874-4ede-88b2-6cfc6307ed00",
     "buildAssetsDir": "assets/",
     "cdnURL": ""
   },
@@ -1275,5 +1275,5 @@ const localFetch = nitroApp.localFetch;
 const closePrerenderer = () => nitroApp.hooks.callHook("close");
 trapUnhandledNodeErrors();
 
-export { useStorage as a, useNitroApp as b, closePrerenderer as c, defineRenderHandler as d, getRouteRules as g, localFetch as l, useRuntimeConfig as u };
+export { useNitroApp as a, closePrerenderer as c, defineRenderHandler as d, getRouteRules as g, localFetch as l, useRuntimeConfig as u };
 //# sourceMappingURL=nitro.mjs.map

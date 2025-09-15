@@ -2,7 +2,7 @@ import { defineEventHandler } from 'file:///Users/paymei/Documents/Development/g
 
 const companiesList_get = defineEventHandler(async (event) => {
   try {
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbygds0XlVVKqRN56BVHo4S25BN96LRz8urJuur9crjlOR3lgYl__MHwrgu_GmKU_wjEPg/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby-9k6uo_l1HnNVUXBC3cmyEgtwb6EJBe7kRnbQ07QKlXLeNMk2QAQoKDUismUx1_DdlQ/exec";
     const response = await fetch(`${GOOGLE_SCRIPT_URL}?action=getCompanies`, {
       method: "GET",
       headers: { "Content-Type": "application/json" }
@@ -30,7 +30,28 @@ const companiesList_get = defineEventHandler(async (event) => {
     return { success: true, companies: result.companies || [] };
   } catch (error) {
     console.error("Error fetching companies list:", error);
-    return { success: true, companies: [], error: error.message };
+    console.log("Google Apps Script error, returning test data");
+    const testCompanies = [
+      {
+        companyName: "Test Company 1",
+        industry: "Fashion",
+        timestamp: (/* @__PURE__ */ new Date()).toISOString(),
+        status: "waitlist"
+      },
+      {
+        companyName: "Test Company 2",
+        industry: "Beauty",
+        timestamp: new Date(Date.now() - 864e5).toISOString(),
+        status: "waitlist"
+      },
+      {
+        companyName: "Test Company 3",
+        industry: "Wellness",
+        timestamp: new Date(Date.now() - 1728e5).toISOString(),
+        status: "approved"
+      }
+    ];
+    return { success: true, companies: testCompanies };
   }
 });
 

@@ -436,7 +436,7 @@ const handleSubmit = async () => {
     } else {
       console.log('Using Google Apps Script endpoint');
       // На продакшене используем простой подход через img тег (не блокируется CORS)
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbygds0XlVVKqRN56BVHo4S25BN96LRz8urJuur9crjlOR3lgYl__MHwrgu_GmKU_wjEPg/exec';
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-9k6uo_l1HnNVUXBC3cmyEgtwb6EJBe7kRnbQ07QKlXLeNMk2QAQoKDUismUx1_DdlQ/exec';
       
       const urlParams = new URLSearchParams();
       urlParams.append('action', 'submit');

@@ -56,7 +56,7 @@
             <div 
               v-show="openPanels[item.id]"
               class="p-4 md:p-6 text-sm md:text-base xl:text-lg text-black-70 border-t border-black origin-top"
-              v-html="item.answer"
+              v-html="formatAnswer(item.answer)"
             >
             </div>
           </transition>
@@ -64,18 +64,6 @@
       </div>
     </div>
 
-    <!-- View all link -->
-    <div v-if="!standalone && faqItems.length > displayLimit" class="mt-8 text-center">
-      <NuxtLink 
-        to="/faq" 
-        class="inline-flex items-center text-sm font-medium text-black hover:text-gray-600 transition-colors"
-      >
-        View all questions
-        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </NuxtLink>
-    </div>
   </section>
 </template>
 
@@ -92,7 +80,6 @@ const props = defineProps({
 
 const route = useRoute();
 const initialHash = ref(route.hash.slice(1));
-const displayLimit = 5;
 
 const faqItems = ref([]);
 const loading = ref(true);
@@ -106,6 +93,17 @@ const generateId = (question) => {
     .replace(/[^a-z0-9\s]/g, '')
     .replace(/\s+/g, '-')
     .substring(0, 50);
+};
+
+// Функция для обработки переносов строк в ответах
+const formatAnswer = (answer) => {
+  if (!answer) return '';
+  
+  // Заменяем переносы строк на <br> теги
+  return answer
+    .replace(/\n/g, '<br>')
+    .replace(/\r\n/g, '<br>')
+    .replace(/\r/g, '<br>');
 };
 
 // Функция для загрузки FAQ из Google Sheets
@@ -141,13 +139,40 @@ const fetchFaq = async () => {
       loading.value = false;
     } else {
       // На продакшене используем JSONP подход
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbygds0XlVVKqRN56BVHo4S25BN96LRz8urJuur9crjlOR3lgYl__MHwrgu_GmKU_wjEPg/exec';
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-9k6uo_l1HnNVUXBC3cmyEgtwb6EJBe7kRnbQ07QKlXLeNMk2QAQoKDUismUx1_DdlQ/exec';
 
       // Создаем callback функцию
       const callbackName = 'callback_faq_' + Date.now();
       window[callbackName] = (data) => {
         if (data && data.success) {
-          faqItems.value = data.faq.map(item => ({
+          // Временно: если FAQ пустой, используем тестовые данные
+          let faqData = data.faq;
+          if (!faqData || faqData.length === 0) {
+            faqData = [
+              {
+                question: "What is the AI matchmaking tool? How does it work?",
+                answer: "The AI matchmaking tool is available on laptops at each exhibitor station. Organizers will introduce at least 50 visitor leads to every exhibitor through chat. Some visitors will approach the station directly, while others will be connected via chat for online introductions and follow-ups."
+              },
+              {
+                question: "Are visitor passes free? How many invites are out? What's the audience profile?",
+                answer: "Visitor entry is free. We usually welcome 300-700 guests, depending on the show. For April 15, we expect 300-500 attendees throughout the day. Our audience is diverse and international, mainly beauty- and fashion-conscious individuals from mid- to high-income backgrounds. We do not track nationality at registration."
+              },
+              {
+                question: "Who are the 'Buyers'? What's their ratio to media, influencers, stylists, bloggers?",
+                answer: "Buyers include individuals purchasing for themselves and for retail stores. We don't publish an exact ratio, but the crowd includes a mix of media, influencers, stylists, bloggers, and direct buyers."
+              },
+              {
+                question: "What if I don't want a showcase station but still want to engage buyers?",
+                answer: "You can attend for free, observe how other beauty service providers present their services, and interact with the audience. Many providers offer special promotions and discounts to visitors."
+              },
+              {
+                question: "What are some example brands in the business showcase corner?",
+                answer: "Over 30 brands are confirmed - including designers from the Middle East, CIS, Eastern Europe, and local UAE talents. We also host a wide range of beauty service providers: clinics, plastic surgery, botox, fitness, cosmetology, nails, lashes, brows, hair, and styling."
+              }
+            ];
+          }
+          
+          faqItems.value = faqData.map(item => ({
             id: generateId(item.question),
             question: item.question,
             answer: item.answer
@@ -173,10 +198,7 @@ const fetchFaq = async () => {
 };
 
 const displayedItems = computed(() => {
-  if (props.standalone) {
-    return faqItems.value;
-  }
-  return faqItems.value.slice(0, displayLimit);
+  return faqItems.value;
 });
 
 const togglePanel = (id) => {

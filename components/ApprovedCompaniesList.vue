@@ -13,7 +13,7 @@
     </div>
     
     <div v-else class="space-y-3">
-      <h3 class="text-lg font-semibold mb-4">!APPROVED COMPANIES ({{ companies.length }})</h3>
+      <h3 class="text-lg font-semibold mb-4">APPROVED COMPANIES ({{ companies.length }})</h3>
       <div class="space-y-3 pr-2">
         <div 
           v-for="(company, index) in companies" 
@@ -135,10 +135,10 @@ const fetchCompanies = async () => {
     error.value = ''
 
     // Определяем, работаем ли мы локально или на продакшене
-    const isLocal = window.location.hostname.includes('localhost') ||
+    const isLocal = window.location.hostname.includes('localhost') || 
                    window.location.hostname.includes('127.0.0.1') ||
                    window.location.hostname.includes('0.0.0.0')
-
+    
     if (isLocal) {
       // Локально используем API
       try {
@@ -180,7 +180,7 @@ const fetchCompanies = async () => {
       loading.value = false
     } else {
       // На продакшене используем JSONP подход
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbygds0XlVVKqRN56BVHo4S25BN96LRz8urJuur9crjlOR3lgYl__MHwrgu_GmKU_wjEPg/exec'
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-9k6uo_l1HnNVUXBC3cmyEgtwb6EJBe7kRnbQ07QKlXLeNMk2QAQoKDUismUx1_DdlQ/exec'
       const callbackName = 'callback_approved_companies_' + Date.now()
       
       window[callbackName] = (data) => {
@@ -237,10 +237,10 @@ const fetchCompanies = async () => {
 const autoRefresh = async () => {
   try {
     // Определяем, работаем ли мы локально или на продакшене
-    const isLocal = window.location.hostname.includes('localhost') ||
+    const isLocal = window.location.hostname.includes('localhost') || 
                    window.location.hostname.includes('127.0.0.1') ||
                    window.location.hostname.includes('0.0.0.0')
-
+    
     if (isLocal) {
       // Локально используем API
       try {
@@ -259,7 +259,7 @@ const autoRefresh = async () => {
       }
     } else {
       // На продакшене используем JSONP подход
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbygds0XlVVKqRN56BVHo4S25BN96LRz8urJuur9crjlOR3lgYl__MHwrgu_GmKU_wjEPg/exec'
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-9k6uo_l1HnNVUXBC3cmyEgtwb6EJBe7kRnbQ07QKlXLeNMk2QAQoKDUismUx1_DdlQ/exec'
       const callbackName = 'callback_approved_auto_' + Date.now()
       
       window[callbackName] = (data) => {

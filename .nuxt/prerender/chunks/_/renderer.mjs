@@ -1,7 +1,7 @@
 import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/vue-bundle-renderer/dist/runtime.mjs';
-import { getResponseStatusText, getResponseStatus, getQuery, createError, appendResponseHeader } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/h3/dist/index.mjs';
-import { joinRelativeURL, joinURL, withoutTrailingSlash } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/ufo/dist/index.mjs';
-import { u as useRuntimeConfig, a as useStorage, d as defineRenderHandler, g as getRouteRules, b as useNitroApp } from '../nitro/nitro.mjs';
+import { getQuery, createError, getResponseStatusText, getResponseStatus } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/h3/dist/index.mjs';
+import { u as useRuntimeConfig, d as defineRenderHandler, g as getRouteRules, a as useNitroApp } from '../nitro/nitro.mjs';
+import { joinRelativeURL } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/ufo/dist/index.mjs';
 import { createHead as createHead$1, propsToString, renderSSRHead } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/unhead/dist/server.mjs';
 import { stringify, uneval } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/devalue/index.js';
 import { toValue, isRef } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/vue/index.mjs';
@@ -123,21 +123,6 @@ function getRenderer(ssrContext) {
   return getSPARenderer() ;
 }
 
-const payloadCache = useStorage("internal:nuxt:prerender:payload") ;
-useStorage("internal:nuxt:prerender:island") ;
-useStorage("internal:nuxt:prerender:island-props") ;
-
-function renderPayloadResponse(ssrContext) {
-  return {
-    body: stringify(splitPayload(ssrContext).payload, ssrContext._payloadReducers) ,
-    statusCode: getResponseStatus(ssrContext.event),
-    statusMessage: getResponseStatusText(ssrContext.event),
-    headers: {
-      "content-type": "application/json;charset=utf-8" ,
-      "x-powered-by": "Nuxt"
-    }
-  };
-}
 function renderPayloadJsonScript(opts) {
   const contents = opts.data ? stringify(opts.data, opts.ssrContext._payloadReducers) : "";
   const payload = {
@@ -159,13 +144,6 @@ function renderPayloadJsonScript(opts) {
       innerHTML: `window.__NUXT__={};window.__NUXT__.config=${config}`
     }
   ];
-}
-function splitPayload(ssrContext) {
-  const { data, prerenderedAt, ...initial } = ssrContext.payload;
-  return {
-    initial: { ...initial, prerenderedAt },
-    payload: { data, prerenderedAt }
-  };
 }
 
 const unheadOptions = {
@@ -206,8 +184,6 @@ globalThis.__publicAssetsURL = publicAssetsURL;
 const HAS_APP_TELEPORTS = !!(appTeleportAttrs.id);
 const APP_TELEPORT_OPEN_TAG = HAS_APP_TELEPORTS ? `<${appTeleportTag}${propsToString(appTeleportAttrs)}>` : "";
 const APP_TELEPORT_CLOSE_TAG = HAS_APP_TELEPORTS ? `</${appTeleportTag}>` : "";
-const PAYLOAD_URL_RE = /^[^?]*\/_payload.json(?:\?.*)?$/ ;
-const PAYLOAD_FILENAME = "_payload.json" ;
 const renderer = defineRenderHandler(async (event) => {
   const nitroApp = useNitroApp();
   const ssrError = event.path.startsWith("/__nuxt_error") ? getQuery(event) : null;
@@ -224,21 +200,10 @@ const renderer = defineRenderHandler(async (event) => {
     ssrError.statusCode &&= Number.parseInt(ssrError.statusCode);
     setSSRError(ssrContext, ssrError);
   }
-  const isRenderingPayload = PAYLOAD_URL_RE.test(ssrContext.url);
-  if (isRenderingPayload) {
-    const url = ssrContext.url.substring(0, ssrContext.url.lastIndexOf("/")) || "/";
-    ssrContext.url = url;
-    event._path = event.node.req.url = url;
-    if (await payloadCache.hasItem(url)) {
-      return payloadCache.getItem(url);
-    }
-  }
   const routeOptions = getRouteRules(event);
   if (routeOptions.ssr === false) {
     ssrContext.noSSR = true;
   }
-  const _PAYLOAD_EXTRACTION = !ssrContext.noSSR;
-  const payloadURL = _PAYLOAD_EXTRACTION ? joinURL(ssrContext.runtimeConfig.app.cdnURL || ssrContext.runtimeConfig.app.baseURL, ssrContext.url.replace(/\?.*$/, ""), PAYLOAD_FILENAME) + "?" + ssrContext.runtimeConfig.app.buildId : void 0;
   const renderer = await getRenderer();
   const _rendered = await renderer.renderToString(ssrContext).catch(async (error) => {
     if (ssrContext._renderResponse && error.message === "skipping render") {
@@ -256,26 +221,8 @@ const renderer = defineRenderHandler(async (event) => {
   if (ssrContext.payload?.error && !ssrError) {
     throw ssrContext.payload.error;
   }
-  if (isRenderingPayload) {
-    const response = renderPayloadResponse(ssrContext);
-    {
-      await payloadCache.setItem(ssrContext.url, response);
-    }
-    return response;
-  }
-  if (_PAYLOAD_EXTRACTION) {
-    appendResponseHeader(event, "x-nitro-prerender", joinURL(ssrContext.url.replace(/\?.*$/, ""), PAYLOAD_FILENAME));
-    await payloadCache.setItem(withoutTrailingSlash(ssrContext.url), renderPayloadResponse(ssrContext));
-  }
   const NO_SCRIPTS = routeOptions.noScripts;
   const { styles, scripts } = getRequestDependencies(ssrContext, renderer.rendererContext);
-  if (_PAYLOAD_EXTRACTION && !NO_SCRIPTS) {
-    ssrContext.head.push({
-      link: [
-        { rel: "preload", as: "fetch", crossorigin: "anonymous", href: payloadURL } 
-      ]
-    }, headEntryOptions);
-  }
   if (ssrContext._preloadManifest && !NO_SCRIPTS) {
     ssrContext.head.push({
       link: [
@@ -301,7 +248,7 @@ const renderer = defineRenderHandler(async (event) => {
       link: getPrefetchLinks(ssrContext, renderer.rendererContext)
     }, headEntryOptions);
     ssrContext.head.push({
-      script: _PAYLOAD_EXTRACTION ? renderPayloadJsonScript({ ssrContext, data: splitPayload(ssrContext).initial, src: payloadURL })  : renderPayloadJsonScript({ ssrContext, data: ssrContext.payload }) 
+      script: renderPayloadJsonScript({ ssrContext, data: ssrContext.payload }) 
     }, {
       ...headEntryOptions,
       // this should come before another end of body scripts

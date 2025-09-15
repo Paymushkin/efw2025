@@ -26,7 +26,7 @@
         :gap="20"
       />
     </div>
-    <FaqSection class="mb-[56px] md:mb-[76px]" />
+    <FaqSectionDynamic class="mb-[56px] md:mb-[76px]" />
   </div>
 </template>
 
@@ -47,7 +47,7 @@ import MarqueeSection from '~/components/MarqueeSection.vue';
 import ImageCarousel from '~/components/ImageCarousel.vue';
 import EventFeatures from '~/components/EventFeatures.vue';
 import AppSeo from '@/components/AppSeo.vue';
-import FaqSection from '~/components/FaqSection.vue';
+import FaqSectionDynamic from '~/components/FaqSectionDynamic.vue';
 import FacesSection from '~/components/FacesSection.vue';
 
 // Constants and Assets

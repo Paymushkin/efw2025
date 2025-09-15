@@ -150,6 +150,54 @@ function doGet(e) {
       return ContentService.createTextOutput(JSON.stringify({success: true, companies: companies})).setMimeType(ContentService.MimeType.JSON);
     }
     
+    // Получаем FAQ данные
+    if (e.parameter && e.parameter.action === 'getFaq') {
+      Logger.log('Processing getFaq action');
+      
+      // Открываем лист FAQ (предполагаем, что он называется "FAQ")
+      const spreadsheet = SpreadsheetApp.openById('1jGEJIU-0Cwx151O0JczBkoaUCE48j5saab-R5eKzLfM');
+      let sheet;
+      
+      try {
+        // Пробуем открыть лист "FAQ"
+        sheet = spreadsheet.getSheetByName('FAQ');
+        if (!sheet) {
+          // Если лист "FAQ" не найден, используем активный лист
+          sheet = spreadsheet.getActiveSheet();
+          Logger.log('FAQ sheet not found, using active sheet');
+        }
+      } catch (error) {
+        Logger.log('Error opening FAQ sheet:', error.toString());
+        sheet = spreadsheet.getActiveSheet();
+      }
+      
+      const data = sheet.getDataRange().getValues();
+      
+      Logger.log('FAQ sheet data rows:', data.length);
+      if (data.length > 0) {
+        Logger.log('FAQ headers:', data[0]);
+      }
+      
+      // Пропускаем заголовок (первую строку)
+      const faqItems = data.slice(1).map((row, index) => {
+        const faqItem = {
+          question: row[0] || '',
+          answer: row[1] || ''
+        };
+        
+        // Логируем первые 3 FAQ для отладки
+        if (index < 3) {
+          Logger.log(`FAQ ${index + 1}:`, faqItem);
+        }
+        
+        return faqItem;
+      }).filter(item => item.question && item.answer); // Фильтруем пустые записи
+      
+      Logger.log('Found FAQ items:', faqItems.length);
+      
+      return ContentService.createTextOutput(JSON.stringify({success: true, faq: faqItems})).setMimeType(ContentService.MimeType.JSON);
+    }
+    
     // Обрабатываем отправку данных (action=submit)
     if (e.parameter && e.parameter.action === 'submit') {
       Logger.log('Processing submit action');
@@ -206,6 +254,76 @@ function testGetCompanies() {
   Logger.log('GetCompanies result:', result.getContent());
   
   Logger.log('testGetCompanies finished.');
+}
+
+// Функция для тестирования getFaq
+function testGetFaq() {
+  Logger.log('Testing getFaq...');
+  
+  const e = {
+    parameter: {
+      action: 'getFaq'
+    }
+  };
+  
+  const result = doGet(e);
+  Logger.log('GetFaq result:', result.getContent());
+  
+  Logger.log('testGetFaq finished.');
+}
+
+// Отдельная функция для получения FAQ данных
+function getFaq() {
+  Logger.log('getFaq function called');
+  
+  try {
+    // Открываем лист FAQ (предполагаем, что он называется "FAQ")
+    const spreadsheet = SpreadsheetApp.openById('1jGEJIU-0Cwx151O0JczBkoaUCE48j5saab-R5eKzLfM');
+    let sheet;
+    
+    try {
+      // Пробуем открыть лист "FAQ"
+      sheet = spreadsheet.getSheetByName('FAQ');
+      if (!sheet) {
+        // Если лист "FAQ" не найден, используем активный лист
+        sheet = spreadsheet.getActiveSheet();
+        Logger.log('FAQ sheet not found, using active sheet');
+      }
+    } catch (error) {
+      Logger.log('Error opening FAQ sheet:', error.toString());
+      sheet = spreadsheet.getActiveSheet();
+    }
+    
+    const data = sheet.getDataRange().getValues();
+    
+    Logger.log('FAQ sheet data rows:', data.length);
+    if (data.length > 0) {
+      Logger.log('FAQ headers:', data[0]);
+    }
+    
+    // Пропускаем заголовок (первую строку)
+    const faqItems = data.slice(1).map((row, index) => {
+      const faqItem = {
+        question: row[0] || '',
+        answer: row[1] || ''
+      };
+      
+      // Логируем первые 3 FAQ для отладки
+      if (index < 3) {
+        Logger.log(`FAQ ${index + 1}:`, faqItem);
+      }
+      
+      return faqItem;
+    }).filter(item => item.question && item.answer); // Фильтруем пустые записи
+    
+    Logger.log('Found FAQ items:', faqItems.length);
+    
+    return { success: true, faq: faqItems };
+    
+  } catch (error) {
+    Logger.log('Error in getFaq function: ' + error.toString());
+    return { success: false, error: error.toString() };
+  }
 }
 
 // Функция для проверки структуры таблицы

@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     pageTransition: { name: 'page', mode: 'out-in' },
     baseURL: '/',
     buildAssetsDir: 'assets/',
+    cdnURL: '',
     head: {
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=3' },
@@ -37,7 +38,22 @@ export default defineNuxtConfig({
       '/dubaifw/**': { static: true },
       '/offer/tr': { redirect: '/offer?tr' }
     },
-    static: true
+    static: true,
+    experimental: {
+      wasm: false
+    }
+  },
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: undefined
+        }
+      }
+    }
+  },
+  experimental: {
+    payloadExtraction: false
   },
   runtimeConfig: {
     RESEND_API_KEY: process.env.RESEND_API_KEY,

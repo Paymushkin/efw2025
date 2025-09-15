@@ -393,7 +393,10 @@
 
       <PhotoGallery />
 
-      <FaqSection />
+      <!-- FAQ Section -->
+      <div class="mt-12">
+        <FaqSectionDynamic :standalone="false" />
+      </div>
 
      <div v-if="showTrial" class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
        <h2 class="text-xl md:text-4xl mb-[75px]">TRIAL SHOWCASE SPOTS</h2>
@@ -452,11 +455,12 @@
          <CompaniesList ref="companiesListRef" @companies-count-updated="updateCompaniesCount" />
        </div>
 
-       <!-- Approved Companies List -->
-       <div v-if="showApproved" class="mt-12">
-         <ApprovedCompaniesList ref="approvedCompaniesListRef" @companies-count-updated="updateApprovedCount" />
-       </div>
-     </div>
+      <!-- Approved Companies List -->
+      <div v-if="showApproved" class="mt-12">
+        <ApprovedCompaniesList ref="approvedCompaniesListRef" @companies-count-updated="updateApprovedCount" />
+      </div>
+
+    </div>
 
      
    </div>
@@ -482,6 +486,7 @@ import { useCompaniesCount } from '~/composables/useCompaniesCount'
 import BaseButton from '@/components/ui/BaseButton.vue'
 import WhatsAppButton from '@/components/ui/WhatsAppButton.vue'
 import FaqSection from '@/components/FaqSection.vue'
+import FaqSectionDynamic from '@/components/FaqSectionDynamic.vue'
 import WaitlistForm from '@/components/WaitlistForm.vue'
 import CompaniesList from '@/components/CompaniesList.vue'
 import ApprovedCompaniesList from '@/components/ApprovedCompaniesList.vue'

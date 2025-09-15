@@ -120,27 +120,27 @@ export const NEW_PROGRAM_TABS = [
         time: '8 November',
         place: `Skylight Gallery,<br>Arjaan Dubai Media City`,
         description: `SATURDAY |  PRÊT-À-PORTER WOMEN'S & MEN'S COLLECTIONS SS 26`,
-        details: `<strong>By Invitation Only</strong>
+        details: `<strong class="mb-2 block">By Invitation Only</strong>
           <ul class="space-y-2 text-black">
-            <li>• Noura Couture - UAE</li>
-            <li>• Annet - Russia</li>
-            <li>• Lesnikova dresses - Russia</li>
-            <li>• Solana Couture - USA</li>
-            <li>• Lora Couture - Azerbaijan</li>
-            <li>• Etno Fresh - Russia</li>
-            <li>• Belize - Germany</li>
-            <li>• MoonSoul - Kirghizian</li>
-            <li>• Olecia Arkhipova - Russia</li>
-            <li>• Marianne Moore</li>
-            <li>• Igarnitur - Poland</li>
-            <li>• Herbelin - Poland</li>
-            <li>• Devu - Poland</li>
+            <li>• NOURA COUTURE - UAE</li>
+            <li>• ANNET - RUSSIA</li>
+            <li>• LESNIKOVA DRESSES - RUSSIA</li>
+            <li>• SOLANA COUTURE - USA</li>
+            <li>• LORA COUTURE - AZERBAIJAN</li>
+            <li>• ETNO FRESH - RUSSIA</li>
+            <li>• BELIZE - GERMANY</li>
+            <li>• MOONSOUL - KIRGHIZIAN</li>
+            <li>• OLECIA ARKHIPOVA - RUSSIA</li>
+            <li>• MARIANNE MOORE</li>
+            <li>• IGARNITUR - POLAND</li>
+            <li>• HERBELIN - POLAND</li>
+            <li>• DEVU - POLAND</li>
             <li>• K*********d /Germany/</li>
             <li>• O******a /Saudi Arabia/ *PENDING MUTUAL APPROVAL</li>
             <li>• D******a /Belarus/ *PENDING MUTUAL APPROVAL</li>
             <li>• N****n /UAE/ *PENDING MUTUAL APPROVAL</li>
             <li>• A***a /Azerbaijan/ *PENDING MUTUAL APPROVAL</li>
-            <li>• T**S /ROMANIA/ *PENDING MUTUAL APPROVAL</li>
+            <li>• T**S /Romania/ *PENDING MUTUAL APPROVAL</li>
           </ul>
         `,
         buttonText: 'REQUEST INVITE >',
@@ -152,17 +152,17 @@ export const NEW_PROGRAM_TABS = [
          time: '9 November',
          place: `Skylight Gallery,<br>Arjaan Dubai Media City`,
          description: `SUNDAY |  PRÊT-À-PORTER WOMEN'S & MEN'S COLLECTIONS SS 26`,
-         details: `<strong>By Invitation Only</strong>
+         details: `<strong class="mb-2 block">By Invitation Only</strong>
            <ul class="space-y-2 text-black">
-             <li>• Alexandra AMA cabinet - Russia</li>
-             <li>• Arni Fashion - USA/Indian</li>
-             <li>• Rubashka - Russia</li>
-             <li>• Snim - Kazakhstan</li>
-             <li>• Kibovskaya - Russia</li>
-             <li>• Fyor - UAE</li>
-             <li>• Polina Tropillo - Russia</li>
-             <li>• Olga Bogdanova - Russia</li>
-             <li>• Elena Romanova - Russia</li>
+             <li>• ALEXANDRA AMA CABINET - RUSSIA</li>
+             <li>• ARNI FASHION - USA/INDIAN</li>
+             <li>• RUBASHKA - RUSSIA</li>
+             <li>• SNIM - KAZAKHSTAN</li>
+             <li>• KIBOVSKAYA - RUSSIA</li>
+             <li>• FYOR - UAE</li>
+             <li>• POLINA TROPILLO - RUSSIA</li>
+             <li>• OLGA BOGDANOVA - RUSSIA</li>
+             <li>• ELENA ROMANOVA - RUSSIA</li>
              <li>• B********a /Azerbaijan/ *PENDING MUTUAL APPROVAL</li>
              <li>• Z**n /Iraq/ *PENDING MUTUAL APPROVAL</li>
              <li>• S****s /Oman/ *PENDING MUTUAL APPROVAL</li>
