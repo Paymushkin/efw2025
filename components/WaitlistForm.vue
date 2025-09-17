@@ -452,19 +452,19 @@ const handleSubmit = async () => {
       urlParams.append('source', 'Waitlist Form');
       urlParams.append('status', 'WAITLIST'); // Добавляем статус по умолчанию
       
-           // Создаем невидимый img тег для отправки данных
-           const img = new Image();
-           const fullUrl = `${GOOGLE_SCRIPT_URL}?${urlParams.toString()}`;
-           console.log('Sending to Google Apps Script:', fullUrl);
-           img.src = fullUrl;
-           
-           // Добавляем обработчики для отслеживания успеха/ошибки
-           img.onload = () => {
-             console.log('Image loaded successfully - data sent to Google Sheets');
-           };
-           img.onerror = () => {
-             console.log('Image failed to load - possible error sending data');
-           };
+      // Создаем невидимый img тег для отправки данных
+      const img = new Image();
+      const fullUrl = `${GOOGLE_SCRIPT_URL}?${urlParams.toString()}`;
+      console.log('Sending to Google Apps Script:', fullUrl);
+      img.src = fullUrl;
+      
+      // Добавляем обработчики для отслеживания успеха/ошибки
+      img.onload = () => {
+        console.log('Image loaded successfully - data sent to Google Sheets');
+      };
+      img.onerror = () => {
+        console.log('Image failed to load - possible error sending data');
+      };
       
       // Создаем фиктивный response объект
       response = {
@@ -478,7 +478,7 @@ const handleSubmit = async () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
     }
-    // На продакшене с no-cors мы не можем проверить статус, но если запрос прошел, считаем успешным
+    // На продакшене с img тегом мы не можем проверить статус, но если запрос прошел, считаем успешным
 
     // Формируем сообщение об успехе с маскированным названием компании
     const maskedName = maskCompanyNameForSuccess(form.companyName);

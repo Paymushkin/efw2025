@@ -158,6 +158,7 @@ const menuLinks = [
   { name: 'AWARDS', href: 'https://deluxebeauty.world/', id: 'awards' },
   { name: 'OFFER', href: '/offer', id: 'offer' },
   { name: 'WIDGET GUIDE', href: '/widget', id: 'widget-guide' },
+  { name: 'AI CONTEST', href: '/EFW_AICONTEST', id: 'ai-contest' },
   { name: 'FAQ', href: '/faq', id: 'faq' },
   // { name: 'TEAM', href: '/team', id: 'team' },
   { name: 'GALLERY', href: '/gallery', id: 'gallery' },

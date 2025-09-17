@@ -32,6 +32,8 @@ interface _GlobalComponents {
     'PhotoGallery': typeof import("../components/PhotoGallery.vue")['default']
     'PhotographerBlock': typeof import("../components/PhotographerBlock.vue")['default']
     'ProgramSection': typeof import("../components/ProgramSection.vue")['default']
+    'ReelsCarousel': typeof import("../components/ReelsCarousel.vue")['default']
+    'ReelsVideoCarousel': typeof import("../components/ReelsVideoCarousel.vue")['default']
     'SponsorsSection': typeof import("../components/SponsorsSection.vue")['default']
     'StationSection': typeof import("../components/StationSection.vue")['default']
     'StatisticsSection': typeof import("../components/StatisticsSection.vue")['default']
@@ -98,6 +100,8 @@ interface _GlobalComponents {
     'LazyPhotoGallery': LazyComponent<typeof import("../components/PhotoGallery.vue")['default']>
     'LazyPhotographerBlock': LazyComponent<typeof import("../components/PhotographerBlock.vue")['default']>
     'LazyProgramSection': LazyComponent<typeof import("../components/ProgramSection.vue")['default']>
+    'LazyReelsCarousel': LazyComponent<typeof import("../components/ReelsCarousel.vue")['default']>
+    'LazyReelsVideoCarousel': LazyComponent<typeof import("../components/ReelsVideoCarousel.vue")['default']>
     'LazySponsorsSection': LazyComponent<typeof import("../components/SponsorsSection.vue")['default']>
     'LazyStationSection': LazyComponent<typeof import("../components/StationSection.vue")['default']>
     'LazyStatisticsSection': LazyComponent<typeof import("../components/StatisticsSection.vue")['default']>
@@ -170,6 +174,8 @@ export const NewProgramSection: typeof import("../components/NewProgramSection.v
 export const PhotoGallery: typeof import("../components/PhotoGallery.vue")['default']
 export const PhotographerBlock: typeof import("../components/PhotographerBlock.vue")['default']
 export const ProgramSection: typeof import("../components/ProgramSection.vue")['default']
+export const ReelsCarousel: typeof import("../components/ReelsCarousel.vue")['default']
+export const ReelsVideoCarousel: typeof import("../components/ReelsVideoCarousel.vue")['default']
 export const SponsorsSection: typeof import("../components/SponsorsSection.vue")['default']
 export const StationSection: typeof import("../components/StationSection.vue")['default']
 export const StatisticsSection: typeof import("../components/StatisticsSection.vue")['default']
@@ -236,6 +242,8 @@ export const LazyNewProgramSection: LazyComponent<typeof import("../components/N
 export const LazyPhotoGallery: LazyComponent<typeof import("../components/PhotoGallery.vue")['default']>
 export const LazyPhotographerBlock: LazyComponent<typeof import("../components/PhotographerBlock.vue")['default']>
 export const LazyProgramSection: LazyComponent<typeof import("../components/ProgramSection.vue")['default']>
+export const LazyReelsCarousel: LazyComponent<typeof import("../components/ReelsCarousel.vue")['default']>
+export const LazyReelsVideoCarousel: LazyComponent<typeof import("../components/ReelsVideoCarousel.vue")['default']>
 export const LazySponsorsSection: LazyComponent<typeof import("../components/SponsorsSection.vue")['default']>
 export const LazyStationSection: LazyComponent<typeof import("../components/StationSection.vue")['default']>
 export const LazyStatisticsSection: LazyComponent<typeof import("../components/StatisticsSection.vue")['default']>

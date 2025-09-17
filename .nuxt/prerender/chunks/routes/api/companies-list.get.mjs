@@ -2,27 +2,58 @@ import { defineEventHandler } from 'file:///Users/paymei/Documents/Development/g
 
 const companiesList_get = defineEventHandler(async (event) => {
   try {
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxUuh8iEc5YE8k2q5e36DE66OpYPetpEOA0YdpQm0QwRXqqEcBDPcU5xP0RZI71R-bsbA/exec";
-    const response = await fetch(`${GOOGLE_SCRIPT_URL}?action=getCompanies`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" }
-    });
+    const SPREADSHEET_ID = "1jGEJIU-0Cwx151O0JczBkoaUCE48j5saab-R5eKzLfM";
+    const CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=0`;
+    const response = await fetch(CSV_URL);
     if (!response.ok) {
-      throw new Error(`Google Sheets API error: ${response.statusText}`);
+      throw new Error(`CSV export error: ${response.statusText}`);
     }
-    const result = await response.json();
-    console.log("Raw result from Google Sheets:", JSON.stringify(result, null, 2));
-    if (result.companies && result.companies.length > 0) {
-      console.log("First company:", JSON.stringify(result.companies[0], null, 2));
-      console.log("Status distribution:", result.companies.reduce((acc, company) => {
+    const csvText = await response.text();
+    const lines = csvText.split("\n");
+    const rows = lines.filter((line) => line.trim()).map((line) => {
+      const values = [];
+      let current = "";
+      let inQuotes = false;
+      for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === "," && !inQuotes) {
+          values.push(current.trim());
+          current = "";
+        } else {
+          current += char;
+        }
+      }
+      values.push(current.trim());
+      return values;
+    });
+    const companies = rows.map((row, index) => ({
+      timestamp: row[0] || "",
+      companyName: row[1] || "",
+      industry: row[2] || "",
+      name: row[3] || "",
+      email: row[4] || "",
+      phone: row[5] || "",
+      message: row[6] || "",
+      agreement1: row[7] || "",
+      agreement2: row[8] || "",
+      ipAddress: row[9] || "",
+      userAgent: row[10] || "",
+      status: row[11] || "WAITLIST"
+    })).filter((company) => company.companyName);
+    console.log("Companies from CSV:", companies.length);
+    if (companies.length > 0) {
+      console.log("First company:", JSON.stringify(companies[0], null, 2));
+      console.log("Status distribution:", companies.reduce((acc, company) => {
         const status = company.status || "no-status";
         acc[status] = (acc[status] || 0) + 1;
         return acc;
       }, {}));
     }
-    return { success: true, companies: result.companies || [] };
+    return { success: true, companies };
   } catch (error) {
-    console.error("Error fetching companies list:", error);
+    console.error("Error fetching companies from CSV:", error);
     return { success: true, companies: [], error: error.message };
   }
 });

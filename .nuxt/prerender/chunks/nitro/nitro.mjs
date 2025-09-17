@@ -641,7 +641,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "3b8c38d4-ca18-4e1e-a25c-03b76615506b",
+    "buildId": "254a6de7-c7e6-483b-85e9-4caf6a078841",
     "buildAssetsDir": "assets/",
     "cdnURL": ""
   },
@@ -1074,26 +1074,18 @@ const _4zfs95 = eventHandler((event) => {
 const _SxA8c9 = defineEventHandler(() => {});
 
 const _lazy_9p9Lv9 = () => import('../routes/api/companies-list.get.mjs');
-const _lazy_AGqT1R = () => import('../routes/api/faq-csv.get.mjs');
-const _lazy_4Ttcs1 = () => import('../routes/api/faq-json.get.mjs');
-const _lazy_blQCUI = () => import('../routes/api/faq-sheets-api.get.mjs');
 const _lazy_GGeB5s = () => import('../routes/api/faq.get.mjs');
+const _lazy_M4ZGzH = () => import('../routes/api/reels.get.mjs');
 const _lazy_q_OPyY = () => import('../routes/api/send-email.post.mjs');
-const _lazy_pGIUfG = () => import('../routes/api/waitlist-count-local.get.mjs');
-const _lazy_GWQ7oj = () => import('../routes/api/waitlist-local.post.mjs');
 const _lazy_McTnOU = () => import('../routes/api/waitlist.post.mjs');
 const _lazy_G5pgvr = () => import('../_/renderer.mjs');
 
 const handlers = [
   { route: '', handler: _4zfs95, lazy: false, middleware: true, method: undefined },
   { route: '/api/companies-list', handler: _lazy_9p9Lv9, lazy: true, middleware: false, method: "get" },
-  { route: '/api/faq-csv', handler: _lazy_AGqT1R, lazy: true, middleware: false, method: "get" },
-  { route: '/api/faq-json', handler: _lazy_4Ttcs1, lazy: true, middleware: false, method: "get" },
-  { route: '/api/faq-sheets-api', handler: _lazy_blQCUI, lazy: true, middleware: false, method: "get" },
   { route: '/api/faq', handler: _lazy_GGeB5s, lazy: true, middleware: false, method: "get" },
+  { route: '/api/reels', handler: _lazy_M4ZGzH, lazy: true, middleware: false, method: "get" },
   { route: '/api/send-email', handler: _lazy_q_OPyY, lazy: true, middleware: false, method: "post" },
-  { route: '/api/waitlist-count-local', handler: _lazy_pGIUfG, lazy: true, middleware: false, method: "get" },
-  { route: '/api/waitlist-local', handler: _lazy_GWQ7oj, lazy: true, middleware: false, method: "post" },
   { route: '/api/waitlist', handler: _lazy_McTnOU, lazy: true, middleware: false, method: "post" },
   { route: '/__nuxt_island/**', handler: _SxA8c9, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_G5pgvr, lazy: true, middleware: false, method: undefined }

@@ -25,74 +25,179 @@
       <!-- Секция 2: Информационные блоки -->
       <section class="md:mb-[76px] mb-[56px]">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Блок 1: Who can participate? -->
-        <div class="bg-white rounded-2xl p-6 shadow-lg">
-          <h3 class="text-base md:text-xl xl:text-2xl font-bold mb-4">Who can participate?</h3>
-          <p class="text-sm md:text-base xl:text-lg">
-            Anyone, anywhere in the world. You may use any AI tools of your choice to create Instagram Reels or Stories. You may use video editing tools too.
-          </p>
-        </div>
-
-        <!-- Блок 2: Requirements -->
-        <div class="bg-white rounded-2xl p-6 shadow-lg">
-          <h3 class="text-base md:text-xl xl:text-2xl font-bold mb-4">Requirements:</h3>
-          <ul class="text-sm md:text-base xl:text-lg space-y-2">
-            <li>• <strong>Format:</strong> 9:16 vertical video</li>
-            <li>• <strong>Duration:</strong> any length suitable for Instagram Reels, Stories</li>
-            <li>• <strong>Must include the event dates:</strong> 8–11&nbsp;November&nbsp;2025, Dubai&nbsp;+ Emirates&nbsp;Fashion&nbsp;Week (*Dr&nbsp;Sugiyama&nbsp;font)</li>
-            <li>• You may use looks and highlights from past Emirates Fashion Weeks (official materials available at <a href="https://emiratesfashionweeks.com/gallery" class="text-blue-600 underline" target="_blank">https://emiratesfashionweeks.com/gallery</a> / any designers looks)</li>
-          </ul>
           
-          <div class="mt-4">
-            <h4 class="text-sm md:text-base xl:text-lg font-semibold mb-2">Optional details & texts:</h4>
-            <ul class="text-sm md:text-base xl:text-lg space-y-1">
-              <li>• 14th&nbsp;Emirates&nbsp;Fashion&nbsp;Week</li>
-              <li>• Season&nbsp;SS&nbsp;2025/2026 (Spring&nbsp;Summer)</li>
-              <li>• Venue: Skylight&nbsp;Gallery&nbsp;- Dubai&nbsp;Media&nbsp;City</li>
-              <li>• 8-9&nbsp;November&nbsp;- 2&nbsp;days of Catwalk&nbsp;Runway&nbsp;Shows</li>
-              <li>• 10-11&nbsp;November&nbsp;- 2&nbsp;days of Pop-up&nbsp;Market (Beauty&nbsp;& Wellness&nbsp;services)</li>
-              <li>• Any content from emiratesfashionweeks.com</li>
+          <!-- Блок 1: Who can participate? -->
+          <div class="bg-white rounded-2xl p-6 shadow-lg">
+            <h3 class="text-base md:text-xl xl:text-2xl font-bold mb-4">Who can participate</h3>
+            <p class="text-sm md:text-base xl:text-lg mb-4">
+              Anyone, anywhere. Use <strong>any AI tools</strong> to create <strong>Instagram Reels/Stories</strong> (video-editing allowed).
+            </p>
+            
+            <h4 class="text-sm md:text-base xl:text-lg font-semibold mb-2"><strong>Requirements</strong></h4>
+            <ul class="text-sm md:text-base xl:text-lg space-y-2">
+              <li>• <strong>Format:</strong> 9:16 vertical</li>
+              <li>• <strong>Duration:</strong> any for Reels/Stories</li>
+              <li>• <strong>Must include date & EFW brand:</strong> <strong>8–11&nbsp;November&nbsp;2025, Dubai&nbsp;+ Emirates&nbsp;Fashion&nbsp;Week</strong> (Dr&nbsp;Sugiyama&nbsp;preferred)</li>
+            </ul>
+          </div>
+
+          <!-- Блок 2: How to submit -->
+          <div class="bg-white rounded-2xl p-6 shadow-lg">
+            <h3 class="text-base md:text-xl xl:text-2xl font-bold mb-4">How to submit</h3>
+            <ol class="text-sm md:text-base xl:text-lg space-y-2 mb-4">
+              <li>1. Post your Reels/Story on your Instagram.</li>
+              <li>2. Tag <strong>@emirates_fashionweek</strong> (not a collaboration—just a tag).</li>
+              <li>3. Entries <strong>accepted only if reposted</strong> by our official account.</li>
+            </ol>
+            <div class="p-4 bg-yellow-50 border-l-4 border-yellow-400">
+              <h4 class="text-sm md:text-base xl:text-lg font-semibold text-yellow-800 mb-2"><strong>Fake Account Alert</strong></h4>
+              <p class="text-sm md:text-base xl:text-lg text-yellow-700">
+                We detected a <strong>fake account</strong> using our name and unclear activity. Tag <strong>only</strong> the official: <strong>@emirates_fashionweek</strong> (black logo + blue verified sign).
+              </p>
+            </div>
+          </div>
+
+          <!-- Блок 3: Optional -->
+          <div class="bg-white rounded-2xl p-6 shadow-lg">
+            <h3 class="text-base md:text-xl xl:text-2xl font-bold mb-4">OPTIONAL</h3>
+            <ul class="text-sm md:text-base xl:text-lg space-y-2">
+              <li>• May use past EFW looks/highlights <a href="https://emiratesfashionweeks.com/gallery" class="text-blue-600 underline" target="_blank">emiratesfashionweeks.com/gallery</a> and designers' looks.</li>
+              <li>• May use program note: <strong>8–9&nbsp;Nov</strong> Catwalk&nbsp;Runway · <strong>10–11&nbsp;Nov</strong> Pop-up&nbsp;Market (Beauty&nbsp;& Wellness).</li>
+              <li>• <strong>Face of EFW:</strong> you may use faces listed in the authorized pool; the list will expand over time.</li>
+              <li>• <strong>Reference assets below:</strong> venue/location photos and Faces of EFW images are provided as <strong>optional</strong> references. <strong>You do not have to use any or all</strong> of them — your creativity is not restricted.</li>
+            </ul>
+          </div>
+
+          <!-- Блок 4: Prizes -->
+          <div class="bg-white rounded-2xl p-6 shadow-lg">
+            <h3 class="text-base md:text-xl xl:text-2xl font-bold mb-4">Prizes (Prize Stack)</h3>
+            <p class="text-sm md:text-base xl:text-lg mb-3">Winners may receive:</p>
+            <ul class="text-sm md:text-base xl:text-lg space-y-2">
+              <li>• <strong>Contract</strong> for ongoing AI ads with Emirates Fashion Week.</li>
+              <li>• <strong>Annual AI-tool fee coverage:</strong> $500 / $200 / $100.</li>
+              <li>• <strong>Official recommendation letters</strong> confirming use in EFW media.</li>
+              <li>• <strong>Potential paid contracts</strong> with participating designers (up to <strong>40</strong>) for AI ads of their looks.</li>
+              <li>• <strong>Screening</strong> on giant LED screens during Fashion Week.</li>
+              <li>• <strong>LinkedIn-ready badge</strong> confirming participation in the EFW campaign.</li>
+              <li>• <strong>Featured website gallery</strong> with credits and links.</li>
             </ul>
           </div>
         </div>
-
-        <!-- Блок 3: How to submit -->
-        <div class="bg-white rounded-2xl p-6 shadow-lg">
-          <h3 class="text-base md:text-xl xl:text-2xl font-bold mb-4">How to submit:</h3>
-          <ol class="text-sm md:text-base xl:text-lg space-y-2">
-            <li>1. Post your Reel/Story on your own Instagram account.</li>
-            <li>2. Tag our official account <strong>@emirates_fashionweek</strong> (not&nbsp;as&nbsp;collaboration, just&nbsp;as&nbsp;a&nbsp;tag).</li>
-            <li>3. Only entries reposted by our official account are considered accepted into the contest.</li>
-          </ol>
-          
-          <div class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-400">
-            <p class="text-sm md:text-base xl:text-lg font-semibold text-yellow-800">⚠️ Important Notice – Fake Account Alert</p>
-            <p class="text-sm md:text-base xl:text-lg text-yellow-700 mt-1">
-              We have discovered a fake Instagram account operating under our name and engaging in unclear activities. 
-              Please be very careful and ensure you are tagging the only official Instagram: <strong>@emirates_fashionweek</strong> (black&nbsp;logo).
-              Official website: <a href="https://emiratesfashionweeks.com" class="underline" target="_blank">emiratesfashionweeks.com</a>
-            </p>
-          </div>
-        </div>
-
-        <!-- Блок 4: Prize Stack -->
-        <div class="bg-white rounded-2xl p-6 shadow-lg">
-          <h3 class="text-base md:text-xl xl:text-2xl font-bold mb-4">Prize Stack</h3>
-          <p class="text-sm md:text-base xl:text-lg mb-3">Winners receive a prize stack that may include:</p>
-          <ul class="text-sm md:text-base xl:text-lg space-y-2">
-            <li>• A contract for ongoing AI advertising work with Emirates Fashion Week.</li>
-            <li>• Coverage of annual subscription fees for your chosen AI tools: $500, $200, or&nbsp;$100&nbsp;tiers.</li>
-            <li>• Official recommendation letters confirming your work was used in Emirates&nbsp;Fashion&nbsp;Week's media&nbsp;campaign.</li>
-            <li>• An official LinkedIn-ready badge confirming participation in the EFW advertising&nbsp;campaign.</li>
-            <li>• Potential paid contract with participating designers (up&nbsp;to&nbsp;40&nbsp;designers) to create AI&nbsp;ads for their looks&nbsp;campaigns.</li>
-            <li>• Screening of selected works on the giant LED&nbsp;screens during Fashion&nbsp;Week&nbsp;days, in&nbsp;front of the full EFW&nbsp;audience.</li>
-            <li>• A featured section on our website showcasing selected works with credits and links to the creator.</li>
-          </ul>
-        </div>
-        </div>
       </section>
 
-      <!-- Секция 3: Галерея изображений -->
+      <!-- Секция 3: Reels -->
+      <section class="md:mb-[76px] mb-[56px]">
+        
+        <!-- Instagram Reels из Google Sheets -->
+         <div v-if="instagramReels.length > 0" >
+          <h2 class="text-2xl md:text-3xl font-bold text-left mb-8">Reels</h2>
+           
+           <!-- Мобильная версия: горизонтальный скролл -->
+           <div class="lg:hidden">
+             <div class="flex overflow-x-auto hide-scrollbar -mx-4 px-4 gap-2">
+               <div 
+                 v-for="(reel, index) in instagramReels" 
+                 :key="index"
+                 class="flex-shrink-0"
+               >
+                 <div class="bg-white rounded-2xl h-[500px] flex flex-col">
+                   <!-- Instagram Embed 9:16 -->
+                   <div class="flex-1 flex items-center justify-center">
+                     <blockquote 
+                       class="instagram-media" 
+                       :data-instgrm-permalink="reel" 
+                       data-instgrm-version="14" 
+                       style="background:#FFF; border:0; border-radius:12px; margin: 0; padding:0; width:100%; height:400px;"
+                     >
+                       <div style="padding:0; height:100%; display:flex; align-items:center; justify-content:center;">
+                         <a 
+                           :href="reel" 
+                           style="background:#FFFFFF; line-height:0; padding:0; text-align:center; text-decoration:none; width:100%; height:100%; display:flex; align-items:center; justify-content:center;" 
+                           target="_blank"
+                         >
+                         </a>
+                       </div>
+                     </blockquote>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+
+           <!-- Десктопная версия: карусель -->
+           <div class="hidden lg:block relative">
+             <!-- Контейнер карусели -->
+             <div class="overflow-hidden">
+               <div 
+                 class="flex transition-transform duration-500 ease-in-out"
+                 :style="{ transform: `translateX(-${currentReelIndex * (100 / visibleReels)})` }"
+               >
+                 <div 
+                   v-for="(reel, index) in instagramReels" 
+                   :key="index"
+                   class="flex-shrink-0"
+                   :style="{ width: `${100 / visibleReels}%` }"
+                 >
+                     <div class="bg-white rounded-2xl p-4 mx-4 flex flex-col h-[600px]">
+                       <!-- Instagram Embed 9:16 -->
+                       <div class="flex-1 flex items-center justify-center">
+                         <blockquote 
+                           class="instagram-media" 
+                           :data-instgrm-permalink="reel" 
+                           data-instgrm-version="14" 
+                           style="background:#FFF; border:0; border-radius:12px; margin: 0; padding:0; width:100%; max-width:320px; height:500px;"
+                         >
+                           <div style="padding:0; height:100%; display:flex; align-items:center; justify-content:center;">
+                             <a 
+                               :href="reel" 
+                               style="background:#FFFFFF; line-height:0; padding:0; text-align:center; text-decoration:none; width:100%; height:100%; display:flex; align-items:center; justify-content:center;" 
+                               target="_blank"
+                             >
+                             </a>
+                           </div>
+                         </blockquote>
+                       </div>
+                     </div>
+                 </div>
+               </div>
+             </div>
+
+             <!-- Навигационные стрелки -->
+             <button 
+               v-if="instagramReels.length > visibleReels"
+               @click="prevReel"
+               class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white/80 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-200 z-10"
+             >
+               <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+               </svg>
+             </button>
+             
+             <button 
+               v-if="instagramReels.length > visibleReels"
+               @click="nextReel"
+               class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white/80 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-200 z-10"
+             >
+               <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+               </svg>
+             </button>
+
+             <!-- Индикаторы -->
+             <div v-if="instagramReels.length > visibleReels" class="flex justify-center mt-6 space-x-2">
+               <button
+                 v-for="(page, index) in totalPages"
+                 :key="index"
+                 @click="goToPage(index)"
+                 class="w-3 h-3 rounded-full transition-all duration-200"
+                 :class="index === currentPage ? 'bg-gray-800' : 'bg-gray-300 hover:bg-gray-400'"
+               ></button>
+             </div>
+           </div>
+         </div>
+      </section>
+
+      <!-- Секция 4: Галерея изображений -->
       <section class="md:mb-[76px] mb-[56px]">
         <h2 class="text-2xl md:text-3xl font-bold text-left mb-8">Optional Reference Gallery</h2>
         
@@ -118,24 +223,26 @@
         </div>
 
         <!-- Десктопная версия - masonry сетка -->
-        <div class="hidden sm:block columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-4 space-y-4">
-          <div 
-            v-for="(image, index) in galleryImages" 
-            :key="index"
-            class="break-inside-avoid mb-4 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group"
-          >
-            <img 
-              :src="image" 
-              :alt="`AI Contest Photo ${index + 1}`"
-              class="w-full h-auto object-contain hover:scale-105 transition-transform duration-300 cursor-pointer"
-              @click="openImageModal(image)"
+        <div class="hidden sm:block">
+          <div class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
+            <div 
+              v-for="(image, index) in galleryImages" 
+              :key="index"
+              class="break-inside-avoid"
             >
+              <img 
+                :src="image" 
+                :alt="`AI Contest Photo ${index + 1}`"
+                class="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                @click="openImageModal(image)"
+              >
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Секция 4: Скачивание шрифта -->
-      <section class="mb-8">
+      <!-- Секция 5: Скачивание шрифта -->
+      <section class="mb-8 md:mb-[76px] mb-[56px]">
         <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8 text-center">
         <h2 class="text-2xl md:text-3xl font-bold mb-4">Download Font</h2>
         <p class="text-base md:text-lg mb-6 text-gray-700">
@@ -151,6 +258,29 @@
           </svg>
           Download
         </a>
+        </div>
+      </section>
+
+      <!-- Секция 6: Face of EFW -->
+      <section class="md:mb-[76px] mb-[56px]">
+        <h2 class="text-2xl md:text-3xl font-bold text-left mb-8">Face of EFW</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white rounded-2xl p-6 shadow-lg">
+            <img 
+              src="https://storage.yandexcloud.net/videos-meyou/efw2025/ai/item-1.jpg" 
+              alt="Face of EFW 1"
+              class="w-full h-auto rounded-lg object-cover"
+            >
+          </div>
+          
+          <div class="bg-white rounded-2xl p-6 shadow-lg">
+            <img 
+              src="https://storage.yandexcloud.net/videos-meyou/efw2025/ai/item-1.jpg" 
+              alt="Face of EFW 2"
+              class="w-full h-auto rounded-lg object-cover"
+            >
+          </div>
         </div>
       </section>
     </div>
@@ -181,7 +311,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import AppSeo from '@/components/AppSeo.vue'
 
 definePageMeta({
@@ -191,11 +321,130 @@ definePageMeta({
 // Генерируем массив URL изображений от photo-ai-1.png до photo-ai-19.png
 const galleryImages = ref([])
 const selectedImage = ref(null)
+const instagramReels = ref([])
+const currentReelIndex = ref(0)
+const visibleReels = ref(1)
+const currentPage = ref(0)
+
 
 // Создаем массив URL для галереи
 for (let i = 1; i <= 19; i++) {
   galleryImages.value.push(`https://storage.yandexcloud.net/videos-meyou/efw2025/ai/photo-ai-${i}.png`)
 }
+
+// Computed свойства для карусели
+const totalPages = computed(() => {
+  return Math.ceil(instagramReels.value.length / visibleReels.value)
+})
+
+// Функция для определения количества видимых Reels в зависимости от размера экрана (только для десктопа)
+const updateVisibleReels = () => {
+  if (typeof window !== 'undefined') {
+    const width = window.innerWidth
+    if (width >= 1024) { // lg и выше - десктоп
+      if (width >= 1280) { // xl
+        visibleReels.value = 3
+      } else { // lg
+        visibleReels.value = 2
+      }
+    } else {
+      // Для мобильных и планшетов карусель не используется
+      visibleReels.value = 1
+    }
+  }
+}
+
+// Функция для загрузки Instagram Reels из Google Sheets
+const fetchInstagramReels = async () => {
+  try {
+    // Определяем, работаем ли мы локально или на продакшене
+    const isLocal = window.location.hostname.includes('localhost') ||
+                   window.location.hostname.includes('127.0.0.1') ||
+                   window.location.hostname.includes('0.0.0.0');
+
+    if (isLocal) {
+      // Локально используем API
+      const response = await $fetch('/api/reels', {
+        query: { _t: Date.now() } // Добавляем timestamp для предотвращения кеширования
+      });
+      if (response.success) {
+        // Фильтруем только Instagram ссылки
+        instagramReels.value = (response.videos || [])
+          .filter(url => url.includes('instagram.com/reel/'))
+          .filter((url, index, array) => array.indexOf(url) === index); // Убираем дубликаты
+        
+        console.log('Instagram Reels loaded from API:', instagramReels.value);
+      }
+    } else {
+      // На продакшене (GitHub Pages) используем прямые запросы к Google Sheets
+      const SPREADSHEET_ID = '12hBjIa1dMRgX7nVGBMvoAK_1d3Nxl4K-Gi0z9TIB4dQ';
+      const CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=0`;
+
+      const response = await fetch(CSV_URL);
+
+      if (!response.ok) {
+        throw new Error(`CSV export error: ${response.statusText}`);
+      }
+
+      const csvText = await response.text();
+
+      // Парсим CSV правильно (учитывая запятые в кавычках)
+      const lines = csvText.split('\n');
+      const rows = lines.filter(line => line.trim()).map(line => {
+        const values = [];
+        let current = '';
+        let inQuotes = false;
+
+        for (let i = 0; i < line.length; i++) {
+          const char = line[i];
+
+          if (char === '"') {
+            inQuotes = !inQuotes;
+          } else if (char === ',' && !inQuotes) {
+            values.push(current.trim());
+            current = '';
+          } else {
+            current += char;
+          }
+        }
+
+        values.push(current.trim());
+        return values;
+      });
+
+      // Преобразуем в массив ссылок на Instagram Reels
+      const allUrls = rows
+        .map(row => row[0]?.trim()) // Берем первую колонку
+        .filter(url => url && url.startsWith('http')) // Фильтруем только валидные URL
+        .map(url => url.replace(/^"(.*)"$/, '$1')) // Убираем кавычки если есть
+        .filter((url, index, array) => array.indexOf(url) === index); // Убираем дубликаты
+
+      // Фильтруем только Instagram Reels
+      instagramReels.value = allUrls.filter(url => url.includes('instagram.com/reel/'));
+    }
+    
+    console.log('Instagram Reels loaded:', instagramReels.value);
+    
+    // Принудительно обновляем embed после загрузки данных
+    setTimeout(() => {
+      if (window.instgrm && window.instgrm.Embeds) {
+        console.log('Processing Instagram embeds...');
+        window.instgrm.Embeds.process();
+      } else {
+        console.log('Instagram script not ready, retrying...');
+        setTimeout(() => {
+          if (window.instgrm && window.instgrm.Embeds) {
+            window.instgrm.Embeds.process();
+          }
+        }, 1000);
+      }
+    }, 500);
+    
+  } catch (error) {
+    console.error('Error fetching Instagram reels:', error);
+    instagramReels.value = [];
+  }
+};
 
 // Функции для модального окна
 const openImageModal = (imageSrc) => {
@@ -205,6 +454,90 @@ const openImageModal = (imageSrc) => {
 const closeImageModal = () => {
   selectedImage.value = null
 }
+
+// Функции для управления каруселью Instagram Reels
+const nextReel = () => {
+  const maxIndex = Math.max(0, instagramReels.value.length - visibleReels.value)
+  console.log('nextReel:', { currentReelIndex: currentReelIndex.value, maxIndex, visibleReels: visibleReels.value, totalReels: instagramReels.value.length })
+  
+  if (currentReelIndex.value < maxIndex) {
+    currentReelIndex.value++
+  } else {
+    currentReelIndex.value = 0 // Зацикливаем на первый элемент
+  }
+  currentPage.value = Math.floor(currentReelIndex.value / visibleReels.value)
+  console.log('nextReel result:', { currentReelIndex: currentReelIndex.value, currentPage: currentPage.value })
+}
+
+const prevReel = () => {
+  const maxIndex = Math.max(0, instagramReels.value.length - visibleReels.value)
+  if (currentReelIndex.value > 0) {
+    currentReelIndex.value--
+  } else {
+    currentReelIndex.value = maxIndex // Зацикливаем на последний элемент
+  }
+  currentPage.value = Math.floor(currentReelIndex.value / visibleReels.value)
+}
+
+const goToPage = (pageIndex) => {
+  currentPage.value = pageIndex
+  currentReelIndex.value = pageIndex * visibleReels.value
+}
+
+
+
+// Watcher для обработки embed при изменении данных
+watch(instagramReels, async (newReels) => {
+  if (newReels.length > 0) {
+    await nextTick();
+    setTimeout(() => {
+      if (window.instgrm && window.instgrm.Embeds) {
+        console.log('Processing Instagram embeds after data change...');
+        window.instgrm.Embeds.process();
+      }
+      
+    }, 100);
+  }
+}, { deep: true });
+
+
+// Загружаем Instagram Reels при монтировании компонента
+onMounted(() => {
+  fetchInstagramReels();
+  
+  // Инициализируем количество видимых Reels
+  updateVisibleReels();
+  
+  // Добавляем обработчик изменения размера окна
+  window.addEventListener('resize', updateVisibleReels);
+  
+  
+  // Загружаем Instagram embed скрипт
+  const script = document.createElement('script');
+  script.src = '//www.instagram.com/embed.js';
+  script.async = true;
+  script.onload = () => {
+    console.log('Instagram embed script loaded');
+    // Принудительно обновляем embed после загрузки скрипта
+    if (window.instgrm) {
+      window.instgrm.Embeds.process();
+    }
+    
+  };
+  script.onerror = () => {
+    console.error('Failed to load Instagram embed script');
+  };
+  document.head.appendChild(script);
+  
+});
+
+// Очищаем обработчики при размонтировании компонента
+onUnmounted(() => {
+  // Удаляем обработчик изменения размера окна
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('resize', updateVisibleReels);
+  }
+});
 </script>
 
 <style scoped>
@@ -216,5 +549,9 @@ const closeImageModal = () => {
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;  /* Safari and Chrome */
+}
+
+.Header {
+  display: none!important;
 }
 </style>

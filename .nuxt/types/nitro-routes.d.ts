@@ -9,6 +9,9 @@ declare module "nitropack/types" {
     '/api/faq': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/faq.get').default>>>>
     }
+    '/api/reels': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/reels.get').default>>>>
+    }
     '/api/send-email': {
       'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/send-email.post').default>>>>
     }
