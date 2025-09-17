@@ -2,19 +2,31 @@ import { ref, readonly } from 'vue'
 
 // Глобальное состояние для счетчика компаний
 const companiesCount = ref(0)
+const trialWaitlistCount = ref(0)
 
 export const useCompaniesCount = () => {
   const updateCompaniesCount = (count) => {
     companiesCount.value = count
   }
 
+  const updateTrialWaitlistCount = (count) => {
+    trialWaitlistCount.value = count
+  }
+
   const getCompaniesCount = () => {
     return companiesCount.value
   }
 
+  const getTrialWaitlistCount = () => {
+    return trialWaitlistCount.value
+  }
+
   return {
     companiesCount: readonly(companiesCount),
+    trialWaitlistCount: readonly(trialWaitlistCount),
     updateCompaniesCount,
-    getCompaniesCount
+    updateTrialWaitlistCount,
+    getCompaniesCount,
+    getTrialWaitlistCount
   }
 }

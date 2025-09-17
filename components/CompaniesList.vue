@@ -54,12 +54,16 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
+import { useCompaniesCount } from '~/composables/useCompaniesCount'
 
 const companies = ref([])
 const loading = ref(true)
 const error = ref('')
 const newlyAddedCompany = ref(null)
 const autoRefreshInterval = ref(null)
+
+// Получаем глобальные счетчики
+const { updateCompaniesCount, updateTrialWaitlistCount } = useCompaniesCount()
 
 // Функция для маскировки названия компании
 const maskCompanyName = (name) => {
@@ -126,18 +130,18 @@ const isNewCompany = (company) => {
 // Функция для фильтрации waitlist компаний
 const filterWaitlistCompanies = (companiesList) => {
   console.log('CompaniesList: filtering companies:', companiesList.length)
-  console.log('CompaniesList: first company:', companiesList[0])
+  console.log('CompaniesList: all companies with statuses:', companiesList.map(c => ({ name: c.companyName, status: c.status })))
   
   const waitlist = companiesList.filter(company => {
-    // Показываем компании без статуса или со статусом waitlist
+    // Показываем только компании с пустым статусом или со статусом WAITLIST
     return !company.status || 
-           company.status === 'waitlist' || 
-           company.status === 'Waitlist' ||
-           company.status === ''
+           company.status === '' ||
+           company.status === 'WAITLIST' ||
+           company.status === 'waitlist'
   })
   
   console.log('CompaniesList: waitlist companies:', waitlist.length)
-  console.log('CompaniesList: waitlist companies:', waitlist)
+  console.log('CompaniesList: waitlist companies details:', waitlist.map(c => ({ name: c.companyName, status: c.status })))
   
   return waitlist
 }
@@ -156,7 +160,9 @@ const fetchCompanies = async () => {
     if (isLocal) {
       // Локально используем API
       try {
-        const response = await $fetch('/api/companies-list')
+        const response = await $fetch('/api/companies-list', {
+          query: { _t: Date.now() } // Добавляем timestamp для предотвращения кеширования
+        })
         if (response.success) {
           // Фильтруем только waitlist компании
           const waitlistCompanies = filterWaitlistCompanies(response.companies)
@@ -184,6 +190,7 @@ const fetchCompanies = async () => {
           
           companies.value = sortedCompanies
           emit('companies-count-updated', companies.value.length)
+          updateTrialWaitlistCount(companies.value.length)
         } else {
           error.value = response.error || 'Ошибка загрузки данных'
         }
@@ -192,25 +199,21 @@ const fetchCompanies = async () => {
         // Если API не работает, показываем пустой список
         companies.value = []
         emit('companies-count-updated', 0)
+        updateTrialWaitlistCount(0)
         error.value = 'Сервис временно недоступен'
       }
       loading.value = false
     } else {
       // На продакшене используем JSONP подход
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-9k6uo_l1HnNVUXBC3cmyEgtwb6EJBe7kRnbQ07QKlXLeNMk2QAQoKDUismUx1_DdlQ/exec'
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxUuh8iEc5YE8k2q5e36DE66OpYPetpEOA0YdpQm0QwRXqqEcBDPcU5xP0RZI71R-bsbA/exec'
       
       // Создаем callback функцию
       const callbackName = 'callback_companies_' + Date.now()
       window[callbackName] = (data) => {
         if (data && data.success) {
-          // Временно добавляем статусы для JSONP (пока Google Apps Script не исправлен)
-          const companiesWithStatus = data.companies.map((company, index) => ({
-            ...company,
-            status: company.status || (index < 3 ? 'approved' : 'waitlist')
-          }));
-          
+          // Используем статусы как есть из таблицы
           // Фильтруем только waitlist компании
-          const waitlistCompanies = filterWaitlistCompanies(companiesWithStatus)
+          const waitlistCompanies = filterWaitlistCompanies(data.companies)
           
           // Сортируем компании по дате (новые сверху)
           const sortedCompanies = waitlistCompanies.sort((a, b) => {
@@ -235,6 +238,7 @@ const fetchCompanies = async () => {
           
           companies.value = sortedCompanies
           emit('companies-count-updated', companies.value.length)
+          updateTrialWaitlistCount(companies.value.length)
         } else {
           // Если Google Apps Script не работает, используем тестовые данные
           console.log('Google Apps Script error, using test data');
@@ -255,6 +259,7 @@ const fetchCompanies = async () => {
           
           companies.value = testCompanies;
           emit('companies-count-updated', testCompanies.length);
+          updateTrialWaitlistCount(testCompanies.length);
         }
         loading.value = false
         delete window[callbackName]
@@ -263,7 +268,7 @@ const fetchCompanies = async () => {
       
       // Создаем script тег для JSONP
       const script = document.createElement('script')
-      script.src = `${GOOGLE_SCRIPT_URL}?action=getCompanies&callback=${callbackName}`
+      script.src = `${GOOGLE_SCRIPT_URL}?action=getCompanies&callback=${callbackName}&_t=${Date.now()}`
       document.head.appendChild(script)
     }
   } catch (err) {
@@ -277,20 +282,15 @@ const fetchCompanies = async () => {
 const autoRefresh = async () => {
   try {
     // Используем только JSONP подход (работает везде)
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-9k6uo_l1HnNVUXBC3cmyEgtwb6EJBe7kRnbQ07QKlXLeNMk2QAQoKDUismUx1_DdlQ/exec'
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwXeRReRGMr-ud3ZjY2btAGZkagSKRe0pXvCfLiC8K4mGSNfrIiQ6jOtw_c4h5uPzAiSw/exec'
     
     // Создаем callback функцию
     const callbackName = 'callback_companies_auto_' + Date.now()
     window[callbackName] = (data) => {
       if (data && data.success) {
-        // Временно добавляем статусы для JSONP (пока Google Apps Script не исправлен)
-        const companiesWithStatus = data.companies.map((company, index) => ({
-          ...company,
-          status: company.status || (index < 3 ? 'approved' : 'waitlist')
-        }));
-        
+        // Используем статусы как есть из таблицы
         // Фильтруем только waitlist компании
-        const waitlistCompanies = filterWaitlistCompanies(companiesWithStatus)
+        const waitlistCompanies = filterWaitlistCompanies(data.companies)
         
         // Сортируем компании по дате (новые сверху)
         const sortedCompanies = waitlistCompanies.sort((a, b) => {
@@ -315,6 +315,7 @@ const autoRefresh = async () => {
         
         companies.value = sortedCompanies
         emit('companies-count-updated', companies.value.length)
+        updateTrialWaitlistCount(companies.value.length)
       } else {
         // Если Google Apps Script не работает, используем тестовые данные
         console.log('Google Apps Script error in autoRefresh, using test data');
@@ -335,6 +336,7 @@ const autoRefresh = async () => {
         
         companies.value = testCompanies;
         emit('companies-count-updated', testCompanies.length);
+        updateTrialWaitlistCount(testCompanies.length);
       }
       delete window[callbackName]
       document.head.removeChild(script)
@@ -342,7 +344,7 @@ const autoRefresh = async () => {
     
     // Создаем script тег для JSONP
     const script = document.createElement('script')
-    script.src = `${GOOGLE_SCRIPT_URL}?action=getCompanies&callback=${callbackName}`
+      script.src = `${GOOGLE_SCRIPT_URL}?action=getCompanies&callback=${callbackName}&_t=${Date.now()}`
     document.head.appendChild(script)
   } catch (error) {
     console.error('Error during auto refresh:', error)
@@ -379,6 +381,7 @@ const emit = defineEmits(['companies-count-updated'])
 // Следим за изменением количества компаний
 watch(companies, (newCompanies) => {
   emit('companies-count-updated', newCompanies.length)
+  updateTrialWaitlistCount(newCompanies.length)
 }, { immediate: true })
 
 onMounted(() => {

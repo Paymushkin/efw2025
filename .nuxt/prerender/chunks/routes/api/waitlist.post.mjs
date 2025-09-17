@@ -17,7 +17,7 @@ const waitlist_post = defineEventHandler(async (event) => {
         statusMessage: "Missing required fields"
       });
     }
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz5uBhvvOPmM_8pO8zH54v6853vBSrDDPyPqWXrvYiZw1rwfGzSU_nOE2XoTms7yFLE5w/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxUuh8iEc5YE8k2q5e36DE66OpYPetpEOA0YdpQm0QwRXqqEcBDPcU5xP0RZI71R-bsbA/exec";
     const requestData = {
       companyName: body.companyName,
       industry: body.industry,
@@ -43,6 +43,7 @@ const waitlist_post = defineEventHandler(async (event) => {
     urlParams.append("agreement2", requestData.agreement2.toString());
     urlParams.append("timestamp", requestData.timestamp);
     urlParams.append("source", requestData.source);
+    urlParams.append("status", "WAITLIST");
     console.log("Sending GET request to:", `${GOOGLE_SCRIPT_URL}?${urlParams.toString()}`);
     const response = await fetch(`${GOOGLE_SCRIPT_URL}?${urlParams.toString()}`, {
       method: "GET",

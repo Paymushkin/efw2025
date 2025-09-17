@@ -122,19 +122,19 @@ export const NEW_PROGRAM_TABS = [
         description: `SATURDAY |  PRÊT-À-PORTER WOMEN'S & MEN'S COLLECTIONS SS 26`,
         details: `<strong class="mb-2 block">By Invitation Only</strong>
           <ul class="space-y-2 text-black">
-            <li>• NOURA COUTURE - UAE</li>
-            <li>• ANNET - RUSSIA</li>
-            <li>• LESNIKOVA DRESSES - RUSSIA</li>
-            <li>• SOLANA COUTURE - USA</li>
-            <li>• LORA COUTURE - AZERBAIJAN</li>
-            <li>• ETNO FRESH - RUSSIA</li>
-            <li>• BELIZE - GERMANY</li>
-            <li>• MOONSOUL - KIRGHIZIAN</li>
-            <li>• OLECIA ARKHIPOVA - RUSSIA</li>
-            <li>• MARIANNE MOORE</li>
-            <li>• IGARNITUR - POLAND</li>
-            <li>• HERBELIN - POLAND</li>
-            <li>• DEVU - POLAND</li>
+            <li>• N**** C******E - UAE</li>
+            <li>• A**** - RUSSIA</li>
+            <li>• L*******A D******S - RUSSIA</li>
+            <li>• S*****A C******E - USA</li>
+            <li>• L*** C******E - AZERBAIJAN</li>
+            <li>• E*** F**** - RUSSIA</li>
+            <li>• B*****E - GERMANY</li>
+            <li>• M*******L - KIRGHIZIAN</li>
+            <li>• O*****A A*******A - RUSSIA</li>
+            <li>• M*******E M****</li>
+            <li>• I*******R - POLAND</li>
+            <li>• H*******N - POLAND</li>
+            <li>• D*** - POLAND</li>
             <li>• K*********d /Germany/</li>
             <li>• O******a /Saudi Arabia/ *PENDING MUTUAL APPROVAL</li>
             <li>• D******a /Belarus/ *PENDING MUTUAL APPROVAL</li>
@@ -154,15 +154,15 @@ export const NEW_PROGRAM_TABS = [
          description: `SUNDAY |  PRÊT-À-PORTER WOMEN'S & MEN'S COLLECTIONS SS 26`,
          details: `<strong class="mb-2 block">By Invitation Only</strong>
            <ul class="space-y-2 text-black">
-             <li>• ALEXANDRA AMA CABINET - RUSSIA</li>
-             <li>• ARNI FASHION - USA/INDIAN</li>
-             <li>• RUBASHKA - RUSSIA</li>
-             <li>• SNIM - KAZAKHSTAN</li>
-             <li>• KIBOVSKAYA - RUSSIA</li>
-             <li>• FYOR - UAE</li>
-             <li>• POLINA TROPILLO - RUSSIA</li>
-             <li>• OLGA BOGDANOVA - RUSSIA</li>
-             <li>• ELENA ROMANOVA - RUSSIA</li>
+             <li>• A*******A A** C******T - RUSSIA</li>
+             <li>• A*** F*****N - USA/INDIAN</li>
+             <li>• R******A - RUSSIA</li>
+             <li>• S*** - KAZAKHSTAN</li>
+             <li>• K*******A - RUSSIA</li>
+             <li>• F*** - UAE</li>
+             <li>• P*****A T*******O - RUSSIA</li>
+             <li>• O*** B*******A - RUSSIA</li>
+             <li>• E**** R*******A - RUSSIA</li>
              <li>• B********a /Azerbaijan/ *PENDING MUTUAL APPROVAL</li>
              <li>• Z**n /Iraq/ *PENDING MUTUAL APPROVAL</li>
              <li>• S****s /Oman/ *PENDING MUTUAL APPROVAL</li>

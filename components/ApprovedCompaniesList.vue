@@ -115,15 +115,15 @@ const isNewCompany = (company) => {
 // Функция для фильтрации одобренных компаний
 const filterApprovedCompanies = (companiesList) => {
   console.log('ApprovedCompaniesList: filtering companies:', companiesList.length)
-  console.log('ApprovedCompaniesList: first company:', companiesList[0])
+  console.log('ApprovedCompaniesList: all companies with statuses:', companiesList.map(c => ({ name: c.companyName, status: c.status })))
   
   const approved = companiesList.filter(company => {
-    // Показываем только компании со статусом approved
-    return company.status === 'approved' || company.status === 'Approved'
+    // Показываем только компании со статусом APPROVED
+    return company.status === 'APPROVED' || company.status === 'approved' || company.status === 'Approved'
   })
   
   console.log('ApprovedCompaniesList: approved companies:', approved.length)
-  console.log('ApprovedCompaniesList: approved companies:', approved)
+  console.log('ApprovedCompaniesList: approved companies details:', approved.map(c => ({ name: c.companyName, status: c.status })))
   
   return approved
 }
@@ -142,7 +142,9 @@ const fetchCompanies = async () => {
     if (isLocal) {
       // Локально используем API
       try {
-        const response = await $fetch('/api/companies-list')
+        const response = await $fetch('/api/companies-list', {
+          query: { _t: Date.now() } // Добавляем timestamp для предотвращения кеширования
+        })
         if (response.success) {
           // Фильтруем только одобренные компании
           const approvedCompanies = filterApprovedCompanies(response.companies)
@@ -180,19 +182,14 @@ const fetchCompanies = async () => {
       loading.value = false
     } else {
       // На продакшене используем JSONP подход
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-9k6uo_l1HnNVUXBC3cmyEgtwb6EJBe7kRnbQ07QKlXLeNMk2QAQoKDUismUx1_DdlQ/exec'
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxUuh8iEc5YE8k2q5e36DE66OpYPetpEOA0YdpQm0QwRXqqEcBDPcU5xP0RZI71R-bsbA/exec'
       const callbackName = 'callback_approved_companies_' + Date.now()
       
       window[callbackName] = (data) => {
         if (data && data.success) {
-          // Временно добавляем статусы для JSONP (пока Google Apps Script не исправлен)
-          const companiesWithStatus = data.companies.map((company, index) => ({
-            ...company,
-            status: company.status || (index < 3 ? 'approved' : 'waitlist')
-          }));
-          
+          // Используем статусы как есть из таблицы
           // Фильтруем только одобренные компании
-          const approvedCompanies = filterApprovedCompanies(companiesWithStatus)
+          const approvedCompanies = filterApprovedCompanies(data.companies)
           
           // Сортируем компании по дате (новые сверху)
           const sortedCompanies = approvedCompanies.sort((a, b) => {
@@ -223,7 +220,7 @@ const fetchCompanies = async () => {
       }
       
       const script = document.createElement('script')
-      script.src = `${GOOGLE_SCRIPT_URL}?action=getCompanies&callback=${callbackName}`
+      script.src = `${GOOGLE_SCRIPT_URL}?action=getCompanies&callback=${callbackName}&_t=${Date.now()}`
       document.head.appendChild(script)
     }
   } catch (err) {
@@ -244,7 +241,9 @@ const autoRefresh = async () => {
     if (isLocal) {
       // Локально используем API
       try {
-        const response = await $fetch('/api/companies-list')
+        const response = await $fetch('/api/companies-list', {
+          query: { _t: Date.now() } // Добавляем timestamp для предотвращения кеширования
+        })
         if (response.success) {
           const approvedCompanies = filterApprovedCompanies(response.companies)
           const sortedCompanies = approvedCompanies.sort((a, b) => {
@@ -259,18 +258,13 @@ const autoRefresh = async () => {
       }
     } else {
       // На продакшене используем JSONP подход
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-9k6uo_l1HnNVUXBC3cmyEgtwb6EJBe7kRnbQ07QKlXLeNMk2QAQoKDUismUx1_DdlQ/exec'
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxUuh8iEc5YE8k2q5e36DE66OpYPetpEOA0YdpQm0QwRXqqEcBDPcU5xP0RZI71R-bsbA/exec'
       const callbackName = 'callback_approved_auto_' + Date.now()
       
       window[callbackName] = (data) => {
         if (data && data.success) {
-          // Временно добавляем статусы для JSONP (пока Google Apps Script не исправлен)
-          const companiesWithStatus = data.companies.map((company, index) => ({
-            ...company,
-            status: company.status || (index < 3 ? 'approved' : 'waitlist')
-          }));
-          
-          const approvedCompanies = filterApprovedCompanies(companiesWithStatus)
+          // Используем статусы как есть из таблицы
+          const approvedCompanies = filterApprovedCompanies(data.companies)
           const sortedCompanies = approvedCompanies.sort((a, b) => {
             return new Date(b.timestamp) - new Date(a.timestamp)
           })
@@ -282,7 +276,7 @@ const autoRefresh = async () => {
       }
       
       const script = document.createElement('script')
-      script.src = `${GOOGLE_SCRIPT_URL}?action=getCompanies&callback=${callbackName}`
+      script.src = `${GOOGLE_SCRIPT_URL}?action=getCompanies&callback=${callbackName}&_t=${Date.now()}`
       document.head.appendChild(script)
     }
   } catch (err) {

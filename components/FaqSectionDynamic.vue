@@ -13,18 +13,7 @@
       </template>
     </h2>
     
-    <!-- Loading state -->
-    <div v-if="loading" class="text-center py-8">
-      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-black"></div>
-    </div>
-    
-    <!-- Error state -->
-    <div v-else-if="error" class="text-center py-8">
-      <p class="text-red-600">Ошибка загрузки FAQ: {{ error }}</p>
-    </div>
-    
-    <!-- FAQ content -->
-    <div v-else class="flex flex-col gap-4">
+    <div class="flex flex-col gap-4">
       <div
         v-for="item in displayedItems"
         :key="item.id"
@@ -56,14 +45,25 @@
             <div 
               v-show="openPanels[item.id]"
               class="p-4 md:p-6 text-sm md:text-base xl:text-lg text-black-70 border-t border-black origin-top"
-              v-html="formatAnswer(item.answer)"
             >
+              {{ item.answer }}
             </div>
           </transition>
         </div>
       </div>
     </div>
 
+    <div v-if="!standalone && faqItems.length > displayLimit" class="mt-8 text-center">
+      <NuxtLink 
+        to="/faq" 
+        class="inline-flex items-center text-base hover:text-gray-600 transition-colors"
+      >
+        View all questions
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </NuxtLink>
+    </div>
   </section>
 </template>
 
@@ -80,178 +80,159 @@ const props = defineProps({
 
 const route = useRoute();
 const initialHash = ref(route.hash.slice(1));
+const displayLimit = 5;
 
-const faqItems = ref([]);
-const loading = ref(true);
-const error = ref('');
-const openPanels = ref({});
+const faqItems = [
+  {
+    id: 'ai-matchmaking',
+    question: 'What is the AI matchmaking tool? How does it work?',
+    answer: 'The AI matchmaking tool is available on laptops at each exhibitor station. Organizers will introduce at least 50 visitor leads to every exhibitor through chat. Some visitors will approach the station directly, while others will be connected via chat for online introductions and follow-ups.'
+  },
+  {
+    id: 'visitor-passes',
+    question: 'Are visitor passes free? How many invites are out? What\'s the audience profile?',
+    answer: 'Visitor entry is free. We usually welcome 300–700 guests, depending on the show. For April 15, we expect 300–500 attendees throughout the day. Our audience is diverse and international, mainly beauty- and fashion-conscious individuals from mid- to high-income backgrounds. We do not track nationality at registration.'
+  },
+  {
+    id: 'buyers',
+    question: 'Who are the \'Buyers\'? What\'s their ratio to media, influencers, stylists, bloggers?',
+    answer: 'Buyers include individuals purchasing for themselves and for retail stores. We don\'t publish an exact ratio, but the crowd includes a mix of media, influencers, stylists, bloggers, and direct buyers.'
+  },
+  {
+    id: 'no-showcase',
+    question: 'What if I don\'t want a showcase station but still want to engage buyers?',
+    answer: 'You can attend for free, observe how other beauty service providers present their services, and interact with the audience. Many providers offer special promotions and discounts to visitors.'
+  },
+  {
+    id: 'example-brands',
+    question: 'What are some example brands in the business showcase corner?',
+    answer: 'Over 30 brands are confirmed — including designers from the Middle East, CIS, Eastern Europe, and local UAE talents. We also host a wide range of beauty service providers: clinics, plastic surgery, botox, fitness, cosmetology, nails, lashes, brows, hair, and styling.'
+  }
+];
 
-// Функция для генерации ID из вопроса
-const generateId = (question) => {
-  return question
-    .toLowerCase()
-    .replace(/[^a-z0-9\s]/g, '')
-    .replace(/\s+/g, '-')
-    .substring(0, 50);
-};
+const displayedItems = computed(() => {
+  return props.standalone ? faqItems : faqItems.slice(0, displayLimit);
+});
 
-// Функция для обработки переносов строк в ответах
-const formatAnswer = (answer) => {
-  if (!answer) return '';
+// Создаем объект для хранения состояния каждой панели
+const openPanels = ref(
+  faqItems.reduce((acc, item) => {
+    acc[item.id] = false;
+    return acc;
+  }, {})
+);
+
+const togglePanel = (id) => {
+  const isCurrentlyOpen = openPanels.value[id];
   
-  // Заменяем переносы строк на <br> теги
-  return answer
-    .replace(/\n/g, '<br>')
-    .replace(/\r\n/g, '<br>')
-    .replace(/\r/g, '<br>');
-};
+  // Закрываем все панели
+  Object.keys(openPanels.value).forEach(panelId => {
+    openPanels.value[panelId] = false;
+  });
 
-// Функция для загрузки FAQ из Google Sheets
-const fetchFaq = async () => {
-  try {
-    loading.value = true;
-    error.value = '';
-
-    // Определяем, работаем ли мы локально или на продакшене
-    const isLocal = window.location.hostname.includes('localhost') ||
-                   window.location.hostname.includes('127.0.0.1') ||
-                   window.location.hostname.includes('0.0.0.0');
-
-    if (isLocal) {
-      // Локально используем API
-      try {
-        const response = await $fetch('/api/faq');
-        if (response.success) {
-          faqItems.value = response.faq.map(item => ({
-            id: generateId(item.question),
-            question: item.question,
-            answer: item.answer
-          }));
-        } else {
-          error.value = response.error || 'Ошибка загрузки FAQ';
-        }
-      } catch (apiError) {
-        console.error('API Error:', apiError);
-        // Если API не работает, показываем пустой список
-        faqItems.value = [];
-        error.value = 'Сервис временно недоступен';
-      }
-      loading.value = false;
+  // Если панель была закрыта, открываем её
+  if (!isCurrentlyOpen) {
+    openPanels.value[id] = true;
+    
+    // Обновляем URL
+    const newUrl = `${window.location.pathname}#${id}`;
+    if (props.standalone) {
+      window.history.pushState(null, '', newUrl);
     } else {
-      // На продакшене используем JSONP подход
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-9k6uo_l1HnNVUXBC3cmyEgtwb6EJBe7kRnbQ07QKlXLeNMk2QAQoKDUismUx1_DdlQ/exec';
-
-      // Создаем callback функцию
-      const callbackName = 'callback_faq_' + Date.now();
-      window[callbackName] = (data) => {
-        if (data && data.success) {
-          // Временно: если FAQ пустой, используем тестовые данные
-          let faqData = data.faq;
-          if (!faqData || faqData.length === 0) {
-            faqData = [
-              {
-                question: "What is the AI matchmaking tool? How does it work?",
-                answer: "The AI matchmaking tool is available on laptops at each exhibitor station. Organizers will introduce at least 50 visitor leads to every exhibitor through chat. Some visitors will approach the station directly, while others will be connected via chat for online introductions and follow-ups."
-              },
-              {
-                question: "Are visitor passes free? How many invites are out? What's the audience profile?",
-                answer: "Visitor entry is free. We usually welcome 300-700 guests, depending on the show. For April 15, we expect 300-500 attendees throughout the day. Our audience is diverse and international, mainly beauty- and fashion-conscious individuals from mid- to high-income backgrounds. We do not track nationality at registration."
-              },
-              {
-                question: "Who are the 'Buyers'? What's their ratio to media, influencers, stylists, bloggers?",
-                answer: "Buyers include individuals purchasing for themselves and for retail stores. We don't publish an exact ratio, but the crowd includes a mix of media, influencers, stylists, bloggers, and direct buyers."
-              },
-              {
-                question: "What if I don't want a showcase station but still want to engage buyers?",
-                answer: "You can attend for free, observe how other beauty service providers present their services, and interact with the audience. Many providers offer special promotions and discounts to visitors."
-              },
-              {
-                question: "What are some example brands in the business showcase corner?",
-                answer: "Over 30 brands are confirmed - including designers from the Middle East, CIS, Eastern Europe, and local UAE talents. We also host a wide range of beauty service providers: clinics, plastic surgery, botox, fitness, cosmetology, nails, lashes, brows, hair, and styling."
-              }
-            ];
-          }
-          
-          faqItems.value = faqData.map(item => ({
-            id: generateId(item.question),
-            question: item.question,
-            answer: item.answer
-          }));
-        } else {
-          error.value = data.error || 'Ошибка загрузки FAQ';
-        }
-        loading.value = false;
-        delete window[callbackName];
-        document.head.removeChild(script);
-      };
-
-      // Создаем script тег для JSONP
-      const script = document.createElement('script');
-      script.src = `${GOOGLE_SCRIPT_URL}?action=getFaq&callback=${callbackName}`;
-      document.head.appendChild(script);
+      window.history.replaceState(null, '', newUrl);
     }
-  } catch (err) {
-    console.error('Error fetching FAQ:', err);
-    error.value = 'Ошибка загрузки FAQ';
-    loading.value = false;
+
+    // Скроллим к элементу
+    nextTick(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        const offset = props.standalone ? 80 : 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  } else {
+    // Если закрываем панель, убираем хеш из URL
+    const newUrl = window.location.pathname;
+    if (props.standalone) {
+      window.history.pushState(null, '', newUrl);
+    } else {
+      window.history.replaceState(null, '', newUrl);
+    }
   }
 };
 
-const displayedItems = computed(() => {
-  return faqItems.value;
-});
+// Обработчик изменения хеша в URL
+const handleHashChange = () => {
+  const hash = window.location.hash.slice(1);
+  
+  // Закрываем все панели
+  Object.keys(openPanels.value).forEach(id => {
+    openPanels.value[id] = false;
+  });
 
-const togglePanel = (id) => {
-  openPanels.value[id] = !openPanels.value[id];
-};
-
-// Открываем панель по хешу в URL
-const openPanelByHash = () => {
-  if (initialHash.value) {
-    openPanels.value[initialHash.value] = true;
+  // Если есть хеш и он соответствует существующему FAQ, открываем его
+  if (hash && faqItems.some(item => item.id === hash)) {
+    openPanels.value[hash] = true;
+    
+    nextTick(() => {
+      const element = document.getElementById(hash);
+      if (element) {
+        const offset = props.standalone ? 80 : 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
   }
 };
 
 onMounted(async () => {
-  await fetchFaq();
-  await nextTick();
-  openPanelByHash();
-});
+  const hash = route.hash.slice(1);
+  
+  // Закрываем все панели при монтировании
+  Object.keys(openPanels.value).forEach(id => {
+    openPanels.value[id] = false;
+  });
 
-// Слушаем изменения хеша
-const handleHashChange = () => {
-  const newHash = window.location.hash.slice(1);
-  if (newHash && newHash !== initialHash.value) {
-    // Закрываем все панели
-    Object.keys(openPanels.value).forEach(key => {
-      openPanels.value[key] = false;
-    });
-    // Открываем новую панель
-    openPanels.value[newHash] = true;
-    initialHash.value = newHash;
+  // Если есть хеш, открываем соответствующую панель
+  if (hash && faqItems.some(item => item.id === hash)) {
+    openPanels.value[hash] = true;
+  } else if (!props.standalone) {
+    // Открываем первый пункт только на главной странице
+    openPanels.value['ai-matchmaking'] = true;
   }
-};
 
-onMounted(() => {
-  window.addEventListener('hashchange', handleHashChange);
+  // Добавляем слушатель изменения хеша только на странице FAQ
+  if (props.standalone) {
+    window.addEventListener('hashchange', handleHashChange);
+  }
 });
 
+// Удаляем слушатель при размонтировании компонента
 onUnmounted(() => {
-  window.removeEventListener('hashchange', handleHashChange);
+  if (props.standalone) {
+    window.removeEventListener('hashchange', handleHashChange);
+  }
 });
 </script>
 
 <style scoped>
-.animate-spin {
-  animation: spin 1s linear infinite;
+.transform {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.transition {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 </style>

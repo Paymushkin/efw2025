@@ -118,60 +118,12 @@ let isDragging = false;
 let startX = 0;
 let scrollLeft = 0;
 
-// Получаем глобальный счетчик компаний
-const { companiesCount, updateCompaniesCount } = useCompaniesCount();
+// Получаем глобальные счетчики компаний
+const { companiesCount, trialWaitlistCount, updateCompaniesCount, updateTrialWaitlistCount } = useCompaniesCount();
 
-// Функция для загрузки списка компаний
-const fetchCompanies = async () => {
-  try {
-    console.log('Fetching companies...')
-    // Определяем, работаем ли мы локально или на продакшене
-    const isLocal = window.location.hostname.includes('localhost') || 
-                   window.location.hostname.includes('127.0.0.1') ||
-                   window.location.hostname.includes('0.0.0.0')
-    
-    if (isLocal) {
-      // Локально используем API
-      try {
-        const response = await $fetch('/api/companies-list')
-        console.log('Companies response:', response)
-        if (response.success) {
-          console.log('Updating companies count to:', response.companies.length)
-          updateCompaniesCount(response.companies.length)
-        }
-      } catch (apiError) {
-        console.error('API Error:', apiError)
-        // Если API не работает, устанавливаем 0
-        updateCompaniesCount(0)
-      }
-    } else {
-      // На продакшене используем JSONP подход
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-9k6uo_l1HnNVUXBC3cmyEgtwb6EJBe7kRnbQ07QKlXLeNMk2QAQoKDUismUx1_DdlQ/exec'
-      const callbackName = 'callback_program_count_' + Date.now()
-      
-      window[callbackName] = (data) => {
-        if (data && data.success) {
-          console.log('Companies response:', data)
-          console.log('Updating companies count to:', data.companies.length)
-          updateCompaniesCount(data.companies.length)
-        }
-        delete window[callbackName]
-        document.head.removeChild(script)
-      }
-      
-      const script = document.createElement('script')
-      script.src = `${GOOGLE_SCRIPT_URL}?action=getCompanies&callback=${callbackName}`
-      document.head.appendChild(script)
-    }
-  } catch (error) {
-    console.error('Error fetching companies:', error)
-  }
-}
+// Убираем загрузку данных - будем использовать глобальный счетчик от CompaniesList
 
-// Загружаем данные при монтировании компонента
-onMounted(() => {
-  fetchCompanies()
-})
+// Счетчик будет обновляться автоматически компонентом CompaniesList
 
 // Computed свойство для обновленного контента программы с реальным счетчиком
 const updatedProgram = computed(() => {
@@ -179,6 +131,7 @@ const updatedProgram = computed(() => {
   if (!program) return null;
   
   console.log('Current companies count:', companiesCount.value);
+  console.log('Current trial waitlist count:', trialWaitlistCount.value);
   
   // Обновляем events с реальным счетчиком
   const updatedEvents = program.events.map(event => {
@@ -187,7 +140,7 @@ const updatedProgram = computed(() => {
       // Заменяем статический счетчик на динамический
       const updatedDetails = event.details.replace(
         /<span id="trial-waitlist-count" style="background-color: rgba\(255,255,255,0\.2\); padding: 2px 6px; border-radius: 12px; font-weight: bold;">0<\/span>/,
-        `<span id="trial-waitlist-count" style="background-color: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">${companiesCount.value}</span>`
+        `<span id="trial-waitlist-count" style="background-color: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">${trialWaitlistCount.value}</span>`
       );
       console.log('Updated details:', updatedDetails);
       return { ...event, details: updatedDetails };

@@ -436,7 +436,7 @@ const handleSubmit = async () => {
     } else {
       console.log('Using Google Apps Script endpoint');
       // На продакшене используем простой подход через img тег (не блокируется CORS)
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-9k6uo_l1HnNVUXBC3cmyEgtwb6EJBe7kRnbQ07QKlXLeNMk2QAQoKDUismUx1_DdlQ/exec';
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxUuh8iEc5YE8k2q5e36DE66OpYPetpEOA0YdpQm0QwRXqqEcBDPcU5xP0RZI71R-bsbA/exec';
       
       const urlParams = new URLSearchParams();
       urlParams.append('action', 'submit');
@@ -450,6 +450,7 @@ const handleSubmit = async () => {
       urlParams.append('agreement2', form.agreement2.toString());
       urlParams.append('timestamp', new Date().toISOString());
       urlParams.append('source', 'Waitlist Form');
+      urlParams.append('status', 'WAITLIST'); // Добавляем статус по умолчанию
       
            // Создаем невидимый img тег для отправки данных
            const img = new Image();

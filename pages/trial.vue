@@ -17,11 +17,11 @@
             <img :src="Image9" alt="Trial showcase spots" class="w-full object-contain">
           </div>
           <div class="md:w-1/2">
-            <p class="text-sm mb-6">
+            <p class="text-base md:text-xl xl:text-2xl mb-6">
               Trial Showcase Spots — How it Works
             </p>
             
-            <ul class="text-sm space-y-2 mb-6">
+            <ul class="text-sm md:text-base xl:text-lg space-y-2 mb-6">
              <li>• Each day offers 20 Showcase Spots, divided into 4 sessions of 2 hours each — that's 80 trial slots per day.</li>
              <li>• Each selected participant also receives 10 lead chats with EFW Market visitors.</li>
              <li>• Allocation is not automatic. From the waitlist, participants are chosen at the organizers' discretion, to ensure a balanced mix of services for our audience.</li>
@@ -44,7 +44,7 @@
         </div>
       </div>
       
-      <p class="text-sm text-gray-600 mt-2 text-center">
+      <p class="text-sm md:text-base xl:text-lg text-gray-600 mt-2 text-center">
         competition with other waitlist companies; trial slots reduced if full-day spots are purchased
       </p>
       
@@ -83,7 +83,7 @@ import CompaniesList from '@/components/CompaniesList.vue'
 import AppSeo from '@/components/AppSeo.vue'
 import Image9 from '@/assets/image/offer/trial.webp'
 import Image10 from '@/assets/image/stations/station-2.webp'
-import Image11 from '@/assets/image/offer/trial.webp'
+import Image11 from '@/assets/image/offer/trial_compare.webp'
 
 definePageMeta({
   layout: 'default'

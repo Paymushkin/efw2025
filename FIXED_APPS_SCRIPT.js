@@ -49,7 +49,7 @@ function doPost(e) {
       data.agreement2 === 'true' || data.agreement2 === true ? 'Yes' : 'No',
       data.timestamp || '',
       data.source || '',
-      'waitlist' // Добавляем статус по умолчанию
+      data.status || 'WAITLIST' // Используем переданный статус или WAITLIST по умолчанию
     ];
     
     Logger.log('Row data to append:', rowData);
@@ -103,16 +103,41 @@ function doGet(e) {
       Logger.log('Processing getCompanies action');
       
       const sheet = SpreadsheetApp.openById('1jGEJIU-0Cwx151O0JczBkoaUCE48j5saab-R5eKzLfM').getActiveSheet();
-      const data = sheet.getDataRange().getValues();
+      const data = sheet.getDataRange().getDisplayValues();
       
       Logger.log('Raw sheet data rows:', data.length);
       Logger.log('First row (headers):', data[0]);
+      Logger.log('Headers length:', data[0].length);
+      Logger.log('Header at index 11 (status column):', data[0][11]);
       if (data.length > 1) {
         Logger.log('Second row (first data):', data[1]);
+        Logger.log('Second row length:', data[1].length);
+        Logger.log('Status value in second row:', data[1][11]);
       }
       
       // Пропускаем заголовок (первую строку)
       const companies = data.slice(1).map((row, index) => {
+        // Логируем сырые данные строки для отладки
+        if (index < 3) {
+          Logger.log(`Raw row ${index + 1}:`, row);
+          Logger.log(`Row length:`, row.length);
+          Logger.log(`Status column (index 11):`, row[11]);
+          Logger.log(`Status column type:`, typeof row[11]);
+        }
+        
+        // Пробуем получить статус разными способами для dropdown ячеек
+        let status = row[11] || '';
+        
+        // Если статус пустой, пробуем получить его как текст
+        if (!status && row[11] !== undefined) {
+          status = row[11].toString();
+        }
+        
+        // Логируем финальный статус для первых 3 компаний
+        if (index < 3) {
+          Logger.log(`Final status for row ${index + 1}:`, status);
+        }
+        
         const company = {
           timestamp: row[0] ? row[0].toString() : '',
           companyName: row[1] || '',
@@ -125,7 +150,7 @@ function doGet(e) {
           agreement2: row[8] || '',
           ipAddress: row[9] || '',
           userAgent: row[10] || '',
-          status: row[11] || 'waitlist' // Исправлено: добавляем fallback для статуса
+          status: row[11] || ''
         };
         
         // Логируем каждую компанию для отладки
@@ -153,49 +178,8 @@ function doGet(e) {
     // Получаем FAQ данные
     if (e.parameter && e.parameter.action === 'getFaq') {
       Logger.log('Processing getFaq action');
-      
-      // Открываем лист FAQ (предполагаем, что он называется "FAQ")
-      const spreadsheet = SpreadsheetApp.openById('1jGEJIU-0Cwx151O0JczBkoaUCE48j5saab-R5eKzLfM');
-      let sheet;
-      
-      try {
-        // Пробуем открыть лист "FAQ"
-        sheet = spreadsheet.getSheetByName('FAQ');
-        if (!sheet) {
-          // Если лист "FAQ" не найден, используем активный лист
-          sheet = spreadsheet.getActiveSheet();
-          Logger.log('FAQ sheet not found, using active sheet');
-        }
-      } catch (error) {
-        Logger.log('Error opening FAQ sheet:', error.toString());
-        sheet = spreadsheet.getActiveSheet();
-      }
-      
-      const data = sheet.getDataRange().getValues();
-      
-      Logger.log('FAQ sheet data rows:', data.length);
-      if (data.length > 0) {
-        Logger.log('FAQ headers:', data[0]);
-      }
-      
-      // Пропускаем заголовок (первую строку)
-      const faqItems = data.slice(1).map((row, index) => {
-        const faqItem = {
-          question: row[0] || '',
-          answer: row[1] || ''
-        };
-        
-        // Логируем первые 3 FAQ для отладки
-        if (index < 3) {
-          Logger.log(`FAQ ${index + 1}:`, faqItem);
-        }
-        
-        return faqItem;
-      }).filter(item => item.question && item.answer); // Фильтруем пустые записи
-      
-      Logger.log('Found FAQ items:', faqItems.length);
-      
-      return ContentService.createTextOutput(JSON.stringify({success: true, faq: faqItems})).setMimeType(ContentService.MimeType.JSON);
+      const result = getFaq();
+      return ContentService.createTextOutput(JSON.stringify(result)).setMimeType(ContentService.MimeType.JSON);
     }
     
     // Обрабатываем отправку данных (action=submit)
@@ -222,7 +206,7 @@ function doGet(e) {
         data.agreement2 === 'true' ? 'Yes' : 'No',
         data.timestamp || '',
         data.source || '',
-        'waitlist' // Добавляем статус по умолчанию
+        data.status || 'WAITLIST' // Используем переданный статус или WAITLIST по умолчанию
       ];
       
       Logger.log('Row data to append:', rowData);
@@ -244,14 +228,70 @@ function doGet(e) {
 function testGetCompanies() {
   Logger.log('Testing getCompanies...');
   
-  const e = {
-    parameter: {
-      action: 'getCompanies'
+  try {
+    // Тестируем напрямую логику получения данных из таблицы
+    Logger.log('Opening sheet...');
+    const sheet = SpreadsheetApp.openById('1jGEJIU-0Cwx151O0JczBkoaUCE48j5saab-R5eKzLfM').getActiveSheet();
+    Logger.log('Sheet opened successfully');
+    
+    const data = sheet.getDataRange().getDisplayValues();
+    Logger.log('Raw sheet data rows:', data.length);
+    Logger.log('First row (headers):', data[0]);
+    Logger.log('Headers length:', data[0].length);
+    Logger.log('Header at index 11 (status column):', data[0][11]);
+    
+    if (data.length > 1) {
+      Logger.log('Second row (first data):', data[1]);
+      Logger.log('Second row length:', data[1].length);
+      Logger.log('Status value in second row:', data[1][11]);
     }
-  };
-  
-  const result = doGet(e);
-  Logger.log('GetCompanies result:', result.getContent());
+    
+    // Тестируем обработку первых 3 строк
+    const companies = data.slice(1, 4).map((row, index) => {
+      Logger.log(`Raw row ${index + 1}:`, row);
+      Logger.log(`Row length:`, row.length);
+      Logger.log(`Status column (index 11):`, row[11]);
+      Logger.log(`Status column type:`, typeof row[11]);
+      
+      // Пробуем получить статус разными способами
+      let status = row[11] || '';
+      
+      // Если статус пустой, пробуем получить его как текст
+      if (!status && row[11] !== undefined) {
+        status = row[11].toString();
+      }
+      
+      Logger.log(`Final status for row ${index + 1}:`, status);
+      
+      return {
+        timestamp: row[0] ? row[0].toString() : '',
+        companyName: row[1] || '',
+        industry: row[2] || '',
+        name: row[3] || '',
+        email: row[4] || '',
+        phone: row[5] || '',
+        message: row[6] || '',
+        agreement1: row[7] || '',
+        agreement2: row[8] || '',
+        ipAddress: row[9] || '',
+        userAgent: row[10] || '',
+        status: row[11] || ''
+      };
+    });
+    
+    Logger.log('Processed companies:', companies);
+    
+    // Проверяем статусы
+    const statusCounts = {};
+    companies.forEach(company => {
+      const status = company.status || 'no-status';
+      statusCounts[status] = (statusCounts[status] || 0) + 1;
+    });
+    Logger.log('Status distribution:', statusCounts);
+    
+  } catch (error) {
+    Logger.log('Error in testGetCompanies:', error);
+  }
   
   Logger.log('testGetCompanies finished.');
 }
@@ -270,60 +310,6 @@ function testGetFaq() {
   Logger.log('GetFaq result:', result.getContent());
   
   Logger.log('testGetFaq finished.');
-}
-
-// Отдельная функция для получения FAQ данных
-function getFaq() {
-  Logger.log('getFaq function called');
-  
-  try {
-    // Открываем лист FAQ (предполагаем, что он называется "FAQ")
-    const spreadsheet = SpreadsheetApp.openById('1jGEJIU-0Cwx151O0JczBkoaUCE48j5saab-R5eKzLfM');
-    let sheet;
-    
-    try {
-      // Пробуем открыть лист "FAQ"
-      sheet = spreadsheet.getSheetByName('FAQ');
-      if (!sheet) {
-        // Если лист "FAQ" не найден, используем активный лист
-        sheet = spreadsheet.getActiveSheet();
-        Logger.log('FAQ sheet not found, using active sheet');
-      }
-    } catch (error) {
-      Logger.log('Error opening FAQ sheet:', error.toString());
-      sheet = spreadsheet.getActiveSheet();
-    }
-    
-    const data = sheet.getDataRange().getValues();
-    
-    Logger.log('FAQ sheet data rows:', data.length);
-    if (data.length > 0) {
-      Logger.log('FAQ headers:', data[0]);
-    }
-    
-    // Пропускаем заголовок (первую строку)
-    const faqItems = data.slice(1).map((row, index) => {
-      const faqItem = {
-        question: row[0] || '',
-        answer: row[1] || ''
-      };
-      
-      // Логируем первые 3 FAQ для отладки
-      if (index < 3) {
-        Logger.log(`FAQ ${index + 1}:`, faqItem);
-      }
-      
-      return faqItem;
-    }).filter(item => item.question && item.answer); // Фильтруем пустые записи
-    
-    Logger.log('Found FAQ items:', faqItems.length);
-    
-    return { success: true, faq: faqItems };
-    
-  } catch (error) {
-    Logger.log('Error in getFaq function: ' + error.toString());
-    return { success: false, error: error.toString() };
-  }
 }
 
 // Функция для проверки структуры таблицы
@@ -367,7 +353,9 @@ function testFunction() {
     agreement1: true,
     agreement2: true,
     timestamp: new Date().toISOString(),
-    source: 'Test Function'
+    source: 'Test Function',
+    status: 'waitlist'
+
   };
   
   const e = {
@@ -419,7 +407,8 @@ function testSubmitGet() {
       agreement1: 'true',
       agreement2: 'true',
       timestamp: new Date().toISOString(),
-      source: 'Test GET Function'
+      source: 'Test GET Function',
+      status: 'waitlist'
     }
   };
   
@@ -466,5 +455,71 @@ function testDirectAdd() {
   } catch (error) {
     Logger.log('Error in testDirectAdd: ' + error.toString());
     Logger.log('Error stack: ' + error.stack);
+  }
+}
+
+// Отдельная функция для получения FAQ данных
+function getFaq() {
+  Logger.log('getFaq function called');
+  
+  try {
+    // Открываем лист FAQ (предполагаем, что он называется "FAQ")
+    const spreadsheet = SpreadsheetApp.openById('1jGEJIU-0Cwx151O0JczBkoaUCE48j5saab-R5eKzLfM');
+    let sheet;
+    
+    try {
+      // Пробуем открыть лист "FAQ"
+      sheet = spreadsheet.getSheetByName('FAQ');
+      if (!sheet) {
+        Logger.log('FAQ sheet not found');
+        return { success: false, error: 'FAQ sheet not found' };
+      } else {
+        Logger.log('FAQ sheet found successfully');
+      }
+    } catch (error) {
+      Logger.log('Error opening FAQ sheet:', error.toString());
+      return { success: false, error: error.toString() };
+    }
+    
+    const data = sheet.getDataRange().getValues();
+    
+    Logger.log('FAQ sheet data rows:', data.length);
+    Logger.log('Sheet name:', sheet.getName());
+    Logger.log('Sheet ID:', sheet.getSheetId());
+    if (data.length > 0) {
+      Logger.log('FAQ headers:', data[0]);
+      Logger.log('First few rows:', data.slice(0, 3));
+    } else {
+      Logger.log('No data found in sheet');
+      return { success: true, faq: [] };
+    }
+    
+    // Пропускаем заголовок (первую строку)
+    const faqItems = data.slice(1).map((row, index) => {
+      const faqItem = {
+        question: row[0] || '',
+        answer: row[1] || ''
+      };
+      
+      // Логируем первые 3 FAQ для отладки
+      if (index < 3) {
+        Logger.log(`FAQ ${index + 1}:`, faqItem);
+      }
+      
+      return faqItem;
+    }).filter(item => item.question && item.answer); // Фильтруем пустые записи
+    
+    Logger.log('Found FAQ items:', faqItems.length);
+    
+    if (faqItems.length > 0) {
+      return { success: true, faq: faqItems };
+    } else {
+      Logger.log('No valid FAQ items found, returning empty array');
+      return { success: true, faq: [] };
+    }
+    
+  } catch (error) {
+    Logger.log('Error in getFaq function: ' + error.toString());
+    return { success: false, error: error.toString() };
   }
 }
