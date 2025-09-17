@@ -181,47 +181,91 @@ const fetchCompanies = async () => {
       }
       loading.value = false
     } else {
-      // На продакшене используем JSONP подход
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxUuh8iEc5YE8k2q5e36DE66OpYPetpEOA0YdpQm0QwRXqqEcBDPcU5xP0RZI71R-bsbA/exec'
-      const callbackName = 'callback_approved_companies_' + Date.now()
-      
-      window[callbackName] = (data) => {
-        if (data && data.success) {
-          // Используем статусы как есть из таблицы
-          // Фильтруем только одобренные компании
-          const approvedCompanies = filterApprovedCompanies(data.companies)
+      // На продакшене (GitHub Pages) используем прямые запросы к Google Sheets
+      try {
+        const SPREADSHEET_ID = '1jGEJIU-0Cwx151O0JczBkoaUCE48j5saab-R5eKzLfM';
+        const CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=0`;
+        
+        const response = await fetch(CSV_URL);
+        
+        if (!response.ok) {
+          throw new Error(`CSV export error: ${response.statusText}`);
+        }
+        
+        const csvText = await response.text();
+        
+        // Парсим CSV правильно (учитывая запятые в кавычках)
+        const lines = csvText.split('\n');
+        const rows = lines.filter(line => line.trim()).map(line => {
+          const values = [];
+          let current = '';
+          let inQuotes = false;
           
-          // Сортируем компании по дате (новые сверху)
-          const sortedCompanies = approvedCompanies.sort((a, b) => {
-            return new Date(b.timestamp) - new Date(a.timestamp)
-          })
-
-          // Если есть подсвеченная компания, сохраняем её позицию
-          if (newlyAddedCompany.value) {
-            const highlightedIndex = companies.value.findIndex(company => {
-              const companyId = company.companyName + '_' + company.timestamp
-              return companyId === newlyAddedCompany.value
-            })
-
-            if (highlightedIndex !== -1) {
-              const highlightedCompany = companies.value.splice(highlightedIndex, 1)[0]
-              sortedCompanies.unshift(highlightedCompany)
+          for (let i = 0; i < line.length; i++) {
+            const char = line[i];
+            
+            if (char === '"') {
+              inQuotes = !inQuotes;
+            } else if (char === ',' && !inQuotes) {
+              values.push(current.trim());
+              current = '';
+            } else {
+              current += char;
             }
           }
+          
+          values.push(current.trim());
+          return values;
+        });
+        
+        // Преобразуем в формат компаний
+        const companiesFromCSV = rows.map((row, index) => ({
+          timestamp: row[0] || '',
+          companyName: row[1] || '',
+          industry: row[2] || '',
+          name: row[3] || '',
+          email: row[4] || '',
+          phone: row[5] || '',
+          message: row[6] || '',
+          agreement1: row[7] || '',
+          agreement2: row[8] || '',
+          ipAddress: row[9] || '',
+          userAgent: row[10] || '',
+          status: row[11] || 'WAITLIST'
+        })).filter(company => company.companyName);
+        
+        // Фильтруем только одобренные компании
+        const approvedCompanies = filterApprovedCompanies(companiesFromCSV);
+        
+        // Сортируем компании по дате (новые сверху)
+        const sortedCompanies = approvedCompanies.sort((a, b) => {
+          return new Date(b.timestamp) - new Date(a.timestamp)
+        });
 
-          companies.value = sortedCompanies
-          emit('companies-count-updated', companies.value.length)
-        } else {
-          error.value = data.error || 'Ошибка загрузки данных'
+        // Если есть подсвеченная компания, сохраняем её позицию
+        if (newlyAddedCompany.value) {
+          const highlightedIndex = companies.value.findIndex(company => {
+            const companyId = company.companyName + '_' + company.timestamp
+            return companyId === newlyAddedCompany.value
+          });
+
+          if (highlightedIndex !== -1) {
+            const highlightedCompany = companies.value.splice(highlightedIndex, 1)[0]
+            sortedCompanies.unshift(highlightedCompany)
+          }
         }
-        loading.value = false
-        delete window[callbackName]
-        document.head.removeChild(script)
+
+        companies.value = sortedCompanies;
+        emit('companies-count-updated', companies.value.length);
+        
+        console.log('Approved companies loaded from Google Sheets:', approvedCompanies.length);
+        
+      } catch (csvError) {
+        console.error('CSV fetch error:', csvError);
+        error.value = 'Ошибка загрузки данных';
       }
       
-      const script = document.createElement('script')
-      script.src = `${GOOGLE_SCRIPT_URL}?action=getCompanies&callback=${callbackName}&_t=${Date.now()}`
-      document.head.appendChild(script)
+      loading.value = false;
     }
   } catch (err) {
     console.error('Error fetching approved companies:', err)

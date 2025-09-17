@@ -12,12 +12,6 @@ declare module "nitropack/types" {
     '/api/send-email': {
       'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/send-email.post').default>>>>
     }
-    '/api/waitlist-count-local': {
-      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/waitlist-count-local.get').default>>>>
-    }
-    '/api/waitlist-local': {
-      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/waitlist-local.post').default>>>>
-    }
     '/api/waitlist': {
       'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/waitlist.post').default>>>>
     }

@@ -1,11 +1,11 @@
 <template>
   <div class="min-h-screen bg-white">
-    <FaqSection :standalone="true" />
+    <FaqSectionDynamic :standalone="true" />
   </div>
 </template>
 
 <script setup>
-import FaqSection from '~/components/FaqSection.vue';
+import FaqSectionDynamic from '~/components/FaqSectionDynamic.vue';
 
 useHead({
   title: 'FAQ - Dubai Fashion Week',

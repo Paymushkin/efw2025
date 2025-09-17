@@ -13,7 +13,24 @@
       </template>
     </h2>
     
-    <div class="flex flex-col gap-4">
+    <!-- Индикатор загрузки -->
+    <div v-if="loading" class="flex justify-center items-center py-8">
+      <div class="text-gray-500">Loading FAQ...</div>
+    </div>
+
+    <!-- Сообщение об ошибке -->
+    <div v-else-if="error" class="text-center py-8">
+      <div class="text-red-500 mb-4">Error loading FAQ: {{ error }}</div>
+      <button 
+        @click="handleRefresh"
+        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+      >
+        Retry
+      </button>
+    </div>
+
+    <!-- FAQ контент -->
+    <div v-else class="flex flex-col gap-4">
       <div
         v-for="item in displayedItems"
         :key="item.id"
@@ -82,7 +99,13 @@ const route = useRoute();
 const initialHash = ref(route.hash.slice(1));
 const displayLimit = 5;
 
-const faqItems = [
+// Состояние для FAQ данных
+const faqItems = ref([]);
+const loading = ref(false);
+const error = ref('');
+
+// Fallback данные на случай ошибки загрузки
+const fallbackFaqItems = [
   {
     id: 'ai-matchmaking',
     question: 'What is the AI matchmaking tool? How does it work?',
@@ -110,17 +133,114 @@ const faqItems = [
   }
 ];
 
+// Функция для загрузки FAQ данных (используем тот же подход, что и у компаний)
+const fetchFAQ = async () => {
+  try {
+    loading.value = true;
+    error.value = '';
+    
+      // Определяем, работаем ли мы локально или на продакшене
+      const isLocal = window.location.hostname.includes('localhost') || 
+                     window.location.hostname.includes('127.0.0.1') ||
+                     window.location.hostname.includes('0.0.0.0');
+      
+      if (isLocal) {
+        // Локально используем API
+        try {
+          const response = await $fetch('/api/faq', {
+            query: { _t: Date.now() } // Добавляем timestamp для предотвращения кеширования
+          });
+          if (response.success) {
+            faqItems.value = response.faq || [];
+          } else {
+            error.value = response.error || 'Ошибка загрузки данных';
+          }
+        } catch (apiError) {
+          console.error('API error:', apiError);
+          // Если API не работает, используем fallback данные
+          faqItems.value = fallbackFaqItems;
+        }
+      } else {
+        // На продакшене (GitHub Pages) используем прямые запросы к Google Sheets
+        try {
+          const SPREADSHEET_ID = '1z3JLJVzDADNCa6oSq3R701xLB8K5yyuCFlPZpSMXa1s';
+          const CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=0`;
+          
+          const response = await fetch(CSV_URL);
+          
+          if (!response.ok) {
+            throw new Error(`CSV export error: ${response.statusText}`);
+          }
+          
+          const csvText = await response.text();
+          
+          // Парсим CSV правильно (учитывая запятые в кавычках)
+          const lines = csvText.split('\n');
+          const rows = lines.filter(line => line.trim()).map(line => {
+            const values = [];
+            let current = '';
+            let inQuotes = false;
+            
+            for (let i = 0; i < line.length; i++) {
+              const char = line[i];
+              
+              if (char === '"') {
+                inQuotes = !inQuotes;
+              } else if (char === ',' && !inQuotes) {
+                values.push(current.trim());
+                current = '';
+              } else {
+                current += char;
+              }
+            }
+            
+            values.push(current.trim());
+            return values;
+          });
+          
+          // Преобразуем в FAQ формат
+          const faqItemsFromCSV = rows.map((row, index) => ({
+            id: `faq-${index + 1}`,
+            question: row[0] || '',
+            answer: row[1] || '',
+            order: row[2] || (index + 1)
+          })).filter(item => item.question && item.answer);
+          
+          faqItems.value = faqItemsFromCSV;
+          console.log('FAQ items loaded from Google Sheets:', faqItemsFromCSV.length);
+          
+        } catch (csvError) {
+          console.error('CSV fetch error:', csvError);
+          // Если CSV не работает, используем fallback данные
+          faqItems.value = fallbackFaqItems;
+        }
+      }
+  } catch (err) {
+    console.error('Error fetching FAQ:', err);
+    error.value = 'Ошибка загрузки данных';
+    faqItems.value = fallbackFaqItems;
+  } finally {
+    loading.value = false;
+  }
+};
+
+// Вычисляемые свойства
 const displayedItems = computed(() => {
-  return props.standalone ? faqItems : faqItems.slice(0, displayLimit);
+  return props.standalone ? faqItems.value : faqItems.value.slice(0, displayLimit);
 });
 
 // Создаем объект для хранения состояния каждой панели
-const openPanels = ref(
-  faqItems.reduce((acc, item) => {
-    acc[item.id] = false;
-    return acc;
-  }, {})
-);
+const openPanels = ref({});
+
+// Функция для инициализации панелей
+const initializePanels = () => {
+  const items = faqItems.value;
+  const newPanels = {};
+  items.forEach(item => {
+    newPanels[item.id] = false;
+  });
+  openPanels.value = newPanels;
+};
 
 const togglePanel = (id) => {
   const isCurrentlyOpen = openPanels.value[id];
@@ -199,23 +319,40 @@ const handleHashChange = () => {
 onMounted(async () => {
   const hash = route.hash.slice(1);
   
-  // Закрываем все панели при монтировании
-  Object.keys(openPanels.value).forEach(id => {
-    openPanels.value[id] = false;
-  });
+  // Загружаем FAQ данные
+  await fetchFAQ();
+  
+  // Ждем загрузки данных
+  await nextTick();
+  
+  // Инициализируем панели после загрузки данных
+  initializePanels();
 
-  // Если есть хеш, открываем соответствующую панель
-  if (hash && faqItems.some(item => item.id === hash)) {
-    openPanels.value[hash] = true;
-  } else if (!props.standalone) {
-    // Открываем первый пункт только на главной странице
-    openPanels.value['ai-matchmaking'] = true;
-  }
+        // Если есть хеш, открываем соответствующую панель
+        if (hash && faqItems.value.some(item => item.id === hash)) {
+          openPanels.value[hash] = true;
+        } else if (faqItems.value.length > 0) {
+          // Открываем первый пункт всегда (и на главной, и на странице FAQ)
+          const firstItem = faqItems.value[0];
+          if (firstItem) {
+            openPanels.value[firstItem.id] = true;
+          }
+        }
 
   // Добавляем слушатель изменения хеша только на странице FAQ
   if (props.standalone) {
     window.addEventListener('hashchange', handleHashChange);
   }
+});
+
+// Функция для обновления данных
+const handleRefresh = () => {
+  fetchFAQ();
+};
+
+// Экспортируем функции для использования в родительском компоненте
+defineExpose({
+  refresh: handleRefresh
 });
 
 // Удаляем слушатель при размонтировании компонента

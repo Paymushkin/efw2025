@@ -204,72 +204,113 @@ const fetchCompanies = async () => {
       }
       loading.value = false
     } else {
-      // На продакшене используем JSONP подход
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxUuh8iEc5YE8k2q5e36DE66OpYPetpEOA0YdpQm0QwRXqqEcBDPcU5xP0RZI71R-bsbA/exec'
-      
-      // Создаем callback функцию
-      const callbackName = 'callback_companies_' + Date.now()
-      window[callbackName] = (data) => {
-        if (data && data.success) {
-          // Используем статусы как есть из таблицы
-          // Фильтруем только waitlist компании
-          const waitlistCompanies = filterWaitlistCompanies(data.companies)
+      // На продакшене (GitHub Pages) используем прямые запросы к Google Sheets
+      try {
+        const SPREADSHEET_ID = '1jGEJIU-0Cwx151O0JczBkoaUCE48j5saab-R5eKzLfM';
+        const CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=0`;
+        
+        const response = await fetch(CSV_URL);
+        
+        if (!response.ok) {
+          throw new Error(`CSV export error: ${response.statusText}`);
+        }
+        
+        const csvText = await response.text();
+        
+        // Парсим CSV правильно (учитывая запятые в кавычках)
+        const lines = csvText.split('\n');
+        const rows = lines.filter(line => line.trim()).map(line => {
+          const values = [];
+          let current = '';
+          let inQuotes = false;
           
-          // Сортируем компании по дате (новые сверху)
-          const sortedCompanies = waitlistCompanies.sort((a, b) => {
-            return new Date(b.timestamp) - new Date(a.timestamp)
-          })
-          
-          // Если есть подсвеченная компания, сохраняем её позицию
-          if (newlyAddedCompany.value) {
-            // Находим подсвеченную компанию в текущем списке
-            const highlightedIndex = companies.value.findIndex(company => {
-              const companyId = company.companyName + '_' + company.timestamp
-              return companyId === newlyAddedCompany.value
-            })
+          for (let i = 0; i < line.length; i++) {
+            const char = line[i];
             
-            if (highlightedIndex !== -1) {
-              // Удаляем подсвеченную компанию из текущего списка
-              const highlightedCompany = companies.value.splice(highlightedIndex, 1)[0]
-              // Добавляем её в начало обновленного списка
-              sortedCompanies.unshift(highlightedCompany)
+            if (char === '"') {
+              inQuotes = !inQuotes;
+            } else if (char === ',' && !inQuotes) {
+              values.push(current.trim());
+              current = '';
+            } else {
+              current += char;
             }
           }
           
-          companies.value = sortedCompanies
-          emit('companies-count-updated', companies.value.length)
-          updateTrialWaitlistCount(companies.value.length)
-        } else {
-          // Если Google Apps Script не работает, используем тестовые данные
-          console.log('Google Apps Script error, using test data');
-          const testCompanies = [
-            {
-              companyName: 'Test Company 1',
-              industry: 'Fashion',
-              timestamp: new Date().toISOString(),
-              status: 'waitlist'
-            },
-            {
-              companyName: 'Test Company 2', 
-              industry: 'Beauty',
-              timestamp: new Date(Date.now() - 86400000).toISOString(),
-              status: 'waitlist'
-            }
-          ];
+          values.push(current.trim());
+          return values;
+        });
+        
+        // Преобразуем в формат компаний
+        const companiesFromCSV = rows.map((row, index) => ({
+          timestamp: row[0] || '',
+          companyName: row[1] || '',
+          industry: row[2] || '',
+          name: row[3] || '',
+          email: row[4] || '',
+          phone: row[5] || '',
+          message: row[6] || '',
+          agreement1: row[7] || '',
+          agreement2: row[8] || '',
+          ipAddress: row[9] || '',
+          userAgent: row[10] || '',
+          status: row[11] || 'WAITLIST'
+        })).filter(company => company.companyName);
+        
+        // Фильтруем только waitlist компании
+        const waitlistCompanies = filterWaitlistCompanies(companiesFromCSV);
+        
+        // Сортируем компании по дате (новые сверху)
+        const sortedCompanies = waitlistCompanies.sort((a, b) => {
+          return new Date(b.timestamp) - new Date(a.timestamp)
+        });
+        
+        // Если есть подсвеченная компания, сохраняем её позицию
+        if (newlyAddedCompany.value) {
+          // Находим подсвеченную компанию в текущем списке
+          const highlightedIndex = companies.value.findIndex(company => {
+            const companyId = company.companyName + '_' + company.timestamp
+            return companyId === newlyAddedCompany.value
+          });
           
-          companies.value = testCompanies;
-          emit('companies-count-updated', testCompanies.length);
-          updateTrialWaitlistCount(testCompanies.length);
+          if (highlightedIndex !== -1) {
+            // Удаляем подсвеченную компанию из текущего списка
+            const highlightedCompany = companies.value.splice(highlightedIndex, 1)[0];
+            // Добавляем её в начало обновленного списка
+            sortedCompanies.unshift(highlightedCompany);
+          }
         }
-        loading.value = false
-        delete window[callbackName]
-        document.head.removeChild(script)
+        
+        companies.value = sortedCompanies;
+        emit('companies-count-updated', companies.value.length);
+        updateTrialWaitlistCount(companies.value.length);
+        
+        console.log('Companies loaded from Google Sheets:', companiesFromCSV.length);
+        
+      } catch (csvError) {
+        console.error('CSV fetch error:', csvError);
+        // Если CSV не работает, используем тестовые данные
+        const testCompanies = [
+          {
+            companyName: 'Test Company 1',
+            industry: 'Fashion',
+            timestamp: new Date().toISOString(),
+            status: 'waitlist'
+          },
+          {
+            companyName: 'Test Company 2', 
+            industry: 'Beauty',
+            timestamp: new Date(Date.now() - 86400000).toISOString(),
+            status: 'waitlist'
+          }
+        ];
+        
+        companies.value = testCompanies;
+        emit('companies-count-updated', testCompanies.length);
+        updateTrialWaitlistCount(testCompanies.length);
       }
       
-      // Создаем script тег для JSONP
-      const script = document.createElement('script')
-      script.src = `${GOOGLE_SCRIPT_URL}?action=getCompanies&callback=${callbackName}&_t=${Date.now()}`
-      document.head.appendChild(script)
+      loading.value = false;
     }
   } catch (err) {
     console.error('Error fetching companies:', err)

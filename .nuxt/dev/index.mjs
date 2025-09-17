@@ -5,7 +5,6 @@ import { resolve, dirname, join } from 'node:path';
 import nodeCrypto from 'node:crypto';
 import { parentPort, threadId } from 'node:worker_threads';
 import { escapeHtml } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/@vue/shared/dist/shared.cjs.js';
-import { readFile, writeFile } from 'node:fs/promises';
 import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, decodePath, withLeadingSlash, withoutTrailingSlash, joinRelativeURL } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/ufo/dist/index.mjs';
 import { renderToString } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/vue/server-renderer/index.mjs';
@@ -22,6 +21,7 @@ import defu, { defuFn } from 'file:///Users/paymei/Documents/Development/github/
 import { snakeCase } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/scule/dist/index.mjs';
 import { getContext } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/unctx/dist/index.mjs';
 import { toRouteMatcher, createRouter } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/radix3/dist/index.mjs';
+import { readFile } from 'node:fs/promises';
 import consola, { consola as consola$1 } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/consola/dist/index.mjs';
 import { ErrorParser } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/youch-core/build/index.js';
 import { Youch } from 'file:///Users/paymei/Documents/Development/github/dubaifw/node_modules/nitropack/node_modules/youch/build/index.js';
@@ -1132,7 +1132,22 @@ const plugins = [
 _IMmmFqCpOqAo7MsnQSHaECKUpqYOYiq8ayqTOGS0
 ];
 
-const assets = {};
+const assets = {
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"1548e-Pd6oE1ylT7aANvacZK7hSxFzRq8\"",
+    "mtime": "2025-09-17T17:36:42.863Z",
+    "size": 87182,
+    "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"4e3db-/dEBO4G1P8/96ULpYlN2iBy2WEw\"",
+    "mtime": "2025-09-17T17:36:42.863Z",
+    "size": 320475,
+    "path": "index.mjs.map"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -1542,8 +1557,6 @@ async function getIslandContext(event) {
 const _lazy_9p9Lv9 = () => Promise.resolve().then(function () { return companiesList_get$1; });
 const _lazy_GGeB5s = () => Promise.resolve().then(function () { return faq_get$1; });
 const _lazy_q_OPyY = () => Promise.resolve().then(function () { return sendEmail_post$1; });
-const _lazy_pGIUfG = () => Promise.resolve().then(function () { return waitlistCountLocal_get$1; });
-const _lazy_GWQ7oj = () => Promise.resolve().then(function () { return waitlistLocal_post$1; });
 const _lazy_McTnOU = () => Promise.resolve().then(function () { return waitlist_post$1; });
 const _lazy_G5pgvr = () => Promise.resolve().then(function () { return renderer$1; });
 
@@ -1552,8 +1565,6 @@ const handlers = [
   { route: '/api/companies-list', handler: _lazy_9p9Lv9, lazy: true, middleware: false, method: "get" },
   { route: '/api/faq', handler: _lazy_GGeB5s, lazy: true, middleware: false, method: "get" },
   { route: '/api/send-email', handler: _lazy_q_OPyY, lazy: true, middleware: false, method: "post" },
-  { route: '/api/waitlist-count-local', handler: _lazy_pGIUfG, lazy: true, middleware: false, method: "get" },
-  { route: '/api/waitlist-local', handler: _lazy_GWQ7oj, lazy: true, middleware: false, method: "post" },
   { route: '/api/waitlist', handler: _lazy_McTnOU, lazy: true, middleware: false, method: "post" },
   { route: '/__nuxt_error', handler: _lazy_G5pgvr, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: _SxA8c9, lazy: false, middleware: false, method: undefined },
@@ -1894,27 +1905,58 @@ const styles$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 
 const companiesList_get = defineEventHandler(async (event) => {
   try {
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxUuh8iEc5YE8k2q5e36DE66OpYPetpEOA0YdpQm0QwRXqqEcBDPcU5xP0RZI71R-bsbA/exec";
-    const response = await fetch(`${GOOGLE_SCRIPT_URL}?action=getCompanies`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" }
-    });
+    const SPREADSHEET_ID = "1jGEJIU-0Cwx151O0JczBkoaUCE48j5saab-R5eKzLfM";
+    const CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=0`;
+    const response = await fetch(CSV_URL);
     if (!response.ok) {
-      throw new Error(`Google Sheets API error: ${response.statusText}`);
+      throw new Error(`CSV export error: ${response.statusText}`);
     }
-    const result = await response.json();
-    console.log("Raw result from Google Sheets:", JSON.stringify(result, null, 2));
-    if (result.companies && result.companies.length > 0) {
-      console.log("First company:", JSON.stringify(result.companies[0], null, 2));
-      console.log("Status distribution:", result.companies.reduce((acc, company) => {
+    const csvText = await response.text();
+    const lines = csvText.split("\n");
+    const rows = lines.filter((line) => line.trim()).map((line) => {
+      const values = [];
+      let current = "";
+      let inQuotes = false;
+      for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === "," && !inQuotes) {
+          values.push(current.trim());
+          current = "";
+        } else {
+          current += char;
+        }
+      }
+      values.push(current.trim());
+      return values;
+    });
+    const companies = rows.map((row, index) => ({
+      timestamp: row[0] || "",
+      companyName: row[1] || "",
+      industry: row[2] || "",
+      name: row[3] || "",
+      email: row[4] || "",
+      phone: row[5] || "",
+      message: row[6] || "",
+      agreement1: row[7] || "",
+      agreement2: row[8] || "",
+      ipAddress: row[9] || "",
+      userAgent: row[10] || "",
+      status: row[11] || "WAITLIST"
+    })).filter((company) => company.companyName);
+    console.log("Companies from CSV:", companies.length);
+    if (companies.length > 0) {
+      console.log("First company:", JSON.stringify(companies[0], null, 2));
+      console.log("Status distribution:", companies.reduce((acc, company) => {
         const status = company.status || "no-status";
         acc[status] = (acc[status] || 0) + 1;
         return acc;
       }, {}));
     }
-    return { success: true, companies: result.companies || [] };
+    return { success: true, companies };
   } catch (error) {
-    console.error("Error fetching companies list:", error);
+    console.error("Error fetching companies from CSV:", error);
     return { success: true, companies: [], error: error.message };
   }
 });
@@ -1926,52 +1968,42 @@ const companiesList_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defin
 
 const faq_get = defineEventHandler(async (event) => {
   try {
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyJofyXQHr2G9RXPbdOhE8dvl10HDSIgz9tZEB_rlz4gg22btKAyPBDhelmlEqY0n8z/exec";
-    console.log("Fetching FAQ from Google Sheets...");
-    console.log("URL:", `${GOOGLE_SCRIPT_URL}?action=getFaq`);
-    const response = await fetch(`${GOOGLE_SCRIPT_URL}?action=getFaq`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" }
-    });
-    console.log("Response status:", response.status);
-    console.log("Response ok:", response.ok);
+    const SPREADSHEET_ID = "1z3JLJVzDADNCa6oSq3R701xLB8K5yyuCFlPZpSMXa1s";
+    const CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=0`;
+    const response = await fetch(CSV_URL);
     if (!response.ok) {
-      throw new Error(`Google Sheets API error: ${response.statusText}`);
+      throw new Error(`CSV export error: ${response.statusText}`);
     }
-    const result = await response.json();
-    console.log("Raw FAQ result from Google Sheets:", JSON.stringify(result, null, 2));
-    if (result.faq && result.faq.length > 0) {
-      console.log("First FAQ item:", JSON.stringify(result.faq[0], null, 2));
-      console.log("Total FAQ items:", result.faq.length);
-      return { success: true, faq: result.faq };
-    } else {
-      console.log("No FAQ items found, returning test data");
-      const testFaq = [
-        {
-          question: "What is the AI matchmaking tool? How does it work?",
-          answer: "The AI matchmaking tool is available on laptops at each exhibitor station. Organizers will introduce at least 50 visitor leads to every exhibitor through chat. Some visitors will approach the station directly, while others will be connected via chat for online introductions and follow-ups."
-        },
-        {
-          question: "Are visitor passes free? How many invites are out? What's the audience profile?",
-          answer: "Visitor entry is free. We usually welcome 300-700 guests, depending on the show. For April 15, we expect 300-500 attendees throughout the day. Our audience is diverse and international, mainly beauty- and fashion-conscious individuals from mid- to high-income backgrounds. We do not track nationality at registration."
-        },
-        {
-          question: "Who are the 'Buyers'? What's their ratio to media, influencers, stylists, bloggers?",
-          answer: "Buyers include individuals purchasing for themselves and for retail stores. We don't publish an exact ratio, but the crowd includes a mix of media, influencers, stylists, bloggers, and direct buyers."
-        },
-        {
-          question: "What if I don't want a showcase station but still want to engage buyers?",
-          answer: "You can attend for free, observe how other beauty service providers present their services, and interact with the audience. Many providers offer special promotions and discounts to visitors."
-        },
-        {
-          question: "What are some example brands in the business showcase corner?",
-          answer: "Over 30 brands are confirmed - including designers from the Middle East, CIS, Eastern Europe, and local UAE talents. We also host a wide range of beauty service providers: clinics, plastic surgery, botox, fitness, cosmetology, nails, lashes, brows, hair, and styling."
+    const csvText = await response.text();
+    const lines = csvText.split("\n");
+    const rows = lines.filter((line) => line.trim()).map((line) => {
+      const values = [];
+      let current = "";
+      let inQuotes = false;
+      for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === "," && !inQuotes) {
+          values.push(current.trim());
+          current = "";
+        } else {
+          current += char;
         }
-      ];
-      return { success: true, faq: testFaq };
-    }
+      }
+      values.push(current.trim());
+      return values;
+    });
+    const faqItems = rows.map((row, index) => ({
+      id: `faq-${index + 1}`,
+      question: row[0] || "",
+      answer: row[1] || "",
+      order: row[2] || index + 1
+    })).filter((item) => item.question && item.answer);
+    console.log("FAQ items from CSV:", faqItems.length);
+    return { success: true, faq: faqItems };
   } catch (error) {
-    console.error("Error fetching FAQ:", error);
+    console.error("Error fetching FAQ from CSV:", error);
     return { success: true, faq: [], error: error.message };
   }
 });
@@ -2040,95 +2072,6 @@ const sendEmail_post = defineEventHandler(async (event) => {
 const sendEmail_post$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: sendEmail_post
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const waitlistCountLocal_get = defineEventHandler(async (event) => {
-  try {
-    const dataPath = join(process.cwd(), "waitlist-data.json");
-    let count = 0;
-    try {
-      const fileContent = await readFile(dataPath, "utf-8");
-      const data = JSON.parse(fileContent);
-      count = data.length;
-    } catch (error) {
-      console.log("Data file does not exist, returning 0");
-    }
-    return {
-      success: true,
-      count
-    };
-  } catch (error) {
-    console.error("Error getting waitlist count:", error);
-    return {
-      success: false,
-      count: 0,
-      error: error.message
-    };
-  }
-});
-
-const waitlistCountLocal_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  default: waitlistCountLocal_get
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const waitlistLocal_post = defineEventHandler(async (event) => {
-  try {
-    const body = await readBody(event);
-    console.log("Received waitlist data:", body);
-    if (!body.companyName || !body.industry || !body.email || !body.agreement1 || !body.agreement2) {
-      console.log("Missing required fields:", {
-        companyName: !!body.companyName,
-        industry: !!body.industry,
-        email: !!body.email,
-        agreement1: !!body.agreement1,
-        agreement2: !!body.agreement2
-      });
-      throw createError({
-        statusCode: 400,
-        statusMessage: "Missing required fields"
-      });
-    }
-    const data = {
-      timestamp: (/* @__PURE__ */ new Date()).toISOString(),
-      companyName: body.companyName,
-      industry: body.industry,
-      name: body.name || "",
-      email: body.email,
-      phone: body.phone || "",
-      message: body.message || "",
-      agreement1: body.agreement1 ? "Yes" : "No",
-      agreement2: body.agreement2 ? "Yes" : "No",
-      source: "Waitlist Form"
-    };
-    const dataPath = join(process.cwd(), "waitlist-data.json");
-    let existingData = [];
-    try {
-      const fileContent = await readFile(dataPath, "utf-8");
-      existingData = JSON.parse(fileContent);
-    } catch (error) {
-      console.log("Creating new data file");
-    }
-    existingData.push(data);
-    await writeFile(dataPath, JSON.stringify(existingData, null, 2), "utf-8");
-    console.log("Data saved locally. Total entries:", existingData.length);
-    return {
-      success: true,
-      message: "Successfully added to waitlist",
-      totalEntries: existingData.length
-    };
-  } catch (error) {
-    console.error("Waitlist submission error:", error);
-    throw createError({
-      statusCode: 500,
-      statusMessage: `Failed to submit waitlist application: ${error.message}`
-    });
-  }
-});
-
-const waitlistLocal_post$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  default: waitlistLocal_post
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const waitlist_post = defineEventHandler(async (event) => {
