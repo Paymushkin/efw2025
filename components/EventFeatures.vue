@@ -20,21 +20,27 @@
     </div>
 
     <!-- Mobile Tabs -->
-    <div class="md:hidden mb-4 sticky top-0 z-10 bg-white">
+    <div class="md:hidden mb-4 bg-white">
       <div class="flex w-full border-b border-gray-200">
         <div
           v-for="(day, index) in data.days || []"
           :key="index"
           class="flex flex-col items-center justify-center flex-1 px-2 py-3 border-r border-gray-300 last:border-r-0 transition-colors duration-300"
-          :class="{
-            'bg-black text-white': day.highlighted,
-            'bg-gray-100 text-gray-400': !day.highlighted,
-          }"
+          :class="[
+            'transition-shadow',
+          ]"
+          :style="getMobileTabStyle(index, day)"
+          @click="selectMobileDay(index)"
         >
-          <span class="text-sm font-medium">{{ getDayNumber(day.date) }}</span>
-          <span class="text-xs opacity-75">{{ getDayMonth(day.date) }}</span>
+          <span class="text-sm font-medium">{{ getMobileTabLabel(index, day.date) }}</span>
+          <span class="text-xs opacity-75">Nov</span>
         </div>
       </div>
+    </div>
+
+    <!-- Mobile Selected Day Title -->
+    <div class="md:hidden mb-4" v-if="(data.days || []).length">
+      <h3 class="text-base font-medium text-center" v-html="(data.days[selectedMobileDayIndex] && (data.days[selectedMobileDayIndex].title || '')) || ''"></h3>
     </div>
 
     <!-- Desktop Tabs -->
@@ -184,6 +190,10 @@ const showContactForm = ref(false);
 const { setVideoRef, cleanup, isVisible } = useVideoVisibility();
 
 // Mobile tabs functionality (read-only display)
+const selectedMobileDayIndex = ref(0);
+const selectMobileDay = (index) => {
+  selectedMobileDayIndex.value = index;
+};
 
 // Drag functionality for horizontal scroll
 const daysContainer = ref(null);
@@ -234,33 +244,32 @@ const getDayNumber = (date) => {
   return match ? match[1] : '1';
 };
 
-const getDayMonth = (date) => {
-  if (!date) return 'Nov';
-  const monthMap = {
-    'January': 'Jan', 'February': 'Feb', 'March': 'Mar', 'April': 'Apr',
-    'May': 'May', 'June': 'Jun', 'July': 'Jul', 'August': 'Aug',
-    'September': 'Sep', 'October': 'Oct', 'November': 'Nov', 'December': 'Dec'
-  };
-  
-  for (const [full, short] of Object.entries(monthMap)) {
-    if (date.includes(full)) return short;
+
+// Custom labels for mobile tabs as requested: 4, 5-6, 8-9, 10-11, 10, 12-13
+const getMobileTabLabel = (index, date) => {
+  const labels = ['4', '5-6', '8-9', '10-11', '10', '12-13'];
+  if (index >= 0 && index < labels.length) return labels[index];
+  // Fallback to parsed number if more days exist
+  return getDayNumber(date);
+};
+
+// Style generator for mobile tabs: highlighted -> black bg, selected -> block color
+const getMobileTabStyle = (index, day) => {
+  const isSelected = selectedMobileDayIndex.value === index;
+  const blockColor = (typeof props?.data?.subtitleBgColor === 'string' && props.data.subtitleBgColor) || '#000';
+  let backgroundColor = '#f3f4f6'; // gray-100 default
+  let color = '#9ca3af'; // gray-400 default
+
+  // Selected tab takes precedence and uses block color
+  if (isSelected) {
+    backgroundColor = blockColor;
+    color = '#fff';
+  } else if (day && day.highlighted) {
+    backgroundColor = '#000';
+    color = '#fff';
   }
-  
-  // Fallback for common patterns
-  if (date.includes('Nov')) return 'Nov';
-  if (date.includes('Dec')) return 'Dec';
-  if (date.includes('Jan')) return 'Jan';
-  if (date.includes('Feb')) return 'Feb';
-  if (date.includes('Mar')) return 'Mar';
-  if (date.includes('Apr')) return 'Apr';
-  if (date.includes('May')) return 'May';
-  if (date.includes('Jun')) return 'Jun';
-  if (date.includes('Jul')) return 'Jul';
-  if (date.includes('Aug')) return 'Aug';
-  if (date.includes('Sep')) return 'Sep';
-  if (date.includes('Oct')) return 'Oct';
-  
-  return 'Nov';
+
+  return { backgroundColor, color };
 };
 
 const props = defineProps({

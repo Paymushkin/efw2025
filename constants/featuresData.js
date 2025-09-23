@@ -148,27 +148,32 @@ export const FEATURES_DATA = {
     days: [
       {
         title: "Pre-Launch",
-        date: "4 April & 11 April 2025",
+        date: "4 November 2025",
         highlighted: true
       },
       {
-        title: "Fashion Show",
-        date: "13 & 14 April 2025",
+        title: "Casting Summit",
+        date: "5-6 November 2025",
         highlighted: true
       },
       {
-        title: "Beauty Showroom",
-        date: "15 April 2025",
+        title: `Fashion Show 1<sup>st</sup> & 2<sup>nd</sup> Days`,
+        date: "8-9 November 2025",
         highlighted: true
       },
       {
-        title: "Beauty Awards",
-        date: "15 April 2025 Night Gala",
+        title: `Fashion Show 3<sup>rd</sup> & 4<sup>th</sup> Days`,
+        date: "10-11 November 2025",
         highlighted: false
       },
       {
-        title: "B2B only day",
-        date: "16 April 2025",
+        title: "Beauty Awards",
+        date: "10 November 2025",
+        highlighted: false
+      },
+      {
+        title: "Vip Brand Presentation",
+        date: "12-13 November 2025",
         highlighted: false
       }
     ],
