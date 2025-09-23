@@ -641,7 +641,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "254a6de7-c7e6-483b-85e9-4caf6a078841",
+    "buildId": "ce41c87e-2744-4314-9d4c-99267f471f02",
     "buildAssetsDir": "assets/",
     "cdnURL": ""
   },
@@ -1075,7 +1075,6 @@ const _SxA8c9 = defineEventHandler(() => {});
 
 const _lazy_9p9Lv9 = () => import('../routes/api/companies-list.get.mjs');
 const _lazy_GGeB5s = () => import('../routes/api/faq.get.mjs');
-const _lazy_M4ZGzH = () => import('../routes/api/reels.get.mjs');
 const _lazy_q_OPyY = () => import('../routes/api/send-email.post.mjs');
 const _lazy_McTnOU = () => import('../routes/api/waitlist.post.mjs');
 const _lazy_G5pgvr = () => import('../_/renderer.mjs');
@@ -1084,7 +1083,6 @@ const handlers = [
   { route: '', handler: _4zfs95, lazy: false, middleware: true, method: undefined },
   { route: '/api/companies-list', handler: _lazy_9p9Lv9, lazy: true, middleware: false, method: "get" },
   { route: '/api/faq', handler: _lazy_GGeB5s, lazy: true, middleware: false, method: "get" },
-  { route: '/api/reels', handler: _lazy_M4ZGzH, lazy: true, middleware: false, method: "get" },
   { route: '/api/send-email', handler: _lazy_q_OPyY, lazy: true, middleware: false, method: "post" },
   { route: '/api/waitlist', handler: _lazy_McTnOU, lazy: true, middleware: false, method: "post" },
   { route: '/__nuxt_island/**', handler: _SxA8c9, lazy: false, middleware: false, method: undefined },

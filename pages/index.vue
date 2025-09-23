@@ -7,16 +7,18 @@
     />
     <HeroSection class="mb-[56px] md:mb-[76px]" />
     <NewProgramSection class="md:mb-[120px] mb-[76px]" />
-    <!-- <ProgramSection class="md:mb-[56px] mb-[36px]" /> -->
     <MarqueeSection :content="sponsors" class="mb-[56px] md:mb-[76px]" />
     <HowItWasSection class="mb-[56px] md:mb-[76px]" />
+    <ProgramSection class="md:mb-[56px] mb-[36px]" />
     <DesignersSection class="md:mb-[76px] mb-[56px]" />
     <SponsorsSection class="md:mb-[76px] mb-[56px]" />
     <StatisticsSection class="md:mb-[76px] mb-[56px]" />
     <div class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
       <EventFeatures :data="featuresData.featuresDataPromo" />
     </div>
-    <FacesSection class="md:mb-[76px] mb-[56px]" />
+    <div class="container mx-auto px-4">
+      <FacesOfEfwSection />
+    </div>
     <div class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
       <ImageCarousel 
         title="We invest in and support the economy of Dubai | UAE" 
@@ -48,7 +50,7 @@ import ImageCarousel from '~/components/ImageCarousel.vue';
 import EventFeatures from '~/components/EventFeatures.vue';
 import AppSeo from '@/components/AppSeo.vue';
 import FaqSectionDynamic from '~/components/FaqSectionDynamic.vue';
-import FacesSection from '~/components/FacesSection.vue';
+import FacesOfEfwSection from '@/components/FacesOfEfwSection.vue';
 
 // Constants and Assets
 import { FEATURES_DATA } from '~/constants/featuresData';

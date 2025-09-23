@@ -12,7 +12,8 @@ type HydrationStrategies = {
 }
 type LazyComponent<T> = (T & DefineComponent<HydrationStrategies, {}, {}, {}, {}, {}, {}, { hydrated: () => void }>)
 interface _GlobalComponents {
-      'AppSeo': typeof import("../components/AppSeo.vue")['default']
+      'AiContestFaq': typeof import("../components/AiContestFaq.vue")['default']
+    'AppSeo': typeof import("../components/AppSeo.vue")['default']
     'ApprovedCompaniesList': typeof import("../components/ApprovedCompaniesList.vue")['default']
     'ApprovedCompaniesListFixed': typeof import("../components/ApprovedCompaniesListFixed.vue")['default']
     'ApprovedCompaniesListOld': typeof import("../components/ApprovedCompaniesListOld.vue")['default']
@@ -20,6 +21,7 @@ interface _GlobalComponents {
     'ContactForm': typeof import("../components/ContactForm.vue")['default']
     'DesignersSection': typeof import("../components/DesignersSection.vue")['default']
     'EventFeatures': typeof import("../components/EventFeatures.vue")['default']
+    'FacesOfEfwSection': typeof import("../components/FacesOfEfwSection.vue")['default']
     'FacesSection': typeof import("../components/FacesSection.vue")['default']
     'FaqSection': typeof import("../components/FaqSection.vue")['default']
     'FaqSectionDynamic': typeof import("../components/FaqSectionDynamic.vue")['default']
@@ -80,7 +82,8 @@ interface _GlobalComponents {
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'NuxtIsland': typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
     'NuxtRouteAnnouncer': typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']
-      'LazyAppSeo': LazyComponent<typeof import("../components/AppSeo.vue")['default']>
+      'LazyAiContestFaq': LazyComponent<typeof import("../components/AiContestFaq.vue")['default']>
+    'LazyAppSeo': LazyComponent<typeof import("../components/AppSeo.vue")['default']>
     'LazyApprovedCompaniesList': LazyComponent<typeof import("../components/ApprovedCompaniesList.vue")['default']>
     'LazyApprovedCompaniesListFixed': LazyComponent<typeof import("../components/ApprovedCompaniesListFixed.vue")['default']>
     'LazyApprovedCompaniesListOld': LazyComponent<typeof import("../components/ApprovedCompaniesListOld.vue")['default']>
@@ -88,6 +91,7 @@ interface _GlobalComponents {
     'LazyContactForm': LazyComponent<typeof import("../components/ContactForm.vue")['default']>
     'LazyDesignersSection': LazyComponent<typeof import("../components/DesignersSection.vue")['default']>
     'LazyEventFeatures': LazyComponent<typeof import("../components/EventFeatures.vue")['default']>
+    'LazyFacesOfEfwSection': LazyComponent<typeof import("../components/FacesOfEfwSection.vue")['default']>
     'LazyFacesSection': LazyComponent<typeof import("../components/FacesSection.vue")['default']>
     'LazyFaqSection': LazyComponent<typeof import("../components/FaqSection.vue")['default']>
     'LazyFaqSectionDynamic': LazyComponent<typeof import("../components/FaqSectionDynamic.vue")['default']>
@@ -154,6 +158,7 @@ declare module 'vue' {
   export interface GlobalComponents extends _GlobalComponents { }
 }
 
+export const AiContestFaq: typeof import("../components/AiContestFaq.vue")['default']
 export const AppSeo: typeof import("../components/AppSeo.vue")['default']
 export const ApprovedCompaniesList: typeof import("../components/ApprovedCompaniesList.vue")['default']
 export const ApprovedCompaniesListFixed: typeof import("../components/ApprovedCompaniesListFixed.vue")['default']
@@ -162,6 +167,7 @@ export const CompaniesList: typeof import("../components/CompaniesList.vue")['de
 export const ContactForm: typeof import("../components/ContactForm.vue")['default']
 export const DesignersSection: typeof import("../components/DesignersSection.vue")['default']
 export const EventFeatures: typeof import("../components/EventFeatures.vue")['default']
+export const FacesOfEfwSection: typeof import("../components/FacesOfEfwSection.vue")['default']
 export const FacesSection: typeof import("../components/FacesSection.vue")['default']
 export const FaqSection: typeof import("../components/FaqSection.vue")['default']
 export const FaqSectionDynamic: typeof import("../components/FaqSectionDynamic.vue")['default']
@@ -222,6 +228,7 @@ export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
 export const NuxtRouteAnnouncer: typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']
+export const LazyAiContestFaq: LazyComponent<typeof import("../components/AiContestFaq.vue")['default']>
 export const LazyAppSeo: LazyComponent<typeof import("../components/AppSeo.vue")['default']>
 export const LazyApprovedCompaniesList: LazyComponent<typeof import("../components/ApprovedCompaniesList.vue")['default']>
 export const LazyApprovedCompaniesListFixed: LazyComponent<typeof import("../components/ApprovedCompaniesListFixed.vue")['default']>
@@ -230,6 +237,7 @@ export const LazyCompaniesList: LazyComponent<typeof import("../components/Compa
 export const LazyContactForm: LazyComponent<typeof import("../components/ContactForm.vue")['default']>
 export const LazyDesignersSection: LazyComponent<typeof import("../components/DesignersSection.vue")['default']>
 export const LazyEventFeatures: LazyComponent<typeof import("../components/EventFeatures.vue")['default']>
+export const LazyFacesOfEfwSection: LazyComponent<typeof import("../components/FacesOfEfwSection.vue")['default']>
 export const LazyFacesSection: LazyComponent<typeof import("../components/FacesSection.vue")['default']>
 export const LazyFaqSection: LazyComponent<typeof import("../components/FaqSection.vue")['default']>
 export const LazyFaqSectionDynamic: LazyComponent<typeof import("../components/FaqSectionDynamic.vue")['default']>

@@ -4,7 +4,7 @@ const waitlist_post = defineEventHandler(async (event) => {
   try {
     const body = await readBody(event);
     console.log("Received waitlist data:", body);
-    if (!body.companyName || !body.industry || !body.email || !body.agreement1 || !body.agreement2) {
+    if (!body.companyName || !body.industry || !body.agreement1 || !body.agreement2) {
       console.log("Missing required fields:", {
         companyName: !!body.companyName,
         industry: !!body.industry,

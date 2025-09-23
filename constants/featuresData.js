@@ -14,27 +14,32 @@ export const FEATURES_DATA = {
     days: [
       {
         title: "Pre-Launch",
-        date: "4 April & 11 April 2025",
+        date: "4 November 2025",
         highlighted: false
       },
       {
-        title: "Fashion Show",
-        date: "13 & 14 April 2025",
+        title: "Casting Summit",
+        date: "5-6 November 2025",
         highlighted: true
       },
       {
-        title: "Beauty Showroom",
-        date: "15 April 2025",
+        title: `Fashion Show 1<sup>st</sup> & 2<sup>nd</sup> Days`,
+        date: "8-9 November 2025",
         highlighted: true
+      },
+      {
+        title: `Fashion Show 3<sup>rd</sup> & 4<sup>th</sup> Days`,
+        date: "10-11 November 2025",
+        highlighted: false
       },
       {
         title: "Beauty Awards",
-        date: "15 April 2025 Night Gala",
+        date: "10 November 2025",
         highlighted: false
       },
       {
-        title: "B2B only day",
-        date: "16 April 2025",
+        title: "Vip Brand Presentation",
+        date: "12-13 November 2025",
         highlighted: false
       }
     ],
@@ -71,27 +76,32 @@ export const FEATURES_DATA = {
     days: [
       {
         title: "Pre-Launch",
-        date: "4 April & 11 April 2025",
+        date: "4 November 2025",
+        highlighted: true
+      },
+      {
+        title: "Casting Summit",
+        date: "5-6 November 2025",
+        highlighted: true
+      },
+      {
+        title: `Fashion Show 1<sup>st</sup> & 2<sup>nd</sup> Days`,
+        date: "8-9 November 2025",
+        highlighted: true
+      },
+      {
+        title: `Fashion Show 3<sup>rd</sup> & 4<sup>th</sup> Days`,
+        date: "10-11 November 2025",
         highlighted: false
-      },
-      {
-        title: "Fashion Show",
-        date: "13 & 14 April 2025",
-        highlighted: true
-      },
-      {
-        title: "Beauty Showroom",
-        date: "15 April 2025",
-        highlighted: true
       },
       {
         title: "Beauty Awards",
-        date: "15 April 2025 Night Gala",
+        date: "10 November 2025",
         highlighted: false
       },
       {
-        title: "B2B only day",
-        date: "16 April 2025",
+        title: "Vip Brand Presentation",
+        date: "12-13 November 2025",
         highlighted: false
       }
     ],
@@ -198,28 +208,33 @@ export const FEATURES_DATA = {
     days: [
       {
         title: "Pre-Launch",
-        date: "4 April & 11 April 2025",
+        date: "4 November 2025",
         highlighted: true
       },
       {
-        title: "Fashion Show",
-        date: "13 & 14 April 2025",
+        title: "Casting Summit",
+        date: "5-6 November 2025",
         highlighted: true
       },
       {
-        title: "Beauty Showroom",
-        date: "15 April 2025",
+        title: `Fashion Show 1<sup>st</sup> & 2<sup>nd</sup> Days`,
+        date: "8-9 November 2025",
+        highlighted: true
+      },
+      {
+        title: `Fashion Show 3<sup>rd</sup> & 4<sup>th</sup> Days`,
+        date: "10-11 November 2025",
         highlighted: true
       },
       {
         title: "Beauty Awards",
-        date: "15 April 2025 Night Gala",
+        date: "10 November 2025",
         highlighted: true
       },
       {
-        title: "B2B only day",
-        date: "16 April 2025",
-        highlighted: true
+        title: "Vip Brand Presentation",
+        date: "12-13 November 2025",
+        highlighted:  true
       }
     ],
     cards: [
@@ -300,27 +315,32 @@ export const FEATURES_DATA = {
     days: [
       {
         title: "Pre-Launch",
-        date: "4 April & 11 April 2025",
+        date: "4 November 2025",
         highlighted: true
       },
       {
-        title: "Fashion Show",
-        date: "13 & 14 April 2025",
+        title: "Casting Summit",
+        date: "5-6 November 2025",
         highlighted: true
       },
       {
-        title: "Beauty Showroom",
-        date: "15 April 2025",
+        title: `Fashion Show 1<sup>st</sup> & 2<sup>nd</sup> Days`,
+        date: "8-9 November 2025",
+        highlighted: true
+      },
+      {
+        title: `Fashion Show 3<sup>rd</sup> & 4<sup>th</sup> Days`,
+        date: "10-11 November 2025",
         highlighted: true
       },
       {
         title: "Beauty Awards",
-        date: "15 April 2025 Night Gala",
-        highlighted: true
+        date: "10 November 2025",
+        highlighted: false
       },
       {
-        title: "B2B only day",
-        date: "16 April 2025",
+        title: "Vip Brand Presentation",
+        date: "12-13 November 2025",
         highlighted: false
       }
     ],
@@ -388,27 +408,32 @@ export const FEATURES_DATA = {
     days: [
       {
         title: "Pre-Launch",
-        date: "4 April & 11 April 2025",
+        date: "4 November 2025",
         highlighted: true
       },
       {
-        title: "Fashion Show",
-        date: "13 & 14 April 2025",
+        title: "Casting Summit",
+        date: "5-6 November 2025",
         highlighted: true
       },
       {
-        title: "Beauty Showroom",
-        date: "15 April 2025",
+        title: `Fashion Show 1<sup>st</sup> & 2<sup>nd</sup> Days`,
+        date: "8-9 November 2025",
+        highlighted: true
+      },
+      {
+        title: `Fashion Show 3<sup>rd</sup> & 4<sup>th</sup> Days`,
+        date: "10-11 November 2025",
         highlighted: true
       },
       {
         title: "Beauty Awards",
-        date: "15 April 2025 Night Gala",
-        highlighted: true
+        date: "10 November 2025",
+        highlighted: false
       },
       {
-        title: "B2B only day",
-        date: "16 April 2025",
+        title: "Vip Brand Presentation",
+        date: "12-13 November 2025",
         highlighted: false
       }
     ],
@@ -455,27 +480,32 @@ export const FEATURES_DATA = {
     days: [
       {
         title: "Pre-Launch",
-        date: "4 April & 11 April 2025",
+        date: "4 November 2025",
         highlighted: true
       },
       {
-        title: "Fashion Show",
-        date: "13 & 14 April 2025",
+        title: "Casting Summit",
+        date: "5-6 November 2025",
         highlighted: true
       },
       {
-        title: "Beauty Showroom",
-        date: "15 April 2025",
+        title: `Fashion Show 1<sup>st</sup> & 2<sup>nd</sup> Days`,
+        date: "8-9 November 2025",
+        highlighted: true
+      },
+      {
+        title: `Fashion Show 3<sup>rd</sup> & 4<sup>th</sup> Days`,
+        date: "10-11 November 2025",
         highlighted: true
       },
       {
         title: "Beauty Awards",
-        date: "15 April 2025 Night Gala",
-        highlighted: true
+        date: "10 November 2025",
+        highlighted: false
       },
       {
-        title: "B2B only day",
-        date: "16 April 2025",
+        title: "Vip Brand Presentation",
+        date: "12-13 November 2025",
         highlighted: false
       }
     ],
@@ -483,21 +513,21 @@ export const FEATURES_DATA = {
       {
         type: "image",
         image: FEATURES_IMAGES.block6.image28,
-        title: "Explore 80 Stations with Representatives of Service Providers",
+        title: "Explore 60 Spots with Representatives of Service Providers",
         subtitle: "Showcase and connect with business representatives",
         description: "Present your services, connect with potential clients, and explore collaboration opportunities in a dynamic expo setting with 80 dedicated stations."
       },
       {
         type: "image",
         image: FEATURES_IMAGES.block6.image29,
-        title: "100 Lead Chats from Visitors",
+        title: "50 Lead Chats from Visitors",
         subtitle: "Get Lead Generation from fashion visitors",
         description: "Interact with event attendees and generate high-quality leads from fashion industry professionals, entrepreneurs, and decision-makers"
       },
       {
         type: "image",
         image: FEATURES_IMAGES.block6.image30,
-        title: "30-Min Trial Station",
+        title: "2 hour Trial Station",
         subtitle: "Try to showcase at a dedicated booth & timeline",
         description: "Experience a dedicated trial station where businesses can present their products and services to targeted visitors in a structured format."
       },
@@ -536,27 +566,32 @@ export const FEATURES_DATA = {
     days: [
       {
         title: "Pre-Launch",
-        date: "4 April & 11 April 2025",
+        date: "4 November 2025",
         highlighted: true
       },
       {
-        title: "Fashion Show",
-        date: "13 & 14 April 2025",
+        title: "Casting Summit",
+        date: "5-6 November 2025",
         highlighted: true
       },
       {
-        title: "Beauty Showroom",
-        date: "15 April 2025",
+        title: `Fashion Show 1<sup>st</sup> & 2<sup>nd</sup> Days`,
+        date: "8-9 November 2025",
+        highlighted: true
+      },
+      {
+        title: `Fashion Show 3<sup>rd</sup> & 4<sup>th</sup> Days`,
+        date: "10-11 November 2025",
         highlighted: true
       },
       {
         title: "Beauty Awards",
-        date: "15 April 2025 Night Gala",
-        highlighted: true
+        date: "10 November 2025",
+        highlighted: false
       },
       {
-        title: "B2B only day",
-        date: "16 April 2025",
+        title: "Vip Brand Presentation",
+        date: "12-13 November 2025",
         highlighted: false
       }
     ],

@@ -6,7 +6,7 @@
     <!-- Заголовок с настраиваемым цветом фона -->
     <div v-if="data.title" class="mb-8 md:10 lg:mb-12">
       <div class="md:flex md:items-center">
-        <h2 class="text-2xl md:text-3xl lg:text-4xl">{{ data.title || '' }}</h2>
+        <h2 class="text-2xl md:text-3xl lg:text-4xl" v-html="data.title || ''"></h2>
         <a
           v-if="data.subtitle" 
           :id="data.id || ''"
@@ -19,11 +19,37 @@
       </div>
     </div>
 
-    <!-- Список дней с горизонтальным скроллом -->
+    <!-- Mobile Tabs -->
+    <div class="md:hidden mb-4 sticky top-0 z-10 bg-white">
+      <div class="flex w-full border-b border-gray-200">
+        <div
+          v-for="(day, index) in data.days || []"
+          :key="index"
+          class="flex flex-col items-center justify-center flex-1 px-2 py-3 border-r border-gray-300 last:border-r-0 transition-colors duration-300"
+          :class="{
+            'bg-black text-white': day.highlighted,
+            'bg-gray-100 text-gray-400': !day.highlighted,
+          }"
+        >
+          <span class="text-sm font-medium">{{ getDayNumber(day.date) }}</span>
+          <span class="text-xs opacity-75">{{ getDayMonth(day.date) }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop Tabs -->
     <div 
-      class="overflow-x-auto custom-scrollbar mb-[20px] md:mb-[25px] lg:mb-[34px]"
+      class="hidden md:block overflow-x-auto hide-scrollbar cursor-grab active:cursor-grabbing mb-[20px] md:mb-[25px] lg:mb-[34px]"
+      ref="daysContainer"
+      @mousedown="startDrag"
+      @mousemove="onDrag"
+      @mouseup="stopDrag"
+      @mouseleave="stopDrag"
+      @touchstart="startDragTouch"
+      @touchmove="onDragTouch"
+      @touchend="stopDrag"
     >
-      <div class="flex md:gap-10 gap-5 whitespace-nowrap pb-4">
+      <div class="flex md:gap-10 gap-5 whitespace-nowrap pb-4 pl-4 md:pl-0" style="padding-right: 100vw;">
         <div 
           v-for="(day, index) in data.days || []" 
           :key="index"
@@ -33,8 +59,8 @@
           <h3 
             class="text-lg md:text-xl lg:text-3xl 2xl:text-4xl transition-colors duration-300"
             :class="{ 'text-black': day.highlighted, 'text-gray-400': !day.highlighted }"
+            v-html="day.title"
           >
-            {{ day.title }}
           </h3>
           <span class="text-xs md:text-sm lg:text-base">{{ day.date }}</span>
         </div>
@@ -97,9 +123,9 @@
           ></video>
         </div>
         <div class="p-5 md:p-7 lg:p-10">
-          <h4 class="text-lg md:text-xl lg:text-2xl font-medium mb-2 md:mb-3 lg:mb-4">{{ card.title }}</h4>
-          <p class="text-base md:text-lg mb-2 md:mb-3 lg:mb-4">{{ card.subtitle }}</p>
-          <p class="text-sm md:text-base">{{ card.description }}</p>
+          <h4 class="text-lg md:text-xl lg:text-2xl font-medium mb-2 md:mb-3 lg:mb-4" v-html="card.title"></h4>
+          <p class="text-base md:text-lg mb-2 md:mb-3 lg:mb-4" v-html="card.subtitle"></p>
+          <p class="text-sm md:text-base" v-html="card.description"></p>
         </div>
       </div>
     </div>
@@ -135,9 +161,9 @@
             ></video>
           </div>
           <div class="p-5">
-            <h4 class="text-xl font-medium mb-2">{{ card.title }}</h4>
-            <p class="text-base mb-3">{{ card.subtitle }}</p>
-            <p class="text-sm">{{ card.description }}</p>
+            <h4 class="text-xl font-medium mb-2" v-html="card.title"></h4>
+            <p class="text-base mb-3" v-html="card.subtitle"></p>
+            <p class="text-sm" v-html="card.description"></p>
           </div>
         </div>
         <div class="flex-shrink-0 w-5"></div>
@@ -156,6 +182,86 @@ import { useVideoVisibility } from '@/composables/useVideoVisibility';
 
 const showContactForm = ref(false);
 const { setVideoRef, cleanup, isVisible } = useVideoVisibility();
+
+// Mobile tabs functionality (read-only display)
+
+// Drag functionality for horizontal scroll
+const daysContainer = ref(null);
+let isDragging = false;
+let startX = 0;
+let scrollLeft = 0;
+
+const startDrag = (e) => {
+  isDragging = true;
+  const slider = daysContainer.value;
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+};
+
+const startDragTouch = (e) => {
+  isDragging = true;
+  const slider = daysContainer.value;
+  startX = e.touches[0].pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+};
+
+const onDrag = (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const slider = daysContainer.value;
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX);
+  slider.scrollLeft = scrollLeft - walk;
+};
+
+const onDragTouch = (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const slider = daysContainer.value;
+  const x = e.touches[0].pageX - slider.offsetLeft;
+  const walk = (x - startX);
+  slider.scrollLeft = scrollLeft - walk;
+};
+
+const stopDrag = () => {
+  isDragging = false;
+};
+
+// Mobile tab helper functions
+const getDayNumber = (date) => {
+  if (!date) return '1';
+  const match = date.match(/(\d+)/);
+  return match ? match[1] : '1';
+};
+
+const getDayMonth = (date) => {
+  if (!date) return 'Nov';
+  const monthMap = {
+    'January': 'Jan', 'February': 'Feb', 'March': 'Mar', 'April': 'Apr',
+    'May': 'May', 'June': 'Jun', 'July': 'Jul', 'August': 'Aug',
+    'September': 'Sep', 'October': 'Oct', 'November': 'Nov', 'December': 'Dec'
+  };
+  
+  for (const [full, short] of Object.entries(monthMap)) {
+    if (date.includes(full)) return short;
+  }
+  
+  // Fallback for common patterns
+  if (date.includes('Nov')) return 'Nov';
+  if (date.includes('Dec')) return 'Dec';
+  if (date.includes('Jan')) return 'Jan';
+  if (date.includes('Feb')) return 'Feb';
+  if (date.includes('Mar')) return 'Mar';
+  if (date.includes('Apr')) return 'Apr';
+  if (date.includes('May')) return 'May';
+  if (date.includes('Jun')) return 'Jun';
+  if (date.includes('Jul')) return 'Jul';
+  if (date.includes('Aug')) return 'Aug';
+  if (date.includes('Sep')) return 'Sep';
+  if (date.includes('Oct')) return 'Oct';
+  
+  return 'Nov';
+};
 
 const props = defineProps({
   data: {
@@ -197,6 +303,15 @@ onUnmounted(() => {
 
 .custom-scrollbar::-webkit-scrollbar {
   display: none; /* Для Chrome, Safari и Opera */
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE и Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari и Opera */
 }
 
 @media (max-width: 768px) {

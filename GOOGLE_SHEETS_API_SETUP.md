@@ -62,3 +62,4 @@ const response = await $fetch('/api/waitlist-sheets-api', {
 - API ключ ограничен только Google Sheets API
 - Таблица доступна только для чтения публично
 - Запись возможна только через API ключ
+

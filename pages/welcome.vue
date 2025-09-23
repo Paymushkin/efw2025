@@ -1,20 +1,26 @@
 <template>
   <div class="container mx-auto px-4 py-4 md:py-6">
     <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <section class="md:mb-[76px] mb-[56px]">
+        <div class="flex flex-col md:flex-row gap-6 md:gap-8">
         <!-- Left column: Welcome, Program, and QR code -->
-        <div class="text-center md:text-left">
+        <div class="text-center md:text-left flex-1">
           <h1 class="text-xl md:text-3xl xl:text-4xl mb-3 md:mb-4">
-            You're on the EFW 2025 Guest List by {{ guestName }}!
+            You've been added to the official EFW SS 2025 Guest List by {{ guestName }} — just show this page at the entrance.
           </h1>
+          
+          <!-- Финальное приглашение -->
+          <p class="text-sm md:text-base text-gray-600 italic mb-4 md:mb-6">
+            This page is your final invitation. No emails, tickets, or confirmations will follow.
+          </p>
           
           <!-- Event Program - Desktop version -->
           <div class="mb-4 md:mb-6 ">
-            <h2 class="text-base md:text-lg text-gray-600 mb-4 md:mb-6 hidden md:block">
+            <!-- <h2 class="text-base md:text-lg text-gray-600 mb-4 md:mb-6">
               Join us for three remarkable days of style, beauty, and meaningful connections:
-            </h2>
+            </h2> -->
             
-            <div class="overflow-x-auto hidden md:block">
+            <div class="overflow-x-auto">
               <table class="min-w-full mb-3">
                 <thead>
                   <tr class="border-b border-gray-200">
@@ -24,129 +30,91 @@
                 </thead>
                 <tbody>
                   <tr class="border-b border-gray-100">
-                    <td class="py-2 px-3 text-sm font-medium">April 13 | 6–10PM</td>
-                    <td class="py-2 px-3 text-sm text-gray-600">Ready-to-Wear Runway Shows</td>
+                    <td class="py-2 px-3 text-sm font-medium">November 8<br>5–10PM</td>
+                    <td class="py-2 px-3 text-sm text-gray-600">PRÊT-À-PORTER WOMEN'S<br>& MEN'S COLLECTIONS SS 26</td>
                   </tr>
                   <tr class="border-b border-gray-100">
-                    <td class="py-2 px-3 text-sm font-medium">April 14 | 6–10 PM</td>
-                    <td class="py-2 px-3 text-sm text-gray-600">Prêt-à-Porter Runway Shows</td>
+                    <td class="py-2 px-3 text-sm font-medium">November 9<br>5–10 PM</td>
+                    <td class="py-2 px-3 text-sm text-gray-600">READY-TO-WEAR COLLECTIONS SEASON SS 26<br>& Kid's collections Pop-Up Market</td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <td class="py-2 px-3 text-sm font-medium">November 10<br>10AM–6PM</td>
+                    <td class="py-2 px-3 text-sm text-gray-600">THE POP-UP MARKET</td>
                   </tr>
                   <tr>
-                    <td class="py-2 px-3 text-sm font-medium">April 15 | 12–6PM</td>
-                    <td class="py-2 px-3 text-sm text-gray-600">Beauty Fashion Showroom Day</td>
+                    <td class="py-2 px-3 text-sm font-medium">November 11<br>10AM–6PM</td>
+                    <td class="py-2 px-3 text-sm text-gray-600">THE POP-UP MARKET</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             
-            <p class="text-sm md:text-base text-gray-600 mb-3">
-              Want to sit near valuable VIPs?<br>
-              Just introduce yourself — name & profession
+            <p class="text-sm md:text-base text-gray-600 mb-3 md:hidden">
+              A quick sign-in and a short note about yourself will serve as your VIP seat request, helping us seat you close to the right people.
             </p>
           </div>
           
           <!-- Desktop version with QR code and address -->
-          <div class="hidden md:block">
-            <div class="flex items-start gap-4">
-              <div class="bg-white p-3 rounded-lg shadow-md inline-block max-w-[160px]">
+          <div class="hidden md:flex gap-4 items-center">
+            <div class="bg-white inline-block max-w-[160px] flex-shrink-0">
                 <img 
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://meyou.id/efw2025%23guests" 
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://meyou.id/efwss26%23guests" 
                   alt="QR code for event platform" 
                   class="mb-1 w-full"
                 />
-                <p class="text-xs text-gray-500 break-words">Request VIP Seat + Scan with the phone you'll use at the event</p>
               </div>
-              
-              <!-- Desktop version with address -->
-              <a 
-                href="https://maps.app.goo.gl/UVNrqWs4ud4X4x7w8" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="bg-white p-3 rounded-lg shadow-md"
-              >
-                <h3 class="text-sm font-medium text-gray-800 mb-0 flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  SKYLIGHT GALLERY
-                </h3>
-                <p class="text-xs text-gray-600">DUBAI MEDIA CITY</p>
-              </a>
-            </div>
+            <p class="text-sm md:text-base text-gray-600 mb-4">
+              If you want VIP seats, please scan this QR code with the phone you'll bring to the event. A quick sign-in and a short note about yourself will serve as your VIP seat request, helping us seat you close to the right people.
+            </p>
           </div>
           
           <!-- Mobile version with button -->
           <div class="md:hidden flex justify-center">
             <NuxtLink 
-              to="https://meyou.id/efw2025#guests" 
+              to="https://meyou.id/efwss26#guests" 
               target="_blank" 
               rel="noopener noreferrer"
             >
               <BaseButton variant="primary">
-                <span>Request Seat</span>
+                <span>Apply for Reserved Seats</span>
                 <span>></span>
               </BaseButton>
             </NuxtLink>
           </div>
         </div>
+
+        
         
         <!-- Right column: Image with program overlay on mobile -->
-        <div class="flex flex-col items-center justify-center relative">
+        <div class="flex flex-col items-center justify-center relative flex-shrink-0">
           <div class="w-full max-w-md mx-auto rounded-lg shadow-md overflow-hidden relative">
             <img 
               :src="Image1" 
               alt="Emirates Fashion Week 2025" 
-              class="w-full md:h-auto md:max-h-unset max-h-[65vh] h-[65vh] object-cover md:max-w-md"
+              class="w-full md:h-auto md:max-h-unset max-h-[65vh] h-[65vh] object-cover md:max-w-md hidden lg:block"
             />
             
-            <!-- Address block for mobile version (overlay on image) -->
-            <div class="md:hidden absolute bottom-0 left-0 right-0 backdrop-blur-md p-2 rounded-b-lg w-full text-center">
-              <a 
-                href="https://maps.app.goo.gl/UVNrqWs4ud4X4x7w8" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="block"
-              >
-                <h3 class="text-xs font-medium text-white mb-0 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  SKYLIGHT GALLERY
-                </h3>
-                <p class="text-xs text-white">DUBAI MEDIA CITY</p>
-              </a>
-            </div>
           </div>
           
-          <!-- Event Program - Mobile version (overlay on image) -->
-          <div class="md:hidden absolute top-0 left-0 right-0 backdrop-blur-md p-3 rounded-t-lg w-full max-w-md mx-auto">
-            <h2 class="text-xs text-white font-medium mb-2">
-              Join us for three remarkable days of style, beauty, and meaningful connections:
-            </h2>
-            
-            <div class="overflow-x-auto">
-              <table class="min-w-full text-xs text-white">
-                <tbody>
-                  <tr class="border-b border-white/20">
-                    <td class="py-1 px-2 font-medium">April 13 | 6–10PM</td>
-                    <td class="py-1 px-2">Ready-to-Wear Runway Shows</td>
-                  </tr>
-                  <tr class="border-b border-white/20">
-                    <td class="py-1 px-2 font-medium">April 14 | 6–10PM</td>
-                    <td class="py-1 px-2">Prêt-à-Porter Runway Shows</td>
-                  </tr>
-                  <tr>
-                    <td class="py-1 px-2 font-medium">April 15 | 12–6PM</td>
-                    <td class="py-1 px-2">Beauty Fashion Showroom Day</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
         </div>
       </div>
+      </section>
+
+          <!-- Отдельный блок с локацией -->
+          <section class="md:mb-[76px] mb-[56px]">
+               <h2 class="text-2xl md:text-3xl font-bold text-left mb-8">Location</h2>
+              <p class="text-sm md:text-base text-gray-600 mb-4">Skylight Gallery. Arjaan by Rotana. Dubai Media City</p>
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1185.1534268127045!2d55.15329961837267!3d25.095293069615156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b44056573e7%3A0xc77c77051f31ecc!2sArjaan%20by%20Rotana%20Dubai!5e1!3m2!1sru!2sae!4v1757573179410!5m2!1sru!2sae" 
+                width="100%" 
+                height="400" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                class="rounded-lg"
+              ></iframe>
+          </section>
       
       <!-- Detailed Fashion Show Program -->
       <div class="mt-8 md:mt-12">
@@ -155,78 +123,49 @@
         <!-- Desktop version of detailed program -->
         <div class="hidden md:block">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- April 13 -->
+            <!-- November 8 -->
             <div class="bg-white p-4 rounded-lg shadow-md">
-              <h3 class="text-base font-medium text-gray-800 mb-3">April 13, 2025</h3>
+              <h3 class="text-base font-medium text-gray-800 mb-3">November 8, 2025</h3>
               
               <div class="space-y-3">
-                <div class="border-b border-gray-100 pb-2">
-                  <h4 class="text-sm font-medium text-gray-700">6 PM</h4>
-                  <ul class="mt-1 space-y-1">
-                    <li class="text-sm text-gray-600">Anastasiya Boyarskaya /Russia/</li>
-                    <li class="text-sm text-gray-600">Osmosiss /Italy/</li>
-                    <li class="text-sm text-gray-600">Katharina Arnold /Germany/</li>
-                    <li class="text-sm text-gray-600">SNIM /Russia/</li>
-                    <li class="text-sm text-gray-600">Tanya Tuzova /Russia/</li>
-                    <li class="text-sm text-gray-600">Danatalla /Belarus/</li>
-                    <li class="text-sm text-gray-600">Kibovskaya /Russia/</li>
-                    <li class="text-sm text-gray-600">Nermin /UAE/</li>
-                    <li class="text-sm text-gray-600">Aisha /Azerbaijan/</li>
-                    <li class="text-sm text-gray-600">Borovik /Russia/</li>
-                  </ul>
-                </div>
-                
                 <div>
-                  <h4 class="text-sm font-medium text-gray-700">8 PM</h4>
+                  <h4 class="text-sm font-medium text-gray-700">5-10 PM</h4>
                   <ul class="mt-1 space-y-1">
-                    <li class="text-sm text-gray-600">By Osmanova /Azerbaijan/</li>
-                    <li class="text-sm text-gray-600">Sylweriusz Stanislawski</li>
-                    <li class="text-sm text-gray-600">Alessandro Borreli /Russia/</li>
-                    <li class="text-sm text-gray-600">Marina Mirova /Russia/</li>
-                    <li class="text-sm text-gray-600">Alla Couture /Russia/</li>
-                    <li class="text-sm text-gray-600">Bolero /Russia/</li>
-                    <li class="text-sm text-gray-600">Raisa Miroshnichenko /Russia/</li>
-                    <li class="text-sm text-gray-600">Zain /Iraq/</li>
-                    <li class="text-sm text-gray-600">Show Stylists</li>
+                    <li class="text-sm text-gray-600">NOURA COUTURE - UAE</li>
+                    <li class="text-sm text-gray-600">ANNET - RUSSIA</li>
+                    <li class="text-sm text-gray-600">LESNIKOVA DRESSES - RUSSIA</li>
+                    <li class="text-sm text-gray-600">SOLANA COUTURE - USA</li>
+                    <li class="text-sm text-gray-600">LORA COUTURE - AZERBAIJAN</li>
+                    <li class="text-sm text-gray-600">ETNO FRESH - RUSSIA</li>
+                    <li class="text-sm text-gray-600">BELIZE - GERMANY</li>
+                    <li class="text-sm text-gray-600">MOONSOUL - KIRGHIZIAN</li>
+                    <li class="text-sm text-gray-600">OLECIA ARKHIPOVA - RUSSIA</li>
+                    <li class="text-sm text-gray-600">MARIANNE MOORE</li>
+                    <li class="text-sm text-gray-600">IGARNITUR - POLAND</li>
+                    <li class="text-sm text-gray-600">HERBELIN - POLAND</li>
+                    <li class="text-sm text-gray-600">DEVU - POLAND</li>
                   </ul>
                 </div>
               </div>
             </div>
             
-            <!-- April 14 -->
+            <!-- November 9 -->
             <div class="bg-white p-4 rounded-lg shadow-md">
-              <h3 class="text-base font-medium text-gray-800 mb-3">April 14, 2025</h3>
+              <h3 class="text-base font-medium text-gray-800 mb-3">November 9, 2025</h3>
               
               <div class="space-y-3">
-                <div class="border-b border-gray-100 pb-2">
-                  <h4 class="text-sm font-medium text-gray-700">6 PM</h4>
-                  <ul class="mt-1 space-y-1">
-                    <li class="text-sm text-gray-600">Alisia Fiori /Russia/</li>
-                    <li class="text-sm text-gray-600">Etno Fresh /Russia/</li>
-                    <li class="text-sm text-gray-600">Sundus /Oman/</li>
-                    <li class="text-sm text-gray-600">Top Tato /Saudi Arabia/</li>
-                    <li class="text-sm text-gray-600">Icona Style /Armenia/</li>
-                    <li class="text-sm text-gray-600">Boulas /Russia/</li>
-                    <li class="text-sm text-gray-600">G'nFayth /Philippines/</li>
-                    <li class="text-sm text-gray-600">Marina Undrits /Russia/</li>
-                    <li class="text-sm text-gray-600">Triskelon /Russia/</li>
-                    <li class="text-sm text-gray-600">Nadia</li>
-                  </ul>
-                </div>
-                
                 <div>
-                  <h4 class="text-sm font-medium text-gray-700">8 PM</h4>
+                  <h4 class="text-sm font-medium text-gray-700">5-10 PM</h4>
                   <ul class="mt-1 space-y-1">
-                    <li class="text-sm text-gray-600">Feminelli /Russia/</li>
-                    <li class="text-sm text-gray-600">Addicted /Russia/</li>
-                    <li class="text-sm text-gray-600">Alexandra Fashion House</li>
-                    <li class="text-sm text-gray-600">Orchidea Nera by Lamoo /Saudi Arabia/</li>
-                    <li class="text-sm text-gray-600">Luna Collection /Russia/</li>
-                    <li class="text-sm text-gray-600">Malikabegim /Uzbekistan/</li>
-                    <li class="text-sm text-gray-600">Zaggaro /Romania/</li>
-                    <li class="text-sm text-gray-600">Irmi /Russia/</li>
-                    <li class="text-sm text-gray-600">Two Kids /Romania/</li>
-                    <li class="text-sm text-gray-600">Elena Romanova /Russia/</li>
+                    <li class="text-sm text-gray-600">ALEXANDRA AMA CABINET - RUSSIA</li>
+                    <li class="text-sm text-gray-600">ARNI FASHION - USA/INDIAN</li>
+                    <li class="text-sm text-gray-600">RUBASHKA - RUSSIA</li>
+                    <li class="text-sm text-gray-600">SNIM - KAZAKHSTAN</li>
+                    <li class="text-sm text-gray-600">KIBOVSKAYA - RUSSIA</li>
+                    <li class="text-sm text-gray-600">FYOR - UAE</li>
+                    <li class="text-sm text-gray-600">POLINA TROPILLO - RUSSIA</li>
+                    <li class="text-sm text-gray-600">OLGA BOGDANOVA - RUSSIA</li>
+                    <li class="text-sm text-gray-600">ELENA ROMANOVA - RUSSIA</li>
                   </ul>
                 </div>
               </div>
@@ -240,78 +179,49 @@
             <h3 class="text-base font-medium text-gray-800 mb-3">Fashion Show Schedule</h3>
             
             <div class="space-y-4">
-              <!-- April 13 -->
+              <!-- November 8 -->
               <div>
-                <h4 class="text-sm font-medium text-gray-700 mb-2">April 13, 2025</h4>
+                <h4 class="text-sm font-medium text-gray-700 mb-2">November 8, 2025</h4>
                 
                 <div class="space-y-3">
                   <div>
-                    <h5 class="text-xs font-medium text-gray-600">6 PM</h5>
+                    <h5 class="text-xs font-medium text-gray-600">5-10 PM</h5>
                     <ul class="mt-1 space-y-1">
-                      <li class="text-xs text-gray-600">Anastasiya Boyarskaya /Russia/</li>
-                      <li class="text-xs text-gray-600">Osmosiss /Italy/</li>
-                      <li class="text-xs text-gray-600">Katharina Arnold /Germany/</li>
-                      <li class="text-xs text-gray-600">SNIM /Russia/</li>
-                      <li class="text-xs text-gray-600">Tanya Tuzova /Russia/</li>
-                      <li class="text-xs text-gray-600">Danatalla /Belarus/</li>
-                      <li class="text-xs text-gray-600">Kibovskaya /Russia/</li>
-                      <li class="text-xs text-gray-600">Nermin /UAE/</li>
-                      <li class="text-xs text-gray-600">Aisha /Azerbaijan/</li>
-                      <li class="text-xs text-gray-600">Borovik /Russia/</li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h5 class="text-xs font-medium text-gray-600">8 PM</h5>
-                    <ul class="mt-1 space-y-1">
-                      <li class="text-xs text-gray-600">By Osmanova /Azerbaijan/</li>
-                      <li class="text-xs text-gray-600">Sylweriusz Stanislawski</li>
-                      <li class="text-xs text-gray-600">Alessandro Borreli /Russia/</li>
-                      <li class="text-xs text-gray-600">Marina Mirova /Russia/</li>
-                      <li class="text-xs text-gray-600">Alla Couture /Russia/</li>
-                      <li class="text-xs text-gray-600">Bolero /Russia/</li>
-                      <li class="text-xs text-gray-600">Raisa Miroshnichenko /Russia/</li>
-                      <li class="text-xs text-gray-600">Zain /Iraq/</li>
-                      <li class="text-xs text-gray-600">Show Stylists</li>
+                      <li class="text-xs text-gray-600">NOURA COUTURE - UAE</li>
+                      <li class="text-xs text-gray-600">ANNET - RUSSIA</li>
+                      <li class="text-xs text-gray-600">LESNIKOVA DRESSES - RUSSIA</li>
+                      <li class="text-xs text-gray-600">SOLANA COUTURE - USA</li>
+                      <li class="text-xs text-gray-600">LORA COUTURE - AZERBAIJAN</li>
+                      <li class="text-xs text-gray-600">ETNO FRESH - RUSSIA</li>
+                      <li class="text-xs text-gray-600">BELIZE - GERMANY</li>
+                      <li class="text-xs text-gray-600">MOONSOUL - KIRGHIZIAN</li>
+                      <li class="text-xs text-gray-600">OLECIA ARKHIPOVA - RUSSIA</li>
+                      <li class="text-xs text-gray-600">MARIANNE MOORE</li>
+                      <li class="text-xs text-gray-600">IGARNITUR - POLAND</li>
+                      <li class="text-xs text-gray-600">HERBELIN - POLAND</li>
+                      <li class="text-xs text-gray-600">DEVU - POLAND</li>
                     </ul>
                   </div>
                 </div>
               </div>
               
-              <!-- April 14 -->
+              <!-- November 9 -->
               <div>
-                <h4 class="text-sm font-medium text-gray-700 mb-2">April 14, 2025</h4>
+                <h4 class="text-sm font-medium text-gray-700 mb-2">November 9, 2025</h4>
                 
                 <div class="space-y-3">
                   <div>
-                    <h5 class="text-xs font-medium text-gray-600">6 PM</h5>
+                    <h5 class="text-xs font-medium text-gray-600">5-10 PM</h5>
                     <ul class="mt-1 space-y-1">
-                      <li class="text-xs text-gray-600">Alisia Fiori /Russia/</li>
-                      <li class="text-xs text-gray-600">Etno Fresh /Russia/</li>
-                      <li class="text-xs text-gray-600">Sundus /Oman/</li>
-                      <li class="text-xs text-gray-600">Top Tato /Saudi Arabia/</li>
-                      <li class="text-xs text-gray-600">Icona Style /Armenia/</li>
-                      <li class="text-xs text-gray-600">Boulas /Russia/</li>
-                      <li class="text-xs text-gray-600">G'nFayth /Philippines/</li>
-                      <li class="text-xs text-gray-600">Marina Undrits /Russia/</li>
-                      <li class="text-xs text-gray-600">Triskelon /Russia/</li>
-                      <li class="text-xs text-gray-600">Nadia</li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h5 class="text-xs font-medium text-gray-600">8 PM</h5>
-                    <ul class="mt-1 space-y-1">
-                      <li class="text-xs text-gray-600">Feminelli /Russia/</li>
-                      <li class="text-xs text-gray-600">Addicted /Russia/</li>
-                      <li class="text-xs text-gray-600">Alexandra Fashion House</li>
-                      <li class="text-xs text-gray-600">Orchidea Nera by Lamoo /Saudi Arabia/</li>
-                      <li class="text-xs text-gray-600">Luna Collection /Russia/</li>
-                      <li class="text-xs text-gray-600">Malikabegim /Uzbekistan/</li>
-                      <li class="text-xs text-gray-600">Zaggaro /Romania/</li>
-                      <li class="text-xs text-gray-600">Irmi /Russia/</li>
-                      <li class="text-xs text-gray-600">Two Kids /Romania/</li>
-                      <li class="text-xs text-gray-600">Elena Romanova /Russia/</li>
+                      <li class="text-xs text-gray-600">ALEXANDRA AMA CABINET - RUSSIA</li>
+                      <li class="text-xs text-gray-600">ARNI FASHION - USA/INDIAN</li>
+                      <li class="text-xs text-gray-600">RUBASHKA - RUSSIA</li>
+                      <li class="text-xs text-gray-600">SNIM - KAZAKHSTAN</li>
+                      <li class="text-xs text-gray-600">KIBOVSKAYA - RUSSIA</li>
+                      <li class="text-xs text-gray-600">FYOR - UAE</li>
+                      <li class="text-xs text-gray-600">POLINA TROPILLO - RUSSIA</li>
+                      <li class="text-xs text-gray-600">OLGA BOGDANOVA - RUSSIA</li>
+                      <li class="text-xs text-gray-600">ELENA ROMANOVA - RUSSIA</li>
                     </ul>
                   </div>
                 </div>
@@ -320,6 +230,7 @@
           </div>
         </div>
       </div>
+      
     </div>
   </div>
 </template>

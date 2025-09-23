@@ -237,7 +237,8 @@ const navLinks = [
   { name: 'FEATURES', href: '/features', id: 'features' },
   { name: 'DESIGNERS', href: '/#designers', id: 'designer' },
   { name: 'GALLERY', href: '/gallery', id: 'gallery' },
-  { name: 'HOW IT WAS', href: '/#how-it-was', id: 'how-it-was' },
+  { name: 'OFFER', href: '/offer?wp=971585753302&tr', id: 'offer' },
+  // { name: 'HOW IT WAS', href: '/#how-it-was', id: 'how-it-was' },
   // { name: 'WIDGET', href: '/widget', id: 'widget' },
 ];
 

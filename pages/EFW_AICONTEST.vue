@@ -22,9 +22,10 @@
         </div>
       </section>
 
-      <!-- Секция 2: Информационные блоки -->
+      <!-- Секция 3: Информационные блоки -->
       <section class="md:mb-[76px] mb-[56px]">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-left mb-8">TERMS</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
           <!-- Блок 1: Who can participate? -->
           <div class="bg-white rounded-2xl p-6 shadow-lg">
@@ -37,7 +38,13 @@
             <ul class="text-sm md:text-base xl:text-lg space-y-2">
               <li>• <strong>Format:</strong> 9:16 vertical</li>
               <li>• <strong>Duration:</strong> any for Reels/Stories</li>
-              <li>• <strong>Must include date & EFW brand:</strong> <strong>8–11&nbsp;November&nbsp;2025, Dubai&nbsp;+ Emirates&nbsp;Fashion&nbsp;Week</strong> (Dr&nbsp;Sugiyama&nbsp;preferred)</li>
+              <li>• <strong>Must include date & EFW brand:</strong> <strong>8–11&nbsp;November&nbsp;2025, Dubai&nbsp;+ Emirates&nbsp;Fashion&nbsp;Week</strong> (<a 
+                href="https://storage.yandexcloud.net/videos-meyou/efw2025/ai/DrSugiyama-Regular.ttf"
+                download="DrSugiyama-Regular.ttf"
+                class="text-blue-600 hover:text-blue-800 underline font-semibold"
+              >
+                Dr&nbsp;Sugiyama
+              </a>&nbsp;preferred)</li>
             </ul>
           </div>
 
@@ -46,22 +53,34 @@
             <h3 class="text-base md:text-xl xl:text-2xl font-bold mb-4">How to submit</h3>
             <ol class="text-sm md:text-base xl:text-lg space-y-2 mb-4">
               <li>1. Post your Reels/Story on your Instagram.</li>
-              <li>2. Tag <strong>@emirates_fashionweek</strong> (not a collaboration—just a tag).</li>
+              <li>2. Tag <a 
+                href="https://instagram.com/emirates_fashionweek" 
+                target="_blank"
+                class="text-blue-600 hover:text-blue-800 underline"
+              >
+                @emirates_fashionweek
+              </a> (not a collaboration—just a tag).</li>
               <li>3. Entries <strong>accepted only if reposted</strong> by our official account.</li>
             </ol>
             <div class="p-4 bg-yellow-50 border-l-4 border-yellow-400">
               <h4 class="text-sm md:text-base xl:text-lg font-semibold text-yellow-800 mb-2"><strong>Fake Account Alert</strong></h4>
               <p class="text-sm md:text-base xl:text-lg text-yellow-700">
-                We detected a <strong>fake account</strong> using our name and unclear activity. Tag <strong>only</strong> the official: <strong>@emirates_fashionweek</strong> (black logo + blue verified sign).
+                We detected a <strong>fake account</strong> using our name and unclear activity. Tag <strong>only</strong> the official: <a 
+                  href="https://instagram.com/emirates_fashionweek" 
+                  target="_blank"
+                  class="text-blue-600 hover:text-blue-800 underline font-semibold"
+                >
+                  @emirates_fashionweek
+                </a> (black logo + blue verified sign).
               </p>
             </div>
           </div>
 
           <!-- Блок 3: Optional -->
           <div class="bg-white rounded-2xl p-6 shadow-lg">
-            <h3 class="text-base md:text-xl xl:text-2xl font-bold mb-4">OPTIONAL</h3>
+            <h3 class="text-base md:text-xl xl:text-2xl font-bold mb-4">Optional</h3>
             <ul class="text-sm md:text-base xl:text-lg space-y-2">
-              <li>• May use past EFW looks/highlights <a href="https://emiratesfashionweeks.com/gallery" class="text-blue-600 underline" target="_blank">emiratesfashionweeks.com/gallery</a> and designers' looks.</li>
+              <li>• May use past EFW looks/highlights <a href="https://emiratesfashionweeks.com/gallery" class="text-blue-600 underline" target="_blank">Gallery</a> and designers' looks.</li>
               <li>• May use program note: <strong>8–9&nbsp;Nov</strong> Catwalk&nbsp;Runway · <strong>10–11&nbsp;Nov</strong> Pop-up&nbsp;Market (Beauty&nbsp;& Wellness).</li>
               <li>• <strong>Face of EFW:</strong> you may use faces listed in the authorized pool; the list will expand over time.</li>
               <li>• <strong>Reference assets below:</strong> venue/location photos and Faces of EFW images are provided as <strong>optional</strong> references. <strong>You do not have to use any or all</strong> of them — your creativity is not restricted.</li>
@@ -82,15 +101,45 @@
               <li>• <strong>Featured website gallery</strong> with credits and links.</li>
             </ul>
           </div>
+
+          <!-- Блок 5: Open Calls (Partners Welcome) -->
+          <div class="bg-white rounded-2xl p-6 shadow-lg">
+            <h3 class="text-base md:text-xl xl:text-2xl font-bold mb-4">Open Calls (Partners Welcome)</h3>
+            <ul class="text-sm md:text-base xl:text-lg space-y-3">
+              <li>• <strong>Brands:</strong> We invite product brands to supply product images/packshots and brand assets for creators to integrate into their AI ads; in return, please contribute additional prizes for creators. (Assets must be cleared for contest-limited use; brand retains IP.)</li>
+              <li>• <strong>AI Platforms:</strong> We welcome AI-generation companies to provide creator credits/vouchers for participants.</li>
+              <li>• <strong>Celebrities / Stylists / Designers:</strong> If you're willing to opt in your likeness, we'll add you to the authorized Face of EFW pool for use within this contest.</li>
+            </ul>
+          </div>
+
+          
         </div>
       </section>
+
+      <!-- Секция 2: FOOTNOTE / LEGAL -->
+      <section class="md:mb-[76px] mb-[56px]">
+        <h2 class="text-2xl md:text-3xl font-bold text-left mb-8">FOOTNOTE / LEGAL</h2>
+        
+        <div class="bg-gray-50 rounded-2xl p-6">
+          <ul class="text-sm md:text-base xl:text-lg space-y-3 text-gray-700">
+            <li>• Content must be respectful and lawful; no defamatory, misleading, hateful, political, or privacy-invasive content.</li>
+            <li>• No deepfake "statements" or fabricated claims of endorsement/partnership by individuals or brands.</li>
+            <li>• Face of EFW images may be used only from the authorized pool published on EFW channels; attribution will be provided where applicable.</li>
+            <li>• By submitting, you grant EFW a non-exclusive, revocable license to repost, screen at the event, and feature your work with credit; you retain IP.</li>
+            <li>• The Face of EFW list will expand over time; check updates before publishing.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Секция 7: FACES of EFW -->
+      <FacesOfEfwSection />
 
       <!-- Секция 3: Reels -->
       <section class="md:mb-[76px] mb-[56px]">
         
         <!-- Instagram Reels из Google Sheets -->
          <div v-if="instagramReels.length > 0" >
-          <h2 class="text-2xl md:text-3xl font-bold text-left mb-8">Reels</h2>
+          <h2 class="text-2xl md:text-3xl font-bold text-left mb-8">CREATOR SHOWCASES</h2>
            
            <!-- Мобильная версия: горизонтальный скролл -->
            <div class="lg:hidden">
@@ -199,7 +248,7 @@
 
       <!-- Секция 4: Галерея изображений -->
       <section class="md:mb-[76px] mb-[56px]">
-        <h2 class="text-2xl md:text-3xl font-bold text-left mb-8">Optional Reference Gallery</h2>
+        <h2 class="text-2xl md:text-3xl font-bold text-left mb-8">OPTIONAL REFERENCE GALLERY</h2>
         
         <!-- Masonry сетка для десктопа, горизонтальный скролл для мобильных -->
         <!-- Мобильная версия - горизонтальный скролл -->
@@ -241,48 +290,8 @@
         </div>
       </section>
 
-      <!-- Секция 5: Скачивание шрифта -->
-      <section class="mb-8 md:mb-[76px] mb-[56px]">
-        <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8 text-center">
-        <h2 class="text-2xl md:text-3xl font-bold mb-4">Download Font</h2>
-        <p class="text-base md:text-lg mb-6 text-gray-700">
-          Use the official Dr Sugiyama font for your contest entries to match the Emirates Fashion Week branding.
-        </p>
-        <a 
-          href="https://storage.yandexcloud.net/videos-meyou/efw2025/ai/DrSugiyama-Regular.ttf"
-          download="DrSugiyama-Regular.ttf"
-          class="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition-colors duration-300"
-        >
-          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-          </svg>
-          Download
-        </a>
-        </div>
-      </section>
-
-      <!-- Секция 6: Face of EFW -->
-      <section class="md:mb-[76px] mb-[56px]">
-        <h2 class="text-2xl md:text-3xl font-bold text-left mb-8">Face of EFW</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-white rounded-2xl p-6 shadow-lg">
-            <img 
-              src="https://storage.yandexcloud.net/videos-meyou/efw2025/ai/item-1.jpg" 
-              alt="Face of EFW 1"
-              class="w-full h-auto rounded-lg object-cover"
-            >
-          </div>
-          
-          <div class="bg-white rounded-2xl p-6 shadow-lg">
-            <img 
-              src="https://storage.yandexcloud.net/videos-meyou/efw2025/ai/item-1.jpg" 
-              alt="Face of EFW 2"
-              class="w-full h-auto rounded-lg object-cover"
-            >
-          </div>
-        </div>
-      </section>
+      <!-- Секция 8: FAQ -->
+      <AiContestFaq />
     </div>
     
 
@@ -313,6 +322,8 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import AppSeo from '@/components/AppSeo.vue'
+import FacesOfEfwSection from '@/components/FacesOfEfwSection.vue'
+import AiContestFaq from '@/components/AiContestFaq.vue'
 
 definePageMeta({
   layout: 'default'

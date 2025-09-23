@@ -24,10 +24,14 @@
     
     <div class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0">
       <swiper
-        :modules="[Navigation, Pagination]"
+        :modules="[Navigation, Pagination, Autoplay]"
         :slides-per-view="1.2"
         :space-between="16"
         :navigation="false"
+        :autoplay="{
+          delay: 3000,
+          disableOnInteraction: false
+        }"
         :pagination="{
           clickable: true,
           dynamicBullets: true,
@@ -177,9 +181,9 @@ button:active {
 </style>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { getOptimizedImageAttributes, preloadImage } from '@/utils/imageOptimization';
 import 'swiper/css';
 import 'swiper/css/navigation';

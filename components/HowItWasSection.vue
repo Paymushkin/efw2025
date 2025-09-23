@@ -1,6 +1,6 @@
 <template>
   <div id="how-it-was" class="container mx-auto">
-    <h2 class="text-xl md:text-3xl xl:text-4xl">How it was</h2>
+    <h2 class="text-xl md:text-3xl xl:text-4xl">PREVIOUS 13 SEASONS</h2>
     <p class="text-sm md:text-base xl:text-xl mb-4 xl:mb-8 md:mb-6">collections</p>
     <div 
       class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0 xl:mb-5 md:mb-4 mb-3 cursor-grab active:cursor-grabbing" 
@@ -8,7 +8,8 @@
       @mousedown="startDrag"
       @mousemove="onDrag"
       @mouseup="stopDrag"
-      @mouseleave="stopDrag"
+      @mouseleave="handleMouseLeave"
+      @mouseenter="stopAutoPlay"
     >
       <div class="flex gap-8 xl:mb-5 md:mb-4 mb-3 whitespace-nowrap pb-4 md:pb-0 pr-4 md:pr-0 pl-4 md:pl-0">
         <button
@@ -54,7 +55,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, nextTick } from 'vue';
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue';
 import { tabs } from '@/constants/images';
 import { getOptimizedImageAttributes, preloadImages } from '@/utils/imageOptimization';
 
@@ -63,6 +64,7 @@ const tabsContainer = ref(null);
 let isDragging = false;
 let startX = 0;
 let scrollLeft = 0;
+let autoPlayInterval = null;
 
 // Загружаем только текущие изображения
 const currentImages = computed(() => {
@@ -77,6 +79,7 @@ const preloadNextImages = () => {
 
 const startDrag = (e) => {
   isDragging = true;
+  stopAutoPlay(); // Останавливаем автоплей при начале перетаскивания
   const slider = tabsContainer.value;
   startX = e.pageX - slider.offsetLeft;
   scrollLeft = slider.scrollLeft;
@@ -93,6 +96,15 @@ const onDrag = (e) => {
 
 const stopDrag = () => {
   isDragging = false;
+  // Перезапускаем автоплей после окончания перетаскивания
+  setTimeout(() => {
+    startAutoPlay();
+  }, 500);
+};
+
+const handleMouseLeave = () => {
+  stopDrag();
+  startAutoPlay();
 };
 
 const selectTab = (index) => {
@@ -101,11 +113,40 @@ const selectTab = (index) => {
   nextTick(() => {
     preloadNextImages();
   });
+  // Перезапускаем автоплей после ручного переключения
+  startAutoPlay();
+};
+
+const startAutoPlay = () => {
+  stopAutoPlay(); // Останавливаем предыдущий интервал если есть
+  autoPlayInterval = setInterval(() => {
+    const nextIndex = (currentTab.value + 1) % tabs.length;
+    currentTab.value = nextIndex;
+    // Предзагружаем следующий набор изображений
+    nextTick(() => {
+      preloadNextImages();
+    });
+  }, 3000); // 3 секунды
+};
+
+const stopAutoPlay = () => {
+  if (autoPlayInterval) {
+    clearInterval(autoPlayInterval);
+    autoPlayInterval = null;
+  }
 };
 
 onMounted(() => {
   // Предзагружаем изображения для следующего таба
   preloadNextImages();
+  // Запускаем автоплей с небольшой задержкой
+  setTimeout(() => {
+    startAutoPlay();
+  }, 1000);
+});
+
+onUnmounted(() => {
+  stopAutoPlay();
 });
 </script>
 

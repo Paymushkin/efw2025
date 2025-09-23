@@ -73,7 +73,6 @@
           <input 
             v-model="form.email"
             type="email"
-            required
             placeholder="mail@company.com"
             :class="[
               'w-full px-3 py-2 text-black border rounded-md focus:outline-none focus:ring-2 focus:ring-black placeholder:text-gray-400',
@@ -136,7 +135,7 @@
 
         <button 
           type="submit"
-          :disabled="isSubmitting || !form.companyName.trim() || !form.industry || !form.email.trim() || !form.agreement1 || !form.agreement2"
+          :disabled="isSubmitting || !form.companyName.trim() || !form.industry || !form.agreement1 || !form.agreement2"
           class="w-full bg-black text-white py-2 rounded-md hover:bg-opacity-90 transition-colors disabled:bg-gray-400"
         >
           {{ isSubmitting ? 'Adding to Waitlist...' : 'Join' }}
@@ -388,13 +387,8 @@ const handleSubmit = async () => {
     return;
   }
   
-  // Validate email (required)
-  if (!form.email.trim()) {
-    emailError.value = 'Email is required';
-    return;
-  }
-
-  if (!validateEmail(form.email)) {
+  // Validate email (optional but must be valid if provided)
+  if (form.email.trim() && !validateEmail(form.email)) {
     emailError.value = 'Please enter a valid email address';
     return;
   }

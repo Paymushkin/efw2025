@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
     console.log('Received waitlist data:', body);
     
     // Validate required fields
-    if (!body.companyName || !body.industry || !body.email || !body.agreement1 || !body.agreement2) {
+    if (!body.companyName || !body.industry || !body.agreement1 || !body.agreement2) {
       console.log('Missing required fields:', {
         companyName: !!body.companyName,
         industry: !!body.industry,
