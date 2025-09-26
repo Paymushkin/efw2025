@@ -9,25 +9,27 @@
     <NewProgramSection class="md:mb-[120px] mb-[76px]" />
     <MarqueeSection :content="sponsors" class="mb-[56px] md:mb-[76px]" />
     <HowItWasSection class="mb-[56px] md:mb-[76px]" />
-    <ProgramSection class="md:mb-[56px] mb-[36px]" />
+    <ProgramSection class="md:mb-[56px] mb-[36px]" />=
     <DesignersSection class="md:mb-[76px] mb-[56px]" />
     <SponsorsSection class="md:mb-[76px] mb-[56px]" />
     <StatisticsSection class="md:mb-[76px] mb-[56px]" />
-    <div class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
+    <div id="features-access" class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
       <EventFeatures :data="featuresData.featuresDataPromo" />
     </div>
-    <div class="container mx-auto px-4">
+    <div id="faces-efw" class="container mx-auto px-4">
       <FacesOfEfwSection />
     </div>
-    <div class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
-      <ImageCarousel 
-        title="We invest in and support the economy of Dubai | UAE" 
-        :slidesPerView="6" 
-        :autoplay="true"
-        :autoplaySpeed="5000"
-        :gap="20"
-      />
-    </div>
+    <section id="economy-dubai">
+      <div class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
+        <ImageCarousel 
+          title="We invest in and support the economy of Dubai | UAE" 
+          :slidesPerView="6" 
+          :autoplay="true"
+          :autoplaySpeed="5000"
+          :gap="20"
+        />
+      </div>
+    </section>
     <FaqSectionDynamic class="mb-[56px] md:mb-[76px]" />
   </div>
 </template>

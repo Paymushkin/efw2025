@@ -1,5 +1,5 @@
 <template>
-  <div id="how-it-was" class="container mx-auto">
+  <div id="previous-seasons" class="container mx-auto">
     <h2 class="text-xl md:text-3xl xl:text-4xl">PREVIOUS 13 SEASONS</h2>
     <p class="text-sm md:text-base xl:text-xl mb-4 xl:mb-8 md:mb-6">collections</p>
     <div 

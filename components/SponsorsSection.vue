@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto mb-[105px]">
+  <div id="partners-media" class="container mx-auto mb-[105px]">
     <h2 class="text-xl md:text-3xl xl:text-4xl mb-8 xl:mb-[75px]">Partners & Media</h2>
     <div class="grid grid-cols-4 md:grid-cols-8 xl:grid-cols-9 gap-4 justify-items-center md:justify-items-start">
       <div 

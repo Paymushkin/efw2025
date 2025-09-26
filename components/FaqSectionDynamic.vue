@@ -1,5 +1,5 @@
 <template>
-  <section :class="[
+  <section id="faq" :class="[
     'container mx-auto px-4',
     { 'py-20 md:py-[100px]': !standalone },
     { 'py-[60px] md:py-[120px]': standalone }

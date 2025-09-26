@@ -1,5 +1,5 @@
 <template>
-  <div id="new-program" class="container mx-auto">
+  <div id="spring-summer-2026" class="container mx-auto">
     <div class="flex justify-between md:items-center gap-8 md:mb-[50px] mb-4 max-w-[1200px]">
       <h2 class="text-xl md:text-3xl xl:text-4xl">14th Spring Summer 2026</h2>
       <NuxtLink 
