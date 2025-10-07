@@ -27,7 +27,7 @@ function doGet(e) {
       
       // Добавляем заголовки, если лист пустой
       if (sheet.getLastRow() === 0) {
-        const headers = ['Name', 'Company', 'Email', 'Inviter', 'Timestamp', 'Source'];
+        const headers = ['Name', 'Company', 'Email', 'Inviter', 'Barcode', 'Timestamp', 'Source'];
         sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
         Logger.log('Заголовки добавлены');
       }
@@ -38,6 +38,7 @@ function doGet(e) {
         data.company || '',
         data.email || '',
         data.inviter || '',
+        data.barcode || '',
         data.timestamp || new Date().toISOString(),
         data.source || 'EFW Registration'
       ];
@@ -86,6 +87,7 @@ function testFunction() {
     company: 'Test Company',
     email: 'test@example.com',
     inviter: 'Test Inviter',
+    barcode: '123456789',
     timestamp: new Date().toISOString(),
     source: 'Test Registration'
   };

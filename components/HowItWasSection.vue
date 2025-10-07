@@ -35,18 +35,21 @@
       <div class="flex md:grid md:grid-cols-3 gap-4 px-4 md:px-0">
         <div
           v-for="(image, index) in currentImages"
-          :key="index"
-          class="overflow-hidden rounded-lg flex-shrink-0 w-[280px] md:w-auto"
+          :key="`${currentTab}-${index}`"
+          class="overflow-hidden rounded-lg flex-shrink-0 w-[280px] md:w-auto transition-all duration-700 ease-in-out"
+          :style="{ 
+            opacity: isTransitioning ? 0.3 : 1
+          }"
         >
           <div class="flex flex-col gap-5">
             <NuxtLink to="/gallery">
               <img 
                 v-bind="getOptimizedImageAttributes(image, tabs[currentTab].designers[index])"
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover transition-all duration-700 ease-in-out"
                 :loading="index === 0 ? 'eager' : 'lazy'"
               />
             </NuxtLink>
-            <span class="text-black">{{ tabs[currentTab].designers[index] }}</span>
+            <span class="text-black transition-all duration-700 ease-in-out">{{ tabs[currentTab].designers[index] }}</span>
           </div>
         </div>
       </div>
@@ -61,6 +64,7 @@ import { getOptimizedImageAttributes, preloadImages } from '@/utils/imageOptimiz
 
 const currentTab = ref(0);
 const tabsContainer = ref(null);
+const isTransitioning = ref(false);
 let isDragging = false;
 let startX = 0;
 let scrollLeft = 0;
@@ -133,11 +137,25 @@ const handleMouseLeave = () => {
 };
 
 const selectTab = (index) => {
-  currentTab.value = index;
-  // Предзагружаем следующий набор изображений после смены таба
-  nextTick(() => {
-    preloadNextImages();
-  });
+  if (index === currentTab.value) return;
+  
+  // Начинаем анимацию
+  isTransitioning.value = true;
+  
+  // Небольшая задержка для плавного перехода
+  setTimeout(() => {
+    currentTab.value = index;
+    // Предзагружаем следующий набор изображений после смены таба
+    nextTick(() => {
+      preloadNextImages();
+    });
+    
+    // Завершаем анимацию
+    setTimeout(() => {
+      isTransitioning.value = false;
+    }, 100);
+  }, 200);
+  
   // Перезапускаем автоплей после ручного переключения
   startAutoPlay();
 };
@@ -146,12 +164,23 @@ const startAutoPlay = () => {
   stopAutoPlay(); // Останавливаем предыдущий интервал если есть
   autoPlayInterval = setInterval(() => {
     const nextIndex = (currentTab.value + 1) % tabs.length;
-    currentTab.value = nextIndex;
-    // Предзагружаем следующий набор изображений
-    nextTick(() => {
-      preloadNextImages();
-    });
-  }, 3000); // 3 секунды
+    
+    // Начинаем анимацию
+    isTransitioning.value = true;
+    
+    setTimeout(() => {
+      currentTab.value = nextIndex;
+      // Предзагружаем следующий набор изображений
+      nextTick(() => {
+        preloadNextImages();
+      });
+      
+      // Завершаем анимацию
+      setTimeout(() => {
+        isTransitioning.value = false;
+      }, 100);
+    }, 200);
+  }, 5000); // 5 секунд
 };
 
 const stopAutoPlay = () => {
@@ -179,6 +208,7 @@ onUnmounted(() => {
 button {
   transition: background-color 0.3s;
 }
+
 
 .hide-scrollbar {
   -ms-overflow-style: none;  /* IE и Edge */

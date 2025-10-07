@@ -32,39 +32,65 @@
             
             <div class="overflow-x-auto">
               <table class="min-w-full mb-3">
-                <thead>
+                <!-- <thead>
                   <tr class="border-b border-gray-200">
                     <th class="py-2 px-3 text-left text-sm md:text-lg font-medium text-gray-500">Date & Time</th>
                     <th class="py-2 px-3 text-left text-sm md:text-lg font-medium text-gray-500">Event</th>
                   </tr>
-                </thead>
+                </thead> -->
                 <tbody>
-                  <tr class="border-b border-gray-100">
-                    <td class="py-2 px-3 text-sm md:text-lg font-medium">8 NOV | SAT 6–10PM</td>
-                    <td class="py-2 px-3 text-sm md:text-lg text-gray-600">PRÊT-À-PORTER WOMEN'S<br>& MEN'S COLLECTIONS SS 26</td>
+                  <!-- Day 8 (8 NOV) -->
+                  <tr v-if="visibleDays.includes(8)" class="border-b border-gray-100">
+                    <td class="py-2 pl-2 md:pr-2 text-sm md:text-base xl:text-lg font-medium text-left">
+                       <a class="hover:text-blue-600 transition-colors" target="_blank" href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=NWNpMTI0dnZ2bWhiNmtmZ3YzNWx1Yml2dXAgYTQ4Y2U2YjY4MzIwMDcxNjc0YmIxMTAxNmUxNDg2YTAzY2M0ZTdjMGE0NTJjZmMzYjM0NTAzZTI2OTYzYzIyY0Bn&amp;tmsrc=a48ce6b68320071674bb11016e1486a03cc4e7c0a452cfc3b34503e26963c22c%40group.calendar.google.com">8 NOV | SAT</a>
+                      <br>6–10PM</td>
+                    <td class="py-2 pr-2 text-sm md:text-base xl:text-lg text-gray-600">PRÊT-À-PORTER WOMEN'S<br>& MEN'S COLLECTIONS SS 26</td>
                   </tr>
-                  <tr class="border-b border-gray-100">
-                    <td class="py-2 px-3 text-sm md:text-lg font-medium">9 NOV | SUN 6–10PM</td>
-                    <td class="py-2 px-3 text-sm md:text-lg text-gray-600">READY-TO-WEAR COLLECTIONS<br>& Kid's collections Pop-Up Market</td>
+                  
+                  <!-- Day 9 (9 NOV) -->
+                  <tr v-if="visibleDays.includes(9)" class="border-b border-gray-100">
+                    <td class="py-2 pl-2 md:pr-2 text-sm md:text-base xl:text-lg font-medium text-left">
+                       <a class="hover:text-blue-600 transition-colors" target="_blank" href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=N25sY3ExZXVtYjczNW12bmR0ZnR0cGd0OXAgYTQ4Y2U2YjY4MzIwMDcxNjc0YmIxMTAxNmUxNDg2YTAzY2M0ZTdjMGE0NTJjZmMzYjM0NTAzZTI2OTYzYzIyY0Bn&amp;tmsrc=a48ce6b68320071674bb11016e1486a03cc4e7c0a452cfc3b34503e26963c22c%40group.calendar.google.com">9 NOV | SUN</a>
+                      <br>6–10PM</td>
+                    <td class="py-2 pr-2 text-sm md:text-base xl:text-lg text-gray-600">READY-TO-WEAR COLLECTIONS<br>& Kid's collections Pop-Up Market</td>
                   </tr>
-                  <tr class="border-b border-gray-100">
-                    <td class="py-2 px-3 text-sm md:text-lg font-medium">10 NOV | MON 10AM–6PM</td>
-                    <td class="py-2 px-3 text-sm md:text-lg text-gray-600">POP-UP MARKET & BEAUTY SERVICES
+                  
+                  <!-- Day 10 (10 NOV) -->
+                  <tr v-if="visibleDays.includes(10)" class="border-b border-gray-100">
+                    <td class="py-2 pl-2 md:pr-2 text-sm md:text-base xl:text-lg font-medium text-left">
+                       <a class="hover:text-blue-600 transition-colors" target="_blank" href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=NTFzdXBkMjQzamhzanR0cjRiajdhb2J2Z3AgYTQ4Y2U2YjY4MzIwMDcxNjc0YmIxMTAxNmUxNDg2YTAzY2M0ZTdjMGE0NTJjZmMzYjM0NTAzZTI2OTYzYzIyY0Bn&amp;tmsrc=a48ce6b68320071674bb11016e1486a03cc4e7c0a452cfc3b34503e26963c22c%40group.calendar.google.com">10 NOV | MON</a>
+                      <br>10AM–6PM</td>
+                    <td class="py-2 pr-2 text-sm md:text-lg text-gray-600">FASHION & BEAUTY SERVICES<br>POP-UP MARKET
                     </td>
                   </tr>
-                  <tr>
-                    <td class="py-2 px-3 text-sm md:text-lg font-medium">11 NOV | TUE 10AM–6PM</td>
-                    <td class="py-2 px-3 text-sm md:text-lg text-gray-600">POP-UP MARKET & WELLNESS SERVICES</td>
+                  
+                  <!-- Day 11 (11 NOV) -->
+                  <tr v-if="visibleDays.includes(11)">
+                    <td class="py-2 pl-2 md:pr-2 text-sm md:text-base xl:text-lg font-medium text-left">
+                       <a class="hover:text-blue-600 transition-colors" target="_blank" href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=MG5qMjc3aXFtczQ2MmgyZWhlaGJ0dTNzMzggYTQ4Y2U2YjY4MzIwMDcxNjc0YmIxMTAxNmUxNDg2YTAzY2M0ZTdjMGE0NTJjZmMzYjM0NTAzZTI2OTYzYzIyY0Bn&amp;tmsrc=a48ce6b68320071674bb11016e1486a03cc4e7c0a452cfc3b34503e26963c22c%40group.calendar.google.com">11 NOV | TUE</a>
+                      <br>10AM–6PM</td>
+                    <td class="py-2 pr-2 text-sm md:text-base xl:text-lg text-gray-600">FASHION & WELLNESS SERVICES<br>POP-UP MARKET</td>
                   </tr>
                 </tbody>
               </table>
+            </div>
+            
+            <!-- Join Button -->
+            <div class="flex justify-center mb-6">
+              <button 
+                @click="openRegistrationModal"
+                class="flex items-center gap-2 rounded-3xl transition-all duration-700 bg-black text-white hover:bg-black/90 hover:scale-105 active:scale-95 px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-medium shadow-lg hover:shadow-xl animate-pulse"
+                style="animation-duration: 3s;"
+              >
+                <span>Join & Add to Calendar</span>
+              </button>
             </div>
             
             <!-- Random barcode (cached in localStorage) -->
             <div class="mt-4 mb-6">
               <div class="flex flex-col md:flex-row-reverse items-center justify-center md:justify-start gap-2">
                 <p class="text-sm md:text-base text-gray-600 md:ml-2 text-center md:text-left">
-                  This page is your final invitation. No emails, tickets, or confirmations will follow.
+                  Admit: You +1. This page is your final invitation. No emails, tickets, or confirmations will follow.
                 </p>
                 <svg
                   v-if="barcodeBits.length"
@@ -95,27 +121,8 @@
               A quick sign-in and a short note about yourself will serve as your VIP seat request, helping us seat you close to the right people.
             </p> -->
           </div>
+
           
-          <!-- Desktop version with QR code and address -->
-          <div class="hidden md:flex gap-4 items-center">
-            <div class="bg-white inline-block max-w-[160px] flex-shrink-0">
-                <img 
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://meyou.id/efwss26%23guests" 
-                  alt="QR code for event platform" 
-                  class="mb-1 w-full"
-                />
-              </div>
-            <p class="text-sm md:text-base text-gray-600 mb-4">
-              If you want VIP seats, please scan this QR code with the phone you'll bring to the event. A quick sign-in and a short note about yourself will serve as your VIP seat request, helping us seat you close to the right people.
-            </p>
-          </div>
-          
-          <!-- Mobile and Desktop version with button -->
-          <div class="flex justify-center">
-            <BaseButton variant="primary" @click="openRegistrationModal">
-              <span>Confirm & Add to Calendar</span>
-            </BaseButton>
-          </div>
         </div>
 
         
@@ -246,11 +253,28 @@
     @click="closeQRModal"
   >
     <div 
-      class="bg-white rounded-lg p-6 max-w-sm w-full text-center"
+      class="bg-white rounded-lg p-6 max-w-sm w-full text-center relative"
       @click.stop
     >
-      <h3 class="text-lg font-semibold mb-4">Share this invitation</h3>
-      <div class="mb-4">
+      <!-- Close button (X) in top right corner -->
+      <button 
+        @click="closeQRModal"
+        class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors text-xl"
+        title="Close"
+      >
+        ×
+      </button>
+      <!-- Emirates Fashion Week -->
+      <h2 class="text-xl mb-2">Emirates Fashion Week</h2>
+      
+      <!-- Your Exclusive invitation -->
+      <h3 class="text-xl mb-2">Your Exclusive invitation</h3>
+      
+      <!-- Scan for Details & Confirm -->
+      <p class="text-xl font-bold text-gray-800 mb-4">Scan for Details & Confirm</p>
+      
+      <!-- QR Code -->
+      <div class="mb-6">
         <img 
           :src="qrCodeUrl" 
           alt="QR Code for invitation" 
@@ -258,12 +282,15 @@
         />
       </div>
       
-      <!-- Create new inviter form -->
+      <!-- 8-11 November 2025 -->
+      <p class="text-sm font-medium text-gray-800 mb-4">8-11 November 2025</p>
+      
+      <!-- Authorized to invite -->
       <div class="mb-4 p-4 bg-gray-50 rounded-lg">
         <label class="block text-sm font-medium text-gray-700 mb-2 text-left">
           Authorized to invite
         </label>
-        <div class="flex gap-2 mb-3">
+        <div class="flex gap-2">
           <input 
             v-model="newInviterName"
             type="text"
@@ -273,23 +300,14 @@
           />
           <button 
             @click="createNewInviter"
-            class="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700 transition-colors"
+            class="px-2 py-2 text-gray-400 hover:text-gray-600 transition-colors text-lg"
             :disabled="!newInviterName.trim()"
+            title="Add"
           >
-            OK
+            +
           </button>
         </div>
       </div>
-      
-      <p class="text-sm text-gray-600 mb-4">
-        Scan this QR code to share your invitation
-      </p>
-      <button 
-        @click="closeQRModal"
-        class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors"
-      >
-        Close
-      </button>
     </div>
   </div>
 
@@ -303,7 +321,7 @@
       class="bg-white rounded-lg p-6 max-w-md w-full"
       @click.stop
     >
-      <h3 class="text-lg font-semibold mb-4">Confirm Your Attendance</h3>
+      <h3 class="text-lg font-semibold mb-4">Join the Guest List</h3>
       
       <form @submit.prevent="submitRegistration" class="space-y-4">
         <div>
@@ -321,13 +339,13 @@
         
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">
-            Company
+            Profession or Brand
           </label>
           <input 
             v-model="registrationForm.company"
             type="text"
             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Your company name"
+            placeholder="e.g. Stylist, Buyer or Company…"
           />
         </div>
         
@@ -382,19 +400,34 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
         </svg>
         <h3 class="text-lg font-semibold text-gray-800 mb-2">You're officially on the Guest List!</h3>
-        <p class="text-gray-600 mb-6">Your Google Calendar reminder is on its way to your email</p>
+        <!-- <p class="text-gray-600 mb-6">Your Google Calendar reminder is on its way to your email</p> -->
       </div>
       
-      <div class="mb-6 p-4 bg-gray-50 rounded-lg">
-        <p class="text-sm text-gray-600 mb-3">
+      <div class="mb-6 p-4 rounded-lg">
+        <p class="text-sm text-gray-600 mb-6">
           Optional: Share a few words about your usefulness, and we'll do our best to place you with matching VIPs
         </p>
-        <button 
-          @click="requestReservedSeat"
-          class="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors"
-        >
-          Request Reserved Seat
-        </button>
+        
+        <!-- Desktop: Show QR Code -->
+        <div v-if="isDesktop" class="text-center">
+          <div class="flex justify-center mb">
+            <img 
+              :src="eventQRCodeUrl" 
+              alt="Event QR Code" 
+              class="w-32 h-32"
+            />
+          </div>
+        </div>
+        
+        <!-- Mobile: Show Button -->
+        <div v-else class="text-center">
+          <button 
+            @click="requestReservedSeat"
+            class="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors"
+          >
+            Request Reserved Seat
+          </button>
+        </div>
       </div>
       
       <button 
@@ -427,9 +460,39 @@ const guestName = computed(() => {
   return name.replace(/\+/g, ' ');
 });
 
+// Parse days parameter from URL
+const visibleDays = computed(() => {
+  const daysParam = route.query.days;
+  
+  if (!daysParam) {
+    // If no days parameter, show all days (8, 9, 10, 11)
+    return [8, 9, 10, 11];
+  }
+  
+  // Parse days parameter (e.g., "8 9 10" or "8 10 11" - browser converts + to spaces)
+  const days = daysParam.toString().split(' ').map(day => parseInt(day.trim())).filter(day => !isNaN(day));
+  
+  // If parsing failed or no valid days, show all days
+  if (days.length === 0) {
+    return [8, 9, 10, 11];
+  }
+  
+  // Return parsed days
+  return days;
+});
+
 // QR Modal state
 const showQRModal = ref(false);
 const newInviterName = ref('Marina Krapivina');
+const hasUpdatedQR = ref(false); // Track if QR was updated via OK button
+
+// Desktop detection
+const isDesktop = ref(false);
+
+// Event QR Code URL
+const eventQRCodeUrl = computed(() => {
+  return `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent('https://meyou.id/efwss26')}`;
+});
 
 // Registration Modal state
 const showRegistrationModal = ref(false);
@@ -440,10 +503,7 @@ const registrationForm = ref({
   company: '',
   email: ''
 });
-const qrCodeUrl = computed(() => {
-  const currentUrl = window.location.href;
-  return `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(currentUrl)}`;
-});
+const qrCodeUrl = ref(`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(window.location.href)}`);
 
 // Long press handlers
 let touchStartTime = 0;
@@ -482,9 +542,29 @@ const handleMouseLeave = () => {
 
 const openQRModal = () => {
   showQRModal.value = true;
+  hasUpdatedQR.value = false; // Reset flag when opening modal
 };
 
 const closeQRModal = () => {
+  // Only update URL and H1 if QR was updated via OK button
+  if (hasUpdatedQR.value && newInviterName.value.trim()) {
+    // Format the name: replace spaces with + for URL
+    const formattedName = newInviterName.value.trim().replace(/\s+/g, '+');
+    
+    // Create new URL with the inviter name
+    const baseUrl = window.location.origin + window.location.pathname;
+    const newUrl = `${baseUrl}?by=${formattedName}`;
+    
+    // Update URL without page reload
+    window.history.pushState({}, '', newUrl);
+    
+    // Force route update to trigger guestName computed property
+    window.location.hash = 'updated';
+    setTimeout(() => {
+      window.location.hash = '';
+    }, 10);
+  }
+  
   showQRModal.value = false;
 };
 
@@ -522,12 +602,13 @@ const submitRegistration = async () => {
       company: registrationForm.value.company || '',
       email: registrationForm.value.email,
       inviter: guestName.value,
+      barcode: barcodeValue.value, // Add barcode number from localStorage
       timestamp: new Date().toISOString(),
       source: 'EFW Registration'
     };
 
     // Send directly to Google Apps Script using GET with parameters (like working companies script)
-    const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzRMPq2FoydiAHKLPpiiGfML6kC9L3PfjObeZ4Pe1S_PryjkoXcJ3NSCk5leq3H--Yx/exec';
+    const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx775kpyP4fh_-e5IfVR4Yq1pdUPyI5v_BRKrx3E724INB9TOylkmSQ4moj9sVEWDMnGA/exec';
     
     // Convert data to URL parameters
     const params = new URLSearchParams({
@@ -536,6 +617,7 @@ const submitRegistration = async () => {
       company: data.company,
       email: data.email,
       inviter: data.inviter,
+      barcode: data.barcode,
       timestamp: data.timestamp,
       source: data.source
     });
@@ -614,13 +696,10 @@ const createNewInviter = () => {
   // Update QR code URL
   qrCodeUrl.value = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(newUrl)}`;
   
-  // Close modal and redirect to new URL
-  showQRModal.value = false;
+  // Mark that QR was updated
+  hasUpdatedQR.value = true;
   
-  // Redirect to new URL
-  setTimeout(() => {
-    window.location.href = newUrl;
-  }, 100);
+  // Keep the input field value (don't clear it)
 };
 
 
@@ -684,6 +763,9 @@ watch(designers, () => {
 onMounted(async () => {
   console.log('🚀 Welcome: Компонент смонтирован');
   console.log('📋 Welcome: Локальные данные уже доступны');
+  
+  // Определяем десктопную версию
+  isDesktop.value = window.innerWidth >= 1024; // lg breakpoint
   
   // Пытаемся обновить данные из Google Sheets (только если еще не обновлены)
   if (!isDataUpdated.value) {

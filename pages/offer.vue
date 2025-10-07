@@ -9,7 +9,7 @@
     <!-- Hot Offers Section -->
      <section class="flex flex-col justify-between gap-5 mb-[50px] md:mb-[80px] xl:mb-[100px]">
       <h1 class="text-xl md:text-4xl xl:mb-10">HOT OFFERS</h1>
-      <div class="grid grid-cols-1 xl:grid-cols-3 lg:gap-10 md:gap-12 gap-7">
+      <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-10 md:gap-12 gap-7">
         <div>
           <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">EFW Pop-up Market</h3>
           <p class="text-sm md:text-base xl:text-lg">
@@ -49,6 +49,45 @@
       </div>
      </section>
 
+    <!-- Location Section -->
+    <section class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
+      <h2 class="text-xl md:text-4xl xl:mb-[75px] md:mb-[50px] mb-7">LOCATION</h2>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- 2D Map -->
+        <div class="border border-gray-300 rounded-lg p-4">
+          <h3 class="text-lg md:text-xl font-bold mb-4">2D View</h3>
+          <div class="w-full">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28905.594122284634!2d55.128635593056764!3d25.095115196678794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b0072bb3c61%3A0x3a456f0a9996fc2c!2sSkylight%20Gallery!5e0!3m2!1sru!2sae!4v1757756744547!5m2!1sru!2sae" 
+              width="100%" 
+              height="450" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- 3D Map -->
+        <div class="border border-gray-300 rounded-lg p-4">
+          <h3 class="text-lg md:text-xl font-bold mb-4">3D View</h3>
+          <div class="w-full">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!4v1757756521377!6m8!1m7!1sFD00YnqiTe4Mfh-iCWTNNA!2m2!1d25.09490902264704!2d55.15351383099734!3f12.933478943500432!4f12.986052488037629!5f0.7820865974627469" 
+              width="100%" 
+              height="450" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Showcase spot Section -->
     <section class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
       <h2 class="text-xl md:text-4xl xl:mb-[75px] md:mb-[50px] mb-7">SHOWCASE SPOT</h2>
@@ -74,7 +113,7 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 xl:grid-cols-3 lg:gap-10 md:gap-12 gap-7 mb-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-10 md:gap-12 gap-7 mb-8">
         <div>
           <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">Good for:</h3>
           <ul class="text-sm md:text-base xl:text-lg space-y-2">
@@ -91,21 +130,20 @@
             <li>• Salon & Clinic Equipment – Furniture and professional tools for beauty salons & medical clinics.</li>
           </ul>
         </div>
-        <div>
-          <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">What’s Included:</h3>
+        <div class="border border-gray-300 rounded-lg p-4">
+          <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">What's Included:</h3>
           <ul class="text-sm md:text-base xl:text-lg space-y-2 mb-4">
-            <li>• One of the 80 Showcase Spots:
+            <li><b>A)</b> One of the 80 Showcase Spots:
               <ul class="pl-4 space-y-2 mt-2">
                 <li>- 8, 9 November (runway days) 20 Spots in the corridors</li>
                 <li>- 10, 11 November (market days)  20 Spots in the corridors + 60 Spots in the main hall </li>
               </ul>
             </li>
             <br><br>
-            <li class="font-bold">• 50 lead chats per day from EFW visitors (Our Matchmaking technology)</li>
-            <li>• <b>50”</b>  Display for presentations with a table and 2 bar chairs </li>
+            <li class="font-bold">B) 50 lead chats per day from EFW visitors (Our Matchmaking technology)</li>
+            <li><b>C) 50”</b>  Display for presentations with a table and 2 bar chairs </li>
             <br><br>
-            <li>• VIP invitations to all EFW runway shows on 8–11 November 2025</li>
-            <li>• Operates during fashion show days </li>
+            <li><b>D)</b> VIP invitations to all EFW runway shows on 8–11 November 2025</li>
           </ul>
           <br><br>
           <div class="flex items-start text-sm md:text-base xl:text-lg">
@@ -184,17 +222,17 @@
             <li>• Accessories Brands</li>
           </ul>
         </div>
-        <div>
-          <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">What’s Included:</h3>
+        <div class="border border-gray-300 rounded-lg p-4">
+          <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">What's Included:</h3>
           <ul class="text-sm md:text-base xl:text-lg space-y-2">
-            <li>• One of 40 Designers Pop-up Corners:
-              <ul class="pl-4 space-y-2 mt-2">
+            <li><b>A)</b> One of 40 Designers Pop-up Corners:
+              <ul class="pl-4 space-y-2 my-2">
                 <li>- 8, 9 November (runway days) 20 Pop-ups in the corridors</li>
                 <li>- 10, 11 November (market days)  20 Pop-ups in the corridors + 20 Pop-ups in the main hall</li>
               </ul>
             </li>
-            <li>• 1.5 m RAIL for collection</li>
-            <li>• VIP invitations to all EFW shows on November 8-9 </li>
+            <li><b>B)</b> 1.5 m RAIL for collection</li>
+            <li><b>C)</b> VIP invitations to all EFW shows on November 8-9 </li>
           </ul>
         </div>
         <div class="flex flex-col md:gap-4 gap-2">

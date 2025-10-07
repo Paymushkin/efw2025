@@ -5,11 +5,11 @@
     </div>
     
     <div v-else-if="error" class="text-center py-8">
-      <p class="text-red-600">Ошибка загрузки: {{ error }}</p>
+      <p class="text-red-600">Loading error: {{ error }}</p>
     </div>
     
     <div v-else-if="companies.length === 0" class="text-center py-8">
-      <p class="text-gray-600">Пока нет одобренных компаний</p>
+      <p class="text-gray-600">No approved companies yet</p>
     </div>
     
     <div v-else class="space-y-3">

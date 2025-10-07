@@ -197,7 +197,7 @@ onMounted(async () => {
     setTimeout(() => {
       console.log('⏰ NewProgramSection: Обновление через 3 секунды');
       updateWaitlistCount();
-    }, 3000);
+    }, 5000);
     
     // Принудительная загрузка данных, если счетчик равен 0
     setTimeout(() => {

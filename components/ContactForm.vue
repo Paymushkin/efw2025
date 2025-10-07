@@ -145,13 +145,13 @@ const handleSubmit = async () => {
     setTimeout(() => {
       showSuccess.value = false;
       emit('close');
-    }, 3000);
+    }, 5000);
   } catch (error) {
     console.error('Error sending message:', error);
     showError.value = true;
     setTimeout(() => {
       showError.value = false;
-    }, 3000);
+    }, 5000);
   } finally {
     isSubmitting.value = false;
   }

@@ -29,7 +29,7 @@
         :space-between="16"
         :navigation="false"
         :autoplay="{
-          delay: 3000,
+          delay: 5000,
           disableOnInteraction: false
         }"
         :pagination="{

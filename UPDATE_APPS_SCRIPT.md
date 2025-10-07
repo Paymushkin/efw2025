@@ -134,3 +134,4 @@ node test-registration.js
 И данные должны появиться в таблице: https://docs.google.com/spreadsheets/d/12ZCFRsBNj2zEqKGjlbgmLX1N-05FE6NUFU2XL0jk8FY/edit
 
 
+

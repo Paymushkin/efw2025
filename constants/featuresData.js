@@ -18,7 +18,7 @@ export const FEATURES_DATA = {
         highlighted: false
       },
       {
-        title: "Casting Summit",
+        title: "Model Casting",
         date: "5-6 November 2025",
         highlighted: true
       },
@@ -80,7 +80,7 @@ export const FEATURES_DATA = {
         highlighted: true
       },
       {
-        title: "Casting Summit",
+        title: "Model Casting",
         date: "5-6 November 2025",
         highlighted: true
       },
@@ -152,7 +152,7 @@ export const FEATURES_DATA = {
         highlighted: true
       },
       {
-        title: "Casting Summit",
+        title: "Model Casting",
         date: "5-6 November 2025",
         highlighted: true
       },
@@ -217,7 +217,7 @@ export const FEATURES_DATA = {
         highlighted: true
       },
       {
-        title: "Casting Summit",
+        title: "Model Casting",
         date: "5-6 November 2025",
         highlighted: true
       },
@@ -324,7 +324,7 @@ export const FEATURES_DATA = {
         highlighted: true
       },
       {
-        title: "Casting Summit",
+        title: "Model Casting",
         date: "5-6 November 2025",
         highlighted: true
       },
@@ -417,7 +417,7 @@ export const FEATURES_DATA = {
         highlighted: true
       },
       {
-        title: "Casting Summit",
+        title: "Model Casting",
         date: "5-6 November 2025",
         highlighted: true
       },
@@ -489,7 +489,7 @@ export const FEATURES_DATA = {
         highlighted: true
       },
       {
-        title: "Casting Summit",
+        title: "Model Casting",
         date: "5-6 November 2025",
         highlighted: true
       },
@@ -575,7 +575,7 @@ export const FEATURES_DATA = {
         highlighted: true
       },
       {
-        title: "Casting Summit",
+        title: "Model Casting",
         date: "5-6 November 2025",
         highlighted: true
       },
