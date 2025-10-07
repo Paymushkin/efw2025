@@ -62,15 +62,21 @@
       <div class="mt-12">
         <CompaniesList ref="companiesListRef" @companies-count-updated="updateCompaniesCount" />
       </div>
+
+      <!-- FAQ Section -->
+        <FaqSectionDynamic :standalone="true" />
+
+      <!-- Waitlist Form Modal -->
+      <WaitlistForm
+        :is-open="showWaitlistForm" 
+        @close="showWaitlistForm = false"
+        @success="handleWaitlistSuccess"
+      />
     </div>
 
-    <!-- Waitlist Form Modal -->
-    <WaitlistForm
-      :is-open="showWaitlistForm" 
-      @close="showWaitlistForm = false"
-      @success="handleWaitlistSuccess"
-    />
   </div>
+  
+  
 </template>
 
 <script setup>
@@ -81,6 +87,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 import WaitlistForm from '@/components/WaitlistForm.vue'
 import CompaniesList from '@/components/CompaniesList.vue'
 import AppSeo from '@/components/AppSeo.vue'
+import FaqSectionDynamic from '@/components/FaqSectionDynamic.vue'
 import Image9 from '@/assets/image/offer/trial.webp'
 import Image10 from '@/assets/image/stations/station-2.webp'
 import Image11 from '@/assets/image/offer/trial_compare.webp'

@@ -149,11 +149,10 @@ const router = useRouter();
 
 const menuLinks = [
   { name: 'HOW IT WAS', href: '/#how-it-was', id: 'how-it-was' },
-  { name: 'SCHEDULE', href: '/#program', id: 'program' },
+  // { name: 'SCHEDULE', href: '/#program', id: 'program' },
   { name: 'DESIGNERS', href: '/#designers', id: 'designers' },
   { name: 'FACES', href: '/#faces', id: 'faces' },
   { name: 'FEATURES', href: '/features', id: 'features' },
-  // { name: 'STATIONS', href: '/station', id: 'station' },
   { name: 'TRIAL SHOWCASE SPOTS', href: '/trial', id: 'trial' },
   { name: 'AWARDS', href: 'https://deluxebeauty.world/', id: 'awards' },
   { name: 'OFFER', href: '/offer', id: 'offer' },

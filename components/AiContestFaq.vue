@@ -1,6 +1,6 @@
 <template>
   <section v-if="!loading && !error && faqData.length > 0" class="md:mb-[76px] mb-[56px]">
-    <h2 class="text-2xl md:text-3xl font-bold text-left mb-8">FAQ</h2>
+    <h2 class="text-2xl md:text-3xl font-bold text-left mb-8">FREQUENTLY ASKED QUESTIONS</h2>
     
     <!-- FAQ контент -->
     <div class="flex flex-col gap-4">

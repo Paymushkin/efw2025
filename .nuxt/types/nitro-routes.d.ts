@@ -6,8 +6,14 @@ declare module "nitropack/types" {
     '/api/companies-list': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/companies-list.get').default>>>>
     }
+    '/api/designers': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/designers.get').default>>>>
+    }
     '/api/faq': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/faq.get').default>>>>
+    }
+    '/api/register-guest': {
+      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/register-guest.post').default>>>>
     }
     '/api/send-email': {
       'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/send-email.post').default>>>>

@@ -1,7 +1,10 @@
 <template>
-  <div id="spring-summer-2026" class="container mx-auto">
+  <div class="container mx-auto">
     <div class="flex justify-between md:items-center gap-8 md:mb-[50px] mb-4 max-w-[1200px]">
-      <h2 class="text-xl md:text-3xl xl:text-4xl">14th Spring Summer 2026</h2>
+      <h2 id="spring-summer-2026" class="text-xl md:text-3xl xl:text-4xl scroll-mt-[120px] md:scroll-mt-[100px]">
+        <!-- debug: log click and bounding rect before/after scroll -->
+        <a href="#spring-summer-2026" class="hover:opacity-80 transition-opacity" @click="logAnchorDebug('spring-summer-2026')">14th Spring Summer 2026</a>
+      </h2>
       <NuxtLink 
         target="_blank"
         class="hover:opacity-80 transition-opacity duration-300"
@@ -103,13 +106,14 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue';
 import BaseButton from '~/components/ui/BaseButton.vue';
 import SponsorStation from '~/components/program/SponsorStation.vue';
 import BigSponsorStation from '~/components/program/BigSponsorStation.vue';
 import ProgramEvent from '~/components/program/ProgramEvent.vue';
 import { NEW_EVENT_TYPES, NEW_PROGRAM_TABS } from '~/constants/newProgram';
 import { useCompaniesCount } from '~/composables/useCompaniesCount';
+import { useDesigners } from '~/composables/useDesigners';
 
 const currentTab = ref(2);
 const tabs = NEW_PROGRAM_TABS;
@@ -118,37 +122,327 @@ let isDragging = false;
 let startX = 0;
 let scrollLeft = 0;
 
+// Debug helper for anchor clicks
+const logAnchorDebug = (id) => {
+  try {
+    const el = document.getElementById(id);
+    if (!el) {
+      console.log('[anchor-debug]', id, 'not found');
+      return;
+    }
+    const rectBefore = el.getBoundingClientRect();
+    console.log('[anchor-debug] BEFORE', id, {
+      rectTop: rectBefore.top,
+      scrollY: window.scrollY,
+    });
+    setTimeout(() => {
+      const rectAfter = el.getBoundingClientRect();
+      console.log('[anchor-debug] AFTER', id, {
+        rectTop: rectAfter.top,
+        scrollY: window.scrollY,
+      });
+    }, 400);
+  } catch (e) {
+    console.log('[anchor-debug] error', e);
+  }
+};
+
 // Получаем глобальные счетчики компаний
 const { companiesCount, trialWaitlistCount, updateCompaniesCount, updateTrialWaitlistCount } = useCompaniesCount();
 
-// Убираем загрузку данных - будем использовать глобальный счетчик от CompaniesList
+// Локальное хранилище для данных компаний
+const companiesData = ref({
+  total: 0,
+  waitlist: 0,
+  loaded: false
+});
 
-// Счетчик будет обновляться автоматически компонентом CompaniesList
+// Флаг для предотвращения бесконечных циклов
+const isUpdating = ref(false);
 
-// Computed свойство для обновленного контента программы с реальным счетчиком
-const updatedProgram = computed(() => {
-  const program = NEW_PROGRAM_TABS[currentTab.value];
-  if (!program) return null;
+// Debounce для обновления счетчиков
+let updateTimeout = null;
+
+// Используем composable для работы с дизайнерами
+const { fetchDesigners, getFormattedDesignersByDay, designers, isDataUpdated } = useDesigners();
+
+// Используем существующий механизм счетчика компаний
+
+// Загружаем данные дизайнеров при монтировании компонента (только один раз)
+onMounted(async () => {
+  console.log('🚀 NewProgramSection: Компонент смонтирован');
+  console.log('🚀 NewProgramSection: Текущий счетчик компаний:', companiesCount.value);
   
-  console.log('Current companies count:', companiesCount.value);
-  console.log('Current trial waitlist count:', trialWaitlistCount.value);
-  
-  // Обновляем events с реальным счетчиком
-  const updatedEvents = program.events.map(event => {
-    if (event.details && event.details.includes('trial-waitlist-count')) {
-      console.log('Found trial-waitlist-count in event details');
-      // Заменяем статический счетчик на динамический
-      const updatedDetails = event.details.replace(
-        /<span id="trial-waitlist-count" style="background-color: rgba\(255,255,255,0\.2\); padding: 2px 6px; border-radius: 12px; font-weight: bold;">0<\/span>/,
-        `<span id="trial-waitlist-count" style="background-color: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">${trialWaitlistCount.value}</span>`
-      );
-      console.log('Updated details:', updatedDetails);
-      return { ...event, details: updatedDetails };
+  // Пытаемся обновить данные из Google Sheets (только если еще не обновлены)
+  if (!isDataUpdated.value) {
+    try {
+      await fetchDesigners();
+    } catch (error) {
+      // Используем локальные данные
     }
-    return event;
+  }
+  
+  // Обновляем DOM после загрузки данных
+  nextTick(() => {
+    console.log('🔄 NewProgramSection: Обновляем DOM после nextTick');
+    updateDesignersInDOM();
+    updateWaitlistCount();
+    
+    // Дополнительные попытки обновления счетчика
+    setTimeout(() => {
+      console.log('⏰ NewProgramSection: Обновление через 1 секунду');
+      updateWaitlistCount();
+    }, 1000);
+    
+    setTimeout(() => {
+      console.log('⏰ NewProgramSection: Обновление через 3 секунды');
+      updateWaitlistCount();
+    }, 3000);
+    
+    // Принудительная загрузка данных, если счетчик равен 0
+    setTimeout(() => {
+      console.log('⏰ NewProgramSection: Принудительная загрузка через 2 секунды');
+      forceLoadCompaniesData();
+    }, 2000);
   });
   
-  return { ...program, events: updatedEvents };
+  // Настраиваем MutationObserver для отслеживания появления элементов в DOM
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'childList' && !isUpdating.value) {
+        // Проверяем, появились ли нужные элементы в добавленных узлах
+        const addedNodes = Array.from(mutation.addedNodes);
+        const hasRelevantElements = addedNodes.some(node => {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            return node.id === 'trial-waitlist-count-1' || 
+                   node.id === 'trial-waitlist-count-2' ||
+                   node.querySelector('#trial-waitlist-count-1') ||
+                   node.querySelector('#trial-waitlist-count-2');
+          }
+          return false;
+        });
+        
+        if (hasRelevantElements && companiesData.value.loaded) {
+          console.log('🔍 NewProgramSection: Элементы счетчиков появились в DOM, обновляем...');
+          updateWaitlistCount();
+        }
+      }
+    });
+  });
+  
+  // Начинаем наблюдение за изменениями в DOM
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+  
+  // Очищаем observer при размонтировании компонента
+  onUnmounted(() => {
+    observer.disconnect();
+    if (updateTimeout) {
+      clearTimeout(updateTimeout);
+    }
+  });
+});
+
+// Отслеживаем изменения в данных дизайнеров и обновляем DOM
+watch(designers, () => {
+  nextTick(() => {
+    updateDesignersInDOM();
+  });
+}, { deep: true });
+
+// Отслеживаем изменения активного таба и обновляем DOM
+watch(currentTab, () => {
+  nextTick(() => {
+    updateDesignersInDOM();
+  });
+});
+
+// Функция для обновления счетчика waitlist
+const updateWaitlistCount = () => {
+  // Очищаем предыдущий timeout
+  if (updateTimeout) {
+    clearTimeout(updateTimeout);
+  }
+  
+  // Debounce обновление на 200ms
+  updateTimeout = setTimeout(() => {
+    // Предотвращаем бесконечные циклы
+    if (isUpdating.value) {
+      console.log('🔄 NewProgramSection: Обновление уже в процессе, пропускаем...');
+      return;
+    }
+    
+    isUpdating.value = true;
+    
+    const countValue = companiesCount.value || companiesData.value.waitlist || 0;
+    console.log('🔄 NewProgramSection: Обновляем счетчики waitlist:', countValue);
+    console.log('🔄 NewProgramSection: Данные загружены:', companiesData.value.loaded);
+    
+    // Обновляем оба счетчика на главной странице
+    const trialCountElement1 = document.getElementById('trial-waitlist-count-1');
+    if (trialCountElement1) {
+      trialCountElement1.textContent = countValue;
+      console.log('✅ NewProgramSection: Обновлен trial-waitlist-count-1:', countValue);
+    } else {
+      console.log('❌ NewProgramSection: Элемент trial-waitlist-count-1 не найден в DOM');
+    }
+    
+    const trialCountElement2 = document.getElementById('trial-waitlist-count-2');
+    if (trialCountElement2) {
+      trialCountElement2.textContent = countValue;
+      console.log('✅ NewProgramSection: Обновлен trial-waitlist-count-2:', countValue);
+    } else {
+      console.log('❌ NewProgramSection: Элемент trial-waitlist-count-2 не найден в DOM');
+    }
+    
+    // Сбрасываем флаг через небольшую задержку
+    setTimeout(() => {
+      isUpdating.value = false;
+    }, 100);
+  }, 200);
+};
+
+// Отслеживаем изменения счетчика компаний
+watch(companiesCount, () => {
+  nextTick(() => {
+    updateWaitlistCount();
+  });
+});
+
+// Принудительная загрузка данных компаний, если счетчик равен 0
+const forceLoadCompaniesData = async () => {
+  console.log('🔍 NewProgramSection: Принудительная загрузка данных компаний...');
+  console.log('🔍 NewProgramSection: Текущий счетчик:', companiesCount.value);
+  
+  // Всегда загружаем данные, независимо от текущего счетчика
+  console.log('🔍 NewProgramSection: Загружаем данные принудительно...');
+  try {
+    console.log('📊 NewProgramSection: Загружаем данные из Google Sheets...');
+    // Попытка загрузить данные напрямую из Google Sheets
+    const SPREADSHEET_ID = '1jGEJIU-0Cwx151O0JczBkoaUCE48j5saab-R5eKzLfM';
+    const CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=0`;
+    
+    const response = await fetch(CSV_URL);
+    if (response.ok) {
+      const csvText = await response.text();
+      const lines = csvText.split('\n');
+      
+      // Парсим CSV правильно (учитывая запятые в кавычках)
+      const rows = lines.filter(line => line.trim()).map(line => {
+        const values = [];
+        let current = '';
+        let inQuotes = false;
+        
+        for (let i = 0; i < line.length; i++) {
+          const char = line[i];
+          
+          if (char === '"') {
+            inQuotes = !inQuotes;
+          } else if (char === ',' && !inQuotes) {
+            values.push(current.trim());
+            current = '';
+          } else {
+            current += char;
+          }
+        }
+        
+        values.push(current.trim());
+        return values;
+      });
+      
+      // Преобразуем в формат компаний и фильтруем только waitlist
+      const companiesFromCSV = rows.slice(1).map((row, index) => ({
+        timestamp: row[0] || '',
+        companyName: row[1] || '',
+        industry: row[2] || '',
+        name: row[3] || '',
+        email: row[4] || '',
+        phone: row[5] || '',
+        message: row[6] || '',
+        agreement1: row[7] || '',
+        agreement2: row[8] || '',
+        ipAddress: row[9] || '',
+        userAgent: row[10] || '',
+        status: row[11] || 'WAITLIST'
+      })).filter(company => company.companyName);
+      
+      // Фильтруем только waitlist компании
+      const waitlistCompanies = companiesFromCSV.filter(company => {
+        return !company.status || 
+               company.status === '' ||
+               company.status === 'WAITLIST' ||
+               company.status === 'waitlist'
+      });
+      
+      const waitlistCount = waitlistCompanies.length;
+      
+      console.log('📈 NewProgramSection: Всего компаний в CSV:', companiesFromCSV.length);
+      console.log('📈 NewProgramSection: Найдено компаний в waitlist:', waitlistCount);
+      
+      // Сохраняем данные в локальное хранилище
+      companiesData.value = {
+        total: companiesFromCSV.length,
+        waitlist: waitlistCount,
+        loaded: true
+      };
+      
+      // Обновляем глобальный счетчик
+      updateCompaniesCount(waitlistCount);
+      
+      // Принудительно обновляем DOM элементы
+      setTimeout(() => {
+        console.log('🔄 NewProgramSection: Принудительно обновляем DOM элементы');
+        updateWaitlistCount();
+      }, 100);
+    } else {
+      console.error('❌ NewProgramSection: Ошибка загрузки CSV:', response.status);
+    }
+  } catch (error) {
+    console.error('❌ NewProgramSection: Ошибка загрузки данных:', error);
+  }
+};
+
+// Функция для обновления дизайнеров в DOM
+const updateDesignersInDOM = (retryCount = 0) => {
+  let allUpdated = true;
+  
+  // Обновляем список для 8 ноября
+  const day8Designers = getFormattedDesignersByDay('8');
+  
+  if (day8Designers.length > 0) {
+    const day8Container = document.getElementById('designers-day-8');
+    if (day8Container) {
+      day8Container.innerHTML = day8Designers.map(designer => `<li>${designer}</li>`).join('');
+    } else {
+      allUpdated = false;
+    }
+  }
+  
+  // Обновляем список для 9 ноября
+  const day9Designers = getFormattedDesignersByDay('9');
+  
+  if (day9Designers.length > 0) {
+    const day9Container = document.getElementById('designers-day-9');
+    if (day9Container) {
+      day9Container.innerHTML = day9Designers.map(designer => `<li>${designer}</li>`).join('');
+    } else {
+      allUpdated = false;
+    }
+  }
+  
+  // Если не все контейнеры найдены и это не последняя попытка, повторяем через 500мс
+  if (!allUpdated && retryCount < 5) {
+    setTimeout(() => {
+      updateDesignersInDOM(retryCount + 1);
+    }, 500);
+  }
+};
+
+// Computed свойство для программы (без обновления счетчика - это делается через DOM)
+const updatedProgram = computed(() => {
+  return NEW_PROGRAM_TABS[currentTab.value];
 });
 
 const startDrag = (e) => {
@@ -189,6 +483,18 @@ const stopDrag = () => {
 
 const selectTab = (index) => {
   currentTab.value = index;
+  
+  // Обновляем дизайнеров в DOM при смене таба
+  nextTick(() => {
+    console.log('🔄 Смена таба, обновляем дизайнеров в DOM...');
+    updateDesignersInDOM();
+    
+    // Обновляем счетчики при смене таба, если данные уже загружены
+    if (companiesData.value.loaded) {
+      console.log('🔄 Смена таба, обновляем счетчики...');
+      updateWaitlistCount();
+    }
+  });
 };
 
 

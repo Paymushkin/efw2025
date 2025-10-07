@@ -651,5 +651,106 @@ export const FEATURES_DATA = {
         description: "Receive expert guidance on entering the UAE fashion industry, including market positioning, business expansion, and potential collaborations."
       }
     ]
+  },
+
+  // Блок ALL Digital Products
+  featuresDataDigital: {
+    id: "digital-products",
+    title: "ALL Digital Products",
+    subtitle: "",
+    subtitleBgColor: "#6D8987",
+    buttonText: "",
+    buttonLink: "",
+    days: [],
+    cards: [
+      {
+        type: "image",
+        image: FEATURES_IMAGES.block1.image4, // Используем существующее изображение
+        title: "Try Ai Matchmaking",
+        subtitle: "AI-powered networking connections",
+        description: "Experience intelligent networking with AI matchmaking that connects you with relevant industry professionals based on shared interests and goals."
+      },
+      {
+        type: "video", 
+        video: 'https://storage.yandexcloud.net/videos-meyou/efw2025/3-6.mp4',
+        title: "Seek Your Photo & Interviews Reportage Frame in Media",
+        subtitle: "Get featured in media coverage",
+        description: "Find your photos and interviews featured in professional media reportage, ensuring your presence is documented and shared across media platforms."
+      },
+      {
+        type: "video",
+        video: 'https://storage.yandexcloud.net/videos-meyou/efw2025/paparazzi12-vmake.mp4',
+        title: "Share Your Instant Paparazzi Shooting",
+        subtitle: "Instant branded photography service",
+        description: "Receive high-quality branded event photos instantly, capturing your best moments and sharing them across your social networks."
+      },
+      {
+        type: "video",
+        video: 'https://storage.yandexcloud.net/videos-meyou/efw2025/1-3.mp4',
+        title: "See Designers' Photos & Interviews on Media Wall Reportage",
+        subtitle: "Interactive media wall experience",
+        description: "View live designer highlights and interviews on venue media walls, staying connected with the latest fashion week developments."
+      },
+      {
+        type: "image",
+        image: FEATURES_IMAGES.block6.image29, // Используем существующее изображение
+        title: "50 Lead Chats from Visitors",
+        subtitle: "Generate valuable business leads",
+        description: "Connect with up to 50 potential business contacts through our lead generation system, expanding your professional network."
+      },
+      {
+        type: "image",
+        image: FEATURES_IMAGES.block7.image36, // Используем существующее изображение
+        title: "Always Top Banner in Reportage Frame in Media Partners",
+        subtitle: "Premium banner placement",
+        description: "Secure premium banner placement in media reportage, ensuring your brand is prominently positioned in key coverage from media partners."
+      }
+    ],
+    detailedText: `
+
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+          <div class="bg-gray-50 p-4 rounded-lg border">
+            <h4 class="font-semibold text-sm mb-2">Digital Power by MeYou Arena Event LLC</h4>
+            <p class="text-xs leading-relaxed">Emirates Fashion Week 2025 powered its digital core together with our technology partner MeYou Arena Event LLC.<br>Their solutions transformed the event into an interactive and media-rich experience, ensuring that every guest, designer, and brand was seamlessly connected.</p>
+          </div>
+
+          <div class="bg-gray-50 p-4 rounded-lg border">
+            <h4 class="font-semibold text-sm mb-2">TV Lobby / Realtime.Media</h4>
+            <p class="text-xs leading-relaxed">With TV Lobby by MeYou Arena Event LLC, Emirates Fashion Week set up a studio inside the venue where designers, stylists, and opinion leaders were interviewed on camera. Thanks to the Realtime.Media pipeline, each interview was instantly edited, branded, and published during the event. In 2025 this resulted in hundreds of professional-quality video stories, amplifying the voices of participants far beyond the catwalk.</p>
+          </div>
+          
+          <div class="bg-gray-50 p-4 rounded-lg border">
+            <h4 class="font-semibold text-sm mb-2">Expochat / AI Matchmaking</h4>
+            <p class="text-xs leading-relaxed">Networking at Fashion Week was powered by Expochat from MeYou Arena Event LLC. This AI-driven tool matched visitors and industry professionals by shared interests, sparking meaningful conversations with built-in icebreakers. Instead of chance encounters, participants experienced AI-powered networking that created real connections and measurable outcomes.</p>
+          </div>
+          
+          <div class="bg-gray-50 p-4 rounded-lg border">
+            <h4 class="font-semibold text-sm mb-2">Lead Generation via QR codes</h4>
+            <p class="text-xs leading-relaxed">Every exhibitor and designer at Emirates Fashion Week was equipped with personalized QR codes from MeYou Arena Event LLC. Scanning a code enabled instant lead capture — no business cards, no delay. This simple but essential digital tool ensured that every conversation translated directly into follow-ups, multiplying the event's commercial impact.</p>
+          </div>
+          
+          <div class="bg-gray-50 p-4 rounded-lg border">
+            <h4 class="font-semibold text-sm mb-2">SecondScreen</h4>
+            <p class="text-xs leading-relaxed">No apps. No logins. SecondScreen by MeYou Arena Event LLC delivered instant interaction during Fashion Week. Visitors connected through their browsers to vote in live polls, interact with speakers, explore designer profiles, and view real-time updates. This invisible layer of technology turned traditional shows into interactive experiences, where the audience was fully engaged.</p>
+          </div>
+          
+          <div class="bg-gray-50 p-4 rounded-lg border">
+            <h4 class="font-semibold text-sm mb-2">MediaWall</h4>
+            <p class="text-xs leading-relaxed">On giant LED walls across the venue, MediaWall by MeYou Arena Event LLC streamed live interviews, designer highlights, and guest profiles. Every visitor became part of the digital story, and the event itself was documented in real time. This constant stream of curated, branded content created both immersion at the venue and a media archive accessible worldwide.</p>
+          </div>
+          
+          <div class="bg-gray-50 p-4 rounded-lg border">
+            <h4 class="font-semibold text-sm mb-2">Paparazzi</h4>
+            <p class="text-xs leading-relaxed">Guests experienced the unique Paparazzi service from MeYou Arena Event LLC: branded instant photography projected on venue screens and delivered directly to mobile devices. This playful feature encouraged visitors to share their experience online, turning personal vanity into powerful event marketing.</p>
+          </div>
+          
+          <div class="bg-gray-50 p-4 rounded-lg border">
+            <h4 class="font-semibold text-sm mb-2">iFrame Reportage</h4>
+            <p class="text-xs leading-relaxed">MeYou Arena Event LLC also powered fast digital reportage: live interviews and highlights were instantly edited and embedded into web and social media via iFrame players. This gave Fashion Week an always-on media presence and provided participants with ready-to-share, professional-quality content.</p>
+          </div>
+        </div>
+      </div>
+    `
   }
 }; 

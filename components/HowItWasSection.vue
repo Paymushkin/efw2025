@@ -1,6 +1,6 @@
 <template>
-  <div id="previous-seasons" class="container mx-auto">
-    <h2 class="text-xl md:text-3xl xl:text-4xl">PREVIOUS 13 SEASONS</h2>
+  <div class="container mx-auto">
+    <h2 id="previous-seasons" class="text-xl md:text-3xl xl:text-4xl scroll-mt-[120px] md:scroll-mt-[100px]"><a href="#previous-seasons" class="hover:opacity-80 transition-opacity" @click="logAnchorDebug('previous-seasons')">PREVIOUS 13 SEASONS</a></h2>
     <p class="text-sm md:text-base xl:text-xl mb-4 xl:mb-8 md:mb-6">collections</p>
     <div 
       class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0 xl:mb-5 md:mb-4 mb-3 cursor-grab active:cursor-grabbing" 
@@ -64,6 +64,31 @@ const tabsContainer = ref(null);
 let isDragging = false;
 let startX = 0;
 let scrollLeft = 0;
+
+// Debug helper for anchor clicks
+const logAnchorDebug = (id) => {
+  try {
+    const el = document.getElementById(id);
+    if (!el) {
+      console.log('[anchor-debug]', id, 'not found');
+      return;
+    }
+    const rectBefore = el.getBoundingClientRect();
+    console.log('[anchor-debug] BEFORE', id, {
+      rectTop: rectBefore.top,
+      scrollY: window.scrollY,
+    });
+    setTimeout(() => {
+      const rectAfter = el.getBoundingClientRect();
+      console.log('[anchor-debug] AFTER', id, {
+        rectTop: rectAfter.top,
+        scrollY: window.scrollY,
+      });
+    }, 400);
+  } catch (e) {
+    console.log('[anchor-debug] error', e);
+  }
+};
 let autoPlayInterval = null;
 
 // Загружаем только текущие изображения

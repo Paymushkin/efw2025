@@ -94,18 +94,24 @@ export const NEW_PROGRAM_TABS = [
         place: 'Disclosed to Attendees',
         description: `Casting Summit`,
         details: `WEDNESDAY & THURSDAY | INTERNATIONAL MODEL CONFERENCE & CASTING EVENT — organized by MAG, bringing together aspiring models and leading global agencies for contract signings, development opportunities, and worldwide placements.
-        <br><br>
+        <div class="mt-6">
         <strong>ModelAgentGroup</strong>
-        <br>
+        <div class="mt-2">
         <strong>MAG – Model Agent Group</strong>
-        <br>
+        <div class="mt-2">
         Worldwide Model Agency
-        <br>
+        <div class="mt-2">
         Scouting / Development / Placement
-        <br>
+        <div class="mt-2">
         Based in Austria
-        <br>
+        <div class="mt-2">
         <strong>Registered Models Only</strong>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
         `
       },
     ] 
@@ -121,26 +127,8 @@ export const NEW_PROGRAM_TABS = [
         place: `Skylight Gallery,<br>Arjaan Dubai Media City`,
         description: `SATURDAY |  PRÊT-À-PORTER WOMEN'S & MEN'S COLLECTIONS SS 26`,
         details: `<strong class="mb-2 block">By Invitation Only</strong>
-          <ul class="space-y-2 text-black">
-            <li>• N**** C******E - UAE</li>
-            <li>• A**** - RUSSIA</li>
-            <li>• L*******A D******S - RUSSIA</li>
-            <li>• S*****A C******E - USA</li>
-            <li>• L*** C******E - AZERBAIJAN</li>
-            <li>• E*** F**** - RUSSIA</li>
-            <li>• B*****E - GERMANY</li>
-            <li>• M*******L - KIRGHIZIAN</li>
-            <li>• O*****A A*******A - RUSSIA</li>
-            <li>• M*******E M****</li>
-            <li>• I*******R - POLAND</li>
-            <li>• H*******N - POLAND</li>
-            <li>• D*** - POLAND</li>
-            <li>• K*********d /Germany/</li>
-            <li>• O******a /Saudi Arabia/ *PENDING MUTUAL APPROVAL</li>
-            <li>• D******a /Belarus/ *PENDING MUTUAL APPROVAL</li>
-            <li>• N****n /UAE/ *PENDING MUTUAL APPROVAL</li>
-            <li>• A***a /Azerbaijan/ *PENDING MUTUAL APPROVAL</li>
-            <li>• T**S /Romania/ *PENDING MUTUAL APPROVAL</li>
+          <ul class="space-y-2 text-black" id="designers-day-8">
+            <!-- Дизайнеры будут загружены динамически -->
           </ul>
         `,
         buttonText: 'REQUEST INVITE >',
@@ -153,24 +141,8 @@ export const NEW_PROGRAM_TABS = [
          place: `Skylight Gallery,<br>Arjaan Dubai Media City`,
          description: `SUNDAY |  PRÊT-À-PORTER WOMEN'S & MEN'S COLLECTIONS SS 26`,
          details: `<strong class="mb-2 block">By Invitation Only</strong>
-           <ul class="space-y-2 text-black">
-             <li>• A*******A A** C******T - RUSSIA</li>
-             <li>• A*** F*****N - USA/INDIAN</li>
-             <li>• R******A - RUSSIA</li>
-             <li>• S*** - KAZAKHSTAN</li>
-             <li>• K*******A - RUSSIA</li>
-             <li>• F*** - UAE</li>
-             <li>• P*****A T*******O - RUSSIA</li>
-             <li>• O*** B*******A - RUSSIA</li>
-             <li>• E**** R*******A - RUSSIA</li>
-             <li>• B********a /Azerbaijan/ *PENDING MUTUAL APPROVAL</li>
-             <li>• Z**n /Iraq/ *PENDING MUTUAL APPROVAL</li>
-             <li>• S****s /Oman/ *PENDING MUTUAL APPROVAL</li>
-             <li>• I****e /Armenia/ *PENDING MUTUAL APPROVAL</li>
-             <li>• G'******h /Philippines/ *PENDING MUTUAL APPROVAL</li>
-             <li>• M********m /Uzbekistan/ *PENDING MUTUAL APPROVAL</li>
-             <li>• Z*****o /Romania/ *PENDING MUTUAL APPROVAL</li>
-             <li>• T***o /Saudi Arabia/ *PENDING MUTUAL APPROVAL</li>
+           <ul class="space-y-2 text-black" id="designers-day-9">
+             <!-- Дизайнеры будут загружены динамически -->
            </ul>
          `,
          buttonText: 'REQUEST INVITE >',
@@ -189,33 +161,34 @@ export const NEW_PROGRAM_TABS = [
         place: `Skylight Gallery,<br>Arjaan Dubai Media City`,
         description: `MONDAY | BEAUTY DAY`,
          details: `
-           <ul class="space-y-2">
+          <strong>Free Entry | 10:00–18:00</strong>
+           <div class="mt-4">
+           <ul class="space-y-2 text-sm">
+             <li>• 40 Designer Collection Pop-ups</li>
              <li>• Beauty & cosmetics brands</li>
              <li>• MUAs, nails, brows/lashes</li>
              <li>• Salons, spas, bridal beauty</li>
              <li>• Makeup & cosmetology schools / courses</li>
            </ul>
-           <br>
-           <strong>Free Entry | 10:00–18:00</strong>
-           <br>
+           </div>
            <div class="flex flex-col gap-3 mt-4">
              <a href="/offer" class="inline-flex items-center gap-2 px-6 py-2.5 text-sm rounded-3xl transition-colors bg-black text-white hover:bg-black/90 w-fit">
                <span>BOOK A SPOT AS A COMPANY</span>
              </a>
-              <div class="flex flex-col">
-              <a href="/offer?tr" style="background-color: #ff0000;" class=" inline-flex items-center gap-2 px-6 py-2.5 text-sm rounded-3xl transition-colors text-white w-fit">
-                <span>2h Free Trial Spot</span>
-                <span id="trial-waitlist-count" style="background-color: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">0</span>
-              </a>
-              </div>
               <strong>TRY YOUR BRAND AT EFW</strong>
               <strong>2h Showcase Spot — Free via Waitlist</strong>
-              <ul>
-                <li>– 20 lead chats with real visitors</li>
-                <li>– Limited 10–20 showcase spots, up to 80 SMEs selected</li>
-                <li>– Subsidized by Dubai Culture & Emirates Fashion Week to support beauty & design businesses</li>
+              <ul class="space-y-2 text-sm">
+                <li>• 20 lead chats with real visitors</li>
+                <li>• Limited 10–20 showcase spots, up to 80 SMEs selected</li>
+                <li>• Subsidized by Dubai Culture & Emirates Fashion Week to support beauty & design businesses</li>
               </ul>
             </div>
+            <div class="flex flex-col mt-4">
+              <a href="/offer?tr" style="background-color:rgb(109, 109, 109);" class=" inline-flex items-center gap-2 px-6 py-2.5 text-sm rounded-3xl transition-colors text-white w-fit">
+                <span>Join Wait List | 2h Free Trial Spot</span>
+                <span id="trial-waitlist-count-1" style="background-color: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">0</span>
+              </a>
+              </div>
          `,
       },
       {
@@ -224,7 +197,10 @@ export const NEW_PROGRAM_TABS = [
         place: `Skylight Gallery,<br>Arjaan Dubai Media City`,
         description: `TUESDAY | WELLNESS DAY`,
          details: `
-           <ul class="space-y-2">
+          <strong>Free Entry | 10:00–18:00</strong>
+           <div class="mt-4">
+           <ul class="space-y-2 text-sm">
+             <li>• 40 Designer Collection Pop-ups</li>
              <li>• Medical & aesthetic clinics</li>
              <li>• Health & wellness tourism, nutrition</li>
              <li>• Spas, massage, barbers</li>
@@ -232,27 +208,25 @@ export const NEW_PROGRAM_TABS = [
              <li>• Beauty tech (CRM, booking, payments)</li>
              <li>• Salon & clinic equipment suppliers</li>
            </ul>
-           <br>
-           <strong>Free Entry | 10:00–18:00</strong>
-           <br>
+           </div>
            <div class="flex flex-col gap-3 mt-4">
              <a href="/offer" class="inline-flex items-center gap-2 px-6 py-2.5 text-sm rounded-3xl transition-colors bg-black text-white hover:bg-black/90 w-fit">
                <span>BOOK A SPOT AS A COMPANY</span>
              </a>
-              <div class="flex flex-col">
-               <a href="/offer?tr&waitlist" style="background-color: #ff0000;" class=" inline-flex items-center gap-2 px-6 py-2.5 text-sm rounded-3xl transition-colors text-white w-fit">
-                <span>2h Free Trial Spot</span>
-                <span id="trial-waitlist-count" style="background-color: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">0</span>
-              </a>
-            </div>
             <strong>TRY YOUR BRAND AT EFW</strong>
             <strong>2h Showcase Spot — Free via Waitlist</strong>
-            <ul>
-              <li>– 20 lead chats with real visitors</li>
-              <li>– Limited 10–20 showcase spots, up to 80 SMEs selected</li>
-              <li>– Subsidized by Dubai Culture & Emirates Fashion Week to support beauty & design businesses</li>
-            </ul
+            <ul class="space-y-2 text-sm">
+              <li>• 20 lead chats with real visitors</li>
+              <li>• Limited 10–20 showcase spots, up to 80 SMEs selected</li>
+              <li>• Subsidized by Dubai Culture & Emirates Fashion Week to support beauty & design businesses</li>
+            </ul>
            </div>
+              <div class="flex flex-col mt-4">
+               <a href="/offer?tr&waitlist" style="background-color:rgb(109, 109, 109);" class=" inline-flex items-center gap-2 px-6 py-2.5 text-sm rounded-3xl transition-colors text-white w-fit">
+                <span>Join Wait List | 2h Free Trial Spot</span>
+                <span id="trial-waitlist-count-2" style="background-color: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">0</span>
+              </a>
+            </div>
          `,
       },
     ] 

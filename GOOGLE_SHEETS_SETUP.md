@@ -1,100 +1,57 @@
-# Настройка Google Sheets для Waitlist
+# Настройка Google Sheets для записи данных регистрации
 
-## Шаг 1: Создание Google Sheet
+## Шаг 1: Настройка Google Apps Script
 
-1. Откройте [Google Sheets](https://sheets.google.com)
-2. Создайте новую таблицу
-3. Назовите её "EFW Waitlist"
-4. Создайте заголовки в первой строке:
-   - A1: Timestamp
-   - B1: Company Name
-   - C1: Industry
-   - D1: Name
-   - E1: Email
-   - F1: Phone
-   - G1: Message
-   - H1: Agreement 1
-   - I1: Agreement 2
+1. Откройте Google Sheets: https://docs.google.com/spreadsheets/d/12ZCFRsBNj2zEqKGjlbgmLX1N-05FE6NUFU2XL0jk8FY/edit
 
-## Шаг 2: Создание Google Apps Script
+2. Перейдите в **Extensions > Apps Script**
 
-1. В Google Sheets нажмите "Расширения" → "Apps Script"
-2. Удалите весь код по умолчанию
-3. Вставьте следующий код:
+3. Удалите весь существующий код и вставьте код из файла `google-apps-script.js`
 
-```javascript
-function doPost(e) {
-  try {
-    // Получаем данные из запроса
-    const data = JSON.parse(e.postData.contents);
-    
-    // Открываем таблицу (замените ID на ваш)
-    const sheet = SpreadsheetApp.openById('YOUR_SHEET_ID').getActiveSheet();
-    
-    // Добавляем новую строку
-    sheet.appendRow([
-      new Date(), // Timestamp
-      data.companyName,
-      data.industry,
-      data.name || '',
-      data.email,
-      data.phone || '',
-      data.message || '',
-      data.agreement1 ? 'Yes' : 'No',
-      data.agreement2 ? 'Yes' : 'No'
-    ]);
-    
-    // Возвращаем успешный ответ
-    return ContentService
-      .createTextOutput(JSON.stringify({success: true}))
-      .setMimeType(ContentService.MimeType.JSON);
-      
-  } catch (error) {
-    // Возвращаем ошибку
-    return ContentService
-      .createTextOutput(JSON.stringify({error: error.toString()}))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-}
+4. Сохраните проект (Ctrl+S или Cmd+S)
+
+## Шаг 2: Развертывание веб-приложения
+
+1. В Apps Script нажмите **Deploy > New deployment**
+
+2. Выберите тип: **Web app**
+
+3. Настройки:
+   - **Execute as**: Me (your-email@gmail.com)
+   - **Who has access**: Anyone
+
+4. Нажмите **Deploy**
+
+5. **ВАЖНО**: Скопируйте URL веб-приложения (Web app URL)
+
+## Шаг 3: Обновление API endpoint
+
+1. Откройте файл `server/api/register-guest.post.ts`
+
+2. Замените URL в коде на ваш URL веб-приложения:
+
+```typescript
+const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
 ```
 
-## Шаг 3: Настройка разрешений
+## Шаг 4: Тестирование
 
-1. Сохраните скрипт (Ctrl+S)
-2. Нажмите "Развернуть" → "Новое развертывание"
-3. Выберите тип: "Веб-приложение"
-4. Настройки:
-   - Выполнять как: "Я"
-   - У кого есть доступ: "Все"
-5. Нажмите "Развернуть"
-6. Скопируйте URL веб-приложения
+1. Запустите тест в Apps Script:
+   - В Apps Script нажмите **Run > testFunction**
+   - Проверьте, что данные появились в таблице
 
-## Шаг 4: Обновление кода
+2. Протестируйте регистрацию на сайте:
+   - Заполните форму регистрации
+   - Проверьте, что данные записались в Google Sheets
 
-1. Откройте файл `server/api/waitlist.post.ts`
-2. Замените `YOUR_SCRIPT_ID` на ID из URL веб-приложения
-3. Замените `YOUR_SHEET_ID` на ID вашей Google таблицы
+## Структура данных в таблице
 
-## Получение ID таблицы
+| Name | Company | Email | Inviter | Timestamp | Source |
+|------|---------|-------|---------|-----------|--------|
+| John Doe | ABC Corp | john@example.com | by Marina Krapivina | 2025-01-27T10:30:00Z | EFW Registration |
 
-ID таблицы находится в URL:
-`https://docs.google.com/spreadsheets/d/SHEET_ID/edit`
+## Устранение неполадок
 
-## Получение ID скрипта
-
-ID скрипта находится в URL веб-приложения:
-`https://script.google.com/macros/s/SCRIPT_ID/exec`
-
-## Тестирование
-
-После настройки:
-1. Заполните форму на сайте
-2. Проверьте, что данные появились в Google Sheets
-3. Проверьте консоль браузера на ошибки
-
-## Безопасность
-
-Для продакшена рекомендуется:
-1. Добавить проверку домена
-2. Использовать API ключи
-3. Ограничить доступ к скрипту
+- **Ошибка доступа**: Убедитесь, что веб-приложение развернуто с доступом "Anyone"
+- **Данные не записываются**: Проверьте, что лист называется "efw2025" или используйте активный лист
+- **CORS ошибки**: Apps Script автоматически обрабатывает CORS для веб-приложений

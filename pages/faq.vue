@@ -8,7 +8,7 @@
 import FaqSectionDynamic from '~/components/FaqSectionDynamic.vue';
 
 useHead({
-  title: 'FAQ - Dubai Fashion Week',
+  title: 'FREQUENTLY ASKED QUESTIONS - Dubai Fashion Week',
   meta: [
     {
       name: 'description',

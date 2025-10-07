@@ -1,6 +1,6 @@
 <template>
   <section class="md:mb-[76px] mb-[56px]">
-    <h2 class="text-2xl md:text-3xl font-bold text-left mb-8">FACES of EFW</h2>
+    <h2 id="faces-of-efw" class="text-xl md:text-3xl xl:text-4xl text-left mb-8"><a href="#faces-of-efw" class="hover:opacity-80 transition-opacity">FACES OF EFW</a></h2>
     
     <!-- Мобильная версия: горизонтальный скролл -->
     <div class="block md:hidden">

@@ -6,10 +6,11 @@
     <!-- Заголовок с настраиваемым цветом фона -->
     <div v-if="data.title" class="mb-8 md:10 lg:mb-12">
       <div class="md:flex md:items-center">
-        <h2 class="text-2xl md:text-3xl lg:text-4xl" v-html="data.title || ''"></h2>
+        <h2 :id="data.id || ''" class="text-2xl md:text-3xl lg:text-4xl">
+          <a :href="data.id ? `#${data.id}` : ''" class="hover:opacity-80 transition-opacity" v-html="data.title || ''"></a>
+        </h2>
         <a
           v-if="data.subtitle" 
-          :id="data.id || ''"
           class="text-white mt-2 md:mt-0 md:ml-2 px-2 py-1 md:px-4 md:py-1 text-xl md:text-2xl lg:text-3xl block md:inline-block" 
           :style="{ backgroundColor: data.subtitleBgColor || '#6c757d' }"
           :href="data.id ? `#${data.id}` : '' "
@@ -77,7 +78,7 @@
     <BaseButton 
       v-if="data.buttonText && !data.buttonLink" 
       @click="showContactForm = true" 
-      id="participate-button" 
+      id="features-participate-button" 
       variant="primary" 
       class="mb-[30px] md:mb-[40px] lg:mb-[50px] ml-auto text-sm md:text-base"
     >
@@ -175,6 +176,9 @@
         <div class="flex-shrink-0 w-5"></div>
       </div>
     </div>
+    
+    <!-- Подробный текст для блока Digital Products -->
+    <div v-if="data.detailedText" v-html="data.detailedText" class="mt-8"></div>
     
     <ContactForm :is-open="showContactForm" @close="showContactForm = false" />
   </section>

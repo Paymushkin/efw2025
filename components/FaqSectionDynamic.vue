@@ -1,26 +1,26 @@
 <template>
-  <section id="faq" :class="[
+  <section :class="[
     'container mx-auto px-4',
     { 'py-20 md:py-[100px]': !standalone },
     { 'py-[60px] md:py-[120px]': standalone }
   ]">
-    <h2 class="text-xl md:text-3xl xl:text-4xl mb-8 md:mb-12">
+    <h2 id="faq" class="text-xl md:text-3xl xl:text-4xl mb-8 md:mb-12">
       <template v-if="standalone">
-        Frequently Asked Questions
+        <a href="#faq" class="hover:opacity-80 transition-opacity">Frequently Asked Questions</a>
       </template>
       <template v-else>
-        FAQ
+        <a href="#faq" class="hover:opacity-80 transition-opacity">FREQUENTLY ASKED QUESTIONS</a>
       </template>
     </h2>
     
     <!-- Индикатор загрузки -->
     <div v-if="loading" class="flex justify-center items-center py-8">
-      <div class="text-gray-500">Loading FAQ...</div>
+      <div class="text-gray-500">Loading Frequently Asked Questions...</div>
     </div>
 
     <!-- Сообщение об ошибке -->
     <div v-else-if="error" class="text-center py-8">
-      <div class="text-red-500 mb-4">Error loading FAQ: {{ error }}</div>
+      <div class="text-red-500 mb-4">Error loading Frequently Asked Questions: {{ error }}</div>
       <button 
         @click="handleRefresh"
         class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"

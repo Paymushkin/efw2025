@@ -17,6 +17,7 @@
             </button>
             <div class="flex flex-col gap-1">
               <NuxtLink to="/" class="flex-shrink-0">
+                <!-- Основное лого везде -->
                 <LogoBlack class="h-5 2xl:h-8 w-[165px] 2xl:w-[254px]" />
               </NuxtLink>
             
@@ -54,9 +55,14 @@
             </NuxtLink> -->
 
             <div class="relative">
-                <BaseButton variant="secondary"  @click="toggleParticipateMenu" class="flex w-full justify-between">
+                <!-- Participate mobile (small) -->
+                <BaseButton variant="secondary" size="sm" @click="toggleParticipateMenu" class="flex w-full justify-between md:hidden">
                   <span>Participate</span>
-                  <span>></span>
+                </BaseButton>
+                <!-- Participate desktop/tablet (default large) -->
+                <BaseButton variant="secondary" @click="toggleParticipateMenu" class="hidden md:flex w-full justify-between">
+                  <span>Participate</span>
+                  <span class="inline">></span>
                 </BaseButton>
 
               <div v-if="isParticipateOpen" class="absolute top-full mt-2 right-0 bg-white shadow-lg rounded-lg py-2 min-w-[150px] z-50">
@@ -97,31 +103,28 @@
                 </NuxtLink>
               </div>
             </div>
-            <NuxtLink target="_blank" 
-              :to="visitorsRegistration"
-              v-if="!isWelcomePage"
-              class="hidden lg:flex"
-              >
+            <!-- Visit mobile (small) - скрываем на welcome странице -->
+            <NuxtLink v-if="!isWelcomePage" target="_blank" :to="visitorsRegistration" class="md:hidden flex">
+              <BaseButton variant="primary" size="sm">
+                <span>Visit</span>
+              </BaseButton>
+            </NuxtLink>
+            <!-- Visit desktop/tablet (default large) - скрываем на welcome странице -->
+            <NuxtLink v-if="!isWelcomePage" target="_blank" :to="visitorsRegistration" class="hidden md:flex">
               <BaseButton variant="primary">
                 <span>Visit</span>
-                <span>></span>
+                <span class="inline">></span>
               </BaseButton>
             </NuxtLink>
 
             <NuxtLink 
               :to="instagram"
               target="_blank"
-              class="text-black/80 hover:text-black transition-colors hidden xl:block"
+              class="text-black/80 hover:text-black transition-colors"
             >
               <InstagramIcon />
             </NuxtLink>
-            <NuxtLink 
-              :to="youtube"
-              target="_blank"
-              class="text-black/80 hover:text-black transition-colors hidden xl:block"
-            >
-            <YoutubeIcon />
-            </NuxtLink>
+            <!-- YouTube иконка убрана -->
           </div>
         </div>
       </div>
@@ -156,15 +159,15 @@
                 v-if="!isWelcomePage">
                 <BaseButton variant="primary" class="w-full justify-between">
                   <span>Visit</span>
-                  <span>></span>
+                  <span class="inline">></span>
                 </BaseButton>
               </NuxtLink>
             </NuxtLink>
 
             <div class="relative">
-              <BaseButton @click="toggleParticipateMenu" id="participate-button" variant="secondary" class="w-full justify-between">
+              <BaseButton @click="toggleParticipateMenu" id="header-participate-button" variant="secondary" class="w-full justify-between">
                 <span>Participate</span>
-                <span>></span>
+                <span class="hidden md:inline">></span>
               </BaseButton>
 
               <div v-if="isParticipateOpen" class="absolute top-full mt-2 right-0 bg-white overflow-y-auto shadow-lg rounded-lg py-2 min-w-[150px] z-50">
@@ -234,10 +237,12 @@ const isParticipateOpen = ref(false);
 const navLinks = [
   // { name: 'MAGAZINE', href: '/magazine', id: 'magazine' },
   // { name: 'CALENDAR', href: '/#program', id: 'program' },
-  { name: 'FEATURES', href: '/features', id: 'features' },
+  { name: 'DIGITAL', href: '/features', id: 'features' },
+  { name: 'AI', href: '/EFW_AICONTEST', id: 'ai' },
   { name: 'DESIGNERS', href: '/#designers', id: 'designer' },
   { name: 'GALLERY', href: '/gallery', id: 'gallery' },
-  { name: 'OFFER', href: '/offer?wp=971585753302&tr', id: 'offer' },
+  { name: 'MARKET', href: '/offer?wp=971585753302&tr', id: 'market' },
+  { name: 'TRIAL', href: '/trial', id: 'trial' },
   // { name: 'HOW IT WAS', href: '/#how-it-was', id: 'how-it-was' },
   // { name: 'WIDGET', href: '/widget', id: 'widget' },
 ];
@@ -310,7 +315,7 @@ const toggleParticipateMenu = () => {
 
 // Закрываем при клике вне
 const closeOnClickOutside = (event) => {
-  if (!event.target.closest('.relative') && !event.target.closest('#participate-button')) {
+  if (!event.target.closest('.relative') && !event.target.closest('#header-participate-button')) {
     isParticipateOpen.value = false;
   }
 };
@@ -349,15 +354,12 @@ const handleHashtagClick = () => {
 
 // Check if the current page is '/welcome'
 const isWelcomePage = computed(() => {
-  // Проверяем текущий путь
-  const currentPath = window.location.pathname;
-  return currentPath.includes('welcome');
+  return route.path.includes('welcome');
 });
 
 // Check if the current page is '/gallery'
 const isGalleryPage = computed(() => {
-  const currentPath = window.location.pathname;
-  return currentPath.includes('gallery');
+  return route.path.includes('gallery');
 });
 </script>
 

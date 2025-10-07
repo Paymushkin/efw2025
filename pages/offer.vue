@@ -140,11 +140,9 @@
               class="mt-3 inline-flex items-center gap-2 px-6 py-2.5 text-sm rounded-3xl transition-colors border border-black hover:bg-gray-100 w-fit"
             >
               <span>2h Free Trial Spot Waitlist</span>
+              <span id="trial-waitlist-count-offer-1" style="background-color: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">{{ companiesCount }}</span>
               <span>></span>
             </a>
-            <p v-if="companiesCount > 0" class="text-xs text-gray-600">
-              {{ companiesCount }} companies in waitlist
-            </p>
           </div>
       </div>
       </div>
@@ -200,6 +198,11 @@
           </ul>
         </div>
         <div class="flex flex-col md:gap-4 gap-2">
+          <h3 class="md:text-2xl font-bold">Total</h3>
+          <ul class="text-sm md:text-base xl:text-lg space-y-2">
+            <li>• 40 POP-UP CORNERS</li>
+          </ul>
+          <br><br>
           <h3 class="md:text-2xl font-bold">Prices</h3>
           <ul class="text-sm md:text-base xl:text-lg space-y-2">
             <li> Early Birds / any day</li>
@@ -217,11 +220,9 @@
               class="mt-3 inline-flex items-center gap-2 px-6 py-2.5 text-sm rounded-3xl transition-colors border border-black hover:bg-gray-100 w-fit"
             >
               <span>2h Free Trial Spot Waitlist</span>
+              <span id="trial-waitlist-count-offer-2" style="background-color: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">{{ companiesCount }}</span>
               <span>></span>
             </a>
-            <p v-if="companiesCount > 0" class="text-xs text-gray-600">
-              {{ companiesCount }} companies in waitlist
-            </p>
           </div>
       </div>
       </div>
@@ -521,12 +522,29 @@ const approvedCount = ref(0)
 const updateCompaniesCount = (count) => {
   updateGlobalCount(count)
   
-  // Обновляем счетчик в программе
-  const trialCountElement = document.getElementById('trial-waitlist-count')
-  if (trialCountElement) {
-    trialCountElement.textContent = `${count} companies in waitlist`
+  // Обновляем счетчики в программе на главной странице
+  const trialCountElement1 = document.getElementById('trial-waitlist-count-1')
+  if (trialCountElement1) {
+    trialCountElement1.textContent = count
   }
   
+  const trialCountElement2 = document.getElementById('trial-waitlist-count-2')
+  if (trialCountElement2) {
+    trialCountElement2.textContent = count
+  }
+  
+  // Обновляем счетчики на странице offer
+  const trialCountOffer1 = document.getElementById('trial-waitlist-count-offer-1')
+  if (trialCountOffer1) {
+    trialCountOffer1.textContent = count
+  }
+  
+  const trialCountOffer2 = document.getElementById('trial-waitlist-count-offer-2')
+  if (trialCountOffer2) {
+    trialCountOffer2.textContent = count
+  }
+  
+  console.log('Offer page: Обновляем счетчики waitlist:', count)
 }
 
 // Функция для обновления счетчика одобренных компаний
@@ -572,11 +590,86 @@ const scrollToBottom = () => {
 }
 
 // Автоматический скролл при наличии параметра waitlist
-onMounted(() => {
+onMounted(async () => {
   if (showWaitlist.value) {
     // Сразу начинаем скролл
     scrollToBottom()
   }
+  
+  // Принудительно загружаем данные компаний для обновления счетчика
+  if (companiesListRef.value) {
+    await companiesListRef.value.fetchCompanies()
+  }
+  
+  // Дополнительная проверка через 2 секунды
+  setTimeout(async () => {
+    try {
+      console.log('Offer page: Принудительная загрузка данных...')
+      const SPREADSHEET_ID = '1jGEJIU-0Cwx151O0JczBkoaUCE48j5saab-R5eKzLfM';
+      const CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=0`;
+      
+      const response = await fetch(CSV_URL);
+      if (response.ok) {
+        const csvText = await response.text();
+        const lines = csvText.split('\n');
+        
+        // Парсим CSV правильно (учитывая запятые в кавычках)
+        const rows = lines.filter(line => line.trim()).map(line => {
+          const values = [];
+          let current = '';
+          let inQuotes = false;
+          
+          for (let i = 0; i < line.length; i++) {
+            const char = line[i];
+            
+            if (char === '"') {
+              inQuotes = !inQuotes;
+            } else if (char === ',' && !inQuotes) {
+              values.push(current.trim());
+              current = '';
+            } else {
+              current += char;
+            }
+          }
+          
+          values.push(current.trim());
+          return values;
+        });
+        
+        // Преобразуем в формат компаний и фильтруем только waitlist
+        const companiesFromCSV = rows.slice(1).map((row, index) => ({
+          timestamp: row[0] || '',
+          companyName: row[1] || '',
+          industry: row[2] || '',
+          name: row[3] || '',
+          email: row[4] || '',
+          phone: row[5] || '',
+          message: row[6] || '',
+          agreement1: row[7] || '',
+          agreement2: row[8] || '',
+          ipAddress: row[9] || '',
+          userAgent: row[10] || '',
+          status: row[11] || 'WAITLIST'
+        })).filter(company => company.companyName);
+        
+        // Фильтруем только waitlist компании
+        const waitlistCompanies = companiesFromCSV.filter(company => {
+          return !company.status || 
+                 company.status === '' ||
+                 company.status === 'WAITLIST' ||
+                 company.status === 'waitlist'
+        });
+        
+        console.log('Offer page: Всего компаний в CSV:', companiesFromCSV.length);
+        console.log('Offer page: Найдено компаний в waitlist:', waitlistCompanies.length);
+        
+        // Обновляем счетчик
+        updateCompaniesCount(waitlistCompanies.length);
+      }
+    } catch (error) {
+      console.error('Offer page: Ошибка загрузки данных:', error);
+    }
+  }, 2000);
 })
 
 
@@ -591,6 +684,6 @@ onMounted(() => {
 }
 
 .overflow-x-auto::-webkit-scrollbar {
-  display: none;
+  display: none; 
 }
 </style>

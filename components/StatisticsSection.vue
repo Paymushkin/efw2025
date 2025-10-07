@@ -25,9 +25,9 @@ import { useNumberAnimation } from '~/composables/useNumberAnimation';
 
 const sectionRef = ref(null);
 const statistics = [
-  { startNumber: '1', endNumber: '12', label: 'SEASONS', text: 'organized' },
-  { startNumber: '100', endNumber: '300', label: 'DESIGNERS', text: 'participated' },
-  { startNumber: '100', endNumber: '1000', label: 'MODELS', text: 'professionally trained' },
+  { startNumber: '1', endNumber: '14', label: 'SEASONS', text: 'organized' },
+  { startNumber: '100', endNumber: '340', label: 'DESIGNERS', text: 'participated' },
+  { startNumber: '100', endNumber: '1050', label: 'MODELS', text: 'professionally trained' },
 ];
 
 // Создаем массив анимированных чисел
