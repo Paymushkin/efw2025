@@ -70,14 +70,17 @@ const maskCompanyName = (name) => {
   if (words.length === 1) {
     const word = words[0]
     if (word.length < 5) {
-      return word.substring(0, 2) + '*'.repeat(word.length - 2)
+      const maskLength = Math.max(0, word.length - 2)
+      return word.substring(0, 2) + '*'.repeat(maskLength)
     } else {
-      return word.substring(0, 2) + '*'.repeat(word.length - 5) + word.substring(word.length - 3)
+      const maskLength = Math.max(0, word.length - 5)
+      return word.substring(0, 2) + '*'.repeat(maskLength) + word.substring(word.length - 3)
     }
   } else {
     const maskedWords = words.map((word, index) => {
       if (index === 0) {
-        return word.substring(0, 2) + '*'.repeat(word.length - 2)
+        const maskLength = Math.max(0, word.length - 2)
+        return word.substring(0, 2) + '*'.repeat(maskLength)
       } else if (index === words.length - 1) {
         if (word.length === 3) {
           return word
@@ -114,16 +117,10 @@ const isNewCompany = (company) => {
 
 // Функция для фильтрации одобренных компаний
 const filterApprovedCompanies = (companiesList) => {
-  console.log('ApprovedCompaniesList: filtering companies:', companiesList.length)
-  console.log('ApprovedCompaniesList: all companies with statuses:', companiesList.map(c => ({ name: c.companyName, status: c.status })))
-  
   const approved = companiesList.filter(company => {
     // Показываем только компании со статусом APPROVED
     return company.status === 'APPROVED' || company.status === 'approved' || company.status === 'Approved'
   })
-  
-  console.log('ApprovedCompaniesList: approved companies:', approved.length)
-  console.log('ApprovedCompaniesList: approved companies details:', approved.map(c => ({ name: c.companyName, status: c.status })))
   
   return approved
 }

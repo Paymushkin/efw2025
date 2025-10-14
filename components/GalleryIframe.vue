@@ -59,8 +59,6 @@ const updateScript = () => {
   // Для отладки postMessage
   window.addEventListener('message', (event) => {
     if (typeof event.data === 'string' && event.data.indexOf('meyouHeight') !== -1) {
-      // eslint-disable-next-line no-console
-      console.log('Получено сообщение от iframe:', event.data);
     }
   }, { once: true });
 };
@@ -87,7 +85,6 @@ onUnmounted(() => {
 
 function handleMeyouMessage(event) {
   if (typeof event.data === 'string' && event.data.indexOf('meyouHeight') !== -1) {
-    console.log('Получено сообщение от iframe:', event.data);
   }
 }
 

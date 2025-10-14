@@ -170,8 +170,6 @@ const { fetchDesigners, getFormattedDesignersByDay, designers, isDataUpdated } =
 
 // Загружаем данные дизайнеров при монтировании компонента (только один раз)
 onMounted(async () => {
-  console.log('🚀 NewProgramSection: Компонент смонтирован');
-  console.log('🚀 NewProgramSection: Текущий счетчик компаний:', companiesCount.value);
   
   // Пытаемся обновить данные из Google Sheets (только если еще не обновлены)
   if (!isDataUpdated.value) {
@@ -184,24 +182,20 @@ onMounted(async () => {
   
   // Обновляем DOM после загрузки данных
   nextTick(() => {
-    console.log('🔄 NewProgramSection: Обновляем DOM после nextTick');
     updateDesignersInDOM();
     updateWaitlistCount();
     
     // Дополнительные попытки обновления счетчика
     setTimeout(() => {
-      console.log('⏰ NewProgramSection: Обновление через 1 секунду');
       updateWaitlistCount();
     }, 1000);
     
     setTimeout(() => {
-      console.log('⏰ NewProgramSection: Обновление через 3 секунды');
       updateWaitlistCount();
     }, 5000);
     
     // Принудительная загрузка данных, если счетчик равен 0
     setTimeout(() => {
-      console.log('⏰ NewProgramSection: Принудительная загрузка через 2 секунды');
       forceLoadCompaniesData();
     }, 2000);
   });
@@ -223,7 +217,6 @@ onMounted(async () => {
         });
         
         if (hasRelevantElements && companiesData.value.loaded) {
-          console.log('🔍 NewProgramSection: Элементы счетчиков появились в DOM, обновляем...');
           updateWaitlistCount();
         }
       }
@@ -270,31 +263,22 @@ const updateWaitlistCount = () => {
   updateTimeout = setTimeout(() => {
     // Предотвращаем бесконечные циклы
     if (isUpdating.value) {
-      console.log('🔄 NewProgramSection: Обновление уже в процессе, пропускаем...');
       return;
     }
     
     isUpdating.value = true;
     
     const countValue = companiesCount.value || companiesData.value.waitlist || 0;
-    console.log('🔄 NewProgramSection: Обновляем счетчики waitlist:', countValue);
-    console.log('🔄 NewProgramSection: Данные загружены:', companiesData.value.loaded);
     
     // Обновляем оба счетчика на главной странице
     const trialCountElement1 = document.getElementById('trial-waitlist-count-1');
     if (trialCountElement1) {
       trialCountElement1.textContent = countValue;
-      console.log('✅ NewProgramSection: Обновлен trial-waitlist-count-1:', countValue);
-    } else {
-      console.log('❌ NewProgramSection: Элемент trial-waitlist-count-1 не найден в DOM');
     }
     
     const trialCountElement2 = document.getElementById('trial-waitlist-count-2');
     if (trialCountElement2) {
       trialCountElement2.textContent = countValue;
-      console.log('✅ NewProgramSection: Обновлен trial-waitlist-count-2:', countValue);
-    } else {
-      console.log('❌ NewProgramSection: Элемент trial-waitlist-count-2 не найден в DOM');
     }
     
     // Сбрасываем флаг через небольшую задержку
@@ -313,13 +297,8 @@ watch(companiesCount, () => {
 
 // Принудительная загрузка данных компаний, если счетчик равен 0
 const forceLoadCompaniesData = async () => {
-  console.log('🔍 NewProgramSection: Принудительная загрузка данных компаний...');
-  console.log('🔍 NewProgramSection: Текущий счетчик:', companiesCount.value);
-  
   // Всегда загружаем данные, независимо от текущего счетчика
-  console.log('🔍 NewProgramSection: Загружаем данные принудительно...');
   try {
-    console.log('📊 NewProgramSection: Загружаем данные из Google Sheets...');
     // Попытка загрузить данные напрямую из Google Sheets
     const SPREADSHEET_ID = '1jGEJIU-0Cwx151O0JczBkoaUCE48j5saab-R5eKzLfM';
     const CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=0`;
@@ -378,8 +357,6 @@ const forceLoadCompaniesData = async () => {
       
       const waitlistCount = waitlistCompanies.length;
       
-      console.log('📈 NewProgramSection: Всего компаний в CSV:', companiesFromCSV.length);
-      console.log('📈 NewProgramSection: Найдено компаний в waitlist:', waitlistCount);
       
       // Сохраняем данные в локальное хранилище
       companiesData.value = {
@@ -393,7 +370,6 @@ const forceLoadCompaniesData = async () => {
       
       // Принудительно обновляем DOM элементы
       setTimeout(() => {
-        console.log('🔄 NewProgramSection: Принудительно обновляем DOM элементы');
         updateWaitlistCount();
       }, 100);
     } else {

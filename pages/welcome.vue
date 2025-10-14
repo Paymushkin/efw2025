@@ -43,7 +43,7 @@
                   <tr v-if="visibleDays.includes(8)" class="border-b border-gray-100">
                     <td class="py-2 pl-2 md:pr-2 text-sm md:text-base xl:text-lg font-medium text-left">
                        <a class="hover:text-blue-600 transition-colors" target="_blank" href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=NWNpMTI0dnZ2bWhiNmtmZ3YzNWx1Yml2dXAgYTQ4Y2U2YjY4MzIwMDcxNjc0YmIxMTAxNmUxNDg2YTAzY2M0ZTdjMGE0NTJjZmMzYjM0NTAzZTI2OTYzYzIyY0Bn&amp;tmsrc=a48ce6b68320071674bb11016e1486a03cc4e7c0a452cfc3b34503e26963c22c%40group.calendar.google.com">8 NOV | SAT</a>
-                      <br>6–10PM</td>
+                      <br>{{ scheduleHours[8].start }}{{ getTimePeriod(8) }}–{{ scheduleHours[8].end }}PM</td>
                     <td class="py-2 pr-2 text-sm md:text-base xl:text-lg text-gray-600">PRÊT-À-PORTER WOMEN'S<br>& MEN'S COLLECTIONS SS 26</td>
                   </tr>
                   
@@ -51,7 +51,7 @@
                   <tr v-if="visibleDays.includes(9)" class="border-b border-gray-100">
                     <td class="py-2 pl-2 md:pr-2 text-sm md:text-base xl:text-lg font-medium text-left">
                        <a class="hover:text-blue-600 transition-colors" target="_blank" href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=N25sY3ExZXVtYjczNW12bmR0ZnR0cGd0OXAgYTQ4Y2U2YjY4MzIwMDcxNjc0YmIxMTAxNmUxNDg2YTAzY2M0ZTdjMGE0NTJjZmMzYjM0NTAzZTI2OTYzYzIyY0Bn&amp;tmsrc=a48ce6b68320071674bb11016e1486a03cc4e7c0a452cfc3b34503e26963c22c%40group.calendar.google.com">9 NOV | SUN</a>
-                      <br>6–10PM</td>
+                      <br>{{ scheduleHours[9].start }}{{ getTimePeriod(9) }}–{{ scheduleHours[9].end }}PM</td>
                     <td class="py-2 pr-2 text-sm md:text-base xl:text-lg text-gray-600">READY-TO-WEAR COLLECTIONS<br>& Kid's collections Pop-Up Market</td>
                   </tr>
                   
@@ -59,7 +59,7 @@
                   <tr v-if="visibleDays.includes(10)" class="border-b border-gray-100">
                     <td class="py-2 pl-2 md:pr-2 text-sm md:text-base xl:text-lg font-medium text-left">
                        <a class="hover:text-blue-600 transition-colors" target="_blank" href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=NTFzdXBkMjQzamhzanR0cjRiajdhb2J2Z3AgYTQ4Y2U2YjY4MzIwMDcxNjc0YmIxMTAxNmUxNDg2YTAzY2M0ZTdjMGE0NTJjZmMzYjM0NTAzZTI2OTYzYzIyY0Bn&amp;tmsrc=a48ce6b68320071674bb11016e1486a03cc4e7c0a452cfc3b34503e26963c22c%40group.calendar.google.com">10 NOV | MON</a>
-                      <br>10AM–6PM</td>
+                      <br>{{ scheduleHours[10].start }}{{ getTimePeriod(10) }}–{{ scheduleHours[10].end }}PM</td>
                     <td class="py-2 pr-2 text-sm md:text-lg text-gray-600">FASHION & BEAUTY SERVICES<br>POP-UP MARKET
                     </td>
                   </tr>
@@ -68,7 +68,7 @@
                   <tr v-if="visibleDays.includes(11)">
                     <td class="py-2 pl-2 md:pr-2 text-sm md:text-base xl:text-lg font-medium text-left">
                        <a class="hover:text-blue-600 transition-colors" target="_blank" href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=MG5qMjc3aXFtczQ2MmgyZWhlaGJ0dTNzMzggYTQ4Y2U2YjY4MzIwMDcxNjc0YmIxMTAxNmUxNDg2YTAzY2M0ZTdjMGE0NTJjZmMzYjM0NTAzZTI2OTYzYzIyY0Bn&amp;tmsrc=a48ce6b68320071674bb11016e1486a03cc4e7c0a452cfc3b34503e26963c22c%40group.calendar.google.com">11 NOV | TUE</a>
-                      <br>10AM–6PM</td>
+                      <br>{{ scheduleHours[11].start }}{{ getTimePeriod(11) }}–{{ scheduleHours[11].end }}PM</td>
                     <td class="py-2 pr-2 text-sm md:text-base xl:text-lg text-gray-600">FASHION & WELLNESS SERVICES<br>POP-UP MARKET</td>
                   </tr>
                 </tbody>
@@ -142,31 +142,54 @@
       </div>
       </section>
 
-          <!-- Отдельный блок с локацией -->
+          <!-- Location Section -->
           <section class="md:mb-[76px] mb-[56px]">
-               <h2 class="text-2xl md:text-3xl font-bold uppercase text-left mb-8">Location</h2>
-              <p class="text-sm md:text-base text-gray-600 mb-4">Skylight Gallery. Arjaan by Rotana. Dubai Media City</p>
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1185.1534268127045!2d55.15329961837267!3d25.095293069615156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b44056573e7%3A0xc77c77051f31ecc!2sArjaan%20by%20Rotana%20Dubai!5e1!3m2!1sru!2sae!4v1757573179410!5m2!1sru!2sae" 
-                width="100%" 
-                height="400" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade"
-                class="rounded-lg"
-              ></iframe>
+            <h2 class="text-2xl md:text-3xl font-bold uppercase text-left mb-8">Location</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <!-- 2D Map -->
+              <div class="border border-gray-300 rounded-lg p-4">
+                <h3 class="text-lg md:text-xl font-bold mb-4">2D View</h3>
+                <div class="w-full">
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28905.594122284634!2d55.128635593056764!3d25.095115196678794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b0072bb3c61%3A0x3a456f0a9996fc2c!2sSkylight%20Gallery!5e0!3m2!1sru!2sae!4v1757756744547!5m2!1sru!2sae" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                  </iframe>
+                </div>
+              </div>
+
+              <!-- 3D Map -->
+              <div class="border border-gray-300 rounded-lg p-4">
+                <h3 class="text-lg md:text-xl font-bold mb-4">3D View</h3>
+                <div class="w-full">
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!4v1757756521377!6m8!1m7!1sFD00YnqiTe4Mfh-iCWTNNA!2m2!1d25.09490902264704!2d55.15351383099734!3f12.933478943500432!4f12.986052488037629!5f0.7820865974627469" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                  </iframe>
+                </div>
+              </div>
+            </div>
           </section>
       
       <!-- Detailed Fashion Show Program -->
-      <div class="mt-8 md:mt-12">
+      <div v-if="visibleDays.includes(8) || visibleDays.includes(9)" class="mt-8 md:mt-12">
         <h2 class="text-2xl md:text-3xl font-bold uppercase text-left mb-4 md:mb-6">Fashion Show</h2>
         
         <!-- Desktop version of detailed program -->
         <div class="hidden md:block">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- November 8 -->
-            <div class="bg-white p-4 rounded-lg shadow-md">
+            <div v-if="visibleDays.includes(8)" class="bg-white p-4 rounded-lg shadow-md">
               <h3 class="text-base font-medium text-gray-800 mb-3">November 8, 2025</h3>
               
               <div class="space-y-3">
@@ -182,7 +205,7 @@
             </div>
             
             <!-- November 9 -->
-            <div class="bg-white p-4 rounded-lg shadow-md">
+            <div v-if="visibleDays.includes(9)" class="bg-white p-4 rounded-lg shadow-md">
               <h3 class="text-base font-medium text-gray-800 mb-3">November 9, 2025</h3>
               
               <div class="space-y-3">
@@ -207,7 +230,7 @@
             
             <div class="space-y-4">
               <!-- November 8 -->
-              <div>
+              <div v-if="visibleDays.includes(8)">
                 <h4 class="text-sm font-medium text-gray-700 mb-2">November 8, 2025</h4>
                 
                 <div class="space-y-3">
@@ -223,7 +246,7 @@
               </div>
               
               <!-- November 9 -->
-              <div>
+              <div v-if="visibleDays.includes(9)">
                 <h4 class="text-sm font-medium text-gray-700 mb-2">November 9, 2025</h4>
                 
                 <div class="space-y-3">
@@ -282,15 +305,103 @@
         />
       </div>
       
-      <!-- 8-11 November 2025 -->
-      <p class="text-sm font-medium text-gray-800 mb-4">8-11 November 2025</p>
+      <!-- Date Selection Buttons -->
+      <div class="mb-4">
+        <div class="flex flex-wrap gap-2 justify-center">
+          <!-- Day 8 -->
+          <button 
+            @click="cycleDateOption(8)"
+            :class="[
+              'px-3 py-2 rounded text-sm font-medium transition-colors',
+              selectedDates[8] && selectedDates[8] !== 'off' 
+                ? 'bg-black text-white' 
+                : 'bg-gray-200 text-gray-500'
+            ]"
+          >
+            <template v-if="typeof formatDateButton(8) === 'object'">
+              {{ formatDateButton(8).day }} <sup class="text-[8px]">{{ formatDateButton(8).time }}</sup>
+            </template>
+            <template v-else>
+              {{ formatDateButton(8) }}
+            </template>
+          </button>
+          
+          <!-- Day 9 -->
+          <button 
+            @click="cycleDateOption(9)"
+            :class="[
+              'px-3 py-2 rounded text-sm font-medium transition-colors',
+              selectedDates[9] && selectedDates[9] !== 'off' 
+                ? 'bg-black text-white' 
+                : 'bg-gray-200 text-gray-500'
+            ]"
+          >
+            <template v-if="typeof formatDateButton(9) === 'object'">
+              {{ formatDateButton(9).day }} <sup class="text-[8px]">{{ formatDateButton(9).time }}</sup>
+            </template>
+            <template v-else>
+              {{ formatDateButton(9) }}
+            </template>
+          </button>
+          
+          <!-- Day 10 -->
+          <button 
+            @click="cycleDateOption(10)"
+            :class="[
+              'px-3 py-2 rounded text-sm font-medium transition-colors',
+              selectedDates[10] && selectedDates[10] !== 'off' 
+                ? 'bg-black text-white' 
+                : 'bg-gray-200 text-gray-500'
+            ]"
+          >
+            <template v-if="typeof formatDateButton(10) === 'object'">
+              {{ formatDateButton(10).day }} <sup class="text-[8px]">{{ formatDateButton(10).time }}</sup>
+            </template>
+            <template v-else>
+              {{ formatDateButton(10) }}
+            </template>
+          </button>
+          
+          <!-- Day 11 -->
+          <button 
+            @click="cycleDateOption(11)"
+            :class="[
+              'px-3 py-2 rounded text-sm font-medium transition-colors',
+              selectedDates[11] && selectedDates[11] !== 'off' 
+                ? 'bg-black text-white' 
+                : 'bg-gray-200 text-gray-500'
+            ]"
+          >
+            <template v-if="typeof formatDateButton(11) === 'object'">
+              {{ formatDateButton(11).day }} <sup class="text-[8px]">{{ formatDateButton(11).time }}</sup>
+            </template>
+            <template v-else>
+              {{ formatDateButton(11) }}
+            </template>
+          </button>
+        </div>
+        <p class="text-xs font-medium text-gray-600 mt-2 text-center">November 2025</p>
+      </div>
       
       <!-- Authorized to invite -->
-      <div class="mb-4 p-4 bg-gray-50 rounded-lg">
+      <div class="mb-4 p-4 bg-gray-50 rounded-lg relative">
         <label class="block text-sm font-medium text-gray-700 mb-2 text-left">
           Authorized to invite
         </label>
         <div class="flex gap-2">
+          <button 
+            @click="createNewInviter"
+            :class="[
+              'w-10 h-10 flex items-center justify-center transition-colors border border-gray-300 rounded-md text-lg',
+              hasInputChanged && newInviterName.trim() 
+                ? 'text-gray-600 hover:text-gray-800 cursor-pointer' 
+                : 'text-gray-300 cursor-not-allowed'
+            ]"
+            :disabled="!hasInputChanged || !newInviterName.trim()"
+            title="Add"
+          >
+            +
+          </button>
           <input 
             v-model="newInviterName"
             type="text"
@@ -299,14 +410,25 @@
             @input="handleNameInput"
           />
           <button 
-            @click="createNewInviter"
-            class="px-2 py-2 text-gray-400 hover:text-gray-600 transition-colors text-lg"
-            :disabled="!newInviterName.trim()"
-            title="Add"
+            @click="copyInviteLink"
+            class="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors border border-gray-300 rounded-md relative"
+            title="Copy link"
           >
-            +
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            </svg>
           </button>
         </div>
+        
+        <!-- Success Notification -->
+        <transition name="fade">
+          <div 
+            v-if="showCopyNotification"
+            class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-4 py-2 bg-green-600 text-white text-sm rounded-md shadow-lg z-10"
+          >
+            ✓ Inviter updated successfully!
+          </div>
+        </transition>
       </div>
     </div>
   </div>
@@ -442,17 +564,12 @@
 </template>
 
 <script setup>
-import { definePageMeta, useRoute, computed, ref, onMounted, watch } from '#imports';
+import { computed, ref, onMounted, watch } from '#imports';
 import BaseButton from '@/components/ui/BaseButton.vue';
 import Image1 from '@/assets/image/welcome/1.webp';
 import { useDesigners } from '~/composables/useDesigners';
 
-definePageMeta({
-  name: 'welcome',
-  layout: 'default'
-});
-
-// Get guest name from URL parameter
+// Get route and router
 const route = useRoute();
 const guestName = computed(() => {
   const name = route.query.by || 'Guest';
@@ -460,26 +577,226 @@ const guestName = computed(() => {
   return name.replace(/\+/g, ' ');
 });
 
-// Parse days parameter from URL
-const visibleDays = computed(() => {
+// Default schedule times for each day
+const defaultScheduleHours = {
+  8: { start: 6, end: 10 },   // 8 NOV: 6PM–10PM
+  9: { start: 6, end: 10 },   // 9 NOV: 6PM–10PM
+  10: { start: 10, end: 6 },  // 10 NOV: 10AM–6PM
+  11: { start: 10, end: 6 }   // 11 NOV: 10AM–6PM
+};
+
+// Parse days parameter from URL with custom hours and AM/PM
+// Format examples:
+// - days=8+9+10+11 (default hours)
+// - days=88AM+99PM+119AM+10 (custom hours with AM/PM)
+// - days=86+97 (old format still supported)
+const parsedDaysWithHours = computed(() => {
   const daysParam = route.query.days;
   
+  console.log('🔍 Raw days parameter:', daysParam);
+  
   if (!daysParam) {
+    console.log('❌ No days parameter found');
+    return null;
+  }
+  
+  const result = {};
+  // Parse days parameter - handle both + and spaces
+  const dayEntries = daysParam.toString().split(/[+\s]/).filter(entry => entry.length > 0);
+  
+  console.log('📝 Day entries:', dayEntries);
+  
+  dayEntries.forEach(entry => {
+    const trimmed = entry.trim();
+    if (trimmed.length === 0) return;
+    
+    let day, startHour = null, period = null;
+    
+    // Check if entry contains AM or PM
+    const hasAM = trimmed.toUpperCase().includes('AM');
+    const hasPM = trimmed.toUpperCase().includes('PM');
+    
+    if (hasAM || hasPM) {
+      // New format with AM/PM: "88PM", "99PM", "810PM", "119AM", "1010AM"
+      period = hasAM ? 'AM' : 'PM';
+      const numPart = trimmed.replace(/AM|PM|am|pm/gi, '');
+      
+      if (numPart.length === 2) {
+        // Format: "88PM" = day 8, hour 8 PM
+        day = parseInt(numPart[0]);
+        startHour = parseInt(numPart[1]);
+      } else if (numPart.length === 3) {
+        // Could be "119AM" (day 11, hour 9) or "810PM" (day 8, hour 10)
+        const firstDigit = parseInt(numPart[0]);
+        if (firstDigit >= 8 && firstDigit <= 9) {
+          // Format: "810PM" = day 8, hour 10 PM
+          day = parseInt(numPart[0]);
+          startHour = parseInt(numPart.substring(1));
+        } else {
+          // Format: "119AM" = day 11, hour 9 AM
+          day = parseInt(numPart.substring(0, 2));
+          startHour = parseInt(numPart[2]);
+        }
+      } else if (numPart.length === 4) {
+        // Format: "1010AM" = day 10, hour 10 AM
+        day = parseInt(numPart.substring(0, 2));
+        startHour = parseInt(numPart.substring(2));
+      }
+    } else {
+      // Old format without AM/PM
+      if (trimmed.length === 1) {
+        // Format: "8" = day 8, use default hours
+        day = parseInt(trimmed);
+      } else if (trimmed.length === 2) {
+        // Check if it's a day like "10" or "11", or day+hour like "86" or "97"
+        const num = parseInt(trimmed);
+        if (num >= 10 && num <= 11) {
+          // It's day 10 or 11 without custom hour
+          day = num;
+        } else {
+          // Format: "86" = day 8, hour 6 PM (default to PM for backward compatibility)
+          day = parseInt(trimmed[0]);
+          startHour = parseInt(trimmed[1]);
+          period = 'PM';
+        }
+      } else if (trimmed.length === 3) {
+        // Format: "105" = day 10, hour 5 PM
+        day = parseInt(trimmed.substring(0, 2));
+        startHour = parseInt(trimmed[2]);
+        period = 'PM';
+      }
+    }
+    
+    if (!isNaN(day)) {
+      result[day] = startHour !== null ? { hour: startHour, period } : null;
+    }
+  });
+  
+  return Object.keys(result).length > 0 ? result : null;
+});
+
+// Visible days based on URL parameter
+const visibleDays = computed(() => {
+  const parsed = parsedDaysWithHours.value;
+  
+  if (!parsed) {
     // If no days parameter, show all days (8, 9, 10, 11)
     return [8, 9, 10, 11];
   }
   
-  // Parse days parameter (e.g., "8 9 10" or "8 10 11" - browser converts + to spaces)
-  const days = daysParam.toString().split(' ').map(day => parseInt(day.trim())).filter(day => !isNaN(day));
+  // Return days from parsed parameter
+  return Object.keys(parsed).map(day => parseInt(day));
+});
+
+// Event schedule times for each day (with custom hours from URL)
+const scheduleHours = computed(() => {
+  const parsed = parsedDaysWithHours.value;
+  const hours = { ...defaultScheduleHours };
   
-  // If parsing failed or no valid days, show all days
-  if (days.length === 0) {
-    return [8, 9, 10, 11];
+  if (parsed) {
+    console.log('🔍 Parsed days with hours:', parsed);
+    // Override start hours based on URL parameter (only if custom hour is specified)
+    Object.keys(parsed).forEach(day => {
+      const dayNum = parseInt(day);
+      const customTime = parsed[day];
+      
+      console.log(`📅 Day ${dayNum}:`, customTime);
+      
+      if (hours[dayNum] && customTime !== null) {
+        hours[dayNum] = {
+          ...hours[dayNum],
+          start: customTime.hour,
+          startPeriod: customTime.period || 'PM' // Default to PM if not specified
+        };
+        console.log(`✅ Updated day ${dayNum} to:`, hours[dayNum]);
+      }
+    });
   }
   
-  // Return parsed days
-  return days;
+  console.log('📋 Final schedule hours:', hours);
+  return hours;
 });
+
+// Get time period (AM/PM) for display
+const getTimePeriod = (day) => {
+  const hours = scheduleHours.value[day];
+  if (hours?.startPeriod) {
+    return hours.startPeriod;
+  }
+  // Default logic for AM/PM
+  return (hours?.start >= 10 && hours?.start <= 12) ? 'AM' : 'PM';
+};
+
+// Date selection state for QR modal buttons
+const selectedDates = ref({
+  8: '6PM',   // Default: 8(6PM)
+  9: '6PM',   // Default: 9(6PM)
+  10: 'on',   // Default: 10 (on without specific time)
+  11: 'on'    // Default: 11 (on without specific time)
+});
+
+// Date cycle options for each day
+const dateCycleOptions = {
+  8: ['6PM', '7PM', '8PM', 'off'],
+  9: ['6PM', '7PM', '8PM', 'off'],
+  10: ['on', 'off'],
+  11: ['on', 'off']
+};
+
+// Cycle through date options
+const cycleDateOption = (day) => {
+  const options = dateCycleOptions[day];
+  const currentIndex = options.indexOf(selectedDates.value[day]);
+  const nextIndex = (currentIndex + 1) % options.length;
+  selectedDates.value[day] = options[nextIndex];
+  
+  // Update QR code URL with new dates
+  updateQRCodeWithDates();
+};
+
+// Format button text for display
+const formatDateButton = (day) => {
+  const state = selectedDates.value[day];
+  if (state === 'off' || state === 'on') {
+    return day;
+  } else {
+    // Return object with day and time for superscript formatting
+    return { day, time: state };
+  }
+};
+
+// Update QR code URL based on selected dates
+const updateQRCodeWithDates = () => {
+  const activeDates = [];
+  
+  Object.keys(selectedDates.value).forEach(day => {
+    const state = selectedDates.value[day];
+    if (state !== 'off') {
+      if (state === 'on') {
+        // Just the day number
+        activeDates.push(day);
+      } else {
+        // Day with time (e.g., "6PM" -> "86PM")
+        const hour = state.replace(/[AP]M/, '');
+        const period = state.includes('AM') ? 'AM' : 'PM';
+        activeDates.push(`${day}${hour}${period}`);
+      }
+    }
+  });
+  
+  // Build new URL with days parameter
+  const baseUrl = window.location.href.split('?')[0];
+  const params = new URLSearchParams(window.location.search);
+  
+  if (activeDates.length > 0) {
+    params.set('days', activeDates.join('+'));
+  } else {
+    params.delete('days');
+  }
+  
+  const newUrl = `${baseUrl}?${params.toString()}`;
+  qrCodeUrl.value = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(newUrl)}`;
+};
 
 // QR Modal state
 const showQRModal = ref(false);
@@ -488,6 +805,13 @@ const hasUpdatedQR = ref(false); // Track if QR was updated via OK button
 
 // Desktop detection
 const isDesktop = ref(false);
+
+// Copy link notification
+const showCopyNotification = ref(false);
+
+// Input change tracking
+const originalInviterName = ref('Marina Krapivina');
+const hasInputChanged = ref(false);
 
 // Event QR Code URL
 const eventQRCodeUrl = computed(() => {
@@ -543,27 +867,88 @@ const handleMouseLeave = () => {
 const openQRModal = () => {
   showQRModal.value = true;
   hasUpdatedQR.value = false; // Reset flag when opening modal
+  
+  // Initialize selected dates from URL
+  initializeDateSelection();
+};
+
+// Initialize date selection from current URL
+const initializeDateSelection = () => {
+  const parsed = parsedDaysWithHours.value;
+  
+  if (!parsed) {
+    // Reset to defaults
+    selectedDates.value = {
+      8: '6PM',
+      9: '6PM',
+      10: 'on',
+      11: 'on'
+    };
+    return;
+  }
+  
+  // Update based on URL parameters
+  [8, 9, 10, 11].forEach(day => {
+    if (parsed[day] !== undefined) {
+      const timeInfo = parsed[day];
+      if (timeInfo === null) {
+        // Day without specific time
+        selectedDates.value[day] = 'on';
+      } else {
+        // Day with specific time
+        const { hour, period } = timeInfo;
+        selectedDates.value[day] = `${hour}${period}`;
+      }
+    } else {
+      // Day not in URL, set to 'off'
+      selectedDates.value[day] = 'off';
+    }
+  });
 };
 
 const closeQRModal = () => {
-  // Only update URL and H1 if QR was updated via OK button
+  // Build URL with current parameters
+  const baseUrl = window.location.origin + window.location.pathname;
+  const params = new URLSearchParams();
+  
+  // Add inviter name if it was updated
   if (hasUpdatedQR.value && newInviterName.value.trim()) {
-    // Format the name: replace spaces with + for URL
     const formattedName = newInviterName.value.trim().replace(/\s+/g, '+');
-    
-    // Create new URL with the inviter name
-    const baseUrl = window.location.origin + window.location.pathname;
-    const newUrl = `${baseUrl}?by=${formattedName}`;
-    
-    // Update URL without page reload
-    window.history.pushState({}, '', newUrl);
-    
-    // Force route update to trigger guestName computed property
-    window.location.hash = 'updated';
-    setTimeout(() => {
-      window.location.hash = '';
-    }, 10);
+    params.set('by', formattedName);
+  } else if (route.query.by) {
+    // Keep existing 'by' parameter
+    params.set('by', route.query.by.toString());
   }
+  
+  // Add days parameter based on selected dates
+  const activeDates = [];
+  Object.keys(selectedDates.value).forEach(day => {
+    const state = selectedDates.value[day];
+    if (state !== 'off') {
+      if (state === 'on') {
+        activeDates.push(day);
+      } else {
+        const hour = state.replace(/[AP]M/, '');
+        const period = state.includes('AM') ? 'AM' : 'PM';
+        activeDates.push(`${day}${hour}${period}`);
+      }
+    }
+  });
+  
+  if (activeDates.length > 0) {
+    params.set('days', activeDates.join('+'));
+  }
+  
+  const newUrl = `${baseUrl}?${params.toString()}`;
+  
+  // Update URL without page reload
+  window.history.pushState({}, '', newUrl);
+  
+  // Force route update to trigger guestName computed property
+  window.location.hash = 'updated';
+  setTimeout(() => {
+    window.location.hash = '';
+  }, 10);
   
   showQRModal.value = false;
 };
@@ -680,11 +1065,12 @@ const requestReservedSeat = () => {
 // Handle name input - allow all input including spaces
 const handleNameInput = (event) => {
   newInviterName.value = event.target.value;
+  hasInputChanged.value = newInviterName.value.trim() !== originalInviterName.value.trim();
 };
 
 // Create new inviter
 const createNewInviter = () => {
-  if (!newInviterName.value.trim()) return;
+  if (!newInviterName.value.trim() || !hasInputChanged.value) return;
   
   // Format the name: replace spaces with + for URL (but don't double encode)
   const formattedName = newInviterName.value.trim().replace(/\s+/g, '+');
@@ -699,7 +1085,72 @@ const createNewInviter = () => {
   // Mark that QR was updated
   hasUpdatedQR.value = true;
   
-  // Keep the input field value (don't clear it)
+  // Update original name and reset change flag
+  originalInviterName.value = newInviterName.value.trim();
+  hasInputChanged.value = false;
+  
+  // Show success notification
+  showCopyNotification.value = true;
+  setTimeout(() => {
+    showCopyNotification.value = false;
+  }, 3000);
+};
+
+// Copy invite link to clipboard
+const copyInviteLink = async () => {
+  const activeDates = [];
+  Object.keys(selectedDates.value).forEach(day => {
+    const state = selectedDates.value[day];
+    if (state !== 'off') {
+      if (state === 'on') {
+        activeDates.push(day);
+      } else {
+        const hour = state.replace(/[AP]M/, '');
+        const period = state.includes('AM') ? 'AM' : 'PM';
+        activeDates.push(`${day}${hour}${period}`);
+      }
+    }
+  });
+  
+  const baseUrl = window.location.origin + window.location.pathname;
+  const params = new URLSearchParams();
+  
+  if (newInviterName.value.trim()) {
+    const formattedName = newInviterName.value.trim().replace(/\s+/g, '+');
+    params.set('by', formattedName);
+  }
+  
+  if (activeDates.length > 0) {
+    params.set('days', activeDates.join('+'));
+  }
+  
+  const linkToCopy = `${baseUrl}?${params.toString()}`;
+  
+  try {
+    // Try modern clipboard API
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(linkToCopy);
+    } else {
+      // Fallback for older browsers or insecure contexts
+      const textArea = document.createElement('textarea');
+      textArea.value = linkToCopy;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+    }
+    
+    // Show success notification
+    showCopyNotification.value = true;
+    setTimeout(() => {
+      showCopyNotification.value = false;
+    }, 3000);
+  } catch (err) {
+    console.error('Failed to copy:', err);
+  }
 };
 
 
@@ -755,29 +1206,32 @@ const getConfirmedDesigners = (day) => {
 watch(designers, () => {
   day8Designers.value = getConfirmedDesigners('8');
   day9Designers.value = getConfirmedDesigners('9');
-  console.log('📅 Дизайнеры 8 ноября:', day8Designers.value);
-  console.log('📅 Дизайнеры 9 ноября:', day9Designers.value);
 }, { immediate: true });
 
 // Загружаем данные дизайнеров при монтировании компонента (только один раз)
 onMounted(async () => {
-  console.log('🚀 Welcome: Компонент смонтирован');
-  console.log('📋 Welcome: Локальные данные уже доступны');
   
   // Определяем десктопную версию
   isDesktop.value = window.innerWidth >= 1024; // lg breakpoint
   
+  // Инициализация имени из URL параметра
+  if (route.query.by) {
+    const nameFromUrl = route.query.by.toString().replace(/\+/g, ' ');
+    newInviterName.value = nameFromUrl;
+    originalInviterName.value = nameFromUrl;
+  } else {
+    // Дефолтное имя если нет параметра
+    newInviterName.value = 'Marina Krapivina';
+    originalInviterName.value = 'Marina Krapivina';
+  }
+  
   // Пытаемся обновить данные из Google Sheets (только если еще не обновлены)
   if (!isDataUpdated.value) {
-    console.log('🔄 Welcome: Пытаемся обновить данные из Google Sheets...');
     try {
       await fetchDesigners();
-      console.log('✅ Welcome: Данные обновлены из Google Sheets');
     } catch (error) {
-      console.log('📋 Welcome: Используем локальные данные (Google Sheets недоступен)');
+      // Используем локальные данные
     }
-  } else {
-    console.log('📋 Welcome: Данные уже обновлены, используем кэш');
   }
 
   // Инициализация штрих-кода с кэшем
@@ -795,4 +1249,14 @@ onMounted(async () => {
     barcodeBits.value = encodeToBits(value);
   }
 });
-</script> 
+</script>
+
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+</style> 

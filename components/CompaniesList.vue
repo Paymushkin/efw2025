@@ -13,7 +13,7 @@
     </div>
     
     <div v-else class="space-y-3">
-      <h3 class="text-lg font-semibold mb-4">WAITLIST APPLICATIONS SUBMITTED ({{ companies.length }})</h3>
+      <h3 class="text-lg font-semibold mb-4">COMPANIES APPLICATIONS ({{ companies.length }})</h3>
       <div class="space-y-3 pr-2">
         <div 
           v-for="(company, index) in companies" 
@@ -40,8 +40,8 @@
                 >
                   NEW
                 </span>
-                <span class="px-2 py-1 text-xs font-semibold text-orange-700 bg-orange-100 rounded-full">
-                  WAITLIST
+                <span :class="getStatusLabelStyle(company.status).class">
+                  {{ getStatusLabelStyle(company.status).text }}
                 </span>
               </div>
             </div>
@@ -127,23 +127,52 @@ const isNewCompany = (company) => {
   return companyId === newlyAddedCompany.value
 }
 
-// Функция для фильтрации waitlist компаний
-const filterWaitlistCompanies = (companiesList) => {
-  console.log('CompaniesList: filtering companies:', companiesList.length)
-  console.log('CompaniesList: all companies with statuses:', companiesList.map(c => ({ name: c.companyName, status: c.status })))
+// Функция для получения стиля лейбла статуса
+const getStatusLabelStyle = (status) => {
+  const normalizedStatus = (status || 'WAITLIST').toUpperCase()
   
-  const waitlist = companiesList.filter(company => {
-    // Показываем только компании с пустым статусом или со статусом WAITLIST
+  switch (normalizedStatus) {
+    case 'GARANTEED':
+    case 'GUARANTEED':
+      return {
+        class: 'px-2 py-1 text-xs font-semibold text-green-700 bg-green-100 rounded-full',
+        text: 'GARANTEED'
+      }
+    case 'RECOMMENDED':
+    case 'RECOMENDED': // Учитываем опечатку в данных
+    case 'RECOMМENDED': // Учитываем кириллическую М
+      return {
+        class: 'px-2 py-1 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full',
+        text: 'RECOMMENDED'
+      }
+    case 'WAITLIST':
+    default:
+      return {
+        class: 'px-2 py-1 text-xs font-semibold text-orange-700 bg-orange-100 rounded-full',
+        text: 'WAITLIST'
+      }
+  }
+}
+
+// Функция для фильтрации компаний (включая WAITLIST, GARANTEED и RECOMMENDED)
+const filterWaitlistCompanies = (companiesList) => {
+  const filteredCompanies = companiesList.filter(company => {
+    // Показываем компании с пустым статусом, WAITLIST, GARANTEED и RECOMMENDED
     return !company.status || 
            company.status === '' ||
            company.status === 'WAITLIST' ||
-           company.status === 'waitlist'
+           company.status === 'waitlist' ||
+           company.status === 'GARANTEED' ||
+           company.status === 'guaranteed' ||
+           company.status === 'RECOMMENDED' ||
+           company.status === 'recommended' ||
+           company.status === 'RECOMENDED' || // Учитываем опечатку в данных
+           company.status === 'recomended' ||
+           company.status === 'RECOMМENDED' || // Учитываем кириллическую М
+           company.status === 'recomмended'
   })
   
-  console.log('CompaniesList: waitlist companies:', waitlist.length)
-  console.log('CompaniesList: waitlist companies details:', waitlist.map(c => ({ name: c.companyName, status: c.status })))
-  
-  return waitlist
+  return filteredCompanies
 }
 
 // Функция для загрузки списка компаний

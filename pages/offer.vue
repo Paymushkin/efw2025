@@ -13,7 +13,7 @@
         <div>
           <h3 class="md:text-2xl md:mb-5 mb-2 font-bold">EFW Pop-up Market</h3>
           <p class="text-sm md:text-base xl:text-lg">
-            Two days featuring <b>60 Showcase Spots</b> for beauty service companies and <b>40 Designer Pop-Up Corners</b> with exclusive promotional offers
+            Two days featuring <b>60 Showcase Spots</b> for beauty service companies<br>and <b>40 Designer Pop-Up Corners</b> with exclusive promotional offers
             <br><br>
             <b>BEAUTY DAY</b> | 10 November 2025 | Monday
             <br>
@@ -48,45 +48,6 @@
       </div>
       </div>
      </section>
-
-    <!-- Location Section -->
-    <section class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
-      <h2 class="text-xl md:text-4xl xl:mb-[75px] md:mb-[50px] mb-7">LOCATION</h2>
-      
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <!-- 2D Map -->
-        <div class="border border-gray-300 rounded-lg p-4">
-          <h3 class="text-lg md:text-xl font-bold mb-4">2D View</h3>
-          <div class="w-full">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28905.594122284634!2d55.128635593056764!3d25.095115196678794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b0072bb3c61%3A0x3a456f0a9996fc2c!2sSkylight%20Gallery!5e0!3m2!1sru!2sae!4v1757756744547!5m2!1sru!2sae" 
-              width="100%" 
-              height="450" 
-              style="border:0;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-          </div>
-        </div>
-
-        <!-- 3D Map -->
-        <div class="border border-gray-300 rounded-lg p-4">
-          <h3 class="text-lg md:text-xl font-bold mb-4">3D View</h3>
-          <div class="w-full">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!4v1757756521377!6m8!1m7!1sFD00YnqiTe4Mfh-iCWTNNA!2m2!1d25.09490902264704!2d55.15351383099734!3f12.933478943500432!4f12.986052488037629!5f0.7820865974627469" 
-              width="100%" 
-              height="450" 
-              style="border:0;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Showcase spot Section -->
     <section class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
@@ -416,18 +377,39 @@
 
       <section id="map" class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
         <h2 class="text-xl md:text-4xl mb-[75px]">LOCATION</h2>
-        <div class="w-full">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1185.1534268127045!2d55.15329961837267!3d25.095293069615156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b44056573e7%3A0xc77c77051f31ecc!2sArjaan%20by%20Rotana%20Dubai!5e1!3m2!1sru!2sae!4v1757573179410!5m2!1sru!2sae" 
-            width="100%" 
-            height="600" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade"
-            class="rounded-lg shadow-lg"
-          ></iframe>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- 2D Map -->
+        <div class="border border-gray-300 rounded-lg p-4">
+          <h3 class="text-lg md:text-xl font-bold mb-4">2D View</h3>
+          <div class="w-full">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28905.594122284634!2d55.128635593056764!3d25.095115196678794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b0072bb3c61%3A0x3a456f0a9996fc2c!2sSkylight%20Gallery!5e0!3m2!1sru!2sae!4v1757756744547!5m2!1sru!2sae" 
+              width="100%" 
+              height="450" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
         </div>
+
+        <!-- 3D Map -->
+        <div class="border border-gray-300 rounded-lg p-4">
+          <h3 class="text-lg md:text-xl font-bold mb-4">3D View</h3>
+          <div class="w-full">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!4v1757756521377!6m8!1m7!1sFD00YnqiTe4Mfh-iCWTNNA!2m2!1d25.09490902264704!2d55.15351383099734!3f12.933478943500432!4f12.986052488037629!5f0.7820865974627469" 
+              width="100%" 
+              height="450" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
       </section>
 
       <PhotoGallery />
@@ -582,7 +564,6 @@ const updateCompaniesCount = (count) => {
     trialCountOffer2.textContent = count
   }
   
-  console.log('Offer page: Обновляем счетчики waitlist:', count)
 }
 
 // Функция для обновления счетчика одобренных компаний
@@ -642,7 +623,6 @@ onMounted(async () => {
   // Дополнительная проверка через 2 секунды
   setTimeout(async () => {
     try {
-      console.log('Offer page: Принудительная загрузка данных...')
       const SPREADSHEET_ID = '1jGEJIU-0Cwx151O0JczBkoaUCE48j5saab-R5eKzLfM';
       const CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=0`;
       
@@ -690,19 +670,21 @@ onMounted(async () => {
           status: row[11] || 'WAITLIST'
         })).filter(company => company.companyName);
         
-        // Фильтруем только waitlist компании
-        const waitlistCompanies = companiesFromCSV.filter(company => {
+        // Фильтруем компании (WAITLIST, GARANTEED, RECOMMENDED)
+        const filteredCompanies = companiesFromCSV.filter(company => {
           return !company.status || 
                  company.status === '' ||
                  company.status === 'WAITLIST' ||
-                 company.status === 'waitlist'
+                 company.status === 'waitlist' ||
+                 company.status === 'GARANTEED' ||
+                 company.status === 'guaranteed' ||
+                 company.status === 'RECOMMENDED' ||
+                 company.status === 'recommended'
         });
         
-        console.log('Offer page: Всего компаний в CSV:', companiesFromCSV.length);
-        console.log('Offer page: Найдено компаний в waitlist:', waitlistCompanies.length);
         
         // Обновляем счетчик
-        updateCompaniesCount(waitlistCompanies.length);
+        updateCompaniesCount(filteredCompanies.length);
       }
     } catch (error) {
       console.error('Offer page: Ошибка загрузки данных:', error);
