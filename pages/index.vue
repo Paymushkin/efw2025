@@ -5,32 +5,56 @@
       description="Emirates Fashion Week Dubai 2025 celebrates its 14th Season (Spring/Summer 26) on 8–11 November at Skylight Gallery, Arjaan by Rotana, Dubai Media City. Featuring 2 days of runway shows and 2 days of 40 fashion pop-ups & 60 beauty services market. Since 2019, EFW has showcased 350+ designers and trained 1200+ models."
       keywords="Emirates Fashion Week, Dubai Fashion, Fashion Shows Runways Dubai, Beauty Exhibition UAE, Fashion Pop-up Market Dubai, Designer Collections, Beauty Services Dubai, Fashion Week 2025 Dubai"
     />
-    <HeroSection class="mb-[56px] md:mb-[76px]" />
-    <NewProgramSection class="md:mb-[120px] mb-[76px]" />
-    <MarqueeSection :content="sponsors" class="mb-[56px] md:mb-[76px]" />
-    <HowItWasSection class="mb-[56px] md:mb-[76px]" />
-    <ProgramSection class="md:mb-[56px] mb-[36px]" />
-    <DesignersSection class="md:mb-[76px] mb-[56px]" />
-    <SponsorsSection class="md:mb-[76px] mb-[56px]" />
-    <StatisticsSection class="md:mb-[76px] mb-[56px]" />
+    <ClientOnly>
+      <HeroSection class="mb-[56px] md:mb-[76px]" />
+    </ClientOnly>
+    <ClientOnly>
+      <NewProgramSection class="md:mb-[120px] mb-[76px]" />
+    </ClientOnly>
+    <ClientOnly>
+      <MarqueeSection :content="sponsors" class="mb-[56px] md:mb-[76px]" />
+    </ClientOnly>
+    <ClientOnly>
+      <HowItWasSection class="mb-[56px] md:mb-[76px]" />
+    </ClientOnly>
+    <ClientOnly>
+      <ProgramSection class="md:mb-[56px] mb-[36px]" />
+    </ClientOnly>
+    <ClientOnly>
+      <DesignersSection class="md:mb-[76px] mb-[56px]" />
+    </ClientOnly>
+    <ClientOnly>
+      <SponsorsSection class="md:mb-[76px] mb-[56px]" />
+    </ClientOnly>
+    <ClientOnly>
+      <StatisticsSection class="md:mb-[76px] mb-[56px]" />
+    </ClientOnly>
     <div class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
-      <EventFeatures :data="featuresData.featuresDataPromo" />
+      <ClientOnly>
+        <EventFeatures :data="featuresData.featuresDataPromo" />
+      </ClientOnly>
     </div>
     <div class="container mx-auto px-4">
-      <FacesOfEfwSection />
+      <ClientOnly>
+        <FacesOfEfwSection />
+      </ClientOnly>
     </div>
     <section>
       <div class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
-        <ImageCarousel 
-          title="We invest in and support the economy of Dubai | UAE" 
-          :slidesPerView="6" 
-          :autoplay="true"
-          :autoplaySpeed="5000"
-          :gap="20"
-        />
+        <ClientOnly>
+          <ImageCarousel 
+            title="We invest in and support the economy of Dubai | UAE" 
+            :slidesPerView="6" 
+            :autoplay="true"
+            :autoplaySpeed="5000"
+            :gap="20"
+          />
+        </ClientOnly>
       </div>
     </section>
-    <FaqSectionDynamic class="mb-[56px] md:mb-[76px]" />
+    <ClientOnly>
+      <FaqSectionDynamic class="mb-[56px] md:mb-[76px]" />
+    </ClientOnly>
   </div>
 </template>
 
@@ -69,6 +93,8 @@ console.log('🏠 Главная страница: Компонент загру
 
 // Функция для принудительного обновления счетчика (для отладки)
 const forceUpdateCounters = () => {
+  if (!process.client) return;
+  
   console.log('🔧 Принудительное обновление счетчиков...');
   
   // Обновляем счетчики напрямую
@@ -91,7 +117,7 @@ const forceUpdateCounters = () => {
 };
 
 // Экспортируем функцию для использования в консоли браузера
-if (typeof window !== 'undefined') {
+if (process.client) {
   window.forceUpdateCounters = forceUpdateCounters;
 }
 </script>
