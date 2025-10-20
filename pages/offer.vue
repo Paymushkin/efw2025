@@ -1,7 +1,6 @@
 <template>
-  <ClientOnly>
-    <div>
-      <div class="container mx-auto px-4 py-8 max-w-7xl">
+  <div>
+    <div class="container mx-auto px-4 py-8 max-w-7xl">
     <AppSeo
       title="Hot Offers - Emirates Fashion Week Dubai 2025"
       description="Emirates Fashion Week Dubai 2025: Beauty meets business. Showcase spots for beauty service companies and designer pop-up corners. Join us on April 13-15, 2025."
@@ -521,7 +520,6 @@
     <!-- Bottom anchor for scrolling -->
     <div id="bottom"></div>
    </div>
-  </ClientOnly>
  </template>
 
 <script setup>

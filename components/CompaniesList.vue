@@ -182,9 +182,11 @@ const fetchCompanies = async () => {
     error.value = ''
     
     // Определяем, работаем ли мы локально или на продакшене
-    const isLocal = window.location.hostname.includes('localhost') || 
-                   window.location.hostname.includes('127.0.0.1') ||
-                   window.location.hostname.includes('0.0.0.0')
+    const isLocal = process.client && (
+      window.location.hostname.includes('localhost') || 
+      window.location.hostname.includes('127.0.0.1') ||
+      window.location.hostname.includes('0.0.0.0')
+    )
     
     if (isLocal) {
       // Локально используем API
