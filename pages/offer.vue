@@ -130,21 +130,23 @@
             <li>•<span class="line-through opacity-50"> 3,600 AED / 1,000$ </span> </li>
             <li>• 3,000 AED / 800$ / per day</li>
           </ul>
-          <WhatsAppButton 
-            v-if="showWhatsApp"
-            :phone-number="whatsappNumber"
-            text="Contact us about Showcase spot"
-          />
-          <div v-if="showTrial">
-            <a 
-              href="#join-waitlist"
-              class="mt-3 inline-flex items-center gap-2 px-6 py-2.5 text-sm rounded-3xl transition-colors border border-black hover:bg-gray-100 w-fit"
-            >
-              <span>2h Free Trial Spot Waitlist</span>
-              <span id="trial-waitlist-count-offer-1" style="background-color: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">{{ companiesCount }}</span>
-              <span>></span>
-            </a>
-          </div>
+          <ClientOnly>
+            <WhatsAppButton 
+              v-if="showWhatsApp"
+              :phone-number="whatsappNumber"
+              text="Contact us about Showcase spot"
+            />
+            <div v-if="showTrial">
+              <a 
+                href="#join-waitlist"
+                class="mt-3 inline-flex items-center gap-2 px-6 py-2.5 text-sm rounded-3xl transition-colors border border-black hover:bg-gray-100 w-fit"
+              >
+                <span>2h Free Trial Spot Waitlist</span>
+                <span id="trial-waitlist-count-offer-1" style="background-color: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">{{ companiesCount }}</span>
+                <span>></span>
+              </a>
+            </div>
+          </ClientOnly>
       </div>
       </div>
 
@@ -212,21 +214,23 @@
             <li>•<span class="line-through opacity-50"> 2,200 AED / 600$ </span> </li>
             <li>• 1,800 AED / 500$ / per day</li>
           </ul>
-          <WhatsAppButton 
-            v-if="showWhatsApp"
-            :phone-number="whatsappNumber"
-            text="Contact us about Corner"
-          />
-          <div v-if="showTrial">
-            <a 
-              href="#join-waitlist"
-              class="mt-3 inline-flex items-center gap-2 px-6 py-2.5 text-sm rounded-3xl transition-colors border border-black hover:bg-gray-100 w-fit"
-            >
-              <span>2h Free Trial Spot Waitlist</span>
-              <span id="trial-waitlist-count-offer-2" style="background-color: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">{{ companiesCount }}</span>
-              <span>></span>
-            </a>
-          </div>
+          <ClientOnly>
+            <WhatsAppButton 
+              v-if="showWhatsApp"
+              :phone-number="whatsappNumber"
+              text="Contact us about Corner"
+            />
+            <div v-if="showTrial">
+              <a 
+                href="#join-waitlist"
+                class="mt-3 inline-flex items-center gap-2 px-6 py-2.5 text-sm rounded-3xl transition-colors border border-black hover:bg-gray-100 w-fit"
+              >
+                <span>2h Free Trial Spot Waitlist</span>
+                <span id="trial-waitlist-count-offer-2" style="background-color: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">{{ companiesCount }}</span>
+                <span>></span>
+              </a>
+            </div>
+          </ClientOnly>
       </div>
       </div>
 
@@ -423,7 +427,8 @@
         <FaqSectionDynamic :standalone="false" />
       </div>
 
-     <div v-if="showTrial" class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
+     <ClientOnly>
+       <div v-if="showTrial" class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
        <h2 class="text-xl md:text-4xl mb-[75px]">TRIAL SHOWCASE SPOTS</h2>
        
        <div class="space-y-6 mb-8">
@@ -481,11 +486,14 @@
        </div>
 
       <!-- Approved Companies List -->
-      <div v-if="showApproved" class="mt-12">
-        <ApprovedCompaniesList ref="approvedCompaniesListRef" @companies-count-updated="updateApprovedCount" />
-      </div>
+      <ClientOnly>
+        <div v-if="showApproved" class="mt-12">
+          <ApprovedCompaniesList ref="approvedCompaniesListRef" @companies-count-updated="updateApprovedCount" />
+        </div>
+      </ClientOnly>
 
     </div>
+    </ClientOnly>
 
      
    </div>
