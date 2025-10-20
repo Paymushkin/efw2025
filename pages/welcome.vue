@@ -564,6 +564,10 @@
 </template>
 
 <script setup>
+definePageMeta({
+  ssr: false
+});
+
 import { computed, ref, onMounted, watch } from '#imports';
 import BaseButton from '@/components/ui/BaseButton.vue';
 import Image1 from '@/assets/image/welcome/1.webp';
