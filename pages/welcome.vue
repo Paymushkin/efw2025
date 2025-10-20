@@ -866,7 +866,7 @@ const registrationForm = ref({
   company: '',
   email: ''
 });
-const qrCodeUrl = ref(`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(window.location.href)}`);
+const qrCodeUrl = ref('');
 
 // Long press handlers
 let touchStartTime = 0;
@@ -1249,6 +1249,11 @@ watch(designers, () => {
 
 // Загружаем данные дизайнеров при монтировании компонента (только один раз)
 onMounted(async () => {
+  
+  // Инициализируем QR код URL
+  if (process.client) {
+    qrCodeUrl.value = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(window.location.href)}`;
+  }
   
   // Определяем десктопную версию
   if (typeof window !== 'undefined') {
