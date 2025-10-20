@@ -116,11 +116,11 @@ import GalleryIframe from '@/components/GalleryIframe.vue';
 const featuresData = FEATURES_DATA;
 
 
-const isMobile = ref(window?.innerWidth < 768);
+const isMobile = ref(false);
 const MOBILE_BREAKPOINT = 768;
 
 // Добавляем переменную для отслеживания предыдущей ширины
-let previousWidth = window?.innerWidth;
+let previousWidth = 0;
 
 // Функция для проверки пересечения брейкпоинта
 const hasBreakpointChanged = (currentWidth, previousWidth) => {
@@ -132,6 +132,7 @@ const hasBreakpointChanged = (currentWidth, previousWidth) => {
 
 // Функция для обновления размера
 const updateSize = () => {
+  if (typeof window === 'undefined') return;
   const currentWidth = window.innerWidth;
   
   // Проверяем, пересекли ли мы брейкпоинт
@@ -178,8 +179,12 @@ const updateScript = () => {
 const videoRef = ref(null);
 
 onMounted(() => {
-  // Добавляем слушатель изменения размера окна
-  window.addEventListener('resize', updateSize);
+  if (typeof window !== 'undefined') {
+    previousWidth = window.innerWidth;
+    isMobile.value = previousWidth < MOBILE_BREAKPOINT;
+    // Добавляем слушатель изменения размера окна
+    window.addEventListener('resize', updateSize);
+  }
   // Инициализируем скрипт
   updateScript();
   // Принудительный запуск видео для iOS
@@ -192,11 +197,15 @@ onMounted(() => {
 
 onUnmounted(() => {
   // Удаляем слушатель при размонтировании компонента
-  window.removeEventListener('resize', updateSize);
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('resize', updateSize);
+  }
 });
 
 const navigateToGallery = () => {
-  window.location.href = '/gallery';
+  if (typeof window !== 'undefined') {
+    window.location.href = '/gallery';
+  }
 };
 
 </script>

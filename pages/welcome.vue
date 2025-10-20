@@ -1247,7 +1247,11 @@ watch(designers, () => {
 onMounted(async () => {
   
   // Определяем десктопную версию
-  isDesktop.value = window.innerWidth >= 1024; // lg breakpoint
+  if (typeof window !== 'undefined') {
+    isDesktop.value = window.innerWidth >= 1024; // lg breakpoint
+  } else {
+    isDesktop.value = false;
+  }
   
   // Инициализация имени из URL параметра
   if (route.query.by) {

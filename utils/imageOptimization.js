@@ -1,6 +1,6 @@
 // Функция для оптимизации URL изображения
 export const getOptimizedImageUrl = (imageUrl) => {
-  if (window.innerWidth < 768) {
+  if (typeof window !== 'undefined' && window.innerWidth < 768) {
     return imageUrl.replace('.png', '-mobile.png');
   }
   return imageUrl;
@@ -20,7 +20,7 @@ export const preloadImages = (imageUrls) => {
 
 // Функция для определения размеров изображения на основе устройства
 export const getImageDimensions = () => {
-  const isMobile = window.innerWidth < 768;
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   return {
     width: isMobile ? 280 : 400,
     height: isMobile ? 420 : 600
