@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-simple-sitemap'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/sitemap'],
   css: ['~/assets/css/main.css'],
   compatibilityDate: '2025-02-19',
   devServer: {
@@ -36,24 +36,7 @@ export default defineNuxtConfig({
   },
   ssr: true,
   sitemap: {
-    exclude: ['/api/**'],
-    urls: [
-      '/',
-      '/home',
-      '/features',
-      '/gallery',
-      '/request',
-      '/faq',
-      '/team',
-      '/approved',
-      '/station',
-      '/visit',
-      '/calendar',
-      '/offer',
-      '/EFW_AICONTEST',
-      '/welcome',
-      '/widget'
-    ]
+    exclude: ['/api/**']
   },
   vite: {
     build: {
