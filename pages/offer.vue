@@ -53,26 +53,28 @@
     <section class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
       <h2 class="text-xl md:text-4xl xl:mb-[75px] md:mb-[50px] mb-7">SHOWCASE SPOT</h2>
       
-      <div class="relative -mx-4 md:mx-0 mb-8">
-        <div class="flex md:grid md:grid-cols-2 gap-6 overflow-x-auto pb-4 md:pb-0 px-4 md:px-0 snap-x snap-mandatory">
-          <div class="relative aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
-            <video 
-              class="w-full h-full object-cover"
-              muted
-              autoplay
-              loop
-              playsinline
-              poster="@/assets/image/offer/stand-1.webp"
-            >
-              <source src="https://storage.yandexcloud.net/videos-meyou/efw2025/promo.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="relative aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
-            <img :src="Image1" alt="Showcase interior" class="w-full h-full object-contain">
+      <ClientOnly>
+        <div class="relative -mx-4 md:mx-0 mb-8">
+          <div class="flex md:grid md:grid-cols-2 gap-6 overflow-x-auto pb-4 md:pb-0 px-4 md:px-0 snap-x snap-mandatory">
+            <div class="relative aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
+              <video 
+                class="w-full h-full object-cover"
+                muted
+                autoplay
+                loop
+                playsinline
+                :poster="Image1"
+              >
+                <source src="https://storage.yandexcloud.net/videos-meyou/efw2025/promo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="relative aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
+              <img :src="Image1" alt="Showcase interior" class="w-full h-full object-contain">
+            </div>
           </div>
         </div>
-      </div>
+      </ClientOnly>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-10 md:gap-12 gap-7 mb-8">
         <div>
@@ -152,28 +154,30 @@
     <section class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
       <h2 class="text-xl md:text-4xl md:mb-[75px] mb-7">POP-UP DESIGNER CORNER</h2>
       
-      <div class="relative -mx-4 md:mx-0 mb-8">
-        <div class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto pb-4 md:pb-0 px-4 md:px-0 snap-x snap-mandatory">
-          <div class="aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
-            <img :src="Image2" alt="Corner view 1" class="w-full h-full object-contain">
-          </div>
-          <div class="aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
-            <video 
-              class="w-full h-full object-cover"
-              muted
-              autoplay
-              loop
-              playsinline
-            >
-              <source src="https://storage.yandexcloud.net/videos-meyou/efw2025/2%20Corner%20EFW-vmake.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
-            <img :src="Image4" alt="Corner view 3" class="w-full h-full object-contain">
+      <ClientOnly>
+        <div class="relative -mx-4 md:mx-0 mb-8">
+          <div class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto pb-4 md:pb-0 px-4 md:px-0 snap-x snap-mandatory">
+            <div class="aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
+              <img :src="Image2" alt="Corner view 1" class="w-full h-full object-contain">
+            </div>
+            <div class="aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
+              <video 
+                class="w-full h-full object-cover"
+                muted
+                autoplay
+                loop
+                playsinline
+              >
+                <source src="https://storage.yandexcloud.net/videos-meyou/efw2025/2%20Corner%20EFW-vmake.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
+              <img :src="Image4" alt="Corner view 3" class="w-full h-full object-contain">
+            </div>
           </div>
         </div>
-      </div>
+      </ClientOnly>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <div>

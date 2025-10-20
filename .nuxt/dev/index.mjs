@@ -6,7 +6,7 @@ import nodeCrypto from 'node:crypto';
 import { parentPort, threadId } from 'node:worker_threads';
 import { escapeHtml } from 'file:///Users/paymei/Documents/Development/github/efw2025/node_modules/@vue/shared/dist/shared.cjs.js';
 import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file:///Users/paymei/Documents/Development/github/efw2025/node_modules/vue-bundle-renderer/dist/runtime.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, joinRelativeURL, hasProtocol, withHttps, withoutProtocol, withLeadingSlash, withoutTrailingSlash, withBase, decodePath } from 'file:///Users/paymei/Documents/Development/github/efw2025/node_modules/ufo/dist/index.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, joinRelativeURL, hasProtocol, withHttps, withoutProtocol, withLeadingSlash, withoutTrailingSlash, withBase, decodePath, parsePath, parseQuery, stringifyQuery, encodePath, stringifyParsedURL } from 'file:///Users/paymei/Documents/Development/github/efw2025/node_modules/ufo/dist/index.mjs';
 import { renderToString } from 'file:///Users/paymei/Documents/Development/github/efw2025/node_modules/vue/server-renderer/index.mjs';
 import destr, { destr as destr$1 } from 'file:///Users/paymei/Documents/Development/github/efw2025/node_modules/destr/dist/index.mjs';
 import { createHooks } from 'file:///Users/paymei/Documents/Development/github/efw2025/node_modules/hookable/dist/index.mjs';
@@ -22,7 +22,7 @@ import { snakeCase } from 'file:///Users/paymei/Documents/Development/github/efw
 import { getContext } from 'file:///Users/paymei/Documents/Development/github/efw2025/node_modules/unctx/dist/index.mjs';
 import { toRouteMatcher, createRouter } from 'file:///Users/paymei/Documents/Development/github/efw2025/node_modules/radix3/dist/index.mjs';
 import { readFile } from 'node:fs/promises';
-import consola, { consola as consola$1 } from 'file:///Users/paymei/Documents/Development/github/efw2025/node_modules/consola/dist/index.mjs';
+import consola, { consola as consola$1, createConsola } from 'file:///Users/paymei/Documents/Development/github/efw2025/node_modules/consola/dist/index.mjs';
 import { ErrorParser } from 'file:///Users/paymei/Documents/Development/github/efw2025/node_modules/youch-core/build/index.js';
 import { Youch } from 'file:///Users/paymei/Documents/Development/github/efw2025/node_modules/nitropack/node_modules/youch/build/index.js';
 import { SourceMapConsumer } from 'file:///Users/paymei/Documents/Development/github/efw2025/node_modules/source-map/source-map.js';
@@ -628,7 +628,7 @@ const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
     "buildId": "dev",
-    "buildAssetsDir": "assets/",
+    "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
   "nitro": {
@@ -643,12 +643,12 @@ const _inlineRuntimeConfig = {
         }
       },
       "/sitemap.xml": {},
-      "/assets/builds/meta/**": {
+      "/_nuxt/builds/meta/**": {
         "headers": {
           "cache-control": "public, max-age=31536000, immutable"
         }
       },
-      "/assets/builds/**": {
+      "/_nuxt/builds/**": {
         "headers": {
           "cache-control": "public, max-age=1, immutable"
         }
@@ -659,16 +659,20 @@ const _inlineRuntimeConfig = {
     "apiBase": "http://localhost:3000/api"
   },
   "RESEND_API_KEY": "",
-  "nuxt-simple-sitemap": {
+  "sitemap": {
     "isI18nMapped": false,
     "sitemapName": "sitemap.xml",
     "isMultiSitemap": false,
     "excludeAppSources": [],
+    "cacheMaxAgeSeconds": 0,
     "autoLastmod": false,
     "defaultSitemapsChunkSize": 1000,
+    "minify": false,
     "sortEntries": true,
     "debug": false,
     "discoverImages": true,
+    "discoverVideos": true,
+    "sitemapsPathPrefix": "/__sitemap__/",
     "isNuxtContentDocumentDriven": false,
     "xsl": "/__sitemap__/style.xsl",
     "xslTips": true,
@@ -689,7 +693,7 @@ const _inlineRuntimeConfig = {
       }
     ],
     "credits": true,
-    "version": "4.4.0",
+    "version": "6.1.5",
     "sitemaps": {
       "sitemap.xml": {
         "sitemapName": "sitemap.xml",
@@ -699,7 +703,7 @@ const _inlineRuntimeConfig = {
         "exclude": [
           "/api/**",
           "/_nuxt/**",
-          "/api/**"
+          "/_**"
         ],
         "includeAppSources": true
       }
@@ -1463,7 +1467,7 @@ function readAsset (id) {
   return promises.readFile(resolve$2(serverDir, assets[id].path))
 }
 
-const publicAssetBases = {"/assets/builds/meta/":{"maxAge":31536000},"/assets/builds/":{"maxAge":1}};
+const publicAssetBases = {"/_nuxt/builds/meta/":{"maxAge":31536000},"/_nuxt/builds/":{"maxAge":1}};
 
 function isPublicAssetURL(id = '') {
   if (assets[id]) {
@@ -1607,7 +1611,92 @@ const _JYaMJG = defineEventHandler(async (e) => {
   };
 });
 
-async function fetchDataSource(input) {
+const logger = createConsola({
+  defaults: {
+    tag: "@nuxt/sitemap"
+  }
+});
+const merger = createDefu((obj, key, value) => {
+  if (Array.isArray(obj[key]) && Array.isArray(value))
+    obj[key] = Array.from(/* @__PURE__ */ new Set([...obj[key], ...value]));
+  return obj[key];
+});
+function mergeOnKey(arr, key) {
+  const res = {};
+  arr.forEach((item) => {
+    const k = item[key];
+    res[k] = merger(item, res[k] || {});
+  });
+  return Object.values(res);
+}
+function splitForLocales(path, locales) {
+  const prefix = withLeadingSlash(path).split("/")[1];
+  if (locales.includes(prefix))
+    return [prefix, path.replace(`/${prefix}`, "")];
+  return [null, path];
+}
+const StringifiedRegExpPattern = /\/(.*?)\/([gimsuy]*)$/;
+function normalizeRuntimeFilters(input) {
+  return (input || []).map((rule) => {
+    if (rule instanceof RegExp || typeof rule === "string")
+      return rule;
+    const match = rule.regex.match(StringifiedRegExpPattern);
+    if (match)
+      return new RegExp(match[1], match[2]);
+    return false;
+  }).filter(Boolean);
+}
+function createPathFilter(options = {}) {
+  const urlFilter = createFilter(options);
+  return (loc) => {
+    let path = loc;
+    try {
+      path = parseURL(loc).pathname;
+    } catch {
+      return false;
+    }
+    return urlFilter(path);
+  };
+}
+function createFilter(options = {}) {
+  const include = options.include || [];
+  const exclude = options.exclude || [];
+  if (include.length === 0 && exclude.length === 0)
+    return () => true;
+  return function(path) {
+    for (const v of [{ rules: exclude, result: false }, { rules: include, result: true }]) {
+      const regexRules = v.rules.filter((r) => r instanceof RegExp);
+      if (regexRules.some((r) => r.test(path)))
+        return v.result;
+      const stringRules = v.rules.filter((r) => typeof r === "string");
+      if (stringRules.length > 0) {
+        const routes = {};
+        for (const r of stringRules) {
+          if (r === path)
+            return v.result;
+          routes[r] = true;
+        }
+        const routeRulesMatcher = toRouteMatcher(createRouter({ routes, strictTrailingSlash: false }));
+        if (routeRulesMatcher.matchAll(path).length > 0)
+          return Boolean(v.result);
+      }
+    }
+    return include.length === 0;
+  };
+}
+
+function useSimpleSitemapRuntimeConfig(e) {
+  const clone = JSON.parse(JSON.stringify(useRuntimeConfig(e).sitemap));
+  for (const k in clone.sitemaps) {
+    const sitemap = clone.sitemaps[k];
+    sitemap.include = normalizeRuntimeFilters(sitemap.include);
+    sitemap.exclude = normalizeRuntimeFilters(sitemap.exclude);
+    clone.sitemaps[k] = sitemap;
+  }
+  return Object.freeze(clone);
+}
+
+async function fetchDataSource(input, event) {
   const context = typeof input.context === "string" ? { name: input.context } : input.context || { name: "fetch" };
   context.tips = context.tips || [];
   const url = typeof input.fetch === "string" ? input.fetch : input.fetch[0];
@@ -1618,12 +1707,14 @@ async function fetchDataSource(input) {
   const abortRequestTimeout = setTimeout(() => timeoutController.abort(), timeout);
   let isHtmlResponse = false;
   try {
-    const urls = await globalThis.$fetch(url, {
+    const fetchContainer = url.startsWith("/") && event ? event : globalThis;
+    const urls = await fetchContainer.$fetch(url, {
+      ...options,
       responseType: "json",
       signal: timeoutController.signal,
-      headers: {
+      headers: defu$1(options?.headers, {
         Accept: "application/json"
-      },
+      }, event ? { Host: getRequestHost(event, { xForwardedHost: true }) } : {}),
       // @ts-expect-error untyped
       onResponse({ response }) {
         if (typeof response._data === "string" && response._data.startsWith("<!DOCTYPE html>"))
@@ -1653,7 +1744,7 @@ async function fetchDataSource(input) {
       context.tips.push("The request has taken too long. Make sure app sources respond within 5 seconds or adjust the timeout fetch option.");
     else
       context.tips.push(`Response returned a status of ${error.response?.status || "unknown"}.`);
-    console.error("[nuxt-simple-sitemap] Failed to fetch source.", { url, error });
+    console.error("[@nuxtjs/sitemap] Failed to fetch source.", { url, error });
     return {
       ...input,
       context,
@@ -1661,7 +1752,9 @@ async function fetchDataSource(input) {
       error: error.message
     };
   } finally {
-    abortRequestTimeout && clearTimeout(abortRequestTimeout);
+    if (abortRequestTimeout) {
+      clearTimeout(abortRequestTimeout);
+    }
   }
 }
 function globalSitemapSources() {
@@ -1670,7 +1763,7 @@ function globalSitemapSources() {
 function childSitemapSources(definition) {
   return definition?._hasSourceChunk ? Promise.resolve().then(function () { return childSources; }).then((m) => m.sources[definition.sitemapName] || []) : Promise.resolve([]);
 }
-async function resolveSitemapSources(sources) {
+async function resolveSitemapSources(sources, event) {
   return (await Promise.all(
     sources.map((source) => {
       if (typeof source === "object" && "urls" in source) {
@@ -1681,7 +1774,7 @@ async function resolveSitemapSources(sources) {
         };
       }
       if (source.fetch)
-        return fetchDataSource(source);
+        return fetchDataSource(source, event);
       return {
         ...source,
         error: "Invalid source"
@@ -1690,49 +1783,7 @@ async function resolveSitemapSources(sources) {
   )).flat();
 }
 
-const merger = createDefu((obj, key, value) => {
-  if (Array.isArray(obj[key]) && Array.isArray(value))
-    obj[key] = Array.from(/* @__PURE__ */ new Set([...obj[key], ...value]));
-  return obj[key];
-});
-function mergeOnKey(arr, key) {
-  const res = {};
-  arr.forEach((item) => {
-    const k = item[key];
-    res[k] = merger(item, res[k] || {});
-  });
-  return Object.values(res);
-}
-function splitForLocales(path, locales) {
-  const prefix = withLeadingSlash(path).split("/")[1];
-  if (locales.includes(prefix))
-    return [prefix, path.replace(`/${prefix}`, "")];
-  return [null, path];
-}
-
-const StringifiedRegExpPattern = /\/(.*?)\/([gimsuy]*)$/;
-function normalizeRuntimeFilters(input) {
-  return (input || []).map((rule) => {
-    if (rule instanceof RegExp || typeof rule === "string")
-      return rule;
-    const match = rule.regex.match(StringifiedRegExpPattern);
-    if (match)
-      return new RegExp(match[1], match[2]);
-    return false;
-  }).filter(Boolean);
-}
-function useSimpleSitemapRuntimeConfig() {
-  const clone = JSON.parse(JSON.stringify(useRuntimeConfig()["nuxt-simple-sitemap"]));
-  for (const k in clone.sitemaps) {
-    const sitemap = clone.sitemaps[k];
-    sitemap.include = normalizeRuntimeFilters(sitemap.include);
-    sitemap.exclude = normalizeRuntimeFilters(sitemap.exclude);
-    clone.sitemaps[k] = sitemap;
-  }
-  return Object.freeze(clone);
-}
-
-const _myJk35 = defineEventHandler(async (e) => {
+const _fZQXuC = defineEventHandler(async (e) => {
   const _runtimeConfig = useSimpleSitemapRuntimeConfig();
   const { sitemaps: _sitemaps } = _runtimeConfig;
   const runtimeConfig = { ..._runtimeConfig };
@@ -1754,16 +1805,20 @@ const _myJk35 = defineEventHandler(async (e) => {
   };
 });
 
-const _CT6TWG = defineEventHandler(async (e) => {
-  setHeader(e, "Content-Type", "application/xslt+xml");
+const _pyELY8 = defineEventHandler(async (e) => {
   const fixPath = createSitePathResolver(e, { absolute: false, withBase: true });
-  const { sitemapName: fallbackSitemapName, version, xslColumns, xslTips } = useSimpleSitemapRuntimeConfig();
+  const { sitemapName: fallbackSitemapName, cacheMaxAgeSeconds, version, xslColumns, xslTips } = useSimpleSitemapRuntimeConfig();
+  setHeader(e, "Content-Type", "application/xslt+xml");
+  if (cacheMaxAgeSeconds)
+    setHeader(e, "Cache-Control", `public, max-age=${cacheMaxAgeSeconds}, must-revalidate`);
+  else
+    setHeader(e, "Cache-Control", `no-cache, no-store`);
   const svgIcon = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="icon" style="margin-right: 4px; font-size: 25px;" width="1em" height="1em" viewBox="0 0 32 32"><path fill="#93c5fd" d="M4 26h4v4H4zm10 0h4v4h-4zm10 0h4v4h-4zm1-10h-8v-2h-2v2H7a2.002 2.002 0 0 0-2 2v6h2v-6h8v6h2v-6h8v6h2v-6a2.002 2.002 0 0 0-2-2zM9 2v10h14V2zm2 2h2v6h-2zm10 6h-6V4h6z"></path></svg>`;
-  const creditName = `<a href="https://github.com/harlan-zw/nuxt-simple-sitemap" style="color: black; display: flex; align-items: center; font-weight: 500;" target="_blank" rel="noopener">${svgIcon} Nuxt
-            Simple Sitemap v${version}</a>`;
+  const creditName = `<a href="https://github.com/nuxt-modules/sitemap" style="color: black; display: flex; align-items: center; font-weight: 500;" target="_blank" rel="noopener">${svgIcon} Nuxt Sitemap v${version}</a>`;
   const { name: siteName, url: siteUrl } = useSiteConfig(e);
   const referrer = getHeader(e, "Referer") || "/";
-  const isNotIndexButHasIndex = referrer !== fixPath("/sitemap.xml") && parseURL(referrer).pathname.endsWith("-sitemap.xml");
+  const referrerPath = parseURL(referrer).pathname;
+  const isNotIndexButHasIndex = referrerPath !== "/sitemap.xml" && referrerPath !== "/sitemap_index.xml" && referrerPath.endsWith(".xml");
   const sitemapName = parseURL(referrer).pathname.split("/").pop()?.split("-sitemap")[0] || fallbackSitemapName;
   const title = `${siteName}${sitemapName !== "sitemap.xml" ? ` - ${sitemapName === "sitemap_index.xml" ? "index" : sitemapName}` : ""}`.replace(/&/g, "&amp;");
   const canonicalQuery = getQuery(referrer).canonical;
@@ -1977,252 +2032,142 @@ const _CT6TWG = defineEventHandler(async (e) => {
 `;
 });
 
+function withoutQuery(path) {
+  return path.split("?")[0];
+}
+function createNitroRouteRuleMatcher() {
+  const { nitro, app } = useRuntimeConfig();
+  const _routeRulesMatcher = toRouteMatcher(
+    createRouter({
+      routes: Object.fromEntries(
+        Object.entries(nitro?.routeRules || {}).map(([path, rules]) => [path === "/" ? path : withoutTrailingSlash(path), rules])
+      )
+    })
+  );
+  return (pathOrUrl) => {
+    const path = pathOrUrl[0] === "/" ? pathOrUrl : parseURL(pathOrUrl, app.baseURL).pathname;
+    const pathWithoutQuery = withoutQuery(path);
+    return defu$1({}, ..._routeRulesMatcher.matchAll(
+      // radix3 does not support trailing slashes
+      withoutBase(pathWithoutQuery === "/" ? pathWithoutQuery : withoutTrailingSlash(pathWithoutQuery), app.baseURL)
+    ).reverse());
+  };
+}
+
 function resolve(s, resolvers) {
-  if (typeof s === "undefined")
+  if (typeof s === "undefined" || !resolvers)
     return s;
   s = typeof s === "string" ? s : s.toString();
   if (hasProtocol(s, { acceptRelative: true, strict: false }))
     return resolvers.fixSlashes(s);
   return resolvers.canonicalUrlResolver(s);
 }
-function normaliseSitemapUrls(data, resolvers) {
-  const entries = data.map((e) => typeof e === "string" ? { loc: e } : e).map((e) => {
-    e = { ...e };
-    if (e.url) {
-      e.loc = e.url;
-      delete e.url;
-    }
-    e.loc = fixSlashes(false, e.loc);
-    return e;
-  }).filter(Boolean);
-  function normaliseEntry(e) {
-    if (e.lastmod) {
-      const date = normaliseDate(e.lastmod);
-      if (date)
-        e.lastmod = date;
-      else
-        delete e.lastmod;
-    }
-    if (!e.lastmod)
-      delete e.lastmod;
-    e.loc = resolve(e.loc, resolvers);
-    if (e.alternatives) {
-      e.alternatives = mergeOnKey(e.alternatives.map((e2) => {
-        const a = { ...e2 };
-        if (typeof a.href === "string")
-          a.href = resolve(a.href, resolvers);
-        else if (typeof a.href === "object" && a.href)
-          a.href = resolve(a.href.href, resolvers);
-        return a;
-      }), "hreflang");
-    }
-    if (e.images) {
-      e.images = mergeOnKey(e.images.map((i) => {
-        i = { ...i };
-        i.loc = resolve(i.loc, resolvers);
-        return i;
-      }), "loc");
-    }
-    if (e.videos) {
-      e.videos = e.videos.map((v) => {
-        v = { ...v };
-        if (v.content_loc)
-          v.content_loc = resolve(v.content_loc, resolvers);
-        return v;
-      });
-    }
-    return e;
+function removeTrailingSlash(s) {
+  return s.replace(/\/(\?|#|$)/, "$1");
+}
+function preNormalizeEntry(_e, resolvers) {
+  const e = typeof _e === "string" ? { loc: _e } : { ..._e };
+  if (e.url && !e.loc) {
+    e.loc = e.url;
+    delete e.url;
   }
-  return mergeOnKey(
-    entries.map(normaliseEntry).map((e) => ({ ...e, _key: `${e._sitemap || ""}${e.loc}` })),
-    "_key"
-  );
+  if (typeof e.loc !== "string") {
+    e.loc = "";
+  }
+  e.loc = removeTrailingSlash(e.loc);
+  e._abs = hasProtocol(e.loc, { acceptRelative: false, strict: false });
+  try {
+    e._path = e._abs ? parseURL(e.loc) : parsePath(e.loc);
+  } catch (e2) {
+    e2._path = null;
+  }
+  if (e._path) {
+    const query = parseQuery(e._path.search);
+    const qs = stringifyQuery(query);
+    e._relativeLoc = `${encodePath(e._path?.pathname)}${qs.length ? `?${qs}` : ""}`;
+    if (e._path.host) {
+      e.loc = stringifyParsedURL(e._path);
+    } else {
+      e.loc = e._relativeLoc;
+    }
+  } else {
+    e.loc = encodeURI(e.loc);
+  }
+  if (e.loc === "")
+    e.loc = `/`;
+  e.loc = resolve(e.loc, resolvers);
+  e._key = `${e._sitemap || ""}${withoutTrailingSlash(e.loc)}`;
+  return e;
+}
+function normaliseEntry(_e, defaults, resolvers) {
+  const e = defu$1(_e, defaults);
+  if (e.lastmod) {
+    const date = normaliseDate(e.lastmod);
+    if (date)
+      e.lastmod = date;
+    else
+      delete e.lastmod;
+  }
+  if (!e.lastmod)
+    delete e.lastmod;
+  e.loc = resolve(e.loc, resolvers);
+  if (e.alternatives) {
+    e.alternatives = mergeOnKey(e.alternatives.map((e2) => {
+      const a = { ...e2 };
+      if (typeof a.href === "string")
+        a.href = resolve(a.href, resolvers);
+      else if (typeof a.href === "object" && a.href)
+        a.href = resolve(a.href.href, resolvers);
+      return a;
+    }), "hreflang");
+  }
+  if (e.images) {
+    e.images = mergeOnKey(e.images.map((i) => {
+      i = { ...i };
+      i.loc = resolve(i.loc, resolvers);
+      return i;
+    }), "loc");
+  }
+  if (e.videos) {
+    e.videos = e.videos.map((v) => {
+      v = { ...v };
+      if (v.content_loc)
+        v.content_loc = resolve(v.content_loc, resolvers);
+      return v;
+    });
+  }
+  return e;
+}
+const IS_VALID_W3C_DATE = [
+  /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))/,
+  /^\d{4}-[01]\d-[0-3]\d$/,
+  /^\d{4}-[01]\d$/,
+  /^\d{4}$/
+];
+function isValidW3CDate(d) {
+  return IS_VALID_W3C_DATE.some((r) => r.test(d));
 }
 function normaliseDate(d) {
   if (typeof d === "string") {
-    d = d.replace("Z", "");
-    d = d.replace(/\.\d+$/, "");
-    if (d.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/) || d.match(/^\d{4}-\d{2}-\d{2}$/))
-      return d;
+    if (d.includes("T")) {
+      const t = d.split("T")[1];
+      if (!t.includes("+") && !t.includes("-") && !t.includes("Z")) {
+        d += "Z";
+      }
+    }
+    if (!isValidW3CDate(d))
+      return false;
     d = new Date(d);
+    d.setMilliseconds(0);
     if (Number.isNaN(d.getTime()))
       return false;
   }
   const z = (n) => `0${n}`.slice(-2);
-  return `${d.getUTCFullYear()}-${z(d.getUTCMonth() + 1)}-${z(d.getUTCDate())}T${z(d.getUTCHours())}:${z(d.getUTCMinutes())}:${z(d.getUTCSeconds())}+00:00`;
-}
-
-function createFilter(options = {}) {
-  const include = options.include || [];
-  const exclude = options.exclude || [];
-  if (include.length === 0 && exclude.length === 0)
-    return () => true;
-  return function(path) {
-    for (const v of [{ rules: exclude, result: false }, { rules: include, result: true }]) {
-      const regexRules = v.rules.filter((r) => r instanceof RegExp);
-      if (regexRules.some((r) => r.test(path)))
-        return v.result;
-      const stringRules = v.rules.filter((r) => typeof r === "string");
-      if (stringRules.length > 0) {
-        const routes = {};
-        for (const r of stringRules) {
-          if (r === path)
-            return v.result;
-          routes[r] = true;
-        }
-        const routeRulesMatcher = toRouteMatcher(createRouter({ routes, strictTrailingSlash: false }));
-        if (routeRulesMatcher.matchAll(path).length > 0)
-          return Boolean(v.result);
-      }
-    }
-    return include.length === 0;
-  };
-}
-function filterSitemapUrls(_urls, options) {
-  const urlFilter = createFilter({
-    include: options.include,
-    exclude: options.exclude
-  });
-  return _urls.filter((e) => {
-    let path = e.loc;
-    try {
-      path = parseURL(e.loc).pathname;
-    } catch {
-      return false;
-    }
-    if (!urlFilter(path))
-      return false;
-    if (options.isMultiSitemap && e._sitemap && options.sitemapName)
-      return e._sitemap === options.sitemapName;
-    return true;
-  });
-}
-
-function normaliseI18nSources(sources, { autoI18n, isI18nMapped }) {
-  if (autoI18n && isI18nMapped) {
-    return sources.map((s) => {
-      const urls = (s.urls || []).map((_url) => {
-        const url = typeof _url === "string" ? { loc: _url } : _url;
-        url.loc = url.loc || url.url;
-        url.loc = withLeadingSlash(url.loc);
-        return url;
-      });
-      s.urls = urls.map((url) => {
-        if (url._sitemap || url._i18nTransform)
-          return url;
-        if (url.loc) {
-          const match = splitForLocales(url.loc, autoI18n.locales.map((l) => l.code));
-          const localeCode = match[0] || autoI18n.defaultLocale;
-          const pathWithoutPrefix = match[1];
-          const locale = autoI18n.locales.find((e) => e.code === localeCode);
-          if (locale) {
-            if (!url.alternatives) {
-              const alternatives = urls.map((u) => {
-                if (u._sitemap || u._i18nTransform)
-                  return false;
-                if (u?.loc) {
-                  const [_localeCode, _pathWithoutPrefix] = splitForLocales(u.loc, autoI18n.locales.map((l) => l.code));
-                  if (pathWithoutPrefix === _pathWithoutPrefix) {
-                    const entries = [];
-                    if (_localeCode === autoI18n.defaultLocale) {
-                      entries.push({
-                        href: u.loc,
-                        hreflang: "x-default"
-                      });
-                    }
-                    entries.push({
-                      href: u.loc,
-                      hreflang: _localeCode || autoI18n.defaultLocale
-                    });
-                    return entries;
-                  }
-                }
-                return false;
-              }).flat().filter(Boolean);
-              if (alternatives.length)
-                url.alternatives = alternatives;
-            }
-            return {
-              _sitemap: locale.iso || locale.code,
-              ...url
-            };
-          }
-        }
-        return url;
-      });
-      return s;
-    });
+  const date = `${d.getUTCFullYear()}-${z(d.getUTCMonth() + 1)}-${z(d.getUTCDate())}`;
+  if (d.getUTCHours() > 0 || d.getUTCMinutes() > 0 || d.getUTCSeconds() > 0) {
+    return `${date}T${z(d.getUTCHours())}:${z(d.getUTCMinutes())}:${z(d.getUTCSeconds())}Z`;
   }
-  return sources;
-}
-function applyI18nEnhancements(_urls, options) {
-  const { autoI18n } = options;
-  return _urls.map((e) => {
-    if (!e._i18nTransform)
-      return e;
-    delete e._i18nTransform;
-    const path = withLeadingSlash(parseURL(e.loc).pathname);
-    const match = splitForLocales(path, autoI18n.locales.map((l) => l.code));
-    let pathWithoutLocale = path;
-    let locale;
-    if (match[0]) {
-      pathWithoutLocale = match[1] || "/";
-      locale = match[0];
-    }
-    if (locale && true) {
-      console.warn("You're providing a locale in the url, but the url is marked as inheritI18n. This will cause issues with the sitemap. Please remove the locale from the url.");
-      return e;
-    }
-    if (autoI18n.differentDomains) {
-      return {
-        // will force it to pass filter
-        _sitemap: options.sitemapName,
-        ...e,
-        alternatives: [
-          {
-            // apply default locale domain
-            ...autoI18n.locales.find((l) => [l.code, l.iso].includes(autoI18n.defaultLocale)),
-            code: "x-default"
-          },
-          ...autoI18n.locales.filter((l) => !!l.domain)
-        ].map((locale2) => {
-          return {
-            hreflang: locale2.iso || locale2.code,
-            href: joinURL(withHttps(locale2.domain), pathWithoutLocale)
-          };
-        })
-      };
-    }
-    return autoI18n.locales.map((l) => {
-      let loc = joinURL(`/${l.code}`, pathWithoutLocale);
-      if (autoI18n.differentDomains || ["prefix_and_default", "prefix_except_default"].includes(autoI18n.strategy) && l.code === autoI18n.defaultLocale)
-        loc = pathWithoutLocale;
-      return {
-        _sitemap: options.isI18nMapped ? l.iso || l.code : void 0,
-        ...e,
-        loc,
-        alternatives: [{ code: "x-default" }, ...autoI18n.locales].map((locale2) => {
-          const code = locale2.code === "x-default" ? autoI18n.defaultLocale : locale2.code;
-          const isDefault = locale2.code === "x-default" || locale2.code === autoI18n.defaultLocale;
-          let href = "";
-          if (autoI18n.strategy === "prefix") {
-            href = joinURL("/", code, pathWithoutLocale);
-          } else if (["prefix_and_default", "prefix_except_default"].includes(autoI18n.strategy)) {
-            if (isDefault) {
-              href = pathWithoutLocale;
-            } else {
-              href = joinURL("/", code, pathWithoutLocale);
-            }
-          }
-          const hreflang = locale2.iso || locale2.code;
-          return {
-            hreflang,
-            href
-          };
-        })
-      };
-    });
-  }).flat();
+  return date;
 }
 
 function sortSitemapUrls(urls) {
@@ -2245,32 +2190,13 @@ function sortSitemapUrls(urls) {
   });
 }
 
-function withoutQuery(path) {
-  return path.split("?")[0];
-}
-function createNitroRouteRuleMatcher() {
-  const { nitro, app } = useRuntimeConfig();
-  const _routeRulesMatcher = toRouteMatcher(
-    createRouter({
-      routes: Object.fromEntries(
-        Object.entries(nitro?.routeRules || {}).map(([path, rules]) => [withoutTrailingSlash(path), rules])
-      )
-    })
-  );
-  return (path) => {
-    return defu$1({}, ..._routeRulesMatcher.matchAll(
-      // radix3 does not support trailing slashes
-      withoutBase(withoutTrailingSlash(withoutQuery(path)), app.baseURL)
-    ).reverse());
-  };
-}
-
 function resolveKey(k) {
   switch (k) {
     case "images":
       return "image";
     case "videos":
       return "video";
+    // news & others?
     case "news":
       return "news";
     default:
@@ -2335,12 +2261,14 @@ function handleArray(key, arr) {
 function handleEntry(k, e) {
   return Array.isArray(e[k]) ? handleArray(k, e[k]) : typeof e[k] === "object" ? handleObject(k, e[k]) : `        <${k}>${escapeValueForXml(e[k])}</${k}>`;
 }
-function wrapSitemapXml(input, resolvers, wrapSitemapXmlOptions) {
-  const xsl = wrapSitemapXmlOptions.xsl ? resolvers.relativeBaseUrlResolver(wrapSitemapXmlOptions.xsl) : false;
-  const credits = wrapSitemapXmlOptions.credits;
+function wrapSitemapXml(input, resolvers, options) {
+  const xsl = options.xsl ? resolvers.relativeBaseUrlResolver(options.xsl) : false;
+  const credits = options.credits;
   input.unshift(`<?xml version="1.0" encoding="UTF-8"?>${xsl ? `<?xml-stylesheet type="text/xsl" href="${xsl}"?>` : ""}`);
   if (credits)
-    input.push(`<!-- XML Sitemap generated by Nuxt Simple Sitemap v${wrapSitemapXmlOptions.version} -->`);
+    input.push(`<!-- XML Sitemap generated by @nuxtjs/sitemap v${options.version} at ${(/* @__PURE__ */ new Date()).toISOString()} -->`);
+  if (options.minify)
+    return input.join("").replace(/(?<!<[^>]*)\s(?![^<]*>)/g, "");
   return input.join("\n");
 }
 function escapeValueForXml(value) {
@@ -2349,85 +2277,189 @@ function escapeValueForXml(value) {
   return String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
 }
 
-async function buildSitemap(sitemap, resolvers) {
+function resolveSitemapEntries(sitemap, sources, runtimeConfig, resolvers) {
+  const {
+    autoI18n,
+    isI18nMapped
+  } = runtimeConfig;
+  const filterPath = createPathFilter({
+    include: sitemap.include,
+    exclude: sitemap.exclude
+  });
+  const _urls = sources.flatMap((e) => e.urls).map((_e) => {
+    const e = preNormalizeEntry(_e, resolvers);
+    if (!e.loc || !filterPath(e.loc))
+      return false;
+    return e;
+  }).filter(Boolean);
+  let validI18nUrlsForTransform = [];
+  let warnIncorrectI18nTransformUsage = false;
+  const withoutPrefixPaths = {};
+  if (autoI18n && autoI18n.strategy !== "no_prefix") {
+    const localeCodes = autoI18n.locales.map((l) => l.code);
+    validI18nUrlsForTransform = _urls.map((_e, i) => {
+      if (_e._abs)
+        return false;
+      const split = splitForLocales(_e._relativeLoc, localeCodes);
+      let localeCode = split[0];
+      const pathWithoutPrefix = split[1];
+      if (!localeCode)
+        localeCode = autoI18n.defaultLocale;
+      const e = _e;
+      e._pathWithoutPrefix = pathWithoutPrefix;
+      const locale = autoI18n.locales.find((l) => l.code === localeCode);
+      if (!locale)
+        return false;
+      e._locale = locale;
+      e._index = i;
+      e._key = `${e._sitemap || ""}${e._path?.pathname || "/"}${e._path.search}`;
+      withoutPrefixPaths[pathWithoutPrefix] = withoutPrefixPaths[pathWithoutPrefix] || [];
+      if (!withoutPrefixPaths[pathWithoutPrefix].some((e2) => e2._locale.code === locale.code))
+        withoutPrefixPaths[pathWithoutPrefix].push(e);
+      return e;
+    }).filter(Boolean);
+    for (const e of validI18nUrlsForTransform) {
+      if (!e._i18nTransform && !e.alternatives?.length) {
+        const alternatives = withoutPrefixPaths[e._pathWithoutPrefix].map((u) => {
+          const entries = [];
+          if (u._locale.code === autoI18n.defaultLocale) {
+            entries.push({
+              href: u.loc,
+              hreflang: "x-default"
+            });
+          }
+          entries.push({
+            href: u.loc,
+            hreflang: u._locale._hreflang || autoI18n.defaultLocale
+          });
+          return entries;
+        }).flat().filter(Boolean);
+        if (alternatives.length)
+          e.alternatives = alternatives;
+      } else if (e._i18nTransform) {
+        delete e._i18nTransform;
+        if (autoI18n.strategy === "no_prefix") {
+          warnIncorrectI18nTransformUsage = true;
+        }
+        if (autoI18n.differentDomains) {
+          e.alternatives = [
+            {
+              // apply default locale domain
+              ...autoI18n.locales.find((l) => [l.code, l.language].includes(autoI18n.defaultLocale)),
+              code: "x-default"
+            },
+            ...autoI18n.locales.filter((l) => !!l.domain)
+          ].map((locale) => {
+            return {
+              hreflang: locale._hreflang,
+              href: joinURL(withHttps(locale.domain), e._pathWithoutPrefix)
+            };
+          });
+        } else {
+          for (const l of autoI18n.locales) {
+            let loc = joinURL(`/${l.code}`, e._pathWithoutPrefix);
+            if (autoI18n.differentDomains || ["prefix_and_default", "prefix_except_default"].includes(autoI18n.strategy) && l.code === autoI18n.defaultLocale)
+              loc = e._pathWithoutPrefix;
+            const _sitemap = isI18nMapped ? l._sitemap : void 0;
+            const newEntry = preNormalizeEntry({
+              _sitemap,
+              ...e,
+              _index: void 0,
+              _key: `${_sitemap || ""}${loc || "/"}${e._path.search}`,
+              _locale: l,
+              loc,
+              alternatives: [{ code: "x-default", _hreflang: "x-default" }, ...autoI18n.locales].map((locale) => {
+                const code = locale.code === "x-default" ? autoI18n.defaultLocale : locale.code;
+                const isDefault = locale.code === "x-default" || locale.code === autoI18n.defaultLocale;
+                let href = "";
+                if (autoI18n.strategy === "prefix") {
+                  href = joinURL("/", code, e._pathWithoutPrefix);
+                } else if (["prefix_and_default", "prefix_except_default"].includes(autoI18n.strategy)) {
+                  if (isDefault) {
+                    href = e._pathWithoutPrefix;
+                  } else {
+                    href = joinURL("/", code, e._pathWithoutPrefix);
+                  }
+                }
+                if (!filterPath(href))
+                  return false;
+                return {
+                  hreflang: locale._hreflang,
+                  href
+                };
+              }).filter(Boolean)
+            }, resolvers);
+            if (e._locale.code === newEntry._locale.code) {
+              _urls[e._index] = newEntry;
+              e._index = void 0;
+            } else {
+              _urls.push(newEntry);
+            }
+          }
+        }
+      }
+      if (isI18nMapped) {
+        e._sitemap = e._sitemap || e._locale._sitemap;
+        e._key = `${e._sitemap || ""}${e.loc || "/"}${e._path.search}`;
+      }
+      if (e._index)
+        _urls[e._index] = e;
+    }
+  }
+  if (warnIncorrectI18nTransformUsage) {
+    logger.warn("You're using _i18nTransform with the `no_prefix` strategy. This will cause issues with the sitemap. Please remove the _i18nTransform flag or change i18n strategy.");
+  }
+  return _urls;
+}
+async function buildSitemapUrls(sitemap, resolvers, runtimeConfig) {
   const {
     sitemaps,
     // enhancing
-    autoLastmod,
     autoI18n,
     isI18nMapped,
     isMultiSitemap,
     // sorting
     sortEntries,
     // chunking
-    defaultSitemapsChunkSize,
-    // xls
-    version,
-    xsl,
-    credits
-  } = useSimpleSitemapRuntimeConfig();
+    defaultSitemapsChunkSize
+  } = runtimeConfig;
   const isChunking = typeof sitemaps.chunks !== "undefined" && !Number.isNaN(Number(sitemap.sitemapName));
-  function maybeSort(urls2) {
-    return sortEntries ? sortSitemapUrls(urls2) : urls2;
+  function maybeSort(urls) {
+    return sortEntries ? sortSitemapUrls(urls) : urls;
   }
-  function maybeSlice(urls2) {
+  function maybeSlice(urls) {
     if (isChunking && defaultSitemapsChunkSize) {
       const chunk = Number(sitemap.sitemapName);
-      return urls2.slice(chunk * defaultSitemapsChunkSize, (chunk + 1) * defaultSitemapsChunkSize);
+      return urls.slice(chunk * defaultSitemapsChunkSize, (chunk + 1) * defaultSitemapsChunkSize);
     }
-    return urls2;
+    return urls;
   }
   if (autoI18n?.differentDomains) {
-    const domain = autoI18n.locales.find((e) => [e.iso, e.code].includes(sitemap.sitemapName))?.domain;
+    const domain = autoI18n.locales.find((e) => [e.language, e.code].includes(sitemap.sitemapName))?.domain;
     if (domain) {
       const _tester = resolvers.canonicalUrlResolver;
       resolvers.canonicalUrlResolver = (path) => resolveSitePath(path, {
         absolute: true,
         withBase: false,
         siteUrl: withHttps(domain),
-        trailingSlash: !_tester("/test/").endsWith("/"),
+        trailingSlash: _tester("/test/").endsWith("/"),
         base: "/"
       });
     }
   }
   const sources = sitemap.includeAppSources ? await globalSitemapSources() : [];
   sources.push(...await childSitemapSources(sitemap));
-  let resolvedSources = await resolveSitemapSources(sources);
-  if (autoI18n)
-    resolvedSources = normaliseI18nSources(resolvedSources, { autoI18n, isI18nMapped });
-  const normalisedUrls = normaliseSitemapUrls(resolvedSources.map((e) => e.urls).flat(), resolvers);
-  ({ ...sitemap.defaults || {} });
-  const routeRuleMatcher = createNitroRouteRuleMatcher();
-  let enhancedUrls = normalisedUrls.map((e) => defu$1(e, sitemap.defaults)).map((e) => {
-    const path = parseURL(e.loc).pathname;
-    let routeRules = routeRuleMatcher(path);
-    if (autoI18n?.locales && autoI18n?.strategy !== "no_prefix") {
-      const match = splitForLocales(path, autoI18n.locales.map((l) => l.code));
-      const pathWithoutPrefix = match[1];
-      if (pathWithoutPrefix && pathWithoutPrefix !== path)
-        routeRules = defu$1(routeRules, routeRuleMatcher(pathWithoutPrefix));
-    }
-    if (routeRules.sitemap === false)
-      return false;
-    if (typeof routeRules.index !== "undefined" && !routeRules.index)
-      return false;
-    const hasRobotsDisabled = Object.entries(routeRules.headers || {}).some(([name, value]) => name.toLowerCase() === "x-robots-tag" && value.toLowerCase() === "noindex");
-    if (routeRules.redirect || hasRobotsDisabled)
-      return false;
-    return routeRules.sitemap ? defu$1(e, routeRules.sitemap) : e;
-  }).filter(Boolean);
-  if (autoI18n?.locales)
-    enhancedUrls = applyI18nEnhancements(enhancedUrls, { isI18nMapped, autoI18n, sitemapName: sitemap.sitemapName });
-  const filteredUrls = filterSitemapUrls(enhancedUrls, { event: resolvers.event, isMultiSitemap, ...sitemap });
+  const resolvedSources = await resolveSitemapSources(sources, resolvers.event);
+  const enhancedUrls = resolveSitemapEntries(sitemap, resolvedSources, { autoI18n, isI18nMapped }, resolvers);
+  const filteredUrls = enhancedUrls.filter((e) => {
+    if (isMultiSitemap && e._sitemap && sitemap.sitemapName)
+      return e._sitemap === sitemap.sitemapName;
+    return true;
+  });
   const sortedUrls = maybeSort(filteredUrls);
-  const slicedUrls = maybeSlice(sortedUrls);
-  const nitro = useNitroApp();
-  const ctx = {
-    urls: slicedUrls,
-    sitemapName: sitemap.sitemapName
-  };
-  await nitro.hooks.callHook("sitemap:resolved", ctx);
-  const urls = maybeSort(normaliseSitemapUrls(ctx.urls, resolvers));
+  return maybeSlice(sortedUrls);
+}
+function urlsToXml(urls, resolvers, { version, xsl, credits, minify }) {
   const urlset = urls.map((e) => {
     const keys = Object.keys(e).filter((k) => !k.startsWith("_"));
     return [
@@ -2440,79 +2472,7 @@ async function buildSitemap(sitemap, resolvers) {
     '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     urlset.join("\n"),
     "</urlset>"
-  ], resolvers, { version, xsl, credits });
-}
-
-async function buildSitemapIndex(resolvers) {
-  const {
-    sitemaps,
-    // enhancing
-    autoLastmod,
-    // chunking
-    defaultSitemapsChunkSize,
-    autoI18n,
-    isI18nMapped,
-    sortEntries,
-    // xls
-    version,
-    xsl,
-    credits
-  } = useSimpleSitemapRuntimeConfig();
-  if (!sitemaps)
-    throw new Error("Attempting to build a sitemap index without required `sitemaps` configuration.");
-  function maybeSort(urls) {
-    return sortEntries ? sortSitemapUrls(urls) : urls;
-  }
-  const isChunking = typeof sitemaps.chunks !== "undefined";
-  const chunks = {};
-  if (isChunking) {
-    const sitemap = sitemaps.chunks;
-    const sources = await resolveSitemapSources(await globalSitemapSources());
-    const normalisedUrls = normaliseSitemapUrls(sources.map((e) => e.urls).flat(), resolvers);
-    let enhancedUrls = normalisedUrls.map((e) => defu$1(e, sitemap.defaults));
-    if (autoI18n?.locales)
-      enhancedUrls = applyI18nEnhancements(enhancedUrls, { isI18nMapped, autoI18n, sitemapName: sitemap.sitemapName });
-    const filteredUrls = filterSitemapUrls(enhancedUrls, { ...sitemap, isMultiSitemap: true });
-    const sortedUrls = maybeSort(filteredUrls);
-    sortedUrls.forEach((url, i) => {
-      const chunkIndex = Math.floor(i / defaultSitemapsChunkSize);
-      chunks[chunkIndex] = chunks[chunkIndex] || { urls: [] };
-      chunks[chunkIndex].urls.push(url);
-    });
-  } else {
-    for (const sitemap in sitemaps) {
-      if (sitemap !== "index") {
-        chunks[sitemap] = chunks[sitemap] || { urls: [] };
-      }
-    }
-  }
-  const entries = [];
-  for (const name in chunks) {
-    const sitemap = chunks[name];
-    const entry = {
-      sitemap: resolvers.canonicalUrlResolver(`${name}-sitemap.xml`)
-    };
-    let lastmod = sitemap.urls.filter((a) => !!a?.lastmod).map((a) => typeof a.lastmod === "string" ? new Date(a.lastmod) : a.lastmod).sort((a, b) => (b?.getTime() || 0) - (a?.getTime() || 0))?.[0];
-    if (!lastmod && autoLastmod)
-      lastmod = /* @__PURE__ */ new Date();
-    if (lastmod)
-      entry.lastmod = normaliseDate(lastmod);
-    entries.push(entry);
-  }
-  if (sitemaps.index)
-    entries.push(...sitemaps.index.sitemaps);
-  const sitemapXml = entries.map((e) => [
-    "    <sitemap>",
-    `        <loc>${escapeValueForXml(e.sitemap)}</loc>`,
-    // lastmod is optional
-    e.lastmod ? `        <lastmod>${escapeValueForXml(e.lastmod)}</lastmod>` : false,
-    "    </sitemap>"
-  ].filter(Boolean).join("\n")).join("\n");
-  return wrapSitemapXml([
-    '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    sitemapXml,
-    "</sitemapindex>"
-  ], resolvers, { version, xsl, credits });
+  ], resolvers, { version, xsl, credits, minify });
 }
 
 function useNitroUrlResolvers(e) {
@@ -2531,24 +2491,59 @@ function useNitroUrlResolvers(e) {
     relativeBaseUrlResolver: createSitePathResolver(e, { absolute: false, withBase: true })
   };
 }
-async function createSitemap(e, definition) {
+async function createSitemap(event, definition, runtimeConfig) {
   const { sitemapName } = definition;
   const nitro = useNitroApp();
-  let sitemap = await (definition.sitemapName === "index" ? buildSitemapIndex(useNitroUrlResolvers(e)) : buildSitemap(definition, useNitroUrlResolvers(e)));
+  const resolvers = useNitroUrlResolvers(event);
+  let sitemapUrls = await buildSitemapUrls(definition, resolvers, runtimeConfig);
+  const routeRuleMatcher = createNitroRouteRuleMatcher();
+  const { autoI18n } = runtimeConfig;
+  sitemapUrls = sitemapUrls.map((u) => {
+    const path = u._path?.pathname || u.loc;
+    let routeRules = routeRuleMatcher(path);
+    if (autoI18n?.locales && autoI18n?.strategy !== "no_prefix") {
+      const match = splitForLocales(path, autoI18n.locales.map((l) => l.code));
+      const pathWithoutPrefix = match[1];
+      if (pathWithoutPrefix && pathWithoutPrefix !== path)
+        routeRules = defu$1(routeRules, routeRuleMatcher(pathWithoutPrefix));
+    }
+    if (routeRules.sitemap === false)
+      return false;
+    if (typeof routeRules.index !== "undefined" && !routeRules.index || typeof routeRules.robots !== "undefined" && !routeRules.robots) {
+      return false;
+    }
+    const hasRobotsDisabled = Object.entries(routeRules.headers || {}).some(([name, value]) => name.toLowerCase() === "x-robots-tag" && value.toLowerCase().includes("noindex"));
+    if (routeRules.redirect || hasRobotsDisabled)
+      return false;
+    return routeRules.sitemap ? defu$1(u, routeRules.sitemap) : u;
+  }).filter(Boolean);
+  const resolvedCtx = {
+    urls: sitemapUrls,
+    sitemapName
+  };
+  await nitro.hooks.callHook("sitemap:resolved", resolvedCtx);
+  const maybeSort = (urls2) => runtimeConfig.sortEntries ? sortSitemapUrls(urls2) : urls2;
+  const normalizedPreDedupe = resolvedCtx.urls.map((e) => normaliseEntry(e, definition.defaults, resolvers));
+  const urls = maybeSort(mergeOnKey(normalizedPreDedupe, "_key").map((e) => normaliseEntry(e, definition.defaults, resolvers)));
+  const sitemap = urlsToXml(urls, resolvers, runtimeConfig);
   const ctx = { sitemap, sitemapName };
   await nitro.hooks.callHook("sitemap:output", ctx);
-  sitemap = ctx.sitemap;
-  setHeader(e, "Content-Type", "text/xml; charset=UTF-8");
-  e.context._isSitemap = true;
-  return sitemap;
+  setHeader(event, "Content-Type", "text/xml; charset=UTF-8");
+  if (runtimeConfig.cacheMaxAgeSeconds)
+    setHeader(event, "Cache-Control", `public, max-age=${runtimeConfig.cacheMaxAgeSeconds}, must-revalidate`);
+  else
+    setHeader(event, "Cache-Control", `no-cache, no-store`);
+  event.context._isSitemap = true;
+  return ctx.sitemap;
 }
 
-const _oW0MH1 = defineEventHandler(async (e) => {
-  const { sitemaps } = useSimpleSitemapRuntimeConfig();
+const _zfPjv_ = defineEventHandler(async (e) => {
+  const runtimeConfig = useSimpleSitemapRuntimeConfig();
+  const { sitemaps } = runtimeConfig;
   if ("index" in sitemaps) {
     return sendRedirect(e, withBase("/sitemap_index.xml", useRuntimeConfig().app.baseURL), 302 );
   }
-  return createSitemap(e, Object.values(sitemaps)[0]);
+  return createSitemap(e, Object.values(sitemaps)[0], runtimeConfig);
 });
 
 const VueResolver = (_, value) => {
@@ -2874,9 +2869,9 @@ const handlers = [
   { route: '/__nuxt_error', handler: _lazy_YfoQUR, lazy: true, middleware: false, method: undefined },
   { route: '', handler: _nxLYTx, lazy: false, middleware: true, method: undefined },
   { route: '/__site-config__/debug.json', handler: _JYaMJG, lazy: false, middleware: false, method: undefined },
-  { route: '/__sitemap__/debug.json', handler: _myJk35, lazy: false, middleware: false, method: undefined },
-  { route: '/__sitemap__/style.xsl', handler: _CT6TWG, lazy: false, middleware: false, method: undefined },
-  { route: '/sitemap.xml', handler: _oW0MH1, lazy: false, middleware: false, method: undefined },
+  { route: '/__sitemap__/debug.json', handler: _fZQXuC, lazy: false, middleware: false, method: undefined },
+  { route: '/__sitemap__/style.xsl', handler: _pyELY8, lazy: false, middleware: false, method: undefined },
+  { route: '/sitemap.xml', handler: _zfPjv_, lazy: false, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: _SxA8c9, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_YfoQUR, lazy: true, middleware: false, method: undefined }
 ];
@@ -3122,23 +3117,7 @@ const sources$1 = [
             "name": "sitemap:urls",
             "description": "Set with the `sitemap.urls` config."
         },
-        "urls": [
-            "/",
-            "/home",
-            "/features",
-            "/gallery",
-            "/request",
-            "/faq",
-            "/team",
-            "/approved",
-            "/station",
-            "/visit",
-            "/calendar",
-            "/offer",
-            "/EFW_AICONTEST",
-            "/welcome",
-            "/widget"
-        ],
+        "urls": [],
         "sourceType": "user"
     },
     {
