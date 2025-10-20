@@ -351,18 +351,17 @@ const totalPages = computed(() => {
 
 // Функция для определения количества видимых Reels в зависимости от размера экрана (только для десктопа)
 const updateVisibleReels = () => {
-  if (typeof window !== 'undefined') {
-    const width = window.innerWidth
-    if (width >= 1024) { // lg и выше - десктоп
-      if (width >= 1280) { // xl
-        visibleReels.value = 3
-      } else { // lg
-        visibleReels.value = 2
-      }
-    } else {
-      // Для мобильных и планшетов карусель не используется
-      visibleReels.value = 1
+  if (typeof window === 'undefined') return;
+  const width = window.innerWidth
+  if (width >= 1024) { // lg и выше - десктоп
+    if (width >= 1280) { // xl
+      visibleReels.value = 3
+    } else { // lg
+      visibleReels.value = 2
     }
+  } else {
+    // Для мобильных и планшетов карусель не используется
+    visibleReels.value = 1
   }
 }
 

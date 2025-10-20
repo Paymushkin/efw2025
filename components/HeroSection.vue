@@ -54,9 +54,9 @@ import GalleryIframe from '@/components/GalleryIframe.vue';
 
 const videoRef = ref(null);
 const { isVisible } = useVideoVisibility(videoRef);
-const isMobile = ref(window?.innerWidth < 768);
+const isMobile = ref(false);
 const MOBILE_BREAKPOINT = 768;
-let previousWidth = window?.innerWidth;
+let previousWidth = 0;
 
 const handleHashtagClick = () => {
   const sliderElement = document.querySelector('.image-carousel-container');
@@ -78,6 +78,7 @@ const hasBreakpointChanged = (currentWidth, prevWidth) => {
 };
 
 const updateSize = () => {
+  if (typeof window === 'undefined') return;
   const currentWidth = window.innerWidth;
   if (hasBreakpointChanged(currentWidth, previousWidth)) {
     isMobile.value = currentWidth < MOBILE_BREAKPOINT;
@@ -86,7 +87,11 @@ const updateSize = () => {
 };
 
 onMounted(() => {
-  window.addEventListener('resize', updateSize);
+  if (typeof window !== 'undefined') {
+    previousWidth = window.innerWidth;
+    isMobile.value = previousWidth < MOBILE_BREAKPOINT;
+    window.addEventListener('resize', updateSize);
+  }
   if (videoRef.value) {
     videoRef.value.play().catch(error => {
       console.log('Autoplay failed:', error);

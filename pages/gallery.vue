@@ -52,11 +52,11 @@ useHead({
   ]
 });
 
-const isMobile = ref(window?.innerWidth < 768);
+const isMobile = ref(false);
 const MOBILE_BREAKPOINT = 768;
 
 // Добавляем переменную для отслеживания предыдущей ширины
-let previousWidth = window?.innerWidth;
+let previousWidth = 0;
 
 // Функция для проверки пересечения брейкпоинта
 const hasBreakpointChanged = (currentWidth, previousWidth) => {
@@ -68,6 +68,7 @@ const hasBreakpointChanged = (currentWidth, previousWidth) => {
 
 // Функция для обновления размера
 const updateSize = () => {
+  if (typeof window === 'undefined') return;
   const currentWidth = window.innerWidth;
   
   // Проверяем, пересекли ли мы брейкпоинт
@@ -112,11 +113,15 @@ const updateScript = () => {
 };
 
 onMounted(() => {
-  // Добавляем слушатель изменения размера окна
-  window.addEventListener('resize', updateSize);
+  if (typeof window !== 'undefined') {
+    // Инициализируем флаги на основе текущей ширины
+    previousWidth = window.innerWidth;
+    isMobile.value = previousWidth < MOBILE_BREAKPOINT;
+    // Добавляем слушатель изменения размера окна
+    window.addEventListener('resize', updateSize);
+  }
   // Инициализируем скрипт
   updateScript();
-
 });
 
 onUnmounted(() => {
