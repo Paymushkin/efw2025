@@ -11,7 +11,9 @@
     <ClientOnly>
       <NewProgramSection class="md:mb-[120px] mb-[76px]" />
     </ClientOnly>
-    <MarqueeSection :content="sponsors" class="mb-[56px] md:mb-[76px]" />
+    <ClientOnly>
+      <MarqueeSection :content="sponsors" class="mb-[56px] md:mb-[76px]" />
+    </ClientOnly>
     <HowItWasSection class="mb-[56px] md:mb-[76px]" />
     <ClientOnly>
       <ProgramSection class="md:mb-[56px] mb-[36px]" />
