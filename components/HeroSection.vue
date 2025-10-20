@@ -59,6 +59,7 @@ const MOBILE_BREAKPOINT = 768;
 let previousWidth = 0;
 
 const handleHashtagClick = () => {
+  if (!process.client) return;
   const sliderElement = document.querySelector('.image-carousel-container');
   if (sliderElement) {
     sliderElement.scrollIntoView({ 
@@ -100,7 +101,9 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  window.removeEventListener('resize', updateSize);
+  if (process.client) {
+    window.removeEventListener('resize', updateSize);
+  }
 });
 </script>
 

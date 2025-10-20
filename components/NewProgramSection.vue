@@ -124,6 +124,7 @@ let scrollLeft = 0;
 
 // Debug helper for anchor clicks
 const logAnchorDebug = (id) => {
+  if (!process.client) return;
   try {
     const el = document.getElementById(id);
     if (!el) {
@@ -170,6 +171,7 @@ const { fetchDesigners, getFormattedDesignersByDay, designers, isDataUpdated } =
 
 // Загружаем данные дизайнеров при монтировании компонента (только один раз)
 onMounted(async () => {
+  if (!process.client) return;
   
   // Пытаемся обновить данные из Google Sheets (только если еще не обновлены)
   if (!isDataUpdated.value) {
@@ -254,6 +256,8 @@ watch(currentTab, () => {
 
 // Функция для обновления счетчика waitlist
 const updateWaitlistCount = () => {
+  if (!process.client) return;
+  
   // Очищаем предыдущий timeout
   if (updateTimeout) {
     clearTimeout(updateTimeout);
@@ -382,6 +386,8 @@ const forceLoadCompaniesData = async () => {
 
 // Функция для обновления дизайнеров в DOM
 const updateDesignersInDOM = (retryCount = 0) => {
+  if (!process.client) return;
+  
   let allUpdated = true;
   
   // Обновляем список для 8 ноября
