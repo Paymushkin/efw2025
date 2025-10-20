@@ -420,11 +420,15 @@
       </div>
       </section>
 
-      <PhotoGallery />
+      <ClientOnly>
+        <PhotoGallery />
+      </ClientOnly>
 
       <!-- FAQ Section -->
       <div class="mt-12">
-        <FaqSectionDynamic :standalone="false" />
+        <ClientOnly>
+          <FaqSectionDynamic :standalone="false" />
+        </ClientOnly>
       </div>
 
      <ClientOnly>
@@ -482,7 +486,9 @@
        
        <!-- Companies List -->
        <div class="mt-12">
-         <CompaniesList ref="companiesListRef" @companies-count-updated="updateCompaniesCount" />
+         <ClientOnly>
+           <CompaniesList ref="companiesListRef" @companies-count-updated="updateCompaniesCount" />
+         </ClientOnly>
        </div>
 
       <!-- Approved Companies List -->
@@ -499,13 +505,17 @@
    </div>
 
    <!-- Waitlist Form Modal -->
-    <WaitlistForm
-      :is-open="showWaitlistForm" 
-      @close="showWaitlistForm = false"
-      @success="handleWaitlistSuccess"
-    />
+    <ClientOnly>
+      <WaitlistForm
+        :is-open="showWaitlistForm" 
+        @close="showWaitlistForm = false"
+        @success="handleWaitlistSuccess"
+      />
+    </ClientOnly>
 
-    <GalleryIframe :show-fog="false" />
+    <ClientOnly>
+      <GalleryIframe :show-fog="false" />
+    </ClientOnly>
     
     <!-- Bottom anchor for scrolling -->
     <div id="bottom"></div>
