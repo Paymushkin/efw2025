@@ -564,28 +564,29 @@ const approvedCount = ref(0)
 const updateCompaniesCount = (count) => {
   updateGlobalCount(count)
   
-  // Обновляем счетчики в программе на главной странице
-  const trialCountElement1 = document.getElementById('trial-waitlist-count-1')
-  if (trialCountElement1) {
-    trialCountElement1.textContent = count
+  if (process.client) {
+    // Обновляем счетчики в программе на главной странице
+    const trialCountElement1 = document.getElementById('trial-waitlist-count-1')
+    if (trialCountElement1) {
+      trialCountElement1.textContent = count
+    }
+    
+    const trialCountElement2 = document.getElementById('trial-waitlist-count-2')
+    if (trialCountElement2) {
+      trialCountElement2.textContent = count
+    }
+    
+    // Обновляем счетчики на странице offer
+    const trialCountOffer1 = document.getElementById('trial-waitlist-count-offer-1')
+    if (trialCountOffer1) {
+      trialCountOffer1.textContent = count
+    }
+    
+    const trialCountOffer2 = document.getElementById('trial-waitlist-count-offer-2')
+    if (trialCountOffer2) {
+      trialCountOffer2.textContent = count
+    }
   }
-  
-  const trialCountElement2 = document.getElementById('trial-waitlist-count-2')
-  if (trialCountElement2) {
-    trialCountElement2.textContent = count
-  }
-  
-  // Обновляем счетчики на странице offer
-  const trialCountOffer1 = document.getElementById('trial-waitlist-count-offer-1')
-  if (trialCountOffer1) {
-    trialCountOffer1.textContent = count
-  }
-  
-  const trialCountOffer2 = document.getElementById('trial-waitlist-count-offer-2')
-  if (trialCountOffer2) {
-    trialCountOffer2.textContent = count
-  }
-  
 }
 
 // Функция для обновления счетчика одобренных компаний
@@ -614,25 +615,29 @@ const scrollToBottom = () => {
       console.log(`Scroll attempt ${index + 1} after ${delay}ms`)
       
       // Простой и надежный способ
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth'
-      })
-      
-      // Дополнительная попытка через 100ms
-      setTimeout(() => {
+      if (process.client) {
         window.scrollTo({
           top: document.body.scrollHeight,
           behavior: 'smooth'
         })
-      }, 100)
+        
+        // Дополнительная попытка через 100ms
+        setTimeout(() => {
+          if (process.client) {
+            window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: 'smooth'
+            })
+          }
+        }, 100)
+      }
     }, delay)
   })
 }
 
 // Автоматический скролл при наличии параметра waitlist
 onMounted(async () => {
-  if (showWaitlist.value) {
+  if (process.client && showWaitlist.value) {
     // Сразу начинаем скролл
     scrollToBottom()
   }
