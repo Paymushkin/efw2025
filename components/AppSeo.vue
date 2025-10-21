@@ -119,7 +119,7 @@ useHead({
         contactPoint: [{
           '@type': 'ContactPoint',
           contactType: 'customer support',
-          email: 'team@emiratesfashionweek.com',
+          email: 'team@emiratesfashionweeks.com',
           telephone: '+971569534134'
         }]
       })
