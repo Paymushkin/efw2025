@@ -38,7 +38,75 @@ export default defineNuxtConfig({
     preset: 'vercel'
   },
   sitemap: {
-    exclude: ['/api/**']
+    hostname: 'https://www.emiratesfashionweek.com',
+    exclude: ['/api/**', '/trial', '/widget'],
+    defaults: {
+      changefreq: 'weekly',
+      priority: 0.8,
+      lastmod: new Date()
+    },
+    routes: [
+      {
+        url: '/',
+        changefreq: 'daily',
+        priority: 1.0
+      },
+      {
+        url: '/offer',
+        changefreq: 'weekly',
+        priority: 0.9
+      },
+      {
+        url: '/features',
+        changefreq: 'weekly',
+        priority: 0.9
+      },
+      {
+        url: '/gallery',
+        changefreq: 'weekly',
+        priority: 0.8
+      },
+      {
+        url: '/faq',
+        changefreq: 'monthly',
+        priority: 0.7
+      },
+      {
+        url: '/team',
+        changefreq: 'monthly',
+        priority: 0.7
+      },
+      {
+        url: '/station',
+        changefreq: 'weekly',
+        priority: 0.8
+      },
+      {
+        url: '/approved',
+        changefreq: 'weekly',
+        priority: 0.8
+      },
+      {
+        url: '/visit',
+        changefreq: 'weekly',
+        priority: 0.8
+      },
+      {
+        url: '/request',
+        changefreq: 'weekly',
+        priority: 0.8
+      },
+      {
+        url: '/EFW_AICONTEST',
+        changefreq: 'weekly',
+        priority: 0.7
+      },
+      {
+        url: '/calendar',
+        changefreq: 'weekly',
+        priority: 0.8
+      }
+    ]
   },
   vite: {
     build: {
@@ -51,7 +119,7 @@ export default defineNuxtConfig({
   },
   
   site: {
-    url: 'https://emiratesfashionweeks.com'
+    url: 'https://www.emiratesfashionweek.com'
   },
   runtimeConfig: {
     RESEND_API_KEY: process.env.RESEND_API_KEY,

@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
-Sitemap: https://emiratesfashionweeks.com/sitemap.xml
+Disallow: /api/
+Disallow: /trial
+Disallow: /widget
+
+Sitemap: https://www.emiratesfashionweek.com/sitemap.xml
 
