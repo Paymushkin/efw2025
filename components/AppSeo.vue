@@ -12,7 +12,7 @@ const props = defineProps({
   },
   image: {
     type: String,
-    default: 'https://emiratesfashionweeks.com/seo-poster-wa.png'
+    default: 'https://emiratesfashionweeks.com/seo-poster.png'
   },
   keywords: {
     type: String,
@@ -58,7 +58,7 @@ useHead({
     },
     {
       property: 'og:image:height',
-      content: '675'
+      content: '630'
     },
     {
       property: 'og:image:alt',
