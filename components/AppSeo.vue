@@ -12,7 +12,7 @@ const props = defineProps({
   },
   image: {
     type: String,
-    default: 'https://emiratesfashionweeks.com/seo-poster.png'
+    default: 'https://emiratesfashionweek.com/seo-poster.png'
   },
   keywords: {
     type: String,
@@ -38,7 +38,7 @@ useHead({
     },
     {
       property: 'og:url',
-      content: `https://emiratesfashionweeks.com${canonicalPath}`
+      content: `https://emiratesfashionweek.com${canonicalPath}`
     },
     {
       property: 'og:title',
@@ -100,7 +100,7 @@ useHead({
   link: [
     {
       rel: 'canonical',
-      href: `https://emiratesfashionweeks.com${canonicalPath}`
+      href: `https://emiratesfashionweek.com${canonicalPath}`
     }
   ],
   script: [
@@ -110,8 +110,8 @@ useHead({
         '@context': 'https://schema.org',
         '@type': 'Organization',
         name: 'Emirates Fashion Week',
-        url: 'https://emiratesfashionweeks.com',
-        logo: 'https://emiratesfashionweeks.com/favicon-512x512.png',
+        url: 'https://emiratesfashionweek.com',
+        logo: 'https://emiratesfashionweek.com/favicon-512x512.png',
         sameAs: [
           'https://www.instagram.com/emiratesfashionweek/',
           'https://www.youtube.com/@emiratesfashionweek'
@@ -119,7 +119,7 @@ useHead({
         contactPoint: [{
           '@type': 'ContactPoint',
           contactType: 'customer support',
-          email: 'team@emiratesfashionweeks.com',
+          email: 'team@emiratesfashionweek.com',
           telephone: '+971569534134'
         }]
       })
@@ -130,10 +130,10 @@ useHead({
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         name: 'Emirates Fashion Week',
-        url: 'https://emiratesfashionweeks.com',
+        url: 'https://emiratesfashionweek.com',
         potentialAction: {
           '@type': 'SearchAction',
-          target: 'https://www.google.com/search?q=site:emiratesfashionweeks.com+{search_term_string}',
+          target: 'https://www.google.com/search?q=site:emiratesfashionweek.com+{search_term_string}',
           'query-input': 'required name=search_term_string'
         }
       })
