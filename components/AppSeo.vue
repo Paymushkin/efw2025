@@ -12,7 +12,7 @@ const props = defineProps({
   },
   image: {
     type: String,
-    default: 'https://emiratesfashionweeks.com/seo-poster.png'
+    default: 'https://emiratesfashionweeks.com/seo-poster-wa.png'
   },
   keywords: {
     type: String,
@@ -45,6 +45,34 @@ useHead({
       content: props.image
     },
     {
+      property: 'og:image:secure_url',
+      content: props.image
+    },
+    {
+      property: 'og:image:type',
+      content: 'image/png'
+    },
+    {
+      property: 'og:image:width',
+      content: '1200'
+    },
+    {
+      property: 'og:image:height',
+      content: '630'
+    },
+    {
+      property: 'og:image:alt',
+      content: 'Emirates Fashion Week Dubai 2025 - 8-11 November'
+    },
+    {
+      property: 'og:url',
+      content: `https://emiratesfashionweeks.com${canonicalPath}`
+    },
+    {
+      property: 'og:site_name',
+      content: 'Emirates Fashion Week'
+    },
+    {
       name: 'keywords',
       content: props.keywords
     },
@@ -55,6 +83,10 @@ useHead({
     {
       name: 'twitter:card',
       content: 'summary_large_image'
+    },
+    {
+      name: 'twitter:image',
+      content: props.image
     }
   ],
   link: [
