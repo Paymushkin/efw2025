@@ -33,12 +33,28 @@ useHead({
       content: props.description
     },
     {
+      property: 'og:type',
+      content: 'website'
+    },
+    {
+      property: 'og:url',
+      content: `https://emiratesfashionweeks.com${canonicalPath}`
+    },
+    {
       property: 'og:title',
       content: props.title
     },
     {
       property: 'og:description',
       content: props.description
+    },
+    {
+      property: 'og:site_name',
+      content: 'Emirates Fashion Week'
+    },
+    {
+      property: 'og:locale',
+      content: 'en_US'
     },
     {
       property: 'og:image',
@@ -65,24 +81,8 @@ useHead({
       content: 'Emirates Fashion Week Dubai 2025 - 8-11 November'
     },
     {
-      property: 'og:url',
-      content: `https://emiratesfashionweeks.com${canonicalPath}`
-    },
-    {
-      property: 'og:site_name',
-      content: 'Emirates Fashion Week'
-    },
-    {
-      property: 'og:locale',
-      content: 'en_US'
-    },
-    {
       name: 'keywords',
       content: props.keywords
-    },
-    {
-      property: 'og:type',
-      content: 'website'
     },
     {
       name: 'twitter:card',
