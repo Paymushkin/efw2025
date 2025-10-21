@@ -1,6 +1,9 @@
 <template></template>
 
 <script setup>
+// Основной канонический домен для SEO
+const CANONICAL_DOMAIN = 'https://www.emiratesfashionweek.com'
+
 const props = defineProps({
   title: {
     type: String,
@@ -12,7 +15,7 @@ const props = defineProps({
   },
   image: {
     type: String,
-    default: 'https://www.emiratesfashionweek.com/seo-poster.png'
+    default: `${CANONICAL_DOMAIN}/seo-poster.png`
   },
   keywords: {
     type: String,
@@ -38,7 +41,7 @@ useHead({
     },
     {
       property: 'og:url',
-      content: `https://www.emiratesfashionweek.com${canonicalPath}`
+      content: `${CANONICAL_DOMAIN}${canonicalPath}`
     },
     {
       property: 'og:title',
@@ -55,10 +58,6 @@ useHead({
     {
       property: 'og:locale',
       content: 'en_US'
-    },
-    {
-      property: 'fb:app_id',
-      content: '1234567890'
     },
     {
       property: 'og:image',
@@ -100,7 +99,7 @@ useHead({
   link: [
     {
       rel: 'canonical',
-      href: `https://www.emiratesfashionweek.com${canonicalPath}`
+      href: `${CANONICAL_DOMAIN}${canonicalPath}`
     }
   ],
   script: [
@@ -110,8 +109,8 @@ useHead({
         '@context': 'https://schema.org',
         '@type': 'Organization',
         name: 'Emirates Fashion Week',
-        url: 'https://www.emiratesfashionweek.com',
-        logo: 'https://www.emiratesfashionweek.com/favicon-512x512.png',
+        url: CANONICAL_DOMAIN,
+        logo: `${CANONICAL_DOMAIN}/favicon-512x512.png`,
         sameAs: [
           'https://www.instagram.com/emiratesfashionweek/',
           'https://www.youtube.com/@emiratesfashionweek'
@@ -130,10 +129,10 @@ useHead({
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         name: 'Emirates Fashion Week',
-        url: 'https://www.emiratesfashionweek.com',
+        url: CANONICAL_DOMAIN,
         potentialAction: {
           '@type': 'SearchAction',
-          target: 'https://www.google.com/search?q=site:www.emiratesfashionweek.com+{search_term_string}',
+          target: `https://www.google.com/search?q=site:www.emiratesfashionweek.com+{search_term_string}`,
           'query-input': 'required name=search_term_string'
         }
       })
