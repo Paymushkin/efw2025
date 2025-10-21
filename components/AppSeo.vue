@@ -58,7 +58,7 @@ useHead({
     },
     {
       property: 'og:image:height',
-      content: '630'
+      content: '675'
     },
     {
       property: 'og:image:alt',
@@ -71,6 +71,10 @@ useHead({
     {
       property: 'og:site_name',
       content: 'Emirates Fashion Week'
+    },
+    {
+      property: 'og:locale',
+      content: 'en_US'
     },
     {
       name: 'keywords',
