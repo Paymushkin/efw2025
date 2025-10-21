@@ -57,6 +57,10 @@ useHead({
       content: 'en_US'
     },
     {
+      property: 'fb:app_id',
+      content: '1234567890'
+    },
+    {
       property: 'og:image',
       content: props.image
     },
