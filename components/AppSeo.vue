@@ -12,7 +12,7 @@ const props = defineProps({
   },
   image: {
     type: String,
-    default: 'https://emiratesfashionweek.com/seo-poster.png'
+    default: 'https://www.emiratesfashionweek.com/seo-poster.png'
   },
   keywords: {
     type: String,
@@ -38,7 +38,7 @@ useHead({
     },
     {
       property: 'og:url',
-      content: `https://emiratesfashionweek.com${canonicalPath}`
+      content: `https://www.emiratesfashionweek.com${canonicalPath}`
     },
     {
       property: 'og:title',
@@ -100,7 +100,7 @@ useHead({
   link: [
     {
       rel: 'canonical',
-      href: `https://emiratesfashionweek.com${canonicalPath}`
+      href: `https://www.emiratesfashionweek.com${canonicalPath}`
     }
   ],
   script: [
@@ -110,8 +110,8 @@ useHead({
         '@context': 'https://schema.org',
         '@type': 'Organization',
         name: 'Emirates Fashion Week',
-        url: 'https://emiratesfashionweek.com',
-        logo: 'https://emiratesfashionweek.com/favicon-512x512.png',
+        url: 'https://www.emiratesfashionweek.com',
+        logo: 'https://www.emiratesfashionweek.com/favicon-512x512.png',
         sameAs: [
           'https://www.instagram.com/emiratesfashionweek/',
           'https://www.youtube.com/@emiratesfashionweek'
@@ -130,10 +130,10 @@ useHead({
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         name: 'Emirates Fashion Week',
-        url: 'https://emiratesfashionweek.com',
+        url: 'https://www.emiratesfashionweek.com',
         potentialAction: {
           '@type': 'SearchAction',
-          target: 'https://www.google.com/search?q=site:emiratesfashionweek.com+{search_term_string}',
+          target: 'https://www.google.com/search?q=site:www.emiratesfashionweek.com+{search_term_string}',
           'query-input': 'required name=search_term_string'
         }
       })
