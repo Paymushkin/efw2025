@@ -1,101 +1,123 @@
 <template>
-  <div class="min-h-screen bg-black flex items-center justify-center">
+  <div class="min-h-screen bg-black flex items-center justify-center px-4 py-8">
     <AppSeo
       title="Emirates Fashion Week Calendar - Subscribe to Events"
       description="Subscribe to Emirates Fashion Week calendar to stay updated with all fashion events and shows in Dubai 2025."
       keywords="Emirates Fashion Week, Dubai Fashion, Calendar, Events, Fashion Shows, Dubai 2025"
     />
     
-    <div class="text-center">
-      <!-- Анимированный лоадер -->
-      <div class="mb-8">
+    <div class="text-center max-w-md w-full">
+      <!-- Иконка календаря -->
+      <div class="mb-6 md:mb-8">
         <div class="inline-block relative">
-          <!-- Календарь иконка -->
-          <div class="w-16 h-16 border-4 border-gray-300 border-t-white rounded-lg animate-spin"></div>
-          
-          <!-- Внутренние элементы календаря -->
-          <div class="absolute top-2 left-2 w-12 h-12 border-2 border-gray-400 border-t-gray-100 rounded-lg animate-pulse"></div>
-          
-          <!-- Центральная точка -->
-          <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full animate-bounce"></div>
+          <div class="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-white to-gray-300 rounded-2xl shadow-2xl flex items-center justify-center">
+            <svg class="w-10 h-10 md:w-12 md:h-12 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
         </div>
       </div>
       
-      <!-- Текст загрузки -->
-      <div class="text-white">
-        <h1 class="text-2xl md:text-3xl font-bold mb-4 animate-pulse">
-          Downloading Emirates Fashion Week Calendar
+      <!-- Текст -->
+      <div class="text-white mb-8">
+        <h1 class="text-2xl md:text-3xl font-bold mb-3">
+          Subscribe to Emirates Fashion Week Calendar
         </h1>
-        <p class="text-gray-300 text-lg animate-bounce">
-          Preparing calendar file download...
+        <p class="text-gray-300 text-base md:text-lg mb-2">
+          Stay updated with all fashion events and shows
         </p>
-        <p class="text-gray-400 text-sm mt-2">
-          You will be redirected to the main page after download
+        <p class="text-gray-400 text-sm">
+          Subscribe to automatically sync all events to your calendar
         </p>
       </div>
       
-      <!-- Прогресс бар -->
-      <div class="mt-8 w-64 mx-auto">
-        <div class="bg-gray-700 rounded-full h-2 overflow-hidden">
-          <div 
-            class="bg-white h-full rounded-full transition-all duration-1000 ease-linear"
-            :style="{ width: progress + '%' }"
-          ></div>
-        </div>
+      <!-- Кнопки -->
+      <div v-if="showButton" class="space-y-4">
+        <a 
+          :href="calendarUrl"
+          class="block w-full bg-white hover:bg-gray-100 text-black font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-xl"
+        >
+          📅 Subscribe to Calendar
+        </a>
+        
+        <a 
+          href="/"
+          class="block w-full bg-gray-800 hover:bg-gray-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 border border-gray-600"
+        >
+          🏠 Go to Main Page
+        </a>
       </div>
       
-      <!-- Счетчик -->
-      <div class="mt-4 text-white text-sm">
-        {{ Math.round(progress) }}%
+      <!-- Информация для пользователя -->
+      <div class="mt-8 text-gray-400 text-xs md:text-sm space-y-2">
+        <p v-if="isIOSDevice">
+          📱 For iOS/macOS: Calendar app will open automatically
+        </p>
+        <p v-else>
+          🌐 For Android/Desktop: Google Calendar will open
+        </p>
+        <p class="text-gray-500">
+          Events will automatically sync to your calendar
+        </p>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
-const progress = ref(0)
-const targetUrl = 'https://calendar.google.com/calendar/ical/a48ce6b68320071674bb11016e1486a03cc4e7c0a452cfc3b34503e26963c22c%40group.calendar.google.com/public/basic.ics'
+// Calendar ID
+const calendarId = 'a48ce6b68320071674bb11016e1486a03cc4e7c0a452cfc3b34503e26963c22c@group.calendar.google.com'
 
-// Анимация прогресс бара
-const animateProgress = () => {
-  const duration = 1000 // 1 секунда
-  const steps = 100
-  const stepTime = duration / steps
-  
-  let currentStep = 0
-  
-  const timer = setInterval(() => {
-    currentStep++
-    progress.value = currentStep
-    
-    if (currentStep >= steps) {
-      clearInterval(timer)
-    }
-  }, stepTime)
+// Состояние
+const showButton = ref(false)
+const isIOSDevice = ref(false)
+
+// Определяем, является ли устройство iOS/macOS
+const checkIsIOS = () => {
+  if (process.client) {
+    const userAgent = navigator.userAgent.toLowerCase()
+    return userAgent.includes('iphone') || userAgent.includes('ipad') || userAgent.includes('mac')
+  }
+  return false
 }
 
-// Скачивание файла и редирект на главную
-onMounted(() => {
-  // Запускаем анимацию прогресса
-  animateProgress()
-  
-  // Скачиваем файл календаря через 1 секунду
-  setTimeout(() => {
-    // Создаем временную ссылку для скачивания
-    const link = document.createElement('a')
-    link.href = targetUrl
-    link.download = 'emirates-fashion-week-calendar.ics'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
+// Определяем URL в зависимости от платформы
+const getCalendarUrl = () => {
+  if (process.client) {
+    const userAgent = navigator.userAgent.toLowerCase()
     
-    // Перенаправляем на главную страницу через 2 секунды после скачивания
+    // Для iOS/macOS используем webcal (подписка)
+    if (userAgent.includes('iphone') || userAgent.includes('ipad') || userAgent.includes('mac')) {
+      return `webcal://calendar.google.com/calendar/ical/${encodeURIComponent(calendarId)}/public/basic.ics`
+    }
+    
+    // Для Android и остальных платформ используем Google Calendar subscription
+    return `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(calendarId)}`
+  }
+  
+  // Для SSR возвращаем дефолтную ссылку
+  return `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(calendarId)}`
+}
+
+// Реактивный URL для календаря
+const calendarUrl = computed(() => getCalendarUrl())
+
+// Инициализация при монтировании
+onMounted(() => {
+  // Проверяем платформу
+  isIOSDevice.value = checkIsIOS()
+  
+  // Показываем кнопку для всех платформ
+  showButton.value = true
+  
+  // Для iOS также открываем автоматически через небольшую задержку
+  if (isIOSDevice.value) {
     setTimeout(() => {
-      window.location.href = '/'
-    }, 2000)
-  }, 1000)
+      window.location.href = calendarUrl.value
+    }, 1000)
+  }
 })
 
 // Мета-теги для SEO
@@ -120,7 +142,7 @@ useHead({
     },
     {
       property: 'og:image',
-      content: 'https://emiratesfashionweeks.com/seo-poster.png'
+      content: 'https://www.emiratesfashionweek.com/seo-poster.png'
     },
     {
       property: 'og:type',
@@ -135,33 +157,10 @@ useHead({
 </script>
 
 <style scoped>
-/* Дополнительные анимации */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+/* Минимальные стили для мобильных устройств */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.5rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.8s ease-out;
-}
-
-/* Кастомная анимация для календаря */
-@keyframes calendar-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin {
-  animation: calendar-spin 2s linear infinite;
 }
 </style>
