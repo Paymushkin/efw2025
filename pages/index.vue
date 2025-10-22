@@ -6,30 +6,30 @@
       keywords="Emirates Fashion Week, Dubai Fashion, Fashion Shows Runways Dubai, Beauty Exhibition UAE, Fashion Pop-up Market Dubai, Designer Collections, Beauty Services Dubai, Fashion Week 2025 Dubai"
     />
     <ClientOnly>
-      <HeroSection id="hero" class="mb-[56px] md:mb-[76px]" />
+      <HeroSection class="mb-[56px] md:mb-[76px]" />
     </ClientOnly>
     <ClientOnly>
-      <NewProgramSection id="program" class="md:mb-[120px] mb-[76px]" />
+      <NewProgramSection id="spring-summer-2026" class="md:mb-[120px] mb-[76px]" />
     </ClientOnly>
     <ClientOnly>
       <MarqueeSection :content="sponsors" class="mb-[56px] md:mb-[76px]" />
     </ClientOnly>
-    <HowItWasSection id="how-it-was" class="mb-[56px] md:mb-[76px]" />
+    <HowItWasSection id="previous-seasons" class="mb-[56px] md:mb-[76px]" />
     <ClientOnly>
-      <ProgramSection id="schedule" class="md:mb-[56px] mb-[36px]" />
+      <ProgramSection id="fall-winter-2025" class="md:mb-[56px] mb-[36px]" />
     </ClientOnly>
     <ClientOnly>
       <DesignersSection id="designers" class="md:mb-[76px] mb-[56px]" />
     </ClientOnly>
-    <SponsorsSection id="sponsors" class="md:mb-[76px] mb-[56px]" />
-    <StatisticsSection id="statistics" class="md:mb-[76px] mb-[56px]" />
-    <div id="features" class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
+    <SponsorsSection id="partners-media" class="md:mb-[76px] mb-[56px]" />
+    <StatisticsSection class="md:mb-[76px] mb-[56px]" />
+    <div id="features-access" class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
       <EventFeatures :data="featuresData.featuresDataPromo" />
     </div>
-    <div id="faces" class="container mx-auto px-4">
+    <div id="faces-efw" class="container mx-auto px-4">
       <FacesOfEfwSection />
     </div>
-    <section id="support">
+    <section id="economy-dubai">
       <div class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
         <ClientOnly>
           <ImageCarousel 
