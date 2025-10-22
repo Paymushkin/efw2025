@@ -6,30 +6,30 @@
       keywords="Emirates Fashion Week, Dubai Fashion, Fashion Shows Runways Dubai, Beauty Exhibition UAE, Fashion Pop-up Market Dubai, Designer Collections, Beauty Services Dubai, Fashion Week 2025 Dubai"
     />
     <ClientOnly>
-      <HeroSection class="mb-[56px] md:mb-[76px]" />
+      <HeroSection id="hero" class="mb-[56px] md:mb-[76px]" />
     </ClientOnly>
     <ClientOnly>
-      <NewProgramSection class="md:mb-[120px] mb-[76px]" />
+      <NewProgramSection id="program" class="md:mb-[120px] mb-[76px]" />
     </ClientOnly>
     <ClientOnly>
       <MarqueeSection :content="sponsors" class="mb-[56px] md:mb-[76px]" />
     </ClientOnly>
-    <HowItWasSection class="mb-[56px] md:mb-[76px]" />
+    <HowItWasSection id="how-it-was" class="mb-[56px] md:mb-[76px]" />
     <ClientOnly>
-      <ProgramSection class="md:mb-[56px] mb-[36px]" />
+      <ProgramSection id="schedule" class="md:mb-[56px] mb-[36px]" />
     </ClientOnly>
     <ClientOnly>
-      <DesignersSection class="md:mb-[76px] mb-[56px]" />
+      <DesignersSection id="designers" class="md:mb-[76px] mb-[56px]" />
     </ClientOnly>
-    <SponsorsSection class="md:mb-[76px] mb-[56px]" />
-    <StatisticsSection class="md:mb-[76px] mb-[56px]" />
-    <div class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
+    <SponsorsSection id="sponsors" class="md:mb-[76px] mb-[56px]" />
+    <StatisticsSection id="statistics" class="md:mb-[76px] mb-[56px]" />
+    <div id="features" class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
       <EventFeatures :data="featuresData.featuresDataPromo" />
     </div>
-    <div class="container mx-auto px-4">
+    <div id="faces" class="container mx-auto px-4">
       <FacesOfEfwSection />
     </div>
-    <section>
+    <section id="support">
       <div class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
         <ClientOnly>
           <ImageCarousel 
@@ -43,12 +43,14 @@
       </div>
     </section>
     <ClientOnly>
-      <FaqSectionDynamic class="mb-[56px] md:mb-[76px]" />
+      <FaqSectionDynamic id="faq" class="mb-[56px] md:mb-[76px]" />
     </ClientOnly>
   </div>
 </template>
 
 <script setup>
+import { onMounted, nextTick } from 'vue';
+
 definePageMeta({
   layout: 'default'
 });
@@ -77,6 +79,50 @@ import sponsor4 from '@/assets/image/sponsor-logo.webp';
 
 const sponsors = [sponsor1, sponsor2, sponsor3, sponsor4];
 const featuresData = FEATURES_DATA;
+
+// Функция плавной прокрутки к секции по хешу
+const scrollToHash = () => {
+  if (!process.client) return;
+  
+  const hash = window.location.hash;
+  
+  if (hash) {
+    // Убираем # из хеша
+    const targetId = hash.substring(1);
+    
+    // Ждем, пока компоненты полностью загрузятся
+    nextTick(() => {
+      setTimeout(() => {
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          // Плавная прокрутка к элементу
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+          
+          console.log(`✅ Прокрутка к секции: #${targetId}`);
+        } else {
+          console.log(`❌ Элемент с id="${targetId}" не найден`);
+        }
+      }, 500); // Задержка для загрузки ClientOnly компонентов
+    });
+  }
+};
+
+// Инициализация при монтировании
+onMounted(() => {
+  if (!process.client) return;
+  
+  // Прокрутка к хешу при загрузке страницы
+  scrollToHash();
+  
+  // Слушаем изменения хеша в URL
+  window.addEventListener('hashchange', scrollToHash);
+  
+  console.log('🏠 Главная страница: Компонент загружен');
+});
 
 // Отладочная информация для главной страницы
 console.log('🏠 Главная страница: Компонент загружен');
