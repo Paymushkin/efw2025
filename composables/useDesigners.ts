@@ -88,22 +88,10 @@ export const useDesigners = () => {
     }
   };
 
-  // Функция для маскирования имени
+  // Функция для маскирования имени (отключена - возвращает оригинальное имя)
   const maskName = (name: string): string => {
-    if (!name) return '';
-    
-    const words = name.split(' ');
-    return words.map(word => {
-      if (word.length <= 2) {
-        return word.charAt(0) + '*'.repeat(word.length - 1);
-      }
-      
-      const firstChar = word.charAt(0);
-      const lastChar = word.length > 1 ? word.charAt(word.length - 1) : '';
-      const middleStars = '*'.repeat(Math.max(1, word.length - 2));
-      
-      return firstChar + middleStars + (lastChar ? lastChar : '');
-    }).join(' ');
+    // Возвращаем оригинальное имя без маскировки
+    return name || '';
   };
 
   // Функция для форматирования дизайнера для отображения
