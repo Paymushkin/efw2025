@@ -6,9 +6,10 @@
         <div class="flex flex-col md:flex-row gap-6 md:gap-8">
         <!-- Left column: Welcome, Program, and QR code -->
         <div class="text-center md:text-left flex-1">
-          <h1 class="text-xl md:text-3xl xl:text-4xl mb-3 md:mb-4">
-            Your Emirates Fashion Week invitation by
-            <span 
+          <h1 class="text-xl md:text-2xl xl:text-3xl mb-3 md:mb-4">
+            <strong class="uppercase mb-2 block text-2xl md:text-3xl xl:text-4xl">Your Invitation</strong>
+            <div>to Emirates Fashion Week</div>
+            <div>by <span 
               class="inline-block px-2 py-0.5 rounded-md bg-black text-white cursor-pointer select-none"
               @touchstart.passive="handleTouchStart"
               @touchend="handleTouchEnd"
@@ -16,7 +17,7 @@
               @mousedown="handleMouseDown"
               @mouseup="handleMouseUp"
               @mouseleave="handleMouseLeave"
-            >{{ guestName }}*</span>
+            >{{ guestName }}*</span></div>
           </h1>
           
           <!-- Финальное приглашение -->

@@ -12,13 +12,13 @@
               class="lg:hidden text-black"
               @click="isMenuOpen = !isMenuOpen"
             >
-              <MenuIcon v-if="!isMenuOpen" class="w-8 h-8" />
-              <XIcon v-else class="w-8 h-8" />
+              <MenuIcon v-if="!isMenuOpen" class="w-6 h-6" />
+              <XIcon v-else class="w-6 h-6" />
             </button>
             <div class="flex flex-col gap-1">
               <NuxtLink to="/" class="flex-shrink-0">
                 <!-- Основное лого везде -->
-                <LogoBlack class="h-5 2xl:h-8 w-[165px] 2xl:w-[254px]" />
+                <LogoBlack class="h-4 md:h-5 lg:h-6 xl:h-7 2xl:h-8 w-[132px] md:w-[165px] max-w-full lg:w-[198px] xl:w-[231px] 2xl:w-[254px]" />
               </NuxtLink>
             
               <NuxtLink 
