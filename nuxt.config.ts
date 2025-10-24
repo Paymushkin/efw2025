@@ -107,7 +107,7 @@ export default defineNuxtConfig({
         priority: 0.8
       }
     ]
-  },
+  } as any,
   vite: {
     build: {
       rollupOptions: {
