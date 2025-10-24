@@ -1,8 +1,8 @@
 <template></template>
 
 <script setup>
-// Основной канонический домен для SEO
-const CANONICAL_DOMAIN = 'https://www.emiratesfashionweek.com'
+// Основной канонический домен для SEO (ОСНОВНОЙ САЙТ - с "s")
+const CANONICAL_DOMAIN = 'https://emiratesfashionweeks.com'
 
 const props = defineProps({
   title: {
@@ -31,14 +31,11 @@ const canonicalPath = route.path === '/'
 useHead({
   title: props.title,
   meta: [
-    {
-      name: 'description',
-      content: props.description
-    },
-    {
-      property: 'og:type',
-      content: 'website'
-    },
+    // ВАЖНО: Этот сайт (emiratesfashionweek.com без "s") - дублирующий
+    // Запрещаем индексацию, чтобы не мешать основному сайту
+    { name: 'robots', content: 'noindex, nofollow' },
+    { name: 'description', content: props.description },
+    { property: 'og:type', content: 'website' },
     {
       property: 'og:url',
       content: `${CANONICAL_DOMAIN}${canonicalPath}`

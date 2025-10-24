@@ -38,8 +38,8 @@ export default defineNuxtConfig({
     preset: 'vercel'
   },
   sitemap: {
-    hostname: 'https://www.emiratesfashionweek.com',
-    exclude: ['/api/**', '/trial', '/widget'],
+    hostname: 'https://emiratesfashionweeks.com',
+    exclude: ['/**'], // Exclude all pages - this is a duplicate site
     defaults: {
       changefreq: 'weekly',
       priority: 0.8,
@@ -119,7 +119,7 @@ export default defineNuxtConfig({
   },
   
   site: {
-    url: 'https://www.emiratesfashionweek.com'
+    url: 'https://emiratesfashionweeks.com'
   },
   runtimeConfig: {
     RESEND_API_KEY: process.env.RESEND_API_KEY,

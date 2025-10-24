@@ -1,8 +1,6 @@
 User-agent: *
-Allow: /
-Disallow: /api/
-Disallow: /trial
-Disallow: /widget
+Disallow: /
 
-Sitemap: https://www.emiratesfashionweek.com/sitemap.xml
+# This is a duplicate/staging site
+# Main site: https://emiratesfashionweeks.com
 
