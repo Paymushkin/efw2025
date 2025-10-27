@@ -637,12 +637,28 @@ const _inlineRuntimeConfig = {
       "/__nuxt_error": {
         "cache": false
       },
+      "/": {
+        "static": false,
+        "prerender": false
+      },
+      "/dubaifw/**": {
+        "static": true
+      },
+      "/offer/tr": {
+        "redirect": {
+          "to": "/offer?tr",
+          "statusCode": 307
+        }
+      },
+      "/sitemap.xml": {},
+      "/__sitemap__/**": {
+        "static": true
+      },
       "/sitemap.xsl": {
         "headers": {
           "Content-Type": "application/xslt+xml"
         }
       },
-      "/sitemap.xml": {},
       "/_nuxt/builds/meta/**": {
         "headers": {
           "cache-control": "public, max-age=31536000, immutable"
@@ -698,10 +714,14 @@ const _inlineRuntimeConfig = {
       "sitemap.xml": {
         "sitemapName": "sitemap.xml",
         "route": "sitemap.xml",
-        "defaults": {},
+        "defaults": {
+          "changefreq": "weekly",
+          "priority": 0.8,
+          "lastmod": "2025-10-27T08:51:54.090Z"
+        },
         "include": [],
         "exclude": [
-          "/api/**",
+          "/**",
           "/_nuxt/**",
           "/_**"
         ],
@@ -3179,7 +3199,23 @@ const sources$1 = [
             },
             {
                 "loc": "/EFW_AWARDS_2025_april"
+            },
+            {
+                "loc": "/offer/tr"
             }
+        ],
+        "sourceType": "app"
+    },
+    {
+        "context": {
+            "name": "nuxt:route-rules",
+            "description": "Generated from your route rules config.",
+            "tips": [
+                "Can be disabled with `{ excludeAppSources: ['nuxt:route-rules'] }`."
+            ]
+        },
+        "urls": [
+            "/"
         ],
         "sourceType": "app"
     }

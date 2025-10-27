@@ -35,7 +35,37 @@ export default defineNuxtConfig({
   },
   ssr: true,
   nitro: {
-    preset: 'vercel'
+    preset: 'vercel',
+    routeRules: {
+      '/': { static: false, prerender: false },
+      '/dubaifw/**': { static: true },
+      '/offer/tr': { redirect: '/offer?tr' },
+      '/sitemap.xml': { static: true },
+      '/__sitemap__/**': { static: true }
+    },
+    prerender: {
+      // Не генерируем Nuxt-HTML для этих роутов, чтобы использовались файлы из public/*/index.html
+      ignore: [
+        '/trial',
+        '/features',
+        '/offer',
+        '/gallery',
+        '/request',
+        '/faq',
+        '/team',
+        '/approved',
+        '/station',
+        '/calendar',
+        '/visit',
+        '/EFW_AICONTEST',
+        '/welcome',
+        '/home',
+        '/widget'
+      ]
+    },
+    experimental: {
+      wasm: false
+    }
   },
   sitemap: {
     hostname: 'https://emiratesfashionweeks.com',

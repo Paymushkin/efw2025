@@ -31,6 +31,7 @@ export { setInterval } from '#app/compat/interval';
 export { defineLazyHydrationComponent } from '#app/composables/lazy-hydration';
 export { useCompaniesCount } from '../composables/useCompaniesCount';
 export { useDesigners } from '../composables/useDesigners';
+export { fetchFaces, useFaces } from '../composables/useFaces';
 export { useNumberAnimation } from '../composables/useNumberAnimation';
 export { useVideoVisibility } from '../composables/useVideoVisibility';
 export { getOptimizedImageUrl, preloadImage, preloadImages, getImageDimensions, getOptimizedImageAttributes } from '../utils/imageOptimization';

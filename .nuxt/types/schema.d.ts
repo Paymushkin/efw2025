@@ -166,7 +166,13 @@ declare module 'nuxt/schema' {
 
             route: string,
 
-            defaults: any,
+            defaults: {
+               changefreq: string,
+
+               priority: number,
+
+               lastmod: any,
+            },
 
             include: Array<any>,
 

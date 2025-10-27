@@ -1013,6 +1013,32 @@ const closeConfirmationModal = () => {
   showConfirmationModal.value = false;
 };
 
+// Calendar subscription function
+const openCalendarSubscription = () => {
+  // Calendar ID
+  const calendarId = 'a48ce6b68320071674bb11016e1486a03cc4e7c0a452cfc3b34503e26963c22c@group.calendar.google.com'
+  
+  // Определяем URL в зависимости от платформы
+  const getCalendarUrl = () => {
+    const userAgent = navigator.userAgent.toLowerCase()
+    
+    // Для iOS/macOS используем webcal (подписка)
+    if (userAgent.includes('iphone') || userAgent.includes('ipad') || userAgent.includes('mac')) {
+      return `webcal://calendar.google.com/calendar/ical/${encodeURIComponent(calendarId)}/public/basic.ics`
+    }
+    
+    // Для Android и остальных платформ используем Google Calendar subscription
+    return `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(calendarId)}`
+  }
+  
+  const targetUrl = getCalendarUrl()
+  
+  // Открываем подписку на календарь
+  window.open(targetUrl, '_blank')
+  
+  console.log('📅 Calendar subscription opened:', targetUrl)
+};
+
 // Submit registration
 const submitRegistration = async () => {
   // Prevent multiple submissions
@@ -1081,15 +1107,25 @@ const submitRegistration = async () => {
       console.log('Registration data sent (no-cors mode)');
     }
 
-    // Close registration modal and show confirmation
+    // Close registration modal and open calendar subscription
     showRegistrationModal.value = false;
-    showConfirmationModal.value = true;
+    
+    // Автоматически открываем подписку на календарь
+    console.log('✅ Registration successful! Opening calendar subscription...');
+    setTimeout(() => {
+      openCalendarSubscription();
+    }, 1000); // Небольшая задержка для UX
 
   } catch (error) {
     console.error('Registration failed:', error);
-    // Still show confirmation even if API fails
+    // Still redirect to calendar even if API fails
     showRegistrationModal.value = false;
-    showConfirmationModal.value = true;
+    
+    // Открываем подписку на календарь даже при ошибке
+    console.log('⚠️ Registration had issues, but opening calendar subscription...');
+    setTimeout(() => {
+      openCalendarSubscription();
+    }, 1000);
   } finally {
     // Always reset submitting state
     isSubmitting.value = false;
