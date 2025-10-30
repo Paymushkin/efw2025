@@ -1,7 +1,7 @@
 <template>
   <section class="md:mb-[76px] mb-[56px]">
     <div class="flex justify-between items-center mb-8 xl:mb-[75px]">
-      <h2 id="faces-of-efw" data-nosnippet class="text-xl md:text-3xl xl:text-4xl">Face of Emirates Fashion Week</h2>
+      <h2 id="faces-of-efw" data-nosnippet class="text-xl md:text-3xl xl:text-4xl md:max-w-full max-w-[80vw]">Face of Emirates Fashion Week</h2>
       <div class="flex items-center gap-4">
         <button 
           @click="handlePrev"
@@ -24,12 +24,12 @@
     
     <div class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0">
       <swiper
-        :modules="[Navigation, Pagination]"
+        :modules="[Navigation, Pagination, Autoplay]"
         :slides-per-view="1.2"
         :space-between="16"
         :navigation="false"
         :autoplay="{
-          // delay: 5000,
+          delay: 5000,
           disableOnInteraction: false
         }"
         :pagination="false"
@@ -69,8 +69,10 @@
               </span>
             </div>
             <div class="p-4">
-              <h3 class="text-lg font-semibold mb-4 text-center">{{ person.name }}</h3>
-              <div class="flex flex-wrap gap-1 md:gap-2 justify-center">
+              <h3 class="text-lg font-semibold text-center">{{ person.name }}</h3>
+              <div v-if="person.title" class="text-sm text-gray-800 text-center">{{ person.title }}</div>
+              <div v-if="person.subtitle" class="text-xs text-gray-500 text-center mb-4">{{ person.subtitle }}</div>
+              <div class="flex flex-wrap gap-1 md:gap-2 justify-center" :class="{ 'mt-4': !person.title && !person.subtitle }"
                 <a 
                   v-for="(link, linkIndex) in person.links" 
                   :key="linkIndex"
