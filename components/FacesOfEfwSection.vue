@@ -22,10 +22,10 @@
       </div>
     </div>
     
-    <div class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0">
+    <div class="overflow-x-auto hide-scrollbar md:px-0">
       <swiper
         :modules="[Navigation, Pagination, Autoplay]"
-        :slides-per-view="1.2"
+        :slides-per-view="1"
         :space-between="16"
         :navigation="false"
         :autoplay="{

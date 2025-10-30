@@ -33,11 +33,7 @@
       <div class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
         <ClientOnly>
           <ImageCarousel 
-            title="We invest in and support the economy of Dubai | UAE" 
-            :slidesPerView="6" 
-            :autoplay="true"
-            :autoplaySpeed="5000"
-            :gap="20"
+            title="We invest in and support the economy of Dubai | UAE"
           />
         </ClientOnly>
       </div>
