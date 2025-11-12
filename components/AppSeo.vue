@@ -1,3 +1,7 @@
+<template>
+  <!-- SEO компонент без визуального отображения -->
+</template>
+
 <script setup>
 import { computed } from 'vue'
 

@@ -13,7 +13,11 @@
     </div>
     <MarqueeSection :content="sponsors" class="mb-[56px] md:mb-[76px]" />
     <HowItWasSection id="previous-seasons" class="mb-[56px] md:mb-[76px]" />
-    <ProgramSection id="fall-winter-2025" class="md:mb-[56px] mb-[36px]" />
+    <div id="fall-winter-2025">
+      <ClientOnly>
+        <ProgramSection class="md:mb-[56px] mb-[36px]" />
+      </ClientOnly>
+    </div>
     <DesignersSection id="designers" class="md:mb-[76px] mb-[56px]" />
     <SponsorsSection id="partners-media" class="md:mb-[76px] mb-[56px]" />
     <StatisticsSection class="md:mb-[76px] mb-[56px]" />
