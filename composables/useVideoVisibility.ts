@@ -1,4 +1,5 @@
-import { onMounted, onUnmounted, Ref, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
+import type { Ref } from 'vue';
 
 // Overloaded function signatures
 export function useVideoVisibility(videoRef: Ref<HTMLVideoElement | null>): { isVisible: Ref<boolean> };
@@ -58,17 +59,17 @@ export function useVideoVisibility(videoRef?: Ref<HTMLVideoElement | null>) {
     if (videoRef?.value) {
       // Single video ref mode
       if (!observer) {
-        observer = new IntersectionObserver(handleIntersection, {
+    observer = new IntersectionObserver(handleIntersection, {
           threshold: 0.5,
           rootMargin: '50px'
-        });
+    });
       }
-      observer.observe(videoRef.value);
+    observer.observe(videoRef.value);
 
-      // Initial play attempt
-      videoRef.value.play().catch(() => {
-        console.log('Initial playback failed, might need user interaction');
-      });
+    // Initial play attempt
+    videoRef.value.play().catch(() => {
+      console.log('Initial playback failed, might need user interaction');
+    });
     }
   });
 
@@ -88,5 +89,5 @@ export function useVideoVisibility(videoRef?: Ref<HTMLVideoElement | null>) {
       cleanup,
       isVisible
     };
-  }
-}
+    }
+} 

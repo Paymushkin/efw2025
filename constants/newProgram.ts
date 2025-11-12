@@ -67,30 +67,30 @@ export const NEW_PROGRAM_TABS = [
   //      },
   //   ],
   // },
-  {
-    title: 'Pre-Launch',
-    date: '4 November 2025',
-    mobileDate: '4 Nov',
-    events: [
-      {
-        type: 'event',
-        time: '4 November',
-        place: 'Belcanto Dubai Opera',
-        description: 'Pre-Launch',
-        details: 'TUESDAY TONIGHT | EXCLUSIVE PRE-LAUNCH & PORTFOLIO EVENT — a special presentation introducing participating designers and brands.<br><strong>By Invitation Only</strong>',
-        buttonText: ' REQUEST INVITE >',
-        buttonLink: 'https://docs.google.com/forms/d/e/1FAIpQLSf9UiUI9FshAS-G9Ikkdj5Pq9DV3zkwtqdNdoNXeLxe2LQeEQ/viewform'
-       },
-    ],
-  },
+  // {
+  //   title: 'Pre-Launch',
+  //   date: '4 November 2025',
+  //   mobileDate: '4 Nov',
+  //   events: [
+  //     {
+  //       type: 'event',
+  //       time: '4 November',
+  //       place: 'Belcanto Dubai Opera',
+  //       description: 'Pre-Launch',
+  //       details: 'TUESDAY TONIGHT | EXCLUSIVE PRE-LAUNCH & PORTFOLIO EVENT — a special presentation introducing participating designers and brands.<br><strong>By Invitation Only</strong>',
+  //       buttonText: ' REQUEST INVITE >',
+  //       buttonLink: 'https://docs.google.com/forms/d/e/1FAIpQLSf9UiUI9FshAS-G9Ikkdj5Pq9DV3zkwtqdNdoNXeLxe2LQeEQ/viewform'
+  //      },
+  //   ],
+  // },
   { 
     title: 'Model Casting', 
-    date: '5-6 November 2025',
-    mobileDate: '5-6 Nov',
+    date: '5-10 November 2025',
+    mobileDate: '5-10 Nov',
     events: [
       {
         type: 'event',
-        time: '5-6 November',
+        time: '5-10 November',
         place: 'Disclosed to Attendees',
         description: `Model Casting`,
         details: `WEDNESDAY & THURSDAY | INTERNATIONAL MODEL CONFERENCE & CASTING EVENT — organized by MAG, bringing together aspiring models to sign the contracts with leading Top Agencies from Milan, Paris, London and New York and to start your real model career right at the event
@@ -139,11 +139,7 @@ export const NEW_PROGRAM_TABS = [
         time: '8 November',
         place: `Skylight Gallery,<br>Arjaan Dubai Media City`,
         description: `SATURDAY |  PRÊT-À-PORTER WOMEN'S & MEN'S COLLECTIONS SS 26`,
-        details: `<strong class="mb-2 block">By Invitation Only</strong>
-          <ul class="space-y-2 text-black" id="designers-day-8">
-            <!-- Дизайнеры будут загружены динамически -->
-          </ul>
-        `,
+        details: `<strong class="mb-2 block">By Invitation Only</strong>`,
         buttonText: 'REQUEST INVITE >',
         buttonLink: 'https://docs.google.com/forms/d/e/1FAIpQLSf9UiUI9FshAS-G9Ikkdj5Pq9DV3zkwtqdNdoNXeLxe2LQeEQ/viewform'
       },
@@ -153,11 +149,7 @@ export const NEW_PROGRAM_TABS = [
          time: '9 November',
          place: `Skylight Gallery,<br>Arjaan Dubai Media City`,
          description: `SUNDAY |  PRÊT-À-PORTER WOMEN'S & MEN'S COLLECTIONS SS 26`,
-         details: `<strong class="mb-2 block">By Invitation Only</strong>
-           <ul class="space-y-2 text-black" id="designers-day-9">
-             <!-- Дизайнеры будут загружены динамически -->
-           </ul>
-         `,
+         details: `<strong class="mb-2 block">By Invitation Only</strong>`,
          buttonText: 'REQUEST INVITE >',
          buttonLink: 'https://docs.google.com/forms/d/e/1FAIpQLSf9UiUI9FshAS-G9Ikkdj5Pq9DV3zkwtqdNdoNXeLxe2LQeEQ/viewform'
        },
@@ -202,6 +194,34 @@ export const NEW_PROGRAM_TABS = [
                 <span id="trial-waitlist-count-1" style="background-color: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">0</span>
               </a>
               </div>
+             <div class="mt-6">
+               <strong class="block mb-2">POP-UP MARKET BRANDS</strong>
+               <ul class="space-y-1 text-sm">
+                 <li>•FLOR DE LUNA</li>
+                 <li>•SARAH M</li>
+                 <li>•SNIM</li>
+                 <li>•ARTOGRAPH</li>
+                 <li>•PROSETA/ITALIA</li>
+                 <li>•ACQUADICOCCO</li>
+                 <li>•ETNO FRESH</li>
+                 <li>•MU</li>
+                 <li>•ALEVTINI</li>
+                 <li>•SOUTHWARD</li>
+                 <li>•NIMANY</li>
+                 <li>•HOUSE OD SOLANA</li>
+                 <li>•ARNI</li>
+                 <li>•MOON SOOUL</li>
+                 <li>•ANNET</li>
+                 <li>•RU-BASHKA</li>
+                 <li>•IRIM</li>
+                 <li>•OLGA BOGDANOVA</li>
+                 <li>•MARIANNE MOORE</li>
+                 <li>•SAIMA</li>
+                 <li>•SARA SAAKIAN</li>
+                 <li>•CASA JOHARA</li>
+                 <li>•BOULAS</li>
+               </ul>
+             </div>
          `,
       },
       {
@@ -240,6 +260,34 @@ export const NEW_PROGRAM_TABS = [
                 <span id="trial-waitlist-count-2" style="background-color: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">0</span>
               </a>
             </div>
+            <div class="mt-6">
+               <strong class="block mb-2">POP-UP MARKET BRANDS</strong>
+               <ul class="space-y-1 text-sm">
+                 <li>• FLOR DE LUNA</li>
+                 <li>•SARAH M</li>
+                 <li>•SNIM</li>
+                 <li>•ARTOGRAPH</li>
+                 <li>•PROSETA/ITALIA</li>
+                 <li>•ACQUADICOCCO</li>
+                 <li>•ETNO FRESH</li>
+                 <li>•MU</li>
+                 <li>•ALEVTINI</li>
+                 <li>•SOUTHWARD</li>
+                 <li>•NIMANY</li>
+                 <li>•HOUSE OD SOLANA</li>
+                 <li>•ARNI</li>
+                 <li>•MOON SOOUL</li>
+                 <li>•ANNET</li>
+                 <li>•RU-BASHKA</li>
+                 <li>•IRIM</li>
+                 <li>•OLGA BOGDANOVA</li>
+                 <li>•MARIANNE MOORE</li>
+                 <li>•SAIMA</li>
+                 <li>•SARA SAAKIAN</li>
+                 <li>•CASA JOHARA</li>
+                 <li>•BOULAS</li>
+               </ul>
+             </div>
          `,
       },
     ] 
@@ -272,6 +320,39 @@ export const NEW_PROGRAM_TABS = [
         description: `TUESDAY TONIGHT | VIP Brand Presentation at Dubai Opera — exclusive showcase for a distinguished audience`,
         details: `
           <strong>By Invitation Only</strong>
+          <div class="mt-6 space-y-4 text-left">
+            <p class="font-semibold uppercase tracking-[0.24em] text-[#5b6b7f] text-xs">Join us at Dubai Tech Tuesdays No. 71!</p>
+            <p class="text-sm text-[#2c3a4e] leading-relaxed">
+              Tuesday, 11 Nov 2025 • 18:00–23:30<br>
+              Belcanto Restaurant at Dubai Opera, Downtown Dubai
+            </p>
+            <p class="text-sm text-[#2c3a4e] leading-relaxed">
+              A special edition combining the Global Music Festival Pre-IMS Dubai + Emirates Fashion Week vibes. Expect:
+            </p>
+            <ul class="list-disc pl-4 space-y-2 text-sm text-[#2c3a4e]">
+              <li>• A live outdoor terrace performance by international host and singer Wim Hoste starting at 18:00.</li>
+              <li>• A high-level panel on entertainment industry &amp; festival production featuring NIKKA LORAK, Alexandra Busheva &amp; Arno Krimmer at 20:30.</li>
+              <li>• A fast-pitch session and presentation: Gaming, virtual fashion, phygital wearables.</li>
+              <li>• A catwalk show from Emirates Fashion Week and DJ set by Nikka Lorak.</li>
+              <li>• Networking, dinner, shisha &amp; drinks until 23:30.</li>
+            </ul>
+            <p class="text-sm text-[#2c3a4e] leading-relaxed">
+              Free entry for women. Men – AED 150 for three beverages. Dress to impress! Formal/business attire required (no shorts, sandals or sneakers).
+            </p>
+            <p class="text-sm text-[#2c3a4e] leading-relaxed">
+              Register early — access is token-verified and subject to approval.
+            </p>
+            <div>
+              <a
+                href="https://luma.com/DubaiTechTues71"
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center justify-center rounded-full bg-black px-6 py-3 text-sm font-semibold uppercase tracking-[0.24em] text-white transition hover:bg-[#1a1a1a]"
+              >
+                Join
+              </a>
+            </div>
+          </div>
         `,
       },
     ] 

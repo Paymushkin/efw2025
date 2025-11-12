@@ -1,5 +1,5 @@
-/// <reference types="@nuxtjs/sitemap" />
 /// <reference types="@nuxtjs/tailwindcss" />
+/// <reference types="@nuxtjs/sitemap" />
 /// <reference types="@nuxt/telemetry" />
 /// <reference types="@nuxt/devtools" />
 /// <reference path="types/builder-env.d.ts" />

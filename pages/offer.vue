@@ -53,28 +53,26 @@
     <section class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
       <h2 class="text-xl md:text-4xl xl:mb-[75px] md:mb-[50px] mb-7">SHOWCASE SPOT</h2>
       
-      <ClientOnly>
-        <div class="relative -mx-4 md:mx-0 mb-8">
-          <div class="flex md:grid md:grid-cols-2 gap-6 overflow-x-auto pb-4 md:pb-0 px-4 md:px-0 snap-x snap-mandatory">
-            <div class="relative aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
-              <video 
-                class="w-full h-full object-cover"
-                muted
-                autoplay
-                loop
-                playsinline
-                :poster="Image1"
-              >
-                <source src="https://storage.yandexcloud.net/videos-meyou/efw2025/promo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <div class="relative aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
-              <img :src="Image1" alt="Showcase interior" class="w-full h-full object-contain">
-            </div>
+      <div class="relative -mx-4 md:mx-0 mb-8">
+        <div class="flex md:grid md:grid-cols-2 gap-6 overflow-x-auto pb-4 md:pb-0 px-4 md:px-0 snap-x snap-mandatory">
+          <div class="relative aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
+            <video 
+              class="w-full h-full object-cover"
+              muted
+              autoplay
+              loop
+              playsinline
+              poster="@/assets/image/offer/stand-1.webp"
+            >
+              <source src="https://storage.yandexcloud.net/videos-meyou/efw2025/promo.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="relative aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
+            <img :src="Image1" alt="Showcase interior" class="w-full h-full object-contain">
           </div>
         </div>
-      </ClientOnly>
+      </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-10 md:gap-12 gap-7 mb-8">
         <div>
@@ -130,23 +128,21 @@
             <li>•<span class="line-through opacity-50"> 3,600 AED / 1,000$ </span> </li>
             <li>• 3,000 AED / 800$ / per day</li>
           </ul>
-          <ClientOnly>
-            <WhatsAppButton 
-              v-if="showWhatsApp"
-              :phone-number="whatsappNumber"
-              text="Contact us about Showcase spot"
-            />
-            <div v-if="showTrial">
-              <a 
-                href="#join-waitlist"
-                class="mt-3 inline-flex items-center gap-2 px-6 py-2.5 text-sm rounded-3xl transition-colors border border-black hover:bg-gray-100 w-fit"
-              >
-                <span>2h Free Trial Spot Waitlist</span>
-                <span id="trial-waitlist-count-offer-1" style="background-color: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">{{ companiesCount }}</span>
-                <span>></span>
-              </a>
-            </div>
-          </ClientOnly>
+          <WhatsAppButton 
+            v-if="showWhatsApp"
+            :phone-number="whatsappNumber"
+            text="Contact us about Showcase spot"
+          />
+          <div v-if="showTrial">
+            <a 
+              href="#join-waitlist"
+              class="mt-3 inline-flex items-center gap-2 px-6 py-2.5 text-sm rounded-3xl transition-colors border border-black hover:bg-gray-100 w-fit"
+            >
+              <span>2h Free Trial Spot Waitlist</span>
+              <span id="trial-waitlist-count-offer-1" style="background-color: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">{{ companiesCount }}</span>
+              <span>></span>
+            </a>
+          </div>
       </div>
       </div>
 
@@ -156,30 +152,28 @@
     <section class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
       <h2 class="text-xl md:text-4xl md:mb-[75px] mb-7">POP-UP DESIGNER CORNER</h2>
       
-      <ClientOnly>
-        <div class="relative -mx-4 md:mx-0 mb-8">
-          <div class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto pb-4 md:pb-0 px-4 md:px-0 snap-x snap-mandatory">
-            <div class="aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
-              <img :src="Image2" alt="Corner view 1" class="w-full h-full object-contain">
-            </div>
-            <div class="aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
-              <video 
-                class="w-full h-full object-cover"
-                muted
-                autoplay
-                loop
-                playsinline
-              >
-                <source src="https://storage.yandexcloud.net/videos-meyou/efw2025/2%20Corner%20EFW-vmake.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <div class="aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
-              <img :src="Image4" alt="Corner view 3" class="w-full h-full object-contain">
-            </div>
+      <div class="relative -mx-4 md:mx-0 mb-8">
+        <div class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto pb-4 md:pb-0 px-4 md:px-0 snap-x snap-mandatory">
+          <div class="aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
+            <img :src="Image2" alt="Corner view 1" class="w-full h-full object-contain">
+          </div>
+          <div class="aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
+            <video 
+              class="w-full h-full object-cover"
+              muted
+              autoplay
+              loop
+              playsinline
+            >
+              <source src="https://storage.yandexcloud.net/videos-meyou/efw2025/2%20Corner%20EFW-vmake.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="aspect-[907/1030] bg-gray-100 rounded-2xl overflow-hidden min-w-[85%] md:min-w-0 snap-center">
+            <img :src="Image4" alt="Corner view 3" class="w-full h-full object-contain">
           </div>
         </div>
-      </ClientOnly>
+      </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <div>
@@ -214,23 +208,21 @@
             <li>•<span class="line-through opacity-50"> 2,200 AED / 600$ </span> </li>
             <li>• 1,800 AED / 500$ / per day</li>
           </ul>
-          <ClientOnly>
-            <WhatsAppButton 
-              v-if="showWhatsApp"
-              :phone-number="whatsappNumber"
-              text="Contact us about Corner"
-            />
-            <div v-if="showTrial">
-              <a 
-                href="#join-waitlist"
-                class="mt-3 inline-flex items-center gap-2 px-6 py-2.5 text-sm rounded-3xl transition-colors border border-black hover:bg-gray-100 w-fit"
-              >
-                <span>2h Free Trial Spot Waitlist</span>
-                <span id="trial-waitlist-count-offer-2" style="background-color: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">{{ companiesCount }}</span>
-                <span>></span>
-              </a>
-            </div>
-          </ClientOnly>
+          <WhatsAppButton 
+            v-if="showWhatsApp"
+            :phone-number="whatsappNumber"
+            text="Contact us about Corner"
+          />
+          <div v-if="showTrial">
+            <a 
+              href="#join-waitlist"
+              class="mt-3 inline-flex items-center gap-2 px-6 py-2.5 text-sm rounded-3xl transition-colors border border-black hover:bg-gray-100 w-fit"
+            >
+              <span>2h Free Trial Spot Waitlist</span>
+              <span id="trial-waitlist-count-offer-2" style="background-color: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 12px; font-weight: bold;">{{ companiesCount }}</span>
+              <span>></span>
+            </a>
+          </div>
       </div>
       </div>
 
@@ -420,19 +412,14 @@
       </div>
       </section>
 
-      <ClientOnly>
-        <PhotoGallery />
-      </ClientOnly>
+      <PhotoGallery />
 
       <!-- FAQ Section -->
       <div class="mt-12">
-        <ClientOnly>
-          <FaqSectionDynamic :standalone="false" />
-        </ClientOnly>
+        <FaqSectionDynamic :standalone="false" />
       </div>
 
-     <ClientOnly>
-       <div v-if="showTrial" class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
+     <div v-if="showTrial" class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
        <h2 class="text-xl md:text-4xl mb-[75px]">TRIAL SHOWCASE SPOTS</h2>
        
        <div class="space-y-6 mb-8">
@@ -486,36 +473,27 @@
        
        <!-- Companies List -->
        <div class="mt-12">
-         <ClientOnly>
-           <CompaniesList ref="companiesListRef" @companies-count-updated="updateCompaniesCount" />
-         </ClientOnly>
+         <CompaniesList ref="companiesListRef" @companies-count-updated="updateCompaniesCount" />
        </div>
 
       <!-- Approved Companies List -->
-      <ClientOnly>
-        <div v-if="showApproved" class="mt-12">
-          <ApprovedCompaniesList ref="approvedCompaniesListRef" @companies-count-updated="updateApprovedCount" />
-        </div>
-      </ClientOnly>
+      <div v-if="showApproved" class="mt-12">
+        <ApprovedCompaniesList ref="approvedCompaniesListRef" @companies-count-updated="updateApprovedCount" />
+      </div>
 
     </div>
-    </ClientOnly>
 
      
    </div>
 
    <!-- Waitlist Form Modal -->
-    <ClientOnly>
-      <WaitlistForm
-        :is-open="showWaitlistForm" 
-        @close="showWaitlistForm = false"
-        @success="handleWaitlistSuccess"
-      />
-    </ClientOnly>
+    <WaitlistForm
+      :is-open="showWaitlistForm" 
+      @close="showWaitlistForm = false"
+      @success="handleWaitlistSuccess"
+    />
 
-    <ClientOnly>
-      <GalleryIframe :show-fog="false" />
-    </ClientOnly>
+    <GalleryIframe :show-fog="false" />
     
     <!-- Bottom anchor for scrolling -->
     <div id="bottom"></div>
@@ -564,29 +542,28 @@ const approvedCount = ref(0)
 const updateCompaniesCount = (count) => {
   updateGlobalCount(count)
   
-  if (process.client) {
-    // Обновляем счетчики в программе на главной странице
-    const trialCountElement1 = document.getElementById('trial-waitlist-count-1')
-    if (trialCountElement1) {
-      trialCountElement1.textContent = count
-    }
-    
-    const trialCountElement2 = document.getElementById('trial-waitlist-count-2')
-    if (trialCountElement2) {
-      trialCountElement2.textContent = count
-    }
-    
-    // Обновляем счетчики на странице offer
-    const trialCountOffer1 = document.getElementById('trial-waitlist-count-offer-1')
-    if (trialCountOffer1) {
-      trialCountOffer1.textContent = count
-    }
-    
-    const trialCountOffer2 = document.getElementById('trial-waitlist-count-offer-2')
-    if (trialCountOffer2) {
-      trialCountOffer2.textContent = count
-    }
+  // Обновляем счетчики в программе на главной странице
+  const trialCountElement1 = document.getElementById('trial-waitlist-count-1')
+  if (trialCountElement1) {
+    trialCountElement1.textContent = count
   }
+  
+  const trialCountElement2 = document.getElementById('trial-waitlist-count-2')
+  if (trialCountElement2) {
+    trialCountElement2.textContent = count
+  }
+  
+  // Обновляем счетчики на странице offer
+  const trialCountOffer1 = document.getElementById('trial-waitlist-count-offer-1')
+  if (trialCountOffer1) {
+    trialCountOffer1.textContent = count
+  }
+  
+  const trialCountOffer2 = document.getElementById('trial-waitlist-count-offer-2')
+  if (trialCountOffer2) {
+    trialCountOffer2.textContent = count
+  }
+  
 }
 
 // Функция для обновления счетчика одобренных компаний
@@ -615,29 +592,25 @@ const scrollToBottom = () => {
       console.log(`Scroll attempt ${index + 1} after ${delay}ms`)
       
       // Простой и надежный способ
-      if (process.client) {
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+      })
+      
+      // Дополнительная попытка через 100ms
+      setTimeout(() => {
         window.scrollTo({
           top: document.body.scrollHeight,
           behavior: 'smooth'
         })
-        
-        // Дополнительная попытка через 100ms
-        setTimeout(() => {
-          if (process.client) {
-            window.scrollTo({
-              top: document.body.scrollHeight,
-              behavior: 'smooth'
-            })
-          }
-        }, 100)
-      }
+      }, 100)
     }, delay)
   })
 }
 
 // Автоматический скролл при наличии параметра waitlist
 onMounted(async () => {
-  if (process.client && showWaitlist.value) {
+  if (showWaitlist.value) {
     // Сразу начинаем скролл
     scrollToBottom()
   }

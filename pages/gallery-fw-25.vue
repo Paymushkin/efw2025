@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto px-5 py-10 md:py-16">
-    <h1 class="text-3xl md:text-4xl xl:text-5xl mb-10 md:mb-16">14th Season Spring Summer 26</h1>
+    <h1 class="text-3xl md:text-4xl xl:text-5xl mb-10 md:mb-16">13th Season Fall Winter 25</h1>
 
     <div v-if="isLoading" class="flex items-center justify-center py-10 text-gray-500">
       Loading galleries…
@@ -28,26 +28,26 @@ import PhotographerBlock from '@/components/PhotographerBlock.vue';
 import { usePhotographers } from '~/composables/usePhotographers';
 
 useHead({
-  title: 'Gallery SS 2026 — Emirates Fashion Week Dubai',
+  title: 'Gallery FW 2025 — Emirates Fashion Week Dubai',
   meta: [
     {
       name: 'description',
       content:
-        'Spring/Summer 2026 gallery of Emirates Fashion Week Dubai. Browse photo and video highlights from runway shows, designers, and special events.',
+        'Autumn/Winter 2025 gallery of Emirates Fashion Week Dubai. View exclusive photos from runway shows, designer collections, and behind-the-scenes moments.',
     },
     {
       name: 'keywords',
       content:
-        'Emirates Fashion Week Gallery, SS26 Dubai Fashion Photos, Spring Summer Runway Images, Dubai Fashion Week Media',
+        'Emirates Fashion Week Gallery FW25, Dubai Fashion Photos, Fashion Show Gallery, Runway Photos Dubai, Fashion Week Images',
     },
     {
       property: 'og:title',
-      content: 'Gallery SS 2026 — Emirates Fashion Week Dubai',
+      content: 'Gallery FW 2025 — Emirates Fashion Week Dubai',
     },
     {
       property: 'og:description',
       content:
-        'Spring/Summer 2026 gallery of Emirates Fashion Week Dubai. Browse photo and video highlights from runway shows, designers, and special events.',
+        'Autumn/Winter 2025 gallery of Emirates Fashion Week Dubai. View exclusive photos from runway shows, designer collections, and behind-the-scenes moments.',
     },
     {
       property: 'og:image',
@@ -64,10 +64,7 @@ useHead({
   ],
 });
 
-const { photographers, isLoading, errorMessage, fetchPhotographers } = usePhotographers({
-  sheetId: '13bnAmO2lUWaA55k6bOZ-oYH-t9LxRcdXBFkEGMG5MUA',
-  initialData: [],
-});
+const { photographers, isLoading, errorMessage, fetchPhotographers } = usePhotographers();
 
 onMounted(() => {
   fetchPhotographers();

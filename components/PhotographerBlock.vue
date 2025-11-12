@@ -2,9 +2,20 @@
   <div class="photographer-block mb-16 md:mb-24">
     <div class="mb-6 md:mb-8 flex justify-between items-center">
       <div>
-        <h3 class="text-xl md:text-2xl font-medium  md:mb-2 mb-1">{{ photographer.name }}</h3>
+        <h3 class="text-xl md:text-2xl font-medium md:mb-2 mb-1">{{ photographer.name }}</h3>
         <p class="md:text-xl text-gray-600">{{ photographer.profession }}</p>
       </div>
+      <div class="flex items-center gap-3">
+        <a
+          v-if="instagramUrl"
+          :href="instagramUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center hover:opacity-70 transition-opacity h-[40px]"
+          :aria-label="`${photographer.name} on Instagram`"
+        >
+          <InstagramIcon />
+        </a>
       <NuxtLink 
         v-if="photographer.galleryUrl" 
         :to="photographer.galleryUrl" 
@@ -16,6 +27,7 @@
           <span>></span>
         </BaseButton>
       </NuxtLink>
+      </div>
     </div>
     
     <!-- Desktop version -->
@@ -85,9 +97,11 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
+import InstagramIcon from '@/components/icons/InstagramIcon.vue';
 
-defineProps({
+const props = defineProps({
   photographer: {
     type: Object,
     required: true
@@ -97,6 +111,23 @@ defineProps({
 const isVideo = (url) => {
   return url.endsWith('.mp4') || url.endsWith('.webm') || url.endsWith('.ogg');
 };
+
+const instagramUrl = computed(() => {
+  if (!props.photographer.instagram) return null;
+  
+  const inst = props.photographer.instagram.trim();
+  
+  // Если уже полная ссылка
+  if (inst.startsWith('http://') || inst.startsWith('https://')) {
+    return inst;
+  }
+  
+  // Если начинается с @, убираем его
+  const username = inst.startsWith('@') ? inst.slice(1) : inst;
+  
+  // Формируем ссылку на Instagram
+  return `https://www.instagram.com/${username}/`;
+});
 </script>
 
 <style scoped>

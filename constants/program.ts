@@ -138,199 +138,250 @@ export const PROGRAM_TABS = [
     {
       type: 'event',
       time: '13 April | 6 PM',
-      description: 'Anastasiya Boyarskaya /Russia/',
+      description: 'Fashion Show',
+      details: `
+        <details class="mt-2">
+          <summary class="cursor-pointer font-semibold mb-2">Designers List</summary>
+          <ul class="space-y-2 text-black mt-2">
+            <li>Anastasiya Boyarskaya /Russia/</li>
+            <li>Osmosiss /Italy/</li>
+            <li>Katharina Arnold /Germany/</li>
+            <li>SNIM /Russia/</li>
+            <li>Tanya Tuzova /Russia/</li>
+            <li>Danatalla /Belarus/</li>
+            <li>Kibovskaya /Russia/</li>
+            <li>Nermin /UAE/</li>
+            <li>Aisha /Azerbaijan/</li>
+            <li>Borovik /Russia/</li>
+            <li>By Osmanova /Azerbaijan/</li>
+            <li>Sylweriusz Stanislawski</li>
+            <li>Alessandro Borreli /Russia/</li>
+            <li>Marina Mirova /Russia/</li>
+            <li>Alla Couture /Russia/</li>
+            <li>Bolero /Russia/</li>
+            <li>Raisa Miroshnichenko /Russia/</li>
+            <li>Zain /Iraq/</li>
+            <li>Show Stylists</li>
+            <li>Alisia Fiori /Russia/</li>
+            <li>Etno Fresh /Russia/</li>
+            <li>Sundus /Oman/</li>
+            <li>Top Tato /Saudi Arabia/</li>
+            <li>Icona Style /Armenia/</li>
+            <li>Boulas /Russia/</li>
+            <li>G'nFayth /Philippines/</li>
+            <li>Marina Undrits /Russia/</li>
+            <li>Triskelon /Russia/</li>
+            <li>Nadia</li>
+            <li>Feminelli /Russia/</li>
+            <li>Addicted /Russia/</li>
+            <li>Alexandra Fashion House</li>
+            <li>Orchidea Nera by Lamoo /Saudi Arabia/</li>
+            <li>Luna Collection /Russia/</li>
+            <li>Malikabegim /Uzbekistan/</li>
+            <li>Zaggaro /Romania/</li>
+            <li>Irmi /Russia/</li>
+            <li>Two Kids /Romania/</li>
+            <li>Elena Romanova /Russia/</li>
+          </ul>
+        </details>
+        `,
     },
-    {
-      type: 'event',
-      time: '13 April | 6 PM',
-      description: "Osmosiss /Italy/",
-    },
-    {
-      type: 'event',
-      time: '13 April | 6 PM',
-      description: 'Katharina Arnold /Germany/',
-    },
-    {
-      type: 'event',
-      time: '13 April | 6 PM',
-      description: 'SNIM /Russia/',
-    },
-    FASHION_SHOW_SPONSOR,
-    {
-      type: 'event',
-      time: '13 April | 6 PM',
-      description: 'Tanya Tuzova /Russia/',
-    },
-    {
-      type: 'event',
-      time: '13 April | 6 PM',
-      description: 'Danatalla /Belarus/',
-    },
-    {
-      type: 'event',
-      time: '13 April | 6 PM',
-      description: 'Kibovskaya /Russia/',
-    },
-    {
-      type: 'event',
-      time: '13 April | 6 PM',
-      description: 'Nermin /UAE/',
-    },
-    {
-      type: 'event',
-      time: '13 April | 6 PM',
-      description: 'Aisha /Azerbaijan/',
-    },
-    {
-      type: 'event',
-      time: '13 April | 6 PM',
-      description: 'Borovik /Russia/',
-    },
-    {
-      type: 'event',
-      time: '13 April | 8 PM',
-      description: 'By Osmanova /Azerbaijan/',
-    },
-    {
-      type: 'event',
-      time: '13 April | 8 PM',
-      description: 'Sylweriusz Stanislawski',
-    },
-    {
-      type: 'event',
-      time: '13 April | 8 PM',
-      description: 'Alessandro Borreli /Russia/',
-    },
-    {
-      type: 'event',
-      time: '13 April | 8 PM',
-      description: ' Marina Mirova /Russia/',
-    },
-    {
-      type: 'event',
-      time: '13 April | 8 PM',
-      description: 'Alla Couture /Russia/',
-    },
-    {
-      type: 'event',
-      time: '13 April | 8 PM',
-      description: 'Bolero /Russia/',
-    },
-    {
-      type: 'event',
-      time: '13 April | 8 PM',
-      description: 'Raisa Miroshnichenko /Russia/',
-    },
-    {
-      type: 'event',
-      time: '13 April | 8 PM',  
-      description: 'Zain /Iraq/',
-    },
-    {
-      type: 'event',
-      time: '13 April | 8 PM',
-      description: 'Show Stylists',
-    },
-    {
-      type: 'event',
-      time: '14 April | 6 PM',
-      description: 'Alisia Fiori /Russia/',
-    },
-    {
-      type: 'event',
-      time: '14 April | 6 PM',
-      description: 'Etno Fresh /Russia/',
-    },
-    {
-      type: 'event',
-      time: '14 April | 6 PM',
-      description: 'Sundus /Oman/',
-    },
-    {
-      type: 'event',
-      time: '14 April | 6 PM',
-      description: 'Top Tato /Saudi Arabia/',
-    },
-    {
-      type: 'event',
-      time: '14 April | 6 PM',
-      description: 'Icona Style /Armenia/',
-    },
-    {
-      type: 'event',
-      time: '14 April | 6 PM',
-      description: 'Boulas /Russia/',
-    },
-    {
-      type: 'event',
-      time: '14 April | 6 PM',
-      description: 'G’nFayth /Philippines/',
-    },
-    {
-      type: 'event',
-      time: '14 April | 6 PM',
-      description: 'Marina Undrits /Russia/',
-    },
-    {
-      type: 'event',
-      time: '14 April | 6 PM',
-      description: 'Triskelon /Russia/',
-    },
-    {
-      type: 'event',  
-      time: '14 April | 6 PM',
-      description: 'Nadia',
-    },
-    {
-      type: 'event',
-      time: '14 April | 8 PM',
-      description: 'Feminelli /Russia/', 
-    },
-    {
-      type: 'event',
-      time: '14 April | 8 PM',
-      description: 'Addicted /Russia/', 
-    },
-    {
-      type: 'event',
-      time: '14 April | 8 PM',
-      description: 'Alexandra Fashion House', 
-    },
-    {
-      type: 'event',
-      time: '14 April | 8 PM',
-      description: 'Orchidea Nera by Lamoo /Saudi Arabia/', 
-    },
-    {
-      type: 'event',
-      time: '14 April | 8 PM',
-      description: 'Luna Collection /Russia/', 
-    },
-    {
-      type: 'event',
-      time: '14 April | 8 PM',
-      description: 'Malikabegim /Uzbekistan/', 
-    },
-    {
-      type: 'event',
-      time: '14 April | 8 PM',
-      description: 'Zaggaro /Romania/', 
-    },
-    {
-      type: 'event',
-      time: '14 April | 8 PM',
-      description: 'Irmi /Russia/', 
-    },
-    {
-      type: 'event',
-      time: '14 April | 8 PM',
-      description: 'Two Kids /Romania/', 
-    },
-    {
-      type: 'event',
-      time: '14 April | 8 PM',  
-      description: 'Elena Romanova /Russia/',
-    },
+    // {
+    //   type: 'event',
+    //   time: '13 April | 6 PM',
+    //   description: 'Anastasiya Boyarskaya /Russia/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '13 April | 6 PM',
+    //   description: "Osmosiss /Italy/",
+    // },
+    // {
+    //   type: 'event',
+    //   time: '13 April | 6 PM',
+    //   description: 'Katharina Arnold /Germany/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '13 April | 6 PM',
+    //   description: 'SNIM /Russia/',
+    // },
+    // FASHION_SHOW_SPONSOR,
+    // {
+    //   type: 'event',
+    //   time: '13 April | 6 PM',
+    //   description: 'Tanya Tuzova /Russia/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '13 April | 6 PM',
+    //   description: 'Danatalla /Belarus/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '13 April | 6 PM',
+    //   description: 'Kibovskaya /Russia/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '13 April | 6 PM',
+    //   description: 'Nermin /UAE/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '13 April | 6 PM',
+    //   description: 'Aisha /Azerbaijan/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '13 April | 6 PM',
+    //   description: 'Borovik /Russia/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '13 April | 8 PM',
+    //   description: 'By Osmanova /Azerbaijan/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '13 April | 8 PM',
+    //   description: 'Sylweriusz Stanislawski',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '13 April | 8 PM',
+    //   description: 'Alessandro Borreli /Russia/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '13 April | 8 PM',
+    //   description: ' Marina Mirova /Russia/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '13 April | 8 PM',
+    //   description: 'Alla Couture /Russia/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '13 April | 8 PM',
+    //   description: 'Bolero /Russia/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '13 April | 8 PM',
+    //   description: 'Raisa Miroshnichenko /Russia/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '13 April | 8 PM',  
+    //   description: 'Zain /Iraq/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '13 April | 8 PM',
+    //   description: 'Show Stylists',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 6 PM',
+    //   description: 'Alisia Fiori /Russia/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 6 PM',
+    //   description: 'Etno Fresh /Russia/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 6 PM',
+    //   description: 'Sundus /Oman/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 6 PM',
+    //   description: 'Top Tato /Saudi Arabia/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 6 PM',
+    //   description: 'Icona Style /Armenia/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 6 PM',
+    //   description: 'Boulas /Russia/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 6 PM',
+    //   description: 'G’nFayth /Philippines/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 6 PM',
+    //   description: 'Marina Undrits /Russia/',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 6 PM',
+    //   description: 'Triskelon /Russia/',
+    // },
+    // {
+    //   type: 'event',  
+    //   time: '14 April | 6 PM',
+    //   description: 'Nadia',
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 8 PM',
+    //   description: 'Feminelli /Russia/', 
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 8 PM',
+    //   description: 'Addicted /Russia/', 
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 8 PM',
+    //   description: 'Alexandra Fashion House', 
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 8 PM',
+    //   description: 'Orchidea Nera by Lamoo /Saudi Arabia/', 
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 8 PM',
+    //   description: 'Luna Collection /Russia/', 
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 8 PM',
+    //   description: 'Malikabegim /Uzbekistan/', 
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 8 PM',
+    //   description: 'Zaggaro /Romania/', 
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 8 PM',
+    //   description: 'Irmi /Russia/', 
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 8 PM',
+    //   description: 'Two Kids /Romania/', 
+    // },
+    // {
+    //   type: 'event',
+    //   time: '14 April | 8 PM',  
+    //   description: 'Elena Romanova /Russia/',
+    // },
     
   ] },
   { title: 'Beauty Expo', date: '15 April 2025', mobileDate: '15 Apr', events: [

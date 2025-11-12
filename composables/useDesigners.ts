@@ -88,21 +88,33 @@ export const useDesigners = () => {
     }
   };
 
-  // Функция для маскирования имени (отключена - возвращает оригинальное имя)
+  // Функция для маскирования имени
   const maskName = (name: string): string => {
-    // Возвращаем оригинальное имя без маскировки
-    return name || '';
+    if (!name) return '';
+    
+    const words = name.split(' ');
+    return words.map(word => {
+      if (word.length <= 2) {
+        return word.charAt(0) + '*'.repeat(word.length - 1);
+      }
+      
+      const firstChar = word.charAt(0);
+      const lastChar = word.length > 1 ? word.charAt(word.length - 1) : '';
+      const middleStars = '*'.repeat(Math.max(1, word.length - 2));
+      
+      return firstChar + middleStars + (lastChar ? lastChar : '');
+    }).join(' ');
   };
 
   // Функция для форматирования дизайнера для отображения
   const formatDesigner = (designer: any): string => {
-    const maskedName = maskName(designer.name);
+    const name = designer.name; // Убираем маскировку, показываем полное имя
     const country = designer.country;
     
     if (designer.confirmed) {
-      return `• ${maskedName} - ${country}`;
+      return `• ${name} - ${country}`;
     } else {
-      return `• ${maskedName} - ${country} *PENDING MUTUAL APPROVAL`;
+      return `• ${name} - ${country} *PENDING MUTUAL APPROVAL`;
     }
   };
 

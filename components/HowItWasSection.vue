@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto">
-  <h2 id="previous-seasons" data-nosnippet class="text-xl md:text-3xl xl:text-4xl scroll-mt-[120px] md:scroll-mt-[100px]">PREVIOUS 13 SEASONS</h2>
+  <h2 id="previous-seasons" data-nosnippet class="text-xl md:text-3xl xl:text-4xl scroll-mt-[120px] md:scroll-mt-[100px]">14 SEASONS</h2>
     <p class="text-sm md:text-base xl:text-xl mb-4 xl:mb-8 md:mb-6">collections</p>
     <div 
       class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0 xl:mb-5 md:mb-4 mb-3 cursor-grab active:cursor-grabbing" 
@@ -42,7 +42,7 @@
           }"
         >
           <div class="flex flex-col gap-5">
-            <NuxtLink to="/gallery">
+            <NuxtLink to="/gallery-ss-26">
               <img 
                 v-bind="getOptimizedImageAttributes(image, tabs[currentTab].designers[index])"
                 class="w-full h-full object-cover transition-all duration-700 ease-in-out"
@@ -133,7 +133,7 @@ const stopDrag = () => {
 
 const handleMouseLeave = () => {
   stopDrag();
-  startAutoPlay();
+  // startAutoPlay();
 };
 
 const selectTab = (index) => {
@@ -180,7 +180,7 @@ const startAutoPlay = () => {
         isTransitioning.value = false;
       }, 100);
     }, 200);
-  }, 5000); // 5 секунд
+  }, 500000); // 5 секунд
 };
 
 const stopAutoPlay = () => {

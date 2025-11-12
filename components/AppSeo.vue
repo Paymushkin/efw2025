@@ -1,7 +1,6 @@
 <template></template>
 
 <script setup>
-// Основной канонический домен для SEO (ОСНОВНОЙ САЙТ - с "s")
 const CANONICAL_DOMAIN = 'https://emiratesfashionweeks.com'
 
 const props = defineProps({
@@ -15,7 +14,7 @@ const props = defineProps({
   },
   image: {
     type: String,
-    default: `${CANONICAL_DOMAIN}/seo-poster.png`
+    default: `${CANONICAL_DOMAIN}/seo-poster-wa.png?v=2`
   },
   keywords: {
     type: String,
@@ -27,18 +26,22 @@ const route = useRoute()
 const canonicalPath = route.path === '/'
   ? '/'
   : (route.path.endsWith('/') ? route.path : route.path + '/')
+const canonicalUrl = `${CANONICAL_DOMAIN}${canonicalPath}`
 
 useHead({
   title: props.title,
   meta: [
-    // ВАЖНО: Этот сайт (emiratesfashionweek.com без "s") - дублирующий
-    // Запрещаем индексацию, чтобы не мешать основному сайту
-    { name: 'robots', content: 'noindex, nofollow' },
-    { name: 'description', content: props.description },
-    { property: 'og:type', content: 'website' },
+    {
+      name: 'robots',
+      content: 'noindex, nofollow'
+    },
+    {
+      name: 'description',
+      content: props.description
+    },
     {
       property: 'og:url',
-      content: `${CANONICAL_DOMAIN}${canonicalPath}`
+      content: canonicalUrl
     },
     {
       property: 'og:title',
@@ -47,14 +50,6 @@ useHead({
     {
       property: 'og:description',
       content: props.description
-    },
-    {
-      property: 'og:site_name',
-      content: 'Emirates Fashion Week'
-    },
-    {
-      property: 'og:locale',
-      content: 'en_US'
     },
     {
       property: 'og:image',
@@ -85,6 +80,18 @@ useHead({
       content: props.keywords
     },
     {
+      property: 'og:type',
+      content: 'website'
+    },
+    {
+      property: 'og:site_name',
+      content: 'Emirates Fashion Week'
+    },
+    {
+      property: 'og:locale',
+      content: 'en_US'
+    },
+    {
       name: 'twitter:card',
       content: 'summary_large_image'
     },
@@ -96,7 +103,7 @@ useHead({
   link: [
     {
       rel: 'canonical',
-      href: `${CANONICAL_DOMAIN}${canonicalPath}`
+      href: canonicalUrl
     }
   ],
   script: [
@@ -129,7 +136,7 @@ useHead({
         url: CANONICAL_DOMAIN,
         potentialAction: {
           '@type': 'SearchAction',
-          target: `https://www.google.com/search?q=site:www.emiratesfashionweek.com+{search_term_string}`,
+          target: 'https://www.google.com/search?q=site:emiratesfashionweeks.com+{search_term_string}',
           'query-input': 'required name=search_term_string'
         }
       })

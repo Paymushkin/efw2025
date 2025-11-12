@@ -1,7 +1,7 @@
 <template>
   <section id="faces" class="relative flex flex-col min-h-screen overflow-hidden">
     <div class="container mx-auto xl:mb-[76px] md:mb-8 mb-[36px]">
-      <h2 class="text-xl md:text-3xl xl:text-4xl">Faces of Emirates Fashion Week</h2>
+      <h2 class="text-xl md:text-3xl xl:text-4xl">Faces of Fashion Week</h2>
     </div>
     <div class="relative flex flex-col min-h-screen overflow-hidden">
       <video

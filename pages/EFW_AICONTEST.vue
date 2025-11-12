@@ -80,7 +80,7 @@
           <div class="bg-white rounded-2xl p-6 shadow-lg">
             <h3 class="text-base md:text-xl xl:text-2xl font-bold mb-4">Optional</h3>
             <ul class="text-sm md:text-base xl:text-lg space-y-2">
-              <li>• May use past EFW looks/highlights <a href="https://emiratesfashionweeks.com/gallery" class="text-blue-600 underline" target="_blank">Gallery</a> and designers' looks.</li>
+              <li>• May use past EFW looks/highlights <a href="https://emiratesfashionweeks.com/gallery-ss-26" class="text-blue-600 underline" target="_blank">Gallery</a> and designers' looks.</li>
               <li>• May use program note: <strong>8–9&nbsp;Nov</strong> Catwalk&nbsp;Runway · <strong>10–11&nbsp;Nov</strong> Pop-up&nbsp;Market (Beauty&nbsp;& Wellness).</li>
               <li>• <strong>Face of EFW:</strong> you may use faces listed in the authorized pool; the list will expand over time.</li>
               <li>• <strong>Reference assets below:</strong> venue/location photos and Faces of EFW images are provided as <strong>optional</strong> references. <strong>You do not have to use any or all</strong> of them — your creativity is not restricted.</li>
@@ -351,17 +351,18 @@ const totalPages = computed(() => {
 
 // Функция для определения количества видимых Reels в зависимости от размера экрана (только для десктопа)
 const updateVisibleReels = () => {
-  if (typeof window === 'undefined') return;
-  const width = window.innerWidth
-  if (width >= 1024) { // lg и выше - десктоп
-    if (width >= 1280) { // xl
-      visibleReels.value = 3
-    } else { // lg
-      visibleReels.value = 2
+  if (typeof window !== 'undefined') {
+    const width = window.innerWidth
+    if (width >= 1024) { // lg и выше - десктоп
+      if (width >= 1280) { // xl
+        visibleReels.value = 3
+      } else { // lg
+        visibleReels.value = 2
+      }
+    } else {
+      // Для мобильных и планшетов карусель не используется
+      visibleReels.value = 1
     }
-  } else {
-    // Для мобильных и планшетов карусель не используется
-    visibleReels.value = 1
   }
 }
 

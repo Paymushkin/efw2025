@@ -148,29 +148,36 @@ import ContactForm from './ContactForm.vue';
 const router = useRouter();
 
 const menuLinks = [
-  { name: 'HOW IT WAS', href: '/#fall-winter-2025', id: 'fall-winter-2025' },
+  { name: 'MAGAZINE', href: 'https://magazine.emiratesfashionweek.com', id: 'magazine' },
+  { name: '14 SEASONS', href: '/#previous-seasons', id: 'previous-seasons' },
+  { name: 'PREVIOUS 13th', href: '/#fall-winter-2025', id: 'fall-winter-2025' },
   // { name: 'SCHEDULE', href: '/#program', id: 'program' },
   { name: 'DESIGNERS', href: '/#designers', id: 'designers' },
-  { name: 'FACES', href: '/#faces-efw', id: 'faces' },
+  { name: 'FACES', href: '/#faces-efw', id: 'faces-efw' },
   { name: 'FEATURES', href: '/features', id: 'features' },
   { name: 'TRIAL SHOWCASE SPOTS', href: '/trial', id: 'trial' },
-  { name: 'AWARDS', href: 'https://deluxebeauty.world/', id: 'awards' },
+  { name: 'AWARDS', href: '/awards', id: 'awards' },
   { name: 'OFFER', href: '/offer', id: 'offer' },
   { name: 'WIDGET GUIDE', href: '/widget', id: 'widget-guide' },
   { name: 'AI CONTEST', href: '/EFW_AICONTEST', id: 'ai-contest' },
   { name: 'FAQ', href: '/faq', id: 'faq' },
   // { name: 'TEAM', href: '/team', id: 'team' },
-  { name: 'GALLERY', href: '/gallery', id: 'gallery' },
+  { name: 'GALLERY', href: '/gallery-ss-26', id: 'gallery' },
 ];
 
 const scrollToSection = (href) => {
-  // Если ссылка начинается с "/", это ссылка на другую страницу
+  if (!href) return;
+
+  if (/^https?:\/\//i.test(href)) {
+    window.location.href = href;
+    return;
+  }
+
   if (href.startsWith('/')) {
     router.push(href);
     return;
   }
   
-  // Иначе это якорь на текущей странице
   const element = document.querySelector(href);
   if (element) {
     element.scrollIntoView({ 

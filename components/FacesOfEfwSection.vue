@@ -69,10 +69,10 @@
               </span>
             </div>
             <div class="p-4">
-              <h3 class="text-lg font-semibold text-center">{{ person.name }}</h3>
+              <h3 class="text-lg font-semibold mb-1 text-center">{{ person.name }}</h3>
               <div v-if="person.title" class="text-sm text-gray-800 text-center">{{ person.title }}</div>
               <div v-if="person.subtitle" class="text-xs text-gray-500 text-center mb-4">{{ person.subtitle }}</div>
-              <div class="flex flex-wrap gap-1 md:gap-2 justify-center" :class="{ 'mt-4': !person.title && !person.subtitle }">
+              <div class="flex flex-wrap gap-1 md:gap-2 justify-center">
                 <a 
                   v-for="(link, linkIndex) in person.links" 
                   :key="linkIndex"

@@ -158,7 +158,6 @@ const togglePanel = (id) => {
 
 // Обработчик изменения хеша в URL
 const handleHashChange = () => {
-  if (!process.client) return;
   const hash = window.location.hash.slice(1);
   
   // Закрываем все панели
@@ -203,14 +202,14 @@ onMounted(async () => {
   }
 
   // Добавляем слушатель изменения хеша только на странице FAQ
-  if (props.standalone && process.client) {
+  if (props.standalone) {
     window.addEventListener('hashchange', handleHashChange);
   }
 });
 
 // Удаляем слушатель при размонтировании компонента
 onUnmounted(() => {
-  if (props.standalone && process.client) {
+  if (props.standalone) {
     window.removeEventListener('hashchange', handleHashChange);
   }
 });

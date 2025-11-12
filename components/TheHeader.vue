@@ -5,9 +5,9 @@
     <!-- Navigation -->
     <nav class="bg-white">
       <div class="container mx-auto md:px-4 px-2">
-        <div class="flex items-center justify-between py-4">
+        <div class="flex items-center justify-between py-4 gap-1.5">
           <!-- Left side: Logo and Hashtag -->
-          <div class="flex items-center 2xl:gap-12 md:gap-6 gap-3">
+          <div class="flex items-center gap-2 md:gap-3 lg:gap-4 xl:gap-6 2xl:gap-12">
             <button 
               class="lg:hidden text-black"
               @click="isMenuOpen = !isMenuOpen"
@@ -31,7 +31,7 @@
           </div>
 
           <!-- Desktop Navigation Links -->
-          <div class="hidden md:flex items-center 2xl:gap-8 gap-4">
+          <div class="hidden md:flex items-center gap-2 lg:gap-3 xl:gap-4 2xl:gap-8">
             <a
               v-for="link in navLinks"
               :key="link.id"
@@ -44,9 +44,9 @@
           </div>
 
           <!-- Desktop Actions -->
-          <div class="flex items-center 2xl:gap-5 gap-3">
+          <div class="flex items-center gap-1.5 lg:gap-3 xl:gap-4 2xl:gap-5">
             <!-- <NuxtLink target="_blank" 
-              to="/gallery"
+              to="/gallery-ss-26"
               v-if="!isGalleryPage">
               <BaseButton variant="primary">
                 <span>Gallery</span>
@@ -54,7 +54,7 @@
               </BaseButton>
             </NuxtLink> -->
 
-            <div class="relative">
+            <div class="relative hidden md:block">
                 <!-- Participate mobile (small) -->
                 <BaseButton variant="secondary" size="sm" @click="toggleParticipateMenu" class="flex w-full justify-between md:hidden">
                   <span>Participate</span>
@@ -103,8 +103,9 @@
                 </NuxtLink>
               </div>
             </div>
+            <a href="magazine.emiratesfashionweek.com" class="md:hidden flex justify-center items-center text-black hover:text-gray-600 transition-colors cursor-pointer 2xl:text-base lg:text-sm text-xs">MAGAZINE</a>
             <!-- Visit mobile (small) - скрываем на welcome странице -->
-            <NuxtLink v-if="!isWelcomePage" target="_blank" :to="visitorsRegistration" class="md:hidden flex">
+            <NuxtLink v-if="!isWelcomePage" target="_blank" :to="visitorsRegistration" class="hidden">
               <BaseButton variant="primary" size="sm">
                 <span>Visit</span>
               </BaseButton>
@@ -235,12 +236,12 @@ const isMenuOpen = ref(false);
 const isLinksMenuOpen = ref(false);
 const isParticipateOpen = ref(false);
 const navLinks = [
-  // { name: 'MAGAZINE', href: '/magazine', id: 'magazine' },
+  { name: 'MAGAZINE', href: 'https://magazine.emiratesfashionweek.com', id: 'magazine' },
   // { name: 'CALENDAR', href: '/#program', id: 'program' },
   { name: 'DIGITAL', href: '/features', id: 'features' },
   { name: 'AI', href: '/EFW_AICONTEST', id: 'ai' },
   { name: 'DESIGNERS', href: '/#designers', id: 'designer' },
-  { name: 'GALLERY', href: '/gallery', id: 'gallery' },
+  { name: 'GALLERY', href: '/gallery-ss-26', id: 'gallery' },
   { name: 'MARKET', href: '/offer?wp=971585753302&tr', id: 'market' },
   { name: 'TRIAL', href: '/trial', id: 'trial' },
   // { name: 'HOW IT WAS', href: '/#how-it-was', id: 'how-it-was' },
@@ -248,13 +249,21 @@ const navLinks = [
 ];
 
 const scrollToSection = (href) => {
-  // Если ссылка начинается с "/", это ссылка на другую страницу
+  if (!href) return;
+
+  // Абсолютные ссылки открываем напрямую
+  if (/^https?:\/\//i.test(href)) {
+    window.location.href = href;
+    return;
+  }
+
+  // Если ссылка начинается с "/", это переход на другую страницу
   if (href.startsWith('/')) {
     router.push(href);
     return;
   }
   
-  // Иначе это якорь на текущей странице
+  // Иначе предполагаем, что это якорь на текущей странице
   const element = document.querySelector(href);
   if (element) {
     element.scrollIntoView({ 
@@ -357,7 +366,7 @@ const isWelcomePage = computed(() => {
   return route.path.includes('welcome');
 });
 
-// Check if the current page is '/gallery'
+// Check if the current page is a gallery page
 const isGalleryPage = computed(() => {
   return route.path.includes('gallery');
 });

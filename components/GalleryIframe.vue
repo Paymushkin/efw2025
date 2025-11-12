@@ -50,7 +50,8 @@ const updateScript = () => {
 
     script.setAttribute(
       'data-event',
-      `https://meyou.id/efw2025/live?${params}`
+      `https://meyou.id/efwss26/live?${params}`
+      // `https://meyou.id/efw2025/live?${params}`
     );
 
     reportageBlock.appendChild(script);
@@ -90,7 +91,7 @@ function handleMeyouMessage(event) {
 
 const navigateToGallery = () => {
   if (process.client) {
-    window.location.href = '/gallery';
+    window.location.href = '/gallery-ss-26';
   }
 };
 </script>

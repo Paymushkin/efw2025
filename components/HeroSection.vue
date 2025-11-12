@@ -21,9 +21,10 @@
     ></div>
     <div class="container flex flex-col grow mx-auto md:px-4 px-2 py-10 relative z-20">
       <h1 class="xl:text-5xl md:text-4xl text-xl font-bold text-white uppercase">
-        14<sup class="xl:text-2xl md:text-xl text-base align-top">th</sup> EMIRATES&nbsp;FASHION&nbsp;WEEK&nbsp;<sup class="xl:text-3xl md:text-3xl text-base align-top">®</sup> 
+        14<sup class="xl:text-2xl md:text-xl text-base align-top">th</sup> EMIRATES&nbsp;FASHION&nbsp;WEEK&nbsp;
+        <sup class="xl:text-3xl md:text-3xl text-base align-top">®</sup> 
       </h1>
-      <span class="xl:text-[60px] text-xl text-white font-bold">Spring Summer 2026</span>
+      <span class="xl:text-[60px] text-xl text-white font-bold md:mb-4 mb-2">Spring Summer 2026</span>
       <span class="text-white mb-10 text-xl font-bold">8-11 November 2025</span>
       <GalleryIframe :show-fog="false" />
     </div>
@@ -54,12 +55,11 @@ import GalleryIframe from '@/components/GalleryIframe.vue';
 
 const videoRef = ref(null);
 const { isVisible } = useVideoVisibility(videoRef);
-const isMobile = ref(false);
+const isMobile = ref(window?.innerWidth < 768);
 const MOBILE_BREAKPOINT = 768;
-let previousWidth = 0;
+let previousWidth = window?.innerWidth;
 
 const handleHashtagClick = () => {
-  if (!process.client) return;
   const sliderElement = document.querySelector('.image-carousel-container');
   if (sliderElement) {
     sliderElement.scrollIntoView({ 
@@ -79,7 +79,6 @@ const hasBreakpointChanged = (currentWidth, prevWidth) => {
 };
 
 const updateSize = () => {
-  if (typeof window === 'undefined') return;
   const currentWidth = window.innerWidth;
   if (hasBreakpointChanged(currentWidth, previousWidth)) {
     isMobile.value = currentWidth < MOBILE_BREAKPOINT;
@@ -88,11 +87,7 @@ const updateSize = () => {
 };
 
 onMounted(() => {
-  if (typeof window !== 'undefined') {
-    previousWidth = window.innerWidth;
-    isMobile.value = previousWidth < MOBILE_BREAKPOINT;
-    window.addEventListener('resize', updateSize);
-  }
+  window.addEventListener('resize', updateSize);
   if (videoRef.value) {
     videoRef.value.play().catch(error => {
       console.log('Autoplay failed:', error);
@@ -101,9 +96,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  if (process.client) {
-    window.removeEventListener('resize', updateSize);
-  }
+  window.removeEventListener('resize', updateSize);
 });
 </script>
 

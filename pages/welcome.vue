@@ -7,7 +7,7 @@
         <!-- Left column: Welcome, Program, and QR code -->
         <div class="text-center md:text-left flex-1">
           <h1 class="text-xl md:text-2xl xl:text-3xl mb-3 md:mb-4">
-            <strong class="uppercase mb-2 block text-2xl md:text-3xl xl:text-4xl">Your Invitation</strong>
+            <span class="uppercase text-2xl md:text-3xl xl:text-4xl">Invitation</span>
             <div>to Emirates Fashion Week</div>
             <div>by <span 
               class="inline-block px-2 py-0.5 rounded-md bg-black text-white cursor-pointer select-none"
@@ -91,7 +91,7 @@
             <div class="mt-4 mb-6">
               <div class="flex flex-col md:flex-row-reverse items-center justify-center md:justify-start gap-2">
                 <p class="text-sm md:text-base text-gray-600 md:ml-2 text-center md:text-left">
-                  Admit: You +1. This page is your final invitation. No emails, tickets, or confirmations will follow.
+                  Admit: You +1. This page is your final invitation. No emails, tickets, or confirmations will follow. Free Valet Parking.
                 </p>
                 <svg
                   v-if="barcodeBits.length"
@@ -150,7 +150,17 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <!-- 2D Map -->
               <div class="border border-gray-300 rounded-lg p-4">
-                <h3 class="text-lg md:text-xl font-bold mb-4">Google Maps</h3>
+                <h3 class="text-lg md:text-xl font-bold mb-4">
+                  <a
+                    href="https://maps.app.goo.gl/G8TmxgPGt4dCGKMHA"
+                    target="_blank"
+                    rel="noopener"
+                    class="inline-flex items-center gap-2 text-[#0f1824] hover:text-black"
+                  >
+                    Google Maps
+                    <span class="inline-block h-2 w-2 rounded-full bg-[#0f1824]/60"></span>
+                  </a>
+                </h3>
                 <div class="w-full">
                   <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28905.594122284634!2d55.128635593056764!3d25.095115196678794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b0072bb3c61%3A0x3a456f0a9996fc2c!2sSkylight%20Gallery!5e0!3m2!1sru!2sae!4v1757756744547!5m2!1sru!2sae" 
@@ -166,7 +176,17 @@
 
               <!-- 3D Map -->
               <div class="border border-gray-300 rounded-lg p-4">
-                <h3 class="text-lg md:text-xl font-bold mb-4">Skylight Gallery Arjaan by Rotana</h3>
+                <h3 class="text-lg md:text-xl font-bold mb-4">
+                  <a
+                    href="https://maps.app.goo.gl/G8TmxgPGt4dCGKMHA"
+                    target="_blank"
+                    rel="noopener"
+                    class="inline-flex items-center gap-2 text-[#0f1824] hover:text-black"
+                  >
+                    Skylight Gallery Arjaan by Rotana
+                    <span class="inline-block h-2 w-2 rounded-full bg-[#0f1824]/60"></span>
+                  </a>
+                </h3>
                 <div class="w-full">
                   <iframe 
                     src="https://www.google.com/maps/embed?pb=!4v1757756521377!6m8!1m7!1sFD00YnqiTe4Mfh-iCWTNNA!2m2!1d25.09490902264704!2d55.15351383099734!3f12.933478943500432!4f12.986052488037629!5f0.7820865974627469" 
@@ -217,7 +237,7 @@
                         {{ designer }}
                       </li>
                     </ul>
-                    <p class="text-sm text-gray-700 font-semibold mt-2">FASHION SHOW BY TOP FASHION STYLISTS</p>
+                    
                 </div>
               </div>
             </div>
@@ -565,10 +585,6 @@
 </template>
 
 <script setup>
-definePageMeta({
-  ssr: false
-});
-
 import { computed, ref, onMounted, watch } from '#imports';
 import BaseButton from '@/components/ui/BaseButton.vue';
 import Image1 from '@/assets/image/welcome/1.webp';
@@ -576,27 +592,27 @@ import { useDesigners } from '~/composables/useDesigners';
 
 // SEO мета-теги
 useHead({
-  title: 'Welcome - Emirates Fashion Week Dubai 2025',
+  title: 'Welcome - Emirates Fashion Week Dubai 2025 | 8-11 November | Exclusive Invitation',
   meta: [
     {
       name: 'description',
-      content: 'Welcome to Emirates Fashion Week Dubai 2025. Your exclusive invitation to join us for three remarkable days of style, beauty, and meaningful connections.'
+      content: 'Welcome to Emirates Fashion Week Dubai 2025. Join us on 8-11 November for three remarkable days of style, beauty, and meaningful connections. Your exclusive invitation to the 14th Season Spring/Summer 26.'
     },
     {
       name: 'keywords',
-      content: 'Emirates Fashion Week Welcome, Dubai Fashion Event, Fashion Week Invitation, Guest Welcome Dubai'
+      content: 'Emirates Fashion Week Welcome, Dubai Fashion Event 2025, Fashion Week Invitation November, Guest Welcome Dubai, Spring Summer 26, Fashion Show Dubai'
     },
     {
       property: 'og:title',
-      content: 'Welcome - Emirates Fashion Week Dubai 2025'
+      content: 'Welcome - Emirates Fashion Week Dubai 2025 | 8-11 November | Exclusive Invitation'
     },
     {
       property: 'og:description',
-      content: 'Welcome to Emirates Fashion Week Dubai 2025. Your exclusive invitation to join us for three remarkable days of style, beauty, and meaningful connections.'
+      content: 'Welcome to Emirates Fashion Week Dubai 2025. Join us on 8-11 November for three remarkable days of style, beauty, and meaningful connections. Your exclusive invitation to the 14th Season Spring/Summer 26.'
     },
     {
       property: 'og:image',
-      content: 'https://emiratesfashionweeks.com/seo-poster.png'
+      content: 'https://emiratesfashionweeks.com/seo-poster-wa.png?v=2'
     },
     {
       property: 'og:type',
@@ -611,6 +627,7 @@ useHead({
 
 // Get route and router
 const route = useRoute();
+const isClient = typeof window !== 'undefined';
 const guestName = computed(() => {
   const name = route.query.by || 'Guest';
   // Replace + with spaces for display
@@ -807,6 +824,7 @@ const formatDateButton = (day) => {
 
 // Update QR code URL based on selected dates
 const updateQRCodeWithDates = () => {
+  if (!isClient) return;
   const activeDates = [];
   
   Object.keys(selectedDates.value).forEach(day => {
@@ -868,6 +886,9 @@ const registrationForm = ref({
   email: ''
 });
 const qrCodeUrl = ref('');
+if (isClient) {
+  qrCodeUrl.value = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(window.location.href)}`;
+}
 
 // Long press handlers
 let touchStartTime = 0;
@@ -947,6 +968,7 @@ const initializeDateSelection = () => {
 };
 
 const closeQRModal = () => {
+  if (!isClient) return;
   // Build URL with current parameters
   const baseUrl = window.location.origin + window.location.pathname;
   const params = new URLSearchParams();
@@ -1011,32 +1033,6 @@ const closeRegistrationModal = () => {
 
 const closeConfirmationModal = () => {
   showConfirmationModal.value = false;
-};
-
-// Calendar subscription function
-const openCalendarSubscription = () => {
-  // Calendar ID
-  const calendarId = 'a48ce6b68320071674bb11016e1486a03cc4e7c0a452cfc3b34503e26963c22c@group.calendar.google.com'
-  
-  // Определяем URL в зависимости от платформы
-  const getCalendarUrl = () => {
-    const userAgent = navigator.userAgent.toLowerCase()
-    
-    // Для iOS/macOS используем webcal (подписка)
-    if (userAgent.includes('iphone') || userAgent.includes('ipad') || userAgent.includes('mac')) {
-      return `webcal://calendar.google.com/calendar/ical/${encodeURIComponent(calendarId)}/public/basic.ics`
-    }
-    
-    // Для Android и остальных платформ используем Google Calendar subscription
-    return `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(calendarId)}`
-  }
-  
-  const targetUrl = getCalendarUrl()
-  
-  // Открываем подписку на календарь
-  window.open(targetUrl, '_blank')
-  
-  console.log('📅 Calendar subscription opened:', targetUrl)
 };
 
 // Submit registration
@@ -1107,25 +1103,15 @@ const submitRegistration = async () => {
       console.log('Registration data sent (no-cors mode)');
     }
 
-    // Close registration modal and open calendar subscription
+    // Close registration modal and show confirmation
     showRegistrationModal.value = false;
-    
-    // Автоматически открываем подписку на календарь
-    console.log('✅ Registration successful! Opening calendar subscription...');
-    setTimeout(() => {
-      openCalendarSubscription();
-    }, 1000); // Небольшая задержка для UX
+    showConfirmationModal.value = true;
 
   } catch (error) {
     console.error('Registration failed:', error);
-    // Still redirect to calendar even if API fails
+    // Still show confirmation even if API fails
     showRegistrationModal.value = false;
-    
-    // Открываем подписку на календарь даже при ошибке
-    console.log('⚠️ Registration had issues, but opening calendar subscription...');
-    setTimeout(() => {
-      openCalendarSubscription();
-    }, 1000);
+    showConfirmationModal.value = true;
   } finally {
     // Always reset submitting state
     isSubmitting.value = false;
@@ -1134,6 +1120,7 @@ const submitRegistration = async () => {
 
 // Request reserved seat
 const requestReservedSeat = () => {
+  if (!isClient) return;
   // Redirect to мию
   window.open('https://meyou.id/event/efwss26', '_blank');
 };
@@ -1152,6 +1139,8 @@ const createNewInviter = () => {
   const formattedName = newInviterName.value.trim().replace(/\s+/g, '+');
   
   // Create new URL with the inviter name
+  if (!isClient) return;
+
   const baseUrl = window.location.origin + window.location.pathname;
   const newUrl = `${baseUrl}?by=${formattedName}`;
   
@@ -1174,6 +1163,8 @@ const createNewInviter = () => {
 
 // Copy invite link to clipboard
 const copyInviteLink = async () => {
+  if (!isClient) return;
+
   const activeDates = [];
   Object.keys(selectedDates.value).forEach(day => {
     const state = selectedDates.value[day];
@@ -1286,17 +1277,9 @@ watch(designers, () => {
 
 // Загружаем данные дизайнеров при монтировании компонента (только один раз)
 onMounted(async () => {
-  
-  // Инициализируем QR код URL
-  if (process.client) {
-    qrCodeUrl.value = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(window.location.href)}`;
-  }
-  
-  // Определяем десктопную версию
-  if (typeof window !== 'undefined') {
+  if (isClient) {
+    // Определяем десктопную версию
     isDesktop.value = window.innerWidth >= 1024; // lg breakpoint
-  } else {
-    isDesktop.value = false;
   }
   
   // Инициализация имени из URL параметра

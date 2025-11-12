@@ -116,11 +116,11 @@ import GalleryIframe from '@/components/GalleryIframe.vue';
 const featuresData = FEATURES_DATA;
 
 
-const isMobile = ref(false);
+const isMobile = ref(window?.innerWidth < 768);
 const MOBILE_BREAKPOINT = 768;
 
 // Добавляем переменную для отслеживания предыдущей ширины
-let previousWidth = 0;
+let previousWidth = window?.innerWidth;
 
 // Функция для проверки пересечения брейкпоинта
 const hasBreakpointChanged = (currentWidth, previousWidth) => {
@@ -132,7 +132,6 @@ const hasBreakpointChanged = (currentWidth, previousWidth) => {
 
 // Функция для обновления размера
 const updateSize = () => {
-  if (typeof window === 'undefined') return;
   const currentWidth = window.innerWidth;
   
   // Проверяем, пересекли ли мы брейкпоинт
@@ -170,7 +169,8 @@ const updateScript = () => {
     
   script.setAttribute(
     'data-event',
-    `https://meyou.id/efw2025/live?${params}`
+    // `https://meyou.id/efw2025/live?${params}`
+    `https://meyou.id/efwss26/live?${params}`
   );
   
   reportageBlock.appendChild(script);
@@ -179,12 +179,8 @@ const updateScript = () => {
 const videoRef = ref(null);
 
 onMounted(() => {
-  if (typeof window !== 'undefined') {
-    previousWidth = window.innerWidth;
-    isMobile.value = previousWidth < MOBILE_BREAKPOINT;
-    // Добавляем слушатель изменения размера окна
-    window.addEventListener('resize', updateSize);
-  }
+  // Добавляем слушатель изменения размера окна
+  window.addEventListener('resize', updateSize);
   // Инициализируем скрипт
   updateScript();
   // Принудительный запуск видео для iOS
@@ -197,15 +193,11 @@ onMounted(() => {
 
 onUnmounted(() => {
   // Удаляем слушатель при размонтировании компонента
-  if (typeof window !== 'undefined') {
-    window.removeEventListener('resize', updateSize);
-  }
+  window.removeEventListener('resize', updateSize);
 });
 
 const navigateToGallery = () => {
-  if (typeof window !== 'undefined') {
-    window.location.href = '/gallery';
-  }
+  window.location.href = '/gallery-ss-26';
 };
 
 </script>

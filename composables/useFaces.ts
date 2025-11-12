@@ -5,8 +5,8 @@ import { ref, computed } from 'vue'
 const localFacesData = [
   {
     name: 'Olga Khayrullova',
-    title: 'Model & Influencer',
-    subtitle: 'Fashion Icon',
+    title: 'Personal Fashion Stylist',
+    subtitle: 'Recognized by EFW SS26 Season',
     image: 'https://storage.yandexcloud.net/videos-meyou/efw2025/ai/faces/face-3.png',
     icon: true,
     order: 1,
@@ -19,8 +19,8 @@ const localFacesData = [
   },
   {
     name: 'Khalimova Liza',
-    title: 'Fashion Model',
-    subtitle: 'EFW Ambassador',
+    title: 'Designer',
+    subtitle: 'Recognized by EFW SS26 Season',
     image: 'https://storage.yandexcloud.net/videos-meyou/efw2025/ai/faces/face-2.png',
     icon: true,
     order: 2,
@@ -30,8 +30,8 @@ const localFacesData = [
   },
   {
     name: 'Olga Baltrukevica',
-    title: 'International Model',
-    subtitle: 'Beauty Expert',
+    title: 'Model',
+    subtitle: 'Recognized by EFW SS26 Season',
     image: 'https://storage.yandexcloud.net/videos-meyou/efw2025/ai/faces/face-1.png',
     icon: true,
     order: 3,
@@ -41,8 +41,8 @@ const localFacesData = [
   },
   {
     name: 'Ekaterina Potanina',
-    title: '',
-    subtitle: '',
+    title: 'Influencer',
+    subtitle: 'Recognized by EFW SS26 Season',
     image: 'https://storage.yandexcloud.net/videos-meyou/efw2025/ai/faces/face-4.png',
     icon: false,
     order: 4,
@@ -52,8 +52,8 @@ const localFacesData = [
   },
   {
     name: 'Katerina Melikhova',
-    title: '',
-    subtitle: '',
+    title: 'Guest',
+    subtitle: 'Recognized by EFW SS26 Season',
     image: 'https://storage.yandexcloud.net/videos-meyou/efw2025/ai/faces/face-5.png',
     icon: false,
     order: 5,
@@ -174,5 +174,3 @@ export const useFaces = () => {
     fetchFaces
   }
 }
-
-

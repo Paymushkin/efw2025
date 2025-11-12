@@ -88,7 +88,7 @@ const showSuccess = ref(false);
 const showError = ref(false);
 const config = useRuntimeConfig();
 
-const validateEmailContact = (email) => {
+const validateEmail = (email) => {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(email);
 };
@@ -112,7 +112,7 @@ const close = () => {
 const handleSubmit = async () => {
   emailError.value = '';
   
-  if (!validateEmailContact(form.email)) {
+  if (!validateEmail(form.email)) {
     emailError.value = 'Please enter a valid email address';
     return;
   }

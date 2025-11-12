@@ -156,7 +156,9 @@ export default defineNuxtConfig({
     public: {
       apiBase: process.env.NODE_ENV === 'production' 
         ? 'https://api.emiratesfashionweeks.com/api'
-        : 'http://localhost:3000/api'
+        : 'http://localhost:3000/api',
+      gallerySheetId: process.env.NUXT_PUBLIC_GALLERY_SHEET_ID || '13had7SsmycXCJ-UsGdoePnIgV2aHigWOth15_OhU360',
+      gallerySheetGid: process.env.NUXT_PUBLIC_GALLERY_SHEET_GID || '0'
     }
   }
 });

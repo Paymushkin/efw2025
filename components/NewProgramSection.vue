@@ -115,7 +115,7 @@ import { NEW_EVENT_TYPES, NEW_PROGRAM_TABS } from '~/constants/newProgram';
 import { useCompaniesCount } from '~/composables/useCompaniesCount';
 import { useDesigners } from '~/composables/useDesigners';
 
-const currentTab = ref(2);
+const currentTab = ref(1);
 const tabs = NEW_PROGRAM_TABS;
 const tabsContainer = ref(null);
 let isDragging = false;
@@ -124,7 +124,6 @@ let scrollLeft = 0;
 
 // Debug helper for anchor clicks
 const logAnchorDebug = (id) => {
-  if (!process.client) return;
   try {
     const el = document.getElementById(id);
     if (!el) {
@@ -165,13 +164,12 @@ const isUpdating = ref(false);
 let updateTimeout = null;
 
 // Используем composable для работы с дизайнерами
-const { fetchDesigners, getFormattedDesignersByDay, designers, isDataUpdated } = useDesigners();
+const { fetchDesigners, getFormattedDesignersByDay, getDesignersByDay, designers, isDataUpdated } = useDesigners();
 
 // Используем существующий механизм счетчика компаний
 
 // Загружаем данные дизайнеров при монтировании компонента (только один раз)
 onMounted(async () => {
-  if (!process.client) return;
   
   // Пытаемся обновить данные из Google Sheets (только если еще не обновлены)
   if (!isDataUpdated.value) {
@@ -256,8 +254,6 @@ watch(currentTab, () => {
 
 // Функция для обновления счетчика waitlist
 const updateWaitlistCount = () => {
-  if (!process.client) return;
-  
   // Очищаем предыдущий timeout
   if (updateTimeout) {
     clearTimeout(updateTimeout);
@@ -386,8 +382,6 @@ const forceLoadCompaniesData = async () => {
 
 // Функция для обновления дизайнеров в DOM
 const updateDesignersInDOM = (retryCount = 0) => {
-  if (!process.client) return;
-  
   let allUpdated = true;
   
   // Обновляем список для 8 ноября
@@ -422,9 +416,57 @@ const updateDesignersInDOM = (retryCount = 0) => {
   }
 };
 
-// Computed свойство для программы (без обновления счетчика - это делается через DOM)
+// Computed свойство для программы с динамическими событиями дизайнеров
 const updatedProgram = computed(() => {
-  return NEW_PROGRAM_TABS[currentTab.value];
+  const baseProgram = NEW_PROGRAM_TABS[currentTab.value];
+  if (!baseProgram || !baseProgram.events) {
+    return baseProgram;
+  }
+
+  // Создаем новый массив events с добавленными событиями для дизайнеров
+  const eventsWithDesigners = [];
+  
+  for (let i = 0; i < baseProgram.events.length; i++) {
+    const event = baseProgram.events[i];
+    eventsWithDesigners.push(event);
+    
+    // Если это событие для 8 ноября, добавляем дизайнеров после него
+    if (event.time === '8 November' && event.type === 'event') {
+      const day8Designers = getDesignersByDay('8');
+      if (day8Designers && day8Designers.length > 0) {
+        day8Designers.forEach(designer => {
+          const country = designer.country || '';
+          eventsWithDesigners.push({
+            type: 'event',
+            time: '8 November',
+            // place: `Skylight Gallery,<br>Arjaan Dubai Media City`,
+            description: `${designer.name}${country ? ` /${country}/` : ''}`
+          });
+        });
+      }
+    }
+    
+    // Если это событие для 9 ноября, добавляем дизайнеров после него
+    if (event.time === '9 November' && event.type === 'event') {
+      const day9Designers = getDesignersByDay('9');
+      if (day9Designers && day9Designers.length > 0) {
+        day9Designers.forEach(designer => {
+          const country = designer.country || '';
+          eventsWithDesigners.push({
+            type: 'event',
+            time: '9 November',
+            // place: `Skylight Gallery,<br>Arjaan Dubai Media City`,
+            description: `${designer.name}${country ? ` /${country}/` : ''}`
+          });
+        });
+      }
+    }
+  }
+  
+  return {
+    ...baseProgram,
+    events: eventsWithDesigners
+  };
 });
 
 const startDrag = (e) => {

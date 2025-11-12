@@ -195,6 +195,10 @@ declare module 'nuxt/schema' {
   }
   interface PublicRuntimeConfig {
    apiBase: string,
+
+   gallerySheetId: string,
+
+   gallerySheetGid: string,
   }
 }
 declare module 'vue' {
