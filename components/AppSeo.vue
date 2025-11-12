@@ -1,6 +1,6 @@
-<template></template>
-
 <script setup>
+import { computed } from 'vue'
+
 const CANONICAL_DOMAIN = 'https://emiratesfashionweeks.com'
 
 const props = defineProps({
@@ -23,12 +23,16 @@ const props = defineProps({
 })
 
 const route = useRoute()
-const canonicalPath = route.path === '/'
-  ? '/'
-  : (route.path.endsWith('/') ? route.path : route.path + '/')
-const canonicalUrl = `${CANONICAL_DOMAIN}${canonicalPath}`
 
-useHead({
+// Используем computed для канонического URL, чтобы избежать проблем с SSR
+const canonicalPath = computed(() => {
+  const path = route.path
+  return path === '/' ? '/' : (path.endsWith('/') ? path : path + '/')
+})
+
+const canonicalUrl = computed(() => `${CANONICAL_DOMAIN}${canonicalPath.value}`)
+
+useHead(() => ({
   title: props.title,
   meta: [
     {
@@ -41,7 +45,7 @@ useHead({
     },
     {
       property: 'og:url',
-      content: canonicalUrl
+      content: canonicalUrl.value
     },
     {
       property: 'og:title',
@@ -103,7 +107,7 @@ useHead({
   link: [
     {
       rel: 'canonical',
-      href: canonicalUrl
+      href: canonicalUrl.value
     }
   ],
   script: [
@@ -142,5 +146,5 @@ useHead({
       })
     }
   ]
-})
+}))
 </script> 
