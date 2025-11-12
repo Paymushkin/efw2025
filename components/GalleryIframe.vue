@@ -57,12 +57,21 @@ const updateScript = () => {
     reportageBlock.appendChild(script);
   }, 100);
 
-  // Для отладки postMessage
-  window.addEventListener('message', (event) => {
-    if (typeof event.data === 'string' && event.data.indexOf('meyouHeight') !== -1) {
-    }
-  }, { once: true });
 };
+
+function handleMeyouMessage(event) {
+  // Проверяем, что event.data существует и это строка
+  if (!event.data) return;
+  
+  // Приводим к строке, если это не строка
+  const dataString = typeof event.data === 'string' ? event.data : String(event.data);
+  
+  // Проверяем наличие подстроки безопасным способом
+  if (dataString.includes && dataString.includes('meyouHeight')) {
+    // Обработка события meyou
+    console.log('Meyou height message received');
+  }
+}
 
 watch(isMobile, () => {
   updateScript();
@@ -83,11 +92,6 @@ onUnmounted(() => {
     window.removeEventListener('message', handleMeyouMessage);
   }
 });
-
-function handleMeyouMessage(event) {
-  if (typeof event.data === 'string' && event.data.indexOf('meyouHeight') !== -1) {
-  }
-}
 
 const navigateToGallery = () => {
   if (process.client) {

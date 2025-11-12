@@ -55,11 +55,13 @@ import GalleryIframe from '@/components/GalleryIframe.vue';
 
 const videoRef = ref(null);
 const { isVisible } = useVideoVisibility(videoRef);
-const isMobile = ref(window?.innerWidth < 768);
+const isMobile = ref(false);
 const MOBILE_BREAKPOINT = 768;
-let previousWidth = window?.innerWidth;
+let previousWidth = 0;
 
 const handleHashtagClick = () => {
+  if (!process.client) return;
+  
   const sliderElement = document.querySelector('.image-carousel-container');
   if (sliderElement) {
     sliderElement.scrollIntoView({ 
@@ -79,6 +81,8 @@ const hasBreakpointChanged = (currentWidth, prevWidth) => {
 };
 
 const updateSize = () => {
+  if (!process.client) return;
+  
   const currentWidth = window.innerWidth;
   if (hasBreakpointChanged(currentWidth, previousWidth)) {
     isMobile.value = currentWidth < MOBILE_BREAKPOINT;
@@ -87,15 +91,28 @@ const updateSize = () => {
 };
 
 onMounted(() => {
+  if (!process.client) return;
+  
+  // Инициализируем после монтирования
+  isMobile.value = window.innerWidth < MOBILE_BREAKPOINT;
+  previousWidth = window.innerWidth;
+  
   window.addEventListener('resize', updateSize);
+  
   if (videoRef.value) {
-    videoRef.value.play().catch(error => {
-      console.log('Autoplay failed:', error);
-    });
+    // Добавляем небольшую задержку перед воспроизведением
+    setTimeout(() => {
+      if (videoRef.value) {
+        videoRef.value.play().catch(error => {
+          console.log('Autoplay failed:', error);
+        });
+      }
+    }, 100);
   }
 });
 
 onUnmounted(() => {
+  if (!process.client) return;
   window.removeEventListener('resize', updateSize);
 });
 </script>
