@@ -252,7 +252,7 @@ const personaSections = ref([
     key: 'persona-media',
     completed: false,
     items: [
-      'PRO runway photos available next day on <a class="lobby-link" data-step="persona-media" href="https://emiratesfashionweek.com/gallery-fw-25" target="_blank" rel="noopener">emiratesfashionweek.com/gallery-fw-25</a>.'
+      'PRO runway photos available next day on <a class="lobby-link" data-step="persona-media" href="https://emiratesfashionweek.com/gallery-ss-26" target="_blank" rel="noopener">emiratesfashionweek.com/gallery-ss-26</a>.'
     ]
   }
 ]);

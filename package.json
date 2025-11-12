@@ -29,6 +29,7 @@
     "vue-router": "latest"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.1",
     "@nuxtjs/sitemap": "^6.1.5",
     "@nuxtjs/tailwindcss": "^6.10.0",
     "@tailwindcss/postcss7-compat": "^2.2.17",
@@ -37,6 +38,7 @@
     "eslint": "^9.20.1",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-vue": "^9.33.0",
     "gh-pages": "^6.3.0",
     "netlify-cli": "^17.23.0",
     "postcss-import": "^16.1.0",
