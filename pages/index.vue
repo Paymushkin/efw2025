@@ -21,13 +21,11 @@
     </div>
     <section id="economy-dubai">
       <div class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
-        <ImageCarousel 
-          title="We invest in and support the economy of Dubai | UAE" 
-          :slidesPerView="6" 
-          :autoplay="true"
-          :autoplaySpeed="5000"
-          :gap="20"
-        />
+        <ClientOnly>
+          <ImageCarousel 
+            title="We invest in and support the economy of Dubai | UAE"
+          />
+        </ClientOnly>
       </div>
     </section>
     <FaqSectionDynamic id="faq" class="mb-[56px] md:mb-[76px]" />
@@ -35,6 +33,8 @@
 </template>
 
 <script setup>
+import { onMounted, nextTick } from 'vue';
+
 definePageMeta({
   layout: 'default'
 });
@@ -64,34 +64,47 @@ import sponsor4 from '@/assets/image/sponsor-logo.webp';
 const sponsors = [sponsor1, sponsor2, sponsor3, sponsor4];
 const featuresData = FEATURES_DATA;
 
-// Отладочная информация для главной страницы
-console.log('🏠 Главная страница: Компонент загружен');
-
-// Функция для принудительного обновления счетчика (для отладки)
-const forceUpdateCounters = () => {
-  console.log('🔧 Принудительное обновление счетчиков...');
+// Функция плавной прокрутки к секции по хешу
+const scrollToHash = () => {
+  if (!process.client) return;
   
-  // Обновляем счетчики напрямую
-  const trialCountElement1 = document.getElementById('trial-waitlist-count-1');
-  const trialCountElement2 = document.getElementById('trial-waitlist-count-2');
+  const hash = window.location.hash;
   
-  if (trialCountElement1) {
-    trialCountElement1.textContent = '111';
-    console.log('✅ Обновлен trial-waitlist-count-1: 111');
-  } else {
-    console.log('❌ Элемент trial-waitlist-count-1 не найден');
-  }
-  
-  if (trialCountElement2) {
-    trialCountElement2.textContent = '111';
-    console.log('✅ Обновлен trial-waitlist-count-2: 111');
-  } else {
-    console.log('❌ Элемент trial-waitlist-count-2 не найден');
+  if (hash) {
+    // Убираем # из хеша
+    const targetId = hash.substring(1);
+    
+    // Ждем, пока компоненты полностью загрузятся
+    nextTick(() => {
+      setTimeout(() => {
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          // Плавная прокрутка к элементу
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+          
+          console.log(`✅ Прокрутка к секции: #${targetId}`);
+        } else {
+          console.log(`❌ Элемент с id="${targetId}" не найден`);
+        }
+      }, 500); // Задержка для загрузки ClientOnly компонентов
+    });
   }
 };
 
-// Экспортируем функцию для использования в консоли браузера
-if (typeof window !== 'undefined') {
-  window.forceUpdateCounters = forceUpdateCounters;
-}
+// Инициализация при монтировании
+onMounted(() => {
+  if (!process.client) return;
+  
+  // Прокрутка к хешу при загрузке страницы
+  scrollToHash();
+  
+  // Слушаем изменения хеша в URL
+  window.addEventListener('hashchange', scrollToHash);
+  
+  console.log('🏠 Главная страница: Компонент загружен');
+});
 </script>
