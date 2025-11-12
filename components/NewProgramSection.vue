@@ -168,6 +168,9 @@ const { fetchDesigners, getFormattedDesignersByDay, getDesignersByDay, designers
 
 // Используем существующий механизм счетчика компаний
 
+// MutationObserver для отслеживания изменений в DOM
+let observer = null;
+
 // Загружаем данные дизайнеров при монтировании компонента (только один раз)
 onMounted(async () => {
   
@@ -201,7 +204,7 @@ onMounted(async () => {
   });
   
   // Настраиваем MutationObserver для отслеживания появления элементов в DOM
-  const observer = new MutationObserver((mutations) => {
+  observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.type === 'childList' && !isUpdating.value) {
         // Проверяем, появились ли нужные элементы в добавленных узлах
@@ -228,14 +231,16 @@ onMounted(async () => {
     childList: true,
     subtree: true
   });
-  
-  // Очищаем observer при размонтировании компонента
-  onUnmounted(() => {
+});
+
+// Очищаем observer при размонтировании компонента
+onUnmounted(() => {
+  if (observer) {
     observer.disconnect();
-    if (updateTimeout) {
-      clearTimeout(updateTimeout);
-    }
-  });
+  }
+  if (updateTimeout) {
+    clearTimeout(updateTimeout);
+  }
 });
 
 // Отслеживаем изменения в данных дизайнеров и обновляем DOM
