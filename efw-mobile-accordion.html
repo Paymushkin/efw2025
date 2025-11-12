@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EFW — Mobile Guide</title>
+<style>
+  :root{
+    --bg1:#f4f7ff;
+    --bg2:#e9f7f5;
+    --card:#ffffff;
+    --text:#0f1824;
+    --muted:#5b6b7f;
+    --line:#e6ebf3;
+    --brand:#0a84ff;
+    --ok:#0bb17f;
+    --radius:22px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color:var(--text);
+    background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  }
+  .sheet{
+    width:min(420px,92vw);
+    margin:16px auto 28px;
+    background: linear-gradient(180deg,#ffffff,#fbfdff);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 30px rgba(16,24,40,.10);
+    overflow:hidden;
+    border:1px solid #ecf1f8;
+  }
+  .sheet-header{
+    padding:18px 18px 8px;
+    text-align:left;
+  }
+  .title{
+    font-weight:700;
+    font-size:18px;
+    letter-spacing:-0.01em;
+  }
+  .section-caption{
+    color:var(--muted);
+    font-weight:600;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    padding:12px 18px 6px;
+  }
+
+  .list{padding:6px 0}
+  .row, details.acc summary{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 52px 14px 18px; /* right space for plus */
+    border-top:1px solid var(--line);
+    line-height:1.2;
+    background:#fff;
+  }
+  .row:first-of-type{border-top:none}
+  /* left icon (check circle) */
+  .check{
+    flex:0 0 22px;
+    width:22px;height:22px;
+    border-radius:50%;
+    border:2px solid var(--ok);
+    position:relative;
+  }
+  .check::after{
+    content:"";
+    position:absolute; inset:0;
+    width:8px; height:5px;
+    border:2px solid var(--ok);
+    border-top:none; border-right:none;
+    transform: translate(6px,7px) rotate(-45deg);
+  }
+  .row .text, details.acc summary .text{
+    display:flex; flex-direction:column;
+    gap:5px;
+  }
+  .row .t, details.acc summary .t{
+    font-size:16px; font-weight:600;
+  }
+  .row .s, details.acc summary .s{
+    font-size:14px; color:var(--muted);
+  }
+  /* Right-side plus toggle */
+  .toggle{
+    position:absolute;
+    right:14px;
+    top:50%;
+    transform:translateY(-50%);
+    width:28px;height:28px;
+    border-radius:8px;
+    border:1px solid #e7edf6;
+    display:flex;align-items:center;justify-content:center;
+    font-size:20px;
+    line-height:1;
+    color:#3a4960;
+    user-select:none;
+    pointer-events:none; /* purely visual; summary handles click */
+  }
+  /* Accordion */
+  details.acc{border-top:1px solid var(--line)}
+  details.acc[open]{background:#fff}
+  details.acc summary{
+    list-style:none;
+    cursor:pointer;
+  }
+  details.acc summary::-webkit-details-marker{display:none}
+  details.acc .toggle::before{content:"+"}
+  details.acc[open] .toggle::before{content:"–"}
+  details.acc .content{
+    padding:0 18px 14px 48px;
+    font-size:14px;
+    color:#2c3a4e;
+    background:#fff;
+  }
+  .bul{
+    margin:8px 0 0;
+    padding:0 0 0 14px;
+  }
+  .bul li{margin:4px 0}
+  a{color:var(--brand); text-decoration:none}
+  .footer{
+    padding:14px 18px 18px;
+    border-top:1px solid var(--line);
+    font-size:14px; color:#2c3a4e;
+    display:flex; align-items:center; gap:10px;
+  }
+  .whatsapp{
+    width:22px;height:22px; border-radius:50%;
+    background:#25D366;
+    display:inline-flex; align-items:center; justify-content:center;
+    color:#fff; font-weight:700; font-size:13px;
+  }
+  /* small top grabber mimic */
+  .grab{
+    width:40px;height:4px;background:#d9e2ef;border-radius:999px;
+    margin:10px auto 8px;
+  }
+</style>
+</head>
+<body>
+  <div class="sheet" role="dialog" aria-label="EFW Quick Guide">
+    <div class="grab" aria-hidden="true"></div>
+    <div class="sheet-header">
+      <div class="title">Emirates Fashion Week — Quick Guide</div>
+    </div>
+
+    <div class="list">
+      <div class="row">
+        <div class="check" aria-hidden="true"></div>
+        <div class="text">
+          <div class="t">Check-in</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="check" aria-hidden="true"></div>
+        <div class="text">
+          <div class="t">Press Wall</div>
+          <div class="s">Take your ready-to-share photo. Tag @emirates_fashionweek.</div>
+        </div>
+      </div>
+
+      <div class="section-caption">If you’re</div>
+
+      <details class="acc">
+        <summary>
+          <div class="check" aria-hidden="true"></div>
+          <div class="text">
+            <div class="t">A) Local Beauty Service — Special Offer</div>
+          </div>
+          <div class="toggle" aria-hidden="true"></div>
+        </summary>
+        <div class="content">
+          <ul class="bul">
+            <li>Last Showcase Stand (Mon 10 Nov or Tue 11 Nov — 1000 AED/day).</li>
+            <li>Bring a laptop with PPT/PDF presentation.</li>
+            <li>Female EFW audience (hundreds).</li>
+            <li>40 designer pop-ups + 40 local beauty services.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary>
+          <div class="check" aria-hidden="true"></div>
+          <div class="text">
+            <div class="t">B) Stylist / Buyer</div>
+          </div>
+          <div class="toggle" aria-hidden="true"></div>
+        </summary>
+        <div class="content">
+          <ul class="bul">
+            <li>Join EFW PRO Fashion program.</li>
+            <li>Contact Kate (RU) or Valery (EN).</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary>
+          <div class="check" aria-hidden="true"></div>
+          <div class="text">
+            <div class="t">C) Influencer</div>
+          </div>
+          <div class="toggle" aria-hidden="true"></div>
+        </summary>
+        <div class="content">
+          <ul class="bul">
+            <li>5k+ followers? Go to TV interview.</li>
+            <li>Ready-to-share TV interview available. Tag @emirates_fashionweek.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary>
+          <div class="check" aria-hidden="true"></div>
+          <div class="text">
+            <div class="t">D) Media</div>
+          </div>
+          <div class="toggle" aria-hidden="true"></div>
+        </summary>
+        <div class="content">
+          <ul class="bul">
+            <li>PRO runway photos available next day on <a href="https://emiratesfashionweek.com/gallery" target="_blank" rel="noopener">emiratesfashionweek.com/gallery</a>.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary>
+          <div class="check" aria-hidden="true"></div>
+          <div class="text">
+            <div class="t">4) Beauty Market Access</div>
+          </div>
+          <div class="toggle" aria-hidden="true"></div>
+        </summary>
+        <div class="content">
+          <ul class="bul">
+            <li>Mon <strong>10 Nov</strong> 10:00–20:00 — Arjaan (<a href="https://maps.app.goo.gl/wJq8Hpvxv4rr7ULi6" target="_blank" rel="noopener">here</a>)</li>
+            <li>Tue <strong>11 Nov</strong> 10:00–20:00 — Arjaan (<a href="https://maps.app.goo.gl/wJq8Hpvxv4rr7ULi6" target="_blank" rel="noopener">here</a>)</li>
+            <li>40 designer pop-ups + 40 beauty services (nails, hair, facecare, body, dental, clinics, cosmetology).</li>
+          </ul>
+        </div>
+      </details>
+
+      <div class="footer">
+        <span class="whatsapp">W</span>
+        <span>Ask team — WhatsApp</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
