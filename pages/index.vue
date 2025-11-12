@@ -68,7 +68,8 @@
 import { onMounted, nextTick } from 'vue';
 
 definePageMeta({
-  layout: 'default'
+  layout: 'default',
+  ssr: false
 });
 
 // Components
