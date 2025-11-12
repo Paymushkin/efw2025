@@ -6,7 +6,11 @@
       keywords="Emirates Fashion Week, Dubai Fashion, Fashion Shows Runways Dubai, Beauty Exhibition UAE, Fashion Pop-up Market Dubai, Designer Collections, Beauty Services Dubai, Fashion Week 2025 Dubai"
     />
     <HeroSection class="mb-[56px] md:mb-[76px]" />
-    <NewProgramSection id="spring-summer-2026" class="md:mb-[120px] mb-[76px]" />
+    <div id="spring-summer-2026">
+      <ClientOnly>
+        <NewProgramSection class="md:mb-[120px] mb-[76px]" />
+      </ClientOnly>
+    </div>
     <MarqueeSection :content="sponsors" class="mb-[56px] md:mb-[76px]" />
     <HowItWasSection id="previous-seasons" class="mb-[56px] md:mb-[76px]" />
     <ProgramSection id="fall-winter-2025" class="md:mb-[56px] mb-[36px]" />
