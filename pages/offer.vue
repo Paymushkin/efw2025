@@ -504,6 +504,10 @@
 import { computed, ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useCompaniesCount } from '~/composables/useCompaniesCount'
+
+definePageMeta({
+  ssr: false
+})
 import BaseButton from '@/components/ui/BaseButton.vue'
 import WhatsAppButton from '@/components/ui/WhatsAppButton.vue'
 import FaqSection from '@/components/FaqSection.vue'
