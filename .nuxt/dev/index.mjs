@@ -719,7 +719,7 @@ const _inlineRuntimeConfig = {
         "defaults": {
           "changefreq": "weekly",
           "priority": 0.8,
-          "lastmod": "2025-11-12T14:13:19.061Z"
+          "lastmod": "2025-11-16T17:43:44.690Z"
         },
         "include": [],
         "exclude": [

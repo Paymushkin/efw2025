@@ -542,6 +542,9 @@ const approvedCount = ref(0)
 const updateCompaniesCount = (count) => {
   updateGlobalCount(count)
   
+  // Проверяем, что мы на клиенте
+  if (typeof document === 'undefined') return
+  
   // Обновляем счетчики в программе на главной странице
   const trialCountElement1 = document.getElementById('trial-waitlist-count-1')
   if (trialCountElement1) {
