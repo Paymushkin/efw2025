@@ -37,7 +37,8 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'vercel',
     routeRules: {
-      '/': { static: false, prerender: false },
+      '/': { ssr: false },
+      '/offer': { ssr: false },
       '/dubaifw/**': { static: true },
       '/offer/tr': { redirect: '/offer?tr' },
       '/sitemap.xml': { static: true },

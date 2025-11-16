@@ -638,8 +638,10 @@ const _inlineRuntimeConfig = {
         "cache": false
       },
       "/": {
-        "static": false,
-        "prerender": false
+        "ssr": false
+      },
+      "/offer": {
+        "ssr": false
       },
       "/dubaifw/**": {
         "static": true
@@ -719,7 +721,7 @@ const _inlineRuntimeConfig = {
         "defaults": {
           "changefreq": "weekly",
           "priority": 0.8,
-          "lastmod": "2025-11-16T17:55:40.790Z"
+          "lastmod": "2025-11-16T18:02:32.131Z"
         },
         "include": [],
         "exclude": [
@@ -3229,7 +3231,8 @@ const sources$1 = [
             ]
         },
         "urls": [
-            "/"
+            "/",
+            "/offer"
         ],
         "sourceType": "app"
     }
