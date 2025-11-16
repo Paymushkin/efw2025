@@ -412,88 +412,98 @@
       </div>
       </section>
 
-      <PhotoGallery />
+      <ClientOnly>
+        <PhotoGallery />
+      </ClientOnly>
 
       <!-- FAQ Section -->
-      <div class="mt-12">
-        <FaqSectionDynamic :standalone="false" />
-      </div>
+      <ClientOnly>
+        <div class="mt-12">
+          <FaqSectionDynamic :standalone="false" />
+        </div>
+      </ClientOnly>
 
-     <div v-if="showTrial" class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
-       <h2 class="text-xl md:text-4xl mb-[75px]">TRIAL SHOWCASE SPOTS</h2>
-       
-       <div class="space-y-6 mb-8">
-         <!-- Первое фото и текст на одной строке -->
-         <div class="flex flex-col md:flex-row gap-6">
-           <div class="rounded-2xl overflow-hidden md:w-1/2">
-             <img :src="Image9" alt="Trial showcase spots" class="w-full object-contain">
+     <ClientOnly>
+       <div v-if="showTrial" class="mb-[50px] md:mb-[80px] xl:mb-[100px]">
+         <h2 class="text-xl md:text-4xl mb-[75px]">TRIAL SHOWCASE SPOTS</h2>
+         
+         <div class="space-y-6 mb-8">
+           <!-- Первое фото и текст на одной строке -->
+           <div class="flex flex-col md:flex-row gap-6">
+             <div class="rounded-2xl overflow-hidden md:w-1/2">
+               <img :src="Image9" alt="Trial showcase spots" class="w-full object-contain">
+             </div>
+             <div class="md:w-1/2">
+               <p class="text-sm mb-6">
+                 Trial Showcase Spots — How it Works
+               </p>
+               
+               <ul class="text-sm space-y-2 mb-6">
+                <li>• Each day offers 20 Showcase Spots, divided into 4 sessions of 2 hours each — that's 80 trial slots per day.</li>
+                <li>• Each selected participant also receives 10 lead chats with EFW Market visitors.</li>
+                <li>• Allocation is not automatic. From the waitlist, participants are chosen at the organizers' discretion, to ensure a balanced mix of services for our audience.</li>
+                <li>• These trial spots are subsidized by Dubai Departments and Emirates Fashion Week as a goodwill initiative to support SMEs in Dubai's beauty and design industries.</li>
+                <li>• Important: if all 60 full-day paid spots are taken, the 20 trial spots may also be sold, which reduces the chances for waitlist applicants.</li>
+                <li>• You can always skip the waitlist and secure a guaranteed full-day spot (3,000 AED) — just as 60+ companies already have</li>
+               </ul>
+             </div>
            </div>
-           <div class="md:w-1/2">
-             <p class="text-sm mb-6">
-               Trial Showcase Spots — How it Works
-             </p>
-             
-             <ul class="text-sm space-y-2 mb-6">
-              <li>• Each day offers 20 Showcase Spots, divided into 4 sessions of 2 hours each — that's 80 trial slots per day.</li>
-              <li>• Each selected participant also receives 10 lead chats with EFW Market visitors.</li>
-              <li>• Allocation is not automatic. From the waitlist, participants are chosen at the organizers' discretion, to ensure a balanced mix of services for our audience.</li>
-              <li>• These trial spots are subsidized by Dubai Departments and Emirates Fashion Week as a goodwill initiative to support SMEs in Dubai's beauty and design industries.</li>
-              <li>• Important: if all 60 full-day paid spots are taken, the 20 trial spots may also be sold, which reduces the chances for waitlist applicants.</li>
-              <li>• You can always skip the waitlist and secure a guaranteed full-day spot (3,000 AED) — just as 60+ companies already have</li>
-             </ul>
+           
+           <!-- Второе и третье фото в ряд -->
+           <div class="flex flex-col md:flex-row gap-6">
+             <div class="rounded-2xl overflow-hidden">
+               <img :src="Image10" alt="Trial showcase spots" class="object-contain">
+             </div>
+
+             <div class="rounded-2xl overflow-hidden">
+               <img :src="Image11" alt="Trial showcase spots" class="object-contain">
+             </div>
            </div>
          </div>
          
-         <!-- Второе и третье фото в ряд -->
-         <div class="flex flex-col md:flex-row gap-6">
-           <div class="rounded-2xl overflow-hidden">
-             <img :src="Image10" alt="Trial showcase spots" class="object-contain">
-           </div>
-
-           <div class="rounded-2xl overflow-hidden">
-             <img :src="Image11" alt="Trial showcase spots" class="object-contain">
-           </div>
+         <p class="text-sm text-gray-600 mt-2 text-center">
+           competition with other waitlist companies; trial slots reduced if full-day spots are purchased
+         </p>
+         
+         <div class="flex flex-col items-end gap-3 mb-8 mt-6">
+           <BaseButton
+             id="join-waitlist"
+             variant="primary"
+             @click="showWaitlistForm = true">
+             <!-- <span>2h Free Trial Spot Waitlist</span> -->
+             <span>Join Waitlist</span>
+             <span>></span>
+           </BaseButton>
          </div>
-       </div>
-       
-       <p class="text-sm text-gray-600 mt-2 text-center">
-         competition with other waitlist companies; trial slots reduced if full-day spots are purchased
-       </p>
-       
-       <div class="flex flex-col items-end gap-3 mb-8 mt-6">
-         <BaseButton
-           id="join-waitlist"
-           variant="primary"
-           @click="showWaitlistForm = true">
-           <!-- <span>2h Free Trial Spot Waitlist</span> -->
-           <span>Join Waitlist</span>
-           <span>></span>
-         </BaseButton>
-       </div>
-       
-       <!-- Companies List -->
-       <div class="mt-12">
-         <CompaniesList ref="companiesListRef" @companies-count-updated="updateCompaniesCount" />
-       </div>
+         
+         <!-- Companies List -->
+         <div class="mt-12">
+           <CompaniesList ref="companiesListRef" @companies-count-updated="updateCompaniesCount" />
+         </div>
 
-      <!-- Approved Companies List -->
-      <div v-if="showApproved" class="mt-12">
-        <ApprovedCompaniesList ref="approvedCompaniesListRef" @companies-count-updated="updateApprovedCount" />
+        <!-- Approved Companies List -->
+        <div v-if="showApproved" class="mt-12">
+          <ApprovedCompaniesList ref="approvedCompaniesListRef" @companies-count-updated="updateApprovedCount" />
+        </div>
+
       </div>
-
-    </div>
+     </ClientOnly>
 
      
    </div>
 
    <!-- Waitlist Form Modal -->
+   <ClientOnly>
     <WaitlistForm
       :is-open="showWaitlistForm" 
       @close="showWaitlistForm = false"
       @success="handleWaitlistSuccess"
     />
+   </ClientOnly>
 
+   <ClientOnly>
     <GalleryIframe :show-fog="false" />
+   </ClientOnly>
     
     <!-- Bottom anchor for scrolling -->
     <div id="bottom"></div>
