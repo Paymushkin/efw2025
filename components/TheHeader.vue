@@ -103,7 +103,7 @@
                 </NuxtLink>
               </div>
             </div>
-            <a href="magazine.emiratesfashionweek.com" class="md:hidden flex justify-center items-center text-black hover:text-gray-600 transition-colors cursor-pointer 2xl:text-base lg:text-sm text-xs">MAGAZINE</a>
+            <a href="https://magazine.emiratesfashionweek.com" class="md:hidden flex justify-center items-center text-black hover:text-gray-600 transition-colors cursor-pointer 2xl:text-base lg:text-sm text-xs">MAGAZINE</a>
             <!-- Visit mobile (small) - скрываем на welcome странице -->
             <NuxtLink v-if="!isWelcomePage" target="_blank" :to="visitorsRegistration" class="hidden">
               <BaseButton variant="primary" size="sm">

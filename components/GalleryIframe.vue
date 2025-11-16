@@ -60,14 +60,17 @@ const updateScript = () => {
 };
 
 function handleMeyouMessage(event) {
-  // Проверяем, что event.data существует и это строка
+  // Проверяем, что event.data существует
   if (!event.data) return;
   
-  // Приводим к строке, если это не строка
-  const dataString = typeof event.data === 'string' ? event.data : String(event.data);
+  // Проверяем, что event.data это строка или может быть преобразовано в строку
+  if (typeof event.data !== 'string') {
+    // Игнорируем не-строковые данные (например, объекты от других расширений)
+    return;
+  }
   
   // Проверяем наличие подстроки безопасным способом
-  if (dataString.includes && dataString.includes('meyouHeight')) {
+  if (event.data.includes('meyouHeight')) {
     // Обработка события meyou
     console.log('Meyou height message received');
   }
