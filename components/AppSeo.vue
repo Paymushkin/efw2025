@@ -5,7 +5,7 @@
 <script setup>
 import { computed } from 'vue'
 
-const CANONICAL_DOMAIN = 'https://emiratesfashionweeks.com'
+const CANONICAL_DOMAIN = 'https://www.emiratesfashionweek.com'
 
 const props = defineProps({
   title: {
@@ -39,10 +39,6 @@ const canonicalUrl = computed(() => `${CANONICAL_DOMAIN}${canonicalPath.value}`)
 useHead(() => ({
   title: props.title,
   meta: [
-    {
-      name: 'robots',
-      content: 'noindex, nofollow'
-    },
     {
       name: 'description',
       content: props.description
@@ -144,7 +140,7 @@ useHead(() => ({
         url: CANONICAL_DOMAIN,
         potentialAction: {
           '@type': 'SearchAction',
-          target: 'https://www.google.com/search?q=site:emiratesfashionweeks.com+{search_term_string}',
+          target: 'https://www.google.com/search?q=site:www.emiratesfashionweek.com+{search_term_string}',
           'query-input': 'required name=search_term_string'
         }
       })
