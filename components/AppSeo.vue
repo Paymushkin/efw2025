@@ -40,6 +40,14 @@ useHead(() => ({
   title: props.title,
   meta: [
     {
+      name: 'robots',
+      content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+    },
+    {
+      name: 'googlebot',
+      content: 'index, follow'
+    },
+    {
       name: 'description',
       content: props.description
     },
