@@ -72,290 +72,233 @@ export const tabs = [
 ];
 
 // Импортируем изображения
-import designer1 from '@/assets/image/designers/1.webp';
-import designer2 from '@/assets/image/designers/2.webp';
-import designer3 from '@/assets/image/designers/3.webp';
-import designer4 from '@/assets/image/designers/4.webp';
-import designer5 from '@/assets/image/designers/5.webp';
-import designer6 from '@/assets/image/designers/6.webp';
-import designer7 from '@/assets/image/designers/7.webp';
-import designer8 from '@/assets/image/designers/8.webp';
-import designer9 from '@/assets/image/designers/9.webp';
-import designer10 from '@/assets/image/designers/10.webp';
-import designer11 from '@/assets/image/designers/11.webp';
-import designer12 from '@/assets/image/designers/12.webp';
-import designer13 from '@/assets/image/designers/13.webp';
-import designer14 from '@/assets/image/designers/14.webp';
-import designer15 from '@/assets/image/designers/15.webp';
-import designer16 from '@/assets/image/designers/16.webp';
-import designer17 from '@/assets/image/designers/17.webp';
-import designer18 from '@/assets/image/designers/18.webp';
-import designer19 from '@/assets/image/designers/19.webp';
-import designer20 from '@/assets/image/designers/20.webp';
-import designer21 from '@/assets/image/designers/21.webp';
-import designer22 from '@/assets/image/designers/22.webp';
-import designer23 from '@/assets/image/designers/23.webp';
-import designer24 from '@/assets/image/designers/24.webp'; 
-import designer25 from '@/assets/image/designers/25.webp';
-import designer26 from '@/assets/image/designers/26.webp';
-import designer27 from '@/assets/image/designers/27.webp';
-import designer28 from '@/assets/image/designers/28.webp';
-import designer29 from '@/assets/image/designers/29.webp';
-import designer30 from '@/assets/image/designers/30.webp';
-import designer31 from '@/assets/image/designers/31.webp';
-import designer32 from '@/assets/image/designers/32.webp';
-import designer33 from '@/assets/image/designers/33.webp';
-import designer34 from '@/assets/image/designers/34.webp';
-import designer35 from '@/assets/image/designers/35.webp';
-import designer36 from '@/assets/image/designers/36.webp';
-import designer37 from '@/assets/image/designers/37.webp';
-import designer38 from '@/assets/image/designers/38.webp';
-import designer39 from '@/assets/image/designers/39.webp';
-import designer40 from '@/assets/image/designers/40.webp';
-import designer41 from '@/assets/image/designers/41.webp';
-import designer42 from '@/assets/image/designers/42.webp'; 
-import designer43 from '@/assets/image/designers/43.webp';
-import designer44 from '@/assets/image/designers/44.webp';
-import designer45 from '@/assets/image/designers/45.webp';
-import designer46 from '@/assets/image/designers/46.webp';
-import designer47 from '@/assets/image/designers/47.webp';
-import designer48 from '@/assets/image/designers/48.webp';
-import designer49 from '@/assets/image/designers/49.webp';
-import designer50 from '@/assets/image/designers/50.webp';
-import designer51 from '@/assets/image/designers/51.webp';
-import designer52 from '@/assets/image/designers/52.webp';
-import designer53 from '@/assets/image/designers/53.webp';
-import designer54 from '@/assets/image/designers/54.png';
-import designer55 from '@/assets/image/designers/55.png';
-import designer56 from '@/assets/image/designers/56.png';
-
-
+const DESIGNERS_CDN_BASE = 'https://storage.yandexcloud.net/videos-meyou/efw2025/designers';
 
 // Массив дизайнеров с их данными
 export const designers = [
   {
     name: 'A.Sain',
-    image: designer1
+    image: `${DESIGNERS_CDN_BASE}/1.webp`
   },
   {
     name: 'Aisha',
-    image: designer2
+    image: `${DESIGNERS_CDN_BASE}/2.webp`
   },
   {
     name: 'Alaa Doresu',
-    image: designer3
+    image: `${DESIGNERS_CDN_BASE}/3.webp`
   },
   {
     name: 'Albina Sallum',
-    image: designer4
+    image: `${DESIGNERS_CDN_BASE}/4.webp`
   },
   {
     name: 'Alexandra Egorova',
-    image: designer5
+    image: `${DESIGNERS_CDN_BASE}/5.webp`
   },
   {
     name: 'Anait Arutyunova',
-    image: designer6
+    image: `${DESIGNERS_CDN_BASE}/6.webp`
   },
   {
     name: 'Anna Kameneva',
-    image: designer7
+    image: `${DESIGNERS_CDN_BASE}/7.webp`
   },
   {
     name: 'Antonella Bravi',
-    image: designer8
+    image: `${DESIGNERS_CDN_BASE}/8.webp`
   },
   {
     name: 'Armine Avetisyan',
-    image: designer9
+    image: `${DESIGNERS_CDN_BASE}/9.webp`
   },
   {
     name: 'Ayten Osmanova',
-    image: designer10
+    image: `${DESIGNERS_CDN_BASE}/10.webp`
   },
   {
     name: 'Chinara Yelmuratovna',
-    image: designer11
+    image: `${DESIGNERS_CDN_BASE}/11.webp`
   },
   {
     name: 'CholponA',
-    image: designer12
+    image: `${DESIGNERS_CDN_BASE}/12.webp`
   },
   {
     name: 'Diani',
-    image: designer13
+    image: `${DESIGNERS_CDN_BASE}/13.webp`
   },
   {
     name: 'Elena  Solgalova',
-    image: designer14
+    image: `${DESIGNERS_CDN_BASE}/14.webp`
   },
   {
     name: 'Elena Lebedeva',
-    image: designer15
+    image: `${DESIGNERS_CDN_BASE}/15.webp`
   },
   {
     name: 'Elizabeth La Reine',
-    image: designer16
+    image: `${DESIGNERS_CDN_BASE}/16.webp`
   },
   {
     name: 'Gee ',
-    image: designer17
+    image: `${DESIGNERS_CDN_BASE}/17.webp`
   },
   {
     name: 'Gulnora Mukhedinova',
-    image: designer18
+    image: `${DESIGNERS_CDN_BASE}/18.webp`
   },
   {
     name: 'Hosna',
-    image: designer19
+    image: `${DESIGNERS_CDN_BASE}/19.webp`
   },
   {
     name: 'Imanova',
-    image: designer20
+    image: `${DESIGNERS_CDN_BASE}/20.webp`
   },
   {
     name: 'Irina Marsi',
-    image: designer21
+    image: `${DESIGNERS_CDN_BASE}/21.webp`
   },
   {
     name: 'Irina Sharova',
-    image: designer22
+    image: `${DESIGNERS_CDN_BASE}/22.webp`
   },
   {
     name: 'Ketrin Boulas',
-    image: designer23
+    image: `${DESIGNERS_CDN_BASE}/23.webp`
   },
   {
     name: 'Kristina Kibovskaya',
-    image: designer24
+    image: `${DESIGNERS_CDN_BASE}/24.webp`
   },
   {
     name: 'Larmoire',
-    image: designer25
+    image: `${DESIGNERS_CDN_BASE}/25.webp`
   },
   {
     name: 'Lilia Algeria',
-    image: designer26
+    image: `${DESIGNERS_CDN_BASE}/26.webp`
   },
   {
     name: 'Ludmila Kanunnik',
-    image: designer27
+    image: `${DESIGNERS_CDN_BASE}/27.webp`
   },
   {
     name: 'Marina Vilisova',
-    image: designer28
+    image: `${DESIGNERS_CDN_BASE}/28.webp`
   },
   {
     name: 'Martine Berge',
-    image: designer29
+    image: `${DESIGNERS_CDN_BASE}/29.webp`
   },
   {
     name: 'Maryamz',
-    image: designer30
+    image: `${DESIGNERS_CDN_BASE}/30.webp`
   },
   {
     name: 'Michael Lombard',
-    image: designer31
+    image: `${DESIGNERS_CDN_BASE}/31.webp`
   },
   {
     name: 'Natalia Safina',
-    image: designer32
+    image: `${DESIGNERS_CDN_BASE}/32.webp`
   },
   {
     name: 'Natalia Smirnova',
-    image: designer33
+    image: `${DESIGNERS_CDN_BASE}/33.webp`
   },
   {
     name: 'Nolur',
-    image: designer34
+    image: `${DESIGNERS_CDN_BASE}/34.webp`
   },
   {
     name: 'Olga Kondrasheva',
-    image: designer35
+    image: `${DESIGNERS_CDN_BASE}/35.webp`
   },
   {
     name: 'Olga Leffers',
-    image: designer36
+    image: `${DESIGNERS_CDN_BASE}/36.webp`
   },
   {
     name: 'Olga Shuneva',
-    image: designer37
+    image: `${DESIGNERS_CDN_BASE}/37.webp`
   },
   {
     name: 'Petr Levenpol',
-    image: designer38
+    image: `${DESIGNERS_CDN_BASE}/38.webp`
   },
   {
     name: 'Rebeka Popovic',
-    image: designer39
+    image: `${DESIGNERS_CDN_BASE}/39.webp`
   },
   {
     name: 'Renata Kirillova',
-    image: designer40
+    image: `${DESIGNERS_CDN_BASE}/40.webp`
   },
   {
     name: 'Roula',
-    image: designer41
+    image: `${DESIGNERS_CDN_BASE}/41.webp`
   },
   {
     name: 'Said Omari',
-    image: designer42
+    image: `${DESIGNERS_CDN_BASE}/42.webp`
   },
   {
     name: 'Sameh Djebbi',
-    image: designer43
+    image: `${DESIGNERS_CDN_BASE}/43.webp`
   },
   {
     name: 'Sanse',
-    image: designer44
+    image: `${DESIGNERS_CDN_BASE}/44.webp`
   },
   {
     name: 'Sohaila Hafez',
-    image: designer45
+    image: `${DESIGNERS_CDN_BASE}/45.webp`
   },
   {
     name: 'Sultan Gadimbayli  ',
-    image: designer46
+    image: `${DESIGNERS_CDN_BASE}/46.webp`
   },
   {
     name: 'Sviecik Zwegrodzka',
-    image: designer47
+    image: `${DESIGNERS_CDN_BASE}/47.webp`
   },
   {
     name: 'Sylweriusz Stanislawski',
-    image: designer48
+    image: `${DESIGNERS_CDN_BASE}/48.webp`
   },
   {
     name: 'Tanya Tuzova',
-    image: designer49
+    image: `${DESIGNERS_CDN_BASE}/49.webp`
   },
   {
     name: 'Vera Shasherina',
-    image: designer50
+    image: `${DESIGNERS_CDN_BASE}/50.webp`
   },
   {
     name: 'Yana Shine',
-    image: designer51
+    image: `${DESIGNERS_CDN_BASE}/51.webp`
   },
   {
     name: 'Yulia Kotenko',
-    image: designer52
+    image: `${DESIGNERS_CDN_BASE}/52.webp`
   },
   {
     name: 'Zain Al Abideen Falih',
-    image: designer53
+    image: `${DESIGNERS_CDN_BASE}/53.webp`
   },
 
   {
     name: 'Olga Khayrullova',
-    image: designer54
+    image: `${DESIGNERS_CDN_BASE}/54.webp`
   },
   {
-    name: 'Khalimova Liza',
-    image: designer55
+    name: 'DR. RAGIA HADDARA',
+    image: `${DESIGNERS_CDN_BASE}/55.webp`
   },
   {
-    name: 'Olga Baltrukevica',
-    image: designer56
+    name: 'VISHAL DESAI',
+    image: `${DESIGNERS_CDN_BASE}/56.webp`
   }
 ];

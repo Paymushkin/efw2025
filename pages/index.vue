@@ -32,6 +32,9 @@
       </ClientOnly>
     </div>
     <ClientOnly>
+      <MagazineCarousel />
+    </ClientOnly>
+    <ClientOnly>
       <SponsorsSection id="partners-media" class="md:mb-[76px] mb-[56px]" />
     </ClientOnly>
     <ClientOnly>
@@ -86,6 +89,7 @@ import EventFeatures from '~/components/EventFeatures.vue';
 import AppSeo from '@/components/AppSeo.vue';
 import FaqSectionDynamic from '~/components/FaqSectionDynamic.vue';
 import FacesOfEfwSection from '@/components/FacesOfEfwSection.vue';
+import MagazineCarousel from '@/components/MagazineCarousel.vue';
 
 // Constants and Assets
 import { FEATURES_DATA } from '~/constants/featuresData';
