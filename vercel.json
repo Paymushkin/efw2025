@@ -1,37 +1,13 @@
 {
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
+      "destination": "https://www.emiratesfashionweek.com/$1",
+      "permanent": true,
       "has": [
-        {
-          "type": "host",
-          "value": "emiratesfashionweeks.com"
-        }
-      ],
-      "destination": "https://www.emiratesfashionweek.com/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.emiratesfashionweeks.com"
-        }
-      ],
-      "destination": "https://www.emiratesfashionweek.com/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "emiratesfashionweek.com"
-        }
-      ],
-      "destination": "https://www.emiratesfashionweek.com/:path*",
-      "permanent": true
+        { "type": "host", "value": "emiratesfashionweeks.com" },
+        { "type": "host", "value": "www.emiratesfashionweeks.com" }
+      ]
     }
   ]
 }
