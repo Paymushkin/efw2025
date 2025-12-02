@@ -123,6 +123,11 @@ export default defineNuxtConfig({
         priority: 0.8
       },
       {
+        url: '/trial',
+        changefreq: 'weekly',
+        priority: 0.8
+      },
+      {
         url: '/request',
         changefreq: 'weekly',
         priority: 0.8
