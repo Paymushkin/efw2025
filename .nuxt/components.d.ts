@@ -29,6 +29,7 @@ interface _GlobalComponents {
     'HeroSection': typeof import("../components/HeroSection.vue")['default']
     'HowItWasSection': typeof import("../components/HowItWasSection.vue")['default']
     'ImageCarousel': typeof import("../components/ImageCarousel.vue")['default']
+    'MagazineCarousel': typeof import("../components/MagazineCarousel.vue")['default']
     'MarqueeSection': typeof import("../components/MarqueeSection.vue")['default']
     'NewProgramSection': typeof import("../components/NewProgramSection.vue")['default']
     'PhotoGallery': typeof import("../components/PhotoGallery.vue")['default']
@@ -100,6 +101,7 @@ interface _GlobalComponents {
     'LazyHeroSection': LazyComponent<typeof import("../components/HeroSection.vue")['default']>
     'LazyHowItWasSection': LazyComponent<typeof import("../components/HowItWasSection.vue")['default']>
     'LazyImageCarousel': LazyComponent<typeof import("../components/ImageCarousel.vue")['default']>
+    'LazyMagazineCarousel': LazyComponent<typeof import("../components/MagazineCarousel.vue")['default']>
     'LazyMarqueeSection': LazyComponent<typeof import("../components/MarqueeSection.vue")['default']>
     'LazyNewProgramSection': LazyComponent<typeof import("../components/NewProgramSection.vue")['default']>
     'LazyPhotoGallery': LazyComponent<typeof import("../components/PhotoGallery.vue")['default']>
@@ -177,6 +179,7 @@ export const GalleryIframe: typeof import("../components/GalleryIframe.vue")['de
 export const HeroSection: typeof import("../components/HeroSection.vue")['default']
 export const HowItWasSection: typeof import("../components/HowItWasSection.vue")['default']
 export const ImageCarousel: typeof import("../components/ImageCarousel.vue")['default']
+export const MagazineCarousel: typeof import("../components/MagazineCarousel.vue")['default']
 export const MarqueeSection: typeof import("../components/MarqueeSection.vue")['default']
 export const NewProgramSection: typeof import("../components/NewProgramSection.vue")['default']
 export const PhotoGallery: typeof import("../components/PhotoGallery.vue")['default']
@@ -248,6 +251,7 @@ export const LazyGalleryIframe: LazyComponent<typeof import("../components/Galle
 export const LazyHeroSection: LazyComponent<typeof import("../components/HeroSection.vue")['default']>
 export const LazyHowItWasSection: LazyComponent<typeof import("../components/HowItWasSection.vue")['default']>
 export const LazyImageCarousel: LazyComponent<typeof import("../components/ImageCarousel.vue")['default']>
+export const LazyMagazineCarousel: LazyComponent<typeof import("../components/MagazineCarousel.vue")['default']>
 export const LazyMarqueeSection: LazyComponent<typeof import("../components/MarqueeSection.vue")['default']>
 export const LazyNewProgramSection: LazyComponent<typeof import("../components/NewProgramSection.vue")['default']>
 export const LazyPhotoGallery: LazyComponent<typeof import("../components/PhotoGallery.vue")['default']>

@@ -146,6 +146,11 @@ export default defineNuxtConfig({
           manualChunks: undefined
         }
       }
+    },
+    server: {
+      watch: {
+        ignored: ['**/.npm-cache/**', '**/node_modules/**', '**/.nuxt/**', '**/.git/**']
+      }
     }
   },
   

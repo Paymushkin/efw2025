@@ -721,11 +721,11 @@ const _inlineRuntimeConfig = {
         "defaults": {
           "changefreq": "weekly",
           "priority": 0.8,
-          "lastmod": "2025-11-16T19:08:56.113Z"
+          "lastmod": "2025-11-20T08:28:19.920Z"
         },
         "include": [],
         "exclude": [
-          "/**",
+          "/dubaifw/**",
           "/_nuxt/**",
           "/_**"
         ],
@@ -749,7 +749,7 @@ const _inlineRuntimeConfig = {
       {
         "_priority": -3,
         "_context": "nuxt-site-config:config",
-        "url": "https://emiratesfashionweeks.com"
+        "url": "https://www.emiratesfashionweek.com"
       }
     ],
     "version": "2.2.21",

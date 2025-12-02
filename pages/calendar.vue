@@ -71,10 +71,18 @@ const showButton = ref(false)
 // Calendar ID
 const calendarId = 'a48ce6b68320071674bb11016e1486a03cc4e7c0a452cfc3b34503e26963c22c@group.calendar.google.com'
 
+// Безопасно получаем userAgent (учитывая SSR)
+const getUserAgent = () => {
+  if (typeof navigator === 'undefined' || !navigator.userAgent) {
+    return ''
+  }
+  return navigator.userAgent.toLowerCase()
+}
+
 // Определяем URL в зависимости от платформы
 const getCalendarUrl = () => {
-  const userAgent = navigator.userAgent.toLowerCase()
-  
+  const userAgent = getUserAgent()
+
   // Для iOS/macOS используем webcal (подписка)
   if (userAgent.includes('iphone') || userAgent.includes('ipad') || userAgent.includes('mac')) {
     return `webcal://calendar.google.com/calendar/ical/${encodeURIComponent(calendarId)}/public/basic.ics`
@@ -88,13 +96,13 @@ const targetUrl = getCalendarUrl()
 
 // Определяем, является ли устройство iOS
 const isIOS = () => {
-  const userAgent = navigator.userAgent.toLowerCase()
+  const userAgent = getUserAgent()
   return userAgent.includes('iphone') || userAgent.includes('ipad') || userAgent.includes('mac')
 }
 
 // Определяем, является ли устройство Android
 const isAndroid = () => {
-  const userAgent = navigator.userAgent.toLowerCase()
+  const userAgent = getUserAgent()
   return userAgent.includes('android')
 }
 
