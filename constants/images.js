@@ -294,11 +294,11 @@ export const designers = [
     image: `${DESIGNERS_CDN_BASE}/54.webp`
   },
   {
-    name: 'DR. RAGIA HADDARA',
+    name: 'VISHAL DESAI',
     image: `${DESIGNERS_CDN_BASE}/55.webp`
   },
   {
-    name: 'VISHAL DESAI',
+    name: 'DR. RAGIA HADDARA',
     image: `${DESIGNERS_CDN_BASE}/56.webp`
   }
 ];

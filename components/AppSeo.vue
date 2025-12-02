@@ -28,10 +28,13 @@ const props = defineProps({
 
 const route = useRoute()
 
-// Используем computed для канонического URL, чтобы избежать проблем с SSR
+// Используем computed для канонического URL:
+// - игнорируем query-параметры (utm, трекинг и т.п.)
+// - убираем лишний закрывающий слэш, чтобы /station и canonical совпадали
 const canonicalPath = computed(() => {
-  const path = route.path
-  return path === '/' ? '/' : (path.endsWith('/') ? path : path + '/')
+  const path = route.path || '/'
+  if (path === '/') return '/'
+  return path.endsWith('/') ? path.slice(0, -1) : path
 })
 
 const canonicalUrl = computed(() => `${CANONICAL_DOMAIN}${canonicalPath.value}`)
