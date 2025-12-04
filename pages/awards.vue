@@ -11,8 +11,8 @@
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto text-center">
           <h1 class="text-5xl md:text-6xl font-bold mb-6 text-white">Emirates Fashion Week Awards</h1>
-          <p class="text-xl md:text-2xl text-gray-200 mb-4">Fall Winter 2025</p>
-          <p class="text-lg text-gray-300">April 15, 2025</p>
+          <p class="text-xl md:text-2xl text-gray-200 mb-4">A Professional International Recognition Platform for Emerging and Established Talent in the Fashion and Beauty Industries.</p>
+          <p class="text-lg text-gray-300">Established in the United Arab Emirates as a formal institution for professional merit, industry legitimacy, and cross-border talent validation. Supported by an independent jury applying structured evaluation criteria across design excellence, digital innovation, and commercial strategy.</p>
         </div>
       </div>
     </section>
@@ -308,11 +308,19 @@
         </div>
       </div>
     </section>
+
+    <!-- Faces of EFW -->
+    <div id="faces-efw" class="container mx-auto p-4">
+      <ClientOnly>
+        <FacesOfEfwSection />
+      </ClientOnly>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import FacesOfEfwSection from '@/components/FacesOfEfwSection.vue'
 
 // Reactive data for lazy loading
 const isVideoVisible = ref({})

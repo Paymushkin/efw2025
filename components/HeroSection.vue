@@ -21,8 +21,8 @@
     ></div>
     <div class="container flex flex-col grow mx-auto md:px-4 px-2 py-10 relative z-20">
       <h1 class="xl:text-5xl md:text-4xl text-xl font-bold text-white uppercase">
-        14<sup class="xl:text-2xl md:text-xl text-base align-top">th</sup> EMIRATES&nbsp;FASHION&nbsp;WEEK
-        <sup class="xl:text-3xl md:text-3xl text-base align-top">®</sup> 
+        14<sup class="xl:text-2xl md:text-xl text-base align-top">th</sup>&nbsp;EMIRATES&nbsp;FASHION&nbsp;WEEK
+        <sup class="xl:text-3xl md:text-3xl text-base align-top md:-ml-[10px] -ml-[5px]">®</sup> 
       </h1>
       <span class="xl:text-[60px] text-xl text-white font-bold md:mb-4 mb-2">Spring Summer 2026</span>
       <span class="text-white mb-10 text-xl font-bold">8-11 November 2025</span>

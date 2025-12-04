@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-neutral-50 py-16 md:py-20">
+  <section class="py-16 md:py-20">
     <div class="container mx-auto px-4">
       <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between mb-10">
         <div class="max-w-2xl">
@@ -42,17 +42,19 @@
           }
         }"
         :pagination="{
-          clickable: true
+          clickable: true,
+          el: '.magazine-pagination'
         }"
+        @swiper="onSwiper"
         class="magazine-swiper"
       >
         <SwiperSlide v-for="article in magazineArticles" :key="article.id">
-          <article class="group flex h-full flex-col overflow-hidden rounded-3xl border border-white bg-white shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+          <article class="group flex h-full flex-col overflow-hidden rounded-3xl bg-white">
             <div class="relative overflow-hidden">
               <img
                 :src="article.image"
                 :alt="article.title"
-                class="h-64 w-full object-cover transition duration-500 group-hover:scale-105"
+                class="w-full aspect-[3/4] object-cover transition duration-500 group-hover:scale-105"
                 loading="lazy"
               />
               <span class="absolute bottom-4 left-4 inline-flex items-center rounded-full bg-white/95 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-gray-900 shadow">
@@ -60,7 +62,7 @@
               </span>
             </div>
             <div class="flex flex-1 flex-col gap-4 p-6">
-              <h3 class="text-2xl font-semibold text-gray-900 leading-snug">
+              <h3 class="text-xl font-semibold text-gray-900 leading-snug line-clamp-2">
                 {{ article.title }}
               </h3>
               <p class="text-sm text-gray-600 line-clamp-5">
@@ -91,9 +93,9 @@
             </div>
           </article>
         </SwiperSlide>
-
-        <div class="swiper-pagination mt-8"></div>
       </Swiper>
+      
+      <div class="swiper-pagination magazine-pagination mt-8"></div>
     </div>
   </section>
 </template>
@@ -105,10 +107,19 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 import { magazineArticles } from '@/constants/magazine';
+
+const onSwiper = (swiper) => {
+  // Swiper initialized
+};
 </script>
 
 <style scoped>
-.magazine-swiper :deep(.swiper-pagination-bullet) {
+.magazine-pagination {
+  position: relative !important;
+  margin-top: 2rem;
+}
+
+.magazine-pagination :deep(.swiper-pagination-bullet) {
   width: 10px;
   height: 10px;
   background-color: #d1d5db;
@@ -116,7 +127,7 @@ import { magazineArticles } from '@/constants/magazine';
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.magazine-swiper :deep(.swiper-pagination-bullet-active) {
+.magazine-pagination :deep(.swiper-pagination-bullet-active) {
   opacity: 1;
   background-color: #111827;
   transform: scale(1.2);
