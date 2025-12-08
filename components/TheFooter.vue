@@ -149,7 +149,7 @@ const router = useRouter();
 
 const menuLinks = [
   { name: 'MAGAZINE', href: 'https://magazine.emiratesfashionweek.com', id: 'magazine' },
-  { name: '14 SEASONS', href: '/#previous-seasons', id: 'previous-seasons' },
+  { name: 'PREVIOUS 14th', href: '/#spring-summer-2026', id: 'spring-summer-2026' },
   { name: 'PREVIOUS 13th', href: '/#fall-winter-2025', id: 'fall-winter-2025' },
   // { name: 'SCHEDULE', href: '/#program', id: 'program' },
   { name: 'DESIGNERS', href: '/#designers', id: 'designers' },

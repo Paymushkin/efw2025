@@ -19,6 +19,8 @@ interface _GlobalComponents {
     'ApprovedCompaniesListOld': typeof import("../components/ApprovedCompaniesListOld.vue")['default']
     'CompaniesList': typeof import("../components/CompaniesList.vue")['default']
     'ContactForm': typeof import("../components/ContactForm.vue")['default']
+    'CurrentProgramSection': typeof import("../components/CurrentProgramSection.vue")['default']
+    'DesignerRunwaysSection': typeof import("../components/DesignerRunwaysSection.vue")['default']
     'DesignersSection': typeof import("../components/DesignersSection.vue")['default']
     'EventFeatures': typeof import("../components/EventFeatures.vue")['default']
     'FacesOfEfwSection': typeof import("../components/FacesOfEfwSection.vue")['default']
@@ -91,6 +93,8 @@ interface _GlobalComponents {
     'LazyApprovedCompaniesListOld': LazyComponent<typeof import("../components/ApprovedCompaniesListOld.vue")['default']>
     'LazyCompaniesList': LazyComponent<typeof import("../components/CompaniesList.vue")['default']>
     'LazyContactForm': LazyComponent<typeof import("../components/ContactForm.vue")['default']>
+    'LazyCurrentProgramSection': LazyComponent<typeof import("../components/CurrentProgramSection.vue")['default']>
+    'LazyDesignerRunwaysSection': LazyComponent<typeof import("../components/DesignerRunwaysSection.vue")['default']>
     'LazyDesignersSection': LazyComponent<typeof import("../components/DesignersSection.vue")['default']>
     'LazyEventFeatures': LazyComponent<typeof import("../components/EventFeatures.vue")['default']>
     'LazyFacesOfEfwSection': LazyComponent<typeof import("../components/FacesOfEfwSection.vue")['default']>
@@ -169,6 +173,8 @@ export const ApprovedCompaniesListFixed: typeof import("../components/ApprovedCo
 export const ApprovedCompaniesListOld: typeof import("../components/ApprovedCompaniesListOld.vue")['default']
 export const CompaniesList: typeof import("../components/CompaniesList.vue")['default']
 export const ContactForm: typeof import("../components/ContactForm.vue")['default']
+export const CurrentProgramSection: typeof import("../components/CurrentProgramSection.vue")['default']
+export const DesignerRunwaysSection: typeof import("../components/DesignerRunwaysSection.vue")['default']
 export const DesignersSection: typeof import("../components/DesignersSection.vue")['default']
 export const EventFeatures: typeof import("../components/EventFeatures.vue")['default']
 export const FacesOfEfwSection: typeof import("../components/FacesOfEfwSection.vue")['default']
@@ -241,6 +247,8 @@ export const LazyApprovedCompaniesListFixed: LazyComponent<typeof import("../com
 export const LazyApprovedCompaniesListOld: LazyComponent<typeof import("../components/ApprovedCompaniesListOld.vue")['default']>
 export const LazyCompaniesList: LazyComponent<typeof import("../components/CompaniesList.vue")['default']>
 export const LazyContactForm: LazyComponent<typeof import("../components/ContactForm.vue")['default']>
+export const LazyCurrentProgramSection: LazyComponent<typeof import("../components/CurrentProgramSection.vue")['default']>
+export const LazyDesignerRunwaysSection: LazyComponent<typeof import("../components/DesignerRunwaysSection.vue")['default']>
 export const LazyDesignersSection: LazyComponent<typeof import("../components/DesignersSection.vue")['default']>
 export const LazyEventFeatures: LazyComponent<typeof import("../components/EventFeatures.vue")['default']>
 export const LazyFacesOfEfwSection: LazyComponent<typeof import("../components/FacesOfEfwSection.vue")['default']>

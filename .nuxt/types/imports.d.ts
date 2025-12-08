@@ -110,6 +110,7 @@ declare global {
   const useCookie: typeof import('../../node_modules/nuxt/dist/app/composables/cookie')['useCookie']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
+  const useDesignerRunways: typeof import('../../composables/useDesignerRunways')['useDesignerRunways']
   const useDesigners: typeof import('../../composables/useDesigners')['useDesigners']
   const useError: typeof import('../../node_modules/nuxt/dist/app/composables/error')['useError']
   const useFaces: typeof import('../../composables/useFaces')['useFaces']
@@ -127,6 +128,7 @@ declare global {
   const useNumberAnimation: typeof import('../../composables/useNumberAnimation')['useNumberAnimation']
   const useNuxtApp: typeof import('../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']
   const useNuxtData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']
+  const useNuxtDevTools: typeof import('../../node_modules/nuxt/node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools')['useNuxtDevTools']
   const usePhotographers: typeof import('../../composables/usePhotographers')['usePhotographers']
   const usePreviewMode: typeof import('../../node_modules/nuxt/dist/app/composables/preview')['usePreviewMode']
   const useRequestEvent: typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestEvent']
@@ -196,6 +198,9 @@ declare global {
   // @ts-ignore
   export type { Component, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
+  // @ts-ignore
+  export type { DesignerRunwayItem, DesignerRunwayGroup } from '../../composables/useDesignerRunways'
+  import('../../composables/useDesignerRunways')
 }
 // for vue template auto import
 import { UnwrapRef } from 'vue'
@@ -310,6 +315,7 @@ declare module 'vue' {
     readonly useCookie: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/cookie')['useCookie']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
+    readonly useDesignerRunways: UnwrapRef<typeof import('../../composables/useDesignerRunways')['useDesignerRunways']>
     readonly useDesigners: UnwrapRef<typeof import('../../composables/useDesigners')['useDesigners']>
     readonly useError: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/error')['useError']>
     readonly useFaces: UnwrapRef<typeof import('../../composables/useFaces')['useFaces']>
@@ -327,6 +333,7 @@ declare module 'vue' {
     readonly useNumberAnimation: UnwrapRef<typeof import('../../composables/useNumberAnimation')['useNumberAnimation']>
     readonly useNuxtApp: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']>
     readonly useNuxtData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']>
+    readonly useNuxtDevTools: UnwrapRef<typeof import('../../node_modules/nuxt/node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools')['useNuxtDevTools']>
     readonly usePhotographers: UnwrapRef<typeof import('../../composables/usePhotographers')['usePhotographers']>
     readonly usePreviewMode: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/preview')['usePreviewMode']>
     readonly useRequestEvent: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestEvent']>

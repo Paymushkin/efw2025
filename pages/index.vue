@@ -4,23 +4,34 @@
       title="Emirates Fashion Week | Dubai 2025 | 14th Season | Spring Summer 26 | 8–11 November"
       description="Emirates Fashion Week Dubai 2025 celebrates its 14th Season (Spring/Summer 26) on 8–11 November at Skylight Gallery, Arjaan by Rotana, Dubai Media City. Featuring 2 days of runway shows and 2 days of 40 fashion pop-ups & 60 beauty services market. Since 2019, EFW has showcased 350+ designers and trained 1200+ models."
       keywords="Emirates Fashion Week, Dubai Fashion, Fashion Shows Runways Dubai, Beauty Exhibition UAE, Fashion Pop-up Market Dubai, Designer Collections, Beauty Services Dubai, Fashion Week 2025 Dubai"
+      schema-type="event"
+      :event-data="{
+        name: 'Emirates Fashion Week Dubai 2025 - 14th Season Spring Summer 26',
+        description: 'Emirates Fashion Week Dubai 2025 celebrates its 14th Season (Spring/Summer 26) on 8–11 November at Skylight Gallery, Arjaan by Rotana, Dubai Media City.',
+        startDate: '2025-11-08T00:00:00+04:00',
+        endDate: '2025-11-11T23:59:59+04:00',
+        location: {
+          name: 'Skylight Gallery, Arjaan by Rotana, Dubai Media City'
+        }
+      }"
     />
     <ClientOnly>
       <HeroSection class="mb-[56px] md:mb-[76px]" />
     </ClientOnly>
-    <div id="spring-summer-2026">
-      <ClientOnly>
-        <NewProgramSection class="md:mb-[120px] mb-[76px]" />
-      </ClientOnly>
-    </div>
-    <ClientOnly>
-      <MarqueeSection :content="sponsors" class="mb-[56px] md:mb-[76px]" />
-    </ClientOnly>
+    <!-- <ClientOnly>
+      <CurrentProgramSection class="md:mb-[120px] mb-[76px]" />
+    </ClientOnly> -->
     <div id="previous-seasons">
       <ClientOnly>
         <HowItWasSection class="mb-[56px] md:mb-[76px]" />
       </ClientOnly>
     </div>
+    <ClientOnly>
+      <MarqueeSection :content="sponsors" class="mb-[56px] md:mb-[76px]" />
+    </ClientOnly>
+    <ClientOnly>
+      <NewProgramSection class="md:mb-[120px] mb-[76px]" />
+    </ClientOnly>
     <div id="fall-winter-2025">
       <ClientOnly>
         <ProgramSection class="md:mb-[56px] mb-[36px]" />
@@ -33,6 +44,9 @@
     </div>
     <ClientOnly>
       <MagazineCarousel />
+    </ClientOnly>
+    <ClientOnly>
+      <DesignerRunwaysSection v-if="showRunways" class="md:mb-[76px] mb-[56px]" />
     </ClientOnly>
     <ClientOnly>
       <SponsorsSection id="partners-media" class="md:mb-[76px] mb-[56px]" />
@@ -68,19 +82,30 @@
 </template>
 
 <script setup>
-import { onMounted, nextTick } from 'vue';
+import { onMounted, nextTick, computed } from 'vue';
+import { useRoute } from 'vue-router';
 
 definePageMeta({
   layout: 'default',
   ssr: false
 });
 
+const route = useRoute();
+
+// Проверяем наличие параметра runways=true в URL
+const showRunways = computed(() => {
+  return route.query.runways === 'true';
+});
+
 // Components
 import HeroSection from '@/components/HeroSection.vue';
 import HowItWasSection from '~/components/HowItWasSection.vue';
+import CurrentProgramSection from '~/components/CurrentProgramSection.vue';
 import NewProgramSection from '~/components/NewProgramSection.vue';
 import ProgramSection from '~/components/ProgramSection.vue';
 import DesignersSection from '~/components/DesignersSection.vue';
+import MagazineCarousel from '~/components/MagazineCarousel.vue';
+import DesignerRunwaysSection from '~/components/DesignerRunwaysSection.vue';
 import SponsorsSection from '~/components/SponsorsSection.vue';
 import StatisticsSection from '@/components/StatisticsSection.vue';
 import MarqueeSection from '~/components/MarqueeSection.vue';
@@ -89,7 +114,6 @@ import EventFeatures from '~/components/EventFeatures.vue';
 import AppSeo from '@/components/AppSeo.vue';
 import FaqSectionDynamic from '~/components/FaqSectionDynamic.vue';
 import FacesOfEfwSection from '@/components/FacesOfEfwSection.vue';
-import MagazineCarousel from '@/components/MagazineCarousel.vue';
 
 // Constants and Assets
 import { FEATURES_DATA } from '~/constants/featuresData';

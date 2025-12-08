@@ -4,6 +4,11 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@nuxtjs/sitemap'],
   css: ['~/assets/css/main.css'],
   compatibilityDate: '2025-02-19',
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag === 'lite-youtube'
+    }
+  },
   devServer: {
     host: '0.0.0.0',
     port: 3000,
@@ -29,7 +34,8 @@ export default defineNuxtConfig({
       ],
       script: [
         { src: 'https://www.googletagmanager.com/gtag/js?id=G-93881479ZC', async: true },
-        { type: 'text/javascript', innerHTML: "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-93881479ZC');" } as any
+        { type: 'text/javascript', innerHTML: "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-93881479ZC');" } as any,
+        { src: 'https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.0/src/lite-yt-embed.js', defer: true }
       ]
     }
   },
@@ -145,6 +151,11 @@ export default defineNuxtConfig({
     ]
   } as any,
   vite: {
+    vue: {
+      compilerOptions: {
+        isCustomElement: (tag) => tag === 'lite-youtube'
+      }
+    },
     build: {
       rollupOptions: {
         output: {

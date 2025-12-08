@@ -1,5 +1,11 @@
 <template>
   <div class="container mx-auto px-5 py-10 md:py-16">
+    <AppSeo
+      title="Gallery SS26 - 14th Season Spring Summer 26 | Emirates Fashion Week"
+      description="Browse the photo galleries from Emirates Fashion Week 14th Season Spring Summer 26. Featuring collections from top designers, runway shows, and behind-the-scenes moments."
+      keywords="Emirates Fashion Week Gallery SS26, Spring Summer 26 Photos, Runway Photos, Designer Collections, Dubai Fashion Week"
+      schema-type="collection"
+    />
     <h1 class="text-3xl md:text-4xl xl:text-5xl mb-6">14th Season Spring Summer 26</h1>
     <p class="text-base md:text-lg text-gray-700 mb-6">
       Statistics: Total 13 Photobanks. 10.000+ photo. 135+ TV interviews. 400+ Videos
@@ -48,6 +54,7 @@
 </template>
 
 <script setup>
+import AppSeo from '@/components/AppSeo.vue';
 import { computed, onMounted } from 'vue';
 import PhotographerBlock from '@/components/PhotographerBlock.vue';
 import { usePhotographers } from '~/composables/usePhotographers';

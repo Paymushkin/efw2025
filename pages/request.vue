@@ -1,5 +1,10 @@
 <template>
   <div class="container mx-auto px-4 py-4 md:py-6">
+    <AppSeo
+      title="Guest List - Emirates Fashion Week Dubai 2025"
+      description="You're on the EFW 2025 Guest List! View your personalized invitation and event program for Emirates Fashion Week Dubai 2025."
+      keywords="Emirates Fashion Week Guest List, Dubai Fashion Event 2025, Fashion Week Invitation, Guest Welcome Dubai, Spring Summer 26"
+    />
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         <!-- Left column: Welcome, Program, and QR code -->
@@ -325,44 +330,11 @@
 </template>
 
 <script setup>
+import AppSeo from '@/components/AppSeo.vue';
 import { useRoute } from '#imports';
 import BaseButton from '@/components/ui/BaseButton.vue';
 import Image1 from '@/assets/image/welcome/1.webp';
 
-// SEO мета-теги
-useHead({
-  title: 'Guest List - Emirates Fashion Week Dubai 2025',
-  meta: [
-    {
-      name: 'description',
-      content: 'You are on the Emirates Fashion Week Dubai 2025 guest list. Join us for three remarkable days of style, beauty, and meaningful connections.'
-    },
-    {
-      name: 'keywords',
-      content: 'Emirates Fashion Week Guest List, Dubai Fashion Event, Fashion Week Invitation, Guest Pass Dubai'
-    },
-    {
-      property: 'og:title',
-      content: 'Guest List - Emirates Fashion Week Dubai 2025'
-    },
-    {
-      property: 'og:description',
-      content: 'You are on the Emirates Fashion Week Dubai 2025 guest list. Join us for three remarkable days of style, beauty, and meaningful connections.'
-    },
-    {
-      property: 'og:image',
-      content: 'https://emiratesfashionweeks.com/seo-poster.png'
-    },
-    {
-      property: 'og:type',
-      content: 'website'
-    },
-    {
-      name: 'twitter:card',
-      content: 'summary_large_image'
-    }
-  ]
-});
 
 // Get guest name from URL parameter
 const route = useRoute();

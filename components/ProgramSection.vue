@@ -21,7 +21,7 @@
         <button
           v-for="(tab, index) in tabs"
           :key="index"
-          @click="selectTab(index)"
+          @click.stop="selectTab(index)"
           class="flex flex-col items-center justify-center flex-1 px-2 py-3 border-r border-gray-300 last:border-r-0 transition-colors duration-300"
           :class="{
             'bg-black text-white': currentTab === index,
@@ -50,7 +50,7 @@
         <button
           v-for="(tab, index) in tabs"
           :key="index"
-          @click="selectTab(index)"
+          @click.stop="selectTab(index)"
           class="flex flex-col items-start gap-2 hover:text-black flex-shrink-0"
           :class="{
             'text-black': currentTab === index,
@@ -120,16 +120,27 @@ const tabsContainer = ref(null);
 let isDragging = false;
 let startX = 0;
 let scrollLeft = 0;
+let hasMoved = false;
 
 const startDrag = (e) => {
+  // Проверяем, что клик не на кнопке таба
+  if (e.target.closest('button')) {
+    return;
+  }
   isDragging = true;
+  hasMoved = false;
   const slider = tabsContainer.value;
   startX = e.pageX - slider.offsetLeft;
   scrollLeft = slider.scrollLeft;
 };
 
 const startDragTouch = (e) => {
+  // Проверяем, что клик не на кнопке таба
+  if (e.target.closest('button')) {
+    return;
+  }
   isDragging = true;
+  hasMoved = false;
   const slider = tabsContainer.value;
   startX = e.touches[0].pageX - slider.offsetLeft;
   scrollLeft = slider.scrollLeft;
@@ -137,27 +148,42 @@ const startDragTouch = (e) => {
 
 const onDrag = (e) => {
   if (!isDragging) return;
-  e.preventDefault();
   const slider = tabsContainer.value;
   const x = e.pageX - slider.offsetLeft;
-  const walk = (x - startX);
-  slider.scrollLeft = scrollLeft - walk;
+  const walk = Math.abs(x - startX);
+  
+  // Если движение больше 5px, считаем это перетаскиванием
+  if (walk > 5) {
+    hasMoved = true;
+    e.preventDefault();
+    slider.scrollLeft = scrollLeft - (x - startX);
+  }
 };
 
 const onDragTouch = (e) => {
   if (!isDragging) return;
-  e.preventDefault();
   const slider = tabsContainer.value;
   const x = e.touches[0].pageX - slider.offsetLeft;
-  const walk = (x - startX);
-  slider.scrollLeft = scrollLeft - walk;
+  const walk = Math.abs(x - startX);
+  
+  // Если движение больше 5px, считаем это перетаскиванием
+  if (walk > 5) {
+    hasMoved = true;
+    e.preventDefault();
+    slider.scrollLeft = scrollLeft - (x - startX);
+  }
 };
 
 const stopDrag = () => {
   isDragging = false;
+  hasMoved = false;
 };
 
 const selectTab = (index) => {
+  // Если было перетаскивание, не обрабатываем клик
+  if (isDragging && hasMoved) {
+    return;
+  }
   currentTab.value = index;
 };
 

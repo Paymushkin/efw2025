@@ -1,5 +1,10 @@
 <template>
   <div>
+    <AppSeo
+      title="Welcome - Emirates Fashion Week Dubai 2025 | 8-11 November | Exclusive Invitation"
+      description="Welcome to Emirates Fashion Week Dubai 2025. Join us on 8-11 November for three remarkable days of style, beauty, and meaningful connections. Your exclusive invitation to the 14th Season Spring/Summer 26."
+      keywords="Emirates Fashion Week Welcome, Dubai Fashion Event 2025, Fashion Week Invitation November, Guest Welcome Dubai, Spring Summer 26, Fashion Show Dubai"
+    />
     <div class="container mx-auto px-4 py-4 md:py-6">
     <div class="max-w-6xl mx-auto">
       <section class="md:mb-[76px] mb-[56px]">
@@ -203,7 +208,7 @@
           </section>
       
       <!-- Detailed Fashion Show Program -->
-      <div v-if="visibleDays.includes(8) || visibleDays.includes(9)" class="mt-8 md:mt-12">
+      <div v-if="visibleDays.includes(8) || visibleDays.includes(9)" class="mt-8 md:mt-12 hidden">
         <h2 class="text-2xl md:text-3xl font-bold uppercase text-left mb-4 md:mb-6">Fashion Show</h2>
         
         <!-- Desktop version of detailed program -->
@@ -245,7 +250,7 @@
         </div>
         
         <!-- Mobile version of detailed program -->
-        <div class="md:hidden">
+        <div class="hidden">
           <div class="bg-white p-4 rounded-lg shadow-md">
             <h3 class="hidden md:block text-2xl md:text-3xl font-bold uppercase text-gray-800 mb-3 text-left">Fashion Show</h3>
             
@@ -589,41 +594,6 @@ import { computed, ref, onMounted, watch } from '#imports';
 import BaseButton from '@/components/ui/BaseButton.vue';
 import Image1 from '@/assets/image/welcome/1.webp';
 import { useDesigners } from '~/composables/useDesigners';
-
-// SEO мета-теги
-useHead({
-  title: 'Welcome - Emirates Fashion Week Dubai 2025 | 8-11 November | Exclusive Invitation',
-  meta: [
-    {
-      name: 'description',
-      content: 'Welcome to Emirates Fashion Week Dubai 2025. Join us on 8-11 November for three remarkable days of style, beauty, and meaningful connections. Your exclusive invitation to the 14th Season Spring/Summer 26.'
-    },
-    {
-      name: 'keywords',
-      content: 'Emirates Fashion Week Welcome, Dubai Fashion Event 2025, Fashion Week Invitation November, Guest Welcome Dubai, Spring Summer 26, Fashion Show Dubai'
-    },
-    {
-      property: 'og:title',
-      content: 'Welcome - Emirates Fashion Week Dubai 2025 | 8-11 November | Exclusive Invitation'
-    },
-    {
-      property: 'og:description',
-      content: 'Welcome to Emirates Fashion Week Dubai 2025. Join us on 8-11 November for three remarkable days of style, beauty, and meaningful connections. Your exclusive invitation to the 14th Season Spring/Summer 26.'
-    },
-    {
-      property: 'og:image',
-      content: 'https://emiratesfashionweeks.com/seo-poster-wa.png?v=2'
-    },
-    {
-      property: 'og:type',
-      content: 'website'
-    },
-    {
-      name: 'twitter:card',
-      content: 'summary_large_image'
-    }
-  ]
-});
 
 // Get route and router
 const route = useRoute();

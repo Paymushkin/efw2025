@@ -2,6 +2,69 @@ import Station1 from '~/assets/image/stations/station-1.png';
 import Station2 from '~/assets/image/stations/station-2.png';
 import Station3 from '~/assets/image/stations/station-3.png';
 
+// Статические данные дизайнеров для PREVIOUS 14th Spring Summer 2026
+const PREVIOUS_14TH_DESIGNERS = {
+  '8': [
+    { name: 'NOURA COUTURE', country: 'UAE' },
+    { name: 'ANNET', country: 'RUSSIA' },
+    { name: 'LESNIKOVA DRESSES', country: 'RUSSIA' },
+    { name: 'SOLANA COUTURE', country: 'USA' },
+    { name: 'LORA COUTURE', country: 'AZERBAIJAN' },
+    { name: 'ETNO FRESH', country: 'RUSSIA' },
+    { name: 'BELIZE', country: 'GERMANY' },
+    { name: 'MOONSOUL', country: 'KIRGHIZIAN' },
+    { name: 'OLECIA ARKHIPOVA', country: 'RUSSIA' },
+    { name: 'MARIANNE MOORE', country: '' },
+    { name: 'IGARNITUR', country: 'POLAND' },
+    { name: 'HERBELIN', country: 'POLAND' },
+    { name: 'DEVU', country: 'POLAND' }
+  ],
+  '9': [
+    { name: 'ALEXANDRA AMA CABINET', country: 'RUSSIA' },
+    { name: 'ARNI FASHION', country: 'USA/INDIAN' },
+    { name: 'RUBASHKA', country: 'RUSSIA' },
+    { name: 'SNIM', country: 'KAZAKHSTAN' },
+    { name: 'KIBOVSKAYA', country: 'RUSSIA' },
+    { name: 'FYOR', country: 'UAE' },
+    { name: 'POLINA TROPILLO', country: 'RUSSIA' },
+    { name: 'OLGA BOGDANOVA', country: 'RUSSIA' },
+    { name: 'ELENA ROMANOVA', country: 'RUSSIA' }
+  ]
+};
+
+// Функция для перемешивания массива (алгоритм Фишера-Йетса)
+const shuffleArray = <T>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
+// Функция для генерации HTML списка дизайнеров (статические данные)
+const generateDesignersListHTML = (day: string) => {
+  const designers = PREVIOUS_14TH_DESIGNERS[day as keyof typeof PREVIOUS_14TH_DESIGNERS] || [];
+  if (designers.length === 0) return '';
+  
+  // Перемешиваем дизайнеров при каждой загрузке
+  const shuffledDesigners = shuffleArray(designers);
+  
+  const designersList = shuffledDesigners.map(designer => {
+    const country = designer.country ? ` /${designer.country}/` : '';
+    return `<li>${designer.name}${country}</li>`;
+  }).join('\n            ');
+  
+  return `
+        <details class="mt-2">
+          <summary class="cursor-pointer font-semibold mb-2">Designers List</summary>
+          <ul class="space-y-2 text-black mt-2">
+            ${designersList}
+          </ul>
+        </details>
+        `;
+};
+
 // Спонсорские блоки для разных дней
 const NEW_PRELAUNCH_SPONSOR = {
   type: 'sponsorStation',
@@ -139,19 +202,18 @@ export const NEW_PROGRAM_TABS = [
         time: '8 November',
         place: `Skylight Gallery,<br>Arjaan Dubai Media City`,
         description: `SATURDAY |  PRÊT-À-PORTER WOMEN'S & MEN'S COLLECTIONS SS 26`,
-        details: `<strong class="mb-2 block">By Invitation Only</strong>`,
-        buttonText: 'REQUEST INVITE >',
-        buttonLink: 'https://docs.google.com/forms/d/e/1FAIpQLSf9UiUI9FshAS-G9Ikkdj5Pq9DV3zkwtqdNdoNXeLxe2LQeEQ/viewform'
+        details: `<strong class="mb-2 block">By Invitation Only</strong>${generateDesignersListHTML('8')}`,
+        // buttonText: 'REQUEST INVITE >',
+        // buttonLink: 'https://docs.google.com/forms/d/e/1FAIpQLSf9UiUI9FshAS-G9Ikkdj5Pq9DV3zkwtqdNdoNXeLxe2LQeEQ/viewform'
       },
-      NEW_FASHION_SHOW_SPONSOR,
        {
          type: 'event',
          time: '9 November',
          place: `Skylight Gallery,<br>Arjaan Dubai Media City`,
          description: `SUNDAY |  PRÊT-À-PORTER WOMEN'S & MEN'S COLLECTIONS SS 26`,
-         details: `<strong class="mb-2 block">By Invitation Only</strong>`,
-         buttonText: 'REQUEST INVITE >',
-         buttonLink: 'https://docs.google.com/forms/d/e/1FAIpQLSf9UiUI9FshAS-G9Ikkdj5Pq9DV3zkwtqdNdoNXeLxe2LQeEQ/viewform'
+         details: `<strong class="mb-2 block">By Invitation Only</strong>${generateDesignersListHTML('9')}`,
+        //  buttonText: 'REQUEST INVITE >',
+        //  buttonLink: 'https://docs.google.com/forms/d/e/1FAIpQLSf9UiUI9FshAS-G9Ikkdj5Pq9DV3zkwtqdNdoNXeLxe2LQeEQ/viewform'
        },
     ] 
   },
