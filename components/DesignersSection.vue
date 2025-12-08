@@ -1,6 +1,6 @@
 <template>
-  <div class="container mx-auto pb-16">
-    <div class="flex justify-between items-center mb-8 xl:mb-[75px]">
+  <div class="container mx-auto">
+    <div class="flex justify-between items-center">
       <h2 data-nosnippet class="text-xl md:text-3xl xl:text-4xl">DESIGNERS</h2>
       <div class="flex items-center gap-4">
         <button 

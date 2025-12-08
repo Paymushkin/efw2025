@@ -28,7 +28,7 @@
     </div>
     <div id="designers">
       <ClientOnly>
-        <DesignersSection class="md:mb-[76px] mb-[56px]" />
+        <DesignersSection />
       </ClientOnly>
     </div>
     <ClientOnly>

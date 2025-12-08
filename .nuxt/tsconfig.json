@@ -113,7 +113,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/dev"
+        "./manifest/meta/f7984021-8215-4c35-a235-b1a2be34b2e4.json"
       ],
       "#components": [
         "./components"
@@ -181,6 +181,6 @@
     "../node_modules/nuxt-site-config/dist/dist/runtime/server",
     "../node_modules/nuxt/node_modules/runtime/server",
     "../node_modules/nuxt/node_modules/dist/runtime/server",
-    "dev"
+    "../.vercel/output"
   ]
 }
