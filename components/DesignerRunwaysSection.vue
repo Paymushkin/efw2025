@@ -216,6 +216,42 @@ const shuffleArray = (array) => {
   return shuffled;
 };
 
+// Функция для перемешивания внутри каждого дня, сохраняя порядок дат
+const shuffleByDate = (groups) => {
+  // Группируем по дате
+  const groupsByDate = new Map();
+  
+  groups.forEach((group) => {
+    const date = group.date;
+    if (!groupsByDate.has(date)) {
+      groupsByDate.set(date, []);
+    }
+    groupsByDate.get(date).push(group);
+  });
+  
+  // Извлекаем даты и сортируем их (по числу дня)
+  const sortedDates = Array.from(groupsByDate.keys()).sort((a, b) => {
+    // Парсим дату: "08.11.2025" -> [8, 11, 2025]
+    const partsA = a.split('.').map(Number);
+    const partsB = b.split('.').map(Number);
+    
+    // Сравниваем: год, месяц, день
+    if (partsA[2] !== partsB[2]) return partsA[2] - partsB[2]; // Год
+    if (partsA[1] !== partsB[1]) return partsA[1] - partsB[1]; // Месяц
+    return partsA[0] - partsB[0]; // День
+  });
+  
+  // Перемешиваем группы внутри каждой даты и объединяем
+  const result = [];
+  sortedDates.forEach((date) => {
+    const groupsForDate = groupsByDate.get(date);
+    const shuffledGroups = shuffleArray(groupsForDate);
+    result.push(...shuffledGroups);
+  });
+  
+  return result;
+};
+
 // Функция для форматирования даты
 const formatDate = (dateStr) => {
   if (!dateStr) return '';
@@ -466,7 +502,7 @@ const toggleAccordion = (index) => {
 // Отслеживаем изменения в данных и перемешиваем их
 watch(runways, (newRunways) => {
   if (newRunways && newRunways.length > 0) {
-    shuffledRunways.value = shuffleArray(newRunways);
+    shuffledRunways.value = shuffleByDate(newRunways);
     // Обновляем observer для новых элементов
     nextTick(() => {
       setTimeout(() => {

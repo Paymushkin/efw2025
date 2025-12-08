@@ -32,6 +32,12 @@
     <ClientOnly>
       <NewProgramSection class="md:mb-[120px] mb-[76px]" />
     </ClientOnly>
+    <ClientOnly>
+      <DesignerRunwaysSection v-if="showRunways" class="md:mb-[76px] mb-[56px]" />
+    </ClientOnly>
+    <ClientOnly>
+      <MagazineCarousel />
+    </ClientOnly>
     <div id="fall-winter-2025">
       <ClientOnly>
         <ProgramSection class="md:mb-[56px] mb-[36px]" />
@@ -42,12 +48,6 @@
         <DesignersSection />
       </ClientOnly>
     </div>
-    <ClientOnly>
-      <MagazineCarousel />
-    </ClientOnly>
-    <ClientOnly>
-      <DesignerRunwaysSection v-if="showRunways" class="md:mb-[76px] mb-[56px]" />
-    </ClientOnly>
     <ClientOnly>
       <SponsorsSection id="partners-media" class="md:mb-[76px] mb-[56px]" />
     </ClientOnly>
