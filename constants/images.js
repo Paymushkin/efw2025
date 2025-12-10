@@ -54,6 +54,8 @@ import image54 from '~/assets//image/designers/54.webp'
 import image55 from '~/assets//image/designers/55.webp'
 import image56 from '~/assets//image/designers/56.webp'
 
+import image57 from '~/assets//image/designers/57.webp'
+
 export const tabs = [
   { year: '2025', season: 'Spring/Summer', images: [image54, image55, image56], designers: ['Olga Khayrullova', 'Khalimova Liza', 'Olga Baltrukevica'] },
   { year: '2025', season: 'Fall/Winter', images: [image37, image38, image39], designers: ['OSMOSIS', 'NERMIN', 'AISHA'] },
@@ -300,5 +302,9 @@ export const designers = [
   {
     name: 'DR. RAGIA HADDARA',
     image: `${DESIGNERS_CDN_BASE}/56.webp`
+  },
+  {
+    name: 'Elena Romanova',
+    image: `${DESIGNERS_CDN_BASE}/57.webp`
   }
 ];

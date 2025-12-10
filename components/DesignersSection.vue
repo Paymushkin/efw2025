@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto">
-    <div class="flex justify-between items-center">
-      <h2 data-nosnippet class="text-xl md:text-3xl xl:text-4xl">DESIGNERS</h2>
+    <div class="flex justify-between items-center pl-4 md:pl-0">
+      <h2 data-nosnippet class="text-xl md:text-3xl xl:text-4xl mb-4">ALL DESIGNERS · ALL SEASONS</h2>
       <div class="flex items-center gap-4">
         <button 
           @click="handlePrev"
@@ -22,7 +22,7 @@
       </div>
     </div>
     
-    <div class="overflow-x-auto hide-scrollbar -mx-4 md:mx-0">
+    <div class="overflow-x-auto hide-scrollbar md:mx-0">
       <swiper
         :modules="[Navigation, Pagination, Autoplay]"
         :slides-per-view="1.2"

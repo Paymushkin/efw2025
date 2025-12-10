@@ -1,5 +1,5 @@
 <template>
-  <section class="container mx-auto px-4 md:px-5 py-10 md:py-16">
+  <section class="container mx-auto py-10 md:py-16">
     <h2 class="text-xl md:text-3xl xl:text-4xl md:text-left w-full text-center mb-4">
       DESIGNER RUNWAY SHOWS
       14<sup class="">th</sup> SEASON
