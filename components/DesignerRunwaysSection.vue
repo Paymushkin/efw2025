@@ -1,7 +1,8 @@
 <template>
   <section class="container mx-auto px-4 md:px-5 py-10 md:py-16">
-    <h2 class="text-3xl md:text-4xl xl:text-5xl mb-6 md:mb-8 font-bold">
-      Designer Runways 14th season
+    <h2 class="text-xl md:text-3xl xl:text-4xl md:text-left w-full text-center mb-4">
+      DESIGNER RUNWAY SHOWS
+      14<sup class="">th</sup> SEASON
     </h2>
 
     <div v-if="loading" class="flex items-center justify-center py-10 text-gray-500">
@@ -26,11 +27,16 @@
         <!-- Аккордеон заголовок -->
         <button
           @click="toggleAccordion(index)"
-          class="w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 transition-colors flex items-center justify-between"
+          class="w-full px-4 py-3 text-left bg-gray-50 hover:bg-gray-100 transition-colors flex items-center justify-between"
         >
-          <span class="font-semibold text-lg">
-            {{ formatDate(group.date) }} {{ group.name }}
-          </span>
+          <div class="flex flex-col">
+            <span class="text-xs text-gray-500 mb-0.5">
+              {{ formatDate(group.date) }}
+            </span>
+            <span class="font-semibold text-lg">
+              {{ group.name }}
+            </span>
+          </div>
           <svg
             class="w-5 h-5 transition-transform"
             :class="{ 'rotate-180': openAccordions.includes(index) }"
@@ -52,24 +58,32 @@
           <div class="overflow-x-auto hide-scrollbar pr-6">
             <div class="flex gap-5" style="min-width: max-content;">
               <template v-for="(item, itemIndex) in group.items" :key="`item_${item.date}_${item.name}_${itemIndex}`">
-                <!-- YouTube Video -->
-                <div
-                  v-if="item.youtubeLink && extractYouTubeId(item.youtubeLink)"
-                  :key="`youtube_${item.date}_${item.name}_${itemIndex}`"
-                  class="flex-shrink-0 relative"
-                  style="width: 225px;"
-                >
-                  <div class="flex items-center justify-center" style="aspect-ratio: 9/16; max-height: 400px; width: 225px;">
-                    <component
-                      :is="'lite-youtube'"
-                      :videoid="extractYouTubeId(item.youtubeLink)"
-                      :data-video-id="`${group.date}_${group.name}_${itemIndex}`"
-                      params="modestbranding=1&rel=0&autoplay=1&mute=1"
-                      class="w-full h-full rounded-lg overflow-hidden"
-                      :style="`background-image: url('https://i.ytimg.com/vi/${extractYouTubeId(item.youtubeLink)}/hqdefault.jpg');`"
-                    ></component>
+                <!-- YouTube Videos (до 3 видео) -->
+                <template v-for="(youtubeLink, youtubeIndex) in item.youtubeLinks" :key="`youtube_${item.date}_${item.name}_${itemIndex}_${youtubeIndex}`">
+                  <div
+                    v-if="extractYouTubeId(youtubeLink)"
+                    class="flex-shrink-0 relative"
+                    style="width: 225px;"
+                  >
+                    <div class="flex items-center justify-center relative" style="aspect-ratio: 9/16; max-height: 400px; width: 225px;">
+                      <component
+                        :is="'lite-youtube'"
+                        :videoid="extractYouTubeId(youtubeLink)"
+                        :data-video-id="`${group.date}_${group.name}_${itemIndex}_${youtubeIndex}`"
+                        :data-youtube-url="youtubeLink"
+                        :params="`modestbranding=1&rel=0&autoplay=1&mute=1&playsinline=1&controls=0&loop=1&playlist=${extractYouTubeId(youtubeLink)}&enablejsapi=1`"
+                        class="w-full h-full rounded-lg overflow-hidden youtube-preview"
+                        :style="`background-image: url('https://i.ytimg.com/vi/${extractYouTubeId(youtubeLink)}/hqdefault.jpg');`"
+                      ></component>
+                      <!-- Перехватывающий слой для открытия модалки -->
+                      <div
+                        class="absolute inset-0 z-10 cursor-pointer youtube-overlay"
+                        @click="openVideoModal(youtubeLink, group.date, group.name, itemIndex, youtubeIndex)"
+                        :data-video-id="extractYouTubeId(youtubeLink)"
+                      ></div>
+                    </div>
                   </div>
-                </div>
+                </template>
 
                 <!-- Article Link (сразу после YouTube) -->
                 <div
@@ -120,7 +134,22 @@
                     style="width: 225px;"
                   >
                     <div class="flex items-center justify-center" style="aspect-ratio: 9/16; max-height: 400px; width: 225px;">
+                      <a
+                        v-if="item.gallery"
+                        :href="item.gallery"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="block w-full h-full rounded-lg overflow-hidden"
+                      >
+                        <img
+                          :src="photoLink"
+                          :alt="`${item.name} - Photo ${photoIndex + 1}`"
+                          class="w-full h-full object-cover rounded-lg"
+                          loading="lazy"
+                        />
+                      </a>
                       <img
+                        v-else
                         :src="photoLink"
                         :alt="`${item.name} - Photo ${photoIndex + 1}`"
                         class="w-full h-full object-cover rounded-lg"
@@ -138,7 +167,22 @@
                   style="width: 225px;"
                 >
                   <div class="flex items-center justify-center" style="aspect-ratio: 9/16; max-height: 400px; width: 225px;">
+                    <a
+                      v-if="item.gallery"
+                      :href="item.gallery"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="block w-full h-full rounded-lg overflow-hidden"
+                    >
+                      <img
+                        :src="item.photoArticleLink"
+                        :alt="`${item.name} - Article Photo`"
+                        class="w-full h-full object-cover rounded-lg"
+                        loading="lazy"
+                      />
+                    </a>
                     <img
+                      v-else
                       :src="item.photoArticleLink"
                       :alt="`${item.name} - Article Photo`"
                       class="w-full h-full object-cover rounded-lg"
@@ -149,6 +193,34 @@
               </template>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Модалка для полноэкранного YouTube видео -->
+    <div
+      v-if="modalVideoId"
+      class="fixed inset-0 z-50 bg-black"
+      @click.self="closeModal"
+    >
+      <button
+        @click="closeModal"
+        class="absolute top-4 right-4 z-10 text-white hover:text-gray-300 transition-colors bg-black/50 rounded-full p-2"
+        aria-label="Закрыть"
+      >
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <div class="w-full h-full flex items-center justify-center p-4">
+        <div class="w-full h-full max-w-[95vw] max-h-[95vh]" style="aspect-ratio: 16/9;">
+          <iframe
+            :src="`https://www.youtube.com/embed/${modalVideoId}?autoplay=1&controls=1&rel=0&modestbranding=1&enablejsapi=1&fs=1&playsinline=0&mute=0`"
+            class="w-full h-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+            allowfullscreen
+            frameborder="0"
+          ></iframe>
         </div>
       </div>
     </div>
@@ -165,6 +237,7 @@ const { runways, loading, error, fetchRunways, extractYouTubeId } = useDesignerR
 const errorMessage = computed(() => error.value);
 const openAccordions = ref([0]); // Первый блок открыт по умолчанию
 const shuffledRunways = ref([]);
+const modalVideoId = ref(null); // ID видео для модалки
 
 // Глобальный менеджер для управления одним активным видео
 const videoManager = {
@@ -302,19 +375,18 @@ const controlVideos = (groupIndex, shouldPlay) => {
       const youtubeElements = accordionContent.querySelectorAll('lite-youtube');
       
       if (shouldPlay && isVisible) {
-        // Воспроизводим только первое видео в аккордеоне
-        const firstElement = youtubeElements[0];
-        if (firstElement) {
+        // Воспроизводим все видео в аккордеоне
+        youtubeElements.forEach((element, index) => {
           try {
-            // Останавливаем предыдущее видео через менеджер
-            videoManager.stopCurrent();
-            
             // Проверяем, есть ли уже iframe
-            let iframe = findYouTubeIframe(firstElement);
+            let iframe = findYouTubeIframe(element);
             
             if (iframe && iframe.contentWindow) {
               // Iframe есть и готов, просто воспроизводим
-              videoManager.setActive(firstElement, iframe);
+              if (index === 0) {
+                // Первое видео устанавливаем как активное для менеджера
+                videoManager.setActive(element, iframe);
+              }
               
               // Отправляем команду playVideo несколько раз для надежности
               const playCommand = JSON.stringify({
@@ -323,54 +395,81 @@ const controlVideos = (groupIndex, shouldPlay) => {
                 args: ''
               });
               
-              iframe.contentWindow.postMessage(playCommand, '*');
+              // Добавляем небольшую задержку между запуском видео для плавности
+              setTimeout(() => {
+                if (iframe && iframe.contentWindow) {
+                  iframe.contentWindow.postMessage(playCommand, '*');
+                }
+              }, index * 200); // Задержка для каждого видео
               
               setTimeout(() => {
                 if (iframe && iframe.contentWindow) {
                   iframe.contentWindow.postMessage(playCommand, '*');
                 }
-              }, 200);
+              }, index * 200 + 200);
               
               setTimeout(() => {
                 if (iframe && iframe.contentWindow) {
                   iframe.contentWindow.postMessage(playCommand, '*');
                 }
-              }, 500);
+              }, index * 200 + 500);
             } else if (!iframe) {
-              // Если iframe нет, активируем lite-youtube
-              const button = firstElement.shadowRoot?.querySelector('button') || firstElement.querySelector('button');
+              // Если iframe нет, активируем lite-youtube программно
+              // Добавляем флаг, чтобы обработчик клика знал, что это программный клик
+              element.setAttribute('data-programmatic-click', 'true');
+              
+              // Скрываем перехватывающий слой
+              const overlay = element.parentElement?.querySelector('.youtube-overlay');
+              if (overlay) {
+                overlay.setAttribute('data-disabled', 'true');
+              }
+              
+              const button = element.shadowRoot?.querySelector('button') || element.querySelector('button');
               if (button) {
-                button.click();
-                
-                // Ждем создания iframe и затем управляем воспроизведением
+                // Добавляем задержку для последовательного запуска видео
                 setTimeout(() => {
-                  iframe = findYouTubeIframe(firstElement);
-                  if (iframe && iframe.contentWindow) {
-                    // Устанавливаем как активное
-                    videoManager.setActive(firstElement, iframe);
-                    
-                    // Воспроизводим
-                    const playCommand = JSON.stringify({
-                      event: 'command',
-                      func: 'playVideo',
-                      args: ''
-                    });
-                    
-                    iframe.contentWindow.postMessage(playCommand, '*');
-                    
-                    setTimeout(() => {
-                      if (iframe && iframe.contentWindow) {
-                        iframe.contentWindow.postMessage(playCommand, '*');
+                  button.click();
+                  
+                  // Убираем флаг и восстанавливаем слой после небольшой задержки
+                  setTimeout(() => {
+                    element.removeAttribute('data-programmatic-click');
+                    if (overlay) {
+                      overlay.removeAttribute('data-disabled');
+                    }
+                  }, 1000);
+                  
+                  // Ждем создания iframe и затем управляем воспроизведением
+                  setTimeout(() => {
+                    iframe = findYouTubeIframe(element);
+                    if (iframe && iframe.contentWindow) {
+                      // Первое видео устанавливаем как активное для менеджера
+                      if (index === 0) {
+                        videoManager.setActive(element, iframe);
                       }
-                    }, 300);
-                  }
-                }, 500);
+                      
+                      // Воспроизводим
+                      const playCommand = JSON.stringify({
+                        event: 'command',
+                        func: 'playVideo',
+                        args: ''
+                      });
+                      
+                      iframe.contentWindow.postMessage(playCommand, '*');
+                      
+                      setTimeout(() => {
+                        if (iframe && iframe.contentWindow) {
+                          iframe.contentWindow.postMessage(playCommand, '*');
+                        }
+                      }, 300);
+                    }
+                  }, 500);
+                }, index * 300); // Задержка для последовательного запуска
               }
             }
           } catch (error) {
             // Игнорируем ошибки
           }
-        }
+        });
       } else if (!shouldPlay) {
         // Останавливаем все видео в этом аккордеоне
         youtubeElements.forEach((element) => {
@@ -507,6 +606,7 @@ watch(runways, (newRunways) => {
     nextTick(() => {
       setTimeout(() => {
         setupVideoObserver();
+        setupIframeClickHandlers();
       }, 500);
     });
   }
@@ -527,6 +627,8 @@ watch(openAccordions, (newValue) => {
     setTimeout(() => {
       // Воспроизводим только первый открытый аккордеон
       controlVideos(newValue[0], true);
+      // Настраиваем обработчики клика на iframe после активации видео
+      setupIframeClickHandlers();
     }, 500);
   }
 }, { deep: true });
@@ -575,6 +677,131 @@ const setupVideoObserver = () => {
   });
 };
 
+// Функция для остановки всех YouTube iframes на странице
+const pauseAllYouTube = () => {
+  if (typeof window === 'undefined') return;
+  
+  const iframes = document.querySelectorAll('iframe[src*="youtube.com/embed"], iframe[src*="youtube-nocookie.com/embed"]');
+  
+  iframes.forEach((frame) => {
+    try {
+      frame.contentWindow.postMessage(
+        JSON.stringify({
+          event: 'command',
+          func: 'pauseVideo',
+          args: []
+        }),
+        '*'
+      );
+    } catch (e) {
+      // Игнорируем ошибки, если iframe не отвечает
+    }
+  });
+};
+
+// Функция для открытия модалки с видео
+const openVideoModal = (youtubeUrl, groupDate, groupName, itemIndex, youtubeIndex) => {
+  const videoId = extractYouTubeId(youtubeUrl);
+  if (!videoId) return;
+  
+  // 1. Останавливаем все превью-плееры
+  pauseAllYouTube();
+  
+  // 2. Останавливаем текущее активное видео через менеджер
+  videoManager.stopCurrent();
+  
+  // 3. Открываем модалку с полноценным плеером
+  modalVideoId.value = videoId;
+};
+
+// Функция для закрытия модалки
+const closeModal = () => {
+  modalVideoId.value = null;
+  // Убираем блокировку скролла
+  if (typeof document !== 'undefined') {
+    document.body.style.overflow = '';
+  }
+};
+
+// Watch для управления блокировкой скролла при открытии/закрытии модалки
+watch(modalVideoId, (newValue, oldValue) => {
+  if (typeof document !== 'undefined') {
+    if (newValue) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+      
+      // После закрытия модалки (когда newValue становится null) возобновляем видео
+      if (oldValue && openAccordions.value.length > 0) {
+        const openIndex = openAccordions.value[0];
+        setTimeout(() => {
+          controlVideos(openIndex, true);
+        }, 300);
+      }
+    }
+  }
+});
+
+// Функция для добавления обработчиков клика на iframe после их создания
+const setupIframeClickHandlers = () => {
+  if (typeof window === 'undefined') return;
+  
+  nextTick(() => {
+    setTimeout(() => {
+      const allIframes = document.querySelectorAll('lite-youtube iframe[src*="youtube.com/embed"], lite-youtube iframe[src*="youtube-nocookie.com/embed"]');
+      
+      allIframes.forEach((iframe) => {
+        // Проверяем, не добавлен ли уже обработчик
+        if (iframe.hasAttribute('data-click-handler')) return;
+        
+        iframe.setAttribute('data-click-handler', 'true');
+        
+        // Добавляем обработчик клика на iframe
+        iframe.addEventListener('click', (e) => {
+          const liteEl = iframe.closest('lite-youtube');
+          if (!liteEl) return;
+          
+          // Проверяем, находится ли элемент в открытом аккордеоне
+          const accordionContent = liteEl.closest('[data-accordion-index]');
+          if (!accordionContent) return;
+          
+          const accordionIndex = parseInt(accordionContent.getAttribute('data-accordion-index'), 10);
+          
+          // Если аккордеон закрыт, не обрабатываем клик
+          if (!openAccordions.value.includes(accordionIndex)) {
+            e.preventDefault();
+            e.stopPropagation();
+            return;
+          }
+          
+          // Если это программный клик, не обрабатываем
+          if (liteEl.getAttribute('data-programmatic-click') === 'true') {
+            return;
+          }
+          
+          // Получаем videoId
+          const youtubeUrl = liteEl.getAttribute('data-youtube-url');
+          const videoId = youtubeUrl ? extractYouTubeId(youtubeUrl) : liteEl.getAttribute('videoid');
+          
+          if (!videoId) return;
+          
+          // Останавливаем все превью-плееры
+          pauseAllYouTube();
+          
+          // Останавливаем текущее активное видео
+          videoManager.stopCurrent();
+          
+          // Открываем модалку
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+          modalVideoId.value = videoId;
+        }, true); // Используем capture phase для перехвата клика
+      });
+    }, 500);
+  });
+};
+
 // Глобальный обработчик кликов на lite-youtube элементы
 const handleYoutubeClick = (e) => {
   const liteEl = e.target.closest('lite-youtube');
@@ -593,16 +820,44 @@ const handleYoutubeClick = (e) => {
     return;
   }
   
-  // Останавливаем предыдущее видео
-  videoManager.stopCurrent();
+  // Если это программный клик (из controlVideos), не обрабатываем
+  if (liteEl.getAttribute('data-programmatic-click') === 'true') {
+    return;
+  }
   
-  // Ждем создания iframe и устанавливаем как активное
-  setTimeout(() => {
-    const iframe = findYouTubeIframe(liteEl);
-    if (iframe) {
-      videoManager.setActive(liteEl, iframe);
-    }
-  }, 500);
+  // Проверяем, был ли клик на iframe (уже активное видео) или на кнопку play
+  const target = e.target;
+  const isIframeClick = target.tagName === 'IFRAME' && (target.src.includes('youtube.com/embed') || target.src.includes('youtube-nocookie.com/embed'));
+  const isButtonClick = target.closest('button') && !liteEl.classList.contains('lyt-activated');
+  const isActivatedClick = liteEl.classList.contains('lyt-activated');
+  
+  // Если клик был на iframe, на активный lite-youtube элемент или на кнопку play, открываем модалку
+  if (isIframeClick || isActivatedClick || isButtonClick) {
+    // Получаем videoId из атрибута или из videoid
+    const youtubeUrl = liteEl.getAttribute('data-youtube-url');
+    const videoId = youtubeUrl ? extractYouTubeId(youtubeUrl) : liteEl.getAttribute('videoid');
+    
+    if (!videoId) return;
+    
+    // 1. Останавливаем все превью-плееры
+    pauseAllYouTube();
+    
+    // 2. Останавливаем текущее активное видео через менеджер
+    videoManager.stopCurrent();
+    
+    // 3. Открываем модалку с полноценным плеером
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    modalVideoId.value = videoId;
+  }
+};
+
+// Обработчик нажатия Escape для закрытия модалки
+const handleEscape = (e) => {
+  if (e.key === 'Escape' && modalVideoId.value) {
+    closeModal();
+  }
 };
 
 onMounted(async () => {
@@ -619,10 +874,14 @@ onMounted(async () => {
   // Добавляем глобальный обработчик кликов на все lite-youtube элементы
   if (typeof window !== 'undefined') {
     document.addEventListener('click', handleYoutubeClick, true);
+    document.addEventListener('keydown', handleEscape);
   }
   
   // Настраиваем observer для видео
   setupVideoObserver();
+  
+  // Настраиваем обработчики клика на iframe
+  setupIframeClickHandlers();
   
   // Воспроизводим видео в первом открытом блоке после загрузки данных
   nextTick(() => {
@@ -630,6 +889,8 @@ onMounted(async () => {
       if (openAccordions.value.includes(0)) {
         controlVideos(0, true);
       }
+      // Повторно настраиваем обработчики после активации видео
+      setupIframeClickHandlers();
     }, 1000); // Задержка для загрузки lite-youtube
   });
 });
@@ -641,14 +902,16 @@ onUnmounted(() => {
     videoObserver = null;
   }
   
-  // Удаляем глобальный обработчик кликов
+  // Удаляем глобальные обработчики
   if (typeof window !== 'undefined') {
     document.removeEventListener('click', handleYoutubeClick, true);
+    document.removeEventListener('keydown', handleEscape);
   }
   
   // Останавливаем все видео при размонтировании
   videoManager.stopCurrent();
   stopVideosInClosedAccordions();
+  pauseAllYouTube();
 });
 </script>
 
@@ -660,6 +923,22 @@ onUnmounted(() => {
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+.youtube-overlay {
+  background: transparent;
+  transition: background-color 0.2s, opacity 0.2s;
+  z-index: 10;
+}
+
+.youtube-overlay:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Скрываем перехватывающий слой при программном управлении */
+.youtube-overlay[data-disabled="true"] {
+  pointer-events: none;
+  opacity: 0;
 }
 </style>
 

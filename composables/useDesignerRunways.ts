@@ -2,11 +2,12 @@ export interface DesignerRunwayItem {
   name: string;
   country: string;
   date: string;
-  youtubeLink: string;
+  youtubeLinks: string[]; // Массив до 3 YouTube видео
   photoLinks: string[]; // Массив до 3 фото
   photoArticleLink: string;
   articleLink: string;
   articleTitle: string;
+  gallery: string; // Ссылка на галерею фото показа дизайнера
 }
 
 export interface DesignerRunwayGroup {
@@ -63,10 +64,27 @@ export const useDesignerRunways = () => {
       }
 
       // Нормализуем названия колонок (могут быть с пробелами или подчеркиваниями)
-      const youtubeLink = (row['youtube link'] || row['youtube_link'] || row['youtube link'] || '').trim();
       const photoArticleLink = (row['photo article link'] || row['photo_article_link'] || row['photo article link'] || '').trim();
       const articleLink = (row['article link'] || row['article_link'] || row['article link'] || '').trim();
       const articleTitle = (row['article title'] || row['article_title'] || row['article title'] || '').trim();
+      const gallery = (row['gallery'] || row['gallery'] || '').trim();
+
+      // Собираем все YouTube ссылки (до 3 штук)
+      const youtubeLinks: string[] = [];
+      for (let i = 1; i <= 3; i++) {
+        const youtubeLink = (
+          row[`youtube link ${i}`] || 
+          row[`youtube_link_${i}`] || 
+          row[`youtube link ${i}`] ||
+          row[`youtube${i}`] ||
+          row[`youtube_${i}`] ||
+          (i === 1 ? (row['youtube link'] || row['youtube_link'] || row['youtube link'] || '').trim() : '')
+        ).trim();
+        
+        if (youtubeLink) {
+          youtubeLinks.push(youtubeLink);
+        }
+      }
 
       // Собираем все фото (до 3 штук)
       const photoLinks: string[] = [];
@@ -91,15 +109,16 @@ export const useDesignerRunways = () => {
         name,
         country: (row.country || '').trim(),
         date,
-        youtubeLink,
+        youtubeLinks,
         photoLinks,
         photoArticleLink,
         articleLink,
         articleTitle,
+        gallery,
       };
 
       // Добавляем только если есть хотя бы один контент (видео, фото или статья)
-      if (item.youtubeLink || item.photoLinks.length > 0 || item.photoArticleLink || item.articleLink) {
+      if (item.youtubeLinks.length > 0 || item.photoLinks.length > 0 || item.photoArticleLink || item.articleLink) {
         groupsMap.get(key)!.push(item);
       }
     });
