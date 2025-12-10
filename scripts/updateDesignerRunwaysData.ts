@@ -128,13 +128,17 @@ function transformRunwaysData(rows: any[]): DesignerRunwayGroup[] {
 async function updateLocalData() {
   try {
     console.log('🔄 Загрузка данных из Google Sheets...');
+    console.log(`📡 URL: ${CSV_URL}`);
     
+    // Node.js 18+ имеет встроенный fetch
     const response = await fetch(CSV_URL);
+    
     if (!response.ok) {
-      throw new Error(`CSV export error: ${response.statusText}`);
+      throw new Error(`CSV export error: ${response.status} ${response.statusText}`);
     }
 
     const csvText = await response.text();
+    console.log(`📊 Получено ${csvText.length} символов CSV данных`);
     const lines = csvText.split('\n');
     const rows = lines.filter((line) => line.trim()).map((line) => {
       const values = [];

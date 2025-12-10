@@ -15,7 +15,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -29,13 +28,26 @@ jobs:
 
       - name: Update Designer Runways data
         run: npm run update-runways-data
+        continue-on-error: false
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git add constants/designerRunwaysData.ts
+          if git diff --staged --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No changes to commit"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Changes detected, will commit"
+          fi
 
       - name: Commit updated data
+        if: steps.git-check.outputs.changed == 'true'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add constants/designerRunwaysData.ts
-          git diff --staged --quiet || git commit -m "chore: auto-update designer runways data [skip ci]"
+          git commit -m "chore: auto-update designer runways data [skip ci]"
           git push
 
       - name: Trigger Vercel rebuild
