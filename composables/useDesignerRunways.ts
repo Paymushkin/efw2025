@@ -16,10 +16,17 @@ export interface DesignerRunwayGroup {
   items: DesignerRunwayItem[];
 }
 
+// Импортируем локальные данные для SSR
+import { localDesignerRunwaysData } from '~/constants/designerRunwaysData';
+
 export const useDesignerRunways = () => {
-  const runways = ref<DesignerRunwayGroup[]>([]);
+  // Инициализируем с локальными данными для SSR (SEO индексация)
+  const runways = ref<DesignerRunwayGroup[]>(
+    process.server ? localDesignerRunwaysData : []
+  );
   const loading = ref(false);
   const error = ref<string | null>(null);
+  // На сервере данные уже "обновлены" (локальные), на клиенте нужно загрузить актуальные
   const isDataUpdated = ref(false);
 
   // Функция для извлечения YouTube video ID из Shorts ссылки
@@ -144,6 +151,17 @@ export const useDesignerRunways = () => {
   };
 
   const fetchRunways = async () => {
+    // На сервере используем локальные данные (для SEO)
+    if (process.server) {
+      if (localDesignerRunwaysData.length > 0) {
+        runways.value = localDesignerRunwaysData;
+        isDataUpdated.value = true;
+      }
+      return;
+    }
+
+    // На клиенте загружаем актуальные данные из Google Sheets после hydration
+    // Проверяем, что мы на клиенте и данные еще не обновлены
     if (isDataUpdated.value) {
       console.log('📋 Данные уже обновлены, пропускаем запрос');
       return;

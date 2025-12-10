@@ -12,7 +12,9 @@
     "deploy": "npm run build && gh-pages -d .output/public",
     "lint": "eslint --ext .js,.vue .",
     "format": "prettier --write .",
-    "netlify-dev": "netlify dev"
+    "netlify-dev": "netlify dev",
+    "update-runways-data": "tsx scripts/updateDesignerRunwaysData.ts",
+    "prebuild": "npm run update-runways-data"
   },
   "dependencies": {
     "@fancyapps/fancybox": "^3.5.7",
@@ -43,7 +45,8 @@
     "gh-pages": "^6.3.0",
     "netlify-cli": "^17.23.0",
     "postcss-import": "^16.1.0",
-    "prettier": "^3.5.1"
+    "prettier": "^3.5.1",
+    "tsx": "^4.7.0"
   },
   "homepage": "https://pamushkin.github.io/dubaifw"
 }

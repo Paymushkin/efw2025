@@ -1,0 +1,45 @@
+name: Daily Rebuild
+
+on:
+  schedule:
+    # Запускается каждый день в 00:00 UTC (03:00 МСК)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Позволяет запускать вручную
+
+jobs:
+  update-and-rebuild:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Необходимо для commit и push
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Update Designer Runways data
+        run: npm run update-runways-data
+
+      - name: Commit updated data
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add constants/designerRunwaysData.ts
+          git diff --staged --quiet || git commit -m "chore: auto-update designer runways data [skip ci]"
+          git push
+
+      - name: Trigger Vercel rebuild
+        run: |
+          # Vercel автоматически пересоберет проект при push в main
+          echo "✅ Данные обновлены, Vercel автоматически пересоберет проект"
+
