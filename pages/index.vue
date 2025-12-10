@@ -33,7 +33,7 @@
       <NewProgramSection class="md:mb-[120px] mb-[76px]" />
     </ClientOnly>
     <ClientOnly>
-      <DesignerRunwaysSection v-if="showRunways" class="md:mb-[76px] mb-[56px]" />
+      <DesignerRunwaysSection class="md:mb-[76px] mb-[56px]" />
     </ClientOnly>
     <ClientOnly>
       <MagazineCarousel />
@@ -82,19 +82,11 @@
 </template>
 
 <script setup>
-import { onMounted, nextTick, computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { onMounted, nextTick } from 'vue';
 
 definePageMeta({
   layout: 'default',
   ssr: false
-});
-
-const route = useRoute();
-
-// Проверяем наличие параметра runways=true в URL
-const showRunways = computed(() => {
-  return route.query.runways === 'true';
 });
 
 // Components
