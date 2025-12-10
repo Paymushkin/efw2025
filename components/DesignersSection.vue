@@ -49,7 +49,7 @@
         }"
         @swiper="onSwiper"
         @slideChange="onSlideChange"
-        class="relative pb-12 px-4 md:px-0"
+        class="relative px-4 md:px-0"
       >
       <swiper-slide v-for="(designer, index) in designers" :key="index">
         <div class="designer-card h-auto">

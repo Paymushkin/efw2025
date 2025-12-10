@@ -2,7 +2,7 @@
   <div class="container mx-auto">
     <div class="flex justify-between md:items-center gap-8 md:mb-[50px] mb-4 max-w-[1200px]">
       <h2 data-nosnippet class="text-xl md:text-3xl xl:text-4xl">
-        <a href="#fall-winter-2025" class="hover:opacity-80 transition-opacity">PREVIOUS 13th Fall Winter 2025</a>
+        <a href="#fall-winter-2025" class="hover:opacity-80 transition-opacity">PREVIOUS 13<sup class="">th</sup> Fall Winter 2025</a>
       </h2>
       <!-- <NuxtLink 
         target="_blank"

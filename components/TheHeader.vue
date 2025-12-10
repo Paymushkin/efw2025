@@ -239,7 +239,7 @@ const navLinks = [
   { name: 'MAGAZINE', href: 'https://magazine.emiratesfashionweek.com', id: 'magazine' },
   // { name: 'CALENDAR', href: '/#program', id: 'program' },
   { name: 'DIGITAL', href: '/features', id: 'features' },
-  { name: 'AI', href: '/EFW_AICONTEST', id: 'ai' },
+  // { name: 'AI', href: '/EFW_AICONTEST', id: 'ai' },
   { name: 'DESIGNERS', href: '/#designers', id: 'designer' },
   { name: 'GALLERY', href: '/gallery-ss-26', id: 'gallery' },
   { name: 'MARKET', href: '/offer?wp=971585753302&tr', id: 'market' },

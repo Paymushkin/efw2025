@@ -1,5 +1,5 @@
 <template>
-  <section class="md:mb-[76px] mb-[56px]">
+  <section>
     <div class="flex justify-between items-center mb-8 xl:mb-[75px]">
       <h2 id="faces-of-efw" data-nosnippet class="text-xl md:text-3xl xl:text-4xl md:text-left w-full text-center">Faces of Emirates Fashion Week</h2>
       <div class="flex items-center gap-4">

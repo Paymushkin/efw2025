@@ -20,7 +20,7 @@
       class="absolute top-0 left-0 w-full h-full bg-black opacity-35 z-10"
     ></div>
     <div class="container flex flex-col grow mx-auto md:px-4 px-2 py-10 relative z-20">
-      <h1 class="xl:text-5xl md:text-4xl text-xl font-bold text-white uppercase">
+      <h1 class="xl:text-5xl md:text-4xl text-xl font-bold text-white">
         15<sup class="xl:text-2xl md:text-xl text-base align-top">th</sup>&nbsp;EMIRATES&nbsp;FASHION&nbsp;WEEK
         <sup class="xl:text-3xl md:text-3xl text-base align-top md:-ml-[10px] -ml-[5px]">®</sup> 
       </h1>

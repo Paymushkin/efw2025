@@ -36,16 +36,16 @@
       <DesignerRunwaysSection class="md:mb-[76px] mb-[56px]" />
     </ClientOnly>
     <ClientOnly>
-      <MagazineCarousel />
+      <MagazineCarousel class="md:mb-[76px] mb-[56px]" />
     </ClientOnly>
     <div id="fall-winter-2025">
       <ClientOnly>
-        <ProgramSection class="md:mb-[56px] mb-[36px]" />
+        <ProgramSection  class="md:mb-[76px] mb-[56px]" />
       </ClientOnly>
     </div>
     <div id="designers">
       <ClientOnly>
-        <DesignersSection />
+        <DesignersSection class="md:mb-[36px] mb-[16px]" />
       </ClientOnly>
     </div>
     <ClientOnly>
@@ -61,7 +61,7 @@
     </div>
     <div id="faces-efw" class="container mx-auto px-4">
       <ClientOnly>
-        <FacesOfEfwSection />
+        <FacesOfEfwSection class="md:mb-[36px] mb-[16px]"/>
       </ClientOnly>
     </div>
     <section id="economy-dubai">
