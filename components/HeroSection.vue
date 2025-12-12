@@ -30,7 +30,7 @@
     </div>
 
     <div class="relative z-20">
-      <div class="flex flex-col w-[645px] max-w-full">
+      <div class="flex flex-col w-full max-w-[645px]">
         <div class="py-4 px-6 bg-black bg-opacity-30 md:text-right mix-blend-multiply">
           <LogoIcon class="md:ml-auto h-8 mb-2" />
           <a 

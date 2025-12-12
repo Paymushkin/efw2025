@@ -13,6 +13,13 @@
 @layer base {
   html {
     font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+  
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
   }
 }
 

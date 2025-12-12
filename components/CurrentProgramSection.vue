@@ -46,7 +46,7 @@
       @touchmove="onDragTouch"
       @touchend="stopDrag"
     >
-      <div class="flex md:gap-10 gap-8 mb-4 md:mb-10 whitespace-nowrap pb-4 md:pb-0 pl-4 md:pl-0" style="padding-right: 100vw;">
+      <div class="flex md:gap-10 gap-8 mb-4 md:mb-10 whitespace-nowrap pb-4 md:pb-0 pl-4 md:pl-0 md:pr-[50vw]">
         <button
           v-for="(tab, index) in tabs"
           :key="index"

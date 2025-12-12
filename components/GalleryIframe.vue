@@ -19,24 +19,48 @@ const props = defineProps({
 });
 
 const isMobile = ref(false);
+let isUpdating = false;
+let updateTimeout = null;
 
 const checkMobile = () => {
-  if (process.client) {
-    isMobile.value = window.innerWidth < 768;
+  if (!process.client) return;
+  
+  const newIsMobile = window.innerWidth < 768;
+  // Обновляем только если значение действительно изменилось
+  if (isMobile.value !== newIsMobile) {
+    isMobile.value = newIsMobile;
   }
 };
 
 const updateScript = () => {
   if (!process.client) return;
   
+  // Защита от множественных одновременных вызовов
+  if (isUpdating) {
+    return;
+  }
+  
   const reportageBlock = document.getElementById('reportage');
   if (!reportageBlock) return;
+
+  isUpdating = true;
+
+  // Очищаем предыдущий таймаут, если он есть
+  if (updateTimeout) {
+    clearTimeout(updateTimeout);
+  }
 
   // Удаляем только старые iframe и скрипты Meyou
   reportageBlock.querySelectorAll('iframe').forEach(el => el.remove());
   reportageBlock.querySelectorAll('script[data-meyou]').forEach(el => el.remove());
+  
+  // Также удаляем скрипт по id на случай, если он был создан без data-meyou
+  const existingScript = document.getElementById('meyou_init');
+  if (existingScript && existingScript.parentNode === reportageBlock) {
+    existingScript.remove();
+  }
 
-  setTimeout(() => {
+  updateTimeout = setTimeout(() => {
     const script = document.createElement('script');
     script.src = 'https://meyou.id/public/meyou_init.js?v=1.0.0';
     script.id = 'meyou_init';
@@ -55,6 +79,9 @@ const updateScript = () => {
     );
 
     reportageBlock.appendChild(script);
+    
+    isUpdating = false;
+    updateTimeout = null;
   }, 100);
 
 };
@@ -76,8 +103,11 @@ function handleMeyouMessage(event) {
   }
 }
 
-watch(isMobile, () => {
-  updateScript();
+watch(isMobile, (newVal, oldVal) => {
+  // Вызываем updateScript только если значение действительно изменилось
+  if (newVal !== oldVal) {
+    updateScript();
+  }
 });
 
 onMounted(() => {
@@ -93,6 +123,25 @@ onUnmounted(() => {
   if (process.client) {
     window.removeEventListener('resize', checkMobile);
     window.removeEventListener('message', handleMeyouMessage);
+    
+    // Очищаем таймаут при размонтировании
+    if (updateTimeout) {
+      clearTimeout(updateTimeout);
+      updateTimeout = null;
+    }
+    
+    // Очищаем iframe и скрипты при размонтировании
+    const reportageBlock = document.getElementById('reportage');
+    if (reportageBlock) {
+      reportageBlock.querySelectorAll('iframe').forEach(el => el.remove());
+      reportageBlock.querySelectorAll('script[data-meyou]').forEach(el => el.remove());
+      const existingScript = document.getElementById('meyou_init');
+      if (existingScript && existingScript.parentNode === reportageBlock) {
+        existingScript.remove();
+      }
+    }
+    
+    isUpdating = false;
   }
 });
 
@@ -106,10 +155,16 @@ const navigateToGallery = () => {
 <style scoped>
 .gallery-iframe-container {
   width: 100%;
+  max-width: 100%;
   overflow: hidden;
   margin-bottom: 2.5rem;
   position: relative;
   min-height: 300px;
+}
+
+.gallery-iframe-container iframe {
+  max-width: 100%;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
