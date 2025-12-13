@@ -57,22 +57,13 @@
 
     <DesignersSection  id="designers" key="designers-section-component" class="md:mb-[36px] mb-[16px]" />
 
-    <ClientOnly>
-      <SponsorsSection key="sponsors-section" id="partners-media" class="md:mb-[76px] mb-[56px]" />
-    </ClientOnly>
+    <SponsorsSection key="sponsors-section" id="partners-media" class="md:mb-[76px] mb-[56px]" />
 
     <ClientOnly>
       <StatisticsSection id="statistics" key="statistics-section" class="md:mb-[76px] mb-[56px]" />
     </ClientOnly>
 
-    <ClientOnly>
-      <template #default>
-        <EventFeatures id="features-access" key="event-features" class="container mx-auto px-4 md:mb-[76px] mb-[56px]" :data="featuresData.featuresDataPromo" />
-      </template>
-      <template #fallback>
-        <div></div>
-      </template>
-    </ClientOnly>
+    <EventFeatures id="features-access" key="event-features" class="container mx-auto px-4 md:mb-[76px] mb-[56px]" :data="featuresData.featuresDataPromo" />
 
     <ClientOnly>
       <template #default>
