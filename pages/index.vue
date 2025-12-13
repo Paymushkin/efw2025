@@ -65,14 +65,7 @@
 
     <EventFeatures id="features-access" key="event-features" class="container mx-auto px-4 md:mb-[76px] mb-[56px]" :data="featuresData.featuresDataPromo" />
 
-    <ClientOnly>
-      <template #default>
-        <FacesOfEfwSection id="faces-efw" key="faces-efw-component" class="container mx-auto px-4 md:mb-[36px] mb-[16px]"/>
-      </template>
-      <template #fallback>
-        <div class="md:mb-[36px] mb-[16px]"></div>
-      </template>
-    </ClientOnly>
+    <FacesOfEfwSection id="faces-efw" key="faces-efw-component" class="container mx-auto px-4 md:mb-[36px] mb-[16px]"/>
 
 
     <ClientOnly>

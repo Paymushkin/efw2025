@@ -6,6 +6,7 @@
         <button 
           @click="handlePrev"
           class="w-6 h-6 md:w-10 md:h-10 flex items-center justify-center"
+          aria-label="Previous faces"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M15 19L8 12L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -14,6 +15,7 @@
         <button 
           @click="handleNext"
           class="w-6 h-6 md:w-10 md:h-10 flex items-center justify-center"
+          aria-label="Next faces"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -22,73 +24,120 @@
       </div>
     </div>
     
-    <div class="overflow-x-auto hide-scrollbar md:px-0">
-      <swiper
-        :modules="[Navigation, Pagination, Autoplay]"
-        :slides-per-view="1"
-        :space-between="16"
-        :navigation="false"
-        :autoplay="{
-          delay: 5000,
-          disableOnInteraction: false
-        }"
-        :pagination="false"
-        :breakpoints="{
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 30,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          },
-          1280: {
-            slidesPerView: 4,
-            spaceBetween: 30,
-          }
-        }"
-        @swiper="onSwiper"
-        @slideChange="onSlideChange"
-        class="relative pb-12 px-4 md:px-0"
+    <!-- SSR-compatible fallback for SEO -->
+    <div v-if="!isClient" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8">
+      <div 
+        v-for="(person, index) in facesData" 
+        :key="person.name"
+        class="face-card"
       >
-        <swiper-slide v-for="(person, index) in facesData" :key="index">
-          <div class="bg-white rounded-2xl h-full relative overflow-hidden">
-            <img 
-              :src="person.image" 
-              :alt="person.name"
-              class="w-full aspect-[4/5] rounded-lg object-cover"
-              :loading="index === 0 ? 'eager' : 'lazy'"
-            >
-            <!-- Диагональная ленточка ICON of EFW -->
-            <div v-if="person.icon" class="icon-ribbon">
-              <span class="icon-ribbon__content">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-                ICON of EFW
-              </span>
-            </div>
-            <div class="p-4">
-              <h3 class="text-lg font-semibold mb-1 text-center">{{ person.name }}</h3>
-              <div v-if="person.title" class="text-sm text-gray-800 text-center">{{ person.title }}</div>
-              <div v-if="person.subtitle" class="text-xs text-gray-500 text-center mb-4">{{ person.subtitle }}</div>
-              <div class="flex flex-wrap gap-1 md:gap-2 justify-center">
-                <a 
-                  v-for="(link, linkIndex) in person.links" 
-                  :key="linkIndex"
-                  :href="link.url" 
-                  target="_blank"
-                  class="text-xs md:text-sm text-blue-600 hover:text-blue-800 underline"
-                >
-                  {{ link.text }}
-                </a>
-              </div>
+        <div class="bg-white rounded-2xl h-full relative overflow-hidden">
+          <img 
+            :src="person.image" 
+            :alt="`${person.name} - ${person.title}`"
+            class="w-full aspect-[4/5] rounded-lg object-cover"
+            loading="lazy"
+          />
+          <!-- Диагональная ленточка ICON of EFW -->
+          <div v-if="person.icon" class="icon-ribbon">
+            <span class="icon-ribbon__content">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              ICON of EFW
+            </span>
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-semibold mb-1 text-center">{{ person.name }}</h3>
+            <div v-if="person.title" class="text-sm text-gray-800 text-center">{{ person.title }}</div>
+            <div v-if="person.subtitle" class="text-xs text-gray-500 text-center mb-4">{{ person.subtitle }}</div>
+            <div class="flex flex-wrap gap-1 md:gap-2 justify-center">
+              <a 
+                v-for="(link, linkIndex) in person.links" 
+                :key="linkIndex"
+                :href="link.url" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-xs md:text-sm text-blue-600 hover:text-blue-800 underline"
+              >
+                {{ link.text }}
+              </a>
             </div>
           </div>
-        </swiper-slide>
-
-      </swiper>
+        </div>
+      </div>
     </div>
+
+    <!-- Client-only Swiper for interactive experience -->
+    <ClientOnly>
+      <div class="overflow-x-auto hide-scrollbar md:px-0">
+        <swiper
+          :modules="[Navigation, Pagination, Autoplay]"
+          :slides-per-view="1"
+          :space-between="16"
+          :navigation="false"
+          :autoplay="{
+            delay: 5000,
+            disableOnInteraction: false
+          }"
+          :pagination="false"
+          :breakpoints="{
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 30,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+            1280: {
+              slidesPerView: 4,
+              spaceBetween: 30,
+            }
+          }"
+          @swiper="onSwiper"
+          @slideChange="onSlideChange"
+          class="relative pb-12 px-4 md:px-0"
+        >
+          <swiper-slide v-for="(person, index) in facesData" :key="index">
+            <div class="bg-white rounded-2xl h-full relative overflow-hidden">
+              <img 
+                :src="person.image" 
+                :alt="`${person.name} - ${person.title}`"
+                class="w-full aspect-[4/5] rounded-lg object-cover"
+                :loading="index === 0 ? 'eager' : 'lazy'"
+              />
+              <!-- Диагональная ленточка ICON of EFW -->
+              <div v-if="person.icon" class="icon-ribbon">
+                <span class="icon-ribbon__content">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  ICON of EFW
+                </span>
+              </div>
+              <div class="p-4">
+                <h3 class="text-lg font-semibold mb-1 text-center">{{ person.name }}</h3>
+                <div v-if="person.title" class="text-sm text-gray-800 text-center">{{ person.title }}</div>
+                <div v-if="person.subtitle" class="text-xs text-gray-500 text-center mb-4">{{ person.subtitle }}</div>
+                <div class="flex flex-wrap gap-1 md:gap-2 justify-center">
+                  <a 
+                    v-for="(link, linkIndex) in person.links" 
+                    :key="linkIndex"
+                    :href="link.url" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs md:text-sm text-blue-600 hover:text-blue-800 underline"
+                  >
+                    {{ link.text }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </swiper-slide>
+        </swiper>
+      </div>
+    </ClientOnly>
   </section>
 </template>
 
@@ -105,6 +154,7 @@ import { useFaces } from '~/composables/useFaces';
 const { facesData, isLoading, isDataUpdated, fetchFaces } = useFaces();
 
 const swiperInstance = ref(null);
+const isClient = ref(false);
 
 const onSwiper = (swiper) => {
   swiperInstance.value = swiper;
@@ -124,6 +174,8 @@ const onSlideChange = () => {
 
 // Загружаем данные при монтировании компонента
 onMounted(async () => {
+  isClient.value = true;
+  
   // Пытаемся обновить данные из Google Sheets (только если еще не обновлены)
   if (!isDataUpdated.value) {
     try {
