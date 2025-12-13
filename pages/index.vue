@@ -55,14 +55,7 @@
       </template>
     </ClientOnly>
 
-    <ClientOnly>
-      <template #default>
-        <DesignersSection id="designers" key="designers-section-component" class="md:mb-[36px] mb-[16px]" />
-      </template>
-      <template #fallback>
-        <div class="md:mb-[36px] mb-[16px]"></div>
-      </template>
-    </ClientOnly>
+    <DesignersSection  id="designers" key="designers-section-component" class="md:mb-[36px] mb-[16px]" />
 
     <ClientOnly>
       <SponsorsSection key="sponsors-section" id="partners-media" class="md:mb-[76px] mb-[56px]" />

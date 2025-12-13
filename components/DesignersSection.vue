@@ -6,6 +6,7 @@
         <button 
           @click="handlePrev"
           class="w-6 h-6 md:w-10 md:h-10 flex items-center justify-center"
+          aria-label="Previous designers"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M15 19L8 12L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -14,6 +15,7 @@
         <button 
           @click="handleNext"
           class="w-6 h-6 md:w-10 md:h-10 flex items-center justify-center"
+          aria-label="Next designers"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -22,32 +24,53 @@
       </div>
     </div>
     
-    <div class="overflow-x-auto hide-scrollbar md:mx-0">
-      <swiper
-        :modules="[Navigation, Pagination, Autoplay]"
-        :slides-per-view="1.2"
-        :space-between="16"
-        :navigation="false"
-        :autoplay="{
-          delay: 5000,
-          disableOnInteraction: false
-        }"
-        :pagination="{
-          clickable: true,
-          dynamicBullets: true,
-          dynamicMainBullets: 7
-        }"
-        :breakpoints="{
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 30,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          },
-        }"
-        @swiper="onSwiper"
+    <!-- SSR-compatible fallback for SEO -->
+    <div v-if="!isClient" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+      <div 
+        v-for="designer in designers.slice(0, 6)" 
+        :key="designer.name"
+        class="designer-card"
+      >
+        <div class="aspect-[3/4] relative overflow-hidden rounded-lg">
+          <img 
+            :src="designer.image"
+            :alt="`${designer.name} designer collection`"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <h3 class="text-center mt-4 text-lg font-medium">{{ designer.name }}</h3>
+      </div>
+    </div>
+
+    <!-- Client-only Swiper for interactive experience -->
+    <ClientOnly>
+      <div class="overflow-x-auto hide-scrollbar md:mx-0">
+        <swiper
+          :modules="[Navigation, Pagination, Autoplay]"
+          :slides-per-view="1.2"
+          :space-between="16"
+          :navigation="false"
+          :autoplay="{
+            delay: 5000,
+            disableOnInteraction: false
+          }"
+          :pagination="{
+            clickable: true,
+            dynamicBullets: true,
+            dynamicMainBullets: 7
+          }"
+          :breakpoints="{
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 30,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+          }"
+          @swiper="onSwiper"
         @slideChange="onSlideChange"
         class="relative px-4 md:px-0"
       >
@@ -68,6 +91,7 @@
         <div class="swiper-pagination"></div>
       </swiper>
     </div>
+    </ClientOnly>
   </section>
 </template>
 
@@ -191,6 +215,7 @@ import 'swiper/css/pagination';
 import { designers } from '@/constants/images';
 
 const swiperInstance = ref(null);
+const isClient = ref(false);
 
 const onSwiper = (swiper) => {
   swiperInstance.value = swiper;
@@ -217,6 +242,7 @@ const onSlideChange = () => {
 };
 
 onMounted(() => {
+  isClient.value = true;
   preloadNextSlide(0);
 });
 </script>
