@@ -16,88 +16,123 @@
       }"
     />
     <ClientOnly>
-      <HeroSection class="mb-[56px] md:mb-[76px]" />
+      <HeroSection id="hero-section" key="hero-section" class="mb-[56px] md:mb-[76px]" />
     </ClientOnly>
     <!-- <ClientOnly>
       <CurrentProgramSection class="md:mb-[120px] mb-[76px]" />
     </ClientOnly> -->
-    <div id="previous-seasons">
-      <ClientOnly>
-        <HowItWasSection class="mb-[56px] md:mb-[76px]" />
-      </ClientOnly>
-    </div>
+
     <ClientOnly>
-      <MarqueeSection :content="sponsors" class="mb-[56px] md:mb-[76px]" />
+      <template #default>
+        <PreviousSeasonsSection id="previous-seasons" key="previous-seasons-wrapper" class="mb-[56px] md:mb-[76px]" />
+      </template>
+      <template #fallback>
+        <div class="mb-[56px] md:mb-[76px]"></div>
+      </template>
     </ClientOnly>
+
     <ClientOnly>
-      <NewProgramSection class="md:mb-[120px] mb-[76px]" />
+      <MarqueeSection id="marquee" key="marquee-section" :content="sponsors" class="mb-[56px] md:mb-[76px]" />
     </ClientOnly>
+
     <ClientOnly>
-      <DesignerRunwaysSection class="md:mb-[76px] mb-[56px]" />
+      <NewProgramSection id="spring-summer-2026" key="new-program-section" class="md:mb-[120px] mb-[76px]" />
     </ClientOnly>
+
+    
+    <DesignerRunwaySection id="runway" key="designer-runway-section" class="md:mb-[76px] mb-[56px]" />
+    
     <ClientOnly>
-      <MagazineCarousel class="md:mb-[76px] mb-[56px]" />
+      <MagazineCarousel id="magazine" key="magazine-carousel" class="md:mb-[76px] mb-[56px]" />
     </ClientOnly>
-    <div id="fall-winter-2025">
-      <ClientOnly>
-        <ProgramSection  class="md:mb-[76px] mb-[56px]" />
-      </ClientOnly>
-    </div>
-    <div id="designers">
-      <ClientOnly>
-        <DesignersSection class="md:mb-[36px] mb-[16px]" />
-      </ClientOnly>
-    </div>
+
     <ClientOnly>
-      <SponsorsSection id="partners-media" class="md:mb-[76px] mb-[56px]" />
+      <template #default>
+        <ProgramSection id="fall-winter-2025" key="program-section-fall-winter" class="md:mb-[76px] mb-[56px]" />
+      </template>
+      <template #fallback>
+        <div class="md:mb-[76px] mb-[56px]"></div>
+      </template>
     </ClientOnly>
+
     <ClientOnly>
-      <StatisticsSection class="md:mb-[76px] mb-[56px]" />
+      <template #default>
+        <DesignersSection id="designers" key="designers-section-component" class="md:mb-[36px] mb-[16px]" />
+      </template>
+      <template #fallback>
+        <div class="md:mb-[36px] mb-[16px]"></div>
+      </template>
     </ClientOnly>
-    <div id="features-access" class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
-      <ClientOnly>
-        <EventFeatures :data="featuresData.featuresDataPromo" />
-      </ClientOnly>
-    </div>
-    <div id="faces-efw" class="container mx-auto px-4">
-      <ClientOnly>
-        <FacesOfEfwSection class="md:mb-[36px] mb-[16px]"/>
-      </ClientOnly>
-    </div>
-    <section id="economy-dubai">
-      <div class="container mx-auto px-4 md:mb-[76px] mb-[56px]">
-        <ClientOnly>
-          <ImageCarousel 
-            title="We invest in and support the economy of Dubai | UAE"
-          />
-        </ClientOnly>
-      </div>
-    </section>
-    <div id="faq">
-      <ClientOnly>
-        <FaqSectionDynamic class="mb-[56px] md:mb-[76px]" />
-      </ClientOnly>
-    </div>
+
+    <ClientOnly>
+      <SponsorsSection key="sponsors-section" id="partners-media" class="md:mb-[76px] mb-[56px]" />
+    </ClientOnly>
+
+    <ClientOnly>
+      <StatisticsSection id="statistics" key="statistics-section" class="md:mb-[76px] mb-[56px]" />
+    </ClientOnly>
+
+    <ClientOnly>
+      <template #default>
+        <EventFeatures id="features-access" key="event-features" class="container mx-auto px-4 md:mb-[76px] mb-[56px]" :data="featuresData.featuresDataPromo" />
+      </template>
+      <template #fallback>
+        <div></div>
+      </template>
+    </ClientOnly>
+
+    <ClientOnly>
+      <template #default>
+        <FacesOfEfwSection id="faces-efw" key="faces-efw-component" class="container mx-auto px-4 md:mb-[36px] mb-[16px]"/>
+      </template>
+      <template #fallback>
+        <div class="md:mb-[36px] mb-[16px]"></div>
+      </template>
+    </ClientOnly>
+
+
+    <ClientOnly>
+      <template #default>
+        <ImageCarousel 
+          id="economy-dubai"
+          key="image-carousel"
+          title="We invest in and support the economy of Dubai | UAE"
+          class="container mx-auto px-4 md:mb-[76px] mb-[56px]"
+        />
+      </template>
+      <template #fallback>
+        <div class="md:mb-[76px] mb-[56px]"></div>
+      </template>
+    </ClientOnly>
+
+    <ClientOnly>
+      <template #default>
+        <FaqSectionDynamic id="faq" key="faq-section" class="mb-[56px] md:mb-[76px]" />
+      </template>
+      <template #fallback>
+        <div class="mb-[56px] md:mb-[76px]"></div>
+      </template>
+    </ClientOnly>
+    
   </div>
 </template>
 
 <script setup>
-import { onMounted, nextTick } from 'vue';
-
 definePageMeta({
-  layout: 'default',
-  ssr: false
+  layout: 'default'
 });
+
+import { onMounted, nextTick } from 'vue';
 
 // Components
 import HeroSection from '@/components/HeroSection.vue';
-import HowItWasSection from '~/components/HowItWasSection.vue';
+import HowItWasSection from '~/components/PreviousSeasonsSection.vue';
 import CurrentProgramSection from '~/components/CurrentProgramSection.vue';
 import NewProgramSection from '~/components/NewProgramSection.vue';
 import ProgramSection from '~/components/ProgramSection.vue';
 import DesignersSection from '~/components/DesignersSection.vue';
 import MagazineCarousel from '~/components/MagazineCarousel.vue';
-import DesignerRunwaysSection from '~/components/DesignerRunwaysSection.vue';
+import DesignerRunwaySection from '~/components/DesignerRunwaySection.vue';
 import SponsorsSection from '~/components/SponsorsSection.vue';
 import StatisticsSection from '@/components/StatisticsSection.vue';
 import MarqueeSection from '~/components/MarqueeSection.vue';
@@ -151,6 +186,29 @@ const scrollToHash = () => {
 // Инициализация при монтировании
 onMounted(() => {
   if (!process.client) return;
+  
+  // Проверяем и исправляем дубликаты ID
+  const checkDuplicateIds = () => {
+    const ids = ['faces-efw', 'designers', 'fall-winter-2025', 'previous-seasons', 'features-access', 'economy-dubai', 'faq'];
+    ids.forEach((id) => {
+      const elements = document.querySelectorAll(`#${id}`);
+      if (elements.length > 1) {
+        console.warn(`⚠️ Найдено дублирование ID: #${id} (${elements.length} элементов)`);
+        // Оставляем только первый элемент, остальные переименовываем
+        elements.forEach((el, index) => {
+          if (index > 0) {
+            el.id = `${id}-duplicate-${index}`;
+            console.warn(`  Переименован элемент #${index + 1} в #${el.id}`);
+          }
+        });
+      }
+    });
+  };
+  
+  // Проверяем после загрузки всех компонентов
+  setTimeout(() => {
+    checkDuplicateIds();
+  }, 1000);
   
   // Прокрутка к хешу при загрузке страницы
   scrollToHash();

@@ -1,0 +1,5 @@
+const GalleryIframe_vue_vue_type_style_index_0_scoped_6bda279b_lang = '.gallery-iframe-container[data-v-6bda279b]{margin-bottom:2.5rem;max-width:100%;min-height:300px;overflow:hidden;position:relative;width:100%}.gallery-iframe-container iframe[data-v-6bda279b]{max-width:100%;width:100%}@media (min-width:768px){.gallery-iframe-container[data-v-6bda279b]{margin-bottom:4.75rem}}.overlay[data-v-6bda279b]{cursor:pointer;inset:0;position:absolute;z-index:1}.gallery-iframe-container.with-fog[data-v-6bda279b]:after{background:linear-gradient(180deg,#fff0 0,#ffffff1a,#ffffff4d,#fff9,#fffc 80%,#fff);bottom:0;content:"";height:60px;left:0;pointer-events:none;position:absolute;right:0;z-index:2}@media (min-width:768px){.gallery-iframe-container.with-fog[data-v-6bda279b]:after{height:100px}}';
+export {
+  GalleryIframe_vue_vue_type_style_index_0_scoped_6bda279b_lang as default
+};
+//# sourceMappingURL=GalleryIframe-styles-1.mjs-5UeT_utJ.js.map

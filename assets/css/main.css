@@ -14,12 +14,39 @@
   html {
     font-family: 'Inter', system-ui, sans-serif;
     overflow-x: hidden;
+    color-scheme: light !important;
+  }
+  
+  /* Принудительно устанавливаем светлую тему, игнорируя системные настройки */
+  html[data-theme="dark"],
+  html:not([data-theme]) {
+    color-scheme: light !important;
   }
   
   body {
     overflow-x: hidden;
     width: 100%;
     max-width: 100vw;
+    color-scheme: light !important;
+    background-color: white;
+    color: black;
+  }
+  
+  /* Убираем crosshair курсор если он был установлен */
+  body[style*="crosshair"] {
+    cursor: default !important;
+  }
+  
+  /* Отключаем темную тему даже если система требует её */
+  @media (prefers-color-scheme: dark) {
+    html {
+      color-scheme: light !important;
+    }
+    body {
+      color-scheme: light !important;
+      background-color: white;
+      color: black;
+    }
   }
 }
 

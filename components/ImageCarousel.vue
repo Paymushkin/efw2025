@@ -1,5 +1,5 @@
 <template>
-  <div class="image-carousel-container">
+  <section class="image-carousel-container">
     <div class="carousel-header flex justify-between items-center mb-6">
       <h2 id="economy-dubai" data-nosnippet class="text-2xl md:text-3xl lg:text-4xl">{{ title }}</h2>
       <div class="hidden md:flex relative items-center gap-4">
@@ -72,7 +72,7 @@
       </swiper>
       <div class="swiper-pagination mt-6"></div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>

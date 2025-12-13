@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto">
+  <section class="container mx-auto">
     <div class="flex justify-between items-center pl-4 md:pl-0">
       <h2 data-nosnippet class="text-xl md:text-3xl xl:text-4xl mb-4">ALL DESIGNERS · ALL SEASONS</h2>
       <div class="flex items-center gap-4">
@@ -68,7 +68,7 @@
         <div class="swiper-pagination"></div>
       </swiper>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>

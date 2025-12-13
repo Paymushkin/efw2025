@@ -18,7 +18,7 @@
       </video>
     </div>
     <div class="grow flex flex-col items-start gap-3 py-4">
-      <h3 class="md:text-2xl text-xl" v-html="title"></h3>
+      <h3 class="md:text-2xl text-xl text-black" v-html="title"></h3>
       <p v-if="description" class="2xl:text-base text-sm whitespace-pre-line">
         {{ description }}
       </p>

@@ -5,7 +5,7 @@
       size === 'sm' ? 'px-3 py-1.5 text-xs' : 'px-6 py-2.5 text-sm',
       variant === 'primary'
         ? 'bg-black text-white hover:bg-black/90'
-        : 'border border-black hover:bg-gray-100',
+        : 'border border-black text-black hover:bg-gray-100',
     ]"
   >
     <slot />

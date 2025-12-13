@@ -38,3 +38,4 @@ Gemfile.lock
 
 # npm cache
 .npm-cache
+.env*.local

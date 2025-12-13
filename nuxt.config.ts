@@ -25,6 +25,9 @@ export default defineNuxtConfig({
     baseURL: '/',
     cdnURL: '',
     head: {
+      meta: [
+        { name: 'color-scheme', content: 'light' }
+      ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=3' },
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png?v=3' },
@@ -35,15 +38,16 @@ export default defineNuxtConfig({
       script: [
         { src: 'https://www.googletagmanager.com/gtag/js?id=G-93881479ZC', async: true },
         { type: 'text/javascript', innerHTML: "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-93881479ZC');" } as any,
-        { src: 'https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.0/src/lite-yt-embed.js', defer: true }
+        { src: 'https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.0/src/lite-yt-embed.js', defer: true },
+        { type: 'text/javascript', innerHTML: "(function(){document.documentElement.setAttribute('data-theme','light');document.documentElement.style.colorScheme='light';if(document.body){if(document.body.style.cursor==='crosshair'||getComputedStyle(document.body).cursor==='crosshair'){document.body.style.cursor='default';}document.body.style.setProperty('cursor','default','important');}})();" } as any
       ]
     }
   },
   ssr: true,
   nitro: {
-    preset: 'vercel',
+    preset: process.env.VERCEL ? 'vercel' : 'node-server',
     routeRules: {
-      '/': { ssr: false },
+      '/': { ssr: true }, // Включаем SSR для SEO индексации DesignerRunwaysSection
       '/offer': { ssr: false },
       '/dubaifw/**': { static: true },
       '/offer/tr': { redirect: '/offer?tr' },

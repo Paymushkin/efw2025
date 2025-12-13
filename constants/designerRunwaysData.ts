@@ -1,5 +1,5 @@
 // Локальные данные для SSR (SEO индексация)
-// Автоматически обновлено: 2025-12-10T18:30:21.173Z
+// Автоматически обновлено: 2025-12-13T11:36:57.752Z
 // Эти данные используются при серверном рендеринге для индексации поисковыми роботами
 // После загрузки страницы данные обновляются из Google Sheets
 
@@ -7,11 +7,30 @@ import type { DesignerRunwayGroup } from '~/composables/useDesignerRunways';
 
 export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   {
-    "date": "09.11.2025",
-    "name": "ANDREW’S DREAMS",
+    "date": "10.11.2025",
+    "name": "SHOSTERMAN | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "ANDREW’S DREAMS",
+        "name": "SHOSTERMAN | EMIRATES FASHION WEEK | SS26",
+        "country": "",
+        "date": "10.11.2025",
+        "youtubeLinks": [
+          "https://youtube.com/shorts/0oSVRH2Ck24?feature=share"
+        ],
+        "photoLinks": [],
+        "photoArticleLink": "",
+        "articleLink": "",
+        "articleTitle": "",
+        "gallery": ""
+      }
+    ]
+  },
+  {
+    "date": "09.11.2025",
+    "name": "ANDREW’S DREAMS | EMIRATES FASHION WEEK | SS26",
+    "items": [
+      {
+        "name": "ANDREW’S DREAMS | EMIRATES FASHION WEEK | SS26",
         "country": "RUSSIA",
         "date": "09.11.2025",
         "youtubeLinks": [],
@@ -29,10 +48,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "DESI VOGUE BY VISHAL (Vishal Desai)",
+    "name": "DESI VOGUE BY VISHAL (Vishal Desai)  | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "DESI VOGUE BY VISHAL (Vishal Desai)",
+        "name": "DESI VOGUE BY VISHAL (Vishal Desai)  | EMIRATES FASHION WEEK | SS26",
         "country": "INDIA",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -54,10 +73,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "ELENA ROMANOVA",
+    "name": "ELENA ROMANOVA | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "ELENA ROMANOVA",
+        "name": "ELENA ROMANOVA | EMIRATES FASHION WEEK | SS26",
         "country": "RUSSIA",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -79,10 +98,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "MAJESTIC / ELISABETH FRANCHI, MINISOL, ERMANNO SCERVINO, MISSOURI/",
+    "name": "MAJESTIC / ELISABETH FRANCHI, MINISOL, ERMANNO SCERVINO, MISSOURI  | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "MAJESTIC / ELISABETH FRANCHI, MINISOL, ERMANNO SCERVINO, MISSOURI/",
+        "name": "MAJESTIC / ELISABETH FRANCHI, MINISOL, ERMANNO SCERVINO, MISSOURI  | EMIRATES FASHION WEEK | SS26",
         "country": "ITALY",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -102,10 +121,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "ARNI",
+    "name": "ARNI | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "ARNI",
+        "name": "ARNI | EMIRATES FASHION WEEK | SS26",
         "country": "USA/INDIA",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -126,10 +145,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "KIBOVSKAYA",
+    "name": "KIBOVSKAYA | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "KIBOVSKAYA",
+        "name": "KIBOVSKAYA | EMIRATES FASHION WEEK | SS26",
         "country": "RUSSIA",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -150,10 +169,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "OLGA BOGDANOVA",
+    "name": "OLGA BOGDANOVA | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "OLGA BOGDANOVA",
+        "name": "OLGA BOGDANOVA | EMIRATES FASHION WEEK | SS26",
         "country": "RUSSIA",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -173,10 +192,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "JUNIOR FIT",
+    "name": "JUNIOR FIT | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "JUNIOR FIT",
+        "name": "JUNIOR FIT | EMIRATES FASHION WEEK | SS26",
         "country": "UAE",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -196,10 +215,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "RU BASHKA",
+    "name": "RU BASHKA | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "RU BASHKA",
+        "name": "RU BASHKA | EMIRATES FASHION WEEK | SS26",
         "country": "RUSSIA",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -219,10 +238,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "ALISA ALISOVA PHOENIX",
+    "name": "ALISA ALISOVA PHOENIX | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "ALISA ALISOVA PHOENIX",
+        "name": "ALISA ALISOVA PHOENIX | EMIRATES FASHION WEEK | SS26",
         "country": "",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -242,10 +261,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "RAISA MIROSHNICHENKO",
+    "name": "RAISA MIROSHNICHENKO | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "RAISA MIROSHNICHENKO",
+        "name": "RAISA MIROSHNICHENKO | EMIRATES FASHION WEEK | SS26",
         "country": "",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -265,10 +284,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "FUTURE IDOLS KIDS",
+    "name": "FUTURE IDOLS KIDS | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "FUTURE IDOLS KIDS",
+        "name": "FUTURE IDOLS KIDS | EMIRATES FASHION WEEK | SS26",
         "country": "UAE",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -288,10 +307,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "NATIONAL COSTUME FASHION SHOW",
+    "name": "NATIONAL COSTUME FASHION SHOW | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "NATIONAL COSTUME FASHION SHOW",
+        "name": "NATIONAL COSTUME FASHION SHOW | EMIRATES FASHION WEEK | SS26",
         "country": "UAE",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -311,10 +330,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "GLOBAL FASHION CODE by MAG",
+    "name": "GLOBAL FASHION CODE by MAG | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "GLOBAL FASHION CODE by MAG",
+        "name": "GLOBAL FASHION CODE by MAG | EMIRATES FASHION WEEK | SS26",
         "country": "UAE",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -334,10 +353,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "ALAA ABOU LUBADDEH",
+    "name": "ALAA ABOU LUBADDEH | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "ALAA ABOU LUBADDEH",
+        "name": "ALAA ABOU LUBADDEH | EMIRATES FASHION WEEK | SS26",
         "country": "UAE",
         "date": "09.11.2025",
         "youtubeLinks": [],
@@ -355,10 +374,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "CHINARA YELMURATOVNA",
+    "name": "CHINARA YELMURATOVNA | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "CHINARA YELMURATOVNA",
+        "name": "CHINARA YELMURATOVNA | EMIRATES FASHION WEEK | SS26",
         "country": "KAZAKHSTAN",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -378,10 +397,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "FASHION TOP HAIRSTYLIST’S SHOW",
+    "name": "FASHION TOP HAIRSTYLIST’S SHOW | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "FASHION TOP HAIRSTYLIST’S SHOW",
+        "name": "FASHION TOP HAIRSTYLIST’S SHOW | EMIRATES FASHION WEEK | SS26",
         "country": "INTERNATIONAL",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -401,10 +420,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "FASHION TOP STYLIST’S SHOW",
+    "name": "FASHION TOP STYLIST’S SHOW | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "FASHION TOP STYLIST’S SHOW",
+        "name": "FASHION TOP STYLIST’S SHOW | EMIRATES FASHION WEEK | SS26",
         "country": "INTERNATIONAL",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -424,10 +443,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "SYLWERIUSZ STANISLAWSKI",
+    "name": "SYLWERIUSZ STANISLAWSKI | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "SYLWERIUSZ STANISLAWSKI",
+        "name": "SYLWERIUSZ STANISLAWSKI | EMIRATES FASHION WEEK | SS26",
         "country": "EU",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -448,10 +467,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "LUNA",
+    "name": "LUNA | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "LUNA",
+        "name": "LUNA | EMIRATES FASHION WEEK | SS26",
         "country": "",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -471,10 +490,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "09.11.2025",
-    "name": "FUTURE IDOLS by MAG",
+    "name": "FUTURE IDOLS by MAG | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "FUTURE IDOLS by MAG",
+        "name": "FUTURE IDOLS by MAG | EMIRATES FASHION WEEK | SS26",
         "country": "AUSTRIA",
         "date": "09.11.2025",
         "youtubeLinks": [
@@ -494,10 +513,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "ISLOM ZAKHIDOV",
+    "name": "ISLOM ZAKHIDOV | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "ISLOM ZAKHIDOV",
+        "name": "ISLOM ZAKHIDOV | EMIRATES FASHION WEEK | SS26",
         "country": "UZBEKISTAN",
         "date": "08.11.2025",
         "youtubeLinks": [
@@ -517,10 +536,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "ALEVTINI",
+    "name": "ALEVTINI | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "ALEVTINI",
+        "name": "ALEVTINI | EMIRATES FASHION WEEK | SS26",
         "country": "RUSSIA",
         "date": "08.11.2025",
         "youtubeLinks": [
@@ -540,10 +559,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "ACQUADICOCCO",
+    "name": "ACQUADICOCCO | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "ACQUADICOCCO",
+        "name": "ACQUADICOCCO | EMIRATES FASHION WEEK | SS26",
         "country": "ITALY",
         "date": "08.11.2025",
         "youtubeLinks": [
@@ -564,10 +583,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "MOONSOUL",
+    "name": "MOONSOUL | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "MOONSOUL",
+        "name": "MOONSOUL | EMIRATES FASHION WEEK | SS26",
         "country": "KYRGYZSTAN",
         "date": "08.11.2025",
         "youtubeLinks": [],
@@ -585,10 +604,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "IRIM",
+    "name": "IRIM | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "IRIM",
+        "name": "IRIM | EMIRATES FASHION WEEK | SS26",
         "country": "SWITZERLAND",
         "date": "08.11.2025",
         "youtubeLinks": [
@@ -608,10 +627,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "HOUSE OF SOLANA",
+    "name": "HOUSE OF SOLANA | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "HOUSE OF SOLANA",
+        "name": "HOUSE OF SOLANA | EMIRATES FASHION WEEK | SS26",
         "country": "USA",
         "date": "08.11.2025",
         "youtubeLinks": [
@@ -631,10 +650,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "DEVU / HERBELIN",
+    "name": "DEVU / HERBELIN | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "DEVU / HERBELIN",
+        "name": "DEVU / HERBELIN | EMIRATES FASHION WEEK | SS26",
         "country": "POLAND",
         "date": "08.11.2025",
         "youtubeLinks": [
@@ -654,10 +673,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "MARIANNE MOORE",
+    "name": "MARIANNE MOORE | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "MARIANNE MOORE",
+        "name": "MARIANNE MOORE | EMIRATES FASHION WEEK | SS26",
         "country": "",
         "date": "08.11.2025",
         "youtubeLinks": [
@@ -677,10 +696,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "ANNET",
+    "name": "ANNET | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "ANNET",
+        "name": "ANNET | EMIRATES FASHION WEEK | SS26",
         "country": "",
         "date": "08.11.2025",
         "youtubeLinks": [
@@ -700,10 +719,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "ETNO FRESH",
+    "name": "ETNO FRESH | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "ETNO FRESH",
+        "name": "ETNO FRESH | EMIRATES FASHION WEEK | SS26",
         "country": "",
         "date": "08.11.2025",
         "youtubeLinks": [
@@ -724,10 +743,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "MONIKA MO TOP SECRET",
+    "name": "MONIKA MO TOP SECRET | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "MONIKA MO TOP SECRET",
+        "name": "MONIKA MO TOP SECRET | EMIRATES FASHION WEEK | SS26",
         "country": "RUSSIA",
         "date": "08.11.2025",
         "youtubeLinks": [],
@@ -745,10 +764,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "IGARNITUR",
+    "name": "IGARNITUR | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "IGARNITUR",
+        "name": "IGARNITUR | EMIRATES FASHION WEEK | SS26",
         "country": "POLAND",
         "date": "08.11.2025",
         "youtubeLinks": [],
@@ -766,10 +785,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "ANDERWS YOUNG GODS",
+    "name": "ANDERWS YOUNG GODS | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "ANDERWS YOUNG GODS",
+        "name": "ANDERWS YOUNG GODS | EMIRATES FASHION WEEK | SS26",
         "country": "MOLDOVA",
         "date": "08.11.2025",
         "youtubeLinks": [
@@ -789,10 +808,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "HOUSE OF ALI",
+    "name": "HOUSE OF ALI | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "HOUSE OF ALI",
+        "name": "HOUSE OF ALI | EMIRATES FASHION WEEK | SS26",
         "country": "",
         "date": "08.11.2025",
         "youtubeLinks": [],
@@ -810,10 +829,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "BELIZE",
+    "name": "BELIZE | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "BELIZE",
+        "name": "BELIZE | EMIRATES FASHION WEEK | SS26",
         "country": "GERMANY",
         "date": "08.11.2025",
         "youtubeLinks": [],
@@ -831,10 +850,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "DIMARIS",
+    "name": "DIMARIS | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "DIMARIS",
+        "name": "DIMARIS | EMIRATES FASHION WEEK | SS26",
         "country": "UZBEKISTAN",
         "date": "08.11.2025",
         "youtubeLinks": [],
@@ -852,10 +871,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "RAGIATURE",
+    "name": "RAGIATURE | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "RAGIATURE",
+        "name": "RAGIATURE | EMIRATES FASHION WEEK | SS26",
         "country": "EGYPT",
         "date": "08.11.2025",
         "youtubeLinks": [],
@@ -873,13 +892,15 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "FYOR",
+    "name": "FYOR | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "FYOR",
+        "name": "FYOR | EMIRATES FASHION WEEK | SS26",
         "country": "UAE",
         "date": "08.11.2025",
-        "youtubeLinks": [],
+        "youtubeLinks": [
+          "https://youtu.be/Iz_j9IPYrMw"
+        ],
         "photoLinks": [
           "https://img-y.wfolio.ru/x/qXBFyKyoT-Wvta6bHxG91A7ft6oHnnJm/xegNKP5ayszG_LQbFKBHc-EYe30itthl/y46zgibqNgv-KprS5V-xpfXY2R452XfP/GFTH4FycCoIv2CMPeBHVp72x8mQgldO_/BATXzWSTS4acYYZeWaRipsSK6qDkzQlr/lF4JyIKdyCGFPXuFzFA_TPAZ9XxcVxWd/Bo7dz0GjGnHYVzdraPxAvR8FyxLqS3my/ygm38cujKmhcSmqyYoR_spU4LvCD8qNx/gXlNasZKvl4nY0tvJH8Ffk9mDKCtWM6x/auKNM1cOVaZUJFiKlXunqoQ359P9-TGT/Y4DmWJXxEp9lmPAsNvaPQNoo7lpSLc3t/i056T06c-ZJFRSR2UIUUAHLW_NpemiK5/7FOAbJGXuoPOZO3GmOVabjJT4eAr0jnF/MIBx0cABziRDfp_WwV5PFrAoMAFDNL-m/sAXVsOTi_Z10MHRjRYaHbcxEQHYnU6w3/HYRkA1nLd0p6M9IDh_1QZHof0nPwYZ7N/tTPfKpjM6pPSd1_zhJ3tQy90FFfkHS_C/1KMy1YbUUbc81bcGfRY9tu6nbzuUyr6C.jpg",
           "https://img-y.wfolio.ru/x/qXBFyKyoT-Wvta6bHxG91A7ft6oHnnJm/xegNKP5ayszG_LQbFKBHc-EYe30itthl/y46zgibqNgv-KprS5V-xpVD4QZcWKMNx/ZPIFHTHau21FRvB2xs697nqBCCD6NQHH/OmcnVkPjmbr4mj2J5PdTaI2LqzvWV1ro/bGL5fC2nh7DDfZmZeR9neeOsC9t3fEYj/-mD018OAYiYdzxOGt6jJ2PhYMTfAkJh9/_jrbH1WNOK-xc-wuROFVi5EpdEfpa_46/7tteB7zN8wfEyNNA4V3bu92dgMuWeRbu/3NgMLiZX9lxFoVONIOJ2sf4Drmo_tJH-/ro5tbNWifjOmSDbeZOObgrb717C-hpkY/6N1EuXMQjE7BWoRrLt7fJrpTZ9ZW4vVT/TAh_n9nft404pyRaYLIkUfzg8bT3eWDe/wo3YiXNLeaT58Vfw6FYi0Owyxgbb5szP/BR3zqKUM9cLN6Dx-fE758q-hizIoZzdx/d_8tu-mHQe5Ehr4arlbH0jHhX4ZRHNZ8/CaqMwmwLEZjlqwi--hsXyJ7qAxY17_7m/nuSxVVLM9M1xVTvFAoAS5Qh7uhzM_Qdr.jpg",
@@ -894,10 +915,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "FUTURE iDOLS by MAG",
+    "name": "FUTURE iDOLS by MAG | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "FUTURE iDOLS by MAG",
+        "name": "FUTURE iDOLS by MAG | EMIRATES FASHION WEEK | SS26",
         "country": "AUSTRIA",
         "date": "08.11.2025",
         "youtubeLinks": [
@@ -917,10 +938,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "BOULAS ACADEMY CHIARO DI LUNA",
+    "name": "BOULAS ACADEMY CHIARO DI LUNA | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "BOULAS ACADEMY CHIARO DI LUNA",
+        "name": "BOULAS ACADEMY CHIARO DI LUNA | EMIRATES FASHION WEEK | SS26",
         "country": "",
         "date": "08.11.2025",
         "youtubeLinks": [
@@ -940,10 +961,10 @@ export const localDesignerRunwaysData: DesignerRunwayGroup[] = [
   },
   {
     "date": "08.11.2025",
-    "name": "CHOUPETTE",
+    "name": "CHOUPETTE | EMIRATES FASHION WEEK | SS26",
     "items": [
       {
-        "name": "CHOUPETTE",
+        "name": "CHOUPETTE | EMIRATES FASHION WEEK | SS26",
         "country": "",
         "date": "08.11.2025",
         "youtubeLinks": [

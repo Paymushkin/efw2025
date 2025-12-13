@@ -20,7 +20,7 @@ interface _GlobalComponents {
     'CompaniesList': typeof import("../components/CompaniesList.vue")['default']
     'ContactForm': typeof import("../components/ContactForm.vue")['default']
     'CurrentProgramSection': typeof import("../components/CurrentProgramSection.vue")['default']
-    'DesignerRunwaysSection': typeof import("../components/DesignerRunwaysSection.vue")['default']
+    'DesignerRunwaySection': typeof import("../components/DesignerRunwaySection.vue")['default']
     'DesignersSection': typeof import("../components/DesignersSection.vue")['default']
     'EventFeatures': typeof import("../components/EventFeatures.vue")['default']
     'FacesOfEfwSection': typeof import("../components/FacesOfEfwSection.vue")['default']
@@ -29,13 +29,13 @@ interface _GlobalComponents {
     'FaqSectionDynamic': typeof import("../components/FaqSectionDynamic.vue")['default']
     'GalleryIframe': typeof import("../components/GalleryIframe.vue")['default']
     'HeroSection': typeof import("../components/HeroSection.vue")['default']
-    'HowItWasSection': typeof import("../components/HowItWasSection.vue")['default']
     'ImageCarousel': typeof import("../components/ImageCarousel.vue")['default']
     'MagazineCarousel': typeof import("../components/MagazineCarousel.vue")['default']
     'MarqueeSection': typeof import("../components/MarqueeSection.vue")['default']
     'NewProgramSection': typeof import("../components/NewProgramSection.vue")['default']
     'PhotoGallery': typeof import("../components/PhotoGallery.vue")['default']
     'PhotographerBlock': typeof import("../components/PhotographerBlock.vue")['default']
+    'PreviousSeasonsSection': typeof import("../components/PreviousSeasonsSection.vue")['default']
     'ProgramSection': typeof import("../components/ProgramSection.vue")['default']
     'ReelsCarousel': typeof import("../components/ReelsCarousel.vue")['default']
     'ReelsVideoCarousel': typeof import("../components/ReelsVideoCarousel.vue")['default']
@@ -94,7 +94,7 @@ interface _GlobalComponents {
     'LazyCompaniesList': LazyComponent<typeof import("../components/CompaniesList.vue")['default']>
     'LazyContactForm': LazyComponent<typeof import("../components/ContactForm.vue")['default']>
     'LazyCurrentProgramSection': LazyComponent<typeof import("../components/CurrentProgramSection.vue")['default']>
-    'LazyDesignerRunwaysSection': LazyComponent<typeof import("../components/DesignerRunwaysSection.vue")['default']>
+    'LazyDesignerRunwaySection': LazyComponent<typeof import("../components/DesignerRunwaySection.vue")['default']>
     'LazyDesignersSection': LazyComponent<typeof import("../components/DesignersSection.vue")['default']>
     'LazyEventFeatures': LazyComponent<typeof import("../components/EventFeatures.vue")['default']>
     'LazyFacesOfEfwSection': LazyComponent<typeof import("../components/FacesOfEfwSection.vue")['default']>
@@ -103,13 +103,13 @@ interface _GlobalComponents {
     'LazyFaqSectionDynamic': LazyComponent<typeof import("../components/FaqSectionDynamic.vue")['default']>
     'LazyGalleryIframe': LazyComponent<typeof import("../components/GalleryIframe.vue")['default']>
     'LazyHeroSection': LazyComponent<typeof import("../components/HeroSection.vue")['default']>
-    'LazyHowItWasSection': LazyComponent<typeof import("../components/HowItWasSection.vue")['default']>
     'LazyImageCarousel': LazyComponent<typeof import("../components/ImageCarousel.vue")['default']>
     'LazyMagazineCarousel': LazyComponent<typeof import("../components/MagazineCarousel.vue")['default']>
     'LazyMarqueeSection': LazyComponent<typeof import("../components/MarqueeSection.vue")['default']>
     'LazyNewProgramSection': LazyComponent<typeof import("../components/NewProgramSection.vue")['default']>
     'LazyPhotoGallery': LazyComponent<typeof import("../components/PhotoGallery.vue")['default']>
     'LazyPhotographerBlock': LazyComponent<typeof import("../components/PhotographerBlock.vue")['default']>
+    'LazyPreviousSeasonsSection': LazyComponent<typeof import("../components/PreviousSeasonsSection.vue")['default']>
     'LazyProgramSection': LazyComponent<typeof import("../components/ProgramSection.vue")['default']>
     'LazyReelsCarousel': LazyComponent<typeof import("../components/ReelsCarousel.vue")['default']>
     'LazyReelsVideoCarousel': LazyComponent<typeof import("../components/ReelsVideoCarousel.vue")['default']>
@@ -174,7 +174,7 @@ export const ApprovedCompaniesListOld: typeof import("../components/ApprovedComp
 export const CompaniesList: typeof import("../components/CompaniesList.vue")['default']
 export const ContactForm: typeof import("../components/ContactForm.vue")['default']
 export const CurrentProgramSection: typeof import("../components/CurrentProgramSection.vue")['default']
-export const DesignerRunwaysSection: typeof import("../components/DesignerRunwaysSection.vue")['default']
+export const DesignerRunwaySection: typeof import("../components/DesignerRunwaySection.vue")['default']
 export const DesignersSection: typeof import("../components/DesignersSection.vue")['default']
 export const EventFeatures: typeof import("../components/EventFeatures.vue")['default']
 export const FacesOfEfwSection: typeof import("../components/FacesOfEfwSection.vue")['default']
@@ -183,13 +183,13 @@ export const FaqSection: typeof import("../components/FaqSection.vue")['default'
 export const FaqSectionDynamic: typeof import("../components/FaqSectionDynamic.vue")['default']
 export const GalleryIframe: typeof import("../components/GalleryIframe.vue")['default']
 export const HeroSection: typeof import("../components/HeroSection.vue")['default']
-export const HowItWasSection: typeof import("../components/HowItWasSection.vue")['default']
 export const ImageCarousel: typeof import("../components/ImageCarousel.vue")['default']
 export const MagazineCarousel: typeof import("../components/MagazineCarousel.vue")['default']
 export const MarqueeSection: typeof import("../components/MarqueeSection.vue")['default']
 export const NewProgramSection: typeof import("../components/NewProgramSection.vue")['default']
 export const PhotoGallery: typeof import("../components/PhotoGallery.vue")['default']
 export const PhotographerBlock: typeof import("../components/PhotographerBlock.vue")['default']
+export const PreviousSeasonsSection: typeof import("../components/PreviousSeasonsSection.vue")['default']
 export const ProgramSection: typeof import("../components/ProgramSection.vue")['default']
 export const ReelsCarousel: typeof import("../components/ReelsCarousel.vue")['default']
 export const ReelsVideoCarousel: typeof import("../components/ReelsVideoCarousel.vue")['default']
@@ -248,7 +248,7 @@ export const LazyApprovedCompaniesListOld: LazyComponent<typeof import("../compo
 export const LazyCompaniesList: LazyComponent<typeof import("../components/CompaniesList.vue")['default']>
 export const LazyContactForm: LazyComponent<typeof import("../components/ContactForm.vue")['default']>
 export const LazyCurrentProgramSection: LazyComponent<typeof import("../components/CurrentProgramSection.vue")['default']>
-export const LazyDesignerRunwaysSection: LazyComponent<typeof import("../components/DesignerRunwaysSection.vue")['default']>
+export const LazyDesignerRunwaySection: LazyComponent<typeof import("../components/DesignerRunwaySection.vue")['default']>
 export const LazyDesignersSection: LazyComponent<typeof import("../components/DesignersSection.vue")['default']>
 export const LazyEventFeatures: LazyComponent<typeof import("../components/EventFeatures.vue")['default']>
 export const LazyFacesOfEfwSection: LazyComponent<typeof import("../components/FacesOfEfwSection.vue")['default']>
@@ -257,13 +257,13 @@ export const LazyFaqSection: LazyComponent<typeof import("../components/FaqSecti
 export const LazyFaqSectionDynamic: LazyComponent<typeof import("../components/FaqSectionDynamic.vue")['default']>
 export const LazyGalleryIframe: LazyComponent<typeof import("../components/GalleryIframe.vue")['default']>
 export const LazyHeroSection: LazyComponent<typeof import("../components/HeroSection.vue")['default']>
-export const LazyHowItWasSection: LazyComponent<typeof import("../components/HowItWasSection.vue")['default']>
 export const LazyImageCarousel: LazyComponent<typeof import("../components/ImageCarousel.vue")['default']>
 export const LazyMagazineCarousel: LazyComponent<typeof import("../components/MagazineCarousel.vue")['default']>
 export const LazyMarqueeSection: LazyComponent<typeof import("../components/MarqueeSection.vue")['default']>
 export const LazyNewProgramSection: LazyComponent<typeof import("../components/NewProgramSection.vue")['default']>
 export const LazyPhotoGallery: LazyComponent<typeof import("../components/PhotoGallery.vue")['default']>
 export const LazyPhotographerBlock: LazyComponent<typeof import("../components/PhotographerBlock.vue")['default']>
+export const LazyPreviousSeasonsSection: LazyComponent<typeof import("../components/PreviousSeasonsSection.vue")['default']>
 export const LazyProgramSection: LazyComponent<typeof import("../components/ProgramSection.vue")['default']>
 export const LazyReelsCarousel: LazyComponent<typeof import("../components/ReelsCarousel.vue")['default']>
 export const LazyReelsVideoCarousel: LazyComponent<typeof import("../components/ReelsVideoCarousel.vue")['default']>

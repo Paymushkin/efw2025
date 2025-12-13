@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black w-full overflow-hidden">
+  <section class="bg-black w-full overflow-hidden">
     <div :class="[
       'whitespace-nowrap  flex justify-center',
       !isStatic && 'animate-marquee'
@@ -24,7 +24,7 @@
         </span>
       </template>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>
