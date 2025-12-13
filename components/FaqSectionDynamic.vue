@@ -1,10 +1,10 @@
 <template>
-  <section :class="[
+  <section ref="sectionRef" :id="props.id" :class="[
     'container mx-auto px-4',
     { 'py-20 md:py-[100px]': !standalone },
     { 'py-[60px] md:py-[120px]': standalone }
   ]">
-  <h2 data-nosnippet class="text-xl md:text-3xl xl:text-4xl mb-8 md:mb-12">
+  <h2 class="text-xl md:text-3xl xl:text-4xl mb-8 md:mb-12">
       <template v-if="standalone">
         <a href="#faq" class="hover:opacity-80 transition-opacity">Frequently Asked Questions</a>
       </template>
@@ -76,11 +76,20 @@
 <script setup>
 import { ref, onMounted, nextTick, computed, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
+import { FAQ_DATA } from '~/constants/faqData';
+
+defineOptions({
+  inheritAttrs: false
+});
 
 const props = defineProps({
   standalone: {
     type: Boolean,
     default: false
+  },
+  id: {
+    type: String,
+    default: undefined
   }
 });
 
@@ -92,35 +101,11 @@ const displayLimit = 5;
 const faqItems = ref([]);
 const loading = ref(false);
 const error = ref('');
+const isClient = ref(false);
+const sectionRef = ref(null);
 
-// Fallback данные на случай ошибки загрузки
-const fallbackFaqItems = [
-  {
-    id: 'ai-matchmaking',
-    question: 'What is the AI matchmaking tool? How does it work?',
-    answer: 'The AI matchmaking tool is available on laptops at each exhibitor station. Organizers will introduce at least 50 visitor leads to every exhibitor through chat. Some visitors will approach the station directly, while others will be connected via chat for online introductions and follow-ups.'
-  },
-  {
-    id: 'visitor-passes',
-    question: 'Are visitor passes free? How many invites are out? What\'s the audience profile?',
-    answer: 'Visitor entry is free. We usually welcome 300–700 guests, depending on the show. For April 15, we expect 300–500 attendees throughout the day. Our audience is diverse and international, mainly beauty- and fashion-conscious individuals from mid- to high-income backgrounds. We do not track nationality at registration.'
-  },
-  {
-    id: 'buyers',
-    question: 'Who are the \'Buyers\'? What\'s their ratio to media, influencers, stylists, bloggers?',
-    answer: 'Buyers include individuals purchasing for themselves and for retail stores. We don\'t publish an exact ratio, but the crowd includes a mix of media, influencers, stylists, bloggers, and direct buyers.'
-  },
-  {
-    id: 'no-showcase',
-    question: 'What if I don\'t want a showcase station but still want to engage buyers?',
-    answer: 'You can attend for free, observe how other beauty service providers present their services, and interact with the audience. Many providers offer special promotions and discounts to visitors.'
-  },
-  {
-    id: 'example-brands',
-    question: 'What are some example brands in the business showcase corner?',
-    answer: 'Over 30 brands are confirmed — including designers from the Middle East, CIS, Eastern Europe, and local UAE talents. We also host a wide range of beauty service providers: clinics, plastic surgery, botox, fitness, cosmetology, nails, lashes, brows, hair, and styling.'
-  }
-];
+// Статические FAQ данные для SSR (загружаем из файла)
+const staticFaqItems = FAQ_DATA;
 
 // Функция для загрузки FAQ данных (используем тот же подход, что и у компаний)
 const fetchFAQ = async () => {
@@ -147,7 +132,7 @@ const fetchFAQ = async () => {
         } catch (apiError) {
           console.error('API error:', apiError);
           // Если API не работает, используем fallback данные
-          faqItems.value = fallbackFaqItems;
+          faqItems.value = staticFaqItems;
         }
       } else {
         // На продакшене (GitHub Pages) используем прямые запросы к Google Sheets
@@ -201,13 +186,13 @@ const fetchFAQ = async () => {
         } catch (csvError) {
           console.error('CSV fetch error:', csvError);
           // Если CSV не работает, используем fallback данные
-          faqItems.value = fallbackFaqItems;
+          faqItems.value = staticFaqItems;
         }
       }
   } catch (err) {
     console.error('Error fetching FAQ:', err);
     error.value = 'Ошибка загрузки данных';
-    faqItems.value = fallbackFaqItems;
+    faqItems.value = staticFaqItems;
   } finally {
     loading.value = false;
   }
@@ -215,7 +200,12 @@ const fetchFAQ = async () => {
 
 // Вычисляемые свойства
 const displayedItems = computed(() => {
-  return faqItems.value; // Показываем все FAQ элементы
+  // На сервере показываем статические данные
+  if (!isClient.value) {
+    return staticFaqItems;
+  }
+  // На клиенте показываем загруженные данные (или статические, если загрузка не удалась)
+  return faqItems.value.length > 0 ? faqItems.value : staticFaqItems;
 });
 
 // Создаем объект для хранения состояния каждой панели
@@ -223,7 +213,7 @@ const openPanels = ref({});
 
 // Функция для инициализации панелей
 const initializePanels = () => {
-  const items = faqItems.value;
+  const items = displayedItems.value;
   const newPanels = {};
   items.forEach(item => {
     newPanels[item.id] = false;
@@ -286,7 +276,7 @@ const handleHashChange = () => {
   });
 
   // Если есть хеш и он соответствует существующему FAQ, открываем его
-  if (hash && faqItems.some(item => item.id === hash)) {
+  if (hash && displayedItems.value.some(item => item.id === hash)) {
     openPanels.value[hash] = true;
     
     nextTick(() => {
@@ -306,23 +296,34 @@ const handleHashChange = () => {
 };
 
 onMounted(async () => {
+  isClient.value = true;
   const hash = route.hash.slice(1);
   
-  // Загружаем FAQ данные
+  // Явно устанавливаем ID на корневой элемент
+  await nextTick();
+  if (process.client && props.id && sectionRef.value) {
+    sectionRef.value.id = props.id;
+  }
+  
+  // Инициализируем панели сразу со статическими данными
+  faqItems.value = staticFaqItems;
+  initializePanels();
+  
+  // Загружаем актуальные FAQ данные в фоне
   await fetchFAQ();
   
   // Ждем загрузки данных
   await nextTick();
   
-  // Инициализируем панели после загрузки данных
+  // Обновляем панели после загрузки актуальных данных
   initializePanels();
 
         // Если есть хеш, открываем соответствующую панель
-        if (hash && faqItems.value.some(item => item.id === hash)) {
+        if (hash && displayedItems.value.some(item => item.id === hash)) {
           openPanels.value[hash] = true;
-        } else if (faqItems.value.length > 0) {
+        } else if (displayedItems.value.length > 0) {
           // Открываем первый пункт всегда (и на главной, и на странице FAQ)
-          const firstItem = faqItems.value[0];
+          const firstItem = displayedItems.value[0];
           if (firstItem) {
             openPanels.value[firstItem.id] = true;
           }

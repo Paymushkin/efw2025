@@ -1,5 +1,5 @@
 <template>
-  <section class="relative flex flex-col min-h-screen overflow-hidden">
+  <section ref="sectionRef" :id="props.id" :class="sectionClasses">
     <video
       ref="videoRef"
       autoplay
@@ -46,14 +46,38 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, nextTick, useAttrs, computed } from 'vue';
 import LogoIcon from '~/components/icons/LogoIcon.vue';
 import Marquee from '~/components/MarqueeSection.vue';
 import { marqueeText2, hashtag } from '~/constants/texts';
 import { useVideoVisibility } from '@/composables/useVideoVisibility';
 import GalleryIframe from '@/components/GalleryIframe.vue';
 
+defineOptions({
+  inheritAttrs: false
+});
+
+const props = defineProps({
+  id: {
+    type: String,
+    default: undefined
+  }
+});
+
+const attrs = useAttrs();
+
+const sectionClasses = computed(() => {
+  const baseClasses = 'relative flex flex-col min-h-screen overflow-hidden';
+  const attrClass = attrs.class;
+  if (!attrClass) return baseClasses;
+  if (typeof attrClass === 'string') {
+    return `${baseClasses} ${attrClass}`;
+  }
+  return [baseClasses, attrClass];
+});
+
 const videoRef = ref(null);
+const sectionRef = ref(null);
 const { isVisible } = useVideoVisibility(videoRef);
 const isMobile = ref(false);
 const MOBILE_BREAKPOINT = 768;
@@ -90,8 +114,14 @@ const updateSize = () => {
   previousWidth = currentWidth;
 };
 
-onMounted(() => {
+onMounted(async () => {
   if (!process.client) return;
+  
+  // Явно устанавливаем ID на корневой элемент
+  await nextTick();
+  if (props.id && sectionRef.value) {
+    sectionRef.value.id = props.id;
+  }
   
   // Инициализируем после монтирования
   isMobile.value = window.innerWidth < MOBILE_BREAKPOINT;

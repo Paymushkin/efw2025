@@ -1,7 +1,7 @@
 <template>
-  <section class="image-carousel-container">
+  <section ref="sectionRef" :id="props.id" class="image-carousel-container">
     <div class="carousel-header flex justify-between items-center mb-6">
-      <h2 id="economy-dubai" data-nosnippet class="text-2xl md:text-3xl lg:text-4xl">{{ title }}</h2>
+      <h2 class="text-2xl md:text-3xl lg:text-4xl">{{ title }}</h2>
       <div class="hidden md:flex relative items-center gap-4">
         <div 
           @click="swiperRef?.slidePrev()"
@@ -14,76 +14,118 @@
       </div>
     </div>
 
-    <div class="relative">
-      <swiper
-        :modules="modules"
-        :slides-per-view="slidesPerView"
-        :space-between="gap"
-        :pagination="{ 
-          clickable: true,
-          el: '.swiper-pagination'
-        }"
-        :navigation="{
-          prevEl: '.swiper-button-prev',
-          nextEl: '.swiper-button-next',
-          enabled: false
-        }"
-        :breakpoints="{
-          0: {
-            slidesPerView: 1,
-            spaceBetween: 0
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 15
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 15
-          },
-          1280: {
-            slidesPerView: 4,
-            spaceBetween: 20
-          }
-        }"
-        :autoplay="autoplay ? { delay: autoplaySpeed, disableOnInteraction: false } : false"
-        @swiper="onSwiper"
-        class="mySwiper"
+    <!-- SSR-compatible fallback for SEO -->
+    <div v-if="!isClient" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8">
+      <div 
+        v-for="(image, index) in staticImages" 
+        :key="`static-${index}`"
+        class="image-card"
       >
-        <swiper-slide v-for="(image, index) in displayImages" :key="index">
-          <div class="carousel-slide">
-            <div class="image-container">
-              <a 
-                :href="getImageUrl(image)"
-                data-fancybox="gallery"
-                :data-caption="getImageAlt(image, index)"
-                class="gallery-item"
-              >
-                <img 
-                  :src="getImageUrl(image)"
-                  :alt="getImageAlt(image, index)"
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  :loading="index === 0 ? 'eager' : 'lazy'"
-                />
-              </a>
-            </div>
-          </div>
-        </swiper-slide>
-      </swiper>
-      <div class="swiper-pagination mt-6"></div>
+        <div class="aspect-[3/4] relative overflow-hidden rounded-lg">
+          <img 
+            :src="image.src"
+            :alt="image.alt"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
     </div>
+
+    <!-- Client-only Swiper for interactive experience -->
+    <ClientOnly>
+      <div class="relative">
+        <swiper
+          :key="`swiper-${displayImages.length}`"
+          :modules="modules"
+          :slides-per-view="slidesPerView"
+          :space-between="gap"
+          :pagination="{ 
+            clickable: true,
+            el: '.swiper-pagination'
+          }"
+          :navigation="{
+            prevEl: '.swiper-button-prev',
+            nextEl: '.swiper-button-next',
+            enabled: false
+          }"
+          :breakpoints="{
+            0: {
+              slidesPerView: 1,
+              spaceBetween: 0
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 15
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 15
+            },
+            1280: {
+              slidesPerView: 4,
+              spaceBetween: 20
+            }
+          }"
+          :autoplay="autoplay ? { delay: autoplaySpeed, disableOnInteraction: false } : false"
+          @swiper="onSwiper"
+          class="mySwiper"
+        >
+          <swiper-slide v-for="(image, index) in displayImages" :key="`image-${getImageUrl(image)}-${index}`">
+            <div class="carousel-slide">
+              <div class="image-container">
+                <a 
+                  :href="getImageUrl(image)"
+                  data-fancybox="gallery"
+                  :data-caption="getImageAlt(image, index)"
+                  class="gallery-item"
+                >
+                  <img 
+                    :src="getImageUrl(image)"
+                    :alt="getImageAlt(image, index)"
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    :loading="index === 0 ? 'eager' : 'lazy'"
+                  />
+                </a>
+              </div>
+            </div>
+          </swiper-slide>
+        </swiper>
+        <div class="swiper-pagination mt-6"></div>
+      </div>
+    </ClientOnly>
   </section>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { ref, onMounted, onUnmounted, computed, watch, nextTick } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
+defineOptions({
+  inheritAttrs: false
+});
+
 const swiperRef = ref(null);
+const sectionRef = ref(null);
 const loadedImages = ref([]);
+const isClient = ref(false);
+
+// Статические изображения для SSR (используем пути напрямую)
+const staticImages = [
+  { src: '/assets/image/cards/item-13.webp', alt: 'Emirates Fashion Week supporting Dubai economy - Dubai Business' },
+  { src: '/assets/image/cards/item-14.webp', alt: 'Emirates Fashion Week supporting Dubai economy - Economic Growth' },
+  { src: '/assets/image/cards/item-15.webp', alt: 'Emirates Fashion Week supporting Dubai economy - Fashion Industry' },
+  { src: '/assets/image/cards/item-16.webp', alt: 'Emirates Fashion Week supporting Dubai economy - Trade Relations' },
+  { src: '/assets/image/cards/item-17.webp', alt: 'Emirates Fashion Week supporting Dubai economy - Innovation' },
+  { src: '/assets/image/cards/item-18.webp', alt: 'Emirates Fashion Week supporting Dubai economy - Development' },
+  { src: '/assets/image/cards/item-19.webp', alt: 'Emirates Fashion Week supporting Dubai economy - Investment' },
+  { src: '/assets/image/cards/item-20.webp', alt: 'Emirates Fashion Week supporting Dubai economy - Global Trade' },
+  { src: '/assets/image/cards/item-21.webp', alt: 'Emirates Fashion Week supporting Dubai economy - Business Hub' },
+  { src: '/assets/image/cards/item-22.webp', alt: 'Emirates Fashion Week supporting Dubai economy - Economic Partnership' }
+];
 
 const onSwiper = (swiper) => {
   swiperRef.value = swiper;
@@ -126,6 +168,13 @@ const loadStyle = (href) => {
 };
 
 onMounted(async () => {
+  isClient.value = true;
+  
+  // Явно устанавливаем ID на корневой элемент
+  if (process.client && props.id && sectionRef.value) {
+    sectionRef.value.id = props.id;
+  }
+  
   try {
     // Загружаем jQuery и Fancybox
     await loadScript('https://code.jquery.com/jquery-3.7.1.min.js');
@@ -176,6 +225,13 @@ onMounted(async () => {
           console.error(`Ошибка при загрузке изображения ${path}:`, error);
         }
       }
+      
+      // Обновляем Swiper после загрузки изображений
+      await nextTick();
+      if (swiperRef.value) {
+        swiperRef.value.update();
+        swiperRef.value.slideTo(0, 0);
+      }
     }
   } catch (error) {
     console.error('Ошибка при инициализации Fancybox:', error);
@@ -194,6 +250,10 @@ const props = defineProps({
   title: {
     type: String,
     default: 'Галерея изображений'
+  },
+  id: {
+    type: String,
+    default: undefined
   },
   images: {
     type: Array,
@@ -219,11 +279,39 @@ const props = defineProps({
 
 // Вычисляемое свойство для отображения изображений
 const displayImages = computed(() => {
-  return props.images.length > 0 ? props.images : loadedImages.value;
+  if (props.images.length > 0) {
+    return props.images;
+  }
+  // На клиенте используем загруженные изображения, на сервере - статические
+  if (isClient.value && loadedImages.value.length > 0) {
+    return loadedImages.value;
+  }
+  return staticImages;
 });
+
+// Отслеживаем изменения изображений и обновляем Swiper
+watch(displayImages, async (newImages) => {
+  if (isClient.value && swiperRef.value && newImages.length > 0) {
+    await nextTick();
+    swiperRef.value.update();
+  }
+}, { immediate: false });
 </script>
 
 <style scoped>
+/* Стили для SSR grid-сетки */
+.image-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Удаляем старые стили для кнопок */
 :deep(.swiper) {
   padding-bottom: 10px;

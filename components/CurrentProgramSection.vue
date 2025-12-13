@@ -1,7 +1,7 @@
 <template>
   <div id="fall-winter-2026" class="container mx-auto">
     <div class="flex justify-between md:items-center gap-8 md:mb-[50px] mb-4 max-w-[1200px]">
-      <h2 data-nosnippet class="text-xl md:text-3xl xl:text-4xl scroll-mt-[120px] md:scroll-mt-[100px]">
+      <h2 class="text-xl md:text-3xl xl:text-4xl scroll-mt-[120px] md:scroll-mt-[100px]">
         <a href="#fall-winter-2026" class="hover:opacity-80 transition-opacity">15<sup class="">th</sup> Fall Winter 2026</a>
       </h2>
       <NuxtLink 

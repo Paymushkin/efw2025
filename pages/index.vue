@@ -15,9 +15,7 @@
         }
       }"
     />
-    <ClientOnly>
-      <HeroSection id="hero-section" key="hero-section" class="mb-[56px] md:mb-[76px]" />
-    </ClientOnly>
+    <HeroSection id="hero-section" key="hero-section" class="mb-[56px] md:mb-[76px]" />
     <!-- <ClientOnly>
       <CurrentProgramSection class="md:mb-[120px] mb-[76px]" />
     </ClientOnly> -->
@@ -35,9 +33,7 @@
       <MarqueeSection id="marquee" key="marquee-section" :content="sponsors" class="mb-[56px] md:mb-[76px]" />
     </ClientOnly>
 
-    <ClientOnly>
-      <NewProgramSection id="spring-summer-2026" key="new-program-section" class="md:mb-[120px] mb-[76px]" />
-    </ClientOnly>
+    <NewProgramSection id="spring-summer-2026" key="new-program-section" class="md:mb-[120px] mb-[76px]" />
 
     
     <DesignerRunwaySection id="runway" key="designer-runway-section" class="md:mb-[76px] mb-[56px]" />
@@ -65,31 +61,24 @@
 
     <EventFeatures id="features-access" key="event-features" class="container mx-auto px-4 md:mb-[76px] mb-[56px]" :data="featuresData.featuresDataPromo" />
 
-    <FacesOfEfwSection id="faces-efw" key="faces-efw-component" class="container mx-auto px-4 md:mb-[36px] mb-[16px]"/>
-
-
     <ClientOnly>
       <template #default>
-        <ImageCarousel 
-          id="economy-dubai"
-          key="image-carousel"
-          title="We invest in and support the economy of Dubai | UAE"
-          class="container mx-auto px-4 md:mb-[76px] mb-[56px]"
-        />
+        <FacesOfEfwSection id="faces-efw" key="faces-efw-component" class="container mx-auto px-4 md:mb-[36px] mb-[16px]"/>
       </template>
       <template #fallback>
-        <div class="md:mb-[76px] mb-[56px]"></div>
+        <div class="md:mb-[36px] mb-[16px]"></div>
       </template>
     </ClientOnly>
 
-    <ClientOnly>
-      <template #default>
-        <FaqSectionDynamic id="faq" key="faq-section" class="mb-[56px] md:mb-[76px]" />
-      </template>
-      <template #fallback>
-        <div class="mb-[56px] md:mb-[76px]"></div>
-      </template>
-    </ClientOnly>
+
+    <ImageCarousel 
+      id="economy-dubai"
+      key="image-carousel"
+      title="We invest in and support the economy of Dubai | UAE"
+      class="container mx-auto px-4 md:mb-[76px] mb-[56px]"
+    />
+
+    <FaqSectionDynamic id="faq" key="faq-section" class="mb-[56px] md:mb-[76px]" />
     
   </div>
 </template>
@@ -103,7 +92,7 @@ import { onMounted, nextTick } from 'vue';
 
 // Components
 import HeroSection from '@/components/HeroSection.vue';
-import HowItWasSection from '~/components/PreviousSeasonsSection.vue';
+import PreviousSeasonsSection from '~/components/PreviousSeasonsSection.vue';
 import CurrentProgramSection from '~/components/CurrentProgramSection.vue';
 import NewProgramSection from '~/components/NewProgramSection.vue';
 import ProgramSection from '~/components/ProgramSection.vue';
@@ -171,12 +160,29 @@ onMounted(() => {
       const elements = document.querySelectorAll(`#${id}`);
       if (elements.length > 1) {
         console.warn(`⚠️ Найдено дублирование ID: #${id} (${elements.length} элементов)`);
-        // Оставляем только первый элемент, остальные переименовываем
+        // Логируем подробную информацию о каждом элементе
         elements.forEach((el, index) => {
-          if (index > 0) {
-            el.id = `${id}-duplicate-${index}`;
-            console.warn(`  Переименован элемент #${index + 1} в #${el.id}`);
-          }
+          const parent = el.parentElement;
+          console.warn(`  Элемент #${index + 1}:`, {
+            tagName: el.tagName,
+            id: el.id,
+            className: el.className,
+            textContent: el.textContent?.substring(0, 80),
+            parentTag: parent?.tagName,
+            parentId: parent?.id,
+            parentClass: parent?.className,
+            previousSibling: el.previousElementSibling?.tagName,
+            nextSibling: el.nextElementSibling?.tagName
+          });
+        });
+        // Определяем, какой элемент правильный (по содержимому)
+        const correctElement = elements[0];
+        const wrongElements = Array.from(elements).slice(1);
+        
+        // Переименовываем неправильные элементы
+        wrongElements.forEach((el, index) => {
+          el.id = `${id}-duplicate-${index + 1}`;
+          console.warn(`  ✅ Переименован элемент #${index + 2} в #${el.id}`);
         });
       }
     });

@@ -1,7 +1,7 @@
 <template>
   <section class="container mx-auto">
     <div class="flex justify-between items-center pl-4 md:pl-0">
-      <h2 data-nosnippet class="text-xl md:text-3xl xl:text-4xl mb-4">ALL DESIGNERS · ALL SEASONS</h2>
+      <h2 class="text-xl md:text-3xl xl:text-4xl mb-4">ALL DESIGNERS · ALL SEASONS</h2>
       <div class="flex items-center gap-4">
         <button 
           @click="handlePrev"

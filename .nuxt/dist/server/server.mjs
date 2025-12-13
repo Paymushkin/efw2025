@@ -401,7 +401,7 @@ const _routes = [
   {
     name: "faq",
     path: "/faq",
-    component: () => import("./_nuxt/faq-BfVvLSP3.js")
+    component: () => import("./_nuxt/faq-DrXdybsX.js")
   },
   {
     name: "team",
@@ -412,7 +412,7 @@ const _routes = [
     name: "index",
     path: "/",
     meta: __nuxt_page_meta$6 || {},
-    component: () => import("./_nuxt/index-CBi2Gxi7.js")
+    component: () => import("./_nuxt/index-Dwt-G6fn.js")
   },
   {
     name: "lobby",
@@ -424,13 +424,13 @@ const _routes = [
     name: "offer",
     path: "/offer",
     meta: __nuxt_page_meta$4 || {},
-    component: () => import("./_nuxt/offer-6pZjsIbi.js")
+    component: () => import("./_nuxt/offer-Ce3j5Tnp.js")
   },
   {
     name: "trial",
     path: "/trial",
     meta: __nuxt_page_meta$3 || {},
-    component: () => import("./_nuxt/trial-CODDsTDY.js")
+    component: () => import("./_nuxt/trial-B9cF1EfI.js")
   },
   {
     name: "visit",
@@ -440,7 +440,7 @@ const _routes = [
   {
     name: "awards",
     path: "/awards",
-    component: () => import("./_nuxt/awards-BzQEUpbO.js")
+    component: () => import("./_nuxt/awards-D92Ys-4C.js")
   },
   {
     name: "widget",
@@ -460,7 +460,7 @@ const _routes = [
   {
     name: "station",
     path: "/station",
-    component: () => import("./_nuxt/station-iiBUmapo.js")
+    component: () => import("./_nuxt/station-elW6sZtE.js")
   },
   {
     name: "welcome",
@@ -481,7 +481,7 @@ const _routes = [
   {
     name: "features",
     path: "/features",
-    component: () => import("./_nuxt/features-CRrf_WrB.js")
+    component: () => import("./_nuxt/features-BNZvlQbQ.js")
   },
   {
     name: "team_page",
@@ -492,7 +492,7 @@ const _routes = [
     name: "EFW_AICONTEST",
     path: "/EFW_AICONTEST",
     meta: __nuxt_page_meta$1 || {},
-    component: () => import("./_nuxt/EFW_AICONTEST-CWIjJp00.js")
+    component: () => import("./_nuxt/EFW_AICONTEST-FAHRWv-o.js")
   },
   {
     name: "gallery-fw-25",
@@ -878,7 +878,7 @@ defineComponent({
   }
 });
 const clientOnlySymbol = Symbol.for("nuxt:client-only");
-const __nuxt_component_1$1 = defineComponent({
+const __nuxt_component_0$1 = defineComponent({
   name: "ClientOnly",
   inheritAttrs: false,
   props: ["fallback", "placeholder", "placeholderTag", "fallbackTag"],
@@ -1336,7 +1336,7 @@ let entry;
 }
 const entry$1 = (ssrContext) => entry(ssrContext);
 export {
-  __nuxt_component_1$1 as _,
+  __nuxt_component_0$1 as _,
   useNuxtApp as a,
   useRuntimeConfig as b,
   nuxtLinkDefaults as c,

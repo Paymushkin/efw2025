@@ -403,7 +403,7 @@ const _routes = [
   {
     name: "faq",
     path: "/faq",
-    component: () => import('./faq-BfVvLSP3.mjs')
+    component: () => import('./faq-DrXdybsX.mjs')
   },
   {
     name: "team",
@@ -414,7 +414,7 @@ const _routes = [
     name: "index",
     path: "/",
     meta: __nuxt_page_meta$6 || {},
-    component: () => import('./index-CBi2Gxi7.mjs')
+    component: () => import('./index-Dwt-G6fn.mjs')
   },
   {
     name: "lobby",
@@ -426,13 +426,13 @@ const _routes = [
     name: "offer",
     path: "/offer",
     meta: __nuxt_page_meta$4 || {},
-    component: () => import('./offer-6pZjsIbi.mjs')
+    component: () => import('./offer-Ce3j5Tnp.mjs')
   },
   {
     name: "trial",
     path: "/trial",
     meta: __nuxt_page_meta$3 || {},
-    component: () => import('./trial-CODDsTDY.mjs')
+    component: () => import('./trial-B9cF1EfI.mjs')
   },
   {
     name: "visit",
@@ -442,7 +442,7 @@ const _routes = [
   {
     name: "awards",
     path: "/awards",
-    component: () => import('./awards-BzQEUpbO.mjs')
+    component: () => import('./awards-D92Ys-4C.mjs')
   },
   {
     name: "widget",
@@ -462,7 +462,7 @@ const _routes = [
   {
     name: "station",
     path: "/station",
-    component: () => import('./station-iiBUmapo.mjs')
+    component: () => import('./station-elW6sZtE.mjs')
   },
   {
     name: "welcome",
@@ -483,7 +483,7 @@ const _routes = [
   {
     name: "features",
     path: "/features",
-    component: () => import('./features-CRrf_WrB.mjs')
+    component: () => import('./features-BNZvlQbQ.mjs')
   },
   {
     name: "team_page",
@@ -494,7 +494,7 @@ const _routes = [
     name: "EFW_AICONTEST",
     path: "/EFW_AICONTEST",
     meta: __nuxt_page_meta$1 || {},
-    component: () => import('./EFW_AICONTEST-CWIjJp00.mjs')
+    component: () => import('./EFW_AICONTEST-FAHRWv-o.mjs')
   },
   {
     name: "gallery-fw-25",
@@ -880,7 +880,7 @@ defineComponent({
   }
 });
 const clientOnlySymbol = Symbol.for("nuxt:client-only");
-const __nuxt_component_1$1 = defineComponent({
+const __nuxt_component_0$1 = defineComponent({
   name: "ClientOnly",
   inheritAttrs: false,
   props: ["fallback", "placeholder", "placeholderTag", "fallbackTag"],
@@ -1338,5 +1338,5 @@ let entry;
 }
 const entry$1 = (ssrContext) => entry(ssrContext);
 
-export { __nuxt_component_1$1 as _, useNuxtApp as a, useRuntimeConfig as b, nuxtLinkDefaults as c, useRoute as d, entry$1 as default, asyncDataDefaults as e, createError as f, hashMode as h, navigateTo as n, resolveRouteObject as r, tryUseNuxtApp as t, useRouter as u };
+export { __nuxt_component_0$1 as _, useNuxtApp as a, useRuntimeConfig as b, nuxtLinkDefaults as c, useRoute as d, entry$1 as default, asyncDataDefaults as e, createError as f, hashMode as h, navigateTo as n, resolveRouteObject as r, tryUseNuxtApp as t, useRouter as u };
 //# sourceMappingURL=server.mjs.map

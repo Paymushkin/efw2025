@@ -1,0 +1,4 @@
+const NewProgramSection_vue_vue_type_style_index_0_scoped_f956aa58_lang = "button[data-v-f956aa58]{transition:background-color .3s}.hide-scrollbar[data-v-f956aa58]{-ms-overflow-style:none;scrollbar-width:none}.hide-scrollbar[data-v-f956aa58]::-webkit-scrollbar{display:none}.custom-scrollbar[data-v-f956aa58]::-webkit-scrollbar{height:4px}.custom-scrollbar[data-v-f956aa58]::-webkit-scrollbar-track{background:transparent;border-radius:2px}.custom-scrollbar[data-v-f956aa58]::-webkit-scrollbar-thumb{background:#888;border-radius:2px}.custom-scrollbar[data-v-f956aa58]::-webkit-scrollbar-thumb:hover{background:#555}.custom-scrollbar[data-v-f956aa58]{scrollbar-color:#888 transparent;scrollbar-width:thin;-webkit-user-select:none;-moz-user-select:none;user-select:none}";
+
+export { NewProgramSection_vue_vue_type_style_index_0_scoped_f956aa58_lang as N };
+//# sourceMappingURL=NewProgramSection-styles-1.mjs-DTbdvTrV.mjs.map
