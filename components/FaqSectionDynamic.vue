@@ -5,21 +5,11 @@
     { 'py-[60px] md:py-[120px]': standalone }
   ]">
   <h2 class="text-xl md:text-3xl xl:text-4xl mb-8 md:mb-12">
-      <template v-if="standalone">
-        <a href="#faq" class="hover:opacity-80 transition-opacity">Frequently Asked Questions</a>
-      </template>
-      <template v-else>
-        <a href="#faq" class="hover:opacity-80 transition-opacity">FREQUENTLY ASKED QUESTIONS</a>
-      </template>
+      <a href="#faq" class="hover:opacity-80 transition-opacity">FREQUENTLY ASKED QUESTIONS</a>
     </h2>
     
-    <!-- Индикатор загрузки -->
-    <div v-if="loading" class="flex justify-center items-center py-8">
-      <div class="text-gray-500">Loading Frequently Asked Questions...</div>
-    </div>
-
-    <!-- Сообщение об ошибке -->
-    <div v-else-if="error" class="text-center py-8">
+    <!-- Сообщение об ошибке (только если нет данных вообще) -->
+    <div v-if="error && displayedItems.length === 0" class="text-center py-8">
       <div class="text-red-500 mb-4">Error loading Frequently Asked Questions: {{ error }}</div>
       <button 
         @click="handleRefresh"
@@ -29,8 +19,8 @@
       </button>
     </div>
 
-    <!-- FAQ контент -->
-    <div v-else class="flex flex-col gap-4">
+    <!-- FAQ контент (всегда показываем, даже во время загрузки) -->
+    <div v-if="displayedItems.length > 0" class="flex flex-col gap-4">
       <div
         v-for="item in displayedItems"
         :key="item.id"
@@ -99,7 +89,6 @@ const displayLimit = 5;
 
 // Состояние для FAQ данных
 const faqItems = ref([]);
-const loading = ref(false);
 const error = ref('');
 const isClient = ref(false);
 const sectionRef = ref(null);
@@ -110,7 +99,8 @@ const staticFaqItems = FAQ_DATA;
 // Функция для загрузки FAQ данных (используем тот же подход, что и у компаний)
 const fetchFAQ = async () => {
   try {
-    loading.value = true;
+    // Не устанавливаем loading = true, чтобы не показывать индикатор загрузки
+    // Данные уже показываются из staticFaqItems
     error.value = '';
     
       // Определяем, работаем ли мы локально или на продакшене
@@ -138,7 +128,7 @@ const fetchFAQ = async () => {
         // На продакшене (GitHub Pages) используем прямые запросы к Google Sheets
         try {
           const SPREADSHEET_ID = '1z3JLJVzDADNCa6oSq3R701xLB8K5yyuCFlPZpSMXa1s';
-          const CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=0`;
+          const CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=229786536`;
           
           const response = await fetch(CSV_URL);
           
@@ -149,8 +139,14 @@ const fetchFAQ = async () => {
           const csvText = await response.text();
           
           // Парсим CSV правильно (учитывая запятые в кавычках)
-          const lines = csvText.split('\n');
-          const rows = lines.filter(line => line.trim()).map(line => {
+          const lines = csvText.split('\n').filter(line => line.trim());
+          
+          // Пропускаем первую строку, если она содержит заголовки
+          const dataLines = lines.length > 0 && lines[0].toLowerCase().includes('entry') 
+            ? lines.slice(1) 
+            : lines;
+          
+          const rows = dataLines.map(line => {
             const values = [];
             let current = '';
             let inQuotes = false;
@@ -177,7 +173,7 @@ const fetchFAQ = async () => {
             id: `faq-${index + 1}`,
             question: row[0] || '',
             answer: row[1] || '',
-            order: row[2] || (index + 1)
+            order: row[2] ? parseInt(row[2]) : (index + 1)
           })).filter(item => item.question && item.answer);
           
           faqItems.value = faqItemsFromCSV;
@@ -191,10 +187,12 @@ const fetchFAQ = async () => {
       }
   } catch (err) {
     console.error('Error fetching FAQ:', err);
-    error.value = 'Ошибка загрузки данных';
-    faqItems.value = staticFaqItems;
-  } finally {
-    loading.value = false;
+    // Не показываем ошибку пользователю, если уже есть локальные данные
+    // Просто оставляем статические данные
+    if (faqItems.value.length === 0) {
+      error.value = 'Ошибка загрузки данных';
+      faqItems.value = staticFaqItems;
+    }
   }
 };
 
@@ -306,28 +304,40 @@ onMounted(async () => {
   }
   
   // Инициализируем панели сразу со статическими данными
+  // Это гарантирует, что локальные данные показываются сразу
   faqItems.value = staticFaqItems;
   initializePanels();
   
-  // Загружаем актуальные FAQ данные в фоне
-  await fetchFAQ();
+  // Если есть хеш, открываем соответствующую панель
+  if (hash && displayedItems.value.some(item => item.id === hash)) {
+    openPanels.value[hash] = true;
+  } else if (displayedItems.value.length > 0) {
+    // Открываем первый пункт всегда (и на главной, и на странице FAQ)
+    const firstItem = displayedItems.value[0];
+    if (firstItem) {
+      openPanels.value[firstItem.id] = true;
+    }
+  }
   
-  // Ждем загрузки данных
-  await nextTick();
-  
-  // Обновляем панели после загрузки актуальных данных
-  initializePanels();
-
-        // Если есть хеш, открываем соответствующую панель
-        if (hash && displayedItems.value.some(item => item.id === hash)) {
-          openPanels.value[hash] = true;
-        } else if (displayedItems.value.length > 0) {
-          // Открываем первый пункт всегда (и на главной, и на странице FAQ)
-          const firstItem = displayedItems.value[0];
-          if (firstItem) {
-            openPanels.value[firstItem.id] = true;
-          }
+  // Загружаем актуальные FAQ данные в фоне (без блокировки UI)
+  // После загрузки данные автоматически обновятся через displayedItems
+  fetchFAQ().then(() => {
+    // Обновляем панели после загрузки актуальных данных
+    nextTick(() => {
+      initializePanels();
+      
+      // Если есть хеш, открываем соответствующую панель
+      if (hash && displayedItems.value.some(item => item.id === hash)) {
+        openPanels.value[hash] = true;
+      } else if (displayedItems.value.length > 0) {
+        // Открываем первый пункт, если нет хеша
+        const firstItem = displayedItems.value[0];
+        if (firstItem && !openPanels.value[firstItem.id]) {
+          openPanels.value[firstItem.id] = true;
         }
+      }
+    });
+  });
 
   // Добавляем слушатель изменения хеша только на странице FAQ
   if (props.standalone) {

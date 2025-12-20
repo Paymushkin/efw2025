@@ -1,7 +1,7 @@
 // Auto-generated FAQ data for Emirates Fashion Week
-// Last updated from Google Sheets: December 13, 2025
+// Last updated from Google Sheets: January 2025
 // Spreadsheet ID: 1z3JLJVzDADNCa6oSq3R701xLB8K5yyuCFlPZpSMXa1s
-// Source: https://docs.google.com/spreadsheets/d/1z3JLJVzDADNCa6oSq3R701xLB8K5yyuCFlPZpSMXa1s/edit?gid=0
+// Source: https://docs.google.com/spreadsheets/d/1z3JLJVzDADNCa6oSq3R701xLB8K5yyuCFlPZpSMXa1s/edit?gid=229786536#gid=229786536
 
 export const FAQ_DATA = [
   {

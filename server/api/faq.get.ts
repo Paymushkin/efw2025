@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
     const SPREADSHEET_ID = '1z3JLJVzDADNCa6oSq3R701xLB8K5yyuCFlPZpSMXa1s';
     
     // Публичный CSV endpoint (работает только если таблица публичная)
-    const CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=0`;
+    const CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=229786536`;
     
     const response = await fetch(CSV_URL);
     
@@ -15,8 +15,14 @@ export default defineEventHandler(async (event) => {
     const csvText = await response.text();
     
     // Парсим CSV правильно (учитывая запятые в кавычках)
-    const lines = csvText.split('\n');
-    const rows = lines.filter(line => line.trim()).map(line => {
+    const lines = csvText.split('\n').filter(line => line.trim());
+    
+    // Пропускаем первую строку, если она содержит заголовки
+    const dataLines = lines.length > 0 && lines[0].toLowerCase().includes('entry') 
+      ? lines.slice(1) 
+      : lines;
+    
+    const rows = dataLines.map(line => {
       const values = [];
       let current = '';
       let inQuotes = false;
@@ -43,7 +49,7 @@ export default defineEventHandler(async (event) => {
       id: `faq-${index + 1}`,
       question: row[0] || '',
       answer: row[1] || '',
-      order: row[2] || (index + 1)
+      order: row[2] ? parseInt(row[2]) : (index + 1)
     })).filter(item => item.question && item.answer);
     
     console.log('FAQ items from CSV:', faqItems.length);
