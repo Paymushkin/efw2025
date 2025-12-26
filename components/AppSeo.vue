@@ -73,13 +73,28 @@ const schemaScripts = computed(() => {
       children: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'Organization',
+        '@id': `${CANONICAL_DOMAIN}/#organization`,
         name: 'Emirates Fashion Week',
+        alternateName: 'Emirates Fashion Week®',
         url: CANONICAL_DOMAIN,
-        logo: `${CANONICAL_DOMAIN}/favicon-512x512.png`,
+        logo: `${CANONICAL_DOMAIN}/logo.png`,
+        foundingDate: '2019',
+        description: 'Emirates Fashion Week is an independent international fashion and beauty platform founded in 2019 in Dubai, UAE. It is not affiliated with emiratesfashionweek.org.',
         sameAs: [
-          'https://www.instagram.com/emiratesfashionweek/',
-          'https://www.youtube.com/@emiratesfashionweek'
+          'https://www.instagram.com/emirates_fashionweek'
         ],
+        location: {
+          '@type': 'Place',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Dubai',
+            addressCountry: 'AE'
+          }
+        },
+        affiliation: {
+          '@type': 'Organization',
+          name: 'Shams Media City'
+        },
         contactPoint: [{
           '@type': 'ContactPoint',
           contactType: 'customer support',

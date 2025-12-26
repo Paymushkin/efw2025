@@ -79,6 +79,8 @@
     />
 
     <FaqSectionDynamic id="faq" key="faq-section" class="mb-[56px] md:mb-[76px]" />
+
+    <AboutSection id="about" key="about-section" class="mb-[56px] md:mb-[76px]" />
     
   </div>
 </template>
@@ -107,6 +109,7 @@ import EventFeatures from '~/components/EventFeatures.vue';
 import AppSeo from '@/components/AppSeo.vue';
 import FaqSectionDynamic from '~/components/FaqSectionDynamic.vue';
 import FacesOfEfwSection from '@/components/FacesOfEfwSection.vue';
+import AboutSection from '~/components/AboutSection.vue';
 
 // Constants and Assets
 import { FEATURES_DATA } from '~/constants/featuresData';
