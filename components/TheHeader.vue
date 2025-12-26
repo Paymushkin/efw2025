@@ -103,7 +103,43 @@
                 </NuxtLink>
               </div>
             </div>
-            <a href="https://magazine.emiratesfashionweek.com" class="md:hidden flex justify-center items-center text-black hover:text-gray-600 transition-colors cursor-pointer 2xl:text-base lg:text-sm text-xs">MAGAZINE</a>
+            <div class="md:hidden flex flex-col gap-0.5 items-end">
+              <a href="https://magazine.emiratesfashionweek.com" class="flex justify-center items-center text-black hover:text-gray-600 transition-colors cursor-pointer 2xl:text-base lg:text-sm text-xs">MAGAZINE</a>
+              <div class="relative">
+                <span @click="toggleParticipateMenu" class="flex justify-center items-center text-black hover:text-gray-600 transition-colors cursor-pointer 2xl:text-base lg:text-sm text-xs">
+                  PARTICIPATE
+                </span>
+                <div v-if="isParticipateOpen" class="absolute top-full mt-2 right-0 bg-white shadow-lg rounded-lg py-2 min-w-[150px] z-50 text-black">
+                  <NuxtLink :to="designerRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors text-black">
+                    Designer
+                  </NuxtLink>
+                  <NuxtLink :to="modelRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors text-black">
+                    Model
+                  </NuxtLink>
+                  <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors text-black">
+                    Buyer
+                  </NuxtLink>
+                  <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors text-black">
+                    Stylist
+                  </NuxtLink>
+                  <NuxtLink :to="phototVideoRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors text-black">
+                    Photo / Video
+                  </NuxtLink>
+                  <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors text-black">
+                    Media
+                  </NuxtLink>
+                  <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors text-black">
+                    Influencer
+                  </NuxtLink>
+                  <NuxtLink :to="visitorsRegistration" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors text-black">
+                    Other
+                  </NuxtLink>
+                  <NuxtLink to="/station" target="_blank" class="block px-4 py-2 hover:bg-gray-100 transition-colors text-black">
+                    Partners
+                  </NuxtLink>
+                </div>
+              </div>
+            </div>
             <!-- Visit mobile (small) - скрываем на welcome странице -->
             <NuxtLink v-if="!isWelcomePage" target="_blank" :to="visitorsRegistration" class="hidden">
               <BaseButton variant="primary" size="sm">
