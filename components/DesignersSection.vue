@@ -45,32 +45,32 @@
 
     <!-- Client-only Swiper for interactive experience -->
     <ClientOnly>
-      <div class="overflow-x-auto hide-scrollbar md:mx-0">
-        <swiper
-          :modules="[Navigation, Pagination, Autoplay]"
-          :slides-per-view="1.2"
-          :space-between="16"
-          :navigation="false"
-          :autoplay="{
-            delay: 5000,
-            disableOnInteraction: false
-          }"
-          :pagination="{
-            clickable: true,
-            dynamicBullets: true,
-            dynamicMainBullets: 7
-          }"
-          :breakpoints="{
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 30,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 30,
-            },
-          }"
-          @swiper="onSwiper"
+    <div class="overflow-x-auto hide-scrollbar md:mx-0">
+      <swiper
+        :modules="[Navigation, Pagination, Autoplay]"
+        :slides-per-view="1.2"
+        :space-between="16"
+        :navigation="false"
+        :autoplay="{
+          delay: 5000,
+          disableOnInteraction: false
+        }"
+        :pagination="{
+          clickable: true,
+          dynamicBullets: true,
+          dynamicMainBullets: 7
+        }"
+        :breakpoints="{
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        }"
+        @swiper="onSwiper"
         @slideChange="onSlideChange"
         class="relative px-4 md:px-0"
       >

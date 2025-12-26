@@ -1,5 +1,5 @@
 <template>
-  <section ref="sectionRef" :id="props.id" class="image-carousel-container">
+  <section ref="sectionRef" :id="props.id" class="container mx-auto px-4">
     <div class="carousel-header flex justify-between items-center mb-6">
       <h2 class="text-2xl md:text-3xl lg:text-4xl">{{ title }}</h2>
       <div class="hidden md:flex relative items-center gap-4">

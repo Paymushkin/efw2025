@@ -8,55 +8,55 @@
 
     <!-- Mobile Tabs -->
     <ClientOnly>
-      <div class="md:hidden mb-4 sticky top-0 z-10 bg-white">
-        <div class="flex w-full border-b border-gray-200">
-          <button
-            v-for="(tab, index) in tabs"
-            :key="index"
-            @click.stop="selectTab(index)"
-            class="flex flex-col items-center justify-center flex-1 px-2 py-3 border-r border-gray-300 last:border-r-0 transition-colors duration-300"
-            :class="{
-              'bg-black text-white': currentTab === index,
-              'bg-white text-black hover:bg-gray-50': currentTab !== index,
-            }"
-          >
-            <span class="text-sm font-medium">{{ tab.mobileDate?.split(' ')[0] || '1' }}</span>
-            <span class="text-xs opacity-75">{{ tab.mobileDate?.split(' ')[1] || 'Nov' }}</span>
-          </button>
-        </div>
+    <div class="md:hidden mb-4 sticky top-0 z-10 bg-white">
+      <div class="flex w-full border-b border-gray-200">
+        <button
+          v-for="(tab, index) in tabs"
+          :key="index"
+          @click.stop="selectTab(index)"
+          class="flex flex-col items-center justify-center flex-1 px-2 py-3 border-r border-gray-300 last:border-r-0 transition-colors duration-300"
+          :class="{
+            'bg-black text-white': currentTab === index,
+            'bg-white text-black hover:bg-gray-50': currentTab !== index,
+          }"
+        >
+          <span class="text-sm font-medium">{{ tab.mobileDate?.split(' ')[0] || '1' }}</span>
+          <span class="text-xs opacity-75">{{ tab.mobileDate?.split(' ')[1] || 'Nov' }}</span>
+        </button>
       </div>
+    </div>
     </ClientOnly>
 
     <!-- Desktop Tabs -->
     <ClientOnly>
-      <div 
-        class="hidden md:block overflow-x-auto hide-scrollbar cursor-grab active:cursor-grabbing w-full" 
-        ref="tabsContainer"
-        @mousedown="startDrag"
-        @mousemove="onDrag"
-        @mouseup="stopDrag"
-        @mouseleave="stopDrag"
-        @touchstart="startDragTouch"
-        @touchmove="onDragTouch"
-        @touchend="stopDrag"
-      >
-        <div class="flex md:gap-10 gap-8 mb-4 md:mb-10 whitespace-nowrap pb-4 md:pb-0 pl-4 md:pl-0 md:pr-[50vw]">
-          <button
-            v-for="(tab, index) in tabs"
-            :key="index"
-            @click.stop="selectTab(index)"
-            class="flex flex-col items-start gap-2 hover:text-black flex-shrink-0"
-            :class="{
-              'text-black': currentTab === index,
-              'text-black-20': currentTab !== index,
-            }"
-          >
-            <span v-html="tab.title" class="text-xl 2xl:text-4xl md:text-3xl transition-colors duration-300"></span>
-            <span class="transition-colors duration-300">
-              {{ tab.date }}
-            </span>
-          </button>
-        </div>
+    <div 
+      class="hidden md:block overflow-x-auto hide-scrollbar cursor-grab active:cursor-grabbing w-full" 
+      ref="tabsContainer"
+      @mousedown="startDrag"
+      @mousemove="onDrag"
+      @mouseup="stopDrag"
+      @mouseleave="stopDrag"
+      @touchstart="startDragTouch"
+      @touchmove="onDragTouch"
+      @touchend="stopDrag"
+    >
+      <div class="flex md:gap-10 gap-8 mb-4 md:mb-10 whitespace-nowrap pb-4 md:pb-0 pl-4 md:pl-0 md:pr-[50vw]">
+        <button
+          v-for="(tab, index) in tabs"
+          :key="index"
+          @click.stop="selectTab(index)"
+          class="flex flex-col items-start gap-2 hover:text-black flex-shrink-0"
+          :class="{
+            'text-black': currentTab === index,
+            'text-black-20': currentTab !== index,
+          }"
+        >
+          <span v-html="tab.title" class="text-xl 2xl:text-4xl md:text-3xl transition-colors duration-300"></span>
+          <span class="transition-colors duration-300">
+            {{ tab.date }}
+          </span>
+        </button>
+      </div>
       </div>
     </ClientOnly>
 

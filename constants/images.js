@@ -50,14 +50,14 @@ import image37 from '~/assets//image/photos/photo-7-1.webp'
 import image38 from '~/assets//image/photos/photo-8-1.webp'
 import image39 from '~/assets//image/photos/photo-12-1.webp'
 
-import image54 from '~/assets//image/designers/54.webp'
-import image55 from '~/assets//image/designers/55.webp'
-import image56 from '~/assets//image/designers/56.webp'
+import image54 from '~/assets//image/designers/22.webp'
+import image55 from '~/assets//image/designers/29.webp'
+import image56 from '~/assets//image/designers/31.webp'
 
 import image57 from '~/assets//image/designers/57.webp'
 
 export const tabs = [
-  { year: '2025', season: 'Spring/Summer', images: [image54, image55, image56], designers: ['Olga Khayrullova', 'Khalimova Liza', 'Olga Baltrukevica'] },
+  { year: '2025', season: 'Spring/Summer', images: [image54, image55, image56], designers: ['Irina Sharova', 'Martine Berge', 'Michael Lombard'] },
   { year: '2025', season: 'Fall/Winter', images: [image37, image38, image39], designers: ['OSMOSIS', 'NERMIN', 'AISHA'] },
   { year: '2024', season: 'Spring/Summer', images: [image34, image35, image36], designers: ['CHOLPONA', 'Icona', 'Suhaila'] },
   { year: '2024', season: 'Fall/Winter', images: [image31, image32, image33], designers: ['Danatella', 'Alisia Fiori', 'BERGE'] },
@@ -297,7 +297,7 @@ export const designers = [
   },
   {
     name: 'VISHAL DESAI',
-    image: `${DESIGNERS_CDN_BASE}/55.webp`
+    image: `${DESIGNERS_CDN_BASE}/58.webp`
   },
   {
     name: 'DR. RAGIA HADDARA',
