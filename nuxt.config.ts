@@ -113,6 +113,11 @@ export default defineNuxtConfig({
         priority: 0.7
       },
       {
+        url: '/about',
+        changefreq: 'monthly',
+        priority: 0.8
+      },
+      {
         url: '/team',
         changefreq: 'monthly',
         priority: 0.7
