@@ -12,7 +12,7 @@
         <!-- Main Title -->
         <section>
           <h1 class="text-2xl md:text-3xl xl:text-4xl font-bold mb-6">
-            ABOUT EMIRATES FASHION WEEK (EN) — UPDATED VERSION
+            ABOUT EMIRATES FASHION WEEK (EN)
           </h1>
           
           <h2 class="text-xl md:text-2xl xl:text-3xl font-semibold mb-4">
