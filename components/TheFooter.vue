@@ -85,34 +85,44 @@
             >
               {{ phone[1] }}
             </NuxtLink>
+
             <NuxtLink
               :to="`mailto:${email}`"
               class="text-sm hover:text-gray-300 transition-colors uppercase"
             >
               {{ email }}
             </NuxtLink>
+
             <div class="flex items-center gap-2">
-            <NuxtLink
-              :to="instagram"
-              target="_blank"
-              class="flex items-center gap-2 text-sm hover:opacity-80 transition-opacity">
-              <InstagramWhiteIcon />
-            </NuxtLink>
+              <NuxtLink
+                :to="instagram"
+                target="_blank"
+                class="flex items-center gap-2 text-sm hover:opacity-80 transition-opacity">
+                <InstagramWhiteIcon />
+              </NuxtLink>
 
-            <NuxtLink
-              :to="youtube"
-              target="_blank"
-              class="flex items-center gap-2 text-sm hover:opacity-80 transition-opacity">
-              <YoutubeWhiteIcon />
-            </NuxtLink>
+              <NuxtLink
+                :to="youtube"
+                target="_blank"
+                class="flex items-center gap-2 text-sm hover:opacity-80 transition-opacity">
+                <YoutubeWhiteIcon />
+              </NuxtLink>
+            </div>
 
-          </div>
             <span 
               class="text-sm hover:text-gray-300 transition-colors cursor-pointer"
               @click="showContactForm = true"
             >
               ASK
             </span>
+
+            <NuxtLink
+              to="/about"
+              class="text-sm hover:text-gray-300 transition-colors"
+            >
+              ABOUT
+            </NuxtLink>
+            
           </div>
         </div>
 
