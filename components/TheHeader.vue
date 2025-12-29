@@ -21,12 +21,12 @@
                 <LogoBlack class="h-4 md:h-5 lg:h-6 xl:h-7 2xl:h-8 w-[132px] md:w-[165px] max-w-full lg:w-[198px] xl:w-[231px] 2xl:w-[254px]" />
               </NuxtLink>
             
-              <NuxtLink 
+              <!-- <NuxtLink 
                 href="#" 
                 class="text-black text-[8px] md:text-[10px] xl:text-xs 2xl:text-sm md:uppercase lowercase"
                 @click.prevent="handleHashtagClick"
               >{{ hashtag[0] }}
-              </NuxtLink>
+              </NuxtLink> -->
             </div>  
           </div>
 
@@ -279,7 +279,8 @@ const navLinks = [
   { name: 'DESIGNERS', href: '/#designers', id: 'designer' },
   { name: 'GALLERY', href: '/gallery-ss-26', id: 'gallery' },
   { name: 'MARKET', href: '/offer?wp=971585753302&tr', id: 'market' },
-  { name: 'TRIAL', href: '/trial', id: 'trial' },
+  // { name: 'TRIAL', href: '/trial', id: 'trial' },
+  { name: 'ABOUT', href: '/about', id: 'about' },
   // { name: 'HOW IT WAS', href: '/#how-it-was', id: 'how-it-was' },
   // { name: 'WIDGET', href: '/widget', id: 'widget' },
 ];

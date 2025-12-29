@@ -12,7 +12,7 @@
         <!-- Main Title -->
         <section>
           <h1 class="text-2xl md:text-3xl xl:text-4xl font-bold mb-6">
-            ABOUT EMIRATES FASHION WEEK (EN)
+            ABOUT EMIRATES FASHION WEEK
           </h1>
           
           <h2 class="text-xl md:text-2xl xl:text-3xl font-semibold mb-4">
@@ -196,7 +196,7 @@
         </section>
 
         <!-- Official Status & Media Hub -->
-        <section>
+        <!-- <section>
           <h2 class="text-xl md:text-2xl xl:text-3xl font-semibold mb-4">
             Official Status & Media Hub
           </h2>
@@ -220,7 +220,7 @@
             <li>Shams Media City</li>
             <li>Sharjah Broadcasting Corporation</li>
           </ul>
-        </section>
+        </section> -->
 
       </div>
     </div>

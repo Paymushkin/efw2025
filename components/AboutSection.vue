@@ -180,7 +180,7 @@
       </div>
 
       <!-- Official Status & Media Hub -->
-      <div>
+      <!-- <div>
         <h3 class="text-sm md:text-base font-semibold mb-2">
           Official Status & Media Hub
         </h3>
@@ -204,7 +204,7 @@
           <li>Shams Media City</li>
           <li>Sharjah Broadcasting Corporation</li>
         </ul>
-      </div>
+      </div> -->
 
     </div>
   </section>
