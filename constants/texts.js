@@ -1,4 +1,4 @@
-export const marqueeText1 = 'EMIRATES FASHION WEEK / APRIL 2026'
+export const marqueeText1 = 'EMIRATES FASHION WEEK /  23-26 APRIL 2026'
 export const marqueeText2 = 'This event is organized as the final qualification showcase for the Diamond Models school'
 
 export const address = 'Dubai, Shams Media City 104, M&V LLC'
