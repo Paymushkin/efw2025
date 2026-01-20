@@ -25,7 +25,7 @@
         <sup class="xl:text-3xl md:text-3xl text-base align-top md:-ml-[10px] -ml-[5px]">®</sup> 
       </h1>
       <span class="xl:text-[60px] text-xl text-white font-bold md:mb-4 mb-2">Fall Winter 26/27</span>
-      <span class="text-white mb-10 text-xl font-bold">April 2026</span>
+      <span class="text-white mb-10 text-xl font-bold">23-26 April 2026</span>
       <GalleryIframe :show-fog="false" />
     </div>
 
