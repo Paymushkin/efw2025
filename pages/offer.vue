@@ -2,9 +2,9 @@
   <div>
     <div class="container mx-auto px-4 py-8 max-w-7xl">
     <AppSeo
-      title="Hot Offers - Emirates Fashion Week Dubai 2025"
-      description="Emirates Fashion Week Dubai 2025: Beauty meets business. Showcase spots for beauty service companies and designer pop-up corners. Join us on April 13-15, 2025."
-      keywords="Emirates Fashion Week, Dubai Fashion, Beauty Services, Designer Pop-up, Fashion Show 2025, Dubai Events, Beauty Business"
+      title="Hot Offers - Emirates Fashion Week Dubai 2026"
+      description="Emirates Fashion Week Dubai 2026: Beauty meets business. Showcase spots for beauty service companies and designer pop-up corners. Join us on April 23-26, 2026."
+      keywords="Emirates Fashion Week, Dubai Fashion, Beauty Services, Designer Pop-up, Fashion Show 2026, Dubai Events, Beauty Business"
     />
     <!-- Hot Offers Section -->
      <section class="flex flex-col justify-between gap-5 mb-[50px] md:mb-[80px] xl:mb-[100px]">
@@ -15,9 +15,10 @@
           <p class="text-sm md:text-base xl:text-lg">
             Two days featuring <b>60 Showcase Spots</b> for beauty service companies<br>and <b>40 Designer Pop-Up Corners</b> with exclusive promotional offers
             <br><br>
-            <b>BEAUTY DAY</b> | 10 November 2025 | Monday
+            <b>23-26 April 2026</b>
+            <!-- <b>BEAUTY DAY</b> | 10 November 2025 | Monday
             <br>
-            <b>WELLNESS DAY</b> | 11 November 2025 | Tuesday
+            <b>WELLNESS DAY</b> | 11 November 2025 | Tuesday -->
           </p>
         </div>
         <div>

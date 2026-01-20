@@ -1,6 +1,6 @@
 <template>
   <section class="container mx-auto">
-    <h2 class="text-xl md:text-3xl xl:text-4xl md:text-left w-full text-center mb-4 text-black">
+    <h2 class="text-xl md:text-3xl xl:text-4xl md:text-left w-full text-center  md:mb-[50px] mb-4 text-black">
       DESIGNER RUNWAY SHOWS
       14<sup class="">th</sup> SEASON
     </h2>
@@ -34,7 +34,7 @@
               {{ formatDate(group.date) }}
             </span>
             <span class="font-semibold text-lg text-black">
-              {{ group.name }}
+              {{ formatGroupTitle(group) }}
             </span>
           </div>
           <svg
@@ -251,6 +251,14 @@ const { data: runwaysData, pending: loading, error } = await useAsyncData(
 );
 
 const runways = computed(() => runwaysData.value || []);
+
+// Формируем заголовок блока: добавляем страну из первого элемента, если она указана
+const formatGroupTitle = (group) => {
+  if (!group || !group.name) return '';
+  const firstItem = Array.isArray(group.items) ? group.items[0] : null;
+  const country = firstItem?.country?.trim();
+  return country ? `${group.name} | ${country}` : group.name;
+};
 const { extractYouTubeId } = useDesignerRunways();
 const errorMessage = computed(() => error.value?.message || null);
 const openAccordions = ref([0]); // Первый блок открыт по умолчанию

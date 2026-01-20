@@ -1,15 +1,15 @@
 <template>
   <div class="w-full max-w-full overflow-x-hidden">
     <AppSeo
-      title="Emirates Fashion Week | Dubai 2025 | 14th Season | Spring Summer 26 | 8–11 November"
-      description="Emirates Fashion Week Dubai 2025 celebrates its 14th Season (Spring/Summer 26) on 8–11 November at Skylight Gallery, Arjaan by Rotana, Dubai Media City. Featuring 2 days of runway shows and 2 days of 40 fashion pop-ups & 60 beauty services market. Since 2019, EFW has showcased 350+ designers and trained 1200+ models."
-      keywords="Emirates Fashion Week, Dubai Fashion, Fashion Shows Runways Dubai, Beauty Exhibition UAE, Fashion Pop-up Market Dubai, Designer Collections, Beauty Services Dubai, Fashion Week 2025 Dubai"
+      title="Emirates Fashion Week | 23-26 April 2026 Dubai | 15th Season | Fall Winter 26/27"
+      description="Emirates Fashion Week Dubai celebrates its 15th (Fall Winter 26/27) on 23-26 April 2026 at Skylight Gallery, Arjaan by Rotana, Dubai Media City. Featuring 2 days of runway shows and 1 day of Beauty Arena. Since 2019, EFW has showcased 400+ designers."
+      keywords="Emirates Fashion Week, Dubai Fashion, Fashion Shows Runways Dubai, Beauty Exhibition UAE, Fashion Pop-up Market Dubai, Designer Collections, Beauty Services Dubai, Fashion Week 2026 Dubai"
       schema-type="event"
       :event-data="{
-        name: 'Emirates Fashion Week Dubai 2025 - 14th Season Spring Summer 26',
-        description: 'Emirates Fashion Week Dubai 2025 celebrates its 14th Season (Spring/Summer 26) on 8–11 November at Skylight Gallery, Arjaan by Rotana, Dubai Media City.',
-        startDate: '2025-11-08T00:00:00+04:00',
-        endDate: '2025-11-11T23:59:59+04:00',
+        name: 'Emirates Fashion Week Dubai 2026 - 15th Season Fall Winter 26/27',
+        description: 'Emirates Fashion Week Dubai celebrates its 15th (Fall Winter 26/27) on 23-26 April 2026 at Skylight Gallery, Arjaan by Rotana, Dubai Media City. Featuring 2 days of runway shows and 1 day of Beauty Arena. Since 2019, EFW has showcased 400+ designers.',
+        startDate: '2026-04-23T00:00:00+04:00',
+        endDate: '2026-04-26T23:59:59+04:00',
         location: {
           name: 'Skylight Gallery, Arjaan by Rotana, Dubai Media City'
         }

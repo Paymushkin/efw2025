@@ -1,9 +1,9 @@
 <template>
   <div class="min-h-screen bg-gray-50">
     <AppSeo 
-      title="Emirates Fashion Week Awards Fall Winter 2025 | April 15, 2025"
-      description="Celebrating the winners of Emirates Fashion Week Awards Fall Winter 2025. Discover the talented designers, brands, and industry leaders who received recognition on April 15, 2025."
-      keywords="Emirates Fashion Week Awards, Fashion Awards 2025, Dubai Fashion Awards, Fashion Winners, Design Awards"
+      title="Emirates Fashion Week Awards Fall Winter 2026 | April 15, 2026"
+      description="Celebrating the winners of Emirates Fashion Week Awards Fall Winter 2026. Discover the talented designers, brands, and industry leaders who received recognition on April 15, 2026."
+      keywords="Emirates Fashion Week Awards, Fashion Awards 2026, Dubai Fashion Awards, Fashion Winners, Design Awards"
       schema-type="collection"
     />
     

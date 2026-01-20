@@ -1,9 +1,9 @@
 <template>
   <div class="container mx-auto px-4 py-4 md:py-6">
     <AppSeo
-      title="Guest List - Emirates Fashion Week Dubai 2025"
-      description="You're on the EFW 2025 Guest List! View your personalized invitation and event program for Emirates Fashion Week Dubai 2025."
-      keywords="Emirates Fashion Week Guest List, Dubai Fashion Event 2025, Fashion Week Invitation, Guest Welcome Dubai, Spring Summer 26"
+      title="Guest List - Emirates Fashion Week Dubai 2026"
+      description="You're on the EFW 2026 Guest List! View your personalized invitation and event program for Emirates Fashion Week Dubai 2026."
+      keywords="Emirates Fashion Week Guest List, Dubai Fashion Event 2026, Fashion Week Invitation, Guest Welcome Dubai, Spring Summer 26"
     />
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">

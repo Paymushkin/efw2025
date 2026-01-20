@@ -1,8 +1,8 @@
 <template>
   <div class="min-h-screen bg-white">
     <AppSeo
-      title="FREQUENTLY ASKED QUESTIONS - Emirates Fashion Week Dubai 2025"
-      description="Frequently Asked Questions about Emirates Fashion Week Dubai 2025. Find answers about visitor passes, buyers, AI matchmaking tool, and more."
+      title="FREQUENTLY ASKED QUESTIONS - Emirates Fashion Week Dubai 2026"
+      description="Frequently Asked Questions about Emirates Fashion Week Dubai 2026. Find answers about visitor passes, buyers, AI matchmaking tool, and more."
       keywords="Emirates Fashion Week FAQ, Fashion Week Questions, Dubai Fashion Week, Visitor Passes, AI Matchmaking"
       schema-type="faq"
       :faq-data="faqDataForSchema"

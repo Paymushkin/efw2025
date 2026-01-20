@@ -10,11 +10,11 @@ const CANONICAL_DOMAIN = 'https://www.emiratesfashionweek.com'
 const props = defineProps({
   title: {
     type: String,
-    default: 'Emirates Fashion Week Dubai 2025'
+    default: 'Emirates Fashion Week Dubai 2026'
   },
   description: {
     type: String,
-    default: 'Emirates Fashion Week Dubai 2025: Beauty meets business. Join us on 8–11 November, 2025 for an exclusive fashion and beauty event in Dubai.'
+    default: 'Emirates Fashion Week Dubai 2026: Beauty meets business. Join us on 8–11 November, 2026 for an exclusive fashion and beauty event in Dubai.'
   },
   image: {
     type: String,
@@ -22,7 +22,7 @@ const props = defineProps({
   },
   keywords: {
     type: String,
-    default: 'Emirates Fashion Week, Dubai Fashion, Beauty Services, Fashion Show 2025, Dubai Events'
+    default: 'Emirates Fashion Week, Dubai Fashion, Beauty Services, Fashion Show 2026, Dubai Events'
   },
   // Дополнительные опции для микроразметки
   schemaType: {
@@ -174,8 +174,8 @@ const schemaScripts = computed(() => {
         '@type': 'Event',
         name: props.eventData.name || props.title,
         description: props.eventData.description || props.description,
-        startDate: props.eventData.startDate || '2025-11-08T00:00:00+04:00',
-        endDate: props.eventData.endDate || '2025-11-11T23:59:59+04:00',
+        startDate: props.eventData.startDate || '2026-11-08T00:00:00+04:00',
+        endDate: props.eventData.endDate || '2026-11-11T23:59:59+04:00',
         eventStatus: 'https://schema.org/EventScheduled',
         eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
         location: {
@@ -313,7 +313,7 @@ useHead(() => ({
     },
     {
       property: 'og:image:alt',
-      content: 'Emirates Fashion Week Dubai 2025 - 8-11 November'
+      content: 'Emirates Fashion Week Dubai 2026 - 8-11 November'
     },
     {
       name: 'keywords',

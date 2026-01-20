@@ -1,5 +1,10 @@
 <template>
-  <section ref="sectionRef" :id="props.id" class="container mx-auto">
+  <section
+    ref="sectionRef"
+    :id="props.id"
+    class="container mx-auto"
+    v-bind="$attrs"
+  >
     <div class="flex justify-between md:items-center gap-8 md:mb-[50px] mb-4 max-w-[1200px]">
       <h2 class="text-xl md:text-3xl xl:text-4xl">
         <a href="#spring-summer-2026" class="hover:opacity-80 transition-opacity">PREVIOUS 14<sup class="">th</sup> Spring Summer 2026</a>

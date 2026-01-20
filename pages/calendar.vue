@@ -2,8 +2,8 @@
   <div class="min-h-screen bg-black flex items-center justify-center py-8 px-4">
     <AppSeo
       title="Emirates Fashion Week Calendar - Subscribe to Events"
-      description="Subscribe to Emirates Fashion Week calendar to stay updated with all fashion events and shows in Dubai 2025."
-      keywords="Emirates Fashion Week, Dubai Fashion, Calendar, Events, Fashion Shows, Dubai 2025"
+      description="Subscribe to Emirates Fashion Week calendar to stay updated with all fashion events and shows in Dubai 2026."
+      keywords="Emirates Fashion Week, Dubai Fashion, Calendar, Events, Fashion Shows, Dubai 2026"
     />
     
     <div class="text-center max-w-md mx-auto">

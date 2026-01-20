@@ -1,9 +1,9 @@
 <template>
   <div>
     <AppSeo
-      title="Welcome - Emirates Fashion Week Dubai 2025 | 8-11 November | Exclusive Invitation"
-      description="Welcome to Emirates Fashion Week Dubai 2025. Join us on 8-11 November for three remarkable days of style, beauty, and meaningful connections. Your exclusive invitation to the 14th Season Spring/Summer 26."
-      keywords="Emirates Fashion Week Welcome, Dubai Fashion Event 2025, Fashion Week Invitation November, Guest Welcome Dubai, Spring Summer 26, Fashion Show Dubai"
+      title="Welcome - Emirates Fashion Week Dubai 2026 | 8-11 November | Exclusive Invitation"
+      description="Welcome to Emirates Fashion Week Dubai 2026. Join us on 8-11 November for three remarkable days of style, beauty, and meaningful connections. Your exclusive invitation to the 14th Season Spring/Summer 26."
+      keywords="Emirates Fashion Week Welcome, Dubai Fashion Event 2026, Fashion Week Invitation November, Guest Welcome Dubai, Spring Summer 26, Fashion Show Dubai"
     />
     <div class="container mx-auto px-4 py-4 md:py-6">
     <div class="max-w-6xl mx-auto">
