@@ -12,7 +12,8 @@ type HydrationStrategies = {
 }
 type LazyComponent<T> = (T & DefineComponent<HydrationStrategies, {}, {}, {}, {}, {}, {}, { hydrated: () => void }>)
 interface _GlobalComponents {
-      'AiContestFaq': typeof import("../components/AiContestFaq.vue")['default']
+      'AboutSection': typeof import("../components/AboutSection.vue")['default']
+    'AiContestFaq': typeof import("../components/AiContestFaq.vue")['default']
     'AppSeo': typeof import("../components/AppSeo.vue")['default']
     'ApprovedCompaniesList': typeof import("../components/ApprovedCompaniesList.vue")['default']
     'ApprovedCompaniesListFixed': typeof import("../components/ApprovedCompaniesListFixed.vue")['default']
@@ -86,7 +87,8 @@ interface _GlobalComponents {
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'NuxtIsland': typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
     'NuxtRouteAnnouncer': typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']
-      'LazyAiContestFaq': LazyComponent<typeof import("../components/AiContestFaq.vue")['default']>
+      'LazyAboutSection': LazyComponent<typeof import("../components/AboutSection.vue")['default']>
+    'LazyAiContestFaq': LazyComponent<typeof import("../components/AiContestFaq.vue")['default']>
     'LazyAppSeo': LazyComponent<typeof import("../components/AppSeo.vue")['default']>
     'LazyApprovedCompaniesList': LazyComponent<typeof import("../components/ApprovedCompaniesList.vue")['default']>
     'LazyApprovedCompaniesListFixed': LazyComponent<typeof import("../components/ApprovedCompaniesListFixed.vue")['default']>
@@ -166,6 +168,7 @@ declare module 'vue' {
   export interface GlobalComponents extends _GlobalComponents { }
 }
 
+export const AboutSection: typeof import("../components/AboutSection.vue")['default']
 export const AiContestFaq: typeof import("../components/AiContestFaq.vue")['default']
 export const AppSeo: typeof import("../components/AppSeo.vue")['default']
 export const ApprovedCompaniesList: typeof import("../components/ApprovedCompaniesList.vue")['default']
@@ -240,6 +243,7 @@ export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
 export const NuxtRouteAnnouncer: typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']
+export const LazyAboutSection: LazyComponent<typeof import("../components/AboutSection.vue")['default']>
 export const LazyAiContestFaq: LazyComponent<typeof import("../components/AiContestFaq.vue")['default']>
 export const LazyAppSeo: LazyComponent<typeof import("../components/AppSeo.vue")['default']>
 export const LazyApprovedCompaniesList: LazyComponent<typeof import("../components/ApprovedCompaniesList.vue")['default']>
