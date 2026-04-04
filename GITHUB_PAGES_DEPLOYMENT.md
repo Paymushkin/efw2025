@@ -75,15 +75,19 @@ document.head.appendChild(script)
 ### 1. **Обновите Google Apps Script**
 Замените код в Google Apps Script на содержимое файла `UPDATED_APPS_SCRIPT.js`
 
-### 2. **Соберите проект**
+### 2. **Соберите статику**
 ```bash
-npm run build
+npm run generate
 ```
+Артефакты для хостинга — каталог **`.output/public`**.
 
 ### 3. **Разверните на GitHub Pages**
 ```bash
 npm run deploy
 ```
+(внутри: `generate` + публикация `.output/public` через `gh-pages`)
+
+Либо положитесь на CI: push в **`main`** запускает `.github/workflows/deploy.yml`.
 
 ### 4. **Проверьте работу**
 - Откройте сайт на GitHub Pages

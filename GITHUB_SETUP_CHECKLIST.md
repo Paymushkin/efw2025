@@ -1,75 +1,49 @@
-# Чеклист настройки GitHub для автоматической пересборки
+# Чеклист: GitHub и деплой
 
-## Что нужно проверить в GitHub:
+Репозиторий публикует статический сайт через **GitHub Actions** → **GitHub Pages** (workflow `deploy.yml`). Отдельного расписания (cron) для пересборки **нет**.
 
-### 1. ✅ GitHub Actions включены
+## 1. GitHub Actions включены
+
 **Путь:** `Settings` → `Actions` → `General`
 
-- [ ] Убедитесь, что "Allow all actions and reusable workflows" включено
-- [ ] Или выберите "Allow local actions and reusable workflows"
-- [ ] Проверьте, что "Workflow permissions" настроены правильно (см. пункт 2)
+- [ ] Разрешены нужные actions (по умолчанию «Allow all actions» или политика организации)
+- [ ] Для деплоя через `GITHUB_TOKEN` обычно достаточно стандартных прав workflow
 
-### 2. ✅ Workflow Permissions (Права для workflow)
-**Путь:** `Settings` → `Actions` → `General` → `Workflow permissions`
+## 2. GitHub Pages
 
-- [ ] Выберите **"Read and write permissions"** 
-- [ ] Или установите "Read repository contents and packages permissions" и добавьте `contents: write` в workflow (уже добавлено в `.github/workflows/daily-rebuild.yml`)
+**Путь:** `Settings` → `Pages`
 
-**Важно:** Без прав на запись workflow не сможет делать commit и push обновленных данных.
+- [ ] Указан источник публикации, соответствующий использованию `peaceiris/actions-gh-pages` (часто ветка **`gh-pages`**)
+- [ ] Домен и `baseURL` в Nuxt согласованы с реальным URL сайта
 
-### 3. ✅ Workflow файл в правильной ветке
-**Путь:** Проверьте файл `.github/workflows/daily-rebuild.yml`
+## 3. Workflow деплоя
 
-- [ ] Убедитесь, что файл находится в ветке `main`
-- [ ] Workflow должен быть в репозитории, чтобы GitHub мог его запускать
+**Файл:** [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)
 
-### 4. ✅ Vercel настроен на автоматическую пересборку
-**Путь:** Vercel Dashboard → Project Settings → Git
+- [ ] Триггер: `push` в ветку **`main`**
+- [ ] Шаги: `npm ci` → `npm run generate` → публикация **`.output/public`**
+- [ ] В логах Actions нет ошибок на шаге `Generate static site`
 
-- [ ] Убедитесь, что проект подключен к GitHub репозиторию
-- [ ] Проверьте, что включена опция "Automatically deploy on push"
-- [ ] Убедитесь, что отслеживается ветка `main`
+## 4. Локальная проверка перед push
 
-### 5. ✅ Тестовая проверка workflow
-**Путь:** `Actions` → `Daily Rebuild` → `Run workflow`
+```bash
+npm ci
+npm run generate
+# убедиться, что появился .output/public с index.html и ассетами
+```
 
-- [ ] Попробуйте запустить workflow вручную через кнопку "Run workflow"
-- [ ] Проверьте, что workflow успешно выполняется
-- [ ] Убедитесь, что данные обновляются и делается commit
+## 5. Обновление данных Designer Runways (вручную)
 
-### 6. ✅ Проверка логов
-**Путь:** `Actions` → Выберите последний запуск workflow
+SEO-HTML для блока runway опирается на `constants/designerRunwaysData.ts`. Чтобы подтянуть актуальный CSV из таблицы:
 
-Проверьте логи на наличие ошибок:
-- [ ] Скрипт `update-runways-data` выполняется успешно
-- [ ] Git commit и push проходят без ошибок
-- [ ] Vercel получает уведомление о push
+```bash
+npm run update-runways-data
+git diff constants/designerRunwaysData.ts
+git add constants/designerRunwaysData.ts && git commit -m "chore: refresh designer runways data"
+```
 
-## Возможные проблемы и решения:
+После push сработает обычный деплой workflow.
 
-### Проблема: Workflow не запускается по расписанию
-**Решение:** 
-- Убедитесь, что в репозитории был хотя бы один push после создания workflow
-- GitHub Actions не запускают scheduled workflows в неактивных репозиториях (нужна активность за последние 60 дней)
+## 6. Если деплой падает
 
-### Проблема: Permission denied при push
-**Решение:**
-- Проверьте Workflow permissions (пункт 2)
-- Убедитесь, что используется правильный токен (`GITHUB_TOKEN`)
-
-### Проблема: Vercel не пересобирает проект
-**Решение:**
-- Проверьте настройки Vercel (пункт 4)
-- Убедитесь, что Vercel webhook настроен правильно
-- Проверьте логи Vercel на наличие ошибок
-
-## Быстрая проверка:
-
-1. Откройте `https://github.com/Paymushkin/efw2025/settings/actions`
-2. Проверьте раздел "Workflow permissions" - должно быть "Read and write permissions"
-3. Откройте `https://github.com/Paymushkin/efw2025/actions`
-4. Найдите workflow "Daily Rebuild" и попробуйте запустить его вручную
-5. Проверьте Vercel Dashboard - должен быть настроен автоматический деплой
-
-
-
+См. [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) и логи вкладки **Actions** → **Deploy to GitHub Pages**.

@@ -1,92 +1,57 @@
-# Устранение проблем с GitHub Actions workflow
+# Устранение проблем
 
-## Как проверить логи workflow при ошибке:
+## GitHub Actions: деплой на GitHub Pages
 
-1. **Откройте страницу Actions:**
-   - Перейдите: `https://github.com/Paymushkin/efw2025/actions`
-   - Или: `Actions` → `Daily Rebuild`
+Workflow: **Deploy to GitHub Pages** (`.github/workflows/deploy.yml`).
 
-2. **Откройте упавший workflow:**
-   - Кликните на workflow с красным крестиком
-   - Вы увидите список шагов (steps)
+### Как смотреть логи
 
-3. **Проверьте каждый шаг:**
-   - Кликните на шаг, который завершился с ошибкой
-   - Внизу будут логи выполнения
-   - Ищите строки с `❌` или `Error`
+1. В репозитории: **Actions** → выберите последний запуск **Deploy to GitHub Pages**.
+2. Откройте упавший step и прочитайте вывод (часто `npm ci`, `generate` или deploy).
 
-## Частые проблемы и решения:
+### Частые ошибки
 
-### Проблема: "npm: command not found" или "tsx: command not found"
-**Решение:**
-- Убедитесь, что шаг "Install dependencies" выполнился успешно
-- Проверьте, что `tsx` добавлен в `devDependencies` в `package.json`
+**`npm ci` падает**
 
-### Проблема: "Permission denied" при git push
-**Решение:**
-- Проверьте настройки: `Settings` → `Actions` → `General` → `Workflow permissions`
-- Должно быть выбрано: **"Read and write permissions"**
-- Убедитесь, что в workflow есть `permissions: contents: write`
+- Проверьте, что **`package-lock.json` закоммичен** и не устарел относительно `package.json`.
+- Локально выполните `npm ci` на чистой папке.
 
-### Проблема: "fetch is not defined"
-**Решение:**
-- Node.js 18+ имеет встроенный fetch
-- Убедитесь, что в workflow используется `node-version: '18'` или выше
+**`npm run generate` падает**
 
-### Проблема: Скрипт не может загрузить данные из Google Sheets
-**Решение:**
-- Проверьте, что таблица Google Sheets публично доступна
-- Убедитесь, что URL правильный: `https://docs.google.com/spreadsheets/d/SPREADSHEET_ID/export?format=csv&gid=0`
-- Проверьте логи на наличие ошибок сети
+- Запустите локально `npm run generate` и исправьте ошибки сборки.
+- Проверьте переменные окружения, если какие-то нужны на этапе сборки.
 
-### Проблема: "No changes to commit"
-**Решение:**
-- Это нормально, если данные не изменились
-- Workflow завершится успешно, но commit не будет сделан
+**Деплой: пустой или старый сайт**
 
-## Проверка настроек:
+- В workflow должна быть папка **`.output/public`** (результат `nuxt generate` для этого проекта).
+- В **Settings → Pages** проверьте, что источник указывает на ту ветку/режим, куда пишет `peaceiris/actions-gh-pages`.
 
-### 1. Workflow Permissions
-```
-Settings → Actions → General → Workflow permissions
-Должно быть: "Read and write permissions" ✅
-```
+**Права `GITHUB_TOKEN`**
 
-### 2. Node.js версия
-В workflow должно быть:
-```yaml
-node-version: '18'  # или выше
-```
+- Для публикации в `gh-pages` через action обычно достаточно встроенного `GITHUB_TOKEN` и разрешений workflow по умолчанию. При смене организационных политик смотрите **Settings → Actions → General**.
 
-### 3. Зависимости
-В `package.json` должно быть:
-```json
-"devDependencies": {
-  "tsx": "^4.7.0"
-}
-```
+---
 
-## Тестирование локально:
+## Локально: `npm run update-runways-data`
 
-Перед запуском в GitHub Actions можно протестировать локально:
+**Нет данных / ошибка сети**
+
+- Таблица должна отдавать CSV по URL из скрипта (см. `scripts/updateDesignerRunwaysData.ts`).
+- Проверьте доступность таблицы из браузера/сети.
+
+**`tsx` не найден**
+
+- После `npm install` команда должна быть доступна как `npm run update-runways-data` (зависимость `tsx` в `devDependencies`).
 
 ```bash
-# Установите зависимости
 npm install
-
-# Запустите скрипт обновления данных
 npm run update-runways-data
-
-# Проверьте, что файл обновился
 git diff constants/designerRunwaysData.ts
 ```
 
-## Если проблема не решается:
+---
 
-1. Скопируйте полные логи из упавшего шага
-2. Проверьте, что все файлы закоммичены и запушены
-3. Убедитесь, что workflow файл находится в ветке `main`
-4. Попробуйте запустить workflow вручную еще раз
+## Прочее
 
-
-
+- **Линтер:** `npm run lint`
+- **Конфликт путей деплоя:** ручная команда `npm run deploy` также использует `generate` и **`.output/public`** (см. `package.json`).

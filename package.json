@@ -6,11 +6,11 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "update-runways-data": "tsx scripts/updateDesignerRunwaysData.ts",
     "preview": "node .output/server/index.mjs",
     "preview:fresh": "lsof -ti:3000 | xargs kill -9 2>/dev/null || true && rm -rf .output .nuxt && npm run build && npm run preview",
     "postinstall": "nuxt prepare",
-    "predeploy": "npm run build",
-    "deploy": "npm run build && gh-pages -d .output/public",
+    "deploy": "npm run generate && gh-pages -d .output/public",
     "lint": "eslint --ext .js,.vue .",
     "format": "prettier --write .",
     "netlify-dev": "netlify dev"
@@ -44,7 +44,8 @@
     "gh-pages": "^6.3.0",
     "netlify-cli": "^17.23.0",
     "postcss-import": "^16.1.0",
-    "prettier": "^3.5.1"
+    "prettier": "^3.5.1",
+    "tsx": "^4.19.2"
   },
   "homepage": "https://pamushkin.github.io/dubaifw"
 }
