@@ -55,6 +55,8 @@ export default defineNuxtConfig({
       '/__sitemap__/**': { static: true }
     },
     prerender: {
+      // Явно пререндерим главную — иначе в .output/public нет index.html и статический сервер показывает листинг каталога
+      routes: ['/'],
       // Не генерируем Nuxt-HTML для этих роутов, чтобы использовались файлы из public/*/index.html
       ignore: [
         '/trial',

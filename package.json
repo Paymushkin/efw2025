@@ -8,6 +8,7 @@
     "generate": "nuxt generate",
     "update-runways-data": "tsx scripts/updateDesignerRunwaysData.ts",
     "preview": "node .output/server/index.mjs",
+    "preview:static": "npx --yes serve@14 .output/public",
     "preview:fresh": "lsof -ti:3000 | xargs kill -9 2>/dev/null || true && rm -rf .output .nuxt && npm run build && npm run preview",
     "postinstall": "nuxt prepare",
     "deploy": "npm run generate && gh-pages -d .output/public",

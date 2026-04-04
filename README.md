@@ -23,7 +23,8 @@ npm run dev
 | `npm run dev` | Режим разработки |
 | `npm run build` | Production-сборка (Nitro `node-server`, для хостинга с Node) |
 | `npm run generate` | Статическая генерация → артефакты в **`.output/public`** (GitHub Pages) |
-| `npm run preview` | Превью после `npm run build` |
+| `npm run preview` | Превью **после `npm run build`** (Node-сервер из `.output/server`) |
+| `npm run preview:static` | Превью **после `npm run generate`** (статика из `.output/public`, через `serve`) |
 | `npm run deploy` | Локально: `generate` + публикация в `gh-pages` через `gh-pages` |
 | `npm run update-runways-data` | Обновить `constants/designerRunwaysData.ts` из Google Sheets (для SEO блока runway) |
 | `npm run lint` | ESLint |
