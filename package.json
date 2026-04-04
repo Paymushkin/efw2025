@@ -14,7 +14,10 @@
     "deploy": "npm run generate && gh-pages -d .output/public",
     "lint": "eslint --ext .js,.vue .",
     "format": "prettier --write .",
-    "netlify-dev": "netlify dev"
+    "netlify-dev": "npx --yes netlify-cli dev"
+  },
+  "engines": {
+    "node": ">=20 <23"
   },
   "dependencies": {
     "@fancyapps/fancybox": "^3.5.7",
@@ -43,7 +46,6 @@
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-vue": "^9.33.0",
     "gh-pages": "^6.3.0",
-    "netlify-cli": "^17.23.0",
     "postcss-import": "^16.1.0",
     "prettier": "^3.5.1",
     "tsx": "^4.19.2"
